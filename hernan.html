@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Hernán · Todos con Hernán · Su historia, experiencias y proyectos en Suiza"
+    >
+
+    <title>Hernán · Todos con Hernán</title>
+
+
+    <style>
+
+        /* =====================================================
+           VARIABLES
+           ===================================================== */
+
+        :root {
+
+            --bg: #04111b;
+            --bg2: #061925;
+            --panel: #071b29;
+            --panel2: #0a2232;
+
+            --red: #ef1820;
+            --red-dark: #bd1017;
+
+            --gold: #ffd000;
+
+            --green: #29e879;
+
+            --white: #f5f8fa;
+            --text: #dce7ed;
+            --muted: #9fb3bf;
+
+            --line: #244b62;
+
+        }
+
+
+        /* =====================================================
+           RESET
+           ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            margin: 0;
+            padding: 0;
+
+            min-height: 100vh;
+
+            background: var(--bg);
+
+            color: var(--white);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            overflow-x: hidden;
+
+        }
+
+
+        a {
+            color: inherit;
+        }
+
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+
+        /* =====================================================
+           BARRA SUPERIOR
+           ===================================================== */
+
+        .topbar {
+
+            min-height: 64px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 0 20px;
+
+            background: #04111a;
+
+            border-bottom:
+                1px solid #183347;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+        }
+
+
+        .mainNav {
+
+            min-height: 64px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 34px;
+
+        }
+
+
+        .mainNav a {
+
+            height: 64px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+
+            color: #dbe4ea;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+        }
+
+
+        .mainNav a:hover {
+
+            color: #ffffff;
+
+        }
+
+
+        .mainNav a.active {
+
+            color: #ffffff;
+
+            font-weight: 900;
+
+        }
+
+
+        .mainNav a.active::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            right: 0;
+
+            bottom: 0;
+
+            height: 4px;
+
+            background: var(--red);
+
+            border-radius:
+                3px 3px 0 0;
+
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .hero {
+
+            min-height: 650px;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(400px, 560px);
+
+            align-items: center;
+
+            gap: 50px;
+
+            padding:
+                70px
+                8vw
+                60px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 75% 50%,
+                    #16394d 0,
+                    #071a28 35%,
+                    #04111b 78%
+                );
+
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 700px;
+
+            height: 700px;
+
+            right: -250px;
+
+            top: -200px;
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    #ef18201c,
+                    transparent 68%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .heroContent {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 720px;
+
+        }
+
+
+        .label {
+
+            display: inline-block;
+
+            padding:
+                8px
+                15px;
+
+            margin-bottom: 20px;
+
+            border:
+                1px solid #35576c;
+
+            border-radius: 20px;
+
+            background:
+                #071b29cc;
+
+            color: var(--gold);
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .hero h1 {
+
+            margin: 0;
+
+            font-size:
+                clamp(55px, 7vw, 95px);
+
+            line-height: .88;
+
+            letter-spacing: -5px;
+
+            font-weight: 950;
+
+        }
+
+
+        .hero h1 span {
+
+            color: var(--red);
+
+        }
+
+
+        .heroIntro {
+
+            margin:
+                28px 0 0;
+
+            max-width: 680px;
+
+            color: var(--text);
+
+            font-size:
+                clamp(18px, 2vw, 22px);
+
+            line-height: 1.55;
+
+        }
+
+
+        .heroButtons {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 30px;
+
+        }
+
+
+        /* =====================================================
+           BOTONES
+           ===================================================== */
+
+        .btn {
+
+            min-height: 48px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                0 24px;
+
+            border-radius: 26px;
+
+            text-decoration: none;
+
+            font-weight: 900;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+
+        }
+
+
+        .btn:hover {
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .btn.red {
+
+            background:
+                var(--red);
+
+            color:
+                #ffffff;
+
+            box-shadow:
+                0 10px 25px #0007;
+
+        }
+
+
+        .btn.outline {
+
+            border:
+                1px solid #416579;
+
+            background:
+                transparent;
+
+            color:
+                #ffffff;
+
+        }
+
+
+        /* =====================================================
+           IMAGEN HERNÁN
+           ===================================================== */
+
+        .hernanImage {
+
+            min-height: 470px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .hernanImage img {
+
+            width: 100%;
+
+            height: 500px;
+
+            object-fit: contain;
+
+            object-position:
+                center center;
+
+            filter:
+                drop-shadow(
+                    0
+                    20px
+                    30px
+                    #000b
+                );
+
+        }
+
+
+        /* =====================================================
+           HISTORIA
+           ===================================================== */
+
+        .history {
+
+            padding:
+                85px
+                8vw;
+
+            background:
+                var(--bg2);
+
+        }
+
+
+        .historyContainer {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, .8fr)
+                minmax(0, 1.2fr);
+
+            gap: 55px;
+
+            align-items: center;
+
+        }
+
+
+        .historyTitle {
+
+            font-size:
+                clamp(38px, 5vw, 60px);
+
+            line-height: .95;
+
+            margin: 0;
+
+            font-weight: 950;
+
+        }
+
+
+        .historyTitle span {
+
+            color:
+                var(--red);
+
+        }
+
+
+        .historyText p {
+
+            margin:
+                0 0 18px;
+
+            color:
+                var(--text);
+
+            font-size:
+                17px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .historyQuote {
+
+            margin-top: 25px;
+
+            padding:
+                22px;
+
+            border-left:
+                4px solid var(--red);
+
+            background:
+                #071b29;
+
+            color:
+                var(--gold);
+
+            font-size:
+                18px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        /* =====================================================
+           VIDEO
+           ===================================================== */
+
+        .videoSection {
+
+            padding:
+                90px
+                8vw;
+
+            background:
+                #04111b;
+
+        }
+
+
+        .sectionHeader {
+
+            max-width: 850px;
+
+            margin:
+                0 auto 40px;
+
+            text-align:
+                center;
+
+        }
+
+
+        .sectionLabel {
+
+            color:
+                var(--gold);
+
+            font-size:
+                13px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1px;
+
+            margin-bottom:
+                12px;
+
+        }
+
+
+        .sectionHeader h2 {
+
+            margin:
+                0;
+
+            font-size:
+                clamp(38px, 5vw, 60px);
+
+            line-height:
+                1;
+
+            font-weight:
+                950;
+
+        }
+
+
+        .sectionHeader h2 span {
+
+            color:
+                var(--red);
+
+        }
+
+
+        .sectionHeader p {
+
+            margin:
+                18px auto 0;
+
+            max-width:
+                700px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                17px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        .videoCard {
+
+            max-width:
+                1000px;
+
+            margin:
+                auto;
+
+            padding:
+                20px;
+
+            border:
+                1px solid var(--line);
+
+            border-radius:
+                22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0a2232,
+                    #061722
+                );
+
+            box-shadow:
+                0 25px 60px #0008;
+
+        }
+
+
+        .videoThumbnail {
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            border-radius:
+                14px;
+
+            background:
+                #000;
+
+        }
+
+
+        .videoThumbnail img {
+
+            width:
+                100%;
+
+            aspect-ratio:
+                16 / 9;
+
+            object-fit:
+                cover;
+
+        }
+
+
+        .videoOverlay {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                linear-gradient(
+                    to top,
+                    #0008,
+                    transparent 55%
+                );
+
+        }
+
+
+        .playButton {
+
+            width:
+                90px;
+
+            height:
+                90px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--red);
+
+            color:
+                #fff;
+
+            font-size:
+                36px;
+
+            padding-left:
+                6px;
+
+            box-shadow:
+                0 10px 30px #0009;
+
+            transition:
+                transform .2s ease;
+
+        }
+
+
+        .videoThumbnail:hover .playButton {
+
+            transform:
+                scale(1.1);
+
+        }
+
+
+        .videoInfo {
+
+            padding:
+                25px
+                5px
+                5px;
+
+        }
+
+
+        .videoInfo h3 {
+
+            margin:
+                0 0 10px;
+
+            font-size:
+                clamp(23px, 3vw, 32px);
+
+        }
+
+
+        .videoInfo p {
+
+            margin:
+                0 0 20px;
+
+            color:
+                var(--muted);
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           MÁS SOBRE HERNÁN
+           ===================================================== */
+
+        .about {
+
+            padding:
+                80px
+                8vw;
+
+            background:
+                var(--bg2);
+
+        }
+
+
+        .aboutGrid {
+
+            max-width:
+                1100px;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                18px;
+
+        }
+
+
+        .aboutCard {
+
+            padding:
+                28px;
+
+            border:
+                1px solid var(--line);
+
+            border-radius:
+                16px;
+
+            background:
+                #071b29;
+
+        }
+
+
+        .aboutIcon {
+
+            font-size:
+                38px;
+
+            margin-bottom:
+                15px;
+
+        }
+
+
+        .aboutCard h3 {
+
+            margin:
+                0 0 10px;
+
+            font-size:
+                20px;
+
+        }
+
+
+        .aboutCard p {
+
+            margin:
+                0;
+
+            color:
+                var(--muted);
+
+            font-size:
+                14px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           CTA
+           ===================================================== */
+
+        .cta {
+
+            padding:
+                90px
+                20px;
+
+            text-align:
+                center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0a2130,
+                    #04111b
+                );
+
+            border-top:
+                1px solid #183347;
+
+        }
+
+
+        .cta h2 {
+
+            margin:
+                0 0 15px;
+
+            font-size:
+                clamp(35px, 5vw, 58px);
+
+            font-weight:
+                950;
+
+        }
+
+
+        .cta h2 span {
+
+            color:
+                var(--red);
+
+        }
+
+
+        .cta p {
+
+            max-width:
+                650px;
+
+            margin:
+                0 auto 25px;
+
+            color:
+                var(--muted);
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        footer {
+
+            min-height:
+                70px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                20px;
+
+            background:
+                #020a11;
+
+            border-top:
+                1px solid #183347;
+
+            color:
+                #8fa4b0;
+
+            font-size:
+                12px;
+
+            text-align:
+                center;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .mainNav {
+
+                gap:
+                    22px;
+
+            }
+
+
+            .hero {
+
+                grid-template-columns:
+                    1fr;
+
+                text-align:
+                    center;
+
+            }
+
+
+            .heroContent {
+
+                margin:
+                    auto;
+
+            }
+
+
+            .heroButtons {
+
+                justify-content:
+                    center;
+
+            }
+
+
+            .hernanImage {
+
+                min-height:
+                    380px;
+
+            }
+
+
+            .hernanImage img {
+
+                height:
+                    400px;
+
+            }
+
+
+            .historyContainer {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .aboutGrid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .topbar {
+
+                overflow-x:
+                    auto;
+
+                justify-content:
+                    flex-start;
+
+            }
+
+
+            .mainNav {
+
+                flex:
+                    0 0 auto;
+
+                gap:
+                    18px;
+
+            }
+
+
+            .mainNav a {
+
+                font-size:
+                    11px;
+
+            }
+
+
+            .hero {
+
+                padding:
+                    50px
+                    20px
+                    20px;
+
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    52px;
+
+                letter-spacing:
+                    -3px;
+
+            }
+
+
+            .hernanImage img {
+
+                height:
+                    340px;
+
+            }
+
+
+            .history,
+            .videoSection,
+            .about {
+
+                padding:
+                    60px
+                    20px;
+
+            }
+
+
+            .videoCard {
+
+                padding:
+                    10px;
+
+            }
+
+
+            .playButton {
+
+                width:
+                    65px;
+
+                height:
+                    65px;
+
+                font-size:
+                    26px;
+
+            }
+
+        }
+
+    
+
+/* =========================================================
+   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
+   ========================================================= */
+
+footer.site-credits {
+  width: 100% !important;
+  min-height: 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto !important;
+
+  align-items: center !important;
+  justify-items: center !important;
+
+  gap: 8px !important;
+
+  margin: 0 !important;
+  padding: 22px 15px !important;
+
+  background: #020a11 !important;
+  border-top: 1px solid #183347 !important;
+
+  color: #9db0bc !important;
+  font-size: 13px !important;
+
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+footer.site-credits > p {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+  line-height: 1.5 !important;
+
+  white-space: normal !important;
+}
+
+footer.site-credits > p.developer-credit {
+  margin: 0 !important;
+
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   FOOTER · MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  footer.site-credits {
+    padding: 18px 10px !important;
+    gap: 6px !important;
+  }
+
+  footer.site-credits > p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVEGACIÓN
+         ===================================================== -->
+
+    <header class="topbar">
+
+        <nav
+            class="mainNav"
+            aria-label="Navegación principal"
+        >
+
+            <a href="inicio.html">
+                INICIO
+            </a>
+
+
+            <a href="index.html">
+                EL GRAND TOUR
+            </a>
+
+
+<a href="videos.html">
+    VÍDEOS
+</a>
+
+
+            <a href="vivir-en-suiza.html">
+                VIVIR EN SUIZA
+            </a>
+
+
+            <a href="comunidad.html">
+                COMUNIDAD
+            </a>
+
+
+            <a href="proyectos.html">
+                PROYECTOS
+            </a>
+
+
+            <a
+                href="hernan.html"
+                class="active"
+            >
+                HERNÁN
+            </a>
+
+
+<a href="contacto.html">
+    CONTACTO
+</a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         CONTENIDO
+         ===================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section class="hero">
+
+
+            <div class="heroContent">
+
+
+                <div class="label">
+                    TODOS CON HERNÁN
+                </div>
+
+
+                <h1>
+
+                    CONOCE A
+                    <br>
+
+                    <span>HERNÁN</span>
+
+                </h1>
+
+
+                <p class="heroIntro">
+
+                    Detrás de Todos con Hernán hay una
+                    historia de esfuerzo, cambios,
+                    experiencias y nuevos comienzos.
+
+                    <br><br>
+
+                    Conoce un poco más sobre la persona
+                    que está detrás de este proyecto
+                    y descubre su historia directamente
+                    de sus propias palabras.
+
+                </p>
+
+
+                <div class="heroButtons">
+
+
+                    <a
+                        href="#historia"
+                        class="btn red"
+                    >
+                        CONOCER SU HISTORIA
+                    </a>
+
+
+                    <a
+                        href="#video"
+                        class="btn outline"
+                    >
+                        VER EL VÍDEO ↓
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!--
+                IMPORTANTE:
+
+                Aquí estamos utilizando la imagen
+                que ya tienes en tu proyecto.
+
+                Si tu archivo tiene otro nombre,
+                cambia solamente el src.
+            -->
+
+            <div class="hernanImage">
+
+                <img
+                    src="img/LogoOficial.png"
+                    alt="Hernán · Todos con Hernán"
+                >
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             HISTORIA
+             ================================================= -->
+
+        <section
+            class="history"
+            id="historia"
+        >
+
+
+            <div class="historyContainer">
+
+
+                <div>
+
+                    <div class="sectionLabel">
+                        SU HISTORIA
+                    </div>
+
+
+                    <h2 class="historyTitle">
+
+                        UN NUEVO
+                        <br>
+
+                        <span>COMIENZO</span>
+
+                    </h2>
+
+                </div>
+
+
+                <div class="historyText">
+
+
+                    <p>
+
+                        Llegar a un nuevo país supone
+                        empezar muchas cosas desde cero.
+
+                        Nuevos lugares, nuevas personas,
+                        nuevas experiencias y también
+                        nuevos retos.
+
+                    </p>
+
+
+                    <p>
+
+                        Hernán ha compartido parte de
+                        ese camino a través de sus vídeos,
+                        mostrando sus experiencias y
+                        diferentes etapas de su vida
+                        en Suiza.
+
+                    </p>
+
+
+                    <p>
+
+                        Esta sección quiere acercar
+                        al público a la persona que está
+                        detrás de Todos con Hernán.
+
+                    </p>
+
+
+                    <div class="historyQuote">
+
+                        “Una historia de nuevos comienzos,
+                        experiencias y ganas de seguir
+                        adelante.”
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             VÍDEO
+             ================================================= -->
+
+        <section
+            class="videoSection"
+            id="video"
+        >
+
+
+            <div class="sectionHeader">
+
+
+                <div class="sectionLabel">
+                    SU HISTORIA EN PRIMERA PERSONA
+                </div>
+
+
+                <h2>
+
+                    MI LLEGADA A
+                    <span>SUIZA</span>
+
+                </h2>
+
+
+                <p>
+
+                    En este vídeo Hernán comparte
+                    su experiencia de llegar a Suiza,
+                    lejos de su familia y comenzando
+                    una nueva etapa.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="videoCard">
+
+
+                <a
+                    href="https://www.youtube.com/watch?v=4xkyuGsHuI4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="videoThumbnail"
+                    aria-label="Ver el vídeo Mi llegada a Suiza en YouTube"
+                >
+
+
+                    <img
+                        src="https://img.youtube.com/vi/4xkyuGsHuI4/maxresdefault.jpg"
+                        alt="Mi llegada a Suiza · Hernán"
+                    >
+
+
+                    <div class="videoOverlay">
+
+                        <div class="playButton">
+                            ▶
+                        </div>
+
+                    </div>
+
+
+                </a>
+
+
+                <div class="videoInfo">
+
+
+                    <h3>
+
+                        Mi llegada a Suiza,
+                        lejos de mi familia
+                        y empezando de cero
+
+                    </h3>
+
+
+                    <p>
+
+                        Una historia personal sobre
+                        los comienzos de Hernán en Suiza
+                        y los retos de empezar una nueva
+                        etapa lejos de casa.
+
+                    </p>
+
+
+                    <a
+                        href="https://www.youtube.com/watch?v=4xkyuGsHuI4"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn red"
+                    >
+                        ▶ VER EL VÍDEO EN YOUTUBE
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             MÁS SOBRE HERNÁN
+             ================================================= -->
+
+        <section class="about">
+
+
+            <div class="sectionHeader">
+
+
+                <div class="sectionLabel">
+                    TODOS CON HERNÁN
+                </div>
+
+
+                <h2>
+
+                    MUCHO MÁS QUE
+                    <span>UN PROYECTO</span>
+
+                </h2>
+
+
+                <p>
+
+                    La historia personal es también
+                    el punto de partida de todo lo que
+                    viene después.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="aboutGrid">
+
+
+                <article class="aboutCard">
+
+                    <div class="aboutIcon">
+                        🇨🇭
+                    </div>
+
+
+                    <h3>
+                        Suiza
+                    </h3>
+
+
+                    <p>
+
+                        Experiencias, lugares y vivencias
+                        relacionadas con la vida en Suiza.
+
+                    </p>
+
+                </article>
+
+
+                <article class="aboutCard">
+
+                    <div class="aboutIcon">
+                        🎥
+                    </div>
+
+
+                    <h3>
+                        Contenido
+                    </h3>
+
+
+                    <p>
+
+                        Vídeos y experiencias compartidas
+                        con una comunidad cada vez mayor.
+
+                    </p>
+
+                </article>
+
+
+                <article class="aboutCard">
+
+                    <div class="aboutIcon">
+                        🚀
+                    </div>
+
+
+                    <h3>
+                        Proyectos
+                    </h3>
+
+
+                    <p>
+
+                        Nuevas ideas e iniciativas como
+                        el Grand Tour de Suiza y otros
+                        proyectos de comunidad.
+
+                    </p>
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CTA
+             ================================================= -->
+
+        <section class="cta">
+
+
+            <h2>
+
+                DESCUBRE TODO LO QUE HAY
+                <span>DETRÁS</span>
+
+            </h2>
+
+
+            <p>
+
+                Conoce su historia, descubre sus proyectos
+                y acompaña a Hernán en sus próximas
+                experiencias.
+
+            </p>
+
+
+            <a
+                href="proyectos.html"
+                class="btn red"
+            >
+                VER TODOS LOS PROYECTOS →
+            </a>
+
+
+        </section>
+
+
+    </main>
+
+
+<!-- =====================================================
+     PIE DE PÁGINA
+     ===================================================== -->
+
+<footer class="site-credits">
+
+  <p>
+    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+  </p>
+
+  <p class="developer-credit">
+    Yonathan Alvarado · Full Stack Web Developer · Spain
+  </p>
+
+</footer>
+
+
+</body>
+
+</html>

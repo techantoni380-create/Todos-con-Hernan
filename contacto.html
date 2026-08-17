@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Contacto · Todos con Hernán"
+    >
+
+    <title>Contacto · Todos con Hernán</title>
+
+
+    <style>
+
+        /* =====================================================
+           VARIABLES
+           ===================================================== */
+
+        :root {
+
+            --bg: #04111b;
+            --bg2: #061925;
+            --panel: #071b29;
+
+            --red: #ef1820;
+            --gold: #ffd000;
+
+            --white: #f5f8fa;
+            --text: #dce7ed;
+            --muted: #9fb3bf;
+
+            --line: #244b62;
+
+        }
+
+
+        /* =====================================================
+           RESET
+           ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            margin: 0;
+            padding: 0;
+
+            min-height: 100vh;
+
+            background: var(--bg);
+
+            color: var(--white);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            overflow-x: hidden;
+
+        }
+
+
+        a {
+            color: inherit;
+        }
+
+
+        /* =====================================================
+           BARRA SUPERIOR
+           ===================================================== */
+
+        .topbar {
+
+            min-height: 64px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 0 20px;
+
+            background: #04111a;
+
+            border-bottom:
+                1px solid #183347;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+        }
+
+
+        .mainNav {
+
+            min-height: 64px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 34px;
+
+        }
+
+
+        .mainNav a {
+
+            height: 64px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            color: #dbe4ea;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+        }
+
+
+        .mainNav a:hover {
+
+            color: #ffffff;
+
+        }
+
+
+        .mainNav a.active {
+
+            color: #ffffff;
+
+            font-weight: 900;
+
+        }
+
+
+        .mainNav a.active::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+
+            bottom: 0;
+
+            height: 4px;
+
+            background: var(--red);
+
+            border-radius:
+                3px 3px 0 0;
+
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .hero {
+
+            min-height: 500px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                80px 20px 70px;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 35%,
+                    #173c50 0,
+                    #071a28 38%,
+                    #04111b 80%
+                );
+
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+
+            height: 650px;
+
+            left: 50%;
+
+            top: -300px;
+
+            transform:
+                translateX(-50%);
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    #ef18201c,
+                    transparent 68%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .heroContent {
+
+            max-width: 850px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .label {
+
+            display: inline-block;
+
+            padding:
+                8px 15px;
+
+            margin-bottom: 20px;
+
+            border:
+                1px solid #35576c;
+
+            border-radius: 20px;
+
+            background:
+                #071b29cc;
+
+            color: var(--gold);
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .hero h1 {
+
+            margin: 0;
+
+            font-size:
+                clamp(52px, 7vw, 90px);
+
+            line-height: .9;
+
+            letter-spacing: -4px;
+
+            font-weight: 950;
+
+        }
+
+
+        .hero h1 span {
+
+            color: var(--red);
+
+        }
+
+
+        .hero p {
+
+            max-width: 700px;
+
+            margin:
+                28px auto 0;
+
+            color: var(--text);
+
+            font-size:
+                clamp(17px, 2vw, 21px);
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =====================================================
+           SECCIÓN PRINCIPAL
+           ===================================================== */
+
+        .section {
+
+            padding:
+                80px 7vw;
+
+            background:
+                var(--bg2);
+
+        }
+
+
+        .section.dark {
+
+            background:
+                #04111b;
+
+        }
+
+
+        .sectionHeader {
+
+            max-width: 850px;
+
+            margin:
+                0 auto 40px;
+
+            text-align: center;
+
+        }
+
+
+        .sectionLabel {
+
+            color:
+                var(--gold);
+
+            font-size:
+                13px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1px;
+
+            margin-bottom:
+                12px;
+
+        }
+
+
+        .sectionHeader h2 {
+
+            margin: 0;
+
+            font-size:
+                clamp(36px, 5vw, 58px);
+
+            line-height: 1;
+
+            font-weight: 950;
+
+        }
+
+
+        .sectionHeader h2 span {
+
+            color:
+                var(--red);
+
+        }
+
+
+        .sectionHeader p {
+
+            max-width:
+                700px;
+
+            margin:
+                18px auto 0;
+
+            color:
+                var(--muted);
+
+            font-size:
+                17px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           AGENDA
+           ===================================================== */
+
+        .appointment {
+
+            max-width:
+                1100px;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                25px;
+
+        }
+
+
+        .appointmentCard {
+
+            padding:
+                35px;
+
+            border:
+                1px solid var(--line);
+
+            border-radius:
+                20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0a2232,
+                    #071722
+                );
+
+            box-shadow:
+                0 20px 50px #0005;
+
+        }
+
+
+        .appointmentIcon {
+
+            font-size:
+                48px;
+
+            margin-bottom:
+                18px;
+
+        }
+
+
+        .appointmentCard h3 {
+
+            margin:
+                0 0 14px;
+
+            font-size:
+                30px;
+
+        }
+
+
+        .appointmentCard p {
+
+            margin:
+                0 0 20px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                16px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        .appointmentList {
+
+            margin:
+                0 0 25px;
+
+            padding:
+                0;
+
+            list-style:
+                none;
+
+        }
+
+
+        .appointmentList li {
+
+            padding:
+                10px 0;
+
+            border-bottom:
+                1px solid #18384b;
+
+            color:
+                var(--text);
+
+            font-size:
+                14px;
+
+        }
+
+
+        .appointmentList li:last-child {
+
+            border-bottom:
+                none;
+
+        }
+
+
+        .appointmentList li::before {
+
+            content:
+                "✓";
+
+            margin-right:
+                10px;
+
+            color:
+                var(--green);
+
+            font-weight:
+                900;
+
+        }
+
+
+        /* =====================================================
+           BOTONES
+           ===================================================== */
+
+        .btn {
+
+            min-height:
+                48px;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                0 24px;
+
+            border-radius:
+                26px;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                900;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+
+        }
+
+
+        .btn:hover {
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .btn.red {
+
+            background:
+                var(--red);
+
+            color:
+                #ffffff;
+
+            box-shadow:
+                0 10px 25px #0007;
+
+        }
+
+
+        .btn.outline {
+
+            border:
+                1px solid #416579;
+
+            background:
+                transparent;
+
+            color:
+                #ffffff;
+
+        }
+
+
+        /* =====================================================
+           AVISO AGENDA
+           ===================================================== */
+
+        .bookingPlaceholder {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            min-height:
+                100%;
+
+            padding:
+                30px;
+
+            text-align:
+                center;
+
+            border:
+                1px dashed #416579;
+
+            border-radius:
+                16px;
+
+            background:
+                #061722;
+
+        }
+
+
+        .bookingPlaceholder .calendarIcon {
+
+            font-size:
+                65px;
+
+            margin-bottom:
+                15px;
+
+        }
+
+
+        .bookingPlaceholder h3 {
+
+            margin:
+                0 0 10px;
+
+            font-size:
+                25px;
+
+        }
+
+
+        .bookingPlaceholder p {
+
+            max-width:
+                400px;
+
+            margin:
+                0 0 22px;
+
+        }
+
+
+        .coming {
+
+            display:
+                inline-block;
+
+            padding:
+                7px 12px;
+
+            border-radius:
+                15px;
+
+            background:
+                #18384b;
+
+            color:
+                var(--gold);
+
+            font-size:
+                11px;
+
+            font-weight:
+                900;
+
+        }
+
+
+        /* =====================================================
+           CONTACTO
+           ===================================================== */
+
+        .contactGrid {
+
+            max-width:
+                1100px;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                18px;
+
+        }
+
+
+        .contactCard {
+
+            padding:
+                28px;
+
+            border:
+                1px solid var(--line);
+
+            border-radius:
+                17px;
+
+            background:
+                #071b29;
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease;
+
+        }
+
+
+        .contactCard:hover {
+
+            transform:
+                translateY(-4px);
+
+            border-color:
+                var(--red);
+
+        }
+
+
+        .contactIcon {
+
+            font-size:
+                38px;
+
+            margin-bottom:
+                16px;
+
+        }
+
+
+        .contactCard h3 {
+
+            margin:
+                0 0 9px;
+
+            font-size:
+                20px;
+
+        }
+
+
+        .contactCard p {
+
+            margin:
+                0 0 16px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                14px;
+
+            line-height:
+                1.5;
+
+        }
+
+
+        .contactLink {
+
+            color:
+                var(--gold);
+
+            font-weight:
+                900;
+
+            text-decoration:
+                none;
+
+            font-size:
+                13px;
+
+        }
+
+
+        .contactLink:hover {
+
+            text-decoration:
+                underline;
+
+        }
+
+
+        /* =====================================================
+           COLABORACIONES
+           ===================================================== */
+
+        .collaboration {
+
+            max-width:
+                1100px;
+
+            margin:
+                auto;
+
+            padding:
+                40px;
+
+            text-align:
+                center;
+
+            border:
+                1px solid #31556c;
+
+            border-radius:
+                20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0a2232,
+                    #061722
+                );
+
+        }
+
+
+        .collaboration h2 {
+
+            margin:
+                0 0 15px;
+
+            font-size:
+                clamp(30px, 4vw, 45px);
+
+            font-weight:
+                950;
+
+        }
+
+
+        .collaboration h2 span {
+
+            color:
+                var(--red);
+
+        }
+
+
+        .collaboration p {
+
+            max-width:
+                700px;
+
+            margin:
+                0 auto 25px;
+
+            color:
+                var(--muted);
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        footer {
+
+            min-height:
+                70px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                20px;
+
+            background:
+                #020a11;
+
+            border-top:
+                1px solid #183347;
+
+            color:
+                #8fa4b0;
+
+            font-size:
+                12px;
+
+            text-align:
+                center;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .mainNav {
+
+                gap:
+                    22px;
+
+            }
+
+
+            .appointment {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .contactGrid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .topbar {
+
+                overflow-x:
+                    auto;
+
+                justify-content:
+                    flex-start;
+
+            }
+
+
+            .mainNav {
+
+                flex:
+                    0 0 auto;
+
+                gap:
+                    18px;
+
+            }
+
+
+            .mainNav a {
+
+                font-size:
+                    11px;
+
+            }
+
+
+            .hero {
+
+                padding:
+                    55px 20px;
+
+            }
+
+
+            .section {
+
+                padding:
+                    60px 20px;
+
+            }
+
+
+            .appointmentCard {
+
+                padding:
+                    25px;
+
+            }
+
+
+            .contactGrid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .collaboration {
+
+                padding:
+                    30px 20px;
+
+            }
+
+        }
+
+    
+
+/* =========================================================
+   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
+   ========================================================= */
+
+footer.site-credits {
+  width: 100% !important;
+  min-height: 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto !important;
+
+  align-items: center !important;
+  justify-items: center !important;
+
+  gap: 8px !important;
+
+  margin: 0 !important;
+  padding: 22px 15px !important;
+
+  background: #020a11 !important;
+  border-top: 1px solid #183347 !important;
+
+  color: #9db0bc !important;
+  font-size: 13px !important;
+
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+footer.site-credits > p {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+  line-height: 1.5 !important;
+
+  white-space: normal !important;
+}
+
+footer.site-credits > p.developer-credit {
+  margin: 0 !important;
+
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   FOOTER · MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  footer.site-credits {
+    padding: 18px 10px !important;
+    gap: 6px !important;
+  }
+
+  footer.site-credits > p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         BARRA SUPERIOR
+         ===================================================== -->
+
+    <header class="topbar">
+
+        <nav
+            class="mainNav"
+            aria-label="Navegación principal"
+        >
+
+            <a href="inicio.html">
+                INICIO
+            </a>
+
+
+            <a href="index.html">
+                EL GRAND TOUR
+            </a>
+
+
+<a href="videos.html">
+    VÍDEOS
+</a>
+
+
+            <a href="vivir-en-suiza.html">
+                VIVIR EN SUIZA
+            </a>
+
+
+            <a href="comunidad.html">
+                COMUNIDAD
+            </a>
+
+
+            <a href="proyectos.html">
+                PROYECTOS
+            </a>
+
+
+            <a href="hernan.html">
+                HERNÁN
+            </a>
+
+
+            <a
+                href="contacto.html"
+                class="active"
+            >
+                CONTACTO
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         CONTENIDO
+         ===================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section class="hero">
+
+
+            <div class="heroContent">
+
+
+                <div class="label">
+                    TODOS CON HERNÁN · CONTACTO
+                </div>
+
+
+                <h1>
+
+                    HABLEMOS
+                    <br>
+
+                    <span>CONTIGO</span>
+
+                </h1>
+
+
+                <p>
+
+                    Si tienes una pregunta, una propuesta,
+                    un proyecto o simplemente quieres hablar
+                    con Hernán, aquí encontrarás las diferentes
+                    formas de ponerte en contacto.
+
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             AGENDA
+             ================================================= -->
+
+        <section class="section">
+
+
+            <div class="sectionHeader">
+
+
+                <div class="sectionLabel">
+                    CONTACTO DIRECTO
+                </div>
+
+
+                <h2>
+
+                    📞 AGENDA UNA
+                    <span>LLAMADA</span>
+
+                </h2>
+
+
+                <p>
+
+                    Estamos preparando un sistema para que
+                    puedas consultar los horarios disponibles
+                    y reservar una llamada telefónica con Hernán.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="appointment">
+
+
+                <!-- INFORMACIÓN -->
+
+                <div class="appointmentCard">
+
+
+                    <div class="appointmentIcon">
+                        📞
+                    </div>
+
+
+                    <h3>
+                        Habla con Hernán
+                    </h3>
+
+
+                    <p>
+
+                        Si necesitas orientación, quieres
+                        presentar un proyecto, proponer una
+                        colaboración o simplemente quieres
+                        conversar, podremos organizar una
+                        llamada.
+
+                    </p>
+
+
+                    <ul class="appointmentList">
+
+                        <li>
+                            Llamada telefónica
+                        </li>
+
+                        <li>
+                            Reserva previa
+                        </li>
+
+                        <li>
+                            Día y hora acordados
+                        </li>
+
+                        <li>
+                            Confirmación de la cita
+                        </li>
+
+                    </ul>
+
+
+                    <a
+                        href="#reserva"
+                        class="btn red"
+                    >
+                        📅 AGENDAR UNA CITA
+                    </a>
+
+
+                </div>
+
+
+
+                <!-- CALENDARIO -->
+
+                <div
+                    class="bookingPlaceholder"
+                    id="reserva"
+                >
+
+
+                    <div class="calendarIcon">
+                        📅
+                    </div>
+
+
+                    <h3>
+                        Calendario de reservas
+                    </h3>
+
+
+                    <p>
+
+                        Aquí aparecerá el calendario
+                        donde podrás seleccionar un día
+                        y una hora disponible para hablar
+                        con Hernán.
+
+                    </p>
+
+
+                    <div class="coming">
+                        PRÓXIMAMENTE
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             REDES
+             ================================================= -->
+
+        <section class="section dark">
+
+
+            <div class="sectionHeader">
+
+
+                <div class="sectionLabel">
+                    REDES SOCIALES
+                </div>
+
+
+                <h2>
+
+                    SIGUE A
+                    <span>HERNÁN</span>
+
+                </h2>
+
+
+                <p>
+
+                    También puedes seguir los proyectos,
+                    vídeos y nuevas experiencias a través
+                    de las redes sociales.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="contactGrid">
+
+
+                <!-- YOUTUBE -->
+
+                <article class="contactCard">
+
+
+                    <div class="contactIcon">
+                        ▶️
+                    </div>
+
+
+                    <h3>
+                        YouTube
+                    </h3>
+
+
+                    <p>
+
+                        Descubre todos los vídeos y proyectos
+                        de Todos con Hernán.
+
+                    </p>
+
+
+                    <a
+                        href="https://www.youtube.com/@todosconhernan/videos"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contactLink"
+                    >
+                        VER CANAL →
+                    </a>
+
+
+                </article>
+
+
+
+                <!-- INSTAGRAM -->
+
+                <article class="contactCard">
+
+
+                    <div class="contactIcon">
+                        📸
+                    </div>
+
+
+                    <h3>
+                        Instagram
+                    </h3>
+
+
+                    <p>
+
+                        Sigue a Hernán y descubre nuevas
+                        experiencias, lugares y proyectos.
+
+                    </p>
+
+
+                    <a
+                        href="https://www.instagram.com/todosconhernan/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contactLink"
+                    >
+                        VER INSTAGRAM →
+                    </a>
+
+
+                </article>
+
+
+
+                <!-- TIKTOK -->
+
+                <article class="contactCard">
+
+
+                    <div class="contactIcon">
+                        🎵
+                    </div>
+
+
+                    <h3>
+                        TikTok
+                    </h3>
+
+
+                    <p>
+
+                        Vídeos, experiencias y contenido
+                        de Todos con Hernán.
+
+                    </p>
+
+
+                    <a
+                        href="https://www.tiktok.com/@todosconhernanoficial"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contactLink"
+                    >
+                        VER TIKTOK →
+                    </a>
+
+
+                </article>
+
+
+
+                <!-- FACEBOOK -->
+
+                <article class="contactCard">
+
+
+                    <div class="contactIcon">
+                        👍
+                    </div>
+
+
+                    <h3>
+                        Facebook
+                    </h3>
+
+
+                    <p>
+
+                        Sigue la página oficial de Todos
+                        con Hernán y sus nuevos proyectos.
+
+                    </p>
+
+
+                    <a
+                        href="https://www.facebook.com/todosconhernan"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contactLink"
+                    >
+                        VER FACEBOOK →
+                    </a>
+
+
+                </article>
+
+
+
+                <!-- HERNÁN -->
+
+                <article class="contactCard">
+
+
+                    <div class="contactIcon">
+                        👤
+                    </div>
+
+
+                    <h3>
+                        Conoce a Hernán
+                    </h3>
+
+
+                    <p>
+
+                        Descubre su historia y conoce
+                        a la persona detrás de Todos
+                        con Hernán.
+
+                    </p>
+
+
+                    <a
+                        class="contactLink"
+                        href="hernan.html"
+                    >
+                        CONOCER SU HISTORIA →
+                    </a>
+
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             COLABORACIONES
+             ================================================= -->
+
+        <section class="section">
+
+
+            <div class="collaboration">
+
+
+                <div class="sectionLabel">
+                    PROYECTOS · COLABORACIONES
+                </div>
+
+
+                <h2>
+
+                    ¿TIENES UN
+                    <span>PROYECTO?</span>
+
+                </h2>
+
+
+                <p>
+
+                    Si quieres presentar una idea,
+                    colaborar con Hernán o hablar sobre
+                    alguno de los proyectos de Todos con
+                    Hernán, este es tu espacio.
+
+                </p>
+
+
+                <a
+                    href="proyectos.html"
+                    class="btn outline"
+                >
+                    VER LOS PROYECTOS →
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             GRAND TOUR
+             ================================================= -->
+
+        <section class="section dark">
+
+
+            <div class="sectionHeader">
+
+
+                <div class="sectionLabel">
+                    PROYECTO ACTUAL
+                </div>
+
+
+                <h2>
+
+                    🇨🇭 EL GRAND TOUR DE
+                    <span>SUIZA</span>
+
+                </h2>
+
+
+                <p>
+
+                    Descubre el proyecto principal actual
+                    de Todos con Hernán y sus 92 Photo Spots.
+
+                </p>
+
+
+                <a
+                    href="index.html"
+                    class="btn red"
+                >
+                    ENTRAR AL GRAND TOUR →
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+<!-- =====================================================
+     PIE DE PÁGINA
+     ===================================================== -->
+
+<footer class="site-credits">
+
+  <p>
+    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+  </p>
+
+  <p class="developer-credit">
+    Yonathan Alvarado · Full Stack Web Developer · Spain
+  </p>
+
+</footer>
+
+
+</body>
+
+</html>

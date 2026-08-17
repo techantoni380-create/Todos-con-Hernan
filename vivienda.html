@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vivienda en Suiza | Todos con Hernán</title>
+
+    <style>
+
+        /* =========================================================
+           VARIABLES PRINCIPALES
+        ========================================================= */
+
+        :root {
+            --bg: #04111b;
+            --panel: #0d1c2e;
+            --panel-2: #102338;
+
+            --line: #23465d;
+            --line-soft: #18384d;
+
+            --red: #ef1820;
+            --gold: #ffd000;
+            --blue: #3da9ff;
+            --green: #29e879;
+
+            --text: #f5f8fa;
+            --muted: #b9c9d4;
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+
+        /* =========================================================
+           CABECERA
+        ========================================================= */
+
+        .top-header {
+
+            width: 100%;
+
+            min-height: 92px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+
+            padding:
+                22px 7%;
+
+            background: #071321;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+
+        /* =========================================================
+           MARCA
+        ========================================================= */
+
+        .brand {
+
+            font-size: 27px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+
+        .brand span {
+
+            color:
+                var(--blue);
+        }
+
+
+        /* =========================================================
+           BOTÓN VOLVER
+        ========================================================= */
+
+        .back-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                13px 20px;
+
+            border:
+                1px solid #26384a;
+
+            border-radius:
+                12px;
+
+            background:
+                #071321;
+
+            color:
+                #dce5ef;
+
+            text-decoration:
+                none;
+
+            font-size:
+                17px;
+
+            font-weight:
+                600;
+
+            transition:
+                .2s ease;
+
+            white-space:
+                nowrap;
+        }
+
+
+        .back-button:hover {
+
+            background:
+                var(--panel-2);
+
+            border-color:
+                var(--blue);
+
+            color:
+                #fff;
+
+            transform:
+                translateX(-3px);
+        }
+
+
+        /* =========================================================
+           CONTENIDO GENERAL
+        ========================================================= */
+
+        main {
+
+            width:
+                min(1400px, 100%);
+
+            margin:
+                0 auto;
+
+            padding:
+                0 5%;
+        }
+
+
+        /* =========================================================
+           CABECERA DE LA PÁGINA
+        ========================================================= */
+
+        .page-header {
+
+            padding:
+                85px 2% 55px;
+        }
+
+
+        .eyebrow {
+
+            color:
+                var(--gold);
+
+            font-size:
+                18px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1.5px;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .page-header h1 {
+
+            margin:
+                0 0 25px;
+
+            font-size:
+                clamp(48px, 6vw, 82px);
+
+            line-height:
+                .98;
+
+            letter-spacing:
+                -2px;
+
+            font-weight:
+                900;
+        }
+
+
+        .page-header h1 span {
+
+            color:
+                var(--red);
+        }
+
+
+        .intro {
+
+            max-width:
+                1100px;
+
+            margin:
+                0;
+
+            color:
+                #d8e2ed;
+
+            font-size:
+                21px;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* =========================================================
+           AVISO
+        ========================================================= */
+
+        .notice {
+
+            margin:
+                0 2% 35px;
+
+            padding:
+                20px 24px;
+
+            background:
+                #102338;
+
+            border:
+                1px solid var(--line);
+
+            border-left:
+                4px solid var(--gold);
+
+            border-radius:
+                14px;
+
+            color:
+                #dbe7ee;
+        }
+
+
+        .notice strong {
+
+            color:
+                #fff;
+        }
+
+
+        /* =========================================================
+           TARJETAS
+        ========================================================= */
+
+        .cards {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap:
+                24px;
+
+            padding:
+                0 2% 55px;
+        }
+
+
+        .card {
+
+            background:
+                var(--panel);
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            border-radius:
+                16px;
+
+            padding:
+                28px;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .card:hover {
+
+            border-color:
+                #315a73;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .card.full {
+
+            grid-column:
+                1 / -1;
+        }
+
+
+        .card-icon {
+
+            font-size:
+                36px;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .card h2 {
+
+            margin:
+                0 0 12px;
+
+            font-size:
+                27px;
+
+            line-height:
+                1.2;
+        }
+
+
+        .card h3 {
+
+            margin:
+                22px 0 9px;
+
+            font-size:
+                19px;
+
+            color:
+                #fff;
+        }
+
+
+        .card p {
+
+            margin:
+                0 0 14px;
+
+            color:
+                #c7d5df;
+
+            font-size:
+                17px;
+        }
+
+
+        .card ul {
+
+            margin:
+                10px 0 0;
+
+            padding-left:
+                22px;
+
+            color:
+                #c7d5df;
+        }
+
+
+        .card li {
+
+            margin:
+                8px 0;
+        }
+
+
+        /* =========================================================
+           LISTA CON CHECKS
+        ========================================================= */
+
+        .check-list {
+
+            list-style:
+                none;
+
+            padding-left:
+                0 !important;
+        }
+
+
+        .check-list li {
+
+            position:
+                relative;
+
+            padding-left:
+                28px;
+        }
+
+
+        .check-list li::before {
+
+            content:
+                "✓";
+
+            position:
+                absolute;
+
+            left:
+                0;
+
+            color:
+                var(--blue);
+
+            font-weight:
+                900;
+        }
+
+
+        /* =========================================================
+           PASOS
+        ========================================================= */
+
+        .steps {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap:
+                14px;
+
+            margin-top:
+                18px;
+        }
+
+
+        .step {
+
+            padding:
+                18px;
+
+            background:
+                #102338;
+
+            border:
+                1px solid var(--line-soft);
+
+            border-radius:
+                12px;
+
+            color:
+                #cbd8e0;
+        }
+
+
+        .step strong {
+
+            display:
+                block;
+
+            color:
+                var(--blue);
+
+            margin-bottom:
+                6px;
+        }
+
+
+        /* =========================================================
+           TABLA
+        ========================================================= */
+
+        .table-wrap {
+
+            overflow-x:
+                auto;
+
+            margin-top:
+                15px;
+        }
+
+
+        table {
+
+            width:
+                100%;
+
+            border-collapse:
+                collapse;
+
+            min-width:
+                650px;
+        }
+
+
+        th,
+        td {
+
+            text-align:
+                left;
+
+            vertical-align:
+                top;
+
+            padding:
+                13px 14px;
+
+            border-bottom:
+                1px solid var(--line-soft);
+        }
+
+
+        th {
+
+            background:
+                #102338;
+
+            color:
+                #fff;
+        }
+
+
+        td {
+
+            color:
+                #cbd8e0;
+        }
+
+
+        /* =========================================================
+           PUNTO HISPANO
+        ========================================================= */
+
+        .featured {
+
+            border-color:
+                #315f79;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #10283a 0%,
+                    #0d1c2e 65%
+                );
+        }
+
+
+        .featured h2 {
+
+            color:
+                #fff;
+        }
+
+
+        .featured strong {
+
+            color:
+                var(--blue);
+        }
+
+
+        /* =========================================================
+           BOTÓN CTA
+        ========================================================= */
+
+        .cta {
+
+            display:
+                inline-flex;
+
+            margin-top:
+                12px;
+
+            padding:
+                13px 20px;
+
+            border-radius:
+                10px;
+
+            background:
+                var(--red);
+
+            color:
+                #fff;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                800;
+
+            transition:
+                .2s ease;
+        }
+
+
+        .cta:hover {
+
+            background:
+                #ff252d;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =========================================================
+           FUENTES
+        ========================================================= */
+
+        .sources {
+
+            margin:
+                0 2% 70px;
+
+            padding:
+                30px;
+
+            background:
+                #091a29;
+
+            border:
+                1px solid var(--line);
+
+            border-radius:
+                16px;
+        }
+
+
+        .sources h2 {
+
+            margin-top:
+                0;
+        }
+
+
+        .sources a {
+
+            color:
+                var(--blue);
+
+            text-decoration:
+                none;
+        }
+
+
+        .sources a:hover {
+
+            text-decoration:
+                underline;
+        }
+
+
+        .sources li {
+
+            margin:
+                9px 0;
+
+            color:
+                #cbd8e0;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+
+            padding:
+                30px 7%;
+
+            text-align:
+                center;
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+
+            color:
+                #91a6b5;
+
+            font-size:
+                14px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 800px) {
+
+            .top-header {
+
+                min-height:
+                    80px;
+
+                padding:
+                    18px 5%;
+            }
+
+
+            .brand {
+
+                font-size:
+                    22px;
+            }
+
+
+            .back-button {
+
+                padding:
+                    10px 13px;
+
+                font-size:
+                    14px;
+            }
+
+
+            main {
+
+                padding:
+                    0 3%;
+            }
+
+
+            .page-header {
+
+                padding:
+                    55px 2% 35px;
+            }
+
+
+            .intro {
+
+                font-size:
+                    18px;
+            }
+
+
+            .cards,
+            .steps {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .card.full {
+
+                grid-column:
+                    auto;
+            }
+        }
+
+
+        @media (max-width: 520px) {
+
+            .top-header {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+            }
+
+
+            .back-button {
+
+                width:
+                    100%;
+            }
+
+
+            .page-header h1 {
+
+                font-size:
+                    44px;
+            }
+
+
+            .card {
+
+                padding:
+                    22px;
+            }
+        }
+
+    
+
+/* =========================================================
+   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
+   ========================================================= */
+
+footer.site-credits {
+  width: 100% !important;
+  min-height: 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto !important;
+
+  align-items: center !important;
+  justify-items: center !important;
+
+  gap: 8px !important;
+
+  margin: 0 !important;
+  padding: 22px 15px !important;
+
+  background: #020a11 !important;
+  border-top: 1px solid #183347 !important;
+
+  color: #9db0bc !important;
+  font-size: 13px !important;
+
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+footer.site-credits > p {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+  line-height: 1.5 !important;
+
+  white-space: normal !important;
+}
+
+footer.site-credits > p.developer-credit {
+  margin: 0 !important;
+
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   FOOTER · MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  footer.site-credits {
+    padding: 18px 10px !important;
+    gap: 6px !important;
+  }
+
+  footer.site-credits > p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         CABECERA PRINCIPAL
+    ========================================================= -->
+
+    <header class="top-header">
+
+        <div class="brand">
+
+            Todos con
+            <span>Hernán</span>
+
+        </div>
+
+
+        <a
+            href="vivir-en-suiza.html"
+            class="back-button"
+        >
+            ← Vivir en Suiza
+        </a>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- =====================================================
+             CABECERA
+        ===================================================== -->
+
+        <section class="page-header">
+
+            <div class="eyebrow">
+
+                GUÍA PARA VIVIR EN SUIZA
+
+            </div>
+
+
+            <h1>
+
+                ENCUENTRA TU
+                <span>VIVIENDA</span>
+
+            </h1>
+
+
+            <p class="intro">
+
+                Encontrar dónde vivir en Suiza puede ser uno de los primeros
+                grandes retos cuando llegas al país. Aquí reunimos información
+                práctica sobre alquileres, habitaciones, viviendas compartidas,
+                alojamiento temporal, compra, registro del domicilio y los
+                principales aspectos que conviene conocer antes de firmar.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             AVISO
+        ===================================================== -->
+
+        <div class="notice">
+
+            <strong>Importante:</strong>
+
+            las condiciones de alquiler, registro, permisos y compra pueden
+            variar según el cantón y la situación personal.
+
+            Esta página es una guía orientativa y no sustituye la información
+            de las autoridades ni el asesoramiento jurídico.
+
+        </div>
+
+
+
+        <!-- =====================================================
+             TARJETAS
+        ===================================================== -->
+
+        <section class="cards">
+
+
+
+            <!-- =================================================
+                 ALQUILAR UNA VIVIENDA
+            ================================================= -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🏠
+                </div>
+
+
+                <h2>
+                    Alquilar una vivienda
+                </h2>
+
+
+                <p>
+
+                    Para alquilar un piso en Suiza normalmente tendrás que
+                    presentar documentación y demostrar que puedes asumir el
+                    alquiler.
+
+                    La disponibilidad y los requisitos cambian bastante según
+                    la ciudad y el cantón.
+
+                </p>
+
+
+                <h3>
+                    ¿Qué conviene preparar?
+                </h3>
+
+
+                <ul class="check-list">
+
+                    <li>
+                        Documento de identidad o pasaporte.
+                    </li>
+
+                    <li>
+                        Permiso de residencia, si corresponde.
+                    </li>
+
+                    <li>
+                        Contrato de trabajo o prueba de ingresos.
+                    </li>
+
+                    <li>
+                        Información sobre tu situación económica.
+                    </li>
+
+                    <li>
+                        En muchos casos, un extracto del registro de deudas
+                        (Betreibungsauskunft).
+                    </li>
+
+                    <li>
+                        Datos de contacto y referencias cuando se soliciten.
+                    </li>
+
+                </ul>
+
+
+                <h3>
+                    Antes de firmar
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        Comprueba el alquiler base y los gastos adicionales.
+                    </li>
+
+                    <li>
+                        Lee la duración y las condiciones de rescisión.
+                    </li>
+
+                    <li>
+                        Comprueba qué servicios están incluidos.
+                    </li>
+
+                    <li>
+                        Pregunta por la fianza y cómo se gestiona.
+                    </li>
+
+                    <li>
+                        Haz fotografías del estado de la vivienda al entrar.
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 HABITACIONES Y WG
+            ================================================= -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🛏️
+                </div>
+
+
+                <h2>
+                    Habitaciones y WG
+                </h2>
+
+
+                <p>
+
+                    Compartir vivienda puede ser una opción interesante para
+                    quienes llegan a Suiza, especialmente durante los primeros
+                    meses.
+
+                    En una WG (Wohngemeinschaft) se comparte normalmente
+                    cocina, baño y zonas comunes.
+
+                </p>
+
+
+                <h3>
+                    Opciones habituales
+                </h3>
+
+
+                <ul class="check-list">
+
+                    <li>
+                        Habitación en piso compartido.
+                    </li>
+
+                    <li>
+                        Habitación amueblada.
+                    </li>
+
+                    <li>
+                        Subarriendo temporal.
+                    </li>
+
+                    <li>
+                        Piso compartido con estudiantes o trabajadores.
+                    </li>
+
+                    <li>
+                        Alojamiento con servicios incluidos.
+                    </li>
+
+                </ul>
+
+
+                <h3>
+                    Pregunta siempre
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        ¿El contrato es directo o de subarriendo?
+                    </li>
+
+                    <li>
+                        ¿La dirección permite el registro de residencia?
+                    </li>
+
+                    <li>
+                        ¿Qué gastos están incluidos?
+                    </li>
+
+                    <li>
+                        ¿Cuánto dura el contrato?
+                    </li>
+
+                    <li>
+                        ¿Qué fianza se solicita?
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 REGISTRO DEL DOMICILIO
+            ================================================= -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    📍
+                </div>
+
+
+                <h2>
+                    Empadronamiento y registro del domicilio
+                </h2>
+
+
+                <p>
+
+                    En Suiza es importante distinguir entre tener un lugar
+                    donde alojarse y poder utilizar esa dirección para los
+                    trámites administrativos correspondientes.
+
+                </p>
+
+
+                <p>
+
+                    El nombre y el procedimiento pueden variar según el
+                    municipio o cantón.
+
+                    En términos prácticos, cuando llegues debes informarte
+                    sobre el registro ante la comuna correspondiente y sobre
+                    qué documentación necesita tu situación.
+
+                </p>
+
+
+                <h3>
+                    Antes de alquilar una habitación o piso
+                </h3>
+
+
+                <ul class="check-list">
+
+                    <li>
+                        Pregunta expresamente si puedes registrar tu domicilio.
+                    </li>
+
+                    <li>
+                        Comprueba qué documento te entregará el arrendador.
+                    </li>
+
+                    <li>
+                        Consulta el procedimiento de tu municipio.
+                    </li>
+
+                    <li>
+                        No confundas una estancia turística con una residencia
+                        registrada.
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 SITUACIONES DE RESIDENCIA
+            ================================================= -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🪪
+                </div>
+
+
+                <h2>
+                    ¿Se puede alquilar sin permiso?
+                </h2>
+
+
+                <p>
+
+                    No existe una respuesta única para todas las situaciones.
+
+                    Depende del tipo de alojamiento, del contrato, de la
+                    situación migratoria y de las condiciones del arrendador.
+
+                </p>
+
+
+                <p>
+
+                    Por eso, si todavía estás realizando tus trámites de
+                    residencia, es especialmente importante confirmar por
+                    escrito qué tipo de alojamiento puedes contratar y si la
+                    dirección puede utilizarse para el registro que necesites.
+
+                </p>
+
+
+                <div
+                    class="notice"
+                    style="
+                        margin:18px 0 0;
+                        padding:15px;
+                    "
+                >
+
+                    No confundas
+                    <strong>
+                        “puedo alojarme aquí”
+                    </strong>
+
+                    con
+
+                    <strong>
+                        “esta dirección sirve para todos mis trámites”.
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 AIRBNB / TEMPORAL
+            ================================================= -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🏨
+                </div>
+
+
+                <h2>
+                    Alojamiento temporal y Airbnb
+                </h2>
+
+
+                <p>
+
+                    Un alojamiento temporal puede ser útil para los primeros
+                    días o semanas mientras buscas una solución estable.
+
+                </p>
+
+
+                <h3>
+                    Puede servir para
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        Llegar a Suiza sin tener todavía piso.
+                    </li>
+
+                    <li>
+                        Visitar viviendas antes de firmar.
+                    </li>
+
+                    <li>
+                        Empezar un trabajo y buscar alojamiento cerca.
+                    </li>
+
+                    <li>
+                        Resolver una transición entre dos viviendas.
+                    </li>
+
+                </ul>
+
+
+                <h3>
+                    Pero atención
+                </h3>
+
+
+                <ul class="check-list">
+
+                    <li>
+                        Comprueba si la estancia permite el registro que
+                        necesitas.
+                    </li>
+
+                    <li>
+                        Lee las condiciones de cancelación.
+                    </li>
+
+                    <li>
+                        Comprueba todos los gastos antes de reservar.
+                    </li>
+
+                    <li>
+                        No envíes dinero fuera de la plataforma sin verificar
+                        previamente quién alquila la vivienda.
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 COMPRA
+            ================================================= -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🔑
+                </div>
+
+
+                <h2>
+                    Comprar una vivienda
+                </h2>
+
+
+                <p>
+
+                    Comprar una vivienda en Suiza es un proceso mucho más
+                    exigente que alquilar.
+
+                    Además del precio del inmueble hay que considerar impuestos,
+                    gastos notariales, registro de la propiedad y las reglas
+                    aplicables a compradores extranjeros.
+
+                </p>
+
+
+                <h3>
+                    Antes de comprar
+                </h3>
+
+
+                <ul class="check-list">
+
+                    <li>
+                        Comprueba si tienes derecho a adquirir el inmueble.
+                    </li>
+
+                    <li>
+                        Consulta las normas del cantón.
+                    </li>
+
+                    <li>
+                        Calcula la financiación necesaria.
+                    </li>
+
+                    <li>
+                        Solicita información sobre gastos adicionales.
+                    </li>
+
+                    <li>
+                        Revisa el estado jurídico y registral de la propiedad.
+                    </li>
+
+                    <li>
+                        Consulta a un profesional antes de firmar.
+                    </li>
+
+                </ul>
+
+
+                <p>
+
+                    Los impuestos y tasas relacionados con la propiedad
+                    inmobiliaria dependen del cantón.
+
+                </p>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 COSTES
+            ================================================= -->
+
+            <article class="card full">
+
+                <div class="card-icon">
+                    💰
+                </div>
+
+
+                <h2>
+                    ¿Cuánto cuesta realmente vivir en un piso?
+                </h2>
+
+
+                <p>
+
+                    El precio anunciado no siempre representa el coste total
+                    mensual.
+
+                    Antes de comparar viviendas, calcula el coste completo.
+
+                </p>
+
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Concepto
+                                </th>
+
+                                <th>
+                                    Qué debes comprobar
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    Alquiler
+                                </td>
+
+                                <td>
+                                    Precio mensual del piso o habitación.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Gastos adicionales
+                                </td>
+
+                                <td>
+                                    Calefacción, agua u otros gastos incluidos
+                                    o cobrados aparte según el contrato.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Electricidad
+                                </td>
+
+                                <td>
+                                    Comprueba si está incluida o si tienes que
+                                    contratar/pagar el suministro por separado.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Internet
+                                </td>
+
+                                <td>
+                                    Puede estar incluido en algunas habitaciones
+                                    o WG, pero no siempre.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Fianza
+                                </td>
+
+                                <td>
+                                    Comprueba el importe y cómo se gestiona.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Seguro del hogar /
+                                    responsabilidad civil
+                                </td>
+
+                                <td>
+                                    Comprueba qué seguros exige o recomienda
+                                    el contrato y tu situación.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PASOS
+            ================================================= -->
+
+            <article class="card full">
+
+                <div class="card-icon">
+                    🔎
+                </div>
+
+
+                <h2>
+                    Cómo buscar vivienda paso a paso
+                </h2>
+
+
+                <div class="steps">
+
+
+                    <div class="step">
+
+                        <strong>
+                            01 · Define tu presupuesto
+                        </strong>
+
+                        Decide cuánto puedes pagar teniendo en cuenta alquiler,
+                        gastos y otros costes de vivir en Suiza.
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <strong>
+                            02 · Elige la zona
+                        </strong>
+
+                        Compara ciudad, municipio, transporte, distancia al
+                        trabajo y coste de la vivienda.
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <strong>
+                            03 · Prepara tu documentación
+                        </strong>
+
+                        Ten listos identidad, situación laboral, permisos y
+                        otros documentos que puedan solicitarte.
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <strong>
+                            04 · Compara varias opciones
+                        </strong>
+
+                        No te quedes con el primer anuncio.
+
+                        Compara precio, ubicación, condiciones y gastos.
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <strong>
+                            05 · Visita y verifica
+                        </strong>
+
+                        Comprueba la vivienda y quién está ofreciendo realmente
+                        el alojamiento.
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <strong>
+                            06 · Lee el contrato
+                        </strong>
+
+                        Comprueba duración, rescisión, gastos, fianza y
+                        condiciones antes de firmar.
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <strong>
+                            07 · Registra tu domicilio cuando corresponda
+                        </strong>
+
+                        Consulta con tu comuna las obligaciones y documentos
+                        aplicables a tu situación.
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <strong>
+                            08 · Guarda toda la documentación
+                        </strong>
+
+                        Conserva contrato, recibos, inventario, comunicaciones
+                        y comprobantes de pago.
+
+                    </div>
+
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 ESTAFAS
+            ================================================= -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    ⚠️
+                </div>
+
+
+                <h2>
+                    Cómo evitar estafas
+                </h2>
+
+
+                <p>
+
+                    El mercado de la vivienda puede atraer anuncios falsos.
+
+                    Si algo parece demasiado bueno para ser verdad, comprueba
+                    todo antes de pagar.
+
+                </p>
+
+
+                <ul class="check-list">
+
+                    <li>
+                        No pagues una cantidad importante sin verificar la
+                        identidad de quien alquila.
+                    </li>
+
+                    <li>
+                        Desconfía de precios muy inferiores al mercado.
+                    </li>
+
+                    <li>
+                        Comprueba la dirección y la vivienda.
+                    </li>
+
+                    <li>
+                        Lee el contrato completo.
+                    </li>
+
+                    <li>
+                        Guarda todos los comprobantes.
+                    </li>
+
+                    <li>
+                        No aceptes presiones para pagar inmediatamente.
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 PUNTO HISPANO
+            ================================================= -->
+
+            <article class="card featured">
+
+                <div class="card-icon">
+                    🤝
+                </div>
+
+
+                <h2>
+                    Recomendación de Hernán
+                </h2>
+
+
+                <p>
+
+                    Si necesitas ayuda en español con vivienda, trámites o
+                    acompañamiento en Suiza, una de las opciones que podemos
+                    mostrar en esta sección es
+
+                    <strong>
+                        Punto Hispano
+                    </strong>.
+
+                </p>
+
+
+                <p>
+
+                    Punto Hispano publica actualmente opciones de habitaciones
+                    y pisos amueblados en Suiza, incluyendo modalidades con
+                    servicios incluidos y opciones de alojamiento.
+
+                </p>
+
+
+                <p>
+
+                    También ofrece servicios relacionados con gestiones,
+                    acompañamientos y traducción, por lo que puede resultar
+                    interesante para una persona que todavía no domina el
+                    alemán.
+
+                </p>
+
+
+                <a
+                    class="cta"
+                    href="https://puntohispano.ch/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    🏠 Ver Punto Hispano →
+
+                </a>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 SERVICIOS
+            ================================================= -->
+
+            <article class="card full">
+
+                <div class="card-icon">
+                    🇨🇭
+                </div>
+
+
+                <h2>
+                    Servicios que pueden ser útiles al llegar
+                </h2>
+
+
+                <div class="steps">
+
+
+                    <div class="step">
+
+                        <strong>
+                            🏠 Vivienda
+                        </strong>
+
+                        Habitaciones y pisos amueblados, según disponibilidad.
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <strong>
+                            📄 Gestiones
+                        </strong>
+
+                        Ayuda con determinados trámites y documentación.
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <strong>
+                            🗣️ Traducciones
+                        </strong>
+
+                        Servicios de traducción y ayuda para comprender
+                        documentación.
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <strong>
+                            🤝 Acompañamientos
+                        </strong>
+
+                        Acompañamiento a determinadas citas y oficinas.
+
+                    </div>
+
+
+                </div>
+
+
+                <p style="margin-top:22px;">
+
+                    <strong>
+                        Importante:
+                    </strong>
+
+                    cualquier servicio profesional tiene sus propias
+                    condiciones y precios.
+
+                    Comprueba siempre la información directamente con el
+                    proveedor antes de contratar.
+
+                </p>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 CHECKLIST
+            ================================================= -->
+
+            <article class="card full">
+
+                <div class="card-icon">
+                    ✅
+                </div>
+
+
+                <h2>
+                    Checklist antes de alquilar
+                </h2>
+
+
+                <ul class="check-list">
+
+
+                    <li>
+                        He comprobado quién ofrece la vivienda.
+                    </li>
+
+
+                    <li>
+                        He visitado la vivienda o he verificado suficientemente
+                        el alojamiento.
+                    </li>
+
+
+                    <li>
+                        Conozco el precio total mensual.
+                    </li>
+
+
+                    <li>
+                        Sé qué gastos están incluidos.
+                    </li>
+
+
+                    <li>
+                        He leído el contrato.
+                    </li>
+
+
+                    <li>
+                        Conozco el importe y las condiciones de la fianza.
+                    </li>
+
+
+                    <li>
+                        He preguntado si puedo registrar mi domicilio.
+                    </li>
+
+
+                    <li>
+                        He comprobado la duración del contrato.
+                    </li>
+
+
+                    <li>
+                        Conozco las condiciones para finalizarlo.
+                    </li>
+
+
+                    <li>
+                        He guardado todos los documentos y comprobantes.
+                    </li>
+
+
+                </ul>
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FUENTES
+        ===================================================== -->
+
+        <section class="sources">
+
+
+            <h2>
+                📚 Fuentes y enlaces útiles
+            </h2>
+
+
+            <p>
+
+                Para decisiones personales, permisos, residencia, impuestos
+                o cuestiones jurídicas, consulta siempre las autoridades
+                competentes y la normativa aplicable a tu cantón.
+
+            </p>
+
+
+            <ul>
+
+
+                <li>
+
+                    <a
+                        href="https://www.ch.ch/en/foreign-nationals-in-switzerland/entry-and-stay-in-switzerland/permits-for-living-in-switzerland/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        ch.ch — Permisos para vivir en Suiza
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="https://www.sem.admin.ch/sem/en/home/themen/fza_schweiz-eu-efta/eu-efta_buerger_schweiz.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        SEM — Ciudadanos UE/AELC en Suiza
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="https://www.ch.ch/en/taxes-and-finances/types-of-taxation/taxation-of-real-estate"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        ch.ch — Fiscalidad de los inmuebles
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a
+                        href="https://puntohispano.ch/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        Punto Hispano — Servicios y vivienda
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </section>
+
+
+    </main>
+
+
+
+<!-- =====================================================
+     PIE DE PÁGINA
+     ===================================================== -->
+
+<footer class="site-credits">
+
+  <p>
+    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+  </p>
+
+  <p class="developer-credit">
+    Yonathan Alvarado · Full Stack Web Developer · Spain
+  </p>
+
+</footer>
+
+
+</body>
+</html>

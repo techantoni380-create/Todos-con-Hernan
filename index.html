@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <!-- =====================================================
+       CONFIGURACIÓN DEL DOCUMENTO
+       ===================================================== -->
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Grand Tour de Suiza · 92 Photo Spots · Mapa interactivo"
+  >
+
+  <title>
+    Grand Tour de Suiza · 92 Photo Spots
+  </title>
+
+
+  <!-- =====================================================
+       LEAFLET CSS
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
+
+
+  <!-- =====================================================
+       CSS PRINCIPAL
+       ===================================================== -->
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+
+  <!-- =====================================================
+       ESTILOS DEL GPS
+       ===================================================== -->
+
+  <style>
+
+    /* =====================================================
+       PANEL GPS
+       ===================================================== */
+
+    .gpsPanel {
+
+      margin-top: 22px;
+
+      padding: 20px;
+
+      border:
+        1px solid #294c62;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #071a28,
+          #0a2030
+        );
+
+      box-shadow:
+        0 15px 40px rgba(0, 0, 0, .28);
+
+    }
+
+
+    .gpsHeader {
+
+      margin-bottom: 16px;
+
+    }
+
+
+    .gpsEyebrow {
+
+      display: inline-block;
+
+      margin-bottom: 7px;
+
+      color: #ffd000;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .gpsHeader h3 {
+
+      margin:
+        0 0 7px;
+
+      color: #ffffff;
+
+      font-size: 22px;
+
+      line-height: 1.1;
+
+      font-weight: 950;
+
+    }
+
+
+    .gpsHeader p {
+
+      margin: 0;
+
+      color: #a7bac7;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+
+    }
+
+
+    /* =====================================================
+       ESTADO DE UBICACIÓN
+       ===================================================== */
+
+    .locationStatus {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      margin-bottom: 12px;
+
+      padding:
+        9px 12px;
+
+      border-radius: 10px;
+
+      background:
+        #04111b;
+
+      color: #a7bac7;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+    }
+
+
+    .locationDot {
+
+      width: 9px;
+
+      height: 9px;
+
+      flex-shrink: 0;
+
+      border-radius: 50%;
+
+      background: #657783;
+
+    }
+
+
+    .locationStatus.active {
+
+      color: #ffffff;
+
+    }
+
+
+    .locationStatus.active
+    .locationDot {
+
+      background: #29e879;
+
+      box-shadow:
+        0 0 10px #29e879;
+
+    }
+
+
+    /* =====================================================
+       BOTÓN USAR MI UBICACIÓN
+       ===================================================== */
+
+    .gpsButton {
+
+      width: 100%;
+
+      min-height: 45px;
+
+      border: 0;
+
+      border-radius: 24px;
+
+      background: #ef1820;
+
+      color: #ffffff;
+
+      font-family: inherit;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      cursor: pointer;
+
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        opacity .2s ease;
+
+    }
+
+
+    .gpsButton:hover {
+
+      transform:
+        translateY(-2px);
+
+      background:
+        #c51017;
+
+    }
+
+
+    .gpsButton:disabled {
+
+      opacity: .6;
+
+      cursor: wait;
+
+      transform: none;
+
+    }
+
+
+    /* =====================================================
+       CAJA DE DISTANCIA
+       ===================================================== */
+
+    .distanceBox {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 13px;
+
+      margin-top: 13px;
+
+      padding: 13px;
+
+      border:
+        1px solid #31556c;
+
+      border-radius: 13px;
+
+      background:
+        #04111b;
+
+    }
+
+
+    .distanceIcon {
+
+      font-size: 25px;
+
+      line-height: 1;
+
+    }
+
+
+    .distanceBox span {
+
+      display: block;
+
+      margin-bottom: 3px;
+
+      color: #7f96a5;
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      letter-spacing: .7px;
+
+    }
+
+
+    .distanceBox strong {
+
+      display: block;
+
+      color: #ffd000;
+
+      font-size: 21px;
+
+      font-weight: 950;
+
+    }
+
+
+    /* =====================================================
+       BOTÓN CÓMO LLEGAR
+       ===================================================== */
+
+    .navigationButton {
+
+      width: 100%;
+
+      min-height: 45px;
+
+      margin-top: 10px;
+
+      border:
+        1px solid #29e879;
+
+      border-radius: 24px;
+
+      background:
+        rgba(41, 232, 121, .08);
+
+      color: #29e879;
+
+      font-family: inherit;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      cursor: pointer;
+
+      transition:
+        background .2s ease,
+        transform .2s ease;
+
+    }
+
+
+    .navigationButton:hover {
+
+      transform:
+        translateY(-2px);
+
+      background:
+        rgba(41, 232, 121, .16);
+
+    }
+
+
+    /* =====================================================
+       PHOTO SPOTS CERCANOS
+       ===================================================== */
+
+    .nearbySpots {
+
+      margin-top: 20px;
+
+    }
+
+
+    .nearbyTitle {
+
+      margin-bottom: 9px;
+
+      color: #ffffff;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+    }
+
+
+    .nearbySpotsList {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 6px;
+
+    }
+
+
+    .nearbySpotItem {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      padding:
+        9px 11px;
+
+      border:
+        1px solid #1d3d52;
+
+      border-radius: 10px;
+
+      background:
+        #071722;
+
+      cursor: pointer;
+
+      transition:
+        border-color .2s ease,
+        transform .2s ease,
+        background .2s ease;
+
+    }
+
+
+    .nearbySpotItem:hover {
+
+      transform:
+        translateX(3px);
+
+      border-color:
+        #ffd000;
+
+      background:
+        #0a2030;
+
+    }
+
+
+    .nearbySpotName {
+
+      min-width: 0;
+
+      overflow: hidden;
+
+      color: #dbe7ed;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      text-overflow: ellipsis;
+
+      white-space: nowrap;
+
+    }
+
+
+    .nearbySpotDistance {
+
+      flex-shrink: 0;
+
+      color: #ffd000;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+    }
+
+
+    /* =====================================================
+       RESPONSIVE GPS
+       ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .gpsPanel {
+
+        margin:
+          18px 0;
+
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .gpsPanel {
+
+        padding: 16px;
+
+      }
+
+
+      .gpsHeader h3 {
+
+        font-size: 20px;
+
+      }
+
+    }
+
+  
+    /* =====================================================
+       PLANIFICADOR PRO · FASE 3.5
+       ===================================================== */
+    .routePlanner{margin-top:20px;padding:20px;border:1px solid #294c62;border-radius:18px;background:linear-gradient(135deg,#071a28,#0a2030);box-shadow:0 15px 40px rgba(0,0,0,.24)}
+    .routePlannerHeader{margin-bottom:16px}.routePlannerEyebrow{display:inline-block;margin-bottom:7px;color:#ffd000;font-size:10px;font-weight:900;letter-spacing:1px}
+    .routePlannerHeader h3{margin:0 0 7px;color:#fff;font-size:22px;line-height:1.1;font-weight:950}.routePlannerHeader p{margin:0;color:#a7bac7;font-size:12px;line-height:1.5}
+    .plannerField{position:relative;margin-top:14px}.plannerField label{display:block;margin-bottom:7px;color:#fff;font-size:9px;font-weight:900;letter-spacing:.7px}
+    .plannerSearch{display:flex;gap:6px}.plannerSearch input,.plannerSelect{box-sizing:border-box;width:100%;min-height:43px;border:1px solid #31556c;border-radius:11px;outline:none;background:#04111b;color:#fff;font-family:inherit;font-size:12px;font-weight:700}
+    .plannerSearch input{padding:0 12px}.plannerSearch input::placeholder{color:#718795}.plannerSearch input:focus,.plannerSelect:focus{border-color:#ffd000;box-shadow:0 0 0 2px rgba(255,208,0,.08)}
+    .plannerSearch button{width:46px;min-width:46px;border:1px solid #ffd000;border-radius:11px;background:rgba(255,208,0,.1);color:#ffd000;font-size:16px;cursor:pointer}
+    .plannerResults{position:absolute;top:72px;left:0;right:0;z-index:6000;max-height:240px;overflow-y:auto;border:1px solid #31556c;border-radius:11px;background:#071722;box-shadow:0 15px 35px rgba(0,0,0,.45)}
+    .plannerResultItem{width:100%;padding:11px 12px;border:0;border-bottom:1px solid #19374a;background:transparent;color:#fff;text-align:left;font-family:inherit;cursor:pointer}
+    .plannerResultItem:last-child{border-bottom:0}.plannerResultItem:hover{background:#0a2030}.plannerResultItem strong{display:block;margin-bottom:3px;color:#fff;font-size:11px;font-weight:900}.plannerResultItem span{display:block;color:#7f96a5;font-size:9px;line-height:1.35}
+    .plannerLocationBtn{width:100%;min-height:40px;margin-top:7px;border:1px solid #29e879;border-radius:21px;background:rgba(41,232,121,.07);color:#29e879;font-family:inherit;font-size:10px;font-weight:900;cursor:pointer}
+    .plannerLocationBtn:hover{background:rgba(41,232,121,.15)}.plannerSelect{padding:0 11px;cursor:pointer}
+    .plannerSelected{display:flex;align-items:center;gap:10px;margin-top:8px;padding:9px 11px;border:1px solid #29485d;border-radius:10px;background:#071722}
+    .plannerSelectedIcon{font-size:18px}.plannerSelected strong{display:block;color:#fff;font-size:11px;font-weight:900}.plannerSelected small{display:block;margin-top:3px;color:#78909d;font-size:9px}
+    .plannerActions{display:grid;grid-template-columns:1fr auto;gap:7px;margin-top:14px}.plannerCalculateBtn,.plannerClearBtn,.plannerNavigationBtn{min-height:43px;border-radius:22px;font-family:inherit;font-size:10px;font-weight:950;cursor:pointer}
+    .plannerCalculateBtn{border:1px solid #ffd000;background:#ffd000;color:#071a28}.plannerClearBtn{padding:0 14px;border:1px solid #31556c;background:#04111b;color:#a7bac7}
+    .plannerRouteResult{margin-top:12px;padding:12px;border:1px solid #31556c;border-radius:12px;background:#04111b}
+    .plannerRouteStatus span{display:block;margin-bottom:4px;color:#ffd000;font-size:8px;font-weight:900;letter-spacing:.7px}.plannerRouteStatus strong{display:block;color:#fff;font-size:12px;font-weight:950;line-height:1.35}
+    .plannerRouteStats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}.plannerRouteStats>div{padding:9px;border:1px solid #29485d;border-radius:10px;background:#071722}
+    .plannerRouteStats span{display:block;margin-bottom:4px;color:#78909d;font-size:8px;font-weight:900}.plannerRouteStats strong{color:#ffd000;font-size:17px;font-weight:950}
+    .plannerNavigationBtn{width:100%;margin-top:9px;border:1px solid #29e879;background:rgba(41,232,121,.08);color:#29e879}
+    .plannerStatus{min-height:16px;margin-top:9px;color:#a7bac7;font-size:9px;font-weight:700;line-height:1.4}
+    @media(max-width:600px){.routePlanner{padding:16px}.routePlannerHeader h3{font-size:20px}.plannerActions{grid-template-columns:1fr}.plannerClearBtn{width:100%}}
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+
+  <!-- =====================================================
+       CABECERA PRINCIPAL
+       ===================================================== -->
+
+  <header class="topbar">
+
+    <nav
+      class="mainNav"
+      aria-label="Navegación principal"
+    >
+
+      <a href="inicio.html">
+        INICIO
+      </a>
+
+
+      <a href="index.html">
+        EL GRAND TOUR
+      </a>
+
+
+      <a href="videos.html">
+        VÍDEOS
+      </a>
+
+
+      <a href="vivir-en-suiza.html">
+        VIVIR EN SUIZA
+      </a>
+
+
+      <a href="comunidad.html">
+        COMUNIDAD
+      </a>
+
+
+      <a href="proyectos.html">
+        PROYECTOS
+      </a>
+
+
+      <a href="hernan.html">
+        HERNÁN
+      </a>
+
+
+      <a href="contacto.html">
+        CONTACTO
+      </a>
+
+    </nav>
+
+  </header>
+
+
+
+  <!-- =====================================================
+       LAYOUT PRINCIPAL
+       ===================================================== -->
+
+  <main class="layout">
+
+
+    <!-- ===================================================
+         PANEL IZQUIERDO
+         =================================================== -->
+
+    <aside class="sidePanel">
+
+      <div class="sideScroll">
+
+
+        <!-- TÍTULO -->
+
+        <h1>
+
+          GRAND TOUR
+
+          <br>
+
+          DE
+
+          <span>
+            SUIZA
+          </span>
+
+        </h1>
+
+
+        <!-- SUBTÍTULO -->
+
+        <div class="gold">
+
+          92 PHOTO SPOTS
+
+        </div>
+
+
+        <!-- HERNÁN -->
+
+        <div class="sidebarHernan">
+
+          <img
+            src="img/LogoOficial.png"
+            alt="Hernán - El Grand Tour de Suiza"
+          >
+
+        </div>
+
+
+        <!-- INTRO -->
+
+        <p class="intro">
+
+          Descubre Suiza a través de 92 lugares
+          seleccionados para disfrutar y
+          fotografiar el país.
+
+        </p>
+
+
+
+        <!-- =================================================
+             ESTADÍSTICAS
+             ================================================= -->
+
+        <section class="stats">
+
+
+          <div class="statsTop">
+
+            <strong>
+              92
+            </strong>
+
+            <span>
+              Photo Spots
+            </span>
+
+          </div>
+
+
+          <div class="statsLine"></div>
+
+
+          <div class="ok">
+
+            ✓ MAPA INTERACTIVO
+
+          </div>
+
+
+          <div class="feature">
+
+            <span>
+
+              📍
+              92 localizaciones
+
+            </span>
+
+          </div>
+
+
+          <div class="feature">
+
+            <span>
+
+              📸
+              Fotografías de cada lugar
+
+            </span>
+
+          </div>
+
+
+          <div class="feature">
+
+            <span>
+
+              🗺️
+              Ruta interactiva
+
+            </span>
+
+          </div>
+
+
+          <div class="feature">
+
+            <span>
+
+              👨
+              Hernán se mueve por el mapa
+
+            </span>
+
+          </div>
+
+
+          <div class="feature">
+
+            <span>
+
+              🧭
+              Navegación GPS
+
+            </span>
+
+          </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             BUSCADOR
+             ================================================= -->
+
+        <label
+          class="sideSearch"
+          aria-label="Buscar en los Photo Spots"
+        >
+
+          <input
+            id="search"
+            type="search"
+            placeholder="Buscar lugar..."
+            autocomplete="off"
+          >
+
+          <span>
+            ⌕
+          </span>
+
+        </label>
+
+
+
+        <!-- =================================================
+             TÍTULO DE LISTA
+             ================================================= -->
+
+        <div class="listTitle">
+
+          <span>
+            PHOTO SPOTS
+          </span>
+
+          <b>
+            01–92
+          </b>
+
+        </div>
+
+
+        <!-- =================================================
+             LISTA DE SPOTS
+             JavaScript genera los 92 elementos
+             ================================================= -->
+
+        <div
+          id="spotList"
+          class="list"
+        ></div>
+
+
+      </div>
+
+    </aside>
+
+
+
+    <!-- ===================================================
+         MAPA CENTRAL
+         =================================================== -->
+
+    <section class="mapPanel">
+
+
+      <!-- MAPA -->
+
+      <div
+        id="map"
+        aria-label="Mapa interactivo de Suiza"
+      ></div>
+
+
+
+      <!-- =================================================
+           INSIGNIA
+           ================================================= -->
+
+      <div class="mapBadge">
+
+
+        <div class="badgeShield">
+
+          GRAN
+
+          <br>
+
+          TOUR
+
+          <br>
+
+          SUIZA
+
+        </div>
+
+
+        <div>
+
+          <b>
+            92
+          </b>
+
+          <small>
+            PHOTO SPOTS
+          </small>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- =================================================
+           LEYENDA
+           ================================================= -->
+
+      <div class="mapLegend">
+
+        <span>
+          ● PHOTO SPOTS
+        </span>
+
+        <span>
+          🔵 TU UBICACIÓN
+        </span>
+
+      </div>
+
+
+
+      <!-- =================================================
+           CARRUSEL
+           ================================================= -->
+
+      <section class="carouselWrap">
+
+
+        <div class="carouselHeader">
+
+          PHOTO SPOTS
+
+          <b>
+            01–92
+          </b>
+
+        </div>
+
+
+        <button
+          id="carouselPrev"
+          class="carouselArrow left"
+          type="button"
+          aria-label="Photo Spot anterior"
+        >
+
+          ‹
+
+        </button>
+
+
+        <div
+          id="carousel"
+          class="carousel"
+        ></div>
+
+
+        <button
+          id="carouselNext"
+          class="carouselArrow right"
+          type="button"
+          aria-label="Photo Spot siguiente"
+        >
+
+          ›
+
+        </button>
+
+
+      </section>
+
+
+    </section>
+
+
+
+    <!-- ===================================================
+         PANEL DERECHO
+         =================================================== -->
+
+    <aside class="infoPanel">
+
+      <div class="infoScroll">
+
+
+        <!-- =================================================
+             CABECERA PHOTO SPOT
+             ================================================= -->
+
+        <div class="infoHeader">
+
+
+          <div
+            id="infoNum"
+            class="infoNum"
+          >
+
+            01
+
+          </div>
+
+
+          <div>
+
+            <small>
+              PHOTO SPOT
+            </small>
+
+            <strong id="infoCount">
+
+              01/92
+
+            </strong>
+
+          </div>
+
+
+          <button
+            class="closeInfo"
+            type="button"
+            aria-label="Cerrar información"
+          >
+
+            ×
+
+          </button>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             FOTOGRAFÍA
+             ================================================= -->
+
+        <div class="photoFrame">
+
+
+          <button
+            id="photoPrev"
+            class="photoArrow photoLeft"
+            type="button"
+            aria-label="Foto anterior"
+          >
+
+            ‹
+
+          </button>
+
+
+          <img
+            id="spotImg"
+            src="img/spots/01.jpg"
+            alt="Photo Spot 01"
+          >
+
+
+          <button
+            id="photoNext"
+            class="photoArrow photoRight"
+            type="button"
+            aria-label="Foto siguiente"
+          >
+
+            ›
+
+          </button>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             INFORMACIÓN DEL SPOT
+             ================================================= -->
+
+        <div class="infoBody">
+
+
+          <h2 id="infoName">
+
+            Photo Spot 01
+
+          </h2>
+
+
+          <div
+            id="infoLocation"
+            class="location"
+          >
+
+            📍 Suiza
+
+          </div>
+
+
+          <p id="infoDescription">
+
+            Photo Spot 01 del Grand Tour de Suiza.
+            Selecciona el marcador para seguir
+            el recorrido y mover a Hernán hasta
+            este lugar.
+
+          </p>
+
+
+
+          <!-- =================================================
+               DATOS RÁPIDOS
+               ================================================= -->
+
+          <div class="quickFacts">
+
+
+            <div>
+
+              📍
+
+              <span>
+                Suiza
+              </span>
+
+            </div>
+
+
+            <div>
+
+              📸
+
+              <span>
+                Photo Spot
+              </span>
+
+            </div>
+
+
+            <div>
+
+              🗺️
+
+              <span>
+                Grand Tour de Suiza
+              </span>
+
+            </div>
+
+
+          </div>
+
+
+
+          <!-- =================================================
+               SIGUIENTE PHOTO SPOT
+               ================================================= -->
+
+          <button
+            id="next"
+            class="btn red"
+            type="button"
+          >
+
+            SIGUIENTE PHOTO SPOT →
+
+          </button>
+
+
+
+          <!-- =================================================
+               INFORMACIÓN OFICIAL
+               ================================================= -->
+
+          <a
+            id="official"
+            class="btn"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            VER INFORMACIÓN OFICIAL
+
+          </a>
+
+
+
+          <!-- =================================================
+               GPS TURÍSTICO
+               ================================================= -->
+
+          <section
+            class="gpsPanel"
+            aria-label="Navegación GPS"
+          >
+
+
+            <div class="gpsHeader">
+
+
+              <span class="gpsEyebrow">
+
+                🧭 NAVEGACIÓN GPS
+
+              </span>
+
+
+              <h3>
+
+                ¿CÓMO LLEGAR?
+
+              </h3>
+
+
+              <p>
+
+                Utiliza tu ubicación para descubrir
+                qué Photo Spots tienes cerca y conocer
+                la distancia hasta el lugar seleccionado.
+
+              </p>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ESTADO DE UBICACIÓN
+                 ================================================= -->
+
+            <div
+              id="locationStatus"
+              class="locationStatus"
+            >
+
+              <span class="locationDot"></span>
+
+              <span id="locationText">
+
+                Ubicación no activada
+
+              </span>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 BOTÓN GPS
+                 ================================================= -->
+
+            <button
+              id="locateMeBtn"
+              class="gpsButton"
+              type="button"
+            >
+
+              📍 USAR MI UBICACIÓN
+
+            </button>
+
+
+
+            <!-- =================================================
+                 DISTANCIA AL SPOT
+                 ================================================= -->
+
+            <div
+              id="distanceBox"
+              class="distanceBox"
+              hidden
+            >
+
+
+              <div class="distanceIcon">
+
+                📏
+
+              </div>
+
+
+              <div>
+
+                <span>
+
+                  DISTANCIA AL PHOTO SPOT
+
+                </span>
+
+
+                <strong
+                  id="distanceValue"
+                >
+
+                  —
+
+                </strong>
+
+              </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CÓMO LLEGAR
+                 ================================================= -->
+
+            <button
+              id="navigationBtn"
+              class="navigationButton"
+              type="button"
+              hidden
+            >
+
+              🧭 CÓMO LLEGAR
+
+            </button>
+
+
+
+            <!-- =================================================
+                 PHOTO SPOTS CERCANOS
+                 ================================================= -->
+
+            <div
+              id="nearbySpots"
+              class="nearbySpots"
+              hidden
+            >
+
+
+              <div class="nearbyTitle">
+
+                📸 PHOTO SPOTS CERCA DE TI
+
+              </div>
+
+
+              <div
+                id="nearbySpotsList"
+                class="nearbySpotsList"
+              ></div>
+
+
+            </div>
+
+
+          </section>
+
+
+
+          <!-- =================================================
+               INFORMACIÓN DE ACCESO
+               ================================================= -->
+
+          
+            <!-- =================================================
+                 PLANIFICADOR PRO DE RUTAS
+                 ================================================= -->
+
+            <section id="routePlanner" class="routePlanner" aria-label="Planificador de rutas">
+
+              <div class="routePlannerHeader">
+                <span class="routePlannerEyebrow">🧭 PLANIFICADOR PRO</span>
+                <h3>PLANIFICA TU RUTA</h3>
+                <p>Elige cualquier ciudad, pueblo o dirección como punto de partida y descubre cómo llegar a cualquiera de los 92 Photo Spots.</p>
+              </div>
+
+              <div class="plannerField">
+                <label for="routeOriginInput">📍 DESDE DÓNDE SALES</label>
+                <div class="plannerSearch">
+                  <input id="routeOriginInput" type="search" placeholder="Ciudad, pueblo o dirección..." autocomplete="off">
+                  <button id="routeOriginSearchBtn" type="button" aria-label="Buscar lugar de origen">🔎</button>
+                </div>
+                <div id="routeOriginResults" class="plannerResults" hidden></div>
+                <button id="routeUseLocationBtn" class="plannerLocationBtn" type="button">📍 USAR MI UBICACIÓN</button>
+                <div id="routeOriginSelected" class="plannerSelected" hidden>
+                  <span class="plannerSelectedIcon">📍</span>
+                  <div>
+                    <strong id="routeOriginName">—</strong>
+                    <small id="routeOriginDetails">—</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="plannerField">
+                <label for="routeDestinationSelect">📸 A DÓNDE QUIERES IR</label>
+                <select id="routeDestinationSelect" class="plannerSelect">
+                  <option value="">Selecciona un Photo Spot...</option>
+                </select>
+                <div id="routeDestinationSelected" class="plannerSelected" hidden>
+                  <span class="plannerSelectedIcon">📸</span>
+                  <div>
+                    <strong id="routeDestinationName">—</strong>
+                    <small id="routeDestinationDetails">—</small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="plannerActions">
+                <button id="calculatePlannerRouteBtn" class="plannerCalculateBtn" type="button">🧭 CALCULAR RUTA</button>
+                <button id="clearPlannerRouteBtn" class="plannerClearBtn" type="button">LIMPIAR</button>
+              </div>
+
+              <div id="plannerRouteResult" class="plannerRouteResult" hidden>
+                <div class="plannerRouteStatus">
+                  <span>🛣️ RUTA CALCULADA</span>
+                  <strong id="plannerRouteTitle">—</strong>
+                </div>
+                <div class="plannerRouteStats">
+                  <div><span>📏 DISTANCIA</span><strong id="plannerRouteDistance">—</strong></div>
+                  <div><span>⏱️ TIEMPO</span><strong id="plannerRouteDuration">—</strong></div>
+                </div>
+                <button id="plannerStartNavigationBtn" class="plannerNavigationBtn" type="button">🧭 INICIAR NAVEGACIÓN</button>
+              </div>
+
+              <div id="plannerStatus" class="plannerStatus" aria-live="polite"></div>
+
+            </section>
+
+
+            <div class="accessCard">
+
+
+            <strong>
+
+              ℹ️ Información
+
+            </strong>
+
+
+            <p>
+
+              Utiliza los marcadores del mapa,
+              la lista lateral o las flechas para
+              recorrer los 92 Photo Spots.
+
+              <br><br>
+
+              Próximamente podrás utilizar tu
+              ubicación para encontrar los Photo Spots
+              más cercanos y calcular cómo llegar.
+
+            </p>
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </aside>
+
+
+  </main>
+
+
+
+  <!-- =====================================================
+       PIE DE PÁGINA
+       ===================================================== -->
+
+  <footer class="footer">
+
+
+    <span>
+      GRAND TOUR DE SUIZA
+    </span>
+
+
+    <span>
+      92 PHOTO SPOTS
+    </span>
+
+
+    <span>
+      MAPA INTERACTIVO
+    </span>
+
+
+    <span>
+      🧭 GPS TURÍSTICO
+    </span>
+
+
+    
+
+  </footer>
+
+  
+
+
+
+  <!-- =====================================================
+       LEAFLET JAVASCRIPT
+       ===================================================== -->
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  ></script>
+
+
+
+  <!-- =====================================================
+       DATOS DE LOS 92 PHOTO SPOTS
+
+       IMPORTANTE:
+       spots.js crea window.SPOTS.
+
+       Tiene que cargarse ANTES de script.js.
+       ===================================================== -->
+
+  <script
+    src="data/spots.js"
+  ></script>
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT PRINCIPAL
+
+       Aquí están:
+       - mapa
+       - 92 Photo Spots
+       - Hernán
+       - ciudades
+       - fronteras
+       - carrusel
+       - buscador
+       - selección de spots
+       - GPS
+       ===================================================== -->
+
+  <script
+    src="js/script.js"
+  ></script>
+
+
+</body>
+
+</html>

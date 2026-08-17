@@ -1,0 +1,2430 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Comunidad Todos con Hernán · Gastronomía, cultura, Grand Tour of Switzerland, proyectos y comunidad en Suiza."
+  >
+
+  <title>Comunidad · Todos con Hernán</title>
+
+
+  <style>
+
+    /* =====================================================
+       VARIABLES
+    ===================================================== */
+
+    :root {
+
+      --bg: #04111b;
+      --bg2: #061825;
+      --panel: #071a28;
+      --panel2: #0a2030;
+
+      --line: #23465d;
+
+      --red: #ef1820;
+      --red-dark: #b90f15;
+
+      --gold: #ffd000;
+
+      --green: #29e879;
+
+      --text: #f5f8fa;
+      --muted: #a7bac7;
+
+    }
+
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    html,
+    body {
+
+      margin: 0;
+      padding: 0;
+
+      width: 100%;
+      min-height: 100%;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background: var(--bg);
+
+      color: var(--text);
+
+    }
+
+
+    body {
+      overflow-x: hidden;
+    }
+
+
+    a {
+      color: inherit;
+    }
+
+
+
+    /* =====================================================
+       BARRA SUPERIOR
+    ===================================================== */
+
+    .topbar {
+
+      min-height: 64px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 0 20px;
+
+      background: #04111a;
+
+      border-bottom:
+        1px solid #183347;
+
+      position: relative;
+
+      z-index: 1000;
+
+    }
+
+
+    .mainNav {
+
+      min-height: 64px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 34px;
+
+    }
+
+
+    .mainNav a {
+
+      min-height: 64px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      position: relative;
+
+      color: #dbe4ea;
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      white-space: nowrap;
+
+    }
+
+
+    .mainNav a:hover {
+      color: #ffffff;
+    }
+
+
+    .mainNav a.active {
+
+      color: #ffffff;
+
+      font-weight: 900;
+
+    }
+
+
+    .mainNav a.active::after {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+
+      bottom: 0;
+
+      height: 4px;
+
+      background: var(--red);
+
+      border-radius:
+        3px 3px 0 0;
+
+    }
+
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+
+      min-height: 560px;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(400px, 540px);
+
+      align-items: center;
+
+      gap: 35px;
+
+      padding:
+        65px
+        7vw
+        50px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+
+        radial-gradient(
+          circle at 78% 45%,
+          #3b1d2a 0,
+          #102b3b 28%,
+          #071a28 55%,
+          #04111b 80%
+        );
+
+    }
+
+
+    .hero::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 650px;
+
+      height: 650px;
+
+      right: -220px;
+
+      top: -190px;
+
+      border-radius: 50%;
+
+      background:
+
+        radial-gradient(
+          circle,
+          #ef18201d,
+          transparent 68%
+        );
+
+      pointer-events: none;
+
+    }
+
+
+    .heroContent {
+
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 720px;
+
+    }
+
+
+    .eyebrow {
+
+      display: inline-block;
+
+      margin-bottom: 18px;
+
+      padding:
+        8px 15px;
+
+      border:
+        1px solid #31556c;
+
+      border-radius: 20px;
+
+      background:
+        #071a28cc;
+
+      color: var(--gold);
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .hero h1 {
+
+      margin: 0;
+
+      font-size:
+        clamp(48px, 6vw, 82px);
+
+      line-height: .92;
+
+      letter-spacing: -4px;
+
+      font-weight: 950;
+
+    }
+
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+
+    .heroText {
+
+      max-width: 680px;
+
+      margin:
+        25px 0 0;
+
+      color: #dbe7ed;
+
+      font-size:
+        clamp(17px, 2vw, 21px);
+
+      line-height: 1.5;
+
+    }
+
+
+    .heroButtons {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 28px;
+
+    }
+
+
+
+    /* =====================================================
+       BOTONES
+    ===================================================== */
+
+    .btn {
+
+      min-height: 47px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        0 23px;
+
+      border-radius: 25px;
+
+      text-decoration: none;
+
+      font-weight: 900;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+    }
+
+
+    .btn:hover {
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    .btn.red {
+
+      background: var(--red);
+
+      color: #ffffff;
+
+      box-shadow:
+        0
+        8px
+        25px
+        #0007;
+
+    }
+
+
+    .btn.outline {
+
+      background: transparent;
+
+      color: #ffffff;
+
+      border:
+        1px solid #416379;
+
+    }
+
+
+
+    /* =====================================================
+       IMAGEN HERO
+    ===================================================== */
+
+    .heroImage {
+
+      height: 460px;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: center;
+
+      position: relative;
+
+      z-index: 2;
+
+    }
+
+
+    .heroImage img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: contain;
+
+      object-position:
+        center bottom;
+
+      filter:
+        drop-shadow(
+          0
+          18px
+          25px
+          #000b
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SECCIONES
+    ===================================================== */
+
+    .section {
+
+      padding:
+        80px
+        7vw;
+
+      background:
+        var(--bg2);
+
+    }
+
+
+    .section.dark {
+
+      background:
+        #04111b;
+
+    }
+
+
+    .sectionHeader {
+
+      max-width: 900px;
+
+      margin:
+        0
+        auto
+        35px;
+
+      text-align: center;
+
+    }
+
+
+    .sectionLabel {
+
+      margin-bottom: 10px;
+
+      color: var(--gold);
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .sectionTitle {
+
+      margin: 0;
+
+      font-size:
+        clamp(34px, 4vw, 52px);
+
+      line-height: 1;
+
+      font-weight: 950;
+
+    }
+
+
+    .sectionTitle span {
+      color: var(--red);
+    }
+
+
+    .sectionDescription {
+
+      max-width: 800px;
+
+      margin:
+        18px auto 0;
+
+      color: #bdccd4;
+
+      font-size: 17px;
+
+      line-height: 1.6;
+
+    }
+
+
+
+    /* =====================================================
+       PROYECTO DESTACADO
+    ===================================================== */
+
+    .featuredProject {
+
+      max-width: 1250px;
+
+      margin: auto;
+
+      padding: 30px;
+
+      border:
+        1px solid #31556c;
+
+      border-radius: 20px;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #0a2030,
+          #071722
+        );
+
+      box-shadow:
+
+        0
+        20px
+        60px
+        #0005;
+
+    }
+
+
+    .featuredTop {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      gap: 30px;
+
+      align-items: center;
+
+    }
+
+
+    .featuredText h3 {
+
+      margin:
+        0
+        0
+        15px;
+
+      font-size: 32px;
+
+      line-height: 1.1;
+
+    }
+
+
+    .featuredText h3 span {
+      color: var(--red);
+    }
+
+
+    .featuredText p {
+
+      margin:
+        0
+        0
+        20px;
+
+      color: #c8d6dd;
+
+      line-height: 1.6;
+
+    }
+
+
+    .projectBadge {
+
+      display: inline-block;
+
+      margin-bottom: 15px;
+
+      padding:
+        7px
+        12px;
+
+      border-radius: 15px;
+
+      background:
+        var(--red);
+
+      color: #ffffff;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+    }
+
+
+    .projectImage {
+
+      border-radius: 15px;
+
+      overflow: hidden;
+
+      background:
+        #000;
+
+      border:
+        1px solid #31556c;
+
+    }
+
+
+    .projectImage img {
+
+      width: 100%;
+
+      display: block;
+
+      aspect-ratio:
+        16 / 9;
+
+      object-fit: cover;
+
+    }
+
+
+
+    /* =====================================================
+       TARJETAS
+    ===================================================== */
+
+    .countryGrid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
+      max-width: 1250px;
+
+      margin:
+        35px auto
+        0;
+
+    }
+
+
+    .countryCard {
+
+      overflow: hidden;
+
+      border:
+        1px solid #294c62;
+
+      border-radius: 16px;
+
+      background:
+        #071a28;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+
+    }
+
+
+    .countryCard:hover {
+
+      transform:
+        translateY(-5px);
+
+      border-color:
+        var(--red);
+
+    }
+
+
+    .countryImage {
+
+      width: 100%;
+
+      aspect-ratio:
+        16 / 9;
+
+      object-fit: cover;
+
+      display: block;
+
+      background:
+        #0d2a3b;
+
+    }
+
+
+    .countryContent {
+
+      padding: 18px;
+
+    }
+
+
+    .countryTitle {
+
+      margin:
+        0
+        0
+        8px;
+
+      font-size: 20px;
+
+    }
+
+
+    .countryTitle span {
+      color: var(--gold);
+    }
+
+
+    .countryDescription {
+
+      margin:
+        0
+        0
+        15px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+    }
+
+
+    .countryButton {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-height: 38px;
+
+      padding:
+        0
+        17px;
+
+      border-radius: 20px;
+
+      background:
+        var(--red);
+
+      color: #ffffff;
+
+      text-decoration: none;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      transition:
+        transform .2s ease,
+        background .2s ease;
+
+    }
+
+
+    .countryButton:hover {
+
+      transform:
+        translateY(-2px);
+
+      background:
+        var(--red-dark);
+
+    }
+
+
+
+    /* =====================================================
+       GRAND TOUR
+    ===================================================== */
+
+    .grandTourIntro {
+
+      max-width: 950px;
+
+      margin:
+        0 auto
+        30px;
+
+      text-align: center;
+
+      color: #c5d4dc;
+
+      line-height: 1.6;
+
+    }
+
+
+    .grandTourGrid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 22px;
+
+      max-width: 1250px;
+
+      margin:
+        35px auto
+        0;
+
+    }
+
+
+    .grandTourCard {
+
+      overflow: hidden;
+
+      border:
+        1px solid #294c62;
+
+      border-radius: 18px;
+
+      background:
+        #071a28;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+
+    }
+
+
+    .grandTourCard:hover {
+
+      transform:
+        translateY(-5px);
+
+      border-color:
+        var(--gold);
+
+    }
+
+
+    .grandTourImage {
+
+      width: 100%;
+
+      aspect-ratio:
+        16 / 9;
+
+      object-fit: cover;
+
+      display: block;
+
+      background:
+        #0d2a3b;
+
+    }
+
+
+    .grandTourContent {
+
+      padding: 22px;
+
+    }
+
+
+    .grandTourTag {
+
+      display: inline-block;
+
+      margin-bottom: 10px;
+
+      color: var(--gold);
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .grandTourContent h3 {
+
+      margin:
+        0
+        0
+        12px;
+
+      font-size: 22px;
+
+      line-height: 1.2;
+
+    }
+
+
+    .grandTourContent p {
+
+      margin:
+        0
+        0
+        18px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.6;
+
+    }
+
+
+
+    /* =====================================================
+       PROYECTO UN MILLÓN
+    ===================================================== */
+
+    .million {
+
+      max-width: 1200px;
+
+      margin: auto;
+
+      padding: 45px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      border:
+        1px solid #5b4650;
+
+      border-radius: 20px;
+
+      background:
+
+        radial-gradient(
+          circle at 80% 50%,
+          #ef18201c,
+          transparent 50%
+        ),
+
+        linear-gradient(
+          135deg,
+          #111b26,
+          #071a28
+        );
+
+    }
+
+
+    .millionContent {
+
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 700px;
+
+    }
+
+
+    .millionNumber {
+
+      margin:
+        0
+        0
+        10px;
+
+      color: var(--gold);
+
+      font-size:
+        clamp(55px, 8vw, 100px);
+
+      line-height: .9;
+
+      font-weight: 950;
+
+    }
+
+
+    .millionTitle {
+
+      margin:
+        0
+        0
+        15px;
+
+      font-size: 34px;
+
+      font-weight: 950;
+
+    }
+
+
+    .millionText {
+
+      margin:
+        0
+        0
+        22px;
+
+      color: #c8d5dc;
+
+      font-size: 17px;
+
+      line-height: 1.6;
+
+    }
+
+
+
+    /* =====================================================
+       ASESORAMIENTO
+    ===================================================== */
+
+    .adviceGrid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
+      max-width: 1200px;
+
+      margin:
+        35px auto
+        0;
+
+    }
+
+
+    .adviceCard {
+
+      padding: 28px;
+
+      border:
+        1px solid #294c62;
+
+      border-radius: 16px;
+
+      background:
+        #071a28;
+
+    }
+
+
+    .adviceIcon {
+
+      font-size: 34px;
+
+      margin-bottom: 15px;
+
+    }
+
+
+    .adviceCard h3 {
+
+      margin:
+        0
+        0
+        10px;
+
+      font-size: 20px;
+
+    }
+
+
+    .adviceCard p {
+
+      margin: 0;
+
+      color: var(--muted);
+
+      line-height: 1.5;
+
+      font-size: 14px;
+
+    }
+
+
+
+    /* =====================================================
+       CTA
+    ===================================================== */
+
+    .cta {
+
+      padding:
+        85px 20px;
+
+      text-align: center;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #081d2c,
+          #05131e
+        );
+
+      border-top:
+        1px solid #183347;
+
+    }
+
+
+    .cta h2 {
+
+      margin:
+        0
+        0
+        15px;
+
+      font-size:
+        clamp(35px, 5vw, 55px);
+
+      font-weight: 950;
+
+    }
+
+
+    .cta h2 span {
+      color: var(--red);
+    }
+
+
+    .cta p {
+
+      max-width: 650px;
+
+      margin:
+        0
+        auto
+        25px;
+
+      color: #bdccd4;
+
+      line-height: 1.6;
+
+    }
+
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+
+      min-height: 90px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      padding:
+        25px 20px;
+
+      background:
+        #020a11;
+
+      border-top:
+        1px solid #183347;
+
+      color: #9db0bc;
+
+      font-size: 12px;
+
+      text-align: center;
+
+    }
+
+
+    footer p {
+      margin: 0;
+    }
+
+
+    .developer-credit {
+
+      color: #71869a;
+
+      font-size: 12px;
+
+    }
+
+
+    .developer-credit a {
+
+      color: #42a6ff;
+
+      text-decoration: none;
+
+      font-weight: 700;
+
+    }
+
+
+    .developer-credit a:hover {
+      text-decoration: underline;
+    }
+
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 1050px) {
+
+      .mainNav {
+        gap: 21px;
+      }
+
+
+      .hero {
+
+        grid-template-columns:
+          1fr
+          420px;
+
+      }
+
+
+      .countryGrid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
+
+      .adviceGrid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
+    }
+
+
+
+    @media (max-width: 800px) {
+
+      .topbar {
+
+        overflow-x: auto;
+
+        justify-content:
+          flex-start;
+
+      }
+
+
+      .mainNav {
+
+        flex:
+          0 0 auto;
+
+      }
+
+
+      .hero {
+
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        padding:
+          50px
+          20px
+          0;
+
+      }
+
+
+      .heroContent {
+
+        margin:
+          0 auto;
+
+      }
+
+
+      .heroButtons {
+
+        justify-content:
+          center;
+
+      }
+
+
+      .heroImage {
+
+        height: 380px;
+
+      }
+
+
+      .featuredTop {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .countryGrid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .grandTourGrid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .adviceGrid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .featuredProject {
+
+        padding: 20px;
+
+      }
+
+
+      .million {
+
+        padding:
+          30px 22px;
+
+        text-align: center;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 520px) {
+
+      .mainNav {
+        gap: 18px;
+      }
+
+
+      .mainNav a {
+        font-size: 11px;
+      }
+
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+
+      .heroImage {
+        height: 320px;
+      }
+
+    }
+
+  
+
+/* =========================================================
+   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
+   ========================================================= */
+
+footer.site-credits {
+  width: 100% !important;
+  min-height: 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto !important;
+
+  align-items: center !important;
+  justify-items: center !important;
+
+  gap: 8px !important;
+
+  margin: 0 !important;
+  padding: 22px 15px !important;
+
+  background: #020a11 !important;
+  border-top: 1px solid #183347 !important;
+
+  color: #9db0bc !important;
+  font-size: 13px !important;
+
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+footer.site-credits > p {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+  line-height: 1.5 !important;
+
+  white-space: normal !important;
+}
+
+footer.site-credits > p.developer-credit {
+  margin: 0 !important;
+
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   FOOTER · MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  footer.site-credits {
+    padding: 18px 10px !important;
+    gap: 6px !important;
+  }
+
+  footer.site-credits > p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+  <!-- =====================================================
+       BARRA PRINCIPAL
+  ===================================================== -->
+
+  <header class="topbar">
+
+    <nav
+      class="mainNav"
+      aria-label="Navegación principal"
+    >
+
+      <a href="inicio.html">
+        INICIO
+      </a>
+
+
+      <a href="index.html">
+        EL GRAND TOUR
+      </a>
+
+
+      <a href="videos.html">
+        VÍDEOS
+      </a>
+
+
+      <a href="vivir-en-suiza.html">
+        VIVIR EN SUIZA
+      </a>
+
+
+      <a
+        href="comunidad.html"
+        class="active"
+      >
+        COMUNIDAD
+      </a>
+
+
+      <a href="proyectos.html">
+        PROYECTOS
+      </a>
+
+
+      <a href="hernan.html">
+        HERNÁN
+      </a>
+
+
+      <a href="contacto.html">
+        CONTACTO
+      </a>
+
+    </nav>
+
+  </header>
+
+
+
+  <!-- =====================================================
+       CONTENIDO
+  ===================================================== -->
+
+  <main>
+
+
+    <!-- ===================================================
+         HERO
+    =================================================== -->
+
+    <section class="hero">
+
+      <div class="heroContent">
+
+        <div class="eyebrow">
+          TODOS CON HERNÁN · COMUNIDAD
+        </div>
+
+
+        <h1>
+
+          UNA COMUNIDAD
+          <br>
+
+          <span>QUE CRECE</span>
+
+        </h1>
+
+
+        <p class="heroText">
+
+          Personas, historias, gastronomía,
+          viajes, proyectos y experiencias que
+          conectan diferentes culturas desde Suiza.
+
+        </p>
+
+
+        <div class="heroButtons">
+
+          <a
+            href="#mundial"
+            class="btn red"
+          >
+            DESCUBRIR PROYECTOS
+          </a>
+
+
+          <a
+            href="https://www.youtube.com/@todosconhernan/videos"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn outline"
+          >
+            VER YOUTUBE
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="heroImage">
+
+        <img
+          src="img/LogoOficial.png"
+          alt="Hernán · Todos con Hernán"
+        >
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         MUNDIAL DEL PLATO TÍPICO
+    ===================================================== -->
+
+    <section
+      class="section"
+      id="mundial"
+    >
+
+      <div class="sectionHeader">
+
+        <div class="sectionLabel">
+          PROYECTO DESTACADO · 2026
+        </div>
+
+
+        <h2 class="sectionTitle">
+
+          🌎 EL MUNDIAL DEL
+          <span>PLATO TÍPICO</span>
+
+        </h2>
+
+
+        <p class="sectionDescription">
+
+          Un proyecto que une países, personas
+          y culturas a través de la gastronomía
+          en Suiza.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- =================================================
+           EPISODIO DESTACADO
+      ================================================= -->
+
+      <div class="featuredProject">
+
+        <div class="featuredTop">
+
+
+          <div class="featuredText">
+
+            <div class="projectBadge">
+
+              NUEVO EPISODIO · REPÚBLICA DOMINICANA
+
+            </div>
+
+
+            <h3>
+
+              SANCOCHO DOMINICANO
+              <span>EN SUIZA</span>
+
+            </h3>
+
+
+            <p>
+
+              Fátima representa a República Dominicana
+              desde Zúrich con un tradicional
+              <strong>sancocho dominicano</strong>
+              dentro del Mundial del Plato Típico
+              en Suiza 2026.
+
+            </p>
+
+
+            <p>
+
+              Una historia de gastronomía, identidad
+              y comunidad que forma parte de una serie
+              que seguirá incorporando nuevos países
+              y nuevos sabores.
+
+            </p>
+
+
+            <a
+              href="https://www.youtube.com/watch?v=DlqkSft9mP4"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn red"
+            >
+              VER ESTE EPISODIO →
+            </a>
+
+          </div>
+
+
+          <div class="projectImage">
+
+            <img
+              src="https://img.youtube.com/vi/DlqkSft9mP4/maxresdefault.jpg"
+              alt="Fátima representa a República Dominicana con Sancocho Dominicano en Zúrich"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- =================================================
+           EPISODIOS
+      ================================================= -->
+
+      <div class="countryGrid">
+
+
+        <!-- =================================================
+             EPISODIO 1
+        ================================================= -->
+
+        <article class="countryCard">
+
+          <img
+            class="countryImage"
+            src="https://img.youtube.com/vi/BkdgQsixz_M/maxresdefault.jpg"
+            alt="Mundial del Plato Típico en Suiza"
+          >
+
+
+          <div class="countryContent">
+
+            <h3 class="countryTitle">
+
+              🌎
+              <span>Episodio 1</span>
+
+            </h3>
+
+
+            <p class="countryDescription">
+
+              Una nueva historia dentro del
+              Mundial del Plato Típico en Suiza 2026.
+
+            </p>
+
+
+            <a
+              href="https://www.youtube.com/watch?v=BkdgQsixz_M&t=4s"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="countryButton"
+            >
+              VER EN YOUTUBE
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             EPISODIO 2
+        ================================================= -->
+
+        <article class="countryCard">
+
+          <img
+            class="countryImage"
+            src="https://img.youtube.com/vi/vMCF4jNSnR0/maxresdefault.jpg"
+            alt="Mundial del Plato Típico en Suiza"
+          >
+
+
+          <div class="countryContent">
+
+            <h3 class="countryTitle">
+
+              🌎
+              <span>Episodio 2</span>
+
+            </h3>
+
+
+            <p class="countryDescription">
+
+              Otro episodio del Mundial del
+              Plato Típico en Suiza 2026.
+
+            </p>
+
+
+            <a
+              href="https://www.youtube.com/watch?v=vMCF4jNSnR0"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="countryButton"
+            >
+              VER EN YOUTUBE
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             REPÚBLICA DOMINICANA
+        ================================================= -->
+
+        <article class="countryCard">
+
+          <img
+            class="countryImage"
+            src="https://img.youtube.com/vi/DlqkSft9mP4/maxresdefault.jpg"
+            alt="Sancocho Dominicano en Zúrich"
+          >
+
+
+          <div class="countryContent">
+
+            <h3 class="countryTitle">
+
+              🇩🇴
+              <span>República Dominicana</span>
+
+            </h3>
+
+
+            <p class="countryDescription">
+
+              <strong>Sancocho Dominicano</strong>
+              en Zúrich. Fátima representa a
+              República Dominicana en el Mundial
+              del Plato Típico.
+
+            </p>
+
+
+            <a
+              href="https://www.youtube.com/watch?v=DlqkSft9mP4"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="countryButton"
+            >
+              VER EN YOUTUBE
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             PRÓXIMO PAÍS
+        ================================================= -->
+
+        <article class="countryCard">
+
+          <div
+            class="countryImage"
+            style="
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              background:#0d2a3b;
+              color:#ffd000;
+              font-size:55px;
+            "
+          >
+
+            🌍
+
+          </div>
+
+
+          <div class="countryContent">
+
+            <h3 class="countryTitle">
+
+              <span>
+                Próximo país
+              </span>
+
+            </h3>
+
+
+            <p class="countryDescription">
+
+              El Mundial del Plato Típico continúa
+              creciendo con nuevos países,
+              nuevos platos y nuevas historias
+              desde Suiza.
+
+            </p>
+
+
+            <a
+              href="https://www.youtube.com/@todosconhernan/videos"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="countryButton"
+            >
+              DESCUBRIR MÁS
+            </a>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         GRAND TOUR OF SWITZERLAND
+    ===================================================== -->
+
+    <section
+      class="section dark"
+      id="grand-tour"
+    >
+
+      <div class="sectionHeader">
+
+        <div class="sectionLabel">
+          VIAJES · SUIZA
+        </div>
+
+
+        <h2 class="sectionTitle">
+
+          🏔️ GRAND TOUR OF
+          <span>SWITZERLAND</span>
+
+        </h2>
+
+
+        <p class="sectionDescription">
+
+          Descubre pueblos, castillos, photo spots
+          y rincones de Suiza a través de los vídeos
+          de Todos con Hernán.
+
+        </p>
+
+      </div>
+
+
+      <p class="grandTourIntro">
+
+        El Grand Tour of Switzerland permite descubrir
+        diferentes rincones del país. Aquí iremos
+        reuniendo los destinos que Hernán vaya
+        recorriendo dentro del proyecto.
+
+      </p>
+
+
+
+      <div class="grandTourGrid">
+
+
+        <!-- =================================================
+             AARBURG
+        ================================================= -->
+
+        <article class="grandTourCard">
+
+          <img
+            class="grandTourImage"
+            src="https://img.youtube.com/vi/GtCiNSdS9nE/maxresdefault.jpg"
+            alt="Aarburg · Grand Tour of Switzerland"
+          >
+
+
+          <div class="grandTourContent">
+
+            <div class="grandTourTag">
+              📍 GRAND TOUR · AARBURG
+            </div>
+
+
+            <h3>
+
+              El Photo Spot de Aarburg
+
+            </h3>
+
+
+            <p>
+
+              Descubre Aarburg y uno de los
+              rincones más bonitos del Grand Tour
+              of Switzerland.
+
+            </p>
+
+
+            <a
+              href="https://www.youtube.com/watch?v=GtCiNSdS9nE"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn red"
+            >
+              VER EN YOUTUBE →
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             HALLWYL
+        ================================================= -->
+
+        <article class="grandTourCard">
+
+          <img
+            class="grandTourImage"
+            src="https://img.youtube.com/vi/zbBKTvOw83I/maxresdefault.jpg"
+            alt="Hallwyl Castle · Grand Tour of Switzerland"
+          >
+
+
+          <div class="grandTourContent">
+
+            <div class="grandTourTag">
+              🏰 GRAND TOUR · HALLWYL
+            </div>
+
+
+            <h3>
+
+              Hallwyl Castle
+
+            </h3>
+
+
+            <p>
+
+              Descubre Hallwyl Castle y uno de los
+              rincones históricos que forman parte
+              del Grand Tour of Switzerland.
+
+            </p>
+
+
+            <a
+              href="https://www.youtube.com/watch?v=zbBKTvOw83I"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn red"
+            >
+              VER EN YOUTUBE →
+            </a>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+
+
+      <div
+        style="
+          max-width:900px;
+          margin:35px auto 0;
+          padding:18px 20px;
+          border-left:4px solid #ffd000;
+          border-radius:10px;
+          background:#10263a;
+          color:#cbd9e4;
+          text-align:center;
+        "
+      >
+
+        💡
+
+        <strong>
+          Próximamente:
+        </strong>
+
+        más photo spots, pueblos, castillos
+        y lugares del Grand Tour of Switzerland.
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- ===================================================
+         PROYECTO UN MILLÓN
+    ===================================================== -->
+
+    <section class="section">
+
+      <div class="sectionHeader">
+
+        <div class="sectionLabel">
+          OTRO GRAN PROYECTO
+        </div>
+
+
+        <h2 class="sectionTitle">
+
+          🚀 PROYECTO
+          <span>UN MILLÓN</span>
+
+        </h2>
+
+
+        <p class="sectionDescription">
+
+          Una visión de crecimiento,
+          comunidad y creación de contenido
+          alrededor de Todos con Hernán.
+
+        </p>
+
+      </div>
+
+
+      <div class="million">
+
+        <div class="millionContent">
+
+          <div class="millionNumber">
+            1.000.000
+          </div>
+
+
+          <h3 class="millionTitle">
+
+            UNA COMUNIDAD CADA VEZ MÁS GRANDE
+
+          </h3>
+
+
+          <p class="millionText">
+
+            El Proyecto Un Millón representa
+            el objetivo de construir una comunidad
+            enorme alrededor de los contenidos,
+            proyectos e historias de Todos con
+            Hernán.
+
+          </p>
+
+
+          <a
+            href="https://www.youtube.com/watch?v=BkdgQsixz_M&t=4s"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn red"
+          >
+            CONOCER EL PROYECTO →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         ASESORAMIENTO
+    ===================================================== -->
+
+    <section class="section dark">
+
+      <div class="sectionHeader">
+
+        <div class="sectionLabel">
+          SERVICIOS Y COLABORACIONES
+        </div>
+
+
+        <h2 class="sectionTitle">
+
+          🤝
+          <span>ASESORAMIENTO</span>
+
+        </h2>
+
+
+        <p class="sectionDescription">
+
+          Un espacio para personas, proyectos
+          y organizaciones que quieran ponerse
+          en contacto con Hernán.
+
+        </p>
+
+      </div>
+
+
+      <div class="adviceGrid">
+
+
+        <article class="adviceCard">
+
+          <div class="adviceIcon">
+            🇨🇭
+          </div>
+
+
+          <h3>
+            Orientación en Suiza
+          </h3>
+
+
+          <p>
+
+            Información y orientación para
+            personas interesadas en conocer
+            mejor la vida y las posibilidades
+            que ofrece Suiza.
+
+          </p>
+
+        </article>
+
+
+
+        <article class="adviceCard">
+
+          <div class="adviceIcon">
+            🚀
+          </div>
+
+
+          <h3>
+            Proyectos
+          </h3>
+
+
+          <p>
+
+            Espacio para presentar,
+            desarrollar o conectar nuevos
+            proyectos y colaboraciones.
+
+          </p>
+
+        </article>
+
+
+
+        <article class="adviceCard">
+
+          <div class="adviceIcon">
+            🤝
+          </div>
+
+
+          <h3>
+            Colaboraciones
+          </h3>
+
+
+          <p>
+
+            Personas, empresas, creadores
+            y comunidades pueden ponerse
+            en contacto para colaborar.
+
+          </p>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===================================================
+         CTA
+    ===================================================== -->
+
+    <section class="cta">
+
+      <h2>
+
+        ¿QUIERES FORMAR PARTE DE
+        <span>LA COMUNIDAD?</span>
+
+      </h2>
+
+
+      <p>
+
+        Descubre los vídeos, proyectos,
+        viajes y nuevas historias de
+        Todos con Hernán.
+
+      </p>
+
+
+      <a
+        href="https://www.youtube.com/@todosconhernan/videos"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn red"
+      >
+        IR AL CANAL DE YOUTUBE →
+      </a>
+
+    </section>
+
+
+  </main>
+
+
+
+<!-- =====================================================
+     PIE DE PÁGINA
+     ===================================================== -->
+
+<footer class="site-credits">
+
+  <p>
+    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+  </p>
+
+  <p class="developer-credit">
+    Yonathan Alvarado · Full Stack Web Developer · Spain
+  </p>
+
+</footer>
+
+
+</body>
+
+</html>

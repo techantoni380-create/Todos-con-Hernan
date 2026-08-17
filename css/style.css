@@ -1,0 +1,2766 @@
+/* =========================================================
+   TÍTULO: VARIABLES PRINCIPALES
+   Colores generales del proyecto
+   ========================================================= */
+
+:root {
+
+  --bg:
+    #04111b;
+
+  --panel:
+    #061825;
+
+  --panel-2:
+    #071a28;
+
+  --line:
+    #23465d;
+
+  --line-soft:
+    #18384d;
+
+  --red:
+    #ef1820;
+
+  --red-dark:
+    #bd1017;
+
+  --gold:
+    #ffd000;
+
+  --green:
+    #29e879;
+
+  --text:
+    #f5f8fa;
+
+  --muted:
+    #a7bac7;
+
+  --white:
+    #ffffff;
+
+}
+
+
+/* =========================================================
+   RESET GENERAL
+   ========================================================= */
+
+* {
+  box-sizing:
+    border-box;
+}
+
+
+html,
+body {
+
+  margin:
+    0;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  overflow:
+    hidden;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    var(--bg);
+
+  color:
+    var(--text);
+
+}
+
+
+button,
+input {
+
+  font:
+    inherit;
+
+}
+
+
+/* =========================================================
+   TÍTULO: CABECERA PRINCIPAL
+   Barra superior centrada
+   ========================================================= */
+
+.topbar {
+
+  width:
+    100%;
+
+  height:
+    64px;
+
+  min-height:
+    64px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    0 20px;
+
+  background:
+    #04111a;
+
+  border-bottom:
+    1px solid #183347;
+
+  position:
+    relative;
+
+  z-index:
+    3000;
+
+  box-sizing:
+    border-box;
+
+}
+
+
+/* =========================================================
+   TÍTULO: MARCA
+   ========================================================= */
+
+.brand {
+
+  font-size:
+    22px;
+
+  font-weight:
+    900;
+
+  white-space:
+    nowrap;
+
+}
+
+
+.brand span {
+
+  color:
+    var(--red);
+
+}
+
+
+.brand b {
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  width:
+    30px;
+
+  height:
+    30px;
+
+  margin-left:
+    7px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--red);
+
+  color:
+    #fff;
+
+  font-size:
+    17px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: NAVEGACIÓN
+   ========================================================= */
+
+.mainNav {
+
+  width:
+    100%;
+
+  max-width:
+    1250px;
+
+  height:
+    64px;
+
+  min-height:
+    64px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    30px;
+
+  margin:
+    0 auto;
+
+  padding:
+    0;
+
+  box-sizing:
+    border-box;
+
+}
+
+
+.mainNav a {
+
+  height:
+    64px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  position:
+    relative;
+
+  margin:
+    0;
+
+  padding:
+    0;
+
+  color:
+    #dbe4ea;
+
+  text-decoration:
+    none;
+
+  font-size:
+    13px;
+
+  font-weight:
+    700;
+
+  line-height:
+    1;
+
+  white-space:
+    nowrap;
+
+  flex:
+    0 0 auto;
+
+}
+
+
+.mainNav a:hover {
+
+  color:
+    #ffffff;
+
+}
+
+
+.mainNav a.active {
+
+  font-weight:
+    900;
+
+  color:
+    #fff;
+
+  border-bottom:
+    4px solid var(--red);
+
+}
+
+
+/* =========================================================
+   TÍTULO: BUSCADOR SUPERIOR
+   ========================================================= */
+
+.topSearch {
+
+  width:
+    235px;
+
+  height:
+    38px;
+
+  flex:
+    0 0 auto;
+
+  border:
+    1px solid #2b5772;
+
+  border-radius:
+    22px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  padding:
+    0 12px;
+
+  background:
+    #061723;
+
+}
+
+
+.topSearch input {
+
+  width:
+    100%;
+
+  border:
+    0;
+
+  outline:
+    0;
+
+  background:
+    transparent;
+
+  color:
+    #fff;
+
+  font-size:
+    12px;
+
+}
+
+
+.topSearch input::placeholder {
+
+  color:
+    #8197a5;
+
+}
+
+
+.topSearch span {
+
+  font-size:
+    23px;
+
+  color:
+    #9db2bf;
+
+  transform:
+    rotate(-20deg);
+
+}
+
+
+/* =========================================================
+   TÍTULO: IDIOMA
+   ========================================================= */
+
+.lang {
+
+  white-space:
+    nowrap;
+
+  font-weight:
+    800;
+
+}
+
+
+/* =========================================================
+   TÍTULO: LAYOUT PRINCIPAL
+   Tres columnas:
+   izquierda / mapa / derecha
+   ========================================================= */
+
+.layout {
+
+  height:
+    calc(100vh - 94px);
+
+  display:
+    grid;
+
+  grid-template-columns:
+    272px
+    minmax(0, 1fr)
+    380px;
+
+  min-height:
+    0;
+
+  width:
+    100%;
+
+}
+
+
+/* =========================================================
+   TÍTULO: PANEL IZQUIERDO
+   ========================================================= */
+
+.sidePanel {
+
+  min-width:
+    0;
+
+  min-height:
+    0;
+
+  background:
+    #061825;
+
+  border-right:
+    1px solid #18384d;
+
+  overflow:
+    hidden;
+
+}
+
+
+.sideScroll {
+
+  height:
+    100%;
+
+  overflow:
+    auto;
+
+  padding:
+    24px 16px 30px;
+
+  scrollbar-width:
+    thin;
+
+  scrollbar-color:
+    #2c5369
+    transparent;
+
+}
+
+
+/* =========================================================
+   TÍTULO: SCROLLBAR IZQUIERDA
+   ========================================================= */
+
+.sideScroll::-webkit-scrollbar {
+
+  width:
+    7px;
+
+}
+
+
+.sideScroll::-webkit-scrollbar-track {
+
+  background:
+    transparent;
+
+}
+
+
+.sideScroll::-webkit-scrollbar-thumb {
+
+  background:
+    #2c5369;
+
+  border-radius:
+    8px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: TÍTULO LATERAL
+   ========================================================= */
+
+.sidePanel h1 {
+
+  font-size:
+    35px;
+
+  line-height:
+    .93;
+
+  margin:
+    0 0 15px;
+
+  letter-spacing:
+    -1px;
+
+}
+
+
+.sidePanel h1 span {
+
+  background:
+    var(--red);
+
+  padding:
+    1px 7px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: SUBTÍTULO DORADO
+   ========================================================= */
+
+.gold {
+
+  font-size:
+    17px;
+
+  color:
+    var(--gold);
+
+  font-weight:
+    900;
+
+  font-style:
+    italic;
+
+  margin-bottom:
+    18px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: HERNÁN EN EL PANEL LATERAL
+   Imagen decorativa del Grand Tour
+   ========================================================= */
+
+.sidebarHernan {
+
+  width:
+    100%;
+
+  height:
+    190px;
+
+  display:
+    flex;
+
+  align-items:
+    flex-end;
+
+  justify-content:
+    center;
+
+  overflow:
+    hidden;
+
+  margin:
+    0 0 18px;
+
+  border-radius:
+    14px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #061825 0%,
+      #081e2d 100%
+    );
+
+}
+
+
+.sidebarHernan img {
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    contain;
+
+  object-position:
+    center bottom;
+
+  filter:
+    drop-shadow(
+      0 5px 8px #0009
+    );
+
+}
+
+
+/* =========================================================
+   TÍTULO: INTRODUCCIÓN
+   ========================================================= */
+
+.intro {
+
+  font-size:
+    16px;
+
+  line-height:
+    1.45;
+
+  color:
+    #e5edf1;
+
+  margin:
+    0 0 20px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: TARJETA DE ESTADÍSTICAS
+   ========================================================= */
+
+.stats {
+
+  border:
+    1px solid #2b5268;
+
+  border-radius:
+    15px;
+
+  padding:
+    16px 18px;
+
+  margin-bottom:
+    16px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #071a28,
+      #061622
+    );
+
+}
+
+
+.statsTop strong {
+
+  display:
+    block;
+
+  color:
+    var(--gold);
+
+  font-size:
+    39px;
+
+  line-height:
+    1;
+
+}
+
+
+.statsTop span {
+
+  display:
+    block;
+
+  font-size:
+    16px;
+
+  margin-top:
+    5px;
+
+}
+
+
+.statsLine {
+
+  border-top:
+    1px solid #49697a;
+
+  margin:
+    13px 0;
+
+}
+
+
+.ok {
+
+  color:
+    var(--green);
+
+  font-size:
+    16px;
+
+  font-weight:
+    900;
+
+  margin-bottom:
+    18px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: ELEMENTOS DE CARACTERÍSTICAS
+   ========================================================= */
+
+.feature {
+
+  display:
+    flex;
+
+  gap:
+    10px;
+
+  align-items:
+    flex-start;
+
+  margin:
+    14px 0;
+
+  font-size:
+    15px;
+
+  line-height:
+    1.2;
+
+}
+
+
+.feature span {
+
+  flex:
+    1;
+
+}
+
+
+/* =========================================================
+   TÍTULO: BUSCADOR LATERAL
+   ========================================================= */
+
+.sideSearch {
+
+  height:
+    40px;
+
+  border:
+    1px solid #2b5268;
+
+  border-radius:
+    12px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  padding:
+    0 12px;
+
+  background:
+    #06131f;
+
+  margin-bottom:
+    13px;
+
+}
+
+
+.sideSearch input {
+
+  width:
+    100%;
+
+  background:
+    transparent;
+
+  border:
+    0;
+
+  outline:
+    0;
+
+  color:
+    #fff;
+
+}
+
+
+.sideSearch input::placeholder {
+
+  color:
+    #8197a5;
+
+}
+
+
+.sideSearch span {
+
+  font-size:
+    23px;
+
+  color:
+    #8ea8b6;
+
+  transform:
+    rotate(-20deg);
+
+}
+
+
+/* =========================================================
+   TÍTULO: CABECERA DE LISTA
+   ========================================================= */
+
+.listTitle {
+
+  font-size:
+    12px;
+
+  font-weight:
+    800;
+
+  color:
+    #d6e0e6;
+
+  margin:
+    3px 2px 8px;
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+}
+
+
+.listTitle b {
+
+  color:
+    var(--gold);
+
+}
+
+
+/* =========================================================
+   TÍTULO: LISTA DE SPOTS
+   ========================================================= */
+
+.list {
+
+  display:
+    grid;
+
+  gap:
+    5px;
+
+  padding-bottom:
+    20px;
+
+}
+
+
+.list button {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    38px
+    1fr;
+
+  gap:
+    7px;
+
+  text-align:
+    left;
+
+  background:
+    #091c2a;
+
+  color:
+    #dfe8ed;
+
+  border:
+    1px solid #18384d;
+
+  border-radius:
+    9px;
+
+  padding:
+    9px 8px;
+
+  cursor:
+    pointer;
+
+  line-height:
+    1.18;
+
+  font-size:
+    13px;
+
+  transition:
+    .18s ease;
+
+}
+
+
+.list button:hover {
+
+  border-color:
+    var(--red);
+
+  background:
+    #10293a;
+
+}
+
+
+.list button.sel {
+
+  border-color:
+    var(--red);
+
+  background:
+    #10293a;
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(239,24,32,.25);
+
+}
+
+
+.list em {
+
+  color:
+    var(--gold);
+
+  font-style:
+    normal;
+
+  font-weight:
+    900;
+
+}
+
+
+/* =========================================================
+   TÍTULO: PANEL DEL MAPA
+   ========================================================= */
+
+.mapPanel {
+
+  position:
+    relative;
+
+  min-width:
+    0;
+
+  min-height:
+    0;
+
+  overflow:
+    hidden;
+
+  background:
+    #365e3d;
+
+}
+
+
+/* =========================================================
+   TÍTULO: MAPA LEAFLET
+   ========================================================= */
+
+#map {
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+}
+
+
+.leaflet-container {
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    #365e3d;
+
+}
+
+
+/* =========================================================
+   TÍTULO: CONTROLES LEAFLET
+   ========================================================= */
+
+.leaflet-control-zoom {
+
+  border:
+    0 !important;
+
+  box-shadow:
+    0 3px 12px #0007 !important;
+
+}
+
+
+.leaflet-control-zoom a {
+
+  width:
+    38px !important;
+
+  height:
+    38px !important;
+
+  line-height:
+    38px !important;
+
+  font-size:
+    22px !important;
+
+  color:
+    #06131f !important;
+
+  background:
+    #ffffff !important;
+
+  border:
+    0 !important;
+
+}
+
+
+/* =========================================================
+   TÍTULO: INSIGNIA DEL MAPA
+   ========================================================= */
+
+.mapBadge {
+
+  position:
+    absolute;
+
+  z-index:
+    900;
+
+  left:
+    18px;
+
+  top:
+    18px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    12px;
+
+  padding:
+    10px 15px;
+
+  background:
+    #061722ee;
+
+  border:
+    1px solid #45677b;
+
+  border-radius:
+    14px;
+
+  box-shadow:
+    0 8px 25px #0007;
+
+}
+
+
+.badgeShield {
+
+  width:
+    54px;
+
+  height:
+    64px;
+
+  background:
+    #07101a;
+
+  border:
+    2px solid var(--gold);
+
+  border-radius:
+    13px 13px 25px 25px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  text-align:
+    center;
+
+  font-weight:
+    900;
+
+  font-size:
+    11px;
+
+  color:
+    #fff;
+
+  line-height:
+    1.05;
+
+}
+
+
+.mapBadge b {
+
+  display:
+    block;
+
+  color:
+    var(--gold);
+
+  font-size:
+    20px;
+
+}
+
+
+.mapBadge small {
+
+  display:
+    block;
+
+  color:
+    #b6c8d1;
+
+  margin-top:
+    4px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: LEYENDA DEL MAPA
+   ========================================================= */
+
+.mapLegend {
+
+  position:
+    absolute;
+
+  z-index:
+    900;
+
+  right:
+    18px;
+
+  top:
+    18px;
+
+  padding:
+    8px 12px;
+
+  border-radius:
+    10px;
+
+  background:
+    #061722d9;
+
+  border:
+    1px solid #45677b;
+
+  font-weight:
+    800;
+
+  font-size:
+    12px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: MARCADORES 01–92
+   ========================================================= */
+
+.marker {
+
+  width:
+    28px;
+
+  height:
+    28px;
+
+  border-radius:
+    50% 50% 50% 0;
+
+  background:
+    var(--red);
+
+  border:
+    2px solid #fff;
+
+  box-shadow:
+    0 3px 8px #000a;
+
+  transform:
+    rotate(-45deg);
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  transition:
+    transform .15s ease,
+    background .15s ease;
+
+}
+
+
+.marker span {
+
+  transform:
+    rotate(45deg);
+
+  font-size:
+    10px;
+
+  font-weight:
+    900;
+
+  color:
+    #fff;
+
+}
+
+
+.marker.active {
+
+  background:
+    #ff9700;
+
+  transform:
+    rotate(-45deg)
+    scale(1.12);
+
+}
+
+
+/* =========================================================
+   TÍTULO: HERNÁN EN EL MAPA
+   ========================================================= */
+
+.herny {
+
+  width:
+    45px !important;
+
+  height:
+    45px !important;
+
+  max-width:
+    45px !important;
+
+  max-height:
+    45px !important;
+
+  min-width:
+    45px !important;
+
+  min-height:
+    45px !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  overflow:
+    visible !important;
+
+  pointer-events:
+    none !important;
+
+}
+
+
+/* =========================================================
+   TÍTULO: IMAGEN DE HERNÁN
+   ========================================================= */
+
+.herny img {
+
+  width:
+    45px !important;
+
+  height:
+    45px !important;
+
+  max-width:
+    45px !important;
+
+  max-height:
+    45px !important;
+
+  object-fit:
+    contain !important;
+
+  object-position:
+    center;
+
+  display:
+    block;
+
+  filter:
+    drop-shadow(
+      0 2px 3px #000a
+    );
+
+  pointer-events:
+    none !important;
+
+}
+
+
+/* =========================================================
+   TÍTULO: ANIMACIÓN DE HERNÁN
+   ========================================================= */
+
+.herny.moving img {
+
+  animation:
+    hernanBob
+    .25s
+    ease-in-out
+    infinite
+    alternate;
+
+}
+
+
+@keyframes hernanBob {
+
+  from {
+
+    transform:
+      translateY(0);
+
+  }
+
+  to {
+
+    transform:
+      translateY(-2px);
+
+  }
+
+}
+
+
+/* =========================================================
+   TÍTULO: CIUDADES
+   Puntos amarillos y nombres
+   ========================================================= */
+
+.city-marker {
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+}
+
+
+.city-dot {
+
+  width:
+    8px;
+
+  height:
+    8px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--gold);
+
+  border:
+    2px solid #061722;
+
+  box-shadow:
+    0 1px 5px #000b;
+
+}
+
+
+.city-label {
+
+  position:
+    absolute;
+
+  left:
+    12px;
+
+  top:
+    -7px;
+
+  white-space:
+    nowrap;
+
+  color:
+    #ffffff;
+
+  font-size:
+    12px;
+
+  font-weight:
+    900;
+
+  text-shadow:
+    0 2px 3px #000,
+    0 0 5px #000,
+    0 0 8px #000;
+
+  pointer-events:
+    none;
+
+}
+
+
+/* =========================================================
+   TÍTULO: CARRUSEL
+   ========================================================= */
+
+.carouselWrap {
+
+  position:
+    absolute;
+
+  z-index:
+    1000;
+
+  left:
+    10px;
+
+  right:
+    10px;
+
+  bottom:
+    8px;
+
+  height:
+    158px;
+
+  padding:
+    28px 45px 10px;
+
+  background:
+    #061722f5;
+
+  border:
+    1px solid #285169;
+
+  border-radius:
+    15px;
+
+  box-shadow:
+    0 -8px 30px #0006;
+
+}
+
+
+/* =========================================================
+   TÍTULO: CABECERA DEL CARRUSEL
+   ========================================================= */
+
+.carouselHeader {
+
+  position:
+    absolute;
+
+  left:
+    14px;
+
+  top:
+    8px;
+
+  font-size:
+    11px;
+
+  color:
+    #d8e2e7;
+
+}
+
+
+.carouselHeader b {
+
+  display:
+    block;
+
+  color:
+    var(--gold);
+
+  font-size:
+    17px;
+
+  margin-top:
+    2px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: CONTENEDOR DEL CARRUSEL
+   ========================================================= */
+
+.carousel {
+
+  height:
+    120px;
+
+  display:
+    flex;
+
+  gap:
+    8px;
+
+  overflow:
+    hidden;
+
+  scroll-behavior:
+    smooth;
+
+  align-items:
+    stretch;
+
+}
+
+
+/* =========================================================
+   TÍTULO: BOTONES DEL CARRUSEL
+   ========================================================= */
+
+.carouselArrow {
+
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  transform:
+    translateY(-34%);
+
+  width:
+    40px;
+
+  height:
+    40px;
+
+  border:
+    0;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--red);
+
+  color:
+    #fff;
+
+  font-size:
+    30px;
+
+  line-height:
+    30px;
+
+  cursor:
+    pointer;
+
+  z-index:
+    4;
+
+  box-shadow:
+    0 4px 12px #0008;
+
+}
+
+
+.carouselArrow:hover {
+
+  background:
+    #ff252d;
+
+  transform:
+    translateY(-34%)
+    scale(1.05);
+
+}
+
+
+.carouselArrow.left {
+
+  left:
+    9px;
+
+}
+
+
+.carouselArrow.right {
+
+  right:
+    9px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: TARJETAS DEL CARRUSEL
+   ========================================================= */
+
+.thumb {
+
+  position:
+    relative;
+
+  flex:
+    0 0 124px;
+
+  background:
+    #0a2030;
+
+  border:
+    1px solid #326079;
+
+  border-radius:
+    9px;
+
+  padding:
+    5px;
+
+  cursor:
+    pointer;
+
+  overflow:
+    hidden;
+
+  transition:
+    .18s ease;
+
+}
+
+
+.thumb:hover {
+
+  border-color:
+    var(--red);
+
+}
+
+
+.thumb.sel {
+
+  border-color:
+    var(--red);
+
+  box-shadow:
+    0 0 0 1px
+    var(--red)
+    inset;
+
+}
+
+
+/* =========================================================
+   TÍTULO: IMÁGENES DEL CARRUSEL
+   ========================================================= */
+
+.thumb img {
+
+  width:
+    100%;
+
+  height:
+    78px;
+
+  object-fit:
+    cover;
+
+  object-position:
+    center;
+
+  border-radius:
+    6px;
+
+  display:
+    block;
+
+}
+
+
+/* =========================================================
+   TÍTULO: NÚMERO DEL CARRUSEL
+   ========================================================= */
+
+.thumb b {
+
+  position:
+    absolute;
+
+  left:
+    8px;
+
+  top:
+    8px;
+
+  background:
+    var(--red);
+
+  border-radius:
+    7px;
+
+  padding:
+    3px 6px;
+
+  font-size:
+    12px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: NOMBRE DEL CARRUSEL
+   ========================================================= */
+
+.thumb small {
+
+  display:
+    block;
+
+  color:
+    #f0f5f7;
+
+  font-weight:
+    800;
+
+  font-size:
+    11px;
+
+  line-height:
+    1.1;
+
+  margin-top:
+    6px;
+
+  white-space:
+    nowrap;
+
+  overflow:
+    hidden;
+
+  text-overflow:
+    ellipsis;
+
+}
+
+
+/* =========================================================
+   TÍTULO: PANEL DERECHO
+   ========================================================= */
+
+.infoPanel {
+
+  min-width:
+    0;
+
+  min-height:
+    0;
+
+  background:
+    #061825;
+
+  border-left:
+    1px solid #18384d;
+
+  overflow:
+    hidden;
+
+}
+
+
+/* =========================================================
+   TÍTULO: SCROLL PANEL DERECHO
+   ========================================================= */
+
+.infoScroll {
+
+  height:
+    100%;
+
+  overflow:
+    auto;
+
+  padding:
+    14px 14px 30px;
+
+  scrollbar-width:
+    thin;
+
+  scrollbar-color:
+    #2c5369
+    transparent;
+
+}
+
+
+.infoScroll::-webkit-scrollbar {
+
+  width:
+    7px;
+
+}
+
+
+.infoScroll::-webkit-scrollbar-track {
+
+  background:
+    transparent;
+
+}
+
+
+.infoScroll::-webkit-scrollbar-thumb {
+
+  background:
+    #2c5369;
+
+  border-radius:
+    8px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: CABECERA DEL PANEL DERECHO
+   ========================================================= */
+
+.infoHeader {
+
+  min-height:
+    42px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  margin-bottom:
+    9px;
+
+}
+
+
+.infoNum {
+
+  background:
+    var(--red);
+
+  border-radius:
+    9px;
+
+  padding:
+    7px 11px;
+
+  font-size:
+    20px;
+
+  font-weight:
+    900;
+
+}
+
+
+.infoHeader small {
+
+  display:
+    block;
+
+  color:
+    #fff;
+
+  font-size:
+    11px;
+
+  font-weight:
+    900;
+
+}
+
+
+.infoHeader strong {
+
+  font-size:
+    12px;
+
+  color:
+    #c4d2da;
+
+}
+
+
+/* =========================================================
+   TÍTULO: BOTÓN CERRAR
+   ========================================================= */
+
+.closeInfo {
+
+  margin-left:
+    auto;
+
+  width:
+    38px;
+
+  height:
+    38px;
+
+  border-radius:
+    50%;
+
+  border:
+    0;
+
+  background:
+    #1a2c3b;
+
+  color:
+    #dfe8ed;
+
+  font-size:
+    28px;
+
+  cursor:
+    pointer;
+
+}
+
+
+.closeInfo:hover {
+
+  background:
+    #263e50;
+
+}
+
+
+/* =========================================================
+   TÍTULO: MARCO DE FOTOGRAFÍA
+   ========================================================= */
+
+.photoFrame {
+
+  position:
+    relative;
+
+  background:
+    #0a1b28;
+
+  border:
+    1px solid #31576c;
+
+  border-radius:
+    12px;
+
+  overflow:
+    hidden;
+
+  box-shadow:
+    0 6px 18px #0005;
+
+}
+
+
+/* =========================================================
+   TÍTULO: IMAGEN PRINCIPAL DEL PHOTO SPOT
+   ========================================================= */
+
+.photoFrame img {
+
+  width:
+    100%;
+
+  height:
+    245px;
+
+  display:
+    block;
+
+  object-fit:
+    cover;
+
+  object-position:
+    center;
+
+  background:
+    #07141f;
+
+}
+
+
+/* =========================================================
+   TÍTULO: FLECHAS DE LA FOTO
+   ========================================================= */
+
+.photoArrow {
+
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  transform:
+    translateY(-50%);
+
+  width:
+    38px;
+
+  height:
+    38px;
+
+  border:
+    0;
+
+  border-radius:
+    50%;
+
+  background:
+    #061722d9;
+
+  color:
+    #fff;
+
+  font-size:
+    30px;
+
+  cursor:
+    pointer;
+
+  z-index:
+    5;
+
+}
+
+
+.photoArrow:hover {
+
+  background:
+    #061722f5;
+
+}
+
+
+.photoLeft {
+
+  left:
+    10px;
+
+}
+
+
+.photoRight {
+
+  right:
+    10px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: CUERPO DEL PANEL DERECHO
+   ========================================================= */
+
+.infoBody {
+
+  padding:
+    14px 4px 0;
+
+}
+
+
+.infoBody h2 {
+
+  font-size:
+    26px;
+
+  line-height:
+    1.06;
+
+  margin:
+    0 0 9px;
+
+}
+
+
+.location {
+
+  color:
+    #dfe8ed;
+
+  font-size:
+    14px;
+
+  margin-bottom:
+    12px;
+
+}
+
+
+.infoBody p {
+
+  font-size:
+    15px;
+
+  line-height:
+    1.35;
+
+  color:
+    #f0f4f6;
+
+  margin:
+    0 0 12px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: DATOS RÁPIDOS
+   ========================================================= */
+
+.quickFacts {
+
+  border-top:
+    1px solid #23465d;
+
+  border-bottom:
+    1px solid #23465d;
+
+  padding:
+    9px 0;
+
+  margin:
+    8px 0 13px;
+
+  display:
+    grid;
+
+  gap:
+    8px;
+
+  font-size:
+    13px;
+
+  color:
+    #d9e5ea;
+
+}
+
+
+.quickFacts span {
+
+  margin-left:
+    6px;
+
+}
+
+
+/* =========================================================
+   TÍTULO: BOTONES GENERALES
+   ========================================================= */
+
+.btn {
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  width:
+    100%;
+
+  min-height:
+    45px;
+
+  padding:
+    11px 14px;
+
+  border-radius:
+    24px;
+
+  border:
+    1px solid #416379;
+
+  background:
+    transparent;
+
+  color:
+    #fff;
+
+  font-weight:
+    900;
+
+  text-decoration:
+    none;
+
+  text-align:
+    center;
+
+  cursor:
+    pointer;
+
+  margin-top:
+    9px;
+
+}
+
+
+.btn:hover {
+
+  background:
+    #102b3d;
+
+}
+
+
+.btn.red {
+
+  background:
+    var(--red);
+
+  border-color:
+    var(--red);
+
+}
+
+
+.btn.red:hover {
+
+  background:
+    #ff252d;
+
+}
+
+
+/* =========================================================
+   TÍTULO: TARJETA DE INFORMACIÓN
+   ========================================================= */
+
+.accessCard {
+
+  margin-top:
+    14px;
+
+  padding:
+    13px;
+
+  border:
+    1px solid #274d63;
+
+  border-radius:
+    12px;
+
+  background:
+    #0a2030;
+
+  color:
+    #dfe8ed;
+
+  font-size:
+    13px;
+
+}
+
+
+.accessCard p {
+
+  color:
+    #9fb2bd;
+
+  margin:
+    8px 0 0;
+
+  line-height:
+    1.3;
+
+}
+
+
+/* =========================================================
+   TÍTULO: PIE DE PÁGINA
+   ========================================================= */
+
+.footer {
+
+  height:
+    30px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    20px;
+
+  padding:
+    0 15px;
+
+  background:
+    #020a11;
+
+  border-top:
+    1px solid #183347;
+
+  color:
+    #9db0bc;
+
+  font-size:
+    11px;
+
+  position:
+    relative;
+
+  z-index:
+    3000;
+
+}
+
+
+.footer span {
+
+  color:
+    #fff;
+
+  font-weight:
+    800;
+
+}
+
+
+/* =========================================================
+   TÍTULO: CRÉDITOS DEL SITIO
+   Pie de página para páginas de contenido
+   ========================================================= */
+
+footer.site-credits {
+  width: 100%;
+  min-height: 0;
+
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+
+  align-items: center;
+  justify-items: center;
+
+  gap: 8px;
+
+  margin: 0;
+  padding: 22px 15px;
+
+  background: #020a11;
+  border-top: 1px solid #183347;
+
+  color: #9db0bc;
+  font-size: 12px;
+
+  text-align: center;
+  white-space: normal;
+}
+
+footer.site-credits > p {
+  display: block;
+
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0;
+  padding: 0;
+
+  text-align: center;
+  line-height: 1.5;
+
+  white-space: normal;
+}
+
+footer.site-credits > p.developer-credit {
+  margin: 0;
+
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* =========================================================
+   RESPONSIVE DEL PIE DE PÁGINA
+   ========================================================= */
+
+@media (max-width: 600px) {
+  footer.site-credits {
+    padding: 18px 10px;
+    gap: 6px;
+  }
+
+  footer.site-credits > p {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE 1200 PX
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  .layout {
+
+    grid-template-columns:
+      240px
+      minmax(0, 1fr)
+      340px;
+
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE 980 PX
+   ========================================================= */
+
+@media (max-width: 980px) {
+
+  .layout {
+
+    grid-template-columns:
+      220px
+      minmax(0, 1fr);
+
+  }
+
+
+  .infoPanel {
+
+    display:
+      none;
+
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE 760 PX
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .topbar {
+
+    width:
+      100%;
+
+    height:
+      64px;
+
+    min-height:
+      64px;
+
+    justify-content:
+      flex-start;
+
+    padding:
+      0 10px;
+
+    overflow-x:
+      auto;
+
+    overflow-y:
+      hidden;
+
+  }
+
+
+  .mainNav {
+
+    width:
+      max-content;
+
+    max-width:
+      none;
+
+    height:
+      64px;
+
+    justify-content:
+      flex-start;
+
+    gap:
+      18px;
+
+    margin:
+      0 auto;
+
+  }
+
+
+  .mainNav a {
+
+    height:
+      64px;
+
+    font-size:
+      11px;
+
+  }
+
+
+  .layout {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .sidePanel {
+
+    display:
+      none;
+
+  }
+
+
+  .carouselWrap {
+
+    left:
+      5px;
+
+    right:
+      5px;
+
+  }
+
+}
+
+
+/* =========================================================
+   TÍTULO: REDUCCIÓN DE MOVIMIENTO
+   Accesibilidad
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .herny.moving img {
+
+    animation:
+      none;
+
+  }
+
+
+  .carousel {
+
+    scroll-behavior:
+      auto;
+
+  }
+
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer.site-credits {
+
+  width: 100% !important;
+
+  min-height: 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
+
+  grid-template-columns: 1fr !important;
+
+  grid-template-rows: auto auto !important;
+
+  align-items: center !important;
+
+  justify-items: center !important;
+
+  gap: 8px !important;
+
+  margin: 0 !important;
+
+  padding: 22px 15px !important;
+
+  background: #020a11 !important;
+
+  border-top: 1px solid #183347 !important;
+
+  color: #9db0bc !important;
+
+  font-size: 12px !important;
+
+  text-align: center !important;
+
+  white-space: normal !important;
+}
+
+
+footer.site-credits > p {
+
+  display: block !important;
+
+  width: 100% !important;
+
+  max-width: 1200px !important;
+
+  margin: 0 !important;
+
+  padding: 0 !important;
+
+  text-align: center !important;
+
+  line-height: 1.5 !important;
+
+  white-space: normal !important;
+
+}
+
+
+footer.site-credits > p.developer-credit {
+
+  margin: 0 !important;
+
+  color: #ffffff !important;
+
+  font-weight: 700 !important;
+
+}
+
+
+/* =====================================================
+   FOOTER MÓVIL
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+  footer.site-credits {
+
+    padding: 18px 10px !important;
+
+    gap: 6px !important;
+
+  }
+
+  footer.site-credits > p {
+
+    font-size: 12px !important;
+
+    line-height: 1.6 !important;
+
+  }
+
+}

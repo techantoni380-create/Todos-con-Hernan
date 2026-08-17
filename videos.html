@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Vídeos de Todos con Hernán"
+    >
+
+    <title>Vídeos · Todos con Hernán</title>
+
+
+    <style>
+
+        /* =====================================================
+           VARIABLES
+           ===================================================== */
+
+        :root {
+
+            --bg: #04111b;
+            --bg2: #061925;
+            --panel: #071b29;
+            --panel2: #0a2232;
+
+            --red: #ef1820;
+            --red-dark: #bd1017;
+
+            --gold: #ffd000;
+
+            --green: #29e879;
+
+            --white: #f5f8fa;
+            --text: #dce7ed;
+            --muted: #9fb3bf;
+
+            --line: #244b62;
+
+        }
+
+
+        /* =====================================================
+           RESET
+           ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            margin: 0;
+            padding: 0;
+
+            min-height: 100vh;
+
+            background: var(--bg);
+
+            color: var(--white);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            overflow-x: hidden;
+
+        }
+
+
+        a {
+            color: inherit;
+        }
+
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+
+        /* =====================================================
+           BARRA SUPERIOR
+           ===================================================== */
+
+        .topbar {
+
+            min-height: 64px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 0 20px;
+
+            background: #04111a;
+
+            border-bottom:
+                1px solid #183347;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+        }
+
+
+        .mainNav {
+
+            min-height: 64px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 34px;
+
+        }
+
+
+        .mainNav a {
+
+            height: 64px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            color: #dbe4ea;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+        }
+
+
+        .mainNav a:hover {
+
+            color: #ffffff;
+
+        }
+
+
+        .mainNav a.active {
+
+            color: #ffffff;
+
+            font-weight: 900;
+
+        }
+
+
+        .mainNav a.active::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+
+            bottom: 0;
+
+            height: 4px;
+
+            background: var(--red);
+
+            border-radius:
+                3px 3px 0 0;
+
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .hero {
+
+            min-height: 500px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                80px 20px 70px;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 35%,
+                    #173c50 0,
+                    #071a28 38%,
+                    #04111b 80%
+                );
+
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 700px;
+
+            height: 700px;
+
+            left: 50%;
+
+            top: -320px;
+
+            transform:
+                translateX(-50%);
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    #ef18201c,
+                    transparent 68%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .heroContent {
+
+            max-width: 900px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .label {
+
+            display: inline-block;
+
+            padding:
+                8px 15px;
+
+            margin-bottom: 20px;
+
+            border:
+                1px solid #35576c;
+
+            border-radius: 20px;
+
+            background:
+                #071b29cc;
+
+            color: var(--gold);
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .hero h1 {
+
+            margin: 0;
+
+            font-size:
+                clamp(52px, 7vw, 90px);
+
+            line-height: .9;
+
+            letter-spacing: -4px;
+
+            font-weight: 950;
+
+        }
+
+
+        .hero h1 span {
+
+            color: var(--red);
+
+        }
+
+
+        .hero p {
+
+            max-width: 700px;
+
+            margin:
+                28px auto 0;
+
+            color: var(--text);
+
+            font-size:
+                clamp(17px, 2vw, 21px);
+
+            line-height: 1.6;
+
+        }
+
+
+        .heroButtons {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 30px;
+
+        }
+
+
+        /* =====================================================
+           BOTONES
+           ===================================================== */
+
+        .btn {
+
+            min-height:
+                48px;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                0 24px;
+
+            border-radius:
+                26px;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                900;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+
+        }
+
+
+        .btn:hover {
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .btn.red {
+
+            background:
+                var(--red);
+
+            color:
+                #ffffff;
+
+            box-shadow:
+                0 10px 25px #0007;
+
+        }
+
+
+        .btn.outline {
+
+            border:
+                1px solid #416579;
+
+            background:
+                transparent;
+
+            color:
+                #ffffff;
+
+        }
+
+
+        /* =====================================================
+           SECCIONES
+           ===================================================== */
+
+        .section {
+
+            padding:
+                85px 7vw;
+
+            background:
+                var(--bg2);
+
+        }
+
+
+        .section.dark {
+
+            background:
+                #04111b;
+
+        }
+
+
+        .sectionHeader {
+
+            max-width:
+                850px;
+
+            margin:
+                0 auto 40px;
+
+            text-align:
+                center;
+
+        }
+
+
+        .sectionLabel {
+
+            color:
+                var(--gold);
+
+            font-size:
+                13px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1px;
+
+            margin-bottom:
+                12px;
+
+        }
+
+
+        .sectionHeader h2 {
+
+            margin:
+                0;
+
+            font-size:
+                clamp(36px, 5vw, 58px);
+
+            line-height:
+                1;
+
+            font-weight:
+                950;
+
+        }
+
+
+        .sectionHeader h2 span {
+
+            color:
+                var(--red);
+
+        }
+
+
+        .sectionHeader p {
+
+            max-width:
+                720px;
+
+            margin:
+                18px auto 0;
+
+            color:
+                var(--muted);
+
+            font-size:
+                17px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           VIDEO DESTACADO
+           ===================================================== */
+
+        .featuredVideo {
+
+            max-width:
+                1100px;
+
+            margin:
+                auto;
+
+            padding:
+                20px;
+
+            border:
+                1px solid #31556c;
+
+            border-radius:
+                22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0a2232,
+                    #061722
+                );
+
+            box-shadow:
+                0 25px 60px #0007;
+
+        }
+
+
+        .featuredThumbnail {
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            border-radius:
+                16px;
+
+            background:
+                #000;
+
+        }
+
+
+        .featuredThumbnail img {
+
+            width:
+                100%;
+
+            aspect-ratio:
+                16 / 9;
+
+            object-fit:
+                cover;
+
+        }
+
+
+        .featuredOverlay {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                linear-gradient(
+                    to top,
+                    #0009,
+                    transparent 60%
+                );
+
+        }
+
+
+        .playButton {
+
+            width:
+                95px;
+
+            height:
+                95px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--red);
+
+            color:
+                #fff;
+
+            font-size:
+                38px;
+
+            padding-left:
+                7px;
+
+            box-shadow:
+                0 12px 35px #0009;
+
+            transition:
+                transform .2s ease;
+
+        }
+
+
+        .featuredThumbnail:hover .playButton {
+
+            transform:
+                scale(1.1);
+
+        }
+
+
+        .featuredInfo {
+
+            padding:
+                25px 5px 5px;
+
+        }
+
+
+        .videoCategory {
+
+            display:
+                inline-block;
+
+            margin-bottom:
+                10px;
+
+            padding:
+                6px 11px;
+
+            border-radius:
+                14px;
+
+            background:
+                var(--red);
+
+            color:
+                #ffffff;
+
+            font-size:
+                10px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                .5px;
+
+        }
+
+
+        .featuredInfo h3 {
+
+            margin:
+                0 0 12px;
+
+            font-size:
+                clamp(25px, 3vw, 36px);
+
+        }
+
+
+        .featuredInfo p {
+
+            max-width:
+                800px;
+
+            margin:
+                0 0 22px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                16px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           GRID DE VÍDEOS
+           ===================================================== */
+
+        .videosGrid {
+
+            max-width:
+                1250px;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap:
+                22px;
+
+        }
+
+
+        .videoCard {
+
+            overflow:
+                hidden;
+
+            border:
+                1px solid var(--line);
+
+            border-radius:
+                18px;
+
+            background:
+                #071b29;
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease;
+
+        }
+
+
+        .videoCard:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                var(--red);
+
+        }
+
+
+        .videoThumbnail {
+
+            display:
+                block;
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            background:
+                #000;
+
+        }
+
+
+        .videoThumbnail img {
+
+            width:
+                100%;
+
+            aspect-ratio:
+                16 / 9;
+
+            object-fit:
+                cover;
+
+            transition:
+                transform .3s ease;
+
+        }
+
+
+        .videoCard:hover .videoThumbnail img {
+
+            transform:
+                scale(1.03);
+
+        }
+
+
+        .videoOverlay {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                #0002;
+
+        }
+
+
+        .smallPlay {
+
+            width:
+                65px;
+
+            height:
+                65px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--red);
+
+            color:
+                #fff;
+
+            font-size:
+                25px;
+
+            padding-left:
+                4px;
+
+            box-shadow:
+                0 8px 25px #0008;
+
+        }
+
+
+        .videoInfo {
+
+            padding:
+                22px;
+
+        }
+
+
+        .videoInfo h3 {
+
+            margin:
+                0 0 10px;
+
+            font-size:
+                22px;
+
+            line-height:
+                1.2;
+
+        }
+
+
+        .videoInfo p {
+
+            margin:
+                0 0 18px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                14px;
+
+            line-height:
+                1.55;
+
+        }
+
+
+        /* =====================================================
+           CANAL YOUTUBE
+           ===================================================== */
+
+        .youtubeSection {
+
+            max-width:
+                1050px;
+
+            margin:
+                auto;
+
+            padding:
+                45px;
+
+            text-align:
+                center;
+
+            border:
+                1px solid #5b4650;
+
+            border-radius:
+                22px;
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 0%,
+                    #ef18201c,
+                    transparent 60%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #111b26,
+                    #071a28
+                );
+
+        }
+
+
+        .youtubeIcon {
+
+            font-size:
+                55px;
+
+            margin-bottom:
+                15px;
+
+        }
+
+
+        .youtubeSection h2 {
+
+            margin:
+                0 0 12px;
+
+            font-size:
+                clamp(30px, 4vw, 45px);
+
+            font-weight:
+                950;
+
+        }
+
+
+        .youtubeSection h2 span {
+
+            color:
+                var(--red);
+
+        }
+
+
+        .youtubeSection p {
+
+            max-width:
+                700px;
+
+            margin:
+                0 auto 25px;
+
+            color:
+                var(--muted);
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        footer {
+
+            min-height:
+                70px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                20px;
+
+            background:
+                #020a11;
+
+            border-top:
+                1px solid #183347;
+
+            color:
+                #8fa4b0;
+
+            font-size:
+                12px;
+
+            text-align:
+                center;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .mainNav {
+
+                gap:
+                    22px;
+
+            }
+
+        }
+
+
+        @media (max-width: 750px) {
+
+            .topbar {
+
+                overflow-x:
+                    auto;
+
+                justify-content:
+                    flex-start;
+
+            }
+
+
+            .mainNav {
+
+                flex:
+                    0 0 auto;
+
+                gap:
+                    18px;
+
+            }
+
+
+            .mainNav a {
+
+                font-size:
+                    11px;
+
+            }
+
+
+            .hero {
+
+                padding:
+                    55px 20px;
+
+            }
+
+
+            .section {
+
+                padding:
+                    60px 20px;
+
+            }
+
+
+            .videosGrid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .featuredVideo {
+
+                padding:
+                    10px;
+
+            }
+
+
+            .featuredInfo {
+
+                padding:
+                    20px 5px 5px;
+
+            }
+
+
+            .youtubeSection {
+
+                padding:
+                    30px 20px;
+
+            }
+
+        }
+
+    
+
+/* =========================================================
+   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
+   ========================================================= */
+
+footer.site-credits {
+  width: 100% !important;
+  min-height: 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto !important;
+
+  align-items: center !important;
+  justify-items: center !important;
+
+  gap: 8px !important;
+
+  margin: 0 !important;
+  padding: 22px 15px !important;
+
+  background: #020a11 !important;
+  border-top: 1px solid #183347 !important;
+
+  color: #9db0bc !important;
+  font-size: 13px !important;
+
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+footer.site-credits > p {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+  line-height: 1.5 !important;
+
+  white-space: normal !important;
+}
+
+footer.site-credits > p.developer-credit {
+  margin: 0 !important;
+
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   FOOTER · MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  footer.site-credits {
+    padding: 18px 10px !important;
+    gap: 6px !important;
+  }
+
+  footer.site-credits > p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         BARRA SUPERIOR
+         ===================================================== -->
+
+    <header class="topbar">
+
+        <nav
+            class="mainNav"
+            aria-label="Navegación principal"
+        >
+
+            <a href="inicio.html">
+                INICIO
+            </a>
+
+
+            <a href="index.html">
+                EL GRAND TOUR
+            </a>
+
+
+            <a
+                href="videos.html"
+                class="active"
+            >
+                VÍDEOS
+            </a>
+
+
+            <a href="vivir-en-suiza.html">
+                VIVIR EN SUIZA
+            </a>
+
+
+            <a href="comunidad.html">
+                COMUNIDAD
+            </a>
+
+
+            <a href="proyectos.html">
+                PROYECTOS
+            </a>
+
+
+            <a href="hernan.html">
+                HERNÁN
+            </a>
+
+
+            <a href="contacto.html">
+                CONTACTO
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         CONTENIDO
+         ===================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section class="hero">
+
+
+            <div class="heroContent">
+
+
+                <div class="label">
+                    TODOS CON HERNÁN · VÍDEOS
+                </div>
+
+
+                <h1>
+
+                    VÍDEOS
+                    <br>
+
+                    <span>DE HERNÁN</span>
+
+                </h1>
+
+
+                <p>
+
+                    Descubre las historias, viajes, experiencias y proyectos de Todos con Hernán. 
+                    Acompáñanos en cada aventura, conoce nuevos lugares y descubre una forma diferente 
+                    de vivir y disfrutar Suiza.
+
+                    <br><br>
+
+                    Desde su historia personal hasta
+                    el Grand Tour de Suiza y los nuevos
+                    proyectos que van creciendo junto
+                    a la comunidad.
+
+                </p>
+
+
+                <div class="heroButtons">
+
+
+                    <a
+                        href="#videos"
+                        class="btn red"
+                    >
+                        VER LOS VÍDEOS ↓
+                    </a>
+
+
+                    <a
+                        href="https://www.youtube.com/@todosconhernan/videos"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn outline"
+                    >
+                        VER CANAL COMPLETO →
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             HISTORIA DE HERNÁN
+             ================================================= -->
+
+        <section class="section">
+
+
+            <div class="sectionHeader">
+
+
+                <div class="sectionLabel">
+                    VÍDEO DESTACADO
+                </div>
+
+
+                <h2>
+
+                    LA HISTORIA DE
+                    <span>HERNÁN</span>
+
+                </h2>
+
+
+                <p>
+
+                    Antes de descubrir sus proyectos,
+                    conoce a la persona que está detrás
+                    de Todos con Hernán.
+
+                </p>
+
+
+            </div>
+
+
+            <article class="featuredVideo">
+
+
+                <a
+                    href="https://www.youtube.com/watch?v=4xkyuGsHuI4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="featuredThumbnail"
+                >
+
+
+                    <img
+                        src="https://img.youtube.com/vi/4xkyuGsHuI4/maxresdefault.jpg"
+                        alt="La historia de Hernán · Mi llegada a Suiza"
+                    >
+
+
+                    <div class="featuredOverlay">
+
+                        <div class="playButton">
+                            ▶
+                        </div>
+
+                    </div>
+
+
+                </a>
+
+
+                <div class="featuredInfo">
+
+
+                    <div class="videoCategory">
+                        HISTORIA DE HERNÁN
+                    </div>
+
+
+                    <h3>
+
+                        Mi llegada a Suiza,
+                        lejos de mi familia
+                        y empezando de cero
+
+                    </h3>
+
+
+                    <p>
+
+                        Conoce la experiencia personal
+                        de Hernán al llegar a Suiza y
+                        comenzar una nueva etapa de su vida.
+
+                    </p>
+
+
+                    <a
+                        href="https://www.youtube.com/watch?v=4xkyuGsHuI4"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn red"
+                    >
+                        ▶ VER VÍDEO
+                    </a>
+
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             OTROS VÍDEOS
+             ================================================= -->
+
+        <section
+            class="section dark"
+            id="videos"
+        >
+
+
+            <div class="sectionHeader">
+
+
+                <div class="sectionLabel">
+                    TODOS CON HERNÁN
+                </div>
+
+
+                <h2>
+
+                    MÁS
+                    <span>VÍDEOS</span>
+
+                </h2>
+
+
+                <p>
+
+                    Descubre otros vídeos del canal
+                    y acompaña a Hernán en sus diferentes
+                    experiencias y proyectos.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="videosGrid">
+
+
+                <!-- =================================================
+                     VÍDEO 1
+                     ================================================= -->
+
+                <article class="videoCard">
+
+
+                    <a
+                        href="https://www.youtube.com/watch?v=zbBKTvOw83I"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="videoThumbnail"
+                    >
+
+                        <img
+                            src="https://img.youtube.com/vi/zbBKTvOw83I/maxresdefault.jpg"
+                            alt="Vídeo de Todos con Hernán"
+                        >
+
+
+                        <div class="videoOverlay">
+
+                            <div class="smallPlay">
+                                ▶
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <div class="videoInfo">
+
+
+                        <div class="videoCategory">
+                            TODOS CON HERNÁN
+                        </div>
+
+
+                        <h3>
+                            Descubre el vídeo
+                        </h3>
+
+
+                        <p>
+                            Una nueva experiencia
+                            de Todos con Hernán.
+                        </p>
+
+
+                        <a
+                            href="https://www.youtube.com/watch?v=zbBKTvOw83I"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn outline"
+                        >
+                            VER VÍDEO →
+                        </a>
+
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- =================================================
+                     VÍDEO 2
+                     ================================================= -->
+
+                <article class="videoCard">
+
+
+                    <a
+                        href="https://www.youtube.com/watch?v=GtCiNSdS9nE"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="videoThumbnail"
+                    >
+
+                        <img
+                            src="https://img.youtube.com/vi/GtCiNSdS9nE/maxresdefault.jpg"
+                            alt="Vídeo de Todos con Hernán"
+                        >
+
+
+                        <div class="videoOverlay">
+
+                            <div class="smallPlay">
+                                ▶
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <div class="videoInfo">
+
+
+                        <div class="videoCategory">
+                            TODOS CON HERNÁN
+                        </div>
+
+
+                        <h3>
+                            Una nueva experiencia
+                        </h3>
+
+
+                        <p>
+                            Descubre otro de los vídeos
+                            del canal de Todos con Hernán.
+                        </p>
+
+
+                        <a
+                            href="https://www.youtube.com/watch?v=GtCiNSdS9nE"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn outline"
+                        >
+                            VER VÍDEO →
+                        </a>
+
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- =================================================
+                     VÍDEO 3
+                     ================================================= -->
+
+                <article class="videoCard">
+
+
+                    <a
+                        href="https://www.youtube.com/watch?v=BkdgQsixz_M"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="videoThumbnail"
+                    >
+
+                        <img
+                            src="https://img.youtube.com/vi/BkdgQsixz_M/maxresdefault.jpg"
+                            alt="Vídeo de Todos con Hernán"
+                        >
+
+
+                        <div class="videoOverlay">
+
+                            <div class="smallPlay">
+                                ▶
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <div class="videoInfo">
+
+
+                        <div class="videoCategory">
+                            TODOS CON HERNÁN
+                        </div>
+
+
+                        <h3>
+                            Historias y experiencias
+                        </h3>
+
+
+                        <p>
+                            Otro de los contenidos
+                            disponibles en el canal.
+                        </p>
+
+
+                        <a
+                            href="https://www.youtube.com/watch?v=BkdgQsixz_M"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn outline"
+                        >
+                            VER VÍDEO →
+                        </a>
+
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- =================================================
+                     VÍDEO 4
+                     ================================================= -->
+
+                <article class="videoCard">
+
+
+                    <a
+                        href="https://www.youtube.com/watch?v=XeVdFxQH0BU"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="videoThumbnail"
+                    >
+
+                        <img
+                            src="https://img.youtube.com/vi/XeVdFxQH0BU/maxresdefault.jpg"
+                            alt="Vídeo de Todos con Hernán"
+                        >
+
+
+                        <div class="videoOverlay">
+
+                            <div class="smallPlay">
+                                ▶
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <div class="videoInfo">
+
+
+                        <div class="videoCategory">
+                            TODOS CON HERNÁN
+                        </div>
+
+
+                        <h3>
+                            Nuevas historias
+                        </h3>
+
+
+                        <p>
+                            Continúa descubriendo el contenido
+                            de Todos con Hernán.
+                        </p>
+
+
+                        <a
+                            href="https://www.youtube.com/watch?v=XeVdFxQH0BU"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn outline"
+                        >
+                            VER VÍDEO →
+                        </a>
+
+
+                    </div>
+
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CANAL COMPLETO
+             ================================================= -->
+
+        <section class="section">
+
+
+            <div class="youtubeSection">
+
+
+                <div class="youtubeIcon">
+                    ▶️
+                </div>
+
+
+                <div class="sectionLabel">
+                    CANAL OFICIAL
+                </div>
+
+
+                <h2>
+
+                    TODOS LOS VÍDEOS DE
+                    <span>HERNÁN</span>
+
+                </h2>
+
+
+                <p>
+
+                    Esta página irá creciendo con nuevos
+                    vídeos. Mientras tanto, puedes visitar
+                    el canal completo de Todos con Hernán
+                    y descubrir todos sus contenidos.
+
+                </p>
+
+
+                <a
+                    href="https://www.youtube.com/@todosconhernan/videos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn red"
+                >
+                    ▶ VER CANAL COMPLETO
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+<!-- =====================================================
+     PIE DE PÁGINA
+     ===================================================== -->
+
+<footer class="site-credits">
+
+  <p>
+    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+  </p>
+
+  <p class="developer-credit">
+    Yonathan Alvarado · Full Stack Web Developer · Spain
+  </p>
+
+</footer>
+
+</body>
+
+</html>

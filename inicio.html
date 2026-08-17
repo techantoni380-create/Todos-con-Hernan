@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Todos con Hernán · Suiza</title>
+
+  <style>
+
+    /* =====================================================
+       VARIABLES
+       ===================================================== */
+
+    :root {
+      --bg: #04111b;
+      --panel: #071a28;
+      --panel2: #0a2030;
+      --line: #23465d;
+
+      --red: #ef1820;
+      --gold: #ffd000;
+      --green: #29e879;
+
+      --text: #f5f8fa;
+      --muted: #a7bac7;
+    }
+
+
+    /* =====================================================
+       RESET
+       ===================================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+
+    /* =====================================================
+       CABECERA
+       ===================================================== */
+
+    .topbar {
+      height: 64px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0 20px;
+
+      background: #04111a;
+
+      border-bottom:
+        1px solid #183347;
+
+      position: relative;
+
+      z-index: 1000;
+    }
+
+
+    .mainNav {
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 34px;
+    }
+
+
+    .mainNav a {
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+
+      position: relative;
+
+      color: #dbe4ea;
+
+      text-decoration: none;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      white-space: nowrap;
+    }
+
+
+    .mainNav a:hover {
+      color: #ffffff;
+    }
+
+
+    .mainNav a.active {
+      color: #ffffff;
+      font-weight: 900;
+    }
+
+
+    .mainNav a.active::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 4px;
+
+      background: var(--red);
+
+      border-radius:
+        3px 3px 0 0;
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .hero {
+      min-height: 650px;
+
+      position: relative;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(420px, 620px);
+
+      align-items: center;
+
+      gap: 30px;
+
+      padding:
+        50px
+        7vw
+        40px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 75% 45%,
+          #173c50 0,
+          #071a28 35%,
+          #04111b 72%
+        );
+    }
+
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 650px;
+      height: 650px;
+
+      right: -180px;
+      top: -160px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          #ef182025,
+          transparent 68%
+        );
+
+      pointer-events: none;
+    }
+
+
+    /* =====================================================
+       TEXTO HERO
+       ===================================================== */
+
+    .heroContent {
+      position: relative;
+      z-index: 2;
+
+      max-width: 650px;
+    }
+
+
+    .eyebrow {
+      display: inline-block;
+
+      margin-bottom: 18px;
+
+      padding:
+        7px 13px;
+
+      border:
+        1px solid #31556c;
+
+      border-radius: 20px;
+
+      background: #071a28cc;
+
+      color: var(--gold);
+
+      font-size: 13px;
+      font-weight: 900;
+
+      letter-spacing: .8px;
+    }
+
+
+    .hero h1 {
+      margin: 0;
+
+      font-size:
+        clamp(52px, 7vw, 92px);
+
+      line-height: .88;
+
+      font-weight: 950;
+
+      letter-spacing: -4px;
+    }
+
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+
+    .heroSubtitle {
+      max-width: 580px;
+
+      margin:
+        28px 0 0;
+
+      color: #dbe7ed;
+
+      font-size:
+        clamp(18px, 2vw, 23px);
+
+      line-height: 1.45;
+    }
+
+
+    .heroButtons {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 30px;
+    }
+
+
+    .heroButton {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 48px;
+
+      padding:
+        0 24px;
+
+      border-radius: 25px;
+
+      text-decoration: none;
+
+      font-weight: 900;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+
+    .heroButton:hover {
+      transform: translateY(-2px);
+    }
+
+
+    .heroButton.primary {
+      background: var(--red);
+
+      color: #fff;
+
+      box-shadow:
+        0 8px 25px #0007;
+    }
+
+
+    .heroButton.secondary {
+      background: transparent;
+
+      color: #fff;
+
+      border:
+        1px solid #42657a;
+    }
+
+
+    /* =====================================================
+       HERNÁN
+       ===================================================== */
+
+    .heroHernan {
+      position: relative;
+
+      height: 560px;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: center;
+
+      z-index: 2;
+    }
+
+
+    .heroHernan::before {
+      content: "";
+
+      position: absolute;
+
+      width: 460px;
+      height: 460px;
+
+      bottom: 15px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          #ef182025,
+          transparent 67%
+        );
+    }
+
+
+    .heroHernan img {
+      position: relative;
+
+      z-index: 2;
+
+      width: min(
+        100%,
+        650px
+      );
+
+      height: 100%;
+
+      object-fit: contain;
+
+      object-position:
+        center bottom;
+
+      filter:
+        drop-shadow(
+          0 18px 25px #000b
+        );
+    }
+
+
+    /* =====================================================
+       PRESENTACIÓN
+       ===================================================== */
+
+    .introSection {
+      padding:
+        70px
+        7vw;
+
+      background:
+        #061825;
+    }
+
+
+    .sectionTitle {
+      margin: 0 0 12px;
+
+      font-size:
+        clamp(32px, 4vw, 52px);
+
+      line-height: 1;
+
+      font-weight: 950;
+    }
+
+
+    .sectionTitle span {
+      color: var(--red);
+    }
+
+
+    .sectionText {
+      max-width: 760px;
+
+      margin: 0;
+
+      color: #c9d7df;
+
+      font-size: 18px;
+
+      line-height: 1.6;
+    }
+
+
+    /* =====================================================
+       TARJETAS
+       ===================================================== */
+
+    .cardsSection {
+      padding:
+        0
+        7vw
+        80px;
+
+      background:
+        #061825;
+    }
+
+
+    .cards {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 16px;
+    }
+
+
+    .card {
+      min-height: 220px;
+
+      padding: 24px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #0a2030,
+          #071722
+        );
+
+      border:
+        1px solid #23465d;
+
+      border-radius: 16px;
+
+      text-decoration: none;
+
+      color: #fff;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+    }
+
+
+    .card:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        var(--red);
+    }
+
+
+    .cardIcon {
+      font-size: 35px;
+
+      margin-bottom: 20px;
+    }
+
+
+    .card h3 {
+      margin: 0 0 10px;
+
+      font-size: 21px;
+    }
+
+
+    .card p {
+      margin: 0;
+
+      color: var(--muted);
+
+      line-height: 1.45;
+    }
+
+
+    /* =====================================================
+       GRAND TOUR DESTACADO
+       ===================================================== */
+
+    .tourSection {
+      padding:
+        80px 7vw;
+
+      background:
+        linear-gradient(
+          135deg,
+          #071a28,
+          #04111b
+        );
+    }
+
+
+    .tourBox {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 40px;
+
+      align-items: center;
+
+      max-width: 1200px;
+
+      margin: auto;
+
+      padding: 35px;
+
+      border:
+        1px solid #31556c;
+
+      border-radius: 20px;
+
+      background:
+        #071a28cc;
+    }
+
+
+    .tourNumber {
+      color: var(--gold);
+
+      font-size: 70px;
+
+      line-height: .8;
+
+      font-weight: 950;
+    }
+
+
+    .tourBox h2 {
+      margin:
+        15px 0;
+
+      font-size: 38px;
+    }
+
+
+    .tourBox p {
+      color: #c5d4dc;
+
+      line-height: 1.55;
+    }
+
+
+    .tourImage {
+      min-height: 300px;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #173b4e,
+          #071a28
+        );
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      overflow: hidden;
+    }
+
+
+    .tourImage img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+      min-height: 70px;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 25px 20px;
+
+      background: #020a11;
+
+      border-top:
+        1px solid #183347;
+
+      color: #9db0bc;
+
+      font-size: 13px;
+    }
+
+footer p {
+    margin: 0;
+}
+
+.developer-credit {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #71869a;
+}
+
+.developer-credit a {
+    color: #42a6ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.developer-credit a:hover {
+    text-decoration: underline;
+}
+
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1050px) {
+
+      .mainNav {
+        gap: 20px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr 420px;
+
+        padding:
+          40px 30px;
+      }
+
+      .cards {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+      .topbar {
+        overflow-x: auto;
+
+        justify-content: flex-start;
+      }
+
+      .mainNav {
+        flex: 0 0 auto;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        padding:
+          50px 20px 0;
+      }
+
+      .heroContent {
+        margin: auto;
+      }
+
+      .heroButtons {
+        justify-content: center;
+      }
+
+      .heroHernan {
+        height: 420px;
+      }
+
+      .tourBox {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 520px) {
+
+      .mainNav {
+        gap: 18px;
+      }
+
+      .mainNav a {
+        font-size: 11px;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .heroHernan {
+        height: 350px;
+      }
+
+    }
+
+  
+
+/* =========================================================
+   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
+   ========================================================= */
+
+footer.site-credits {
+  width: 100% !important;
+  min-height: 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto !important;
+
+  align-items: center !important;
+  justify-items: center !important;
+
+  gap: 8px !important;
+
+  margin: 0 !important;
+  padding: 22px 15px !important;
+
+  background: #020a11 !important;
+  border-top: 1px solid #183347 !important;
+
+  color: #9db0bc !important;
+  font-size: 13px !important;
+
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+footer.site-credits > p {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+  line-height: 1.5 !important;
+
+  white-space: normal !important;
+}
+
+footer.site-credits > p.developer-credit {
+  margin: 0 !important;
+
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   FOOTER · MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  footer.site-credits {
+    padding: 18px 10px !important;
+    gap: 6px !important;
+  }
+
+  footer.site-credits > p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       CABECERA
+       ===================================================== -->
+
+  <header class="topbar">
+
+    <nav class="mainNav">
+
+<a href="inicio.html" class="active">
+    INICIO
+</a>
+
+<a href="index.html">
+    EL GRAND TOUR
+</a>
+
+<a href="videos.html">
+    VÍDEOS
+</a>
+
+<a href="vivir-en-suiza.html">
+    VIVIR EN SUIZA
+</a>
+
+<a href="comunidad.html">
+    COMUNIDAD
+</a>
+
+<a href="proyectos.html">
+    PROYECTOS
+</a>
+
+<a href="hernan.html">
+    HERNÁN
+</a>
+
+<a href="contacto.html">
+    CONTACTO
+</a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
+
+  <main>
+
+    <section class="hero">
+
+
+      <div class="heroContent">
+
+        <div class="eyebrow">
+          TODOS CON HERNÁN · SUIZA
+        </div>
+
+
+        <h1>
+          TODOS CON
+          <span>HERNÁN</span>
+        </h1>
+
+
+        <p class="heroSubtitle">
+          Descubre Suiza, sus paisajes, sus lugares
+          especiales y todas las historias que forman
+          parte de este gran proyecto.
+        </p>
+
+
+        <div class="heroButtons">
+
+          <a
+            href="index.html"
+            class="heroButton primary"
+          >
+            DESCUBRE EL GRAND TOUR
+          </a>
+
+
+          <a
+            href="#proyecto"
+            class="heroButton secondary"
+          >
+            CONOCE EL PROYECTO
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="heroHernan">
+
+        <img
+          src="img/hernan1.jpg"
+          alt="Hernán"
+        >
+
+      </div>
+
+
+    </section>
+
+
+    <!-- ===================================================
+         PRESENTACIÓN
+         =================================================== -->
+
+    <section
+      class="introSection"
+      id="proyecto"
+    >
+
+      <h2 class="sectionTitle">
+        UN PROYECTO
+        <span>PARA DESCUBRIR</span>
+      </h2>
+
+
+      <p class="sectionText">
+
+        Todos con Hernán nace para reunir en un mismo
+        espacio diferentes experiencias alrededor de
+        Suiza. Viajes, lugares, fotografías, vídeos,
+        proyectos y nuevas historias para descubrir
+        el país de una manera diferente.
+
+      </p>
+
+    </section>
+
+
+    <!-- ===================================================
+         SECCIONES
+         =================================================== -->
+
+    <section class="cardsSection">
+
+      <div class="cards">
+
+
+        <a
+          href="index.html"
+          class="card"
+        >
+
+          <div class="cardIcon">
+            🗺️
+          </div>
+
+          <h3>
+            El Grand Tour
+          </h3>
+
+          <p>
+            (o Gran Ruta de Suiza) es un viaje por carretera 
+            de más de 1.600 kilómetros que recorre los lugares más atractivos 
+            e importantes del país helvético. Está diseñado para realizarse en coche, 
+            moto o vehículo eléctrico, conectando los principales paisajes y puntos 
+            culturales sin necesidad de usar autopistas.
+          </p>
+
+        </a>
+
+
+        <a
+          href="videos.html"
+          class="card"
+        >
+
+          <div class="cardIcon">
+            🎥
+          </div>
+
+          <h3>
+            Vídeos
+          </h3>
+
+          <p>
+            Descubre vídeos, experiencias
+            y contenidos relacionados
+            con Suiza.
+          </p>
+
+        </a>
+
+
+        <a
+          href="vivir-en-suiza.html"
+          class="card"
+        >
+
+          <div class="cardIcon">
+            🇨🇭
+          </div>
+
+          <h3>
+            Vivir en Suiza
+          </h3>
+
+          <p>
+            Información, experiencias
+            y lugares para conocer
+            mejor la vida en Suiza.
+          </p>
+
+        </a>
+
+
+        <a
+          href="comunidad.html"
+          class="card"
+        >
+
+          <div class="cardIcon">
+            🤝
+          </div>
+
+          <h3>
+            Comunidad
+          </h3>
+
+          <p>
+            Un espacio para compartir
+            experiencias, ideas y
+            aventuras.
+          </p>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         GRAND TOUR DESTACADO
+         =================================================== -->
+
+    <section class="tourSection">
+
+      <div class="tourBox">
+
+
+        <div>
+
+          <div class="tourNumber">
+            92
+          </div>
+
+
+          <h2>
+            PHOTO SPOTS
+          </h2>
+
+
+          <p>
+            Un recorrido por algunos de los
+            lugares más especiales de Suiza.
+            Explora el mapa, selecciona un
+            punto y deja que Hernán te acompañe
+            durante el recorrido.
+          </p>
+
+
+          <a
+            href="index.html"
+            class="heroButton primary"
+          >
+            ENTRAR AL GRAND TOUR →
+          </a>
+
+        </div>
+
+
+        <div class="tourImage">
+
+          <img
+            src="img/LogoOficial.png"
+            alt="Grand Tour de Suiza"
+          >
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+<!-- =====================================================
+     PIE DE PÁGINA
+     ===================================================== -->
+
+<footer class="site-credits">
+
+  <p>
+    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+  </p>
+
+  <p class="developer-credit">
+    Yonathan Alvarado · Full Stack Web Developer · Spain
+  </p>
+
+</footer>
+
+
+</body>
+
+</html>

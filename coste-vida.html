@@ -1,0 +1,2154 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Coste de vida en Suiza | Todos con Hernán</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #061522;
+            color: #f4f7fb;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           CABECERA SUPERIOR
+        ===================================================== */
+
+        .top-header {
+            width: 100%;
+            box-sizing: border-box;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 18px 7%;
+
+            background: #061522;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+
+            margin: 0;
+        }
+
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #f4f7fb;
+        }
+
+
+        .logo span {
+            color: #42a6ff;
+        }
+
+
+        .back-button {
+            display: inline-block;
+
+            padding: 10px 18px;
+
+            color: #dce7f2;
+            text-decoration: none;
+
+            border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 12px;
+
+            font-size: 17px;
+
+            transition: 0.2s;
+        }
+
+
+        .back-button:hover {
+            background: #10263a;
+            color: white;
+            border-color: rgba(66,166,255,0.45);
+        }
+
+
+        /* =====================================================
+           CABECERA DE LA PÁGINA
+        ===================================================== */
+
+        header.page-header {
+            max-width: 1250px;
+            margin: auto;
+            padding: 55px 40px 35px;
+        }
+
+
+        .eyebrow {
+            color: #ffd400;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+
+        h1 {
+            font-size: clamp(42px, 7vw, 82px);
+            line-height: 0.95;
+            margin: 0 0 25px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+
+        h1 span {
+            color: #ff2028;
+        }
+
+
+        .intro {
+            max-width: 1050px;
+            font-size: 20px;
+            color: #d8e4ef;
+        }
+
+
+        /* =====================================================
+           CONTENEDOR PRINCIPAL
+        ===================================================== */
+
+        main {
+            max-width: 1250px;
+            margin: auto;
+            padding: 0 40px 80px;
+        }
+
+
+        .section-title {
+            margin-top: 45px;
+            margin-bottom: 25px;
+            font-size: 32px;
+            color: white;
+        }
+
+
+        /* =====================================================
+           TARJETAS
+        ===================================================== */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+
+        .card {
+            background: #0d1c2e;
+
+            border: 1px solid rgba(255,255,255,0.10);
+
+            border-radius: 16px;
+
+            padding: 30px;
+
+            transition: 0.2s;
+        }
+
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(66,166,255,0.45);
+        }
+
+
+        .card.full {
+            grid-column: 1 / -1;
+        }
+
+
+        .card-icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+
+        .card h2 {
+            margin: 0 0 15px;
+            font-size: 25px;
+            color: white;
+        }
+
+
+        .card h3 {
+            margin-top: 25px;
+            color: #ffffff;
+            font-size: 20px;
+        }
+
+
+        .card p {
+            color: #c9d8e8;
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
+
+
+        .card ul {
+            padding-left: 22px;
+            color: #c9d8e8;
+        }
+
+
+        .card li {
+            margin-bottom: 9px;
+        }
+
+
+        /* =====================================================
+           DESTACADOS
+        ===================================================== */
+
+        .important {
+            border-left: 4px solid #ffd400;
+
+            background: #10263a;
+
+            padding: 18px 20px;
+
+            border-radius: 10px;
+
+            margin: 18px 0;
+
+            color: #e7f0f8;
+        }
+
+
+        .warning {
+            border-left: 4px solid #ff2028;
+
+            background: #24151a;
+
+            padding: 18px 20px;
+
+            border-radius: 10px;
+
+            margin: 18px 0;
+
+            color: #f4dfe2;
+        }
+
+
+        .tip {
+            border-left: 4px solid #27e88b;
+
+            background: #0d2923;
+
+            padding: 18px 20px;
+
+            border-radius: 10px;
+
+            margin: 18px 0;
+
+            color: #dff8ec;
+        }
+
+
+        /* =====================================================
+           TABLAS
+        ===================================================== */
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+
+        th,
+        td {
+            border-bottom: 1px solid rgba(255,255,255,0.10);
+
+            padding: 14px;
+
+            text-align: left;
+        }
+
+
+        th {
+            background: #132a40;
+            color: white;
+        }
+
+
+        td {
+            color: #cbd9e8;
+        }
+
+
+        /* =====================================================
+           ENLACES
+        ===================================================== */
+
+        a {
+            color: #55adff;
+        }
+
+
+        a:hover {
+            color: #8bc9ff;
+        }
+
+
+        .source-list {
+            list-style: none;
+            padding: 0;
+        }
+
+
+        .source-list li {
+            background: #132a40;
+
+            margin-bottom: 10px;
+
+            padding: 15px 18px;
+
+            border-radius: 10px;
+        }
+
+
+        /* =====================================================
+           PIE DE PÁGINA
+        ===================================================== */
+
+        footer {
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 35px 40px 70px;
+
+            color: #9eb2c6;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .top-header {
+                padding: 16px 20px;
+            }
+
+
+            .logo {
+                font-size: 22px;
+            }
+
+
+            .back-button {
+                font-size: 15px;
+                padding: 8px 12px;
+            }
+
+
+            header.page-header {
+                padding: 35px 20px 25px;
+            }
+
+
+            main {
+                padding: 0 20px 60px;
+            }
+
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+
+            .card.full {
+                grid-column: auto;
+            }
+
+
+            .intro {
+                font-size: 18px;
+            }
+
+
+            h1 {
+                font-size: 48px;
+            }
+
+        }
+
+    
+
+        /* =====================================================
+           FOOTER DE CRÉDITOS · CORRECCIÓN FINAL
+           ===================================================== */
+
+        footer.site-credits {
+            width: 100% !important;
+            max-width: none !important;
+
+            box-sizing: border-box !important;
+
+            display: flex !important;
+            flex-direction: column !important;
+
+            align-items: center !important;
+            justify-content: center !important;
+
+            gap: 8px !important;
+
+            margin: 0 !important;
+            padding: 22px 15px !important;
+
+            background: #020a11 !important;
+            border-top: 1px solid #183347 !important;
+
+            color: #9db0bc !important;
+
+            text-align: center !important;
+        }
+
+        footer.site-credits > p {
+            display: block !important;
+
+            width: 100% !important;
+            max-width: 1200px !important;
+
+            margin: 0 !important;
+            padding: 0 !important;
+
+            text-align: center !important;
+            line-height: 1.5 !important;
+        }
+
+        footer.site-credits > p.developer-credit {
+            margin: 0 !important;
+
+            color: #ffffff !important;
+            font-weight: 700 !important;
+        }
+
+        @media (max-width: 600px) {
+            footer.site-credits {
+                padding: 18px 10px !important;
+                gap: 6px !important;
+            }
+
+            footer.site-credits > p {
+                font-size: 12px !important;
+                line-height: 1.6 !important;
+            }
+        }
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     CABECERA SUPERIOR
+===================================================== -->
+
+<header class="top-header">
+
+    <div class="logo">
+        Todos con <span>Hernán</span>
+    </div>
+
+
+    <a href="vivir-en-suiza.html" class="back-button">
+        ← Vivir en Suiza
+    </a>
+
+</header>
+
+
+<!-- =====================================================
+     CABECERA DE LA PÁGINA
+===================================================== -->
+
+<header class="page-header">
+
+    <div class="eyebrow">
+        GUÍA PARA VIVIR EN SUIZA
+    </div>
+
+
+    <h1>
+        CONOCE EL <span>COSTE DE VIDA</span>
+    </h1>
+
+
+    <p class="intro">
+
+        Vivir en Suiza puede ofrecer buenos salarios y una elevada calidad de vida,
+        pero también implica afrontar gastos importantes. En esta guía encontrarás
+        una visión práctica de los principales costes: vivienda, alimentación,
+        seguro médico, transporte, impuestos, teléfono, ocio, ahorro y otros
+        gastos que conviene tener en cuenta antes de instalarse en el país.
+
+    </p>
+
+</header>
+
+
+<main>
+
+
+    <!-- =====================================================
+         RESUMEN
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            💰 ¿Cuánto cuesta vivir en Suiza?
+        </h2>
+
+
+        <div class="card full">
+
+            <div class="card-icon">
+                🇨🇭
+            </div>
+
+
+            <h2>
+                No existe un único presupuesto para todo el país
+            </h2>
+
+
+            <p>
+
+                El coste de vida depende muchísimo de dónde vivas, de si compartes
+                vivienda, de tu situación familiar, de tu salario, de si utilizas
+                transporte público o coche y del estilo de vida que lleves.
+
+            </p>
+
+
+            <p>
+
+                No es lo mismo vivir en una gran ciudad como Zúrich o Ginebra que
+                hacerlo en una localidad pequeña o en una zona rural.
+
+            </p>
+
+
+            <div class="important">
+
+                <strong>Consejo:</strong>
+
+                antes de mudarte, calcula primero los gastos fijos de tu situación
+                concreta. El alquiler, el seguro médico y los impuestos pueden
+                cambiar considerablemente según el cantón y el municipio.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GASTOS PRINCIPALES
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            📊 Los principales gastos
+        </h2>
+
+
+        <div class="cards">
+
+
+            <!-- VIVIENDA -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🏠
+                </div>
+
+
+                <h2>
+                    Vivienda
+                </h2>
+
+
+                <p>
+                    Normalmente es uno de los mayores gastos mensuales.
+                </p>
+
+
+                <ul>
+
+                    <li>
+                        Alquiler de apartamento.
+                    </li>
+
+                    <li>
+                        Habitación en piso compartido.
+                    </li>
+
+                    <li>
+                        Gastos adicionales del edificio.
+                    </li>
+
+                    <li>
+                        Electricidad y otros suministros.
+                    </li>
+
+                    <li>
+                        Internet y televisión.
+                    </li>
+
+                    <li>
+                        Fianza al alquilar.
+                    </li>
+
+                </ul>
+
+
+                <p>
+
+                    Las diferencias entre ciudades y cantones pueden ser muy
+                    importantes.
+
+                </p>
+
+
+                <a href="vivienda.html">
+                    Ver guía completa de vivienda →
+                </a>
+
+            </article>
+
+
+            <!-- SEGURO -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🏥
+                </div>
+
+
+                <h2>
+                    Seguro médico
+                </h2>
+
+
+                <p>
+
+                    El seguro médico básico es obligatorio para las personas
+                    residentes en Suiza, con determinadas excepciones.
+
+                </p>
+
+
+                <ul>
+
+                    <li>
+                        Prima mensual.
+                    </li>
+
+                    <li>
+                        Franquicia.
+                    </li>
+
+                    <li>
+                        Copago o retención.
+                    </li>
+
+                    <li>
+                        Posibles seguros complementarios.
+                    </li>
+
+                </ul>
+
+
+                <p>
+
+                    La prima depende de factores como el lugar de residencia,
+                    la aseguradora, el modelo de seguro y la franquicia.
+
+                </p>
+
+            </article>
+
+
+            <!-- ALIMENTACIÓN -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🛒
+                </div>
+
+
+                <h2>
+                    Alimentación
+                </h2>
+
+
+                <p>
+
+                    La compra semanal puede representar una parte importante
+                    del presupuesto.
+
+                </p>
+
+
+                <ul>
+
+                    <li>
+                        Supermercado.
+                    </li>
+
+                    <li>
+                        Productos frescos.
+                    </li>
+
+                    <li>
+                        Productos importados.
+                    </li>
+
+                    <li>
+                        Comida preparada.
+                    </li>
+
+                    <li>
+                        Restaurantes y cafeterías.
+                    </li>
+
+                </ul>
+
+
+                <div class="tip">
+
+                    Comprar principalmente en supermercados y cocinar en casa
+                    puede reducir considerablemente el gasto frente a comer
+                    habitualmente fuera.
+
+                </div>
+
+            </article>
+
+
+            <!-- TRANSPORTE -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🚆
+                </div>
+
+
+                <h2>
+                    Transporte
+                </h2>
+
+
+                <p>
+
+                    Suiza dispone de una extensa red de trenes, autobuses,
+                    tranvías y otros medios de transporte público.
+
+                </p>
+
+
+                <ul>
+
+                    <li>
+                        Billetes individuales.
+                    </li>
+
+                    <li>
+                        Abonos regionales.
+                    </li>
+
+                    <li>
+                        Swiss Half Fare Card / Halbtax.
+                    </li>
+
+                    <li>
+                        Abonos generales.
+                    </li>
+
+                    <li>
+                        Transporte urbano.
+                    </li>
+
+                </ul>
+
+
+                <p>
+
+                    El abono adecuado puede reducir bastante el coste si utilizas
+                    el transporte público con frecuencia.
+
+                </p>
+
+
+                <a
+                    href="https://www.ch.ch/en/vehicles-and-traffic/public-transport/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Información oficial sobre transporte →
+                </a>
+
+            </article>
+
+
+            <!-- TELÉFONO -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    📱
+                </div>
+
+
+                <h2>
+                    Teléfono e Internet
+                </h2>
+
+
+                <p>
+
+                    Conviene comparar las tarifas de móvil e Internet antes de
+                    contratar un servicio.
+
+                </p>
+
+
+                <ul>
+
+                    <li>
+                        Tarifa móvil.
+                    </li>
+
+                    <li>
+                        Datos móviles.
+                    </li>
+
+                    <li>
+                        Internet doméstico.
+                    </li>
+
+                    <li>
+                        Televisión, si se contrata.
+                    </li>
+
+                </ul>
+
+
+                <p>
+
+                    Si llegas desde otro país, revisa también las condiciones
+                    de roaming y las tarifas internacionales.
+
+                </p>
+
+            </article>
+
+
+            <!-- OCIO -->
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🎿
+                </div>
+
+
+                <h2>
+                    Ocio y vida social
+                </h2>
+
+
+                <p>
+                    El gasto en ocio depende completamente del estilo de vida.
+                </p>
+
+
+                <ul>
+
+                    <li>
+                        Restaurantes.
+                    </li>
+
+                    <li>
+                        Cafeterías.
+                    </li>
+
+                    <li>
+                        Cine y espectáculos.
+                    </li>
+
+                    <li>
+                        Gimnasio.
+                    </li>
+
+                    <li>
+                        Excursiones.
+                    </li>
+
+                    <li>
+                        Deportes de montaña.
+                    </li>
+
+                    <li>
+                        Viajes.
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SEGURO MÉDICO
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            🏥 Seguro médico: uno de los gastos que debes prever
+        </h2>
+
+
+        <div class="card full">
+
+            <p>
+
+                Quienes se establecen en Suiza deben contratar el seguro médico
+                obligatorio dentro de los tres meses siguientes al inicio de
+                la residencia. Las autoridades federales ofrecen un comparador
+                oficial de primas a través de Priminfo.
+
+            </p>
+
+
+            <h3>
+                ¿Qué debes tener en cuenta?
+            </h3>
+
+
+            <ul>
+
+                <li>
+                    Prima mensual.
+                </li>
+
+                <li>
+                    Franquicia elegida.
+                </li>
+
+                <li>
+
+                    Retención del 10 % después de alcanzar la franquicia,
+                    con el límite anual establecido.
+
+                </li>
+
+                <li>
+
+                    Modelo de seguro: estándar, médico de familia, HMO,
+                    telemedicina u otros modelos disponibles.
+
+                </li>
+
+                <li>
+                    Posibles seguros complementarios.
+                </li>
+
+            </ul>
+
+
+            <div class="important">
+
+                En adultos, las franquicias ordinarias pueden ir desde
+                CHF 300 hasta CHF 2.500. Después de alcanzar la franquicia,
+                normalmente existe una retención del 10 %, limitada a
+                CHF 700 al año para adultos.
+
+            </div>
+
+
+            <a
+                href="https://www.priminfo.admin.ch/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Comparador oficial de primas Priminfo →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         IMPUESTOS
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            🧾 Impuestos
+        </h2>
+
+
+        <div class="card full">
+
+            <p>
+
+                La fiscalidad suiza tiene diferentes niveles. Existen impuestos
+                federales, cantonales y municipales, por lo que la carga fiscal
+                puede variar considerablemente dependiendo de dónde vivas.
+
+            </p>
+
+
+            <h3>
+                Puedes encontrarte con:
+            </h3>
+
+
+            <ul>
+
+                <li>
+                    Impuesto federal directo.
+                </li>
+
+                <li>
+                    Impuesto cantonal.
+                </li>
+
+                <li>
+                    Impuesto municipal.
+                </li>
+
+                <li>
+                    Impuesto sobre el patrimonio, según la situación.
+                </li>
+
+                <li>
+
+                    Impuestos relacionados con determinadas propiedades o
+                    situaciones particulares.
+
+                </li>
+
+            </ul>
+
+
+            <div class="warning">
+
+                No utilices el porcentaje de impuestos de otra persona como
+                referencia para calcular tu salario neto. El resultado depende
+                del cantón, municipio, ingresos, situación familiar,
+                deducciones y otros factores.
+
+            </div>
+
+
+            <p>
+
+                La Administración Federal de Contribuciones dispone de
+                herramientas para calcular y comparar la carga fiscal.
+
+            </p>
+
+
+            <a
+                href="https://www.estv.admin.ch/en/tax-burden-in-switzerland"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Información fiscal oficial →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         IVA
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            🧮 IVA: ¿cuánto se paga?
+        </h2>
+
+
+        <div class="card full">
+
+            <p>
+
+                El impuesto sobre el valor añadido está incluido en muchos
+                precios de bienes y servicios.
+
+            </p>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Tipo
+                            </th>
+
+                            <th>
+                                Porcentaje
+                            </th>
+
+                            <th>
+                                Ejemplos
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Tipo normal
+                            </td>
+
+                            <td>
+                                8,1 %
+                            </td>
+
+                            <td>
+                                La mayoría de bienes y servicios
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Tipo reducido
+                            </td>
+
+                            <td>
+                                2,6 %
+                            </td>
+
+                            <td>
+
+                                Determinados alimentos, medicamentos,
+                                libros y otros productos
+
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Tipo especial
+                            </td>
+
+                            <td>
+                                3,8 %
+                            </td>
+
+                            <td>
+                                Determinados servicios de alojamiento
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <p>
+
+                Estos son los tipos actualmente publicados por la Administración
+                Federal de Contribuciones.
+
+            </p>
+
+
+            <a
+                href="https://www.estv.admin.ch/en/vat-rates-switzerland"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Ver tipos de IVA oficiales →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SALARIO
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            💼 Salario: no mires solamente el bruto
+        </h2>
+
+
+        <div class="card full">
+
+            <p>
+
+                Cuando compares una oferta de trabajo en Suiza, no debes fijarte
+                únicamente en el salario bruto. Es importante calcular cuánto
+                dinero tendrás realmente disponible después de las diferentes
+                deducciones y gastos.
+
+            </p>
+
+
+            <h3>
+                Ten en cuenta:
+            </h3>
+
+
+            <ul>
+
+                <li>
+                    Salario bruto.
+                </li>
+
+                <li>
+                    Cotizaciones sociales.
+                </li>
+
+                <li>
+                    Impuestos.
+                </li>
+
+                <li>
+                    Seguro médico.
+                </li>
+
+                <li>
+                    Alquiler.
+                </li>
+
+                <li>
+                    Transporte.
+                </li>
+
+                <li>
+                    Alimentación.
+                </li>
+
+                <li>
+                    Otros gastos personales.
+                </li>
+
+            </ul>
+
+
+            <div class="tip">
+
+                Un salario elevado no significa automáticamente que tendrás
+                una gran capacidad de ahorro. Lo importante es comparar
+                ingresos y gastos de tu situación concreta.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         COCHE
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            🚗 Tener coche en Suiza
+        </h2>
+
+
+        <div class="card full">
+
+            <p>
+
+                Tener coche puede resultar útil dependiendo de dónde vivas y
+                trabajes, pero también añade numerosos gastos al presupuesto.
+
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Compra o financiación del vehículo.
+                </li>
+
+                <li>
+                    Seguro.
+                </li>
+
+                <li>
+                    Combustible.
+                </li>
+
+                <li>
+                    Mantenimiento.
+                </li>
+
+                <li>
+                    Neumáticos.
+                </li>
+
+                <li>
+                    Impuestos y tasas cantonales.
+                </li>
+
+                <li>
+                    Aparcamiento.
+                </li>
+
+                <li>
+                    Viñeta de autopista cuando corresponda.
+                </li>
+
+            </ul>
+
+
+            <div class="important">
+
+                La viñeta de autopista para 2026 cuesta CHF 40 y es válida
+                desde el 1 de diciembre de 2025 hasta el 31 de enero de 2027.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PRESUPUESTO
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            📋 Cómo preparar tu presupuesto
+        </h2>
+
+
+        <div class="card full">
+
+            <p>
+                Antes de mudarte, crea una tabla con tus ingresos y gastos
+                mensuales reales.
+            </p>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Categoría
+                            </th>
+
+                            <th>
+                                Tu presupuesto
+                            </th>
+
+                            <th>
+                                ¿Es fijo?
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Alquiler
+                            </td>
+
+                            <td>
+                                CHF ______
+                            </td>
+
+                            <td>
+                                Sí
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Seguro médico
+                            </td>
+
+                            <td>
+                                CHF ______
+                            </td>
+
+                            <td>
+                                Sí
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Electricidad / suministros
+                            </td>
+
+                            <td>
+                                CHF ______
+                            </td>
+
+                            <td>
+                                Depende
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Transporte
+                            </td>
+
+                            <td>
+                                CHF ______
+                            </td>
+
+                            <td>
+                                Depende
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Alimentación
+                            </td>
+
+                            <td>
+                                CHF ______
+                            </td>
+
+                            <td>
+                                Variable
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Teléfono / Internet
+                            </td>
+
+                            <td>
+                                CHF ______
+                            </td>
+
+                            <td>
+                                Sí
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Ocio
+                            </td>
+
+                            <td>
+                                CHF ______
+                            </td>
+
+                            <td>
+                                Variable
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Ahorro
+                            </td>
+
+                            <td>
+                                CHF ______
+                            </td>
+
+                            <td>
+                                Recomendado
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         AHORRO
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            💰 Consejos para ahorrar
+        </h2>
+
+
+        <div class="cards">
+
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🏠
+                </div>
+
+
+                <h2>
+                    Comparte vivienda
+                </h2>
+
+
+                <p>
+
+                    Una habitación en un piso compartido puede reducir
+                    considerablemente el gasto inicial frente a alquilar
+                    un apartamento completo.
+
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🚆
+                </div>
+
+
+                <h2>
+                    Utiliza transporte público
+                </h2>
+
+
+                <p>
+
+                    Si utilizas trenes y transporte urbano con frecuencia,
+                    compara los diferentes abonos antes de comprar billetes
+                    individualmente.
+
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🛒
+                </div>
+
+
+                <h2>
+                    Planifica la compra
+                </h2>
+
+
+                <p>
+
+                    Comparar supermercados, cocinar en casa y planificar
+                    las compras puede ayudarte a controlar el presupuesto.
+
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">
+                    📱
+                </div>
+
+
+                <h2>
+                    Compara contratos
+                </h2>
+
+
+                <p>
+
+                    Antes de contratar teléfono, Internet, seguros o servicios
+                    adicionales, compara precios y condiciones.
+
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PILAR 3A
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            🏦 Ahorro y previsión: el tercer pilar
+        </h2>
+
+
+        <div class="card full">
+
+            <p>
+
+                El tercer pilar es una forma voluntaria de previsión privada
+                que puede complementar las prestaciones del primer y segundo
+                pilar.
+
+            </p>
+
+
+            <h3>
+                Pilar 3a
+            </h3>
+
+
+            <p>
+
+                Es una modalidad de previsión vinculada a determinadas
+                condiciones y con ventajas fiscales.
+
+            </p>
+
+
+            <p>
+
+                En 2026, las personas empleadas pueden aportar hasta
+                <strong>CHF 7.258</strong> al tercer pilar 3a.
+
+            </p>
+
+
+            <p>
+
+                Las personas autónomas sin segundo pilar pueden aportar el
+                20 % de sus ingresos, hasta el límite anual establecido de
+                <strong>CHF 36.288</strong>.
+
+            </p>
+
+
+            <div class="tip">
+
+                No es obligatorio abrir un tercer pilar. Es una herramienta
+                de ahorro y previsión que conviene valorar según tus ingresos,
+                impuestos, horizonte temporal y situación personal.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CIFRAS OFICIALES
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            📈 Algunas cifras oficiales
+        </h2>
+
+
+        <div class="card full">
+
+            <p>
+
+                Las estadísticas oficiales permiten hacerse una idea de la
+                economía de los hogares, aunque no deben utilizarse como
+                presupuesto personal.
+
+            </p>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Indicador
+                            </th>
+
+                            <th>
+                                Dato
+                            </th>
+
+                            <th>
+                                Año
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Ingreso disponible medio de los hogares
+                            </td>
+
+                            <td>
+                                CHF 7.186 / mes
+                            </td>
+
+                            <td>
+                                2023
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Consumo medio de los hogares
+                            </td>
+
+                            <td>
+                                CHF 5.049 / mes
+                            </td>
+
+                            <td>
+                                2023
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Tipo normal de IVA
+                            </td>
+
+                            <td>
+                                8,1 %
+                            </td>
+
+                            <td>
+                                2026
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Tipo reducido de IVA
+                            </td>
+
+                            <td>
+                                2,6 %
+                            </td>
+
+                            <td>
+                                2026
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <p>
+
+                Estas cifras proceden de fuentes oficiales y corresponden a
+                indicadores generales. La situación económica de cada persona
+                puede ser muy diferente.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CHECKLIST
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            ✅ Antes de venir a Suiza
+        </h2>
+
+
+        <div class="card full">
+
+            <ul>
+
+                <li>
+                    ☐ Calcula tu salario neto aproximado.
+                </li>
+
+                <li>
+
+                    ☐ Comprueba el precio real de la vivienda en la zona
+                    donde vas a vivir.
+
+                </li>
+
+                <li>
+                    ☐ Calcula el seguro médico.
+                </li>
+
+                <li>
+                    ☐ Comprueba los impuestos del cantón y municipio.
+                </li>
+
+                <li>
+                    ☐ Calcula el coste del transporte hasta tu trabajo.
+                </li>
+
+                <li>
+                    ☐ Calcula alimentación y gastos personales.
+                </li>
+
+                <li>
+                    ☐ Reserva dinero para gastos iniciales.
+                </li>
+
+                <li>
+                    ☐ Mantén un fondo para imprevistos.
+                </li>
+
+                <li>
+
+                    ☐ No compares solamente salarios: compara también
+                    el coste total de vivir en cada zona.
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FUENTES OFICIALES
+    ====================================================== -->
+
+    <section>
+
+        <h2 class="section-title">
+            📚 Fuentes oficiales
+        </h2>
+
+
+        <div class="card full">
+
+            <p>
+
+                La información económica, fiscal y sanitaria puede cambiar.
+                Para tomar decisiones personales, comprueba siempre la
+                información oficial correspondiente a tu cantón y situación.
+
+            </p>
+
+
+            <ul class="source-list">
+
+
+                <li>
+
+                    🇨🇭
+
+                    <a
+                        href="https://www.ch.ch/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        ch.ch — Portal oficial de las autoridades suizas
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    🏥
+
+                    <a
+                        href="https://www.bag.admin.ch/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        BAG / OFSP — Salud y seguro médico
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    🧾
+
+                    <a
+                        href="https://www.estv.admin.ch/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        Administración Federal de Contribuciones
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    📊
+
+                    <a
+                        href="https://www.bfs.admin.ch/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        Oficina Federal de Estadística
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    🚆
+
+                    <a
+                        href="https://www.ch.ch/en/vehicles-and-traffic/public-transport/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        Información oficial sobre transporte público
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    🏥
+
+                    <a
+                        href="https://www.priminfo.admin.ch/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        Priminfo — Comparador oficial de primas del seguro médico
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         AVISO
+    ====================================================== -->
+
+    <section>
+
+        <div class="card full">
+
+            <h2>
+                ⚠️ Importante
+            </h2>
+
+
+            <p>
+
+                Esta guía tiene finalidad informativa y educativa. Los costes,
+                impuestos, primas, tarifas y condiciones pueden cambiar y
+                también pueden variar según el cantón, municipio y situación
+                personal.
+
+            </p>
+
+
+            <p>
+
+                Antes de tomar una decisión importante —mudanza, contrato de
+                vivienda, seguro, inversión, compra de vivienda o situación
+                fiscal— consulta la fuente oficial correspondiente o un
+                profesional cualificado.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =====================================================
+     PIE DE PÁGINA
+     ===================================================== -->
+
+<footer class="site-credits">
+
+    <p>
+        © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+    </p>
+
+    <p class="developer-credit">
+        Yonathan Alvarado · Full Stack Web Developer · Spain
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
