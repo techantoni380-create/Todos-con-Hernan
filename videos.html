@@ -2558,6 +2558,18 @@ body.video-modal-open {
 }
 </style>
 
+<style id="videos-animated-background-visible">
+/* Mantiene el paisaje animado detrás del contenido, sin ocultarlo tras el fondo base. */
+body.video-page {
+    isolation: isolate;
+}
+
+body.video-page::before,
+body.video-page::after {
+    z-index: -1;
+}
+</style>
+
 </head>
 
 
