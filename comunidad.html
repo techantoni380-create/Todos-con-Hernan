@@ -2,6 +2,8 @@
 <html lang="es">
 
 <head>
+  <meta name="view-transition" content="same-origin">
+  <style>html { background: #071a28; }</style>
 
   <meta charset="UTF-8">
 
@@ -17,6 +19,7 @@
 
   <title>Comunidad · Todos con Hernán</title>
 
+  <link rel="stylesheet" href="css/language-selector.css">
 
   <style>
 
@@ -1532,7 +1535,35 @@ footer.site-credits > p.developer-credit {
 
 }
 
-</style>
+
+    /* FONDO FOTOGRAFICO SUIZA */
+    body { position: relative; background: #04111b url("img/08suiza.jpg") center center / cover fixed no-repeat; }
+    body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: rgba(2,10,17,.42); }
+    .hero { background: linear-gradient(rgba(4,17,27,.30), rgba(4,17,27,.48)), transparent; }
+    .section { background: rgba(6,24,37,.72); }
+    .section.dark { background: rgba(4,17,27,.76); }
+    .cta { background: linear-gradient(135deg, rgba(8,29,44,.82), rgba(5,19,30,.88)); }
+
+
+    /* =====================================================
+       VENTANA INTERNA · CONTENIDO SIN SALIR DE LA WEB
+       Inspirada en el sistema modal de trabajo.html
+    ===================================================== */
+    .community-modal { position: fixed; inset: 0; z-index: 5000; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(0,0,0,.68); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    .community-modal.is-open { display: flex; }
+    .community-modal-dialog { width: min(980px, 94vw); max-height: min(88vh, 820px); overflow: hidden; border: 1px solid rgba(255,255,255,.20); border-radius: 22px; background: rgba(7,22,37,.96); box-shadow: 0 30px 90px rgba(0,0,0,.60); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+    .community-modal-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; border-bottom: 1px solid rgba(255,255,255,.12); background: rgba(4,17,27,.90); }
+    .community-modal-title { margin: 0; color: #fff; font-size: clamp(20px, 3vw, 30px); line-height: 1.2; }
+    .community-modal-close { width: 42px; height: 42px; flex: 0 0 42px; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; background: rgba(255,255,255,.06); color: #fff; font-size: 25px; line-height: 1; cursor: pointer; }
+    .community-modal-close:hover { background: rgba(255,255,255,.12); border-color: rgba(74,168,255,.55); }
+    .community-modal-body { padding: 22px; overflow-y: auto; }
+    .community-modal-video { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid rgba(255,255,255,.14); border-radius: 15px; background: #000; }
+    .community-modal-video iframe { width: 100%; height: 100%; display: block; border: 0; }
+    .community-modal-note { margin: 14px 0 0; color: #c7d6e2; font-size: 13px; line-height: 1.5; text-align: center; }
+    .community-internal-link { cursor: pointer; }
+    @media (max-width: 600px) { .community-modal { padding: 10px; } .community-modal-dialog { width: 100%; max-height: 92vh; border-radius: 17px; } .community-modal-header { padding: 14px 16px; } .community-modal-body { padding: 14px; } }
+
+  </style>
 
 </head>
 
@@ -1553,22 +1584,22 @@ footer.site-credits > p.developer-credit {
     >
 
       <a href="inicio.html">
-        INICIO
+        <span data-i18n="nav.inicio">INICIO</span>
       </a>
 
 
       <a href="index.html">
-        EL GRAND TOUR
+        <span data-i18n="nav.tour">EL GRAND TOUR</span>
       </a>
 
 
       <a href="videos.html">
-        VÍDEOS
+        <span data-i18n="nav.videos">VÍDEOS</span>
       </a>
 
 
       <a href="vivir-en-suiza.html">
-        VIVIR EN SUIZA
+        <span data-i18n="nav.vivir">VIVIR EN SUIZA</span>
       </a>
 
 
@@ -1576,25 +1607,33 @@ footer.site-credits > p.developer-credit {
         href="comunidad.html"
         class="active"
       >
-        COMUNIDAD
+        <span data-i18n="nav.comunidad">COMUNIDAD</span>
       </a>
 
 
       <a href="proyectos.html">
-        PROYECTOS
+        <span data-i18n="nav.proyectos">PROYECTOS</span>
       </a>
 
 
       <a href="hernan.html">
-        HERNÁN
+        <span data-i18n="nav.hernan">HERNÁN</span>
       </a>
 
 
       <a href="contacto.html">
-        CONTACTO
+        <span data-i18n="nav.contacto">CONTACTO</span>
       </a>
 
     </nav>
+
+    <div class="languageSelector" aria-label="Selector de idioma">
+      <button class="languageFlag" data-lang="es" type="button" title="Español" aria-label="Español"><img src="img/bandera-es.svg" alt="Español"></button>
+      <button class="languageFlag" data-lang="de" type="button" title="Deutsch" aria-label="Deutsch"><img src="img/bandera-de.svg" alt="Deutsch"></button>
+      <button class="languageFlag" data-lang="fr" type="button" title="Français" aria-label="Français"><img src="img/bandera-fr.svg" alt="Français"></button>
+      <button class="languageFlag" data-lang="it" type="button" title="Italiano" aria-label="Italiano"><img src="img/bandera-it.svg" alt="Italiano"></button>
+      <button class="languageFlag" data-lang="en" type="button" title="English" aria-label="English"><img src="img/bandera-en.svg" alt="English"></button>
+    </div>
 
   </header>
 
@@ -1615,12 +1654,12 @@ footer.site-credits > p.developer-credit {
 
       <div class="heroContent">
 
-        <div class="eyebrow">
+        <div class="eyebrow" data-i18n="hero.eyebrow">
           TODOS CON HERNÁN · COMUNIDAD
         </div>
 
 
-        <h1>
+        <h1 data-i18n="hero.title">
 
           UNA COMUNIDAD
           <br>
@@ -1630,7 +1669,7 @@ footer.site-credits > p.developer-credit {
         </h1>
 
 
-        <p class="heroText">
+        <p class="heroText" data-i18n="hero.text">
 
           Personas, historias, gastronomía,
           viajes, proyectos y experiencias que
@@ -1674,736 +1713,6 @@ footer.site-credits > p.developer-credit {
 
     </section>
 
-
-
-    <!-- ===================================================
-         MUNDIAL DEL PLATO TÍPICO
-    ===================================================== -->
-
-    <section
-      class="section"
-      id="mundial"
-    >
-
-      <div class="sectionHeader">
-
-        <div class="sectionLabel">
-          PROYECTO DESTACADO · 2026
-        </div>
-
-
-        <h2 class="sectionTitle">
-
-          🌎 EL MUNDIAL DEL
-          <span>PLATO TÍPICO</span>
-
-        </h2>
-
-
-        <p class="sectionDescription">
-
-          Un proyecto que une países, personas
-          y culturas a través de la gastronomía
-          en Suiza.
-
-        </p>
-
-      </div>
-
-
-
-      <!-- =================================================
-           EPISODIO DESTACADO
-      ================================================= -->
-
-      <div class="featuredProject">
-
-        <div class="featuredTop">
-
-
-          <div class="featuredText">
-
-            <div class="projectBadge">
-
-              NUEVO EPISODIO · REPÚBLICA DOMINICANA
-
-            </div>
-
-
-            <h3>
-
-              SANCOCHO DOMINICANO
-              <span>EN SUIZA</span>
-
-            </h3>
-
-
-            <p>
-
-              Fátima representa a República Dominicana
-              desde Zúrich con un tradicional
-              <strong>sancocho dominicano</strong>
-              dentro del Mundial del Plato Típico
-              en Suiza 2026.
-
-            </p>
-
-
-            <p>
-
-              Una historia de gastronomía, identidad
-              y comunidad que forma parte de una serie
-              que seguirá incorporando nuevos países
-              y nuevos sabores.
-
-            </p>
-
-
-            <a
-              href="https://www.youtube.com/watch?v=DlqkSft9mP4"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn red"
-            >
-              VER ESTE EPISODIO →
-            </a>
-
-          </div>
-
-
-          <div class="projectImage">
-
-            <img
-              src="https://img.youtube.com/vi/DlqkSft9mP4/maxresdefault.jpg"
-              alt="Fátima representa a República Dominicana con Sancocho Dominicano en Zúrich"
-            >
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- =================================================
-           EPISODIOS
-      ================================================= -->
-
-      <div class="countryGrid">
-
-
-        <!-- =================================================
-             EPISODIO 1
-        ================================================= -->
-
-        <article class="countryCard">
-
-          <img
-            class="countryImage"
-            src="https://img.youtube.com/vi/BkdgQsixz_M/maxresdefault.jpg"
-            alt="Mundial del Plato Típico en Suiza"
-          >
-
-
-          <div class="countryContent">
-
-            <h3 class="countryTitle">
-
-              🌎
-              <span>Episodio 1</span>
-
-            </h3>
-
-
-            <p class="countryDescription">
-
-              Una nueva historia dentro del
-              Mundial del Plato Típico en Suiza 2026.
-
-            </p>
-
-
-            <a
-              href="https://www.youtube.com/watch?v=BkdgQsixz_M&t=4s"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="countryButton"
-            >
-              VER EN YOUTUBE
-            </a>
-
-          </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             EPISODIO 2
-        ================================================= -->
-
-        <article class="countryCard">
-
-          <img
-            class="countryImage"
-            src="https://img.youtube.com/vi/vMCF4jNSnR0/maxresdefault.jpg"
-            alt="Mundial del Plato Típico en Suiza"
-          >
-
-
-          <div class="countryContent">
-
-            <h3 class="countryTitle">
-
-              🌎
-              <span>Episodio 2</span>
-
-            </h3>
-
-
-            <p class="countryDescription">
-
-              Otro episodio del Mundial del
-              Plato Típico en Suiza 2026.
-
-            </p>
-
-
-            <a
-              href="https://www.youtube.com/watch?v=vMCF4jNSnR0"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="countryButton"
-            >
-              VER EN YOUTUBE
-            </a>
-
-          </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             REPÚBLICA DOMINICANA
-        ================================================= -->
-
-        <article class="countryCard">
-
-          <img
-            class="countryImage"
-            src="https://img.youtube.com/vi/DlqkSft9mP4/maxresdefault.jpg"
-            alt="Sancocho Dominicano en Zúrich"
-          >
-
-
-          <div class="countryContent">
-
-            <h3 class="countryTitle">
-
-              🇩🇴
-              <span>República Dominicana</span>
-
-            </h3>
-
-
-            <p class="countryDescription">
-
-              <strong>Sancocho Dominicano</strong>
-              en Zúrich. Fátima representa a
-              República Dominicana en el Mundial
-              del Plato Típico.
-
-            </p>
-
-
-            <a
-              href="https://www.youtube.com/watch?v=DlqkSft9mP4"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="countryButton"
-            >
-              VER EN YOUTUBE
-            </a>
-
-          </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             PRÓXIMO PAÍS
-        ================================================= -->
-
-        <article class="countryCard">
-
-          <div
-            class="countryImage"
-            style="
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              background:#0d2a3b;
-              color:#ffd000;
-              font-size:55px;
-            "
-          >
-
-            🌍
-
-          </div>
-
-
-          <div class="countryContent">
-
-            <h3 class="countryTitle">
-
-              <span>
-                Próximo país
-              </span>
-
-            </h3>
-
-
-            <p class="countryDescription">
-
-              El Mundial del Plato Típico continúa
-              creciendo con nuevos países,
-              nuevos platos y nuevas historias
-              desde Suiza.
-
-            </p>
-
-
-            <a
-              href="https://www.youtube.com/@todosconhernan/videos"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="countryButton"
-            >
-              DESCUBRIR MÁS
-            </a>
-
-          </div>
-
-        </article>
-
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         GRAND TOUR OF SWITZERLAND
-    ===================================================== -->
-
-    <section
-      class="section dark"
-      id="grand-tour"
-    >
-
-      <div class="sectionHeader">
-
-        <div class="sectionLabel">
-          VIAJES · SUIZA
-        </div>
-
-
-        <h2 class="sectionTitle">
-
-          🏔️ GRAND TOUR OF
-          <span>SWITZERLAND</span>
-
-        </h2>
-
-
-        <p class="sectionDescription">
-
-          Descubre pueblos, castillos, photo spots
-          y rincones de Suiza a través de los vídeos
-          de Todos con Hernán.
-
-        </p>
-
-      </div>
-
-
-      <p class="grandTourIntro">
-
-        El Grand Tour of Switzerland permite descubrir
-        diferentes rincones del país. Aquí iremos
-        reuniendo los destinos que Hernán vaya
-        recorriendo dentro del proyecto.
-
-      </p>
-
-
-
-      <div class="grandTourGrid">
-
-
-        <!-- =================================================
-             AARBURG
-        ================================================= -->
-
-        <article class="grandTourCard">
-
-          <img
-            class="grandTourImage"
-            src="https://img.youtube.com/vi/GtCiNSdS9nE/maxresdefault.jpg"
-            alt="Aarburg · Grand Tour of Switzerland"
-          >
-
-
-          <div class="grandTourContent">
-
-            <div class="grandTourTag">
-              📍 GRAND TOUR · AARBURG
-            </div>
-
-
-            <h3>
-
-              El Photo Spot de Aarburg
-
-            </h3>
-
-
-            <p>
-
-              Descubre Aarburg y uno de los
-              rincones más bonitos del Grand Tour
-              of Switzerland.
-
-            </p>
-
-
-            <a
-              href="https://www.youtube.com/watch?v=GtCiNSdS9nE"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn red"
-            >
-              VER EN YOUTUBE →
-            </a>
-
-          </div>
-
-        </article>
-
-
-
-        <!-- =================================================
-             HALLWYL
-        ================================================= -->
-
-        <article class="grandTourCard">
-
-          <img
-            class="grandTourImage"
-            src="https://img.youtube.com/vi/zbBKTvOw83I/maxresdefault.jpg"
-            alt="Hallwyl Castle · Grand Tour of Switzerland"
-          >
-
-
-          <div class="grandTourContent">
-
-            <div class="grandTourTag">
-              🏰 GRAND TOUR · HALLWYL
-            </div>
-
-
-            <h3>
-
-              Hallwyl Castle
-
-            </h3>
-
-
-            <p>
-
-              Descubre Hallwyl Castle y uno de los
-              rincones históricos que forman parte
-              del Grand Tour of Switzerland.
-
-            </p>
-
-
-            <a
-              href="https://www.youtube.com/watch?v=zbBKTvOw83I"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn red"
-            >
-              VER EN YOUTUBE →
-            </a>
-
-          </div>
-
-        </article>
-
-
-      </div>
-
-
-
-      <div
-        style="
-          max-width:900px;
-          margin:35px auto 0;
-          padding:18px 20px;
-          border-left:4px solid #ffd000;
-          border-radius:10px;
-          background:#10263a;
-          color:#cbd9e4;
-          text-align:center;
-        "
-      >
-
-        💡
-
-        <strong>
-          Próximamente:
-        </strong>
-
-        más photo spots, pueblos, castillos
-        y lugares del Grand Tour of Switzerland.
-
-      </div>
-
-
-    </section>
-
-
-
-    <!-- ===================================================
-         PROYECTO UN MILLÓN
-    ===================================================== -->
-
-    <section class="section">
-
-      <div class="sectionHeader">
-
-        <div class="sectionLabel">
-          OTRO GRAN PROYECTO
-        </div>
-
-
-        <h2 class="sectionTitle">
-
-          🚀 PROYECTO
-          <span>UN MILLÓN</span>
-
-        </h2>
-
-
-        <p class="sectionDescription">
-
-          Una visión de crecimiento,
-          comunidad y creación de contenido
-          alrededor de Todos con Hernán.
-
-        </p>
-
-      </div>
-
-
-      <div class="million">
-
-        <div class="millionContent">
-
-          <div class="millionNumber">
-            1.000.000
-          </div>
-
-
-          <h3 class="millionTitle">
-
-            UNA COMUNIDAD CADA VEZ MÁS GRANDE
-
-          </h3>
-
-
-          <p class="millionText">
-
-            El Proyecto Un Millón representa
-            el objetivo de construir una comunidad
-            enorme alrededor de los contenidos,
-            proyectos e historias de Todos con
-            Hernán.
-
-          </p>
-
-
-          <a
-            href="https://www.youtube.com/watch?v=BkdgQsixz_M&t=4s"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn red"
-          >
-            CONOCER EL PROYECTO →
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         ASESORAMIENTO
-    ===================================================== -->
-
-    <section class="section dark">
-
-      <div class="sectionHeader">
-
-        <div class="sectionLabel">
-          SERVICIOS Y COLABORACIONES
-        </div>
-
-
-        <h2 class="sectionTitle">
-
-          🤝
-          <span>ASESORAMIENTO</span>
-
-        </h2>
-
-
-        <p class="sectionDescription">
-
-          Un espacio para personas, proyectos
-          y organizaciones que quieran ponerse
-          en contacto con Hernán.
-
-        </p>
-
-      </div>
-
-
-      <div class="adviceGrid">
-
-
-        <article class="adviceCard">
-
-          <div class="adviceIcon">
-            🇨🇭
-          </div>
-
-
-          <h3>
-            Orientación en Suiza
-          </h3>
-
-
-          <p>
-
-            Información y orientación para
-            personas interesadas en conocer
-            mejor la vida y las posibilidades
-            que ofrece Suiza.
-
-          </p>
-
-        </article>
-
-
-
-        <article class="adviceCard">
-
-          <div class="adviceIcon">
-            🚀
-          </div>
-
-
-          <h3>
-            Proyectos
-          </h3>
-
-
-          <p>
-
-            Espacio para presentar,
-            desarrollar o conectar nuevos
-            proyectos y colaboraciones.
-
-          </p>
-
-        </article>
-
-
-
-        <article class="adviceCard">
-
-          <div class="adviceIcon">
-            🤝
-          </div>
-
-
-          <h3>
-            Colaboraciones
-          </h3>
-
-
-          <p>
-
-            Personas, empresas, creadores
-            y comunidades pueden ponerse
-            en contacto para colaborar.
-
-          </p>
-
-        </article>
-
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         CTA
-    ===================================================== -->
-
-    <section class="cta">
-
-      <h2>
-
-        ¿QUIERES FORMAR PARTE DE
-        <span>LA COMUNIDAD?</span>
-
-      </h2>
-
-
-      <p>
-
-        Descubre los vídeos, proyectos,
-        viajes y nuevas historias de
-        Todos con Hernán.
-
-      </p>
-
-
-      <a
-        href="https://www.youtube.com/@todosconhernan/videos"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn red"
-      >
-        IR AL CANAL DE YOUTUBE →
-      </a>
-
-    </section>
-
-
   </main>
 
 
@@ -2419,10 +1728,19 @@ footer.site-credits > p.developer-credit {
   </p>
 
   <p class="developer-credit">
-    Yonathan Alvarado · Full Stack Web Developer · Spain
+    <a
+      href="https://www.instagram.com/techantoni/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: inherit; text-decoration: none;"
+    >
+      Yonathan Alvarado · Full Stack Web Developer · Spain
+    </a>
   </p>
 
 </footer>
+
+  <script src="js/i18n.js"></script>
 
 
 </body>

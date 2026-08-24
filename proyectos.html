@@ -2,6 +2,8 @@
 <html lang="es">
 
 <head>
+  <meta name="view-transition" content="same-origin">
+  <style>html { background: #071a28; }</style>
 
   <meta charset="UTF-8">
 
@@ -16,6 +18,8 @@
   >
 
   <title>Proyectos · Todos con Hernán</title>
+
+  <link rel="stylesheet" href="css/language-selector.css">
 
 
   <style>
@@ -78,7 +82,60 @@
     }
 
 
+    
     /* =====================================================
+       FONDO SUIZA · IMAGEN NATURAL EN MOVIMIENTO
+       ===================================================== */
+
+    html,
+    body {
+      background: #04111b;
+    }
+
+    body {
+      position: relative;
+      isolation: isolate;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -3%;
+      z-index: -2;
+      pointer-events: none;
+      background: url("img/Suiza3.jpg") center center / cover no-repeat;
+      animation: suizaPan 24s ease-in-out infinite alternate;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    /* Sin capa oscura sobre la fotografía: se ve natural. */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: transparent;
+    }
+
+    @keyframes suizaPan {
+      0% {
+        transform: scale(1.02) translate3d(0, 0, 0);
+      }
+      100% {
+        transform: scale(1.07) translate3d(-1.2%, -0.7%, 0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before {
+        animation: none;
+        transform: none;
+      }
+    }
+
+/* =====================================================
        BARRA SUPERIOR
        ===================================================== */
 
@@ -205,41 +262,10 @@
 
       overflow: hidden;
 
-      background:
-        radial-gradient(
-          circle at 75% 45%,
-          #173c50 0,
-          #071a28 38%,
-          #04111b 78%
-        );
+      background: transparent;
 
     }
-
-
-    .hero::before {
-
-      content: "";
-
-      position: absolute;
-
-      width: 650px;
-      height: 650px;
-
-      right: -220px;
-      top: -190px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          #ef18201c,
-          transparent 68%
-        );
-
-      pointer-events: none;
-
-    }
+    .hero::before { display: none; }
 
 
     .heroContent {
@@ -447,14 +473,13 @@
         80px
         7vw;
 
-      background:
-        var(--bg2);
+      background: transparent;
 
     }
 
 
     .section.dark {
-      background: #04111b;
+      background: transparent;
     }
 
 
@@ -1017,13 +1042,16 @@
 
       text-align: center;
 
-      border:
-        1px dashed #3a5b6d;
+      border: 1px solid rgba(255, 255, 255, 0.45);
 
-      border-radius: 18px;
+      border-radius: 20px;
 
-      background:
-        #061722;
+      background: rgba(4, 17, 27, 0.28);
+
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
 
     }
 
@@ -1033,6 +1061,8 @@
       font-size: 45px;
 
       margin-bottom: 12px;
+
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
 
     }
 
@@ -1045,6 +1075,8 @@
         10px;
 
       font-size: 27px;
+
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.72);
 
     }
 
@@ -1060,6 +1092,9 @@
       color: var(--muted);
 
       line-height: 1.5;
+
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.72);
 
     }
 
@@ -1378,27 +1413,27 @@ footer.site-credits > p.developer-credit {
     >
 
       <a href="inicio.html">
-        INICIO
+        <span data-i18n="nav.inicio">INICIO</span>
       </a>
 
 
       <a href="index.html">
-        EL GRAND TOUR
+        <span data-i18n="nav.tour">EL GRAND TOUR</span>
       </a>
 
 
 <a href="videos.html">
-    VÍDEOS
+    <span data-i18n="nav.videos">VÍDEOS</span>
 </a>
 
 
       <a href="vivir-en-suiza.html">
-        VIVIR EN SUIZA
+        <span data-i18n="nav.vivir">VIVIR EN SUIZA</span>
       </a>
 
 
       <a href="comunidad.html">
-        COMUNIDAD
+        <span data-i18n="nav.comunidad">COMUNIDAD</span>
       </a>
 
 
@@ -1406,20 +1441,28 @@ footer.site-credits > p.developer-credit {
         href="proyectos.html"
         class="active"
       >
-        PROYECTOS
+        <span data-i18n="nav.proyectos">PROYECTOS</span>
       </a>
 
 
 <a href="hernan.html">
-    HERNÁN
+    <span data-i18n="nav.hernan">HERNÁN</span>
 </a>
 
 
 <a href="contacto.html">
-    CONTACTO
+    <span data-i18n="nav.contacto">CONTACTO</span>
 </a>
 
     </nav>
+
+    <div class="languageSelector" aria-label="Selector de idioma">
+      <button class="languageFlag" data-lang="es" type="button" title="Español" aria-label="Español"><img src="img/bandera-es.svg" alt="Español"></button>
+      <button class="languageFlag" data-lang="de" type="button" title="Deutsch" aria-label="Deutsch"><img src="img/bandera-de.svg" alt="Deutsch"></button>
+      <button class="languageFlag" data-lang="fr" type="button" title="Français" aria-label="Français"><img src="img/bandera-fr.svg" alt="Français"></button>
+      <button class="languageFlag" data-lang="it" type="button" title="Italiano" aria-label="Italiano"><img src="img/bandera-it.svg" alt="Italiano"></button>
+      <button class="languageFlag" data-lang="en" type="button" title="English" aria-label="English"><img src="img/bandera-en.svg" alt="English"></button>
+    </div>
 
   </header>
 
@@ -1441,12 +1484,12 @@ footer.site-credits > p.developer-credit {
       <div class="heroContent">
 
 
-        <div class="eyebrow">
+        <div class="eyebrow" data-i18n="hero.eyebrow">
           TODOS CON HERNÁN · PROYECTOS
         </div>
 
 
-        <h1>
+        <h1 data-i18n="hero.title">
 
           PROYECTOS
           <br>
@@ -1456,41 +1499,13 @@ footer.site-credits > p.developer-credit {
         </h1>
 
 
-        <p class="heroText">
+        <p class="heroText" data-i18n="hero.text">
 
           Ideas, viajes, experiencias y
           proyectos que forman parte de
           Todos con Hernán.
 
-          <br><br>
-
-          Y entre todos ellos, actualmente
-          destaca un gran proyecto:
-          <strong>El Grand Tour de Suiza.</strong>
-
         </p>
-
-
-        <div class="heroButtons">
-
-
-          <a
-            href="#gran-tour"
-            class="btn red"
-          >
-            VER EL PROYECTO PRINCIPAL
-          </a>
-
-
-          <a
-            href="index.html"
-            class="btn outline"
-          >
-            ENTRAR AL GRAND TOUR →
-          </a>
-
-
-        </div>
 
 
       </div>
@@ -1502,478 +1517,6 @@ footer.site-credits > p.developer-credit {
           src="img/H1.png"
           alt="Hernán · Todos con Hernán"
         >
-
-      </div>
-
-
-    </section>
-
-
-    <!-- ===================================================
-         GRAND TOUR
-         =================================================== -->
-
-    <section
-      class="section"
-      id="gran-tour"
-    >
-
-
-      <div class="sectionHeader">
-
-        <div class="sectionLabel">
-          PROYECTO PRINCIPAL · ACTUAL
-        </div>
-
-
-        <h2 class="sectionTitle">
-
-          🇨🇭 EL GRAND TOUR DE
-          <span>SUIZA</span>
-
-        </h2>
-
-
-        <p class="sectionDescription">
-
-          Un recorrido por Suiza a través
-          de 92 Photo Spots, lugares,
-          paisajes y experiencias.
-
-        </p>
-
-      </div>
-
-
-      <div class="tourProject">
-
-
-        <div class="tourProjectText">
-
-
-          <div class="tourBadge">
-            PROYECTO ACTUAL
-          </div>
-
-
-          <h3>
-
-            EL GRAND TOUR
-            <span>DE SUIZA</span>
-
-          </h3>
-
-
-          <p>
-
-            El proyecto reúne un recorrido
-            interactivo por diferentes lugares
-            de Suiza.
-
-          </p>
-
-
-          <p>
-
-            El mapa permite descubrir cada
-            Photo Spot, desplazarse por el
-            recorrido y seguir a Hernán durante
-            el viaje.
-
-          </p>
-
-
-          <div class="tourStats">
-
-
-            <div class="tourStat">
-
-              <strong>
-                92
-              </strong>
-
-              <small>
-                PHOTO SPOTS
-              </small>
-
-            </div>
-
-
-            <div class="tourStat">
-
-              <strong>
-                🇨🇭
-              </strong>
-
-              <small>
-                SUIZA
-              </small>
-
-            </div>
-
-
-            <div class="tourStat">
-
-              <strong>
-                🗺️
-              </strong>
-
-              <small>
-                MAPA INTERACTIVO
-              </small>
-
-            </div>
-
-
-          </div>
-
-
-          <a
-            href="index.html"
-            class="btn red"
-          >
-            ENTRAR AL GRAND TOUR →
-          </a>
-
-
-        </div>
-
-
-        <div class="tourImage">
-
-          <div class="tourPlaceholder">
-
-            <div class="tourPlaceholderIcon">
-              🗺️
-            </div>
-
-
-            <strong>
-              GRAND TOUR DE SUIZA
-            </strong>
-
-
-            <span>
-              92 Photo Spots · Un país · Un recorrido
-            </span>
-
-          </div>
-
-        </div>
-
-
-      </div>
-
-
-    </section>
-
-
-    <!-- ===================================================
-         OTROS PROYECTOS
-         =================================================== -->
-
-    <section class="section dark">
-
-
-      <div class="sectionHeader">
-
-        <div class="sectionLabel">
-          OTROS PROYECTOS
-        </div>
-
-
-        <h2 class="sectionTitle">
-
-          MÁS IDEAS,
-          <span>MÁS HISTORIAS</span>
-
-        </h2>
-
-
-        <p class="sectionDescription">
-
-          El Grand Tour es actualmente el proyecto
-          principal, pero forma parte de un conjunto
-          mucho más amplio de iniciativas.
-
-        </p>
-
-      </div>
-
-
-      <div class="projectsGrid">
-
-
-        <!-- MUNDIAL -->
-
-        <article class="projectCard">
-
-
-          <div class="projectIcon">
-            🌎
-          </div>
-
-
-          <h3>
-
-            Mundial del
-            <span>Plato Típico</span>
-
-          </h3>
-
-
-          <p>
-
-            Un proyecto que conecta diferentes
-            países y comunidades a través de
-            sus platos típicos y su gastronomía.
-
-          </p>
-
-
-          <a
-            href="comunidad.html"
-            class="btn outline"
-          >
-            VER PROYECTO →
-          </a>
-
-
-        </article>
-
-
-        <!-- UN MILLÓN -->
-
-        <article class="projectCard">
-
-
-          <div class="projectIcon">
-            🚀
-          </div>
-
-
-          <h3>
-
-            Proyecto
-            <span>Un Millón</span>
-
-          </h3>
-
-
-          <p>
-
-            Un objetivo de crecimiento de la
-            comunidad y de los seguidores
-            alrededor de Todos con Hernán.
-
-          </p>
-
-
-          <a
-            href="comunidad.html"
-            class="btn outline"
-          >
-            CONOCER MÁS →
-          </a>
-
-
-        </article>
-
-
-        <!-- ASESORAMIENTO -->
-
-        <article class="projectCard">
-
-
-          <div class="projectIcon">
-            🤝
-          </div>
-
-
-          <h3>
-
-            <span>Asesoramiento</span>
-            y colaboraciones
-
-          </h3>
-
-
-          <p>
-
-            Un espacio para conectar personas,
-            proyectos, empresas y comunidades.
-
-          </p>
-
-
-          <a
-            href="comunidad.html"
-            class="btn outline"
-          >
-            MÁS INFORMACIÓN →
-          </a>
-
-
-        </article>
-
-
-      </div>
-
-
-    </section>
-
-
-    <!-- ===================================================
-         PROYECTO UN MILLÓN
-         =================================================== -->
-
-    <section class="section">
-
-
-      <div class="million">
-
-
-        <div class="sectionLabel">
-          PROYECTO DE COMUNIDAD
-        </div>
-
-
-        <div class="millionNumber">
-          1.000.000
-        </div>
-
-
-        <h3>
-          UNA META PARA CRECER JUNTOS
-        </h3>
-
-
-        <p>
-
-          El Proyecto Un Millón forma parte
-          de la visión de crecimiento de
-          Todos con Hernán y de la construcción
-          de una comunidad cada vez mayor.
-
-        </p>
-
-
-        <a
-          href="comunidad.html"
-          class="btn red"
-        >
-          VER EN COMUNIDAD →
-        </a>
-
-
-      </div>
-
-
-    </section>
-
-
-    <!-- ===================================================
-         ASESORAMIENTO
-         =================================================== -->
-
-    <section class="section dark">
-
-
-      <div class="sectionHeader">
-
-        <div class="sectionLabel">
-          COLABORACIONES
-        </div>
-
-
-        <h2 class="sectionTitle">
-
-          🤝
-          <span>ASESORAMIENTO</span>
-
-        </h2>
-
-
-        <p class="sectionDescription">
-
-          Una parte de la actividad de Hernán
-          relacionada con personas, proyectos
-          y colaboraciones.
-
-        </p>
-
-      </div>
-
-
-      <div class="adviceGrid">
-
-
-        <article class="adviceCard">
-
-          <div class="adviceIcon">
-            🇨🇭
-          </div>
-
-
-          <h3>
-            Suiza
-          </h3>
-
-
-          <p>
-
-            Orientación y experiencias relacionadas
-            con vivir y desarrollar proyectos
-            en Suiza.
-
-          </p>
-
-        </article>
-
-
-        <article class="adviceCard">
-
-          <div class="adviceIcon">
-            🚀
-          </div>
-
-
-          <h3>
-            Proyectos
-          </h3>
-
-
-          <p>
-
-            Ideas, iniciativas y proyectos que
-            pueden crecer junto a la comunidad.
-
-          </p>
-
-        </article>
-
-
-        <article class="adviceCard">
-
-          <div class="adviceIcon">
-            🤝
-          </div>
-
-
-          <h3>
-            Colaboraciones
-          </h3>
-
-
-          <p>
-
-            Un espacio para personas, empresas
-            y creadores interesados en colaborar.
-
-          </p>
-
-        </article>
-
 
       </div>
 
@@ -2016,40 +1559,6 @@ footer.site-credits > p.developer-credit {
     </section>
 
 
-    <!-- ===================================================
-         CTA
-         =================================================== -->
-
-    <section class="cta">
-
-
-      <h2>
-
-        DESCUBRE EL
-        <span>GRAND TOUR</span>
-
-      </h2>
-
-
-      <p>
-
-        El proyecto principal actual de
-        Todos con Hernán te espera.
-
-      </p>
-
-
-      <a
-        href="index.html"
-        class="btn red"
-      >
-        ENTRAR AL GRAND TOUR →
-      </a>
-
-
-    </section>
-
-
   </main>
 
 
@@ -2064,10 +1573,49 @@ footer.site-credits > p.developer-credit {
   </p>
 
   <p class="developer-credit">
-    Yonathan Alvarado · Full Stack Web Developer · Spain
+    <a
+      href="https://www.instagram.com/techantoni/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: inherit; text-decoration: none;"
+    >
+      Yonathan Alvarado · Full Stack Web Developer · Spain
+    </a>
   </p>
 
 </footer>
+
+
+<script>
+  window.PAGE_TRANSLATIONS = {
+    es: {
+      "hero.eyebrow": "TODOS CON HERNÁN · PROYECTOS",
+      "hero.title": "PROYECTOS<br><span>QUE CRECEN</span>",
+      "hero.text": "Ideas, viajes, experiencias y proyectos que forman parte de Todos con Hernán."
+    },
+    de: {
+      "hero.eyebrow": "TODOS CON HERNÁN · PROJEKTE",
+      "hero.title": "PROJEKTE,<br><span>DIE WACHSEN</span>",
+      "hero.text": "Ideen, Reisen, Erfahrungen und Projekte, die Teil von Todos con Hernán sind."
+    },
+    fr: {
+      "hero.eyebrow": "TODOS CON HERNÁN · PROJETS",
+      "hero.title": "DES PROJETS<br><span>QUI GRANDISSENT</span>",
+      "hero.text": "Des idées, des voyages, des expériences et des projets qui font partie de Todos con Hernán."
+    },
+    it: {
+      "hero.eyebrow": "TODOS CON HERNÁN · PROGETTI",
+      "hero.title": "PROGETTI<br><span>CHE CRESCONO</span>",
+      "hero.text": "Idee, viaggi, esperienze e progetti che fanno parte di Todos con Hernán."
+    },
+    en: {
+      "hero.eyebrow": "TODOS CON HERNÁN · PROJECTS",
+      "hero.title": "PROJECTS<br><span>THAT GROW</span>",
+      "hero.text": "Ideas, trips, experiences and projects that are part of Todos con Hernán."
+    }
+  };
+</script>
+<script src="js/i18n.js"></script>
 
 
 </body>

@@ -2,6 +2,8 @@
 <html lang="es">
 
 <head>
+  <meta name="view-transition" content="same-origin">
+  <style>html { background: #071a28; }</style>
 
     <meta charset="UTF-8">
 
@@ -16,6 +18,8 @@
     >
 
     <title>Hernán · Todos con Hernán</title>
+
+    <link rel="stylesheet" href="css/language-selector.css">
 
 
     <style>
@@ -42,45 +46,68 @@
             --text: #dce7ed;
             --muted: #9fb3bf;
 
-            --line: #244b62;
-
         }
 
 
-        /* =====================================================
-           RESET
-           ===================================================== */
-
-        * {
-            box-sizing: border-box;
-        }
-
-
-        html {
-            scroll-behavior: smooth;
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+            background: transparent;
+            color: var(--white);
         }
 
 
         body {
-
-            margin: 0;
-            padding: 0;
-
-            min-height: 100vh;
-
-            background: var(--bg);
-
-            color: var(--white);
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
+            position: relative;
+            isolation: isolate;
             overflow-x: hidden;
-
         }
 
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -3%;
+            z-index: 0;
+            pointer-events: none;
+            background: url("img/09Suiza.jpg") center top / cover no-repeat;
+            animation: hernanFondo 26s ease-in-out infinite alternate;
+            transform-origin: center center;
+            will-change: transform;
+        }
+
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background: transparent;
+        }
+
+
+        body > header,
+        body > main,
+        body > footer {
+            position: relative;
+            z-index: 1;
+        }
+
+
+        @keyframes hernanFondo {
+            from { transform: scale(1.02) translate3d(0, 0, 0); }
+            to { transform: scale(1.07) translate3d(-1%, -0.6%, 0); }
+        }
+
+
+        @media (prefers-reduced-motion: reduce) {
+            body::before {
+                animation: none;
+                transform: scale(1.02);
+            }
+        }
 
         a {
             color: inherit;
@@ -90,6 +117,16 @@
         img {
             max-width: 100%;
             display: block;
+        }
+
+
+        main,
+        .hero,
+        .history,
+        .videoSection,
+        .about,
+        .cta {
+            background: transparent;
         }
 
 
@@ -227,14 +264,7 @@
 
             overflow: hidden;
 
-            background:
-
-                radial-gradient(
-                    circle at 75% 50%,
-                    #16394d 0,
-                    #071a28 35%,
-                    #04111b 78%
-                );
+            background: transparent;
 
         }
 
@@ -255,13 +285,7 @@
 
             border-radius: 50%;
 
-            background:
-
-                radial-gradient(
-                    circle,
-                    #ef18201c,
-                    transparent 68%
-                );
+            display: none;
 
             pointer-events: none;
 
@@ -834,106 +858,10 @@
         }
 
 
-        /* =====================================================
-           MÁS SOBRE HERNÁN
-           ===================================================== */
-
-        .about {
-
-            padding:
-                80px
-                8vw;
-
-            background:
-                var(--bg2);
-
-        }
-
-
-        .aboutGrid {
-
-            max-width:
-                1100px;
-
-            margin:
-                auto;
-
-            display:
-                grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap:
-                18px;
-
-        }
-
-
-        .aboutCard {
-
-            padding:
-                28px;
-
-            border:
-                1px solid var(--line);
-
-            border-radius:
-                16px;
-
-            background:
-                #071b29;
-
-        }
-
-
-        .aboutIcon {
-
-            font-size:
-                38px;
-
-            margin-bottom:
-                15px;
-
-        }
-
-
-        .aboutCard h3 {
-
-            margin:
-                0 0 10px;
-
-            font-size:
-                20px;
-
-        }
-
-
-        .aboutCard p {
-
-            margin:
-                0;
-
-            color:
-                var(--muted);
-
-            font-size:
-                14px;
-
-            line-height:
-                1.6;
-
-        }
-
-
-        /* =====================================================
-           CTA
-           ===================================================== */
-
         .cta {
 
             padding:
-                90px
+                85px
                 20px;
 
             text-align:
@@ -942,7 +870,7 @@
             background:
                 linear-gradient(
                     135deg,
-                    #0a2130,
+                    #081d2c,
                     #04111b
                 );
 
@@ -1295,32 +1223,32 @@ footer.site-credits > p.developer-credit {
         >
 
             <a href="inicio.html">
-                INICIO
+                <span data-i18n="nav.inicio">INICIO</span>
             </a>
 
 
             <a href="index.html">
-                EL GRAND TOUR
+                <span data-i18n="nav.tour">EL GRAND TOUR</span>
             </a>
 
 
 <a href="videos.html">
-    VÍDEOS
+    <span data-i18n="nav.videos">VÍDEOS</span>
 </a>
 
 
             <a href="vivir-en-suiza.html">
-                VIVIR EN SUIZA
+                <span data-i18n="nav.vivir">VIVIR EN SUIZA</span>
             </a>
 
 
             <a href="comunidad.html">
-                COMUNIDAD
+                <span data-i18n="nav.comunidad">COMUNIDAD</span>
             </a>
 
 
             <a href="proyectos.html">
-                PROYECTOS
+                <span data-i18n="nav.proyectos">PROYECTOS</span>
             </a>
 
 
@@ -1328,15 +1256,23 @@ footer.site-credits > p.developer-credit {
                 href="hernan.html"
                 class="active"
             >
-                HERNÁN
+                <span data-i18n="nav.hernan">HERNÁN</span>
             </a>
 
 
 <a href="contacto.html">
-    CONTACTO
+    <span data-i18n="nav.contacto">CONTACTO</span>
 </a>
 
         </nav>
+
+        <div class="languageSelector" aria-label="Selector de idioma">
+            <button class="languageFlag" data-lang="es" type="button" title="Español" aria-label="Español"><img src="img/bandera-es.svg" alt="Español"></button>
+            <button class="languageFlag" data-lang="de" type="button" title="Deutsch" aria-label="Deutsch"><img src="img/bandera-de.svg" alt="Deutsch"></button>
+            <button class="languageFlag" data-lang="fr" type="button" title="Français" aria-label="Français"><img src="img/bandera-fr.svg" alt="Français"></button>
+            <button class="languageFlag" data-lang="it" type="button" title="Italiano" aria-label="Italiano"><img src="img/bandera-it.svg" alt="Italiano"></button>
+            <button class="languageFlag" data-lang="en" type="button" title="English" aria-label="English"><img src="img/bandera-en.svg" alt="English"></button>
+        </div>
 
     </header>
 
@@ -1359,12 +1295,12 @@ footer.site-credits > p.developer-credit {
             <div class="heroContent">
 
 
-                <div class="label">
+                <div class="label" data-i18n="hero.eyebrow">
                     TODOS CON HERNÁN
                 </div>
 
 
-                <h1>
+                <h1 data-i18n="hero.title">
 
                     CONOCE A
                     <br>
@@ -1374,7 +1310,7 @@ footer.site-credits > p.developer-credit {
                 </h1>
 
 
-                <p class="heroIntro">
+                <p class="heroIntro" data-i18n="hero.text">
 
                     Detrás de Todos con Hernán hay una
                     historia de esfuerzo, cambios,
@@ -1440,98 +1376,13 @@ footer.site-credits > p.developer-credit {
 
 
         <!-- =================================================
-             HISTORIA
-             ================================================= -->
-
-        <section
-            class="history"
-            id="historia"
-        >
-
-
-            <div class="historyContainer">
-
-
-                <div>
-
-                    <div class="sectionLabel">
-                        SU HISTORIA
-                    </div>
-
-
-                    <h2 class="historyTitle">
-
-                        UN NUEVO
-                        <br>
-
-                        <span>COMIENZO</span>
-
-                    </h2>
-
-                </div>
-
-
-                <div class="historyText">
-
-
-                    <p>
-
-                        Llegar a un nuevo país supone
-                        empezar muchas cosas desde cero.
-
-                        Nuevos lugares, nuevas personas,
-                        nuevas experiencias y también
-                        nuevos retos.
-
-                    </p>
-
-
-                    <p>
-
-                        Hernán ha compartido parte de
-                        ese camino a través de sus vídeos,
-                        mostrando sus experiencias y
-                        diferentes etapas de su vida
-                        en Suiza.
-
-                    </p>
-
-
-                    <p>
-
-                        Esta sección quiere acercar
-                        al público a la persona que está
-                        detrás de Todos con Hernán.
-
-                    </p>
-
-
-                    <div class="historyQuote">
-
-                        “Una historia de nuevos comienzos,
-                        experiencias y ganas de seguir
-                        adelante.”
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =================================================
              VÍDEO
              ================================================= -->
 
         <section
             class="videoSection"
             id="video"
+            hidden
         >
 
 
@@ -1636,153 +1487,6 @@ footer.site-credits > p.developer-credit {
 
 
 
-        <!-- =================================================
-             MÁS SOBRE HERNÁN
-             ================================================= -->
-
-        <section class="about">
-
-
-            <div class="sectionHeader">
-
-
-                <div class="sectionLabel">
-                    TODOS CON HERNÁN
-                </div>
-
-
-                <h2>
-
-                    MUCHO MÁS QUE
-                    <span>UN PROYECTO</span>
-
-                </h2>
-
-
-                <p>
-
-                    La historia personal es también
-                    el punto de partida de todo lo que
-                    viene después.
-
-                </p>
-
-
-            </div>
-
-
-            <div class="aboutGrid">
-
-
-                <article class="aboutCard">
-
-                    <div class="aboutIcon">
-                        🇨🇭
-                    </div>
-
-
-                    <h3>
-                        Suiza
-                    </h3>
-
-
-                    <p>
-
-                        Experiencias, lugares y vivencias
-                        relacionadas con la vida en Suiza.
-
-                    </p>
-
-                </article>
-
-
-                <article class="aboutCard">
-
-                    <div class="aboutIcon">
-                        🎥
-                    </div>
-
-
-                    <h3>
-                        Contenido
-                    </h3>
-
-
-                    <p>
-
-                        Vídeos y experiencias compartidas
-                        con una comunidad cada vez mayor.
-
-                    </p>
-
-                </article>
-
-
-                <article class="aboutCard">
-
-                    <div class="aboutIcon">
-                        🚀
-                    </div>
-
-
-                    <h3>
-                        Proyectos
-                    </h3>
-
-
-                    <p>
-
-                        Nuevas ideas e iniciativas como
-                        el Grand Tour de Suiza y otros
-                        proyectos de comunidad.
-
-                    </p>
-
-                </article>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             CTA
-             ================================================= -->
-
-        <section class="cta">
-
-
-            <h2>
-
-                DESCUBRE TODO LO QUE HAY
-                <span>DETRÁS</span>
-
-            </h2>
-
-
-            <p>
-
-                Conoce su historia, descubre sus proyectos
-                y acompaña a Hernán en sus próximas
-                experiencias.
-
-            </p>
-
-
-            <a
-                href="proyectos.html"
-                class="btn red"
-            >
-                VER TODOS LOS PROYECTOS →
-            </a>
-
-
-        </section>
-
-
     </main>
 
 
@@ -1797,10 +1501,49 @@ footer.site-credits > p.developer-credit {
   </p>
 
   <p class="developer-credit">
-    Yonathan Alvarado · Full Stack Web Developer · Spain
+    <a
+      href="https://www.instagram.com/techantoni/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: inherit; text-decoration: none;"
+    >
+      Yonathan Alvarado · Full Stack Web Developer · Spain
+    </a>
   </p>
 
 </footer>
+
+
+<script>
+  window.PAGE_TRANSLATIONS = {
+    es: {
+      "hero.eyebrow": "TODOS CON HERNÁN",
+      "hero.title": "CONOCE A<br><span>HERNÁN</span>",
+      "hero.text": "Detrás de Todos con Hernán hay una historia de esfuerzo, cambios, experiencias y nuevos comienzos.<br><br>Conoce un poco más sobre la persona que está detrás de este proyecto y descubre su historia directamente de sus propias palabras."
+    },
+    de: {
+      "hero.eyebrow": "TODOS CON HERNÁN",
+      "hero.title": "LERNE<br><span>HERNÁN KENNEN</span>",
+      "hero.text": "Hinter Todos con Hernán steckt eine Geschichte von Anstrengung, Veränderungen, Erfahrungen und Neuanfängen.<br><br>Erfahre mehr über die Person hinter diesem Projekt und entdecke seine Geschichte in seinen eigenen Worten."
+    },
+    fr: {
+      "hero.eyebrow": "TODOS CON HERNÁN",
+      "hero.title": "DÉCOUVREZ<br><span>HERNÁN</span>",
+      "hero.text": "Derrière Todos con Hernán se cache une histoire d'efforts, de changements, d'expériences et de nouveaux départs.<br><br>Découvrez-en plus sur la personne derrière ce projet et son histoire, racontée avec ses propres mots."
+    },
+    it: {
+      "hero.eyebrow": "TODOS CON HERNÁN",
+      "hero.title": "CONOSCI<br><span>HERNÁN</span>",
+      "hero.text": "Dietro Todos con Hernán c'è una storia fatta di impegno, cambiamenti, esperienze e nuovi inizi.<br><br>Scopri qualcosa in più sulla persona dietro questo progetto e la sua storia raccontata con le sue parole."
+    },
+    en: {
+      "hero.eyebrow": "TODOS CON HERNÁN",
+      "hero.title": "MEET<br><span>HERNÁN</span>",
+      "hero.text": "Behind Todos con Hernán there's a story of effort, changes, experiences and new beginnings.<br><br>Learn more about the person behind this project and discover his story in his own words."
+    }
+  };
+</script>
+<script src="js/i18n.js"></script>
 
 
 </body>

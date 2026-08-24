@@ -2,6 +2,8 @@
 <html lang="es">
 
 <head>
+  <meta name="view-transition" content="same-origin">
+  <style>html { background: #071a28; }</style>
 
     <meta charset="UTF-8">
 
@@ -92,6 +94,57 @@
             display: block;
         }
 
+
+        /* =====================================================
+           FONDO CINEMATOGRÁFICO · GRAND TOUR
+           ===================================================== */
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: -2;
+            transform: scale(1.04);
+        }
+
+        body::before {
+            background-image:
+                linear-gradient(180deg, rgba(2,10,17,.18), rgba(4,17,27,.28)),
+                url("img/Aigle\ suiza.jpg");
+            animation: swissA 24s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            background-image:
+                linear-gradient(180deg, rgba(2,10,17,.16), rgba(4,17,27,.25)),
+                url("img/Grindelwald\ Suiza.jpg");
+            opacity: 0;
+            animation: swissB 24s ease-in-out infinite alternate;
+        }
+
+        @keyframes swissA {
+            from { transform: scale(1.04) translate3d(0,0,0); }
+            to { transform: scale(1.10) translate3d(-1%,-1%,0); }
+        }
+
+        @keyframes swissB {
+            0%,45% { opacity: 0; transform: scale(1.06) translate3d(1%,1%,0); }
+            60%,100% { opacity: 1; transform: scale(1.11) translate3d(-1%,-1%,0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body::before, body::after { animation: none; }
+        }
+
+
+        /* Página de vídeos: entrada directa al contenido */
+        body.video-page .section {
+            padding-top: 55px;
+        }
 
         /* =====================================================
            BARRA SUPERIOR
@@ -441,7 +494,7 @@
                 85px 7vw;
 
             background:
-                var(--bg2);
+                rgba(6, 25, 37, .30);
 
         }
 
@@ -449,7 +502,7 @@
         .section.dark {
 
             background:
-                #04111b;
+                rgba(4, 17, 27, .24);
 
         }
 
@@ -1245,12 +1298,1270 @@ footer.site-credits > p.developer-credit {
 
 }
 
+
+        /* =====================================================
+           AJUSTE FINAL · FONDO SUIZA MÁS LIMPIO Y NÍTIDO
+           ===================================================== */
+
+        body {
+            background: #06131d;
+        }
+
+        body::before,
+        body::after {
+            transform: scale(1.015);
+            filter: saturate(1.06) contrast(1.03);
+        }
+
+        body::before {
+            background-image:
+                linear-gradient(180deg, rgba(2,10,17,.035), rgba(4,17,27,.10)),
+                url("img/Aigle\ suiza.jpg");
+            animation: swissAclean 28s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            background-image:
+                linear-gradient(180deg, rgba(2,10,17,.035), rgba(4,17,27,.10)),
+                url("img/Grindelwald\ Suiza.jpg");
+            animation: swissBclean 28s ease-in-out infinite alternate;
+        }
+
+        @keyframes swissAclean {
+            from { transform: scale(1.015) translate3d(0,0,0); }
+            to   { transform: scale(1.045) translate3d(-.5%,-.4%,0); }
+        }
+
+        @keyframes swissBclean {
+            0%,45% { opacity: 0; transform: scale(1.02) translate3d(.5%,.4%,0); }
+            60%,100% { opacity: 1; transform: scale(1.045) translate3d(-.5%,-.4%,0); }
+        }
+
+        /* Las secciones dejan ver el paisaje */
+        body.video-page .section,
+        body.video-page .section.dark {
+            background: rgba(4,17,27,.12);
+            backdrop-filter: none;
+        }
+
+        .sectionHeader p {
+            color: #edf5f8;
+            text-shadow: 0 2px 12px rgba(0,0,0,.75);
+        }
+
+        .sectionLabel {
+            text-shadow: 0 2px 10px rgba(0,0,0,.8);
+        }
+
+        .sectionHeader h2 {
+            text-shadow: 0 3px 18px rgba(0,0,0,.85);
+        }
+
+        /* Tarjetas: imagen protagonista, panel inferior ligero */
+        .videoCard {
+            background: rgba(4,17,27,.68);
+            border-color: rgba(255,255,255,.20);
+            box-shadow: 0 18px 45px rgba(0,0,0,.32);
+        }
+
+        .videoThumbnail {
+            background: transparent;
+        }
+
+        .videoOverlay {
+            background: rgba(0,0,0,.06);
+        }
+
+        .smallPlay {
+            width: 58px;
+            height: 58px;
+            font-size: 22px;
+            background: var(--red);
+            box-shadow: 0 7px 22px rgba(0,0,0,.45);
+        }
+
+        .videoInfo {
+            padding: 18px 20px 20px;
+            background: rgba(4,17,27,.76);
+        }
+
+        .videoInfo h3 {
+            text-shadow: 0 2px 10px rgba(0,0,0,.7);
+        }
+
+        .videoInfo p {
+            color: #c7d7de;
+        }
+
+        .videoInfo .btn {
+            min-height: 42px;
+            padding: 0 18px;
+            background: rgba(4,17,27,.58);
+            border-color: rgba(255,255,255,.28);
+            box-shadow: 0 5px 16px rgba(0,0,0,.22);
+        }
+
+        .videoInfo .btn:hover {
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        /* Bloque del canal: también deja respirar al paisaje */
+        .youtubeSection {
+            background: rgba(4,17,27,.70);
+            border-color: rgba(255,255,255,.20);
+            box-shadow: 0 20px 55px rgba(0,0,0,.30);
+        }
+
+        .youtubeSection p {
+            color: #d3e0e5;
+        }
+
+        @media (max-width: 750px) {
+            .videoCard {
+                background: rgba(4,17,27,.74);
+            }
+
+            .videoInfo {
+                background: rgba(4,17,27,.82);
+            }
+        }
+
+
+<style id="videos-minimal-update">
+/* =========================================================
+   PROPUESTA FINAL · VÍDEOS GRAND TOUR
+   Fondo protagonista + tarjetas minimalistas
+   ========================================================= */
+
+html, body {
+    min-height: 100%;
+}
+
+body.video-page {
+    background: #06131d !important;
+}
+
+/* Fondo nítido y con movimiento suave */
+body.video-page::before,
+body.video-page::after {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    transform: scale(1.015) !important;
+    filter: saturate(1.08) contrast(1.04) !important;
+}
+
+body.video-page::before {
+    background-image:
+        linear-gradient(180deg, rgba(2,10,17,.05), rgba(4,17,27,.10)),
+        url("img/Aigle\ suiza.jpg") !important;
+    animation: swissFinalA 30s ease-in-out infinite alternate !important;
+    opacity: 1 !important;
+}
+
+body.video-page::after {
+    background-image:
+        linear-gradient(180deg, rgba(2,10,17,.04), rgba(4,17,27,.08)),
+        url("img/Grindelwald\ Suiza.jpg") !important;
+    animation: swissFinalB 30s ease-in-out infinite alternate !important;
+}
+
+@keyframes swissFinalA {
+    from { transform: scale(1.015) translate3d(0,0,0); }
+    to   { transform: scale(1.055) translate3d(-.7%,-.5%,0); }
+}
+
+@keyframes swissFinalB {
+    0%, 42% { opacity: 0; transform: scale(1.02) translate3d(.5%,.3%,0); }
+    58%, 100% { opacity: .88; transform: scale(1.055) translate3d(-.5%,-.4%,0); }
+}
+
+/* La página deja respirar al paisaje */
+body.video-page .section,
+body.video-page .section.dark {
+    background: transparent !important;
+    backdrop-filter: none !important;
+}
+
+/* Encabezado */
+body.video-page .sectionHeader {
+    margin-bottom: 34px;
+}
+
+body.video-page .sectionLabel {
+    text-shadow: 0 2px 10px rgba(0,0,0,.65);
+}
+
+body.video-page .sectionHeader h2 {
+    text-shadow: 0 3px 18px rgba(0,0,0,.65);
+}
+
+body.video-page .sectionHeader p {
+    color: #f1f7fa !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,.65);
+}
+
+/* Tres tarjetas en escritorio */
+body.video-page .videosGrid {
+    max-width: 1250px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+/* Tarjeta casi transparente: la imagen manda */
+body.video-page .videoCard {
+    background: rgba(4,17,27,.28) !important;
+    border: 1px solid rgba(255,255,255,.38) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 14px 35px rgba(0,0,0,.22) !important;
+    backdrop-filter: blur(2px);
+}
+
+body.video-page .videoCard:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,.70) !important;
+}
+
+/* Mantener thumbnails originales del canal */
+body.video-page .videoThumbnail img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+body.video-page .videoOverlay {
+    background: transparent !important;
+}
+
+/* Play pequeño y limpio, sin tapar la miniatura */
+body.video-page .smallPlay {
+    width: 56px !important;
+    height: 56px !important;
+    border: 1px solid rgba(255,255,255,.75);
+    background: rgba(4,17,27,.20) !important;
+    box-shadow: 0 5px 18px rgba(0,0,0,.30) !important;
+    backdrop-filter: blur(3px);
+    font-size: 21px !important;
+}
+
+body.video-page .videoCard:hover .smallPlay {
+    background: rgba(239,24,32,.88) !important;
+}
+
+/* Panel inferior mucho más ligero */
+body.video-page .videoInfo {
+    padding: 15px 16px 17px !important;
+    background: rgba(4,17,27,.40) !important;
+}
+
+body.video-page .videoInfo h3 {
+    margin-bottom: 8px;
+    font-size: 19px;
+    text-shadow: 0 2px 9px rgba(0,0,0,.75);
+}
+
+body.video-page .videoInfo p {
+    margin-bottom: 13px;
+    color: #e2edf1 !important;
+    font-size: 13px;
+    text-shadow: 0 2px 8px rgba(0,0,0,.60);
+}
+
+/* Etiqueta compacta */
+body.video-page .videoCategory {
+    padding: 5px 9px;
+    margin-bottom: 8px;
+    font-size: 9px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.20);
+}
+
+/* Botón minimalista */
+body.video-page .videoInfo .btn {
+    min-height: 38px !important;
+    padding: 0 15px !important;
+    border: 1px solid rgba(255,255,255,.60) !important;
+    border-radius: 20px !important;
+    background: rgba(4,17,27,.18) !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    font-size: 11px;
+}
+
+body.video-page .videoInfo .btn:hover {
+    background: rgba(239,24,32,.88) !important;
+    border-color: var(--red) !important;
+}
+
+/* Bloque YouTube también minimalista */
+body.video-page .youtubeSection {
+    background: rgba(4,17,27,.28) !important;
+    border: 1px solid rgba(255,255,255,.32) !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,.20) !important;
+    backdrop-filter: blur(3px);
+}
+
+body.video-page .youtubeSection p {
+    color: #eef6f8 !important;
+    text-shadow: 0 2px 9px rgba(0,0,0,.60);
+}
+
+body.video-page .youtubeSection .btn.red {
+    background: rgba(239,24,32,.82) !important;
+    box-shadow: none !important;
+}
+
+/* En pantallas pequeñas volvemos a una columna */
+@media (max-width: 900px) {
+    body.video-page .videosGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    body.video-page .videosGrid {
+        grid-template-columns: 1fr;
+    }
+
+    body.video-page .videoInfo {
+        background: rgba(4,17,27,.50) !important;
+    }
+
+    body.video-page .section {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+</style>
+
+</style>
+
+<style id="youtube-compact-update">
+/* BLOQUE YOUTUBE MÁS COMPACTO */
+body.video-page .youtubeSection {
+    max-width: 820px !important;
+    margin: 0 auto !important;
+    padding: 26px 32px !important;
+    border-radius: 18px !important;
+}
+
+body.video-page .youtubeIcon {
+    font-size: 38px !important;
+    margin-bottom: 7px !important;
+}
+
+body.video-page .youtubeSection .sectionLabel {
+    margin-bottom: 7px !important;
+    font-size: 11px !important;
+}
+
+body.video-page .youtubeSection h2 {
+    margin: 0 0 9px !important;
+    font-size: clamp(25px, 3vw, 38px) !important;
+}
+
+body.video-page .youtubeSection p {
+    max-width: 650px !important;
+    margin: 0 auto 16px !important;
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+}
+
+body.video-page .youtubeSection .btn.red {
+    min-height: 40px !important;
+    padding: 0 20px !important;
+    font-size: 12px !important;
+}
+
+@media (max-width: 600px) {
+    body.video-page .youtubeSection {
+        max-width: calc(100% - 20px) !important;
+        padding: 22px 18px !important;
+    }
+}
+</style>
+
+
+<style id="videos-clean-header-footer">
+/* =========================================================
+   VÍDEOS · CABECERA Y PIE MÁS CLAROS / MINIMALISTAS
+   Mismo lenguaje visual que Inicio
+   ========================================================= */
+
+.topbar {
+    min-height: 64px !important;
+    padding: 0 18px !important;
+    background: rgba(3, 16, 26, .94) !important;
+    border-bottom: 1px solid rgba(255,255,255,.10) !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,.10) !important;
+    backdrop-filter: blur(8px);
+}
+
+.mainNav {
+    width: 100%;
+    max-width: 1260px;
+    min-height: 64px !important;
+    gap: 30px !important;
+}
+
+.mainNav a {
+    height: 64px !important;
+    color: rgba(255,255,255,.88) !important;
+    font-size: 12px !important;
+    letter-spacing: .1px;
+    transition: color .2s ease, opacity .2s ease;
+}
+
+.mainNav a:hover,
+.mainNav a.active {
+    color: #fff !important;
+}
+
+.mainNav a.active::after {
+    height: 3px !important;
+    bottom: 0 !important;
+    border-radius: 3px 3px 0 0 !important;
+}
+
+/* Idiomas: pequeños, limpios y sin competir con el menú */
+.languageSwitcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    padding-left: 8px;
+}
+
+.languageSwitcher .langBtn {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 50%;
+    background: rgba(3,16,26,.42);
+    opacity: .88;
+    overflow: hidden;
+    transition: transform .18s ease, border-color .18s ease,
+                opacity .18s ease, background .18s ease;
+}
+
+.languageSwitcher .langBtn::after {
+    display: none !important;
+}
+
+.languageSwitcher .langBtn img {
+    width: 21px;
+    height: 21px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.languageSwitcher .langBtn:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    border-color: rgba(255,255,255,.65);
+    background: rgba(255,255,255,.08);
+}
+
+.languageSwitcher .langBtn.active {
+    border: 2px solid #ef1820 !important;
+    opacity: 1;
+    background: rgba(239,24,32,.08);
+}
+
+/* Pie de página limpio, sin bloque pesado */
+footer.site-credits {
+    min-height: 72px !important;
+    padding: 16px 20px !important;
+    gap: 4px !important;
+    background: rgba(3,16,26,.92) !important;
+    border-top: 1px solid rgba(255,255,255,.10) !important;
+    box-shadow: 0 -6px 20px rgba(0,0,0,.08);
+    backdrop-filter: blur(8px);
+}
+
+footer.site-credits > p {
+    color: rgba(255,255,255,.62) !important;
+    font-size: 12px !important;
+}
+
+footer.site-credits > p.developer-credit {
+    color: rgba(255,255,255,.88) !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+/* Botones del contenido: menos peso visual */
+body.video-page .btn {
+    box-shadow: none !important;
+    transition: transform .18s ease, background .18s ease,
+                border-color .18s ease, opacity .18s ease;
+}
+
+body.video-page .btn:hover {
+    transform: translateY(-1px);
+}
+
+body.video-page .btn.red {
+    background: rgba(239,24,32,.92) !important;
+}
+
+body.video-page .btn.outline {
+    background: rgba(3,16,26,.16) !important;
+    border-color: rgba(255,255,255,.48) !important;
+}
+
+body.video-page .btn.outline:hover {
+    background: rgba(239,24,32,.90) !important;
+    border-color: #ef1820 !important;
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+    .mainNav {
+        gap: 20px !important;
+    }
+
+    .languageSwitcher {
+        gap: 6px;
+        padding-left: 2px;
+    }
+
+    .languageSwitcher .langBtn {
+        width: 29px !important;
+        height: 29px !important;
+        min-width: 29px;
+    }
+
+    .languageSwitcher .langBtn img {
+        width: 19px;
+        height: 19px;
+    }
+}
+
+@media (max-width: 750px) {
+    .topbar {
+        justify-content: flex-start !important;
+        overflow-x: auto;
+    }
+
+    .mainNav {
+        width: max-content;
+        gap: 17px !important;
+    }
+
+    .mainNav a {
+        font-size: 11px !important;
+    }
+
+    .languageSwitcher {
+        margin-left: 4px;
+        padding-right: 5px;
+    }
+}
+</style>
+
+
+<style id="transparent-header-footer-fix">
+/* CORRECCIÓN FINAL · CABECERA Y PIE TRANSPARENTES */
+
+.topbar {
+    background: rgba(3, 16, 26, .42) !important;
+    border-bottom: 1px solid rgba(255,255,255,.12) !important;
+    box-shadow: 0 4px 18px rgba(0,0,0,.08) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+}
+
+.languageSwitcher {
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    margin-left: auto !important;
+}
+
+.languageSwitcher .langBtn {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(255,255,255,.30) !important;
+    border-radius: 50% !important;
+    background: rgba(3,16,26,.22) !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 19px !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    opacity: .95 !important;
+    box-shadow: none !important;
+}
+
+.languageSwitcher .langBtn:hover {
+    background: rgba(255,255,255,.12) !important;
+    border-color: rgba(255,255,255,.65) !important;
+    transform: translateY(-1px);
+}
+
+.languageSwitcher .langBtn.active {
+    background: rgba(3,16,26,.28) !important;
+    border: 2px solid #ef1820 !important;
+}
+
+/* El pie deja ver claramente el paisaje */
+footer.site-credits {
+    background: rgba(3,16,26,.38) !important;
+    border-top: 1px solid rgba(255,255,255,.12) !important;
+    box-shadow: 0 -4px 18px rgba(0,0,0,.06) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+}
+
+footer.site-credits > p {
+    color: rgba(255,255,255,.78) !important;
+    text-shadow: 0 1px 6px rgba(0,0,0,.55);
+}
+
+footer.site-credits > p.developer-credit {
+    color: #fff !important;
+    text-shadow: 0 1px 6px rgba(0,0,0,.55);
+}
+
+@media (max-width: 750px) {
+    .languageSwitcher .langBtn {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        font-size: 17px !important;
+    }
+}
+</style>
+
+
+<style id="header-match-inicio-final">
+/* =========================================================
+   CABECERA · MISMA COMPOSICIÓN QUE INICIO
+   Menú perfectamente centrado + idiomas a la derecha
+   ========================================================= */
+
+.topbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    width: 100% !important;
+    min-height: 64px !important;
+    box-sizing: border-box !important;
+    padding: 0 24px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: rgba(4, 17, 27, .58) !important;
+    border-bottom: 1px solid rgba(255,255,255,.10) !important;
+    box-shadow: 0 4px 18px rgba(0,0,0,.08) !important;
+
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+}
+
+.mainNav {
+    width: max-content !important;
+    max-width: none !important;
+    min-height: 64px !important;
+    margin: 0 auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 34px !important;
+}
+
+.mainNav > a {
+    height: 64px !important;
+    flex: 0 0 auto !important;
+
+    color: rgba(255,255,255,.90) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+}
+
+.mainNav > a:hover {
+    color: #fff !important;
+}
+
+.mainNav > a.active {
+    color: #fff !important;
+    font-weight: 900 !important;
+}
+
+.mainNav > a.active::after {
+    height: 4px !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: #ef1820 !important;
+    border-radius: 3px 3px 0 0 !important;
+}
+
+/* Idiomas: NO participan en el centrado del menú */
+.languageSwitcher {
+    position: absolute !important;
+    right: 24px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.languageSwitcher .langBtn {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    box-sizing: border-box !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border: 1px solid rgba(255,255,255,.28) !important;
+    border-radius: 50% !important;
+    background: rgba(4,17,27,.25) !important;
+
+    color: #fff !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+
+    box-shadow: none !important;
+    opacity: .95 !important;
+    transition: .2s ease !important;
+}
+
+.languageSwitcher .langBtn:hover {
+    background: rgba(255,255,255,.12) !important;
+    border-color: rgba(255,255,255,.65) !important;
+    transform: translateY(-1px) !important;
+}
+
+.languageSwitcher .langBtn.active {
+    border: 2px solid #ef1820 !important;
+    background: rgba(4,17,27,.30) !important;
+    color: #fff !important;
+}
+
+/* El contenido sigue empezando justo debajo de la cabecera */
+.hero {
+    margin-top: 0 !important;
+}
+
+/* Pie: limpio, centrado y translúcido como el estilo de Inicio */
+footer.site-credits {
+    min-height: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    align-items: center !important;
+
+    gap: 5px !important;
+    margin: 0 !important;
+    padding: 18px 20px !important;
+
+    background: rgba(4,17,27,.48) !important;
+    border-top: 1px solid rgba(255,255,255,.10) !important;
+    box-shadow: 0 -4px 18px rgba(0,0,0,.06) !important;
+
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+
+    text-align: center !important;
+}
+
+footer.site-credits > p {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    text-align: center !important;
+    color: rgba(255,255,255,.78) !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    text-shadow: 0 1px 5px rgba(0,0,0,.45);
+}
+
+footer.site-credits > p.developer-credit {
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+
+/* Responsive: en pantallas pequeñas se compacta sin romper el centrado */
+@media (max-width: 1100px) {
+    .mainNav {
+        gap: 22px !important;
+    }
+
+    .mainNav > a {
+        font-size: 12px !important;
+    }
+
+    .languageSwitcher {
+        right: 14px !important;
+        gap: 5px !important;
+    }
+
+    .languageSwitcher .langBtn {
+        width: 31px !important;
+        height: 31px !important;
+        min-width: 31px !important;
+        font-size: 11px !important;
+    }
+}
+
+@media (max-width: 820px) {
+    .topbar {
+        overflow-x: auto !important;
+        justify-content: flex-start !important;
+    }
+
+    .mainNav {
+        margin: 0 auto !important;
+    }
+
+    .languageSwitcher {
+        position: static !important;
+        transform: none !important;
+        margin-left: 8px !important;
+        padding-right: 8px !important;
+        flex: 0 0 auto !important;
+    }
+}
+</style>
+
+
+<style id="videos-match-inicio-final">
+/* =========================================================
+   VÍDEOS · CABECERA / IDIOMAS / PIE
+   Misma composición visual que Inicio
+   ========================================================= */
+
+.topbar {
+    height: 64px !important;
+    min-height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 20px !important;
+    background: rgba(4, 17, 26, .96) !important;
+    border-bottom: 1px solid #183347 !important;
+    box-shadow: none !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+.mainNav {
+    height: 100% !important;
+    min-height: 64px !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 34px !important;
+}
+
+.mainNav > a {
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    color: #dbe4ea !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+}
+
+.mainNav > a:hover {
+    color: #ffffff !important;
+}
+
+.mainNav > a.active {
+    color: #ffffff !important;
+    font-weight: 900 !important;
+}
+
+.mainNav > a.active::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    height: 4px !important;
+    background: #ef1820 !important;
+    border-radius: 3px 3px 0 0 !important;
+}
+
+/* Selector de idioma: mismas banderas SVG que Inicio */
+.languageSelector {
+    position: absolute !important;
+    right: 20px !important;
+    top: 0 !important;
+    height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    z-index: 1002 !important;
+}
+
+.languageFlag {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(255,255,255,.32) !important;
+    border-radius: 50% !important;
+    background: rgba(4,17,27,.72) !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: transform .18s ease, background .18s ease,
+                border-color .18s ease, box-shadow .18s ease !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+}
+
+.languageFlag img {
+    width: 18px !important;
+    height: 13px !important;
+    max-width: none !important;
+    display: block !important;
+    object-fit: cover !important;
+    border-radius: 2px !important;
+    pointer-events: none !important;
+}
+
+.languageFlag:hover {
+    transform: translateY(-2px) scale(1.08) !important;
+    background: rgba(239,24,32,.25) !important;
+    border-color: rgba(255,255,255,.9) !important;
+    box-shadow: 0 5px 14px rgba(0,0,0,.25) !important;
+}
+
+.languageFlag.active {
+    background: rgba(4,17,27,.92) !important;
+    border: 1px solid #ef1820 !important;
+    box-shadow: 0 0 0 2px rgba(239,24,32,.55) !important;
+    transform: scale(1.08) !important;
+}
+
+.languageFlag:focus-visible {
+    outline: 2px solid #ffd000 !important;
+    outline-offset: 2px !important;
+}
+
+/* Pie exactamente en el mismo lenguaje limpio de Inicio */
+footer.site-credits {
+    width: 100% !important;
+    min-height: 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    align-items: center !important;
+    justify-items: center !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 22px 15px !important;
+    background: #020a11 !important;
+    border-top: 1px solid #183347 !important;
+    color: #9db0bc !important;
+    font-size: 13px !important;
+    text-align: center !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+footer.site-credits > p {
+    display: block !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    line-height: 1.5 !important;
+    color: #9db0bc !important;
+    font-size: 13px !important;
+}
+
+footer.site-credits > p.developer-credit {
+    margin: 0 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+@media (max-width: 800px) {
+    .languageSelector {
+        position: fixed !important;
+        right: 8px !important;
+        top: 0 !important;
+        height: 64px !important;
+    }
+
+    .mainNav {
+        padding-right: 180px !important;
+    }
+}
+
+@media (max-width: 750px) {
+    .mainNav {
+        gap: 14px !important;
+    }
+
+    .mainNav > a {
+        font-size: 10px !important;
+    }
+
+    .languageSelector {
+        right: 7px !important;
+    }
+
+    .languageFlag {
+        width: 27px !important;
+        height: 27px !important;
+        min-width: 27px !important;
+    }
+
+    .languageFlag img {
+        width: 17px !important;
+        height: 12px !important;
+    }
+}
+</style>
+
+
+<style id="videos-header-footer-match-inicio">
+/* =========================================================
+   VÍDEOS · CABECERA Y PIE IGUALES A INICIO
+   ========================================================= */
+
+/* Cabecera: misma altura, transparencia y desenfoque de Inicio */
+body.video-page .topbar {
+    height: 58px !important;
+    min-height: 58px !important;
+    padding: 0 18px !important;
+    background: rgba(3, 15, 24, .78) !important;
+    border-bottom: 1px solid rgba(255,255,255,.16) !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+body.video-page .mainNav {
+    height: 58px !important;
+    min-height: 58px !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 28px !important;
+}
+
+body.video-page .mainNav a {
+    height: 58px !important;
+    font-size: 12px !important;
+    color: rgba(255,255,255,.88) !important;
+}
+
+body.video-page .mainNav a.active {
+    color: #fff !important;
+}
+
+body.video-page .mainNav a.active::after {
+    height: 3px !important;
+    bottom: 0 !important;
+    background: var(--red) !important;
+    border-radius: 3px 3px 0 0 !important;
+}
+
+/* Banderas: mismas dimensiones discretas de Inicio */
+body.video-page .languageSelector {
+    right: 14px !important;
+    top: 0 !important;
+    height: 58px !important;
+    gap: 4px !important;
+}
+
+body.video-page .languageFlag {
+    width: 29px !important;
+    height: 29px !important;
+    min-width: 29px !important;
+}
+
+body.video-page .languageFlag img {
+    width: 17px !important;
+    height: 12px !important;
+}
+
+/* Pie: transparente/translúcido para que se intuya la imagen de Suiza,
+   como en Inicio, en lugar del bloque negro sólido */
+body.video-page footer.site-credits {
+    width: 100% !important;
+    min-height: 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    align-items: center !important;
+    justify-items: center !important;
+    padding: 22px 15px !important;
+    margin: 0 !important;
+    gap: 8px !important;
+    background: rgba(3, 15, 24, .78) !important;
+    border-top: 1px solid rgba(255,255,255,.16) !important;
+    color: #9db0bc !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+body.video-page footer.site-credits > p {
+    margin: 0 !important;
+    color: #9db0bc !important;
+    text-align: center !important;
+}
+
+body.video-page footer.site-credits > p.developer-credit {
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    body.video-page .topbar {
+        height: 58px !important;
+        min-height: 58px !important;
+    }
+
+    body.video-page .languageSelector {
+        height: 58px !important;
+    }
+
+    body.video-page .mainNav {
+        padding-right: 180px !important;
+    }
+}
+
+/* =====================================================
+   REPRODUCTOR DE VÍDEO EN LA MISMA PÁGINA
+   ===================================================== */
+
+button.videoThumbnail,
+button.btn {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.videoPlayerModal {
+    position: fixed;
+    inset: 0;
+    z-index: 4000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.videoPlayerModal.is-open {
+    display: flex;
+}
+
+.videoPlayerDialog {
+    position: relative;
+    width: min(960px, 96vw);
+}
+
+.videoPlayerFrame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 30px 80px rgba(0,0,0,.55);
+}
+
+.videoPlayerFrame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.videoPlayerClose {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.3);
+    background: rgba(0,0,0,.55);
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.videoPlayerClose:hover {
+    background: rgba(239,24,32,.55);
+}
+
+body.video-modal-open {
+    overflow: hidden;
+}
 </style>
 
 </head>
 
 
-<body>
+<body class="video-page">
 
 
     <!-- =====================================================
@@ -1308,6 +2619,26 @@ footer.site-credits > p.developer-credit {
 
         </nav>
 
+        <div class="languageSelector" aria-label="Selector de idioma">
+            <button class="languageFlag active" data-lang="es" type="button" title="Español" aria-label="Español">
+                <img src="img/bandera-es.svg" alt="Español">
+            </button>
+            <button class="languageFlag" data-lang="de" type="button" title="Deutsch" aria-label="Deutsch">
+                <img src="img/bandera-de.svg" alt="Deutsch">
+            </button>
+            <button class="languageFlag" data-lang="fr" type="button" title="Français" aria-label="Français">
+                <img src="img/bandera-fr.svg" alt="Français">
+            </button>
+            <button class="languageFlag" data-lang="it" type="button" title="Italiano" aria-label="Italiano">
+                <img src="img/bandera-it.svg" alt="Italiano">
+            </button>
+            <button class="languageFlag" data-lang="en" type="button" title="English" aria-label="English">
+                <img src="img/bandera-en.svg" alt="English">
+            </button>
+        </div>
+
+        </nav>
+
     </header>
 
 
@@ -1319,187 +2650,9 @@ footer.site-credits > p.developer-credit {
     <main>
 
 
-        <!-- =================================================
-             HERO
-             ================================================= -->
 
-        <section class="hero">
 
-
-            <div class="heroContent">
-
-
-                <div class="label">
-                    TODOS CON HERNÁN · VÍDEOS
-                </div>
-
-
-                <h1>
-
-                    VÍDEOS
-                    <br>
-
-                    <span>DE HERNÁN</span>
-
-                </h1>
-
-
-                <p>
-
-                    Descubre las historias, viajes, experiencias y proyectos de Todos con Hernán. 
-                    Acompáñanos en cada aventura, conoce nuevos lugares y descubre una forma diferente 
-                    de vivir y disfrutar Suiza.
-
-                    <br><br>
-
-                    Desde su historia personal hasta
-                    el Grand Tour de Suiza y los nuevos
-                    proyectos que van creciendo junto
-                    a la comunidad.
-
-                </p>
-
-
-                <div class="heroButtons">
-
-
-                    <a
-                        href="#videos"
-                        class="btn red"
-                    >
-                        VER LOS VÍDEOS ↓
-                    </a>
-
-
-                    <a
-                        href="https://www.youtube.com/@todosconhernan/videos"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn outline"
-                    >
-                        VER CANAL COMPLETO →
-                    </a>
-
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- =================================================
-             HISTORIA DE HERNÁN
-             ================================================= -->
-
-        <section class="section">
-
-
-            <div class="sectionHeader">
-
-
-                <div class="sectionLabel">
-                    VÍDEO DESTACADO
-                </div>
-
-
-                <h2>
-
-                    LA HISTORIA DE
-                    <span>HERNÁN</span>
-
-                </h2>
-
-
-                <p>
-
-                    Antes de descubrir sus proyectos,
-                    conoce a la persona que está detrás
-                    de Todos con Hernán.
-
-                </p>
-
-
-            </div>
-
-
-            <article class="featuredVideo">
-
-
-                <a
-                    href="https://www.youtube.com/watch?v=4xkyuGsHuI4"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="featuredThumbnail"
-                >
-
-
-                    <img
-                        src="https://img.youtube.com/vi/4xkyuGsHuI4/maxresdefault.jpg"
-                        alt="La historia de Hernán · Mi llegada a Suiza"
-                    >
-
-
-                    <div class="featuredOverlay">
-
-                        <div class="playButton">
-                            ▶
-                        </div>
-
-                    </div>
-
-
-                </a>
-
-
-                <div class="featuredInfo">
-
-
-                    <div class="videoCategory">
-                        HISTORIA DE HERNÁN
-                    </div>
-
-
-                    <h3>
-
-                        Mi llegada a Suiza,
-                        lejos de mi familia
-                        y empezando de cero
-
-                    </h3>
-
-
-                    <p>
-
-                        Conoce la experiencia personal
-                        de Hernán al llegar a Suiza y
-                        comenzar una nueva etapa de su vida.
-
-                    </p>
-
-
-                    <a
-                        href="https://www.youtube.com/watch?v=4xkyuGsHuI4"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn red"
-                    >
-                        ▶ VER VÍDEO
-                    </a>
-
-
-                </div>
-
-
-            </article>
-
-
-        </section>
-
-
+        <!-- Miniaturas originales del canal de YouTube; no se sustituyen. -->
 
         <!-- =================================================
              OTROS VÍDEOS
@@ -1515,23 +2668,22 @@ footer.site-credits > p.developer-credit {
 
 
                 <div class="sectionLabel">
-                    TODOS CON HERNÁN
+                    GRAND TOUR DE SUIZA
                 </div>
 
 
                 <h2>
 
-                    MÁS
-                    <span>VÍDEOS</span>
+                    VÍDEOS DEL
+                    <span>GRAND TOUR</span>
 
                 </h2>
 
 
                 <p>
 
-                    Descubre otros vídeos del canal
-                    y acompaña a Hernán en sus diferentes
-                    experiencias y proyectos.
+                    Descubre los vídeos del Grand Tour de Suiza
+                    y conoce cada lugar de la mano de Hernán.
 
                 </p>
 
@@ -1541,273 +2693,61 @@ footer.site-credits > p.developer-credit {
 
             <div class="videosGrid">
 
-
-                <!-- =================================================
-                     VÍDEO 1
-                     ================================================= -->
-
                 <article class="videoCard">
-
-
-                    <a
-                        href="https://www.youtube.com/watch?v=zbBKTvOw83I"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="videoThumbnail"
-                    >
-
-                        <img
-                            src="https://img.youtube.com/vi/zbBKTvOw83I/maxresdefault.jpg"
-                            alt="Vídeo de Todos con Hernán"
-                        >
-
-
-                        <div class="videoOverlay">
-
-                            <div class="smallPlay">
-                                ▶
-                            </div>
-
-                        </div>
-
-                    </a>
-
-
+                    <button type="button" class="videoThumbnail" data-video-id="6rEjgpwgXX0">
+                        <img src="https://img.youtube.com/vi/6rEjgpwgXX0/maxresdefault.jpg"
+                             alt="CH Burgdorf · Grand Tour de Suiza">
+                        <div class="videoOverlay"><div class="smallPlay">▶</div></div>
+                    </button>
                     <div class="videoInfo">
-
-
-                        <div class="videoCategory">
-                            TODOS CON HERNÁN
-                        </div>
-
-
-                        <h3>
-                            Descubre el vídeo
-                        </h3>
-
-
-                        <p>
-                            Una nueva experiencia
-                            de Todos con Hernán.
-                        </p>
-
-
-                        <a
-                            href="https://www.youtube.com/watch?v=zbBKTvOw83I"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="btn outline"
-                        >
-                            VER VÍDEO →
-                        </a>
-
-
+                        <div class="videoCategory">GRAND TOUR DE SUIZA</div>
+                        <h3>CH BURGdorf: El Castillo Medieval que Esconde Suiza</h3>
+                        <p>Photo Spot del Grand Tour of Switzerland.</p>
+                        <button type="button" class="btn outline" data-video-id="6rEjgpwgXX0">VER VÍDEO →</button>
                     </div>
-
-
                 </article>
 
-
-
-                <!-- =================================================
-                     VÍDEO 2
-                     ================================================= -->
-
                 <article class="videoCard">
-
-
-                    <a
-                        href="https://www.youtube.com/watch?v=GtCiNSdS9nE"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="videoThumbnail"
-                    >
-
-                        <img
-                            src="https://img.youtube.com/vi/GtCiNSdS9nE/maxresdefault.jpg"
-                            alt="Vídeo de Todos con Hernán"
-                        >
-
-
-                        <div class="videoOverlay">
-
-                            <div class="smallPlay">
-                                ▶
-                            </div>
-
-                        </div>
-
-                    </a>
-
-
+                    <button type="button" class="videoThumbnail" data-video-id="zbBKTvOw83I" data-video-start="412">
+                        <img src="https://img.youtube.com/vi/zbBKTvOw83I/maxresdefault.jpg"
+                             alt="Hallwyl Castle · Grand Tour de Suiza">
+                        <div class="videoOverlay"><div class="smallPlay">▶</div></div>
+                    </button>
                     <div class="videoInfo">
-
-
-                        <div class="videoCategory">
-                            TODOS CON HERNÁN
-                        </div>
-
-
-                        <h3>
-                            Una nueva experiencia
-                        </h3>
-
-
-                        <p>
-                            Descubre otro de los vídeos
-                            del canal de Todos con Hernán.
-                        </p>
-
-
-                        <a
-                            href="https://www.youtube.com/watch?v=GtCiNSdS9nE"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="btn outline"
-                        >
-                            VER VÍDEO →
-                        </a>
-
-
+                        <div class="videoCategory">GRAND TOUR DE SUIZA</div>
+                        <h3>El secreto mejor guardado de Suiza</h3>
+                        <p>Hallwyl Castle y el Grand Tour of Switzerland.</p>
+                        <button type="button" class="btn outline" data-video-id="zbBKTvOw83I" data-video-start="412">VER VÍDEO →</button>
                     </div>
-
-
                 </article>
 
-
-
-                <!-- =================================================
-                     VÍDEO 3
-                     ================================================= -->
-
                 <article class="videoCard">
-
-
-                    <a
-                        href="https://www.youtube.com/watch?v=BkdgQsixz_M"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="videoThumbnail"
-                    >
-
-                        <img
-                            src="https://img.youtube.com/vi/BkdgQsixz_M/maxresdefault.jpg"
-                            alt="Vídeo de Todos con Hernán"
-                        >
-
-
-                        <div class="videoOverlay">
-
-                            <div class="smallPlay">
-                                ▶
-                            </div>
-
-                        </div>
-
-                    </a>
-
-
+                    <button type="button" class="videoThumbnail" data-video-id="GtCiNSdS9nE" data-video-start="522">
+                        <img src="https://img.youtube.com/vi/GtCiNSdS9nE/maxresdefault.jpg"
+                             alt="Aarburg · Grand Tour de Suiza">
+                        <div class="videoOverlay"><div class="smallPlay">▶</div></div>
+                    </button>
                     <div class="videoInfo">
-
-
-                        <div class="videoCategory">
-                            TODOS CON HERNÁN
-                        </div>
-
-
-                        <h3>
-                            Historias y experiencias
-                        </h3>
-
-
-                        <p>
-                            Otro de los contenidos
-                            disponibles en el canal.
-                        </p>
-
-
-                        <a
-                            href="https://www.youtube.com/watch?v=BkdgQsixz_M"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="btn outline"
-                        >
-                            VER VÍDEO →
-                        </a>
-
-
+                        <div class="videoCategory">GRAND TOUR DE SUIZA</div>
+                        <h3>El Photo Spot de Aarburg-Suiza</h3>
+                        <p>El secreto del Grand Tour of Switzerland.</p>
+                        <button type="button" class="btn outline" data-video-id="GtCiNSdS9nE" data-video-start="522">VER VÍDEO →</button>
                     </div>
-
-
                 </article>
 
-
-
-                <!-- =================================================
-                     VÍDEO 4
-                     ================================================= -->
-
                 <article class="videoCard">
-
-
-                    <a
-                        href="https://www.youtube.com/watch?v=XeVdFxQH0BU"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="videoThumbnail"
-                    >
-
-                        <img
-                            src="https://img.youtube.com/vi/XeVdFxQH0BU/maxresdefault.jpg"
-                            alt="Vídeo de Todos con Hernán"
-                        >
-
-
-                        <div class="videoOverlay">
-
-                            <div class="smallPlay">
-                                ▶
-                            </div>
-
-                        </div>
-
-                    </a>
-
-
+                    <button type="button" class="videoThumbnail" data-video-id="OQ8C0IZM-C4">
+                        <img src="https://img.youtube.com/vi/OQ8C0IZM-C4/maxresdefault.jpg"
+                             alt="Grand Tour de Suiza">
+                        <div class="videoOverlay"><div class="smallPlay">▶</div></div>
+                    </button>
                     <div class="videoInfo">
-
-
-                        <div class="videoCategory">
-                            TODOS CON HERNÁN
-                        </div>
-
-
-                        <h3>
-                            Nuevas historias
-                        </h3>
-
-
-                        <p>
-                            Continúa descubriendo el contenido
-                            de Todos con Hernán.
-                        </p>
-
-
-                        <a
-                            href="https://www.youtube.com/watch?v=XeVdFxQH0BU"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="btn outline"
-                        >
-                            VER VÍDEO →
-                        </a>
-
-
+                        <div class="videoCategory">GRAND TOUR DE SUIZA</div>
+                        <h3>Un Photo Spot más del Grand Tour of Switzerland</h3>
+                        <p>Descubre este lugar del Grand Tour of Switzerland.</p>
+                        <button type="button" class="btn outline" data-video-id="OQ8C0IZM-C4">VER VÍDEO →</button>
                     </div>
-
-
                 </article>
-
 
             </div>
 
@@ -1838,18 +2778,16 @@ footer.site-credits > p.developer-credit {
 
                 <h2>
 
-                    TODOS LOS VÍDEOS DE
-                    <span>HERNÁN</span>
+                    MÁS VÍDEOS DEL
+                    <span>GRAND TOUR</span>
 
                 </h2>
 
 
                 <p>
 
-                    Esta página irá creciendo con nuevos
-                    vídeos. Mientras tanto, puedes visitar
-                    el canal completo de Todos con Hernán
-                    y descubrir todos sus contenidos.
+                    Esta selección irá creciendo con nuevos vídeos del Grand Tour.
+                    Para conocer más vídeos de Hernán, visita su canal oficial de YouTube.
 
                 </p>
 
@@ -1860,7 +2798,7 @@ footer.site-credits > p.developer-credit {
                     rel="noopener noreferrer"
                     class="btn red"
                 >
-                    ▶ VER CANAL COMPLETO
+                    ▶ VER MÁS VÍDEOS DE HERNÁN
                 </a>
 
 
@@ -1885,11 +2823,98 @@ footer.site-credits > p.developer-credit {
   </p>
 
   <p class="developer-credit">
-    Yonathan Alvarado · Full Stack Web Developer · Spain
+    <a
+      href="https://www.instagram.com/techantoni/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: inherit; text-decoration: none;"
+    >
+      Yonathan Alvarado · Full Stack Web Developer · Spain
+    </a>
   </p>
 
 </footer>
 
+
+<!-- =====================================================
+     REPRODUCTOR DE VÍDEO EN LA MISMA PÁGINA
+     ===================================================== -->
+
+<div class="videoPlayerModal" id="videoPlayerModal" aria-hidden="true">
+    <div class="videoPlayerDialog" role="dialog" aria-modal="true" aria-label="Reproductor de vídeo">
+        <button type="button" class="videoPlayerClose" id="videoPlayerClose" aria-label="Cerrar">×</button>
+        <div class="videoPlayerFrame">
+            <iframe
+                id="videoPlayerIframe"
+                src=""
+                title="Reproductor de vídeo"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const flags = document.querySelectorAll(".languageFlag");
+    const saved = localStorage.getItem("todosConHernanLanguage") || "es";
+
+    flags.forEach(flag => {
+        flag.classList.toggle("active", flag.dataset.lang === saved);
+
+        flag.addEventListener("click", () => {
+            flags.forEach(item => item.classList.remove("active"));
+            flag.classList.add("active");
+            document.documentElement.lang = flag.dataset.lang;
+            localStorage.setItem("todosConHernanLanguage", flag.dataset.lang);
+        });
+    });
+});
+
+(function () {
+    const modal = document.getElementById("videoPlayerModal");
+    const iframe = document.getElementById("videoPlayerIframe");
+    const closeBtn = document.getElementById("videoPlayerClose");
+
+    function openVideo(id, start) {
+        if (!id) return;
+        let src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+        if (start) src += "&start=" + start;
+        iframe.src = src;
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("video-modal-open");
+    }
+
+    function closeVideo() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("video-modal-open");
+        iframe.src = "";
+    }
+
+    document.querySelectorAll("[data-video-id]").forEach(function (el) {
+        el.addEventListener("click", function () {
+            openVideo(el.dataset.videoId, el.dataset.videoStart);
+        });
+    });
+
+    closeBtn.addEventListener("click", closeVideo);
+
+    modal.addEventListener("click", function (event) {
+        if (event.target === modal) closeVideo();
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && modal.classList.contains("is-open")) closeVideo();
+    });
+})();
+</script>
+
+<script src="js/i18n.js"></script>
 </body>
 
 </html>

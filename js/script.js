@@ -10,6 +10,17 @@
 
 const spots = window.SPOTS;
 
+/*
+ * Información editorial adicional de cada Photo Spot.
+ * Se mantiene spots.js como fuente principal de los datos
+ * del mapa y photo-spots-info.js como fuente de información.
+ */
+const photoSpotsInfo =
+  Array.isArray(window.PHOTO_SPOTS_INFO)
+    ? window.PHOTO_SPOTS_INFO
+    : [];
+
+
 
 /* =========================================================
    COMPROBACIÓN DE DATOS
@@ -36,11 +47,11 @@ const map = L.map('map', {
 
   minZoom: 4,
 
-  maxZoom: 19
+  maxZoom: 18
 
 }).setView(
 
-  [46.82, 8.25],
+  [46.50, 8.25],
 
   8
 
@@ -62,21 +73,15 @@ L.control.zoom({
    MAPA SATÉLITE
    ========================================================= */
 
-L.tileLayer(
-
-  'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-
-  {
-
-    attribution:
-      'Tiles © Esri',
-
-    maxZoom:
-      18
-
-  }
-
-).addTo(map);
+const satelliteLayer =
+  L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    {
+      attribution: 'Tiles © Esri',
+      maxNativeZoom: 18,
+      maxZoom: 18
+    }
+  );
 
 
 /* =========================================================
@@ -555,11 +560,1105 @@ const image =
     'spotImg'
   );
 
+/* =========================================================
+   VÍDEO + COMUNIDAD · PHOTO SPOT
+   ========================================================= */
 
-const official =
-  document.getElementById(
-    'official'
+const spotVideoBtn =
+  document.getElementById('spotVideoBtn');
+
+const videoModal =
+  document.getElementById('videoModal');
+
+const closeVideoModal =
+  document.getElementById('closeVideoModal');
+
+const spotVideoFrame =
+  document.getElementById('spotVideoFrame');
+
+const videoModalTitle =
+  document.getElementById('videoModalTitle');
+
+const communityForm =
+  document.getElementById('communityForm');
+
+const communityName =
+  document.getElementById('communityName');
+
+const communityComment =
+  document.getElementById('communityComment');
+
+const communityPhoto =
+  document.getElementById('communityPhoto');
+
+const communityPhotoName =
+  document.getElementById('communityPhotoName');
+
+const communityStatus =
+  document.getElementById('communityStatus');
+
+const communityPosts =
+  document.getElementById('communityPosts');
+
+const communityPostCount =
+  document.getElementById('communityPostCount');
+
+const ratingStars =
+  document.querySelectorAll('#ratingStars button');
+
+const ratingSummary =
+  document.getElementById('ratingSummary');
+
+let pendingCommunityPhoto = '';
+
+let currentCommunityRating = 0;
+
+
+/* ---------------------------------------------------------
+   SEGURIDAD
+   --------------------------------------------------------- */
+
+function escapeCommunityHTML(value) {
+
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+}
+
+
+/* ---------------------------------------------------------
+   YOUTUBE
+   --------------------------------------------------------- */
+
+function getYoutubeEmbedUrl(url) {
+
+  if (!url) {
+    return '';
+  }
+
+  try {
+
+    const parsed =
+      new URL(url);
+
+    let id = '';
+
+    if (
+      parsed.hostname.includes('youtu.be')
+    ) {
+
+      id =
+        parsed.pathname.replace('/', '');
+
+    }
+
+    else if (
+      parsed.searchParams.get('v')
+    ) {
+
+      id =
+        parsed.searchParams.get('v');
+
+    }
+
+    else if (
+      parsed.pathname.includes('/embed/')
+    ) {
+
+      id =
+        parsed.pathname.split('/embed/')[1];
+
+    }
+
+    if (!id) {
+      return '';
+    }
+
+    return `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+
+  }
+
+  catch (error) {
+
+    return '';
+
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   ABRIR / CERRAR VÍDEO
+   --------------------------------------------------------- */
+
+function openSpotVideo() {
+
+  const spot =
+    spots[currentSpotIndex];
+
+  if (!spot) {
+    return;
+  }
+
+  const embedUrl =
+    getYoutubeEmbedUrl(
+      spot.youtubeUrl
+    );
+
+  if (!embedUrl) {
+
+    if (communityStatus) {
+
+      communityStatus.textContent =
+        'ℹ️ Este Photo Spot todavía no tiene vídeo asociado.';
+
+    }
+
+    return;
+
+  }
+
+  if (spotVideoFrame) {
+
+    spotVideoFrame.src =
+      embedUrl;
+
+  }
+
+  if (videoModalTitle) {
+
+    videoModalTitle.textContent =
+      `${String(spot.id).padStart(2, '0')} · ${spot.name}`;
+
+  }
+
+  if (videoModal) {
+
+    videoModal.hidden =
+      false;
+
+  }
+
+}
+
+
+function closeSpotVideo() {
+
+  if (spotVideoFrame) {
+
+    spotVideoFrame.src =
+      '';
+
+  }
+
+  if (videoModal) {
+
+    videoModal.hidden =
+      true;
+
+  }
+
+}
+
+
+if (spotVideoBtn) {
+
+  spotVideoBtn.addEventListener(
+    'click',
+    openSpotVideo
   );
+
+}
+
+
+if (closeVideoModal) {
+
+  closeVideoModal.addEventListener(
+    'click',
+    closeSpotVideo
+  );
+
+}
+
+
+document
+  .querySelectorAll('[data-close-video]')
+  .forEach(
+    element => {
+
+      element.addEventListener(
+        'click',
+        closeSpotVideo
+      );
+
+    }
+  );
+
+
+document.addEventListener(
+  'keydown',
+  event => {
+
+    if (
+      event.key === 'Escape' &&
+      videoModal &&
+      !videoModal.hidden
+    ) {
+
+      closeSpotVideo();
+
+    }
+
+  }
+);
+
+
+/* ---------------------------------------------------------
+   COMUNIDAD · ALMACENAMIENTO LOCAL
+   --------------------------------------------------------- */
+
+function communityStorageKey(spotId) {
+
+  return `grandtour_suiza_community_${spotId}`;
+
+}
+
+
+function readCommunityData(spotId) {
+
+  try {
+
+    const raw =
+      localStorage.getItem(
+        communityStorageKey(spotId)
+      );
+
+    if (!raw) {
+
+      return {
+        ratings: [],
+        posts: []
+      };
+
+    }
+
+    const data =
+      JSON.parse(raw);
+
+    return {
+
+      ratings:
+        Array.isArray(data.ratings)
+          ? data.ratings
+          : [],
+
+      posts:
+        Array.isArray(data.posts)
+          ? data.posts
+          : []
+
+    };
+
+  }
+
+  catch (error) {
+
+    return {
+      ratings: [],
+      posts: []
+    };
+
+  }
+
+}
+
+
+function saveCommunityData(
+  spotId,
+  data
+) {
+
+  localStorage.setItem(
+
+    communityStorageKey(
+      spotId
+    ),
+
+    JSON.stringify(data)
+
+  );
+
+}
+
+
+/* ---------------------------------------------------------
+   VALORACIÓN
+   --------------------------------------------------------- */
+
+function renderRating(
+  data
+) {
+
+  const ratings =
+    data.ratings || [];
+
+  const average =
+    ratings.length
+      ? ratings.reduce(
+          (sum, value) =>
+            sum + Number(value),
+          0
+        ) / ratings.length
+      : 0;
+
+  ratingStars.forEach(
+    button => {
+
+      const value =
+        Number(
+          button.dataset.rating
+        );
+
+      button.classList.toggle(
+        'active',
+        value <= currentCommunityRating
+      );
+
+    }
+  );
+
+  if (!ratingSummary) {
+    return;
+  }
+
+  if (!ratings.length) {
+
+    ratingSummary.textContent =
+      'Sé el primero en valorar este lugar.';
+
+    return;
+
+  }
+
+  ratingSummary.textContent =
+    `⭐ ${average.toFixed(1)}/5 · ${ratings.length} valoración${ratings.length === 1 ? '' : 'es'}`;
+
+}
+
+
+ratingStars.forEach(
+  button => {
+
+    button.addEventListener(
+      'click',
+      () => {
+
+        const spot =
+          spots[currentSpotIndex];
+
+        if (!spot) {
+          return;
+        }
+
+        const value =
+          Number(
+            button.dataset.rating
+          );
+
+        const data =
+          readCommunityData(
+            spot.id
+          );
+
+        data.ratings.push(
+          value
+        );
+
+        currentCommunityRating =
+          value;
+
+        saveCommunityData(
+          spot.id,
+          data
+        );
+
+        renderRating(
+          data
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* ---------------------------------------------------------
+   FOTO SELECCIONADA
+   --------------------------------------------------------- */
+
+if (communityPhoto) {
+
+  communityPhoto.addEventListener(
+    'change',
+    event => {
+
+      const file =
+        event.target.files &&
+        event.target.files[0];
+
+      pendingCommunityPhoto =
+        '';
+
+      if (!file) {
+
+        if (communityPhotoName) {
+
+          communityPhotoName.textContent =
+            'Ninguna foto seleccionada';
+
+        }
+
+        return;
+
+      }
+
+      if (
+        !file.type.startsWith('image/')
+      ) {
+
+        event.target.value =
+          '';
+
+        if (communityPhotoName) {
+
+          communityPhotoName.textContent =
+            'Selecciona una imagen válida.';
+
+        }
+
+        return;
+
+      }
+
+      if (file.size > 2 * 1024 * 1024) {
+
+        event.target.value =
+          '';
+
+        if (communityPhotoName) {
+
+          communityPhotoName.textContent =
+            'La foto debe pesar menos de 2 MB.';
+
+        }
+
+        return;
+
+      }
+
+      if (communityPhotoName) {
+
+        communityPhotoName.textContent =
+          file.name;
+
+      }
+
+      const reader =
+        new FileReader();
+
+      reader.onload =
+        () => {
+
+          pendingCommunityPhoto =
+            reader.result;
+
+        };
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
+
+}
+
+
+/* ---------------------------------------------------------
+   RENDERIZAR EXPERIENCIAS
+   --------------------------------------------------------- */
+
+function renderCommunityPosts(
+  data
+) {
+
+  if (!communityPosts) {
+    return;
+  }
+
+  const posts =
+    data.posts || [];
+
+  if (communityPostCount) {
+
+    communityPostCount.textContent =
+      posts.length;
+
+  }
+
+  if (!posts.length) {
+
+    communityPosts.innerHTML = `
+
+      <div class="communityEmpty">
+
+        Todavía no hay experiencias.
+        ¡Sé la primera persona en compartir
+        una foto y un comentario!
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+  communityPosts.innerHTML =
+    posts
+      .slice()
+      .reverse()
+      .map(
+        post => {
+
+          const safeName =
+            escapeCommunityHTML(
+              post.name ||
+              'Viajero/a'
+            );
+
+          const safeText =
+            escapeCommunityHTML(
+              post.text
+            );
+
+          const stars =
+            '★'.repeat(
+              Math.max(
+                0,
+                Math.min(
+                  5,
+                  Number(post.rating) || 0
+                )
+              )
+            );
+
+          const date =
+            escapeCommunityHTML(
+              post.date ||
+              ''
+            );
+
+          return `
+
+            <article class="communityPost">
+
+              <div class="communityPostTop">
+
+                <span class="communityPostName">
+                  ${safeName}
+                </span>
+
+                <span class="communityPostStars">
+                  ${stars || '—'}
+                </span>
+
+              </div>
+
+              <div class="communityPostDate">
+                ${date}
+              </div>
+
+              <p class="communityPostText">
+                ${safeText}
+              </p>
+
+              ${
+                post.image
+                  ? `
+                    <img
+                      class="communityPostImage"
+                      src="${post.image}"
+                      alt="Foto compartida por ${safeName}"
+                      loading="lazy"
+                    >
+                  `
+                  : ''
+              }
+
+              <button
+                type="button"
+                class="communityPostDelete"
+                data-community-delete="${escapeCommunityHTML(post.id)}"
+                aria-label="Eliminar experiencia"
+              >🗑️ ELIMINAR</button>
+
+            </article>
+
+          `;
+
+        }
+      )
+      .join('');
+
+
+}
+
+
+/* ---------------------------------------------------------
+   VISOR GRANDE DE FOTOS DE LA COMUNIDAD
+   --------------------------------------------------------- */
+
+let communityImageModal = null;
+let communityImageModalImage = null;
+
+function ensureCommunityImageModal() {
+
+  if (communityImageModal) {
+    return;
+  }
+
+  communityImageModal =
+    document.createElement('div');
+
+  communityImageModal.className =
+    'communityImageModal';
+
+  communityImageModal.hidden =
+    true;
+
+  communityImageModal.setAttribute(
+    'role',
+    'dialog'
+  );
+
+  communityImageModal.setAttribute(
+    'aria-modal',
+    'true'
+  );
+
+  communityImageModal.setAttribute(
+    'aria-label',
+    'Foto ampliada'
+  );
+
+  communityImageModal.innerHTML = `
+    <div class="communityImageModalContent">
+      <button
+        type="button"
+        class="communityImageModalClose"
+        aria-label="Cerrar foto"
+      >×</button>
+
+      <img
+        src=""
+        alt="Foto ampliada"
+      >
+    </div>
+  `;
+
+  document.body.appendChild(
+    communityImageModal
+  );
+
+  communityImageModalImage =
+    communityImageModal.querySelector(
+      'img'
+    );
+
+  const closeButton =
+    communityImageModal.querySelector(
+      '.communityImageModalClose'
+    );
+
+  closeButton.addEventListener(
+    'click',
+    closeCommunityImageModal
+  );
+
+  communityImageModal.addEventListener(
+    'click',
+    event => {
+
+      if (
+        event.target ===
+        communityImageModal
+      ) {
+
+        closeCommunityImageModal();
+
+      }
+
+    }
+  );
+
+}
+
+
+function openCommunityImageModal(
+  image
+) {
+
+  if (!image) {
+    return;
+  }
+
+  ensureCommunityImageModal();
+
+  communityImageModalImage.src =
+    image.currentSrc ||
+    image.src;
+
+  communityImageModalImage.alt =
+    image.alt ||
+    'Foto ampliada';
+
+  communityImageModal.hidden =
+    false;
+
+  document.body.style.overflow =
+    'hidden';
+
+}
+
+
+function closeCommunityImageModal() {
+
+  if (!communityImageModal) {
+    return;
+  }
+
+  communityImageModal.hidden =
+    true;
+
+  if (communityImageModalImage) {
+
+    communityImageModalImage.src =
+      '';
+
+  }
+
+  document.body.style.overflow =
+    '';
+
+}
+
+
+if (communityPosts) {
+
+  communityPosts.addEventListener(
+    'click',
+    event => {
+
+      const image =
+        event.target.closest(
+          '.communityPostImage'
+        );
+
+      if (!image) {
+        return;
+      }
+
+      openCommunityImageModal(
+        image
+      );
+
+    }
+  );
+
+}
+
+
+document.addEventListener(
+  'keydown',
+  event => {
+
+    if (
+      event.key === 'Escape' &&
+      communityImageModal &&
+      !communityImageModal.hidden
+    ) {
+
+      closeCommunityImageModal();
+
+    }
+
+  }
+);
+
+
+/* ---------------------------------------------------------
+   ELIMINAR EXPERIENCIA
+   --------------------------------------------------------- */
+
+if (communityPosts) {
+
+  communityPosts.addEventListener(
+    'click',
+    event => {
+
+      const deleteButton =
+        event.target.closest(
+          '.communityPostDelete'
+        );
+
+      if (!deleteButton) {
+        return;
+      }
+
+      const postId =
+        deleteButton.dataset.communityDelete;
+
+      if (!postId) {
+        return;
+      }
+
+      const confirmed =
+        window.confirm(
+          '¿Seguro que quieres eliminar esta experiencia?'
+        );
+
+      if (!confirmed) {
+        return;
+      }
+
+      const spot =
+        spots[currentSpotIndex];
+
+      if (!spot) {
+        return;
+      }
+
+      const data =
+        readCommunityData(
+          spot.id
+        );
+
+      data.posts =
+        (data.posts || [])
+          .filter(
+            post =>
+              String(post.id) !==
+              String(postId)
+          );
+
+      saveCommunityData(
+        spot.id,
+        data
+      );
+
+      renderRating(
+        data
+      );
+
+      renderCommunityPosts(
+        data
+      );
+
+      if (communityStatus) {
+        communityStatus.textContent =
+          '✅ La experiencia se ha eliminado en este navegador.';
+      }
+
+    }
+  );
+
+}
+
+
+/* ---------------------------------------------------------
+   CAMBIAR DE PHOTO SPOT
+   --------------------------------------------------------- */
+
+function updateCommunityForSpot(
+  spot
+) {
+
+  if (!spot) {
+    return;
+  }
+
+  const data =
+    readCommunityData(
+      spot.id
+    );
+
+  currentCommunityRating =
+    0;
+
+  if (communityForm) {
+    communityForm.reset();
+  }
+
+  pendingCommunityPhoto =
+    '';
+
+  if (communityPhotoName) {
+
+    communityPhotoName.textContent =
+      'Ninguna foto seleccionada';
+
+  }
+
+  if (communityStatus) {
+
+    communityStatus.textContent =
+      '';
+
+  }
+
+  renderRating(
+    data
+  );
+
+  renderCommunityPosts(
+    data
+  );
+
+  if (spotVideoBtn) {
+
+    const hasVideo =
+      Boolean(
+        getYoutubeEmbedUrl(
+          spot.youtubeUrl
+        )
+      );
+
+    spotVideoBtn.disabled =
+      !hasVideo;
+
+    spotVideoBtn.textContent =
+      hasVideo
+        ? '▶️ VER VÍDEO DEL GRAND TOUR DE SUIZA'
+        : '▶️ VÍDEO NO DISPONIBLE';
+
+  }
+
+}
+
+
+if (communityForm) {
+
+  communityForm.addEventListener(
+    'submit',
+    event => {
+
+      event.preventDefault();
+
+      const spot =
+        spots[currentSpotIndex];
+
+      if (!spot) {
+        return;
+      }
+
+      const text =
+        communityComment
+          ? communityComment.value.trim()
+          : '';
+
+      if (!text) {
+
+        if (communityStatus) {
+
+          communityStatus.textContent =
+            'Escribe tu experiencia antes de publicar.';
+
+        }
+
+        return;
+
+      }
+
+      const name =
+        communityName &&
+        communityName.value.trim()
+          ? communityName.value.trim()
+          : 'Viajero/a';
+
+      const data =
+        readCommunityData(
+          spot.id
+        );
+
+      data.posts.push({
+
+        id:
+          `${Date.now()}_${Math.random().toString(36).slice(2)}`,
+
+        name:
+          name.slice(0, 40),
+
+        text:
+          text.slice(0, 500),
+
+        rating:
+          currentCommunityRating,
+
+        image:
+          pendingCommunityPhoto || '',
+
+        date:
+          new Date().toLocaleDateString(
+            'es-ES'
+          )
+
+      });
+
+      saveCommunityData(
+        spot.id,
+        data
+      );
+
+      renderRating(
+        data
+      );
+
+      renderCommunityPosts(
+        data
+      );
+
+      if (communityForm) {
+        communityForm.reset();
+      }
+
+      pendingCommunityPhoto =
+        '';
+
+      if (communityPhotoName) {
+
+        communityPhotoName.textContent =
+          'Ninguna foto seleccionada';
+
+      }
+
+      if (communityStatus) {
+
+        communityStatus.textContent =
+          '✅ Tu experiencia se ha publicado en este navegador.';
+
+      }
+
+    }
+  );
+
+}
+
 
 
 /* =========================================================
@@ -694,6 +1793,15 @@ function moveHernan(
    SELECCIONAR PHOTO SPOT
    ========================================================= */
 
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function selectSpot(
   id,
   fly = true
@@ -821,6 +1929,20 @@ function selectSpot(
   }
 
 
+  /*
+   * INFORMACIÓN DEL PHOTO SPOT
+   *
+   * spots.js conserva coordenadas, imágenes y funcionamiento.
+   * photo-spots-info.js aporta la información editorial
+   * manteniendo el orden 01–92 del Grand Tour.
+   */
+  const spotInfo =
+    photoSpotsInfo.find(
+      item =>
+        Number(item.id) === Number(spot.id)
+    );
+
+
   if (infoName) {
 
     infoName.textContent =
@@ -832,7 +1954,7 @@ function selectSpot(
   if (infoLocation) {
 
     infoLocation.textContent =
-      '📍 Suiza';
+      `📍 ${spotInfo?.location || 'Suiza'}`;
 
   }
 
@@ -840,9 +1962,25 @@ function selectSpot(
   if (infoDescription) {
 
     infoDescription.textContent =
-
+      spotInfo?.description ||
       `Photo Spot ${String(id).padStart(2, '0')} del Grand Tour de Suiza. Selecciona el marcador para seguir el recorrido y mover a Hernán hasta este lugar.`;
 
+  }
+
+  const practical = document.getElementById('spotPracticalInfo');
+  if (practical) {
+    const fields = [
+      ['📍 DIRECCIÓN', spotInfo?.address],
+      ['🅿️ PARKING', spotInfo?.parking],
+      ['🚗 CÓMO LLEGAR', spotInfo?.howToGetThere],
+      ['🥾 SENDERO / TRAYECTO', spotInfo?.trail],
+      ['ℹ️ NOTA', spotInfo?.note]
+    ];
+    practical.innerHTML = fields.map(([label, value]) => `
+      <div class="spotPracticalItem">
+        <div class="spotPracticalLabel">${escapeHtml(label)}</div>
+        <div class="spotPracticalText">${escapeHtml(value || '')}</div>
+      </div>`).join('');
   }
 
 
@@ -866,81 +2004,21 @@ function selectSpot(
 
   }
 
-/* =======================================================
-   VÍDEO OFICIAL DE YOUTUBE
-   ======================================================= */
-
-image.onclick = null;
-image.onkeydown = null;
-
-image.style.cursor = '';
-image.removeAttribute('title');
-image.removeAttribute('role');
-image.removeAttribute('tabindex');
-
-if (spot.youtubeUrl) {
-
-  image.style.cursor = 'pointer';
-
-  image.title =
-    'Ver vídeo oficial en YouTube';
-
-  image.setAttribute(
-    'role',
-    'link'
-  );
-
-  image.setAttribute(
-    'tabindex',
-    '0'
-  );
-
-
-  image.onclick = () => {
-
-    window.open(
-      spot.youtubeUrl,
-      '_blank',
-      'noopener,noreferrer'
-    );
-
-  };
-
-
-  image.onkeydown = event => {
-
-    if (
-      event.key === 'Enter' ||
-      event.key === ' '
-    ) {
-
-      event.preventDefault();
-
-      window.open(
-        spot.youtubeUrl,
-        '_blank',
-        'noopener,noreferrer'
-      );
-
-    }
-
-  };
-
-}
-
 
   /* =======================================================
-     ENLACE OFICIAL
+     VÍDEO
+     La imagen ya no abre enlaces externos.
+     El vídeo se controla con el botón de nuestra página.
      ======================================================= */
 
-  if (official) {
+  image.onclick = null;
+  image.onkeydown = null;
+  image.style.cursor = '';
+  image.removeAttribute('title');
+  image.removeAttribute('role');
+  image.removeAttribute('tabindex');
 
-    official.href =
-      spot.officialUrl || '#';
-
-  }
-
-
+  updateCommunityForSpot(spot);
   /* =======================================================
      CARRUSEL
      ======================================================= */
@@ -7635,6 +8713,390 @@ L.control.layers(
 ).addTo(
   map
 );
+
+
+/* =========================================================
+   CESIUM ION · TOKEN
+   =========================================================
+   Pega aquí el token que acabas de crear en Cesium ion.
+   NO publiques este archivo con el token en repositorios públicos
+   hasta haber configurado correctamente las restricciones de URL.
+   ========================================================= */
+
+const CESIUM_ION_ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6IloyaTRoRW5yYTEtMUlSYlciLCJqdGkiOiJjNjBjYTAyNC05NWNhLTQ4YjctYTFiZS02MWU0NzhiNWQyM2YiLCJpZCI6NDcwNDA0LCJzdWIiOiJhbnRvbmktdGVjaCIsImlzcyI6Imh0dHBzOi8vYXBpLmNlc2l1bS5jb20iLCJhdWQiOiJHcmFuZCBUb3VyIGRlIFN1aXphIiwiaWF0IjoxNzg3MzE5OTEyfQ.mdavG38Gi-pQd-LxkprwfD-zDj8RxcoeqLp0bOW3sUI';
+
+/* =========================================================
+   VISTA 3D · RELIEVE DE SUIZA · v4
+   ---------------------------------------------------------
+   - Sin sceneModePicker nativo: evitamos que Cesium recoloque
+     la cámara de forma inesperada.
+   - Único control propio: Relieve 3D.
+   - Siempre encuadra Suiza.
+   - Los controles viven fuera de #grandTour3DViewer para que
+     viewerEl.innerHTML = '' no los elimine.
+   ========================================================= */
+
+let cesiumViewer = null;
+let cesiumLoading = null;
+
+const SUISSE_VIEW = {
+  west: 5.8,
+  south: 45.7,
+  east: 10.7,
+  north: 47.9,
+  centerLng: 8.23,
+  centerLat: 46.82,
+  overviewHeight: 430000,
+  reliefHeight: 220000,
+  spotHeight: 18000,
+  minHeight: 1200
+};
+
+function create3DModal() {
+  let modal = document.getElementById('grandTour3DModal');
+  if (modal) return modal;
+
+  modal = document.createElement('div');
+  modal.id = 'grandTour3DModal';
+  modal.hidden = true;
+  modal.innerHTML = `
+    <div class="gt3d-backdrop" data-close-3d></div>
+    <div class="gt3d-panel" role="dialog" aria-modal="true" aria-label="Relieve 3D">
+      <div class="gt3d-header">
+        <div>
+          <div class="gt3d-kicker">🏔️ GRAND TOUR DE SUIZA</div>
+          <div class="gt3d-title">Relieve 3D</div>
+        </div>
+
+        <div class="gt3d-tools">
+          <button type="button" class="gt3d-mode-btn active" data-gt3d-3d title="Relieve 3D">🌐</button>
+          <button type="button" class="gt3d-close" data-close-3d aria-label="Cerrar">×</button>
+        </div>
+      </div>
+
+      <div id="grandTour3DViewer" class="gt3d-viewer">
+        <div class="gt3d-loading">Cargando terreno 3D…</div>
+      </div>
+
+      <div class="gt3d-footer">
+        <span>🏔️ Terreno 3D · 🛰️ Imágenes satélite</span>
+        <span>Arrastra para rotar · rueda para acercar/alejar.</span>
+      </div>
+    </div>
+  `;
+
+  const style = document.createElement('style');
+  style.id = 'grandTour3DStyles';
+  style.textContent = `
+    #grandTour3DModal{position:fixed;inset:0;z-index:99999}
+    #grandTour3DModal[hidden]{display:none}
+    .gt3d-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(3px)}
+    .gt3d-panel{position:absolute;inset:4vh 4vw;display:flex;flex-direction:column;overflow:hidden;border:1px solid #294b60;border-radius:18px;background:#061823;box-shadow:0 20px 70px rgba(0,0,0,.65)}
+    .gt3d-header{min-height:66px;display:flex;align-items:center;justify-content:space-between;padding:10px 14px 10px 18px;color:#fff;gap:12px}
+    .gt3d-kicker{color:#ffd400;font-size:11px;font-weight:900;letter-spacing:.08em}
+    .gt3d-title{margin-top:3px;font-size:22px;font-weight:900}
+    .gt3d-tools{display:flex;align-items:center;gap:6px}
+    .gt3d-mode-btn,.gt3d-close{width:42px;height:42px;border:0;border-radius:10px;background:#173246;color:#fff;font-size:20px;cursor:pointer}
+    .gt3d-mode-btn:hover,.gt3d-close:hover{background:#23485f}
+    .gt3d-mode-btn.active{background:#2d86c5;box-shadow:0 0 0 2px rgba(255,255,255,.18) inset}
+    .gt3d-close{border-radius:50%;font-size:28px;margin-left:4px}
+    .gt3d-viewer{position:relative;flex:1;min-height:320px;background:#17202a}
+    .gt3d-loading{position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-weight:800;z-index:2;text-align:center}
+    .gt3d-footer{display:flex;justify-content:space-between;gap:15px;padding:8px 14px;color:#c7d3da;font-size:11px;border-top:1px solid #294b60}
+    @media(max-width:700px){
+      .gt3d-panel{inset:1vh 1vw;border-radius:12px}
+      .gt3d-footer{flex-direction:column;gap:4px}
+      .gt3d-mode-btn,.gt3d-close{width:38px;height:38px}
+    }
+  `;
+  document.head.appendChild(style);
+  document.body.appendChild(modal);
+
+  modal.querySelectorAll('[data-close-3d]').forEach(el => {
+    if (el && typeof el.addEventListener === 'function') {
+      el.addEventListener('click', close3DViewer);
+    }
+  });
+
+  const mode3DBtn = modal.querySelector('[data-gt3d-3d]');
+
+  if (mode3DBtn) mode3DBtn.addEventListener('click', () => {
+    if (cesiumViewer) showSwitzerland3D();
+  });
+
+  return modal;
+}
+
+function setCesiumModeButton(mode) {
+  const modal = document.getElementById('grandTour3DModal');
+  if (!modal) return;
+
+  const b3d = modal.querySelector('[data-gt3d-3d]');
+  const b2d = modal.querySelector('[data-gt3d-2d]');
+
+  if (b3d) b3d.classList.toggle('active', mode === '3D');
+  if (b2d) b2d.classList.toggle('active', mode === '2D');
+}
+
+function suisseRectangle(Cesium) {
+  return Cesium.Rectangle.fromDegrees(
+    SUISSE_VIEW.west,
+    SUISSE_VIEW.south,
+    SUISSE_VIEW.east,
+    SUISSE_VIEW.north
+  );
+}
+
+function showSwitzerland3D() {
+  if (!cesiumViewer || !window.Cesium) return;
+
+  const Cesium = window.Cesium;
+  if (cesiumViewer.scene.mode !== Cesium.SceneMode.SCENE3D) {
+    cesiumViewer.scene.morphTo3D(0);
+  }
+
+  cesiumViewer.camera.flyTo({
+    destination: Cesium.Cartesian3.fromDegrees(
+      SUISSE_VIEW.centerLng,
+      SUISSE_VIEW.centerLat,
+      SUISSE_VIEW.reliefHeight
+    ),
+    orientation: {
+      heading: Cesium.Math.toRadians(0),
+      pitch: Cesium.Math.toRadians(-48),
+      roll: 0
+    },
+    duration: 1.1,
+    complete: () => {
+      setCesiumModeButton('3D');
+    }
+  });
+}
+
+function showSwitzerland2D() {
+  if (!cesiumViewer || !window.Cesium) return;
+
+  const Cesium = window.Cesium;
+
+  cesiumViewer.camera.flyTo({
+    destination: suisseRectangle(Cesium),
+    duration: 1.0,
+    complete: () => {
+      setCesiumModeButton('2D');
+    }
+  });
+}
+
+function switchCesiumMode(mode) {
+  if (!cesiumViewer || !window.Cesium) return;
+
+  const Cesium = window.Cesium;
+
+  try {
+    if (mode === '2D') {
+      cesiumViewer.scene.morphTo2D(0.8);
+      setTimeout(() => {
+        if (!cesiumViewer) return;
+        showSwitzerland2D();
+      }, 850);
+      return;
+    }
+
+    cesiumViewer.scene.morphTo3D(0.8);
+    setTimeout(() => {
+      if (!cesiumViewer) return;
+      showSwitzerland3D();
+    }, 850);
+  } catch (error) {
+    console.warn('No se pudo cambiar el modo Cesium:', error);
+    if (mode === '2D') showSwitzerland2D();
+    else showSwitzerland3D();
+  }
+}
+
+function loadCesium() {
+  if (window.Cesium) return Promise.resolve(window.Cesium);
+  if (cesiumLoading) return cesiumLoading;
+
+  cesiumLoading = new Promise((resolve, reject) => {
+    if (!document.getElementById('cesiumStyles')) {
+      const css = document.createElement('link');
+      css.id = 'cesiumStyles';
+      css.rel = 'stylesheet';
+      css.href = 'https://cesium.com/downloads/cesiumjs/releases/1.132/Build/Cesium/Widgets/widgets.css';
+      document.head.appendChild(css);
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://cesium.com/downloads/cesiumjs/releases/1.132/Build/Cesium/Cesium.js';
+    script.onload = () => resolve(window.Cesium);
+    script.onerror = () => reject(new Error('No se pudo cargar CesiumJS.'));
+    document.head.appendChild(script);
+  });
+
+  return cesiumLoading;
+}
+
+async function open3DViewer() {
+  const modal = create3DModal();
+  modal.hidden = false;
+  document.body.style.overflow = 'hidden';
+
+  const viewerEl = document.getElementById('grandTour3DViewer');
+  if (!viewerEl) {
+    console.error('No existe #grandTour3DViewer.');
+    return;
+  }
+
+  try {
+    const Cesium = await loadCesium();
+
+    if (
+      !CESIUM_ION_ACCESS_TOKEN ||
+      CESIUM_ION_ACCESS_TOKEN === 'PEGA_AQUI_TU_TOKEN_DE_CESIUM_ION'
+    ) {
+      throw new Error('Falta configurar el Access Token de Cesium ion.');
+    }
+
+    Cesium.Ion.defaultAccessToken = CESIUM_ION_ACCESS_TOKEN;
+
+    if (!cesiumViewer) {
+      viewerEl.innerHTML = '';
+
+      const terrain = Cesium.Terrain.fromWorldTerrain({
+        requestVertexNormals: true
+      });
+
+      cesiumViewer = new Cesium.Viewer(viewerEl, {
+        terrain,
+        animation: false,
+        timeline: false,
+        geocoder: false,
+        homeButton: false,
+        sceneModePicker: false,
+        navigationHelpButton: false,
+        baseLayerPicker: false,
+        fullscreenButton: false,
+        infoBox: false,
+        selectionIndicator: false,
+        shouldAnimate: false
+      });
+
+      cesiumViewer.imageryLayers.removeAll();
+
+      const worldImagery = await Cesium.createWorldImageryAsync({
+        style: Cesium.IonWorldImageryStyle.AERIAL
+      });
+
+      cesiumViewer.imageryLayers.addImageryProvider(worldImagery);
+      cesiumViewer.scene.globe.enableLighting = true;
+
+      const spots3D = Array.isArray(window.SPOTS) ? window.SPOTS : [];
+
+      spots3D.forEach(spot => {
+        if (typeof spot.lat !== 'number' || typeof spot.lng !== 'number') return;
+
+        cesiumViewer.entities.add({
+          position: Cesium.Cartesian3.fromDegrees(spot.lng, spot.lat, 50),
+          point: {
+            pixelSize: 9,
+            color: Cesium.Color.RED,
+            outlineColor: Cesium.Color.WHITE,
+            outlineWidth: 2,
+            heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
+          },
+          label: {
+            text: String(spot.id).padStart(2, '0'),
+            font: '700 12px sans-serif',
+            fillColor: Cesium.Color.WHITE,
+            outlineColor: Cesium.Color.BLACK,
+            outlineWidth: 3,
+            style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+            verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+            pixelOffset: new Cesium.Cartesian2(0, -10),
+            heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+            showBackground: true,
+            backgroundColor: Cesium.Color.fromCssColorString('#e11')
+          },
+          name: `${String(spot.id).padStart(2, '0')} · ${spot.name}`
+        });
+      });
+
+      /* Limitar el zoom para que no atraviese el terreno. */
+      cesiumViewer.camera.changed.addEventListener(() => {
+        if (!cesiumViewer) return;
+
+        const carto = cesiumViewer.camera.positionCartographic;
+        if (!carto || !Number.isFinite(carto.height)) return;
+
+        if (
+          cesiumViewer.scene.mode === Cesium.SceneMode.SCENE3D &&
+          carto.height < SUISSE_VIEW.minHeight
+        ) {
+          cesiumViewer.camera.zoomOut(
+            SUISSE_VIEW.minHeight - carto.height
+          );
+        }
+      });
+    }
+
+    cesiumViewer.resize();
+
+    /* Al abrir: siempre encuadramos Suiza, nunca el último punto visitado. */
+    if (cesiumViewer.scene.mode !== Cesium.SceneMode.SCENE3D) {
+      cesiumViewer.scene.morphTo3D(0);
+    }
+
+    showSwitzerland3D();
+
+  } catch (error) {
+    console.error('Error cargando la vista 3D:', error);
+
+    viewerEl.innerHTML = `
+      <div class="gt3d-loading">
+        ⚠️ No se pudo cargar el relieve 3D.<br>
+        ${String(error && error.message ? error.message : error)}
+      </div>
+    `;
+  }
+}
+
+function close3DViewer() {
+  const modal = document.getElementById('grandTour3DModal');
+  if (modal) modal.hidden = true;
+  document.body.style.overflow = '';
+}
+
+const threeDControl = L.Control.extend({
+  options: { position: 'topright' },
+
+  onAdd: function () {
+    const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+    const button = L.DomUtil.create('a', '', container);
+
+    button.href = '#';
+    button.title = 'Abrir relieve 3D';
+    button.setAttribute('aria-label', 'Abrir relieve 3D');
+    button.innerHTML = '🏔️';
+
+    L.DomEvent.disableClickPropagation(container);
+    L.DomEvent.on(button, 'click', function (event) {
+      L.DomEvent.stop(event);
+      open3DViewer();
+    });
+
+    return container;
+  }
+});
+
+new threeDControl().addTo(map);
+
+document.addEventListener('keydown', event => {
+  const modal = document.getElementById('grandTour3DModal');
+  if (event.key === 'Escape' && modal && !modal.hidden) {
+    close3DViewer();
+  }
+});
 
 /* =========================================================
    FASE 3.6 · MARCADOR DEL ORIGEN DEL PLANIFICADOR

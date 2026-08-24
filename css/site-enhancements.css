@@ -1,0 +1,251 @@
+/* Shared shell for every page: navigation, language control and media. */
+:root { --site-header-height: 64px; }
+html, body { overflow-x: hidden; }
+img, video, iframe { max-width: 100%; }
+
+/* Smooth cross-page navigation in browsers that support View Transitions. */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) {
+  animation-duration: .18s;
+  animation-timing-function: ease-out;
+}
+
+.topbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  min-height: var(--site-header-height) !important;
+  height: var(--site-header-height) !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 176px 0 20px !important;
+  background: rgba(4, 17, 27, .96) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .13) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mainNav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  max-width: 1120px;
+  gap: clamp(12px, 2vw, 32px) !important;
+}
+
+.mainNav a {
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  font-size: clamp(10px, 1vw, 13px) !important;
+  letter-spacing: .02em;
+}
+
+.languageSelector {
+  position: absolute !important;
+  top: 0 !important;
+  right: 18px !important;
+  height: var(--site-header-height) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  z-index: 1002 !important;
+}
+
+.languageFlag {
+  width: 32px !important;
+  height: 32px !important;
+  flex: 0 0 32px;
+}
+
+.languageFlag img { filter: none !important; }
+.languageSelector.is-translating { opacity: .7; pointer-events: none; }
+.mobileMenuToggle { display: none; }
+.grandTourMobileTools, .mobileTourClose { display: none; }
+
+/* A consistent, subtle lift so editorial photography and video stand out. */
+body img { filter: brightness(1.09) contrast(1.035) saturate(1.07); }
+body video, body iframe[src*="youtube"], body iframe[src*="vimeo"] {
+  filter: brightness(1.09) contrast(1.035) saturate(1.06);
+}
+
+footer.site-credits, footer.site-footer {
+  width: 100% !important;
+  min-height: 76px !important;
+  margin: 0 !important;
+  padding: 16px 20px !important;
+  display: grid !important;
+  place-items: center !important;
+  gap: 4px !important;
+  text-align: center !important;
+  background: rgba(3, 16, 26, .82) !important;
+  border-top: 1px solid rgba(255, 255, 255, .13) !important;
+  color: rgba(255, 255, 255, .82) !important;
+}
+
+footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-height: 1.5; }
+
+@media (max-width: 900px) {
+  .topbar { height: auto !important; min-height: 58px !important; padding: 0 152px 0 12px !important; }
+  .mainNav { width: 100%; overflow-x: auto; justify-content: flex-start !important; gap: 16px !important; }
+  .mainNav a { min-height: 58px; font-size: 10px !important; }
+  .languageSelector { right: 8px !important; gap: 4px !important; }
+  .languageFlag { width: 27px !important; height: 27px !important; flex-basis: 27px; }
+}
+
+@media (max-width: 520px) {
+  .topbar { padding-right: 8px !important; padding-top: 40px !important; }
+  .languageSelector { left: 8px !important; right: auto !important; height: 40px !important; }
+  .mainNav a { min-height: 50px; }
+}
+
+/* Mobile site navigation: it remains easy to reach without squeezing eight links
+   and five language flags into a single line. */
+@media (max-width: 760px) {
+  :root { --site-header-height: 58px; }
+
+  .topbar {
+    min-height: var(--site-header-height) !important;
+    height: var(--site-header-height) !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .mainNav {
+    position: absolute !important;
+    top: var(--site-header-height) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: calc(100vh - var(--site-header-height)) !important;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    overflow-y: auto !important;
+    padding: 8px 14px 14px !important;
+    background: rgba(4, 17, 27, .98) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .14);
+    box-shadow: 0 14px 26px rgba(0, 0, 0, .28);
+  }
+
+  .topbar.mobile-menu-open .mainNav { display: flex !important; }
+  .mainNav a {
+    width: 100%;
+    min-height: 45px !important;
+    height: 45px !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+  }
+
+  .languageSelector {
+    right: 8px !important;
+    left: auto !important;
+    height: var(--site-header-height) !important;
+    gap: 3px !important;
+  }
+  .languageFlag { width: 25px !important; height: 25px !important; flex-basis: 25px; }
+  .languageFlag img { width: 16px; height: 12px; }
+
+  .mobileMenuToggle {
+    position: absolute;
+    top: 11px;
+    right: 162px;
+    z-index: 1003;
+    width: 36px;
+    height: 36px;
+    display: inline-grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, .34);
+    border-radius: 9px;
+    background: rgba(4, 17, 27, .85);
+    color: #fff;
+    font-size: 21px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .mobileMenuToggle[aria-expanded="true"] { background: #ef1820; border-color: #ef1820; }
+
+  main, .page-header, .hero, section { max-width: 100%; }
+  .hero h1, h1 { overflow-wrap: anywhere; }
+  footer.site-credits, footer.site-footer { padding: 15px 12px !important; }
+}
+
+@media (max-width: 360px) {
+  .languageFlag { width: 23px !important; height: 23px !important; flex-basis: 23px; }
+  .mobileMenuToggle { right: 151px; width: 34px; }
+}
+
+/* Grand Tour mobile layout: the map remains central and its two desktop side
+   panels become full-height drawers that can be opened on demand. */
+@media (max-width: 760px) {
+  body:has(#map) { padding-bottom: 78px !important; }
+  body:has(#map) .layout { height: calc(100dvh - 136px) !important; min-height: 360px; }
+  body:has(#map) .mapBadge,
+  body:has(#map) .mapLegend { display: none !important; }
+  body:has(#map) .carouselWrap { bottom: 6px !important; height: 132px; padding: 24px 38px 8px; }
+  body:has(#map) .carousel { height: 98px; }
+  body:has(#map) .thumb { flex-basis: 104px; }
+  body:has(#map) .carouselArrow { width: 34px; height: 34px; font-size: 26px; }
+
+  .grandTourMobileTools {
+    position: absolute;
+    z-index: 1100;
+    top: 12px;
+    left: 12px;
+    display: grid;
+    gap: 7px;
+  }
+  .grandTourMobileTools button {
+    min-height: 38px;
+    padding: 0 12px;
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 10px;
+    background: rgba(4,17,27,.92);
+    box-shadow: 0 4px 14px rgba(0,0,0,.28);
+    color: #fff;
+    font: 800 11px/1 Arial, sans-serif;
+    cursor: pointer;
+  }
+
+  body:has(#map) .sidePanel,
+  body:has(#map) .infoPanel {
+    position: fixed !important;
+    z-index: 3200 !important;
+    top: var(--site-header-height) !important;
+    right: 0 !important;
+    bottom: 78px !important;
+    left: 0 !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    border: 0 !important;
+    background: #061825 !important;
+  }
+  body:has(#map) .sidePanel.mobile-tour-panel-open,
+  body:has(#map) .infoPanel.mobile-tour-panel-open { display: block !important; }
+  body:has(#map) .sideScroll,
+  body:has(#map) .infoScroll { height: 100% !important; padding: 62px 16px 24px !important; }
+  .mobileTourClose {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 12px;
+    right: 14px;
+    min-width: 42px;
+    height: 38px;
+    border: 1px solid rgba(255,255,255,.34);
+    border-radius: 9px;
+    background: #ef1820;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+}

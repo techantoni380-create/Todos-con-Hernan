@@ -2,6 +2,8 @@
 <html lang="es">
 
 <head>
+  <meta name="view-transition" content="same-origin">
+  <style>html { background: #071a28; }</style>
 
   <meta charset="UTF-8">
 
@@ -11,766 +13,661 @@
   >
 
   <title>Todos con Hernán · Suiza</title>
-
-  <style>
-
-    /* =====================================================
-       VARIABLES
-       ===================================================== */
-
-    :root {
-      --bg: #04111b;
-      --panel: #071a28;
-      --panel2: #0a2030;
-      --line: #23465d;
-
-      --red: #ef1820;
-      --gold: #ffd000;
-      --green: #29e879;
-
-      --text: #f5f8fa;
-      --muted: #a7bac7;
-    }
-
-
-    /* =====================================================
-       RESET
-       ===================================================== */
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      width: 100%;
-      min-height: 100%;
-
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-      background: var(--bg);
-      color: var(--text);
-    }
-
-    body {
-      overflow-x: hidden;
-    }
-
-
-    /* =====================================================
-       CABECERA
-       ===================================================== */
-
-    .topbar {
-      height: 64px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 0 20px;
-
-      background: #04111a;
-
-      border-bottom:
-        1px solid #183347;
-
-      position: relative;
-
-      z-index: 1000;
-    }
-
-
-    .mainNav {
-      height: 100%;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      gap: 34px;
-    }
-
-
-    .mainNav a {
-      height: 100%;
-
-      display: flex;
-      align-items: center;
-
-      position: relative;
-
-      color: #dbe4ea;
-
-      text-decoration: none;
-
-      font-size: 13px;
-      font-weight: 700;
-
-      white-space: nowrap;
-    }
-
-
-    .mainNav a:hover {
-      color: #ffffff;
-    }
-
-
-    .mainNav a.active {
-      color: #ffffff;
-      font-weight: 900;
-    }
-
-
-    .mainNav a.active::after {
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-      right: 0;
-      bottom: 0;
-
-      height: 4px;
-
-      background: var(--red);
-
-      border-radius:
-        3px 3px 0 0;
-    }
-
-
-    /* =====================================================
-       HERO
-       ===================================================== */
-
-    .hero {
-      min-height: 650px;
-
-      position: relative;
-
-      display: grid;
-
-      grid-template-columns:
-        minmax(0, 1fr)
-        minmax(420px, 620px);
-
-      align-items: center;
-
-      gap: 30px;
-
-      padding:
-        50px
-        7vw
-        40px;
-
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 75% 45%,
-          #173c50 0,
-          #071a28 35%,
-          #04111b 72%
-        );
-    }
-
-
-    .hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 650px;
-      height: 650px;
-
-      right: -180px;
-      top: -160px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          #ef182025,
-          transparent 68%
-        );
-
-      pointer-events: none;
-    }
-
-
-    /* =====================================================
-       TEXTO HERO
-       ===================================================== */
-
-    .heroContent {
-      position: relative;
-      z-index: 2;
-
-      max-width: 650px;
-    }
-
-
-    .eyebrow {
-      display: inline-block;
-
-      margin-bottom: 18px;
-
-      padding:
-        7px 13px;
-
-      border:
-        1px solid #31556c;
-
-      border-radius: 20px;
-
-      background: #071a28cc;
-
-      color: var(--gold);
-
-      font-size: 13px;
-      font-weight: 900;
-
-      letter-spacing: .8px;
-    }
-
-
-    .hero h1 {
-      margin: 0;
-
-      font-size:
-        clamp(52px, 7vw, 92px);
-
-      line-height: .88;
-
-      font-weight: 950;
-
-      letter-spacing: -4px;
-    }
-
-
-    .hero h1 span {
-      color: var(--red);
-    }
-
-
-    .heroSubtitle {
-      max-width: 580px;
-
-      margin:
-        28px 0 0;
-
-      color: #dbe7ed;
-
-      font-size:
-        clamp(18px, 2vw, 23px);
-
-      line-height: 1.45;
-    }
-
-
-    .heroButtons {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 12px;
-
-      margin-top: 30px;
-    }
-
-
-    .heroButton {
-      display: inline-flex;
-
-      align-items: center;
-      justify-content: center;
-
-      min-height: 48px;
-
-      padding:
-        0 24px;
-
-      border-radius: 25px;
-
-      text-decoration: none;
-
-      font-weight: 900;
-
-      transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-    }
-
-
-    .heroButton:hover {
-      transform: translateY(-2px);
-    }
-
-
-    .heroButton.primary {
-      background: var(--red);
-
-      color: #fff;
-
-      box-shadow:
-        0 8px 25px #0007;
-    }
-
-
-    .heroButton.secondary {
-      background: transparent;
-
-      color: #fff;
-
-      border:
-        1px solid #42657a;
-    }
-
-
-    /* =====================================================
-       HERNÁN
-       ===================================================== */
-
-    .heroHernan {
-      position: relative;
-
-      height: 560px;
-
-      display: flex;
-
-      align-items: flex-end;
-
-      justify-content: center;
-
-      z-index: 2;
-    }
-
-
-    .heroHernan::before {
-      content: "";
-
-      position: absolute;
-
-      width: 460px;
-      height: 460px;
-
-      bottom: 15px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          #ef182025,
-          transparent 67%
-        );
-    }
-
-
-    .heroHernan img {
-      position: relative;
-
-      z-index: 2;
-
-      width: min(
-        100%,
-        650px
-      );
-
-      height: 100%;
-
-      object-fit: contain;
-
-      object-position:
-        center bottom;
-
-      filter:
-        drop-shadow(
-          0 18px 25px #000b
-        );
-    }
-
-
-    /* =====================================================
-       PRESENTACIÓN
-       ===================================================== */
-
-    .introSection {
-      padding:
-        70px
-        7vw;
-
-      background:
-        #061825;
-    }
-
-
-    .sectionTitle {
-      margin: 0 0 12px;
-
-      font-size:
-        clamp(32px, 4vw, 52px);
-
-      line-height: 1;
-
-      font-weight: 950;
-    }
-
-
-    .sectionTitle span {
-      color: var(--red);
-    }
-
-
-    .sectionText {
-      max-width: 760px;
-
-      margin: 0;
-
-      color: #c9d7df;
-
-      font-size: 18px;
-
-      line-height: 1.6;
-    }
-
-
-    /* =====================================================
-       TARJETAS
-       ===================================================== */
-
-    .cardsSection {
-      padding:
-        0
-        7vw
-        80px;
-
-      background:
-        #061825;
-    }
-
-
-    .cards {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 16px;
-    }
-
-
-    .card {
-      min-height: 220px;
-
-      padding: 24px;
-
-      background:
-        linear-gradient(
-          180deg,
-          #0a2030,
-          #071722
-        );
-
-      border:
-        1px solid #23465d;
-
-      border-radius: 16px;
-
-      text-decoration: none;
-
-      color: #fff;
-
-      transition:
-        transform .2s ease,
-        border-color .2s ease;
-    }
-
-
-    .card:hover {
-      transform: translateY(-5px);
-
-      border-color:
-        var(--red);
-    }
-
-
-    .cardIcon {
-      font-size: 35px;
-
-      margin-bottom: 20px;
-    }
-
-
-    .card h3 {
-      margin: 0 0 10px;
-
-      font-size: 21px;
-    }
-
-
-    .card p {
-      margin: 0;
-
-      color: var(--muted);
-
-      line-height: 1.45;
-    }
-
-
-    /* =====================================================
-       GRAND TOUR DESTACADO
-       ===================================================== */
-
-    .tourSection {
-      padding:
-        80px 7vw;
-
-      background:
-        linear-gradient(
-          135deg,
-          #071a28,
-          #04111b
-        );
-    }
-
-
-    .tourBox {
-      display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap: 40px;
-
-      align-items: center;
-
-      max-width: 1200px;
-
-      margin: auto;
-
-      padding: 35px;
-
-      border:
-        1px solid #31556c;
-
-      border-radius: 20px;
-
-      background:
-        #071a28cc;
-    }
-
-
-    .tourNumber {
-      color: var(--gold);
-
-      font-size: 70px;
-
-      line-height: .8;
-
-      font-weight: 950;
-    }
-
-
-    .tourBox h2 {
-      margin:
-        15px 0;
-
-      font-size: 38px;
-    }
-
-
-    .tourBox p {
-      color: #c5d4dc;
-
-      line-height: 1.55;
-    }
-
-
-    .tourImage {
-      min-height: 300px;
-
-      border-radius: 14px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #173b4e,
-          #071a28
-        );
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      overflow: hidden;
-    }
-
-
-    .tourImage img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-
-    /* =====================================================
-       FOOTER
-       ===================================================== */
-
-    footer {
-      min-height: 70px;
-
-      display: flex;
-      flex-direction: column;
-
-      align-items: center;
-      justify-content: center;
-
-      text-align: center;
-
-      padding: 25px 20px;
-
-      background: #020a11;
-
-      border-top:
-        1px solid #183347;
-
-      color: #9db0bc;
-
-      font-size: 13px;
-    }
-
-footer p {
-    margin: 0;
+    <style>
+/* =========================================================
+   TODOS CON HERNÁN · INICIO
+   CSS actualizado
+   Fondo único + scroll + efecto parallax suave
+   ========================================================= */
+
+:root {
+  --bg: #04111b;
+  --panel: rgba(6, 24, 37, .88);
+  --panel-2: rgba(10, 32, 48, .88);
+  --line: #23465d;
+  --red: #ef1820;
+  --gold: #ffd000;
+  --green: #29e879;
+  --text: #f5f8fa;
+  --muted: #a7bac7;
 }
 
-.developer-credit {
-    margin-top: 10px;
-    font-size: 12px;
-    color: #71869a;
+* {
+  box-sizing: border-box;
 }
 
-.developer-credit a {
-    color: #42a6ff;
-    text-decoration: none;
-    font-weight: 600;
+html {
+  scroll-behavior: smooth;
 }
 
-.developer-credit a:hover {
-    text-decoration: underline;
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  background: transparent;
+  color: var(--text);
 }
-
-
-    /* =====================================================
-       RESPONSIVE
-       ===================================================== */
-
-    @media (max-width: 1050px) {
-
-      .mainNav {
-        gap: 20px;
-      }
-
-      .hero {
-        grid-template-columns: 1fr 420px;
-
-        padding:
-          40px 30px;
-      }
-
-      .cards {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-    }
-
-
-    @media (max-width: 800px) {
-
-      .topbar {
-        overflow-x: auto;
-
-        justify-content: flex-start;
-      }
-
-      .mainNav {
-        flex: 0 0 auto;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-
-        text-align: center;
-
-        padding:
-          50px 20px 0;
-      }
-
-      .heroContent {
-        margin: auto;
-      }
-
-      .heroButtons {
-        justify-content: center;
-      }
-
-      .heroHernan {
-        height: 420px;
-      }
-
-      .tourBox {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-
-    @media (max-width: 520px) {
-
-      .mainNav {
-        gap: 18px;
-      }
-
-      .mainNav a {
-        font-size: 11px;
-      }
-
-      .hero h1 {
-        font-size: 52px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .heroHernan {
-        height: 350px;
-      }
-
-    }
-
-  
 
 /* =========================================================
-   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
+   FONDO ÚNICO DE TODA LA PÁGINA
+   La fotografía permanece visible mientras el contenido sube
+   ========================================================= */
+
+body::before {
+  content: none;
+}
+
+/* =========================================================
+   FONDO DINÁMICO · 7 FOTOS DE SUIZA
+   Una fotografía cambia cada 8 segundos con fundido suave
+   y un movimiento tipo Ken Burns.
+   ========================================================= */
+
+ .bgSlideshow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #071a28;
+}
+
+.bgSlide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 1.2s ease-in-out;
+  will-change: opacity, transform;
+}
+
+.bgSlide:first-child {
+  background-image: url("img/Lucerna%20Suiza.jpg");
+  opacity: 1;
+}
+
+.bgSlide.active {
+  opacity: 1;
+  animation: swissKenBurns 8s ease-out forwards;
+}
+
+@keyframes swissKenBurns {
+  0% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.09) translate3d(-0.5%, -0.3%, 0);
+  }
+}
+
+/* Solo una capa de legibilidad muy ligera. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(3, 12, 19, .025);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bgSlide.active {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   CABECERA
+   ========================================================= */
+
+.topbar {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+
+  background: rgba(4, 17, 26, .96);
+  border-bottom: 1px solid #183347;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.mainNav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+}
+
+.mainNav a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  color: #dbe4ea;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+
+  transition: color .2s ease;
+}
+
+.mainNav a:hover {
+  color: #ffffff;
+}
+
+.mainNav a.active {
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.mainNav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--red);
+  border-radius: 3px 3px 0 0;
+}
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   HERO
+   La imagen YA NO cambia al hacer scroll:
+   es la misma fotografía que queda detrás del contenido.
+   ========================================================= */
+
+.hero {
+  min-height: calc(100vh - 64px);
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding: 80px 7vw 100px;
+  overflow: hidden;
+
+  background: transparent;
+}
+
+/* Quitamos el fondo anterior del hero */
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero::before {
+  z-index: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 12, 19, .035) 0%,
+      rgba(3, 12, 19, .012) 52%,
+      rgba(3, 12, 19, 0) 100%
+    );
+}
+
+.hero::after {
+  z-index: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(4, 17, 27, 0) 55%,
+      rgba(4, 17, 27, .05) 100%
+    );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+}
+
+/* =========================================================
+   ETIQUETA
+   ========================================================= */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-bottom: 18px;
+  padding: 7px 13px;
+
+  border: 1px solid #31556c;
+  border-radius: 20px;
+
+  background: rgba(7, 26, 40, .78);
+  color: var(--gold);
+
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .8px;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.eyebrowFlag {
+  width: 18px;
+  height: 18px;
+  object-fit: cover;
+  display: block;
+  flex: 0 0 auto;
+  border-radius: 3px;
+  margin-left: 1px;
+}
+
+/* =========================================================
+   TÍTULO HERO
+   ========================================================= */
+
+.hero h1 {
+  margin: 0;
+
+  font-size: clamp(52px, 7vw, 92px);
+  line-height: .88;
+  font-weight: 950;
+  letter-spacing: -4px;
+
+  text-shadow:
+    0 3px 12px rgba(0, 0, 0, .30);
+}
+
+.hero h1 span {
+  color: var(--red);
+}
+
+.heroSubtitle {
+  max-width: 600px;
+  margin: 10px 0 0;
+
+  color: #ffffff;
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.45;
+
+  text-shadow:
+    0 2px 7px rgba(0, 0, 0, .70);
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.heroButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.heroButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  padding: 0 24px;
+
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 900;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+}
+
+.heroButton:hover {
+  transform: translateY(-2px);
+}
+
+.heroButton.primary {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .35);
+}
+
+.heroButton.primary:hover {
+  background: #ff252d;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .45);
+}
+
+.heroButton.secondary {
+  background: rgba(4, 17, 27, .22);
+  color: #fff;
+  border: 1px solid rgba(66, 101, 122, .95);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.heroButton.secondary:hover {
+  background: rgba(4, 17, 27, .48);
+}
+
+/* =========================================================
+   SECCIONES SOBRE EL MISMO FONDO
+   ========================================================= */
+
+.introSection {
+  position: relative;
+  padding: 100px 7vw 65px;
+
+  background: rgba(4, 17, 27, .60);
+  border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+.cardsSection {
+  position: relative;
+  padding: 0 7vw 100px;
+
+  background: rgba(4, 17, 27, .60);
+}
+
+.sectionTitle {
+  margin: 0 0 12px;
+
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1;
+  font-weight: 950;
+
+  text-shadow: 0 3px 10px rgba(0, 0, 0, .35);
+}
+
+.sectionTitle span {
+  color: var(--red);
+}
+
+.sectionText {
+  max-width: 760px;
+  margin: 0;
+
+  color: #f0f5f7;
+  font-size: 18px;
+  line-height: 1.6;
+
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .55);
+}
+
+/* =========================================================
+   TARJETAS
+   ========================================================= */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.card {
+  min-height: 220px;
+  padding: 24px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 32, 48, .88),
+      rgba(7, 23, 34, .88)
+    );
+
+  border: 1px solid rgba(35, 70, 93, .95);
+  border-radius: 16px;
+
+  text-decoration: none;
+  color: #fff;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, .20);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    background .2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--red);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(14, 43, 62, .94),
+      rgba(7, 23, 34, .94)
+    );
+}
+
+.cardIcon {
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 21px;
+}
+
+.card p {
+  margin: 0;
+  color: #d4e0e6;
+  line-height: 1.45;
+}
+
+/* =========================================================
+   PAISAJE DURANTE EL SCROLL
+   Mantiene la fotografía visible y crea profundidad.
+   ========================================================= */
+
+.scrollVisual {
+  position: relative;
+
+  min-height: 560px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 100px 7vw;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 17, 27, .72) 0%,
+      rgba(4, 17, 27, .30) 48%,
+      rgba(4, 17, 27, .08) 100%
+    );
+
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.scrollVisual::before {
+  content: "";
+  position: absolute;
+  inset: -5%;
+
+  background:
+    url("img/Lucerna%20Suiza.jpg")
+    center center / cover no-repeat;
+
+  z-index: -1;
+
+  transform: scale(1.08);
+  filter: saturate(1.05);
+
+  /* Movimiento sutil al desplazarse */
+  animation: slowLandscape 18s ease-in-out infinite alternate;
+}
+
+@keyframes slowLandscape {
+  from {
+    transform: scale(1.08) translate3d(-1%, 0, 0);
+  }
+
+  to {
+    transform: scale(1.13) translate3d(1%, -1%, 0);
+  }
+}
+
+.scrollVisualContent {
+  max-width: 700px;
+  position: relative;
+  z-index: 2;
+}
+
+.scrollVisualContent h2 {
+  margin: 0 0 14px;
+
+  font-size: clamp(34px, 5vw, 64px);
+  line-height: .95;
+  font-weight: 950;
+  letter-spacing: -2px;
+
+  text-shadow:
+    0 3px 12px rgba(0, 0, 0, .55);
+}
+
+.scrollVisualContent h2 span {
+  color: var(--red);
+}
+
+.scrollVisualContent p {
+  max-width: 600px;
+  margin: 0;
+
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.55;
+
+  text-shadow:
+    0 2px 7px rgba(0, 0, 0, .65);
+}
+
+/* =========================================================
+   GRAND TOUR DESTACADO
+   ========================================================= */
+
+.tourSection {
+  position: relative;
+  padding: 100px 7vw;
+  overflow: hidden;
+
+  background: rgba(4, 17, 27, .72);
+
+  border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+.tourBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 40px;
+  align-items: center;
+
+  max-width: 1200px;
+  margin: auto;
+  padding: 35px;
+
+  border: 1px solid #31556c;
+  border-radius: 20px;
+
+  background: rgba(4, 17, 27, .78);
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, .28);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.tourNumber {
+  color: var(--gold);
+  font-size: 70px;
+  line-height: .8;
+  font-weight: 950;
+}
+
+.tourBox h2 {
+  margin: 15px 0;
+  font-size: 38px;
+}
+
+.tourBox p {
+  color: #e0e9ed;
+  line-height: 1.55;
+}
+
+.tourImage {
+  min-height: 300px;
+
+  border-radius: 14px;
+
+  background: #071a28;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.tourImage img {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+
+  object-fit: cover;
+
+  transition: transform .8s ease;
+}
+
+.tourImage:hover img {
+  transform: scale(1.04);
+}
+
+/* =========================================================
+   FOOTER
    ========================================================= */
 
 footer.site-credits {
   width: 100% !important;
   min-height: 0 !important;
-
-  box-sizing: border-box !important;
 
   display: grid !important;
   grid-template-columns: 1fr !important;
@@ -791,22 +688,19 @@ footer.site-credits {
   font-size: 13px !important;
 
   text-align: center !important;
-  white-space: normal !important;
 }
 
 footer.site-credits > p {
   display: block !important;
 
-  width: 100% !important;
-  max-width: 1200px !important;
+  width: 100%;
+  max-width: 1200px;
 
   margin: 0 !important;
   padding: 0 !important;
 
   text-align: center !important;
   line-height: 1.5 !important;
-
-  white-space: normal !important;
 }
 
 footer.site-credits > p.developer-credit {
@@ -818,10 +712,179 @@ footer.site-credits > p.developer-credit {
 
 
 /* =========================================================
-   FOOTER · MÓVIL
+   SELECTOR DE IDIOMA
    ========================================================= */
 
-@media (max-width: 600px) {
+.languageSelector {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 1002;
+}
+
+.languageFlag {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .32);
+  border-radius: 50%;
+  background: rgba(4, 17, 27, .72);
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.languageFlag:hover {
+  transform: translateY(-2px) scale(1.08);
+  background: rgba(239, 24, 32, .25);
+  border-color: rgba(255, 255, 255, .9);
+  box-shadow: 0 5px 14px rgba(0, 0, 0, .25);
+}
+
+.languageFlag.active {
+  background: rgba(4, 17, 27, .92);
+  border-color: #ef1820;
+  box-shadow: 0 0 0 2px rgba(239, 24, 32, .55);
+  transform: scale(1.08);
+}
+
+.languageFlag img {
+  width: 18px;
+  height: 13px;
+  display: block;
+  object-fit: cover;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.languageFlag:focus-visible {
+  outline: 2px solid #ffd000;
+  outline-offset: 2px;
+}
+
+@media (max-width: 800px) {
+  .languageSelector {
+    position: fixed;
+    right: 8px;
+    top: 0;
+  }
+
+  .mainNav {
+    padding-right: 180px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .mainNav {
+    gap: 20px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .topbar {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+
+  .mainNav {
+    flex: 0 0 auto;
+  }
+
+  .hero {
+    min-height: calc(100vh - 64px);
+    padding: 60px 25px 80px;
+  }
+
+  .heroContent {
+    margin: auto;
+  }
+
+  .heroButtons {
+    justify-content: flex-start;
+  }
+
+  .tourBox {
+    grid-template-columns: 1fr;
+  }
+
+  .introSection,
+  .cardsSection,
+  .scrollVisual,
+  .tourSection {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
+@media (max-width: 520px) {
+  .mainNav {
+    gap: 18px;
+  }
+
+  .mainNav a {
+    font-size: 11px;
+  }
+
+  .hero {
+    padding: 55px 20px 75px;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+    letter-spacing: -2px;
+  }
+
+  .heroSubtitle {
+    font-size: 18px;
+  }
+
+  .heroButtons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .heroButton {
+    width: 100%;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .scrollVisual {
+    min-height: 500px;
+  }
+
+  .tourBox {
+    padding: 24px;
+  }
+
+  .tourNumber {
+    font-size: 58px;
+  }
+
+  .tourBox h2 {
+    font-size: 32px;
+  }
 
   footer.site-credits {
     padding: 18px 10px !important;
@@ -832,15 +895,702 @@ footer.site-credits > p.developer-credit {
     font-size: 12px !important;
     line-height: 1.6 !important;
   }
+}
 
+/* =========================================================
+   ACCESIBILIDAD
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+
+
+/* =========================================================
+   INTRO HERO + HERNÁN
+   Imagen de Hernán al lado del texto principal
+   ========================================================= */
+
+.heroIntro {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 45px;
+  width: 100%;
+  max-width: 1150px;
+}
+
+.heroText {
+  flex: 1 1 560px;
+  min-width: 0;
+  max-width: 560px;
+}
+
+.heroHernan {
+  flex: 0 0 390px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: flex-start;
+
+  /* Un poco más arriba y hacia la derecha */
+  transform: translate(65px, -115px);
+}
+
+.heroHernan img {
+  display: block;
+  width: 100%;
+  max-width: 410px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, .35));
+}
+
+@media (max-width: 900px) {
+  .heroIntro {
+    gap: 20px;
+  }
+
+  .heroHernan {
+    flex: 0 0 280px;
+  }
+
+  .heroHernan img {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 700px) {
+  .heroIntro {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .heroText {
+    width: 100%;
+  }
+
+  .heroHernan {
+    width: 100%;
+    flex: none;
+    align-self: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: -10px;
+    transform: none;
+  }
+
+  .heroHernan img {
+    max-width: 280px;
+  }
+}
+
+    /* =========================================================
+   TEXTO + IMAGEN DE HERNÁN
+   ========================================================= */
+
+.heroIntro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  width: 100%;
+  max-width: 1150px;
+}
+
+.heroText {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.heroHernan {
+  flex: 0 0 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  transform: translate(15px, 55px);
+}
+
+.heroHernan img {
+  display: block;
+  width: 280px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, .35));
+}
+
+@media (max-width: 900px) {
+  .heroIntro {
+    gap: 15px;
+  }
+
+  .heroHernan {
+    flex: 0 0 250px;
+    transform: translate(5px, 25px);
+  }
+
+  .heroHernan img {
+    width: 250px;
+  }
+}
+
+@media (max-width: 700px) {
+  .heroIntro {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heroText {
+    width: 100%;
+  }
+
+  .heroHernan {
+    width: 100%;
+    flex: none;
+    justify-content: center;
+    margin-top: 15px;
+    transform: none;
+  }
+
+  .heroHernan img {
+    width: 250px;
+    max-width: 80%;
+  }
+}
+
+
+/* =========================================================
+   AJUSTE VISUAL · INICIO
+   Más claro, limpio y minimalista, manteniendo la estructura
+   y todas las funcionalidades existentes.
+   ========================================================= */
+
+/* Fondo: la fotografía debe respirar y verse con nitidez */
+body::after {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 12, 19, .18) 0%,
+      rgba(3, 12, 19, .06) 45%,
+      rgba(3, 12, 19, .02) 100%
+    );
+}
+
+/* Cabecera más fina y ligera */
+.topbar {
+  height: 58px;
+  min-height: 58px;
+  padding: 0 18px;
+  background: rgba(3, 15, 24, .78);
+  border-bottom: 1px solid rgba(255,255,255,.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mainNav {
+  height: 58px;
+  gap: 28px;
+}
+
+.mainNav a {
+  height: 58px;
+  font-size: 12px;
+  color: rgba(255,255,255,.88);
+}
+
+.mainNav a.active::after {
+  height: 3px;
+  background: var(--red);
+}
+
+/* Idiomas discretos */
+.languageSelector {
+  right: 14px;
+  height: 58px;
+  gap: 4px;
+}
+
+.languageFlag {
+  width: 29px;
+  height: 29px;
+  background: rgba(3,15,24,.42);
+  border-color: rgba(255,255,255,.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.languageFlag img {
+  width: 17px;
+  height: 12px;
+}
+
+/* Hero: menos altura y más aire visual */
+.hero {
+  min-height: 690px;
+  padding: 72px 7vw 85px;
+}
+
+.heroContent {
+  max-width: 1160px;
+}
+
+.eyebrow {
+  margin-bottom: 14px;
+  padding: 6px 11px;
+  background: rgba(4,17,27,.30);
+  border-color: rgba(255,255,255,.28);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.hero h1 {
+  font-size: clamp(48px, 6.2vw, 78px);
+  letter-spacing: -3px;
+}
+
+.heroSubtitle {
+  max-width: 620px;
+  font-size: clamp(17px, 1.8vw, 21px);
+  text-shadow: 0 2px 8px rgba(0,0,0,.58);
+}
+
+/* Botones más pequeños y ligeros */
+.heroButtons {
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.heroButton {
+  min-height: 42px;
+  padding: 0 19px;
+  border-radius: 21px;
+  font-size: 13px;
+}
+
+.heroButton.primary {
+  box-shadow: 0 6px 18px rgba(0,0,0,.22);
+}
+
+.heroButton.secondary {
+  background: rgba(4,17,27,.16);
+  border-color: rgba(255,255,255,.38);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.heroHernan {
+  flex-basis: 270px;
+  transform: translate(8px, 35px);
+}
+
+.heroHernan img {
+  width: 270px;
+  filter: drop-shadow(0 12px 20px rgba(0,0,0,.28));
+}
+
+/* Secciones: quitar el "papel tapiz" oscuro */
+.introSection {
+  padding: 72px 7vw 45px;
+  background: rgba(4,17,27,.16);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.cardsSection {
+  padding: 0 7vw 75px;
+  background: rgba(4,17,27,.10);
+}
+
+.sectionTitle {
+  font-size: clamp(30px, 3.5vw, 46px);
+}
+
+.sectionText {
+  max-width: 760px;
+  font-size: 17px;
+}
+
+/* Tarjetas tipo cristal: dejan ver Suiza */
+.cards {
+  gap: 14px;
+}
+
+.card {
+  min-height: 205px;
+  padding: 21px;
+  background: rgba(5,23,35,.34);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 15px;
+  box-shadow: 0 10px 28px rgba(0,0,0,.13);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(239,24,32,.72);
+  background: rgba(5,23,35,.45);
+}
+
+.cardIcon {
+  font-size: 31px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 20px;
+}
+
+/* Paisaje: mucho más transparente */
+.scrollVisual {
+  min-height: 470px;
+  padding: 82px 7vw;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4,17,27,.30) 0%,
+      rgba(4,17,27,.10) 50%,
+      rgba(4,17,27,.02) 100%
+    );
+  border-top: 1px solid rgba(255,255,255,.14);
+  border-bottom: 1px solid rgba(255,255,255,.14);
+}
+
+.scrollVisual::before {
+  filter: saturate(1.08);
+}
+
+.scrollVisualContent {
+  max-width: 650px;
+}
+
+.scrollVisualContent h2 {
+  font-size: clamp(34px, 4.5vw, 58px);
+}
+
+/* Grand Tour: caja más transparente */
+.tourSection {
+  padding: 78px 7vw;
+  background: rgba(4,17,27,.16);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.tourBox {
+  max-width: 1120px;
+  gap: 32px;
+  padding: 30px;
+  border-color: rgba(255,255,255,.24);
+  border-radius: 18px;
+  background: rgba(4,17,27,.38);
+  box-shadow: 0 14px 38px rgba(0,0,0,.18);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.tourNumber {
+  font-size: 62px;
+}
+
+.tourBox h2 {
+  margin: 12px 0;
+  font-size: 34px;
+}
+
+.tourImage {
+  min-height: 280px;
+  border-radius: 13px;
+  background: rgba(7,26,40,.22);
+}
+
+/* Pie de página: compacto y menos pesado */
+footer.site-credits {
+  min-height: 54px !important;
+  padding: 14px 15px !important;
+  gap: 4px !important;
+  background: rgba(2,10,17,.78) !important;
+  border-top: 1px solid rgba(255,255,255,.15) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+footer.site-credits > p {
+  font-size: 12px !important;
+}
+
+footer.site-credits > p.developer-credit {
+  font-size: 12px !important;
+}
+
+/* Ajustes de pantalla pequeña */
+@media (max-width: 1050px) {
+  .mainNav {
+    gap: 19px;
+  }
+}
+
+@media (max-width: 800px) {
+  .topbar,
+  .mainNav {
+    height: 56px;
+    min-height: 56px;
+  }
+
+  .languageSelector {
+    height: 56px;
+  }
+
+  .mainNav {
+    padding-right: 170px;
+  }
+
+  .hero {
+    min-height: 620px;
+    padding: 55px 25px 70px;
+  }
+
+  .introSection,
+  .cardsSection,
+  .scrollVisual,
+  .tourSection {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+
+@media (max-width: 520px) {
+  .mainNav {
+    gap: 14px;
+  }
+
+  .mainNav a {
+    font-size: 10px;
+  }
+
+  .languageSelector {
+    right: 7px;
+  }
+
+  .languageFlag {
+    width: 27px;
+    height: 27px;
+  }
+
+  .hero {
+    min-height: 600px;
+    padding: 48px 20px 65px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .heroButton {
+    min-height: 40px;
+    padding: 0 17px;
+  }
+
+  .card {
+    min-height: 0;
+  }
+}
+
+/* Composición final del héroe */
+.heroIntro {
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heroText {
+  flex: none;
+  width: 100%;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 18px 26px;
+  border: 1px solid rgba(255, 255, 255, .32);
+  border-radius: 18px;
+  background: rgba(4, 17, 27, .28);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, .22);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  text-align: center;
+}
+
+.heroSubtitle {
+  width: 100%;
+  max-width: 760px;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .72);
+}
+
+.heroHernan {
+  flex: none;
+  align-self: center;
+  transform: none;
+}
+
+.heroHernan img {
+  width: 300px;
+  max-width: 300px;
+}
+
+@media (max-width: 900px) and (min-width: 701px) {
+  .hero {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .heroHernan {
+    flex-basis: 280px;
+    transform: translate(22px, -105px);
+  }
+
+  .heroHernan img {
+    width: 280px;
+    max-width: 280px;
+  }
+}
+
+.eyebrow {
+  font-size: 11px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 5vw, 64px);
+  letter-spacing: -2px;
+  width: 100%;
+  max-width: 760px;
+  /* Separates the title from the descriptive glass panel. */
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.heroContent,
+.heroButtons {
+  text-align: center;
+}
+
+.heroContent {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroButtons {
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 520px) {
+  .hero h1 {
+    font-size: clamp(30px, 10vw, 42px);
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 701px) {
+  .hero h1 {
+    max-width: 500px;
+    font-size: clamp(42px, 5vw, 56px);
+  }
+
+  .heroHernan {
+    transform: none;
+  }
+}
+
+/* Centrado general del contenido */
+.introSection,
+.cardsSection,
+.scrollVisual,
+.tourSection {
+  text-align: center;
+}
+
+.sectionTitle,
+.sectionText,
+.scrollVisualContent,
+.scrollVisualContent p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cards {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card,
+.tourBox {
+  text-align: center;
+}
+
+.tourBox {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.introSection > *,
+.cardsSection > *,
+.scrollVisual > *,
+.tourSection > * {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 </style>
-
 </head>
 
 
 <body>
+
+  <div class="bgSlideshow" aria-hidden="true">
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+    <div class="bgSlide"></div>
+  </div>
 
 
   <!-- =====================================================
@@ -852,38 +1602,46 @@ footer.site-credits > p.developer-credit {
     <nav class="mainNav">
 
 <a href="inicio.html" class="active">
-    INICIO
+    <span data-i18n="nav.inicio">INICIO</span>
 </a>
 
 <a href="index.html">
-    EL GRAND TOUR
+    <span data-i18n="nav.tour">EL GRAND TOUR</span>
 </a>
 
 <a href="videos.html">
-    VÍDEOS
+    <span data-i18n="nav.videos">VÍDEOS</span>
 </a>
 
 <a href="vivir-en-suiza.html">
-    VIVIR EN SUIZA
+    <span data-i18n="nav.vivir">VIVIR EN SUIZA</span>
 </a>
 
 <a href="comunidad.html">
-    COMUNIDAD
+    <span data-i18n="nav.comunidad">COMUNIDAD</span>
 </a>
 
 <a href="proyectos.html">
-    PROYECTOS
+    <span data-i18n="nav.proyectos">PROYECTOS</span>
 </a>
 
 <a href="hernan.html">
-    HERNÁN
+    <span data-i18n="nav.hernan">HERNÁN</span>
 </a>
 
 <a href="contacto.html">
-    CONTACTO
+    <span data-i18n="nav.contacto">CONTACTO</span>
 </a>
 
     </nav>
+
+    <div class="languageSelector" aria-label="Selector de idioma">
+      <button class="languageFlag" data-lang="es" title="Español" aria-label="Español"><img src="img/bandera-es.svg" alt="Español"></button>
+      <button class="languageFlag" data-lang="de" title="Deutsch" aria-label="Deutsch"><img src="img/bandera-de.svg" alt="Deutsch"></button>
+      <button class="languageFlag" data-lang="fr" title="Français" aria-label="Français"><img src="img/bandera-fr.svg" alt="Français"></button>
+      <button class="languageFlag" data-lang="it" title="Italiano" aria-label="Italiano"><img src="img/bandera-it.svg" alt="Italiano"></button>
+      <button class="languageFlag" data-lang="en" title="English" aria-label="English"><img src="img/bandera-en.svg" alt="English"></button>
+    </div>
 
   </header>
 
@@ -900,54 +1658,56 @@ footer.site-credits > p.developer-credit {
       <div class="heroContent">
 
         <div class="eyebrow">
-          TODOS CON HERNÁN · SUIZA
+          <span data-i18n="hero.eyebrow">TODOS CON HERNÁN · SUIZA</span>
+          <img
+            class="eyebrowFlag"
+            src="img/bandera-suiza.png"
+            alt="Bandera de Suiza"
+          >
         </div>
 
 
         <h1>
           TODOS CON
-          <span>HERNÁN</span>
+          <span data-i18n="hero.title">HERNÁN</span>
         </h1>
 
 
-        <p class="heroSubtitle">
-          Descubre Suiza, sus paisajes, sus lugares
-          especiales y todas las historias que forman
-          parte de este gran proyecto.
-        </p>
+        <div class="heroIntro">
 
+          <div class="heroText">
+            <p class="heroSubtitle" data-i18n="hero.subtitle">
+              Un espacio para descubrir Suiza, vivirla y entenderla.
+              Viajes, experiencias, lugares, información útil y orientación para quienes visitan el país,
+              para quienes ya viven aquí y para quienes están pensando en empezar una nueva vida en Suiza.</p>
+          </div>
 
-        <div class="heroButtons">
+          <div class="heroButtons">
 
           <a
             href="index.html"
             class="heroButton primary"
           >
-            DESCUBRE EL GRAND TOUR
+            <span data-i18n="hero.tour">DESCUBRE EL GRAND TOUR</span>
           </a>
 
 
-          <a
-            href="#proyecto"
-            class="heroButton secondary"
-          >
-            CONOCE EL PROYECTO
-          </a>
+              <a
+                href="vivir-en-suiza.html"
+                class="heroButton secondary"
+              >
+                <span data-i18n="hero.live">QUIERO VIVIR EN SUIZA</span>
+              </a>
+
+          </div>
+
+          <div class="heroHernan">
+            <img src="img/1.png" alt="Hernán - Todos con Hernán">
+          </div>
 
         </div>
 
       </div>
-
-
-      <div class="heroHernan">
-
-        <img
-          src="img/hernan1.jpg"
-          alt="Hernán"
-        >
-
-      </div>
-
 
     </section>
 
@@ -963,19 +1723,19 @@ footer.site-credits > p.developer-credit {
 
       <h2 class="sectionTitle">
         UN PROYECTO
-        <span>PARA DESCUBRIR</span>
+        <span data-i18n="intro.title">PARA DESCUBRIR</span>
       </h2>
 
 
-      <p class="sectionText">
-
-        Todos con Hernán nace para reunir en un mismo
-        espacio diferentes experiencias alrededor de
-        Suiza. Viajes, lugares, fotografías, vídeos,
-        proyectos y nuevas historias para descubrir
-        el país de una manera diferente.
-
-      </p>
+      <p class="sectionText" data-i18n="intro.text">
+        ¿QUÉ PUEDES ENCONTRAR AQUÍ?<br><br>
+        Un proyecto pensado para acompañarte estés donde estés:
+        descubriendo Suiza como visitante, construyendo tu vida aquí
+        o preparando el camino para venir.<br><br>
+        <strong>TURISMO · VIDA EN SUIZA · EMIGRACIÓN · EXPERIENCIAS · COMUNIDAD</strong><br><br>
+        <strong>🇨🇭 TODO GRATIS</strong><br>
+        Información y contenidos para ayudarte a conocer Suiza y tomar
+        tus propias decisiones, compartiendo experiencias con la comunidad.</p>
 
     </section>
 
@@ -998,11 +1758,11 @@ footer.site-credits > p.developer-credit {
             🗺️
           </div>
 
-          <h3>
+          <h3 data-i18n="card.tour.title">
             El Grand Tour
           </h3>
 
-          <p>
+          <p data-i18n="card.tour.text">
             (o Gran Ruta de Suiza) es un viaje por carretera 
             de más de 1.600 kilómetros que recorre los lugares más atractivos 
             e importantes del país helvético. Está diseñado para realizarse en coche, 
@@ -1022,11 +1782,11 @@ footer.site-credits > p.developer-credit {
             🎥
           </div>
 
-          <h3>
+          <h3 data-i18n="card.videos.title">
             Vídeos
           </h3>
 
-          <p>
+          <p data-i18n="card.videos.text">
             Descubre vídeos, experiencias
             y contenidos relacionados
             con Suiza.
@@ -1044,11 +1804,11 @@ footer.site-credits > p.developer-credit {
             🇨🇭
           </div>
 
-          <h3>
+          <h3 data-i18n="card.vivir.title">
             Vivir en Suiza
           </h3>
 
-          <p>
+          <p data-i18n="card.vivir.text">
             Información, experiencias
             y lugares para conocer
             mejor la vida en Suiza.
@@ -1066,11 +1826,11 @@ footer.site-credits > p.developer-credit {
             🤝
           </div>
 
-          <h3>
+          <h3 data-i18n="card.comunidad.title">
             Comunidad
           </h3>
 
-          <p>
+          <p data-i18n="card.comunidad.text">
             Un espacio para compartir
             experiencias, ideas y
             aventuras.
@@ -1081,6 +1841,22 @@ footer.site-credits > p.developer-credit {
 
       </div>
 
+    </section>
+
+
+    <!-- ===================================================
+         PAISAJE DURANTE EL SCROLL
+         =================================================== -->
+
+    <section class="scrollVisual">
+      <div class="scrollVisualContent">
+        <div class="eyebrow">
+          <span data-i18n="scroll.eyebrow">SUIZA · EXPERIENCIAS · PAISAJES</span>
+          <img class="eyebrowFlag" src="img/bandera-suiza.png" alt="Bandera de Suiza">
+        </div>
+        <h2><span data-i18n="scroll.discover">DESCUBRE</span> <span>SUIZA</span></h2>
+        <p data-i18n="scroll.text">Un recorrido visual por algunos de los lugares, paisajes e historias que hacen especial este proyecto. Sigue bajando y descubre todo lo que hay detrás de Todos con Hernán.</p>
+      </div>
     </section>
 
 
@@ -1101,16 +1877,16 @@ footer.site-credits > p.developer-credit {
 
 
           <h2>
-            PHOTO SPOTS
+            <span data-i18n="tour.title">PHOTO SPOTS</span>
           </h2>
 
 
           <p>
-            Un recorrido por algunos de los
+            <span data-i18n="tour.text">Un recorrido por algunos de los
             lugares más especiales de Suiza.
             Explora el mapa, selecciona un
             punto y deja que Hernán te acompañe
-            durante el recorrido.
+            durante el recorrido.</span>
           </p>
 
 
@@ -1118,7 +1894,7 @@ footer.site-credits > p.developer-credit {
             href="index.html"
             class="heroButton primary"
           >
-            ENTRAR AL GRAND TOUR →
+            <span data-i18n="tour.button">ENTRAR AL GRAND TOUR →</span>
           </a>
 
         </div>
@@ -1127,8 +1903,8 @@ footer.site-credits > p.developer-credit {
         <div class="tourImage">
 
           <img
-            src="img/LogoOficial.png"
-            alt="Grand Tour de Suiza"
+            src="img/SuizaCollage3.png"
+            alt="Paisajes de Suiza"
           >
 
         </div>
@@ -1152,12 +1928,218 @@ footer.site-credits > p.developer-credit {
   </p>
 
   <p class="developer-credit">
-    Yonathan Alvarado · Full Stack Web Developer · Spain
+    <a
+      href="https://www.instagram.com/techantoni/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: inherit; text-decoration: none;"
+    >
+      Yonathan Alvarado · Full Stack Web Developer · Spain
+    </a>
   </p>
 
 </footer>
 
 
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".languageFlag");
+
+  const translations = {
+    es: {
+      "nav.inicio":"INICIO","nav.tour":"EL GRAND TOUR","nav.videos":"VÍDEOS","nav.vivir":"VIVIR EN SUIZA","nav.comunidad":"COMUNIDAD","nav.proyectos":"PROYECTOS","nav.hernan":"HERNÁN","nav.contacto":"CONTACTO",
+      "hero.eyebrow":"TODOS CON HERNÁN · SUIZA","hero.title":"HERNÁN",
+      "hero.subtitle":"Un espacio para descubrir Suiza, vivirla y entenderla. Viajes, experiencias, lugares, información útil y orientación para quienes visitan el país, para quienes ya viven aquí y para quienes están pensando en empezar una nueva vida en Suiza.",
+      "hero.tour":"DESCUBRE EL GRAND TOUR","hero.live":"QUIERO VIVIR EN SUIZA",
+      "intro.title":"PARA DESCUBRIR",
+      "intro.text":"¿QUÉ PUEDES ENCONTRAR AQUÍ?<br><br>Un proyecto pensado para acompañarte estés donde estés: descubriendo Suiza como visitante, construyendo tu vida aquí o preparando el camino para venir.<br><br><strong>TURISMO · VIDA EN SUIZA · EMIGRACIÓN · EXPERIENCIAS · COMUNIDAD</strong><br><br><strong>🇨🇭 TODO GRATIS</strong><br>Información y contenidos para ayudarte a conocer Suiza y tomar tus propias decisiones, compartiendo experiencias con la comunidad.",
+      "card.tour.title":"El Grand Tour","card.tour.text":"(o Gran Ruta de Suiza) es un viaje por carretera de más de 1.600 kilómetros que recorre los lugares más atractivos e importantes del país helvético. Está diseñado para realizarse en coche, moto o vehículo eléctrico, conectando los principales paisajes y puntos culturales sin necesidad de usar autopistas.",
+      "card.videos.title":"Vídeos","card.videos.text":"Descubre vídeos, experiencias y contenidos relacionados con Suiza.",
+      "card.vivir.title":"Vivir en Suiza","card.vivir.text":"Información, experiencias y lugares para conocer mejor la vida en Suiza.",
+      "card.comunidad.title":"Comunidad","card.comunidad.text":"Un espacio para compartir experiencias, ideas y aventuras.",
+      "scroll.eyebrow":"SUIZA · EXPERIENCIAS · PAISAJES","scroll.discover":"DESCUBRE","scroll.text":"Un recorrido visual por algunos de los lugares, paisajes e historias que hacen especial este proyecto. Sigue bajando y descubre todo lo que hay detrás de Todos con Hernán.",
+      "tour.title":"PHOTO SPOTS","tour.text":"Un recorrido por algunos de los lugares más especiales de Suiza. Explora el mapa, selecciona un punto y deja que Hernán te acompañe durante el recorrido.","tour.button":"ENTRAR AL GRAND TOUR →"
+    },
+    de: {
+      "nav.inicio":"STARTSEITE","nav.tour":"GRAND TOUR","nav.videos":"VIDEOS","nav.vivir":"LEBEN IN DER SCHWEIZ","nav.comunidad":"GEMEINSCHAFT","nav.proyectos":"PROJEKTE","nav.hernan":"HERNÁN","nav.contacto":"KONTAKT",
+      "hero.eyebrow":"TODOS CON HERNÁN · SCHWEIZ","hero.title":"HERNÁN",
+      "hero.subtitle":"Ein Ort, um die Schweiz zu entdecken, zu erleben und zu verstehen. Reisen, Erfahrungen, Orte, nützliche Informationen und Orientierung für Besucher, Menschen, die bereits hier leben, und alle, die über ein neues Leben in der Schweiz nachdenken.",
+      "hero.tour":"GRAND TOUR ENTDECKEN","hero.live":"IN DER SCHWEIZ LEBEN","intro.title":"ZUM ENTDECKEN",
+      "intro.text":"WAS FINDEST DU HIER?<br><br>Ein Projekt, das dich begleitet, egal wo du gerade bist: als Besucher in der Schweiz, beim Aufbau deines Lebens hier oder bei der Vorbereitung auf deinen Umzug.<br><br><strong>TOURISMUS · LEBEN IN DER SCHWEIZ · AUSWANDERN · ERFAHRUNGEN · GEMEINSCHAFT</strong><br><br><strong>🇨🇭 ALLES KOSTENLOS</strong><br>Informationen und Inhalte, die dir helfen, die Schweiz kennenzulernen und deine eigenen Entscheidungen zu treffen.",
+      "card.tour.title":"Grand Tour","card.tour.text":"Eine mehr als 1.600 Kilometer lange Route durch die schönsten und wichtigsten Orte der Schweiz. Mit Auto, Motorrad oder Elektrofahrzeug – ohne Autobahnen.",
+      "card.videos.title":"Videos","card.videos.text":"Entdecke Videos, Erfahrungen und Inhalte rund um die Schweiz.","card.vivir.title":"Leben in der Schweiz","card.vivir.text":"Informationen, Erfahrungen und Orte, um das Leben in der Schweiz besser kennenzulernen.","card.comunidad.title":"Gemeinschaft","card.comunidad.text":"Ein Ort zum Teilen von Erfahrungen, Ideen und Abenteuern.",
+      "scroll.eyebrow":"SCHWEIZ · ERFAHRUNGEN · LANDSCHAFTEN","scroll.discover":"ENTDECKE","scroll.text":"Eine visuelle Reise durch Orte, Landschaften und Geschichten, die dieses Projekt besonders machen. Entdecke beim Scrollen mehr über Todos con Hernán.",
+      "tour.title":"PHOTO SPOTS","tour.text":"Eine Reise zu einigen der schönsten Orte der Schweiz. Erkunde die Karte, wähle einen Punkt aus und lass dich von Hernán begleiten.","tour.button":"GRAND TOUR ÖFFNEN →"
+    },
+    fr: {
+      "nav.inicio":"ACCUEIL","nav.tour":"GRAND TOUR","nav.videos":"VIDÉOS","nav.vivir":"VIVRE EN SUISSE","nav.comunidad":"COMMUNAUTÉ","nav.proyectos":"PROJETS","nav.hernan":"HERNÁN","nav.contacto":"CONTACT",
+      "hero.eyebrow":"TODOS CON HERNÁN · SUISSE","hero.title":"HERNÁN",
+      "hero.subtitle":"Un espace pour découvrir la Suisse, la vivre et la comprendre. Voyages, expériences, lieux, informations utiles et conseils pour ceux qui visitent le pays, ceux qui y vivent déjà et ceux qui envisagent une nouvelle vie en Suisse.",
+      "hero.tour":"DÉCOUVRIR LE GRAND TOUR","hero.live":"VIVRE EN SUISSE","intro.title":"POUR DÉCOUVRIR",
+      "intro.text":"QUE PEUX-TU TROUVER ICI ?<br><br>Un projet pensé pour t'accompagner où que tu sois : en visite en Suisse, en construisant ta vie ici ou en préparant ton arrivée.<br><br><strong>TOURISME · VIE EN SUISSE · ÉMIGRATION · EXPÉRIENCES · COMMUNAUTÉ</strong><br><br><strong>🇨🇭 TOUT EST GRATUIT</strong><br>Des informations et contenus pour t'aider à découvrir la Suisse et à prendre tes propres décisions.",
+      "card.tour.title":"Le Grand Tour","card.tour.text":"Un itinéraire de plus de 1 600 kilomètres à travers les lieux les plus beaux et importants de Suisse, en voiture, moto ou véhicule électrique, sans autoroutes.",
+      "card.videos.title":"Vidéos","card.videos.text":"Découvre des vidéos, des expériences et des contenus liés à la Suisse.","card.vivir.title":"Vivre en Suisse","card.vivir.text":"Informations, expériences et lieux pour mieux connaître la vie en Suisse.","card.comunidad.title":"Communauté","card.comunidad.text":"Un espace pour partager expériences, idées et aventures.",
+      "scroll.eyebrow":"SUISSE · EXPÉRIENCES · PAYSAGES","scroll.discover":"DÉCOUVRE","scroll.text":"Un voyage visuel à travers des lieux, des paysages et des histoires qui rendent ce projet unique. Continue à faire défiler pour découvrir Todos con Hernán.",
+      "tour.title":"PHOTO SPOTS","tour.text":"Un parcours à travers quelques-uns des plus beaux endroits de Suisse. Explore la carte, choisis un point et laisse Hernán t'accompagner.","tour.button":"ENTRER DANS LE GRAND TOUR →"
+    },
+    it: {
+      "nav.inicio":"HOME","nav.tour":"GRAND TOUR","nav.videos":"VIDEO","nav.vivir":"VIVERE IN SVIZZERA","nav.comunidad":"COMUNITÀ","nav.proyectos":"PROGETTI","nav.hernan":"HERNÁN","nav.contacto":"CONTATTI",
+      "hero.eyebrow":"TODOS CON HERNÁN · SVIZZERA","hero.title":"HERNÁN",
+      "hero.subtitle":"Uno spazio per scoprire la Svizzera, viverla e comprenderla. Viaggi, esperienze, luoghi, informazioni utili e orientamento per chi visita il Paese, per chi vive già qui e per chi sta pensando di iniziare una nuova vita in Svizzera.",
+      "hero.tour":"SCOPRI IL GRAND TOUR","hero.live":"VIVERE IN SVIZZERA","intro.title":"PER SCOPRIRE",
+      "intro.text":"COSA PUOI TROVARE QUI?<br><br>Un progetto pensato per accompagnarti ovunque tu sia: in viaggio in Svizzera, mentre costruisci la tua vita qui o mentre prepari il tuo arrivo.<br><br><strong>TURISMO · VITA IN SVIZZERA · EMIGRAZIONE · ESPERIENZE · COMUNITÀ</strong><br><br><strong>🇨🇭 TUTTO GRATIS</strong><br>Informazioni e contenuti per aiutarti a conoscere la Svizzera e prendere le tue decisioni.",
+      "card.tour.title":"Il Grand Tour","card.tour.text":"Un percorso di oltre 1.600 chilometri attraverso i luoghi più belli e importanti della Svizzera, in auto, moto o veicolo elettrico, senza autostrade.",
+      "card.videos.title":"Video","card.videos.text":"Scopri video, esperienze e contenuti dedicati alla Svizzera.","card.vivir.title":"Vivere in Svizzera","card.vivir.text":"Informazioni, esperienze e luoghi per conoscere meglio la vita in Svizzera.","card.comunidad.title":"Comunità","card.comunidad.text":"Uno spazio per condividere esperienze, idee e avventure.",
+      "scroll.eyebrow":"SVIZZERA · ESPERIENZE · PAESAGGI","scroll.discover":"SCOPRI","scroll.text":"Un viaggio visivo tra luoghi, paesaggi e storie che rendono speciale questo progetto. Continua a scorrere per scoprire Todos con Hernán.",
+      "tour.title":"PHOTO SPOTS","tour.text":"Un percorso attraverso alcuni dei luoghi più speciali della Svizzera. Esplora la mappa, scegli un punto e lascia che Hernán ti accompagni.","tour.button":"ENTRA NEL GRAND TOUR →"
+    },
+    en: {
+      "nav.inicio":"HOME","nav.tour":"GRAND TOUR","nav.videos":"VIDEOS","nav.vivir":"LIVING IN SWITZERLAND","nav.comunidad":"COMMUNITY","nav.proyectos":"PROJECTS","nav.hernan":"HERNÁN","nav.contacto":"CONTACT",
+      "hero.eyebrow":"TODOS CON HERNÁN · SWITZERLAND","hero.title":"HERNÁN",
+      "hero.subtitle":"A space to discover Switzerland, experience it and understand it. Travel, experiences, places, useful information and guidance for visitors, people already living here and those thinking about starting a new life in Switzerland.",
+      "hero.tour":"DISCOVER THE GRAND TOUR","hero.live":"LIVE IN SWITZERLAND","intro.title":"TO DISCOVER",
+      "intro.text":"WHAT CAN YOU FIND HERE?<br><br>A project designed to accompany you wherever you are: discovering Switzerland as a visitor, building your life here or preparing your move.<br><br><strong>TOURISM · LIFE IN SWITZERLAND · EMIGRATION · EXPERIENCES · COMMUNITY</strong><br><br><strong>🇨🇭 COMPLETELY FREE</strong><br>Information and content to help you discover Switzerland and make your own decisions.",
+      "card.tour.title":"The Grand Tour","card.tour.text":"A route of more than 1,600 kilometres through Switzerland's most attractive and important places, by car, motorcycle or electric vehicle, without using motorways.",
+      "card.videos.title":"Videos","card.videos.text":"Discover videos, experiences and content related to Switzerland.","card.vivir.title":"Living in Switzerland","card.vivir.text":"Information, experiences and places to better understand life in Switzerland.","card.comunidad.title":"Community","card.comunidad.text":"A space to share experiences, ideas and adventures.",
+      "scroll.eyebrow":"SWITZERLAND · EXPERIENCES · LANDSCAPES","scroll.discover":"DISCOVER","scroll.text":"A visual journey through places, landscapes and stories that make this project special. Keep scrolling to discover more about Todos con Hernán.",
+      "tour.title":"PHOTO SPOTS","tour.text":"A journey through some of Switzerland's most special places. Explore the map, select a point and let Hernán accompany you.","tour.button":"ENTER THE GRAND TOUR →"
+    }
+  };
+
+  function setLanguage(lang) {
+    const dict = translations[lang] || translations.es;
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      if (dict[el.dataset.i18n] !== undefined) el.innerHTML = dict[el.dataset.i18n];
+    });
+    buttons.forEach(btn => btn.classList.toggle("active", btn.dataset.lang === lang));
+    document.documentElement.lang = lang;
+    localStorage.setItem("todosConHernanLanguage", lang);
+  }
+
+  buttons.forEach(btn => btn.addEventListener("click", () => setLanguage(btn.dataset.lang)));
+  setLanguage(localStorage.getItem("todosConHernanLanguage") || "es");
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = Array.from(document.querySelectorAll(".bgSlide"));
+  if (!slides.length) return;
+
+  const names = [
+    "Lucerna Suiza",
+    "Bern1",
+    "Berninapass Poschiavo Switzerland",
+    "Engelbergsuiza",
+    "Grindelwald Suiza",
+    "Lauterbrunnen, Suiza",
+    "OeschinenseeKanderstegSuiza",
+    "SuizaCollage1",
+    "SuizaCollage2",
+    "SuizaCollage3",
+    "suiza-zermatt",
+    "Swiss Alps",
+    "Villa Cassel Riederalp Switzerland",
+    "Zurich, Switzerland",
+    "Zürich, Switzerland1"
+  ];
+
+  const extensions = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG"];
+
+  function resolveImage(baseName) {
+    return new Promise(resolve => {
+      let i = 0;
+
+      function tryNext() {
+        if (i >= extensions.length) {
+          resolve(null);
+          return;
+        }
+
+        const candidate = `img/${baseName}${extensions[i++]}`;
+        const img = new Image();
+
+        img.onload = () => resolve(candidate);
+        img.onerror = tryNext;
+        img.src = candidate;
+      }
+
+      tryNext();
+    });
+  }
+
+  Promise.all(names.map(resolveImage)).then(urls => {
+    urls.forEach((url, i) => {
+      if (url && slides[i]) {
+        slides[i].style.backgroundImage = `url("${encodeURI(url)}")`;
+      }
+    });
+
+    // La primera imagen queda visible desde el primer instante.
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === 0);
+    });
+
+    let current = 0;
+    const SLIDE_DURATION = 8000; // 8 segundos exactos
+
+    function showNext() {
+      let next = (current + 1) % slides.length;
+
+      // Buscar la siguiente foto que realmente haya cargado.
+      let attempts = 0;
+      while (!urls[next] && attempts < slides.length) {
+        next = (next + 1) % slides.length;
+        attempts++;
+      }
+
+      if (!urls[next] || next === current) {
+        setTimeout(showNext, SLIDE_DURATION);
+        return;
+      }
+
+      // Crossfade: nunca se muestra el fondo entre dos fotografías.
+      slides[next].classList.add("active");
+
+      // Esperamos a que empiece el fundido antes de retirar la anterior.
+      setTimeout(() => {
+        slides[current].classList.remove("active");
+        current = next;
+      }, 80);
+
+      setTimeout(showNext, SLIDE_DURATION);
+    }
+
+    // 8 segundos completos para la primera fotografía.
+    setTimeout(showNext, SLIDE_DURATION);
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const root = document.documentElement;
+  let ticking = false;
+
+  function updateParallax() {
+    const y = window.scrollY || window.pageYOffset || 0;
+    root.style.setProperty("--scroll-y", `${Math.min(y * 0.035, 45)}px`);
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateParallax();
+});
+</script>
+
+<script src="js/i18n.js"></script>
 </body>
 
 </html>

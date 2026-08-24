@@ -2,6 +2,8 @@
 <html lang="es">
 
 <head>
+  <meta name="view-transition" content="same-origin">
+  <style>html { background: #071a28; }</style>
 
   <meta charset="UTF-8">
 
@@ -38,6 +40,15 @@
       --muted: #a7bac7;
     }
 
+
+
+    .swissFlag {
+      display: inline-block;
+      margin-left: 4px;
+      font-size: 1em;
+      line-height: 1;
+      vertical-align: -0.08em;
+    }
 
     /* =====================================================
        RESET
@@ -165,6 +176,81 @@
 
       border-radius:
         3px 3px 0 0;
+    }
+
+
+    /* =====================================================
+       SELECTOR DE IDIOMA
+       ===================================================== */
+
+    .languageSelector {
+      position: absolute;
+      right: 20px;
+      top: 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 1002;
+    }
+
+    .languageFlag {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, .32);
+      border-radius: 50%;
+      background: rgba(4, 17, 27, .72);
+      color: #fff;
+      font-size: 16px;
+      line-height: 1;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .languageFlag:hover {
+      transform: translateY(-2px) scale(1.08);
+      background: rgba(239, 24, 32, .25);
+      border-color: rgba(255, 255, 255, .9);
+      box-shadow: 0 5px 14px rgba(0, 0, 0, .25);
+    }
+
+    .languageFlag.active {
+      background: rgba(4, 17, 27, .92);
+      border-color: #ef1820;
+      box-shadow: 0 0 0 2px rgba(239, 24, 32, .55);
+      transform: scale(1.08);
+    }
+
+    .languageFlag img {
+      width: 18px;
+      height: 13px;
+      display: block;
+      object-fit: cover;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+
+    .languageFlag:focus-visible {
+      outline: 2px solid #ffd000;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 800px) {
+      .languageSelector {
+        position: fixed;
+        right: 8px;
+        top: 0;
+      }
+
+      .mainNav {
+        padding-right: 180px;
+      }
     }
 
 
@@ -404,17 +490,8 @@
 
 
     /* =====================================================
-       INTRODUCCIÓN
+       CATEGORÍAS
        ===================================================== */
-
-    .intro {
-      padding:
-        75px
-        7vw;
-
-      background: #061825;
-    }
-
 
     .sectionLabel {
       color: var(--gold);
@@ -427,44 +504,6 @@
 
       margin-bottom: 10px;
     }
-
-
-    .sectionTitle {
-      margin:
-        0
-        0
-        18px;
-
-      font-size:
-        clamp(34px, 4vw, 52px);
-
-      line-height: 1;
-
-      font-weight: 950;
-    }
-
-
-    .sectionTitle span {
-      color: var(--red);
-    }
-
-
-    .sectionText {
-      max-width: 820px;
-
-      margin: 0;
-
-      color: #cbd8df;
-
-      font-size: 18px;
-
-      line-height: 1.6;
-    }
-
-
-    /* =====================================================
-       CATEGORÍAS
-       ===================================================== */
 
     .categories {
       padding:
@@ -487,9 +526,9 @@
 
 
     .category {
-      min-height: 230px;
+      min-height: 280px;
 
-      padding: 25px;
+      padding: 32px;
 
       background:
         linear-gradient(
@@ -519,9 +558,9 @@
 
 
     .categoryIcon {
-      font-size: 37px;
+      font-size: 46px;
 
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
 
@@ -529,9 +568,9 @@
       margin:
         0
         0
-        10px;
+        12px;
 
-      font-size: 21px;
+      font-size: 25px;
     }
 
 
@@ -540,9 +579,37 @@
 
       color: var(--muted);
 
-      font-size: 14px;
+      font-size: 16px;
 
-      line-height: 1.5;
+      line-height: 1.55;
+    }
+
+
+    .category-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 14px 0 0;
+    }
+
+    .category-tags span {
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(41, 232, 121, 0.12);
+      border: 1px solid rgba(41, 232, 121, 0.4);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+
+    .category-cta {
+      display: block;
+      margin-top: 14px;
+      color: var(--gold);
+      font-size: 15px;
+      font-weight: 800;
     }
 
 
@@ -614,157 +681,48 @@
 
 
     /* =====================================================
-       HERNÁN
-       ===================================================== */
-
-    .hernanSection {
-      padding:
-        80px 7vw;
-
-      background: #061825;
-    }
-
-
-    .hernanBox {
-      max-width: 1200px;
-
-      margin: auto;
-
-      display: grid;
-
-      grid-template-columns:
-        400px 1fr;
-
-      gap: 45px;
-
-      align-items: center;
-
-      padding: 35px;
-
-      border:
-        1px solid #31556c;
-
-      border-radius: 20px;
-
-      background:
-        #071a28;
-    }
-
-
-    .hernanImage {
-      height: 360px;
-
-      display: flex;
-
-      align-items: flex-end;
-
-      justify-content: center;
-
-      overflow: hidden;
-
-      border-radius: 14px;
-
-      background:
-        radial-gradient(
-          circle at center bottom,
-          #183e50,
-          #071a28
-        );
-    }
-
-
-    .hernanImage img {
-      width: 100%;
-
-      height: 100%;
-
-      object-fit: contain;
-
-      object-position:
-        center bottom;
-
-      filter:
-        drop-shadow(
-          0
-          12px
-          20px
-          #000b
-        );
-    }
-
-
-    .hernanText h2 {
-      margin:
-        0
-        0
-        15px;
-
-      font-size: 38px;
-    }
-
-
-    .hernanText p {
-      margin:
-        0
-        0
-        20px;
-
-      color: #c5d4dc;
-
-      line-height: 1.6;
-    }
-
-
-    /* =====================================================
-       PIE DE PÁGINA · CRÉDITOS
+       FOOTER
        ===================================================== */
 
     footer.site-credits {
-      width: 100%;
       min-height: 0;
 
+      width: 100%;
+
       display: grid;
+
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
 
       align-items: center;
       justify-items: center;
+
       gap: 8px;
 
-      margin: 0;
       padding: 22px 15px;
 
-      box-sizing: border-box;
-
       background: #020a11;
-      border-top: 1px solid #183347;
+
+      border-top:
+        1px solid #183347;
 
       color: #9db0bc;
-      font-size: 12px;
-      text-align: center;
 
-      white-space: normal;
+      font-size: 12px;
+
+      text-align: center;
     }
 
     footer.site-credits > p {
-      display: block;
+      margin: 0;
 
       width: 100%;
       max-width: 1200px;
-
-      margin: 0;
-      padding: 0;
-
-      text-align: center;
-      line-height: 1.5;
-
-      white-space: normal;
     }
 
     footer.site-credits > p.developer-credit {
-      margin: 0;
-
       color: #ffffff;
+
       font-weight: 700;
     }
 
@@ -790,13 +748,6 @@
       .categoryGrid {
         grid-template-columns:
           repeat(2, 1fr);
-      }
-
-
-      .hernanBox {
-        grid-template-columns:
-          320px
-          1fr;
       }
 
     }
@@ -850,22 +801,6 @@
         grid-template-columns: 1fr;
       }
 
-
-      .hernanBox {
-        grid-template-columns: 1fr;
-
-        text-align: center;
-      }
-
-
-      .hernanImage {
-        max-width: 400px;
-
-        width: 100%;
-
-        margin: auto;
-      }
-
     }
 
 
@@ -890,31 +825,271 @@
         height: 340px;
       }
 
-
-      .hernanBox {
-        padding: 20px;
-      }
-
     }
+
 
 
     /* =====================================================
-       PIE DE PÁGINA · MÓVIL
+       ACTUALIZACIÓN VISUAL · FONDO SUIZA
+       Igual que el estilo transparente de VÍDEOS
        ===================================================== */
 
-    @media (max-width: 600px) {
-      footer.site-credits {
-        padding: 18px 10px;
-        gap: 6px;
-      }
+    html,
+    body { min-height: 100%; }
 
-      footer.site-credits > p {
-        font-size: 12px;
-        line-height: 1.6;
-      }
+    body {
+      position: relative;
+      background: #06131d !important;
     }
 
-  </style>
+    /* Fondo fotográfico protagonista, sin papel tapiz oscuro */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: url("img/11ZurichSuiza.jpg");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      transform: scale(1.03);
+      filter: saturate(1.06) contrast(1.03);
+      animation: vivirSuizaFondo 30s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes vivirSuizaFondo {
+      from { transform: scale(1.03) translate3d(0, 0, 0); }
+      to   { transform: scale(1.07) translate3d(-0.6%, -0.4%, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before { animation: none; transform: scale(1.03); }
+    }
+
+    body > header,
+    body > main,
+    body > footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* CABECERA TRANSPARENTE */
+    .topbar {
+      background: rgba(3, 16, 26, .42) !important;
+      border-bottom: 1px solid rgba(255,255,255,.12) !important;
+      box-shadow: 0 4px 18px rgba(0,0,0,.08) !important;
+      backdrop-filter: blur(5px) !important;
+      -webkit-backdrop-filter: blur(5px) !important;
+    }
+
+    /* HERO TRANSPARENTE */
+    .hero { background: transparent !important; }
+    .hero::before { display: none !important; }
+
+    .eyebrow {
+      background: rgba(4,17,27,.20) !important;
+      border-color: rgba(255,255,255,.30) !important;
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      text-shadow: 0 2px 8px rgba(0,0,0,.55);
+    }
+
+    .heroText,
+    .category p,
+    .infoCard p {
+      text-shadow: 0 2px 10px rgba(0,0,0,.65);
+    }
+
+    /* BOTONES TRANSPARENTES */
+    .btn.red {
+      background: rgba(239,24,32,.78) !important;
+      box-shadow: none !important;
+      border: 1px solid rgba(255,255,255,.20);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+
+    .btn.red:hover { background: rgba(239,24,32,.92) !important; }
+
+    .btn.outline {
+      background: rgba(4,17,27,.18) !important;
+      border: 1px solid rgba(255,255,255,.60) !important;
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      box-shadow: none !important;
+    }
+
+    .btn.outline:hover {
+      background: rgba(239,24,32,.78) !important;
+      border-color: var(--red) !important;
+    }
+
+    /* SECCIONES: DEJAR VER LA FOTOGRAFÍA */
+    .categories,
+    .infoSection {
+      background: transparent !important;
+    }
+
+    .category,
+    .infoCard {
+      background: rgba(4,17,27,.28) !important;
+      border-color: rgba(255,255,255,.30) !important;
+      box-shadow: 0 14px 35px rgba(0,0,0,.20);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+
+    .category:hover { border-color: rgba(255,255,255,.70) !important; }
+
+    /* PIE TRANSPARENTE */
+    footer.site-credits {
+      background: rgba(3,16,26,.38) !important;
+      border-top: 1px solid rgba(255,255,255,.12) !important;
+      box-shadow: 0 -4px 18px rgba(0,0,0,.06) !important;
+      backdrop-filter: blur(5px) !important;
+      -webkit-backdrop-filter: blur(5px) !important;
+    }
+
+    footer.site-credits > p {
+      color: rgba(255,255,255,.78) !important;
+      text-shadow: 0 1px 6px rgba(0,0,0,.55);
+    }
+
+    footer.site-credits > p.developer-credit {
+      color: #fff !important;
+      text-shadow: 0 1px 6px rgba(0,0,0,.55);
+    }
+
+  
+.swissFlag {
+    display: inline-flex !important;
+    width: 24px !important;
+    height: 24px !important;
+    margin-left: 8px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    background: #ff0000 !important;
+    border-radius: 3px !important;
+    box-shadow: 0 1px 5px rgba(0,0,0,.45) !important;
+    position: relative !important;
+    flex: 0 0 24px !important;
+}
+
+.swissCross {
+    width: 14px !important;
+    height: 5px !important;
+    background: #fff !important;
+    position: relative !important;
+    display: block !important;
+}
+
+.swissCross::after {
+    content: "" !important;
+    position: absolute !important;
+    width: 5px !important;
+    height: 14px !important;
+    left: 4.5px !important;
+    top: -4.5px !important;
+    background: #fff !important;
+}
+
+
+/* Mejor contraste: textos grises en blanco, manteniendo rojos y amarillos */
+.hero p,
+.intro p,
+.category-card p,
+.info-card p,
+.guide-card p,
+.section-card p,
+.feature-card p {
+    color: #ffffff !important;
+    text-shadow: 0 2px 7px rgba(0,0,0,.65) !important;
+}
+
+
+/* =====================================================
+   MÁXIMA LEGIBILIDAD · TEXTOS DE TARJETAS
+   ===================================================== */
+
+.category-card h3,
+.category-card p,
+.info-card h3,
+.info-card p,
+.guide-card h3,
+.guide-card p,
+.feature-card h3,
+.feature-card p,
+.card h3,
+.card p {
+    color: #ffffff !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,.78) !important;
+}
+
+/* Mantener los títulos con colores de marca cuando los tengan */
+.category-card h3 .red,
+.info-card h3 .red,
+.guide-card h3 .red,
+.feature-card h3 .red {
+    color: #ff1f26 !important;
+}
+
+
+/* =====================================================
+   CORRECCIÓN REAL · TEXTOS GRISES DE LAS TARJETAS
+   ===================================================== */
+
+/* Los párrafos de las tarjetas usan .category p en esta página.
+   Se fuerza blanco puro para que no aparezca el gris original. */
+.category p,
+.infoCard p {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    opacity: 1 !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,.82) !important;
+}
+
+/* Mantener títulos normales en blanco */
+.category h3,
+.infoCard h3 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Los acentos rojos continúan rojos */
+.infoCard h3 span,
+.red {
+    color: #ff1f26 !important;
+    -webkit-text-fill-color: #ff1f26 !important;
+}
+
+
+/* =====================================================
+   BOTONES · TEXTO BLANCO
+   ===================================================== */
+
+.hero-button,
+.btn,
+button,
+a.button,
+a.btn,
+.cta-button {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,.35) !important;
+}
+
+/* Los botones rojos mantienen su fondo rojo */
+.hero-button,
+.btn-primary,
+.cta-button {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+</style>
 
 </head>
 
@@ -964,6 +1139,14 @@
 
 </nav>
 
+    <div class="languageSelector" aria-label="Selector de idioma">
+      <button class="languageFlag" data-lang="es" title="Español" aria-label="Español"><img src="img/bandera-es.svg" alt="Español"></button>
+      <button class="languageFlag" data-lang="de" title="Deutsch" aria-label="Deutsch"><img src="img/bandera-de.svg" alt="Deutsch"></button>
+      <button class="languageFlag" data-lang="fr" title="Français" aria-label="Français"><img src="img/bandera-fr.svg" alt="Français"></button>
+      <button class="languageFlag" data-lang="it" title="Italiano" aria-label="Italiano"><img src="img/bandera-it.svg" alt="Italiano"></button>
+      <button class="languageFlag" data-lang="en" title="English" aria-label="English"><img src="img/bandera-en.svg" alt="English"></button>
+    </div>
+
   </header>
 
 
@@ -985,7 +1168,7 @@
 
 
         <div class="eyebrow">
-          TODOS CON HERNÁN · GUÍA DE SUIZA
+          TODOS CON HERNÁN · GUÍA DE SUIZA <span class="swissFlag" aria-label="Bandera de Suiza"><span class="swissCross"></span></span>
         </div>
 
 
@@ -1047,47 +1230,10 @@
 
 
     <!-- ===================================================
-         INTRO
-         =================================================== -->
-
-    <section class="intro" id="guia">
-
-
-      <div class="sectionLabel">
-        GUÍA PARA CONOCER SUIZA
-      </div>
-
-
-      <h2 class="sectionTitle">
-        DESCUBRE CÓMO ES
-        <span>VIVIR AQUÍ</span>
-      </h2>
-
-
-      <p class="sectionText">
-
-        Suiza no es solamente montañas,
-        lagos y paisajes. Cada cantón,
-        cada ciudad y cada región tiene
-        su propia forma de vivir.
-
-        <br><br>
-
-        En esta sección iremos reuniendo
-        información y experiencias sobre
-        la vida cotidiana en el país para
-        ayudarte a conocerlo mejor.
-
-      </p>
-
-    </section>
-
-
-    <!-- ===================================================
          CATEGORÍAS
          =================================================== -->
 
-    <section class="categories">
+    <section class="categories" id="guia">
 
 
       <div class="categoryGrid">
@@ -1098,60 +1244,56 @@
         <a href="trabajo.html" class="category">
 
           <div class="categoryIcon">
-            💼
+            🎒
           </div>
 
           <h3>
-            Trabajo
+            Integrarse en Suiza
           </h3>
 
           <p>
-            Información y recursos relacionados
-            con empleo, profesiones y vida laboral
-            en Suiza.
+            Trabajo, permisos, vivienda, coste de vida, salud e idiomas:
+            todo lo esencial reunido en una sola guía.
           </p>
+
+          <div class="category-tags">
+            <span>✓ Asesoramiento gratis</span>
+            <span>✓ Guía PDF gratis</span>
+            <span>✓ 6 en 1</span>
+          </div>
+
+          <span class="category-cta">
+            👉 Descarga tu guía GRATIS con un solo clic
+          </span>
 
         </a>
 
 
-        <!-- VIVIENDA -->
+        <!-- CV SUIZO -->
 
-        <a href="vivienda.html" class="category">
+        <a href="creador-cv-suizo.html" class="category">
 
           <div class="categoryIcon">
-            🏠
+            📄
           </div>
 
           <h3>
-            Vivienda
+            Crea tu CV Suizo
           </h3>
 
           <p>
-            Alquiler, compra, zonas para vivir
-            y aspectos prácticos de encontrar
-            vivienda.
+            Presenta tu experiencia, formación, idiomas y referencias con el
+            formato que se espera en Suiza.
           </p>
 
-        </a>
-
-
-        <!-- COSTE -->
-
-        <a href="coste-vida.html" class="category">
-
-          <div class="categoryIcon">
-            💰
+          <div class="category-tags">
+            <span>✓ 100% gratis</span>
+            <span>✓ Listo en minutos</span>
           </div>
 
-          <h3>
-            Coste de vida
-          </h3>
-
-          <p>
-            Una visión práctica de los gastos
-            cotidianos y de cómo organizarse
-            económicamente.
-          </p>
+          <span class="category-cta">
+            👉 CREA TU CV SUIZO GRATIS AQUÍ
+          </span>
 
         </a>
 
@@ -1169,52 +1311,16 @@
           </h3>
 
           <p>
-            Trenes, autobuses, carreteras
-            y diferentes formas de desplazarse
-            por el país.
+            Trenes, autobuses, tranvías y coche para todo tipo de personas,
+            incluida la accesibilidad para personas con discapacidad. Precios
+            reales de billetes y abonos, y todas las opciones de pago.
           </p>
 
-        </a>
-
-
-        <!-- SALUD -->
-
-        <a href="salud.html" class="category">
-
-          <div class="categoryIcon">
-            🏥
+          <div class="category-tags">
+            <span>✓ Accesible para todos</span>
+            <span>✓ Precios reales</span>
+            <span>✓ Formas de pago</span>
           </div>
-
-          <h3>
-            Salud
-          </h3>
-
-          <p>
-            Información general sobre el sistema
-            sanitario y aspectos que conviene
-            conocer.
-          </p>
-
-        </a>
-
-
-        <!-- IDIOMAS -->
-
-        <a href="idiomas.html" class="category">
-
-          <div class="categoryIcon">
-            🗣️
-          </div>
-
-          <h3>
-            Idiomas
-          </h3>
-
-          <p>
-            Alemán, francés, italiano y romanche:
-            descubre la diversidad lingüística
-            de Suiza.
-          </p>
 
         </a>
 
@@ -1302,65 +1408,6 @@
     </section>
 
 
-    <!-- ===================================================
-         HERNÁN
-         =================================================== -->
-
-    <section class="hernanSection">
-
-
-      <div class="hernanBox">
-
-
-        <div class="hernanImage">
-
-          <img
-            src="img/LogoOficial.png"
-            alt="Hernán"
-          >
-
-        </div>
-
-
-        <div class="hernanText">
-
-          <div class="sectionLabel">
-            TODOS CON HERNÁN
-          </div>
-
-
-          <h2>
-            DESCUBRIR SUIZA
-            <br>
-            <span>JUNTOS</span>
-          </h2>
-
-
-          <p>
-
-            Esta página irá creciendo poco a poco
-            con nuevas experiencias, lugares,
-            consejos y contenidos para conocer
-            mejor Suiza.
-
-          </p>
-
-
-          <a
-            href="index.html"
-            class="btn red"
-          >
-            IR AL GRAND TOUR →
-          </a>
-
-        </div>
-
-
-      </div>
-
-    </section>
-
-
   </main>
 
 
@@ -1375,12 +1422,39 @@
     </p>
 
     <p class="developer-credit">
-        Yonathan Alvarado · Full Stack Web Developer · Spain
+        <a
+            href="https://www.instagram.com/techantoni/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: inherit; text-decoration: none;"
+        >
+            Yonathan Alvarado · Full Stack Web Developer · Spain
+        </a>
     </p>
 
 </footer>
 
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".languageFlag");
+  const stored = localStorage.getItem("todosConHernanLanguage") || "es";
+
+  function setActive(lang) {
+    buttons.forEach(btn => btn.classList.toggle("active", btn.dataset.lang === lang));
+  }
+
+  setActive(stored);
+
+  buttons.forEach(btn => btn.addEventListener("click", () => {
+    localStorage.setItem("todosConHernanLanguage", btn.dataset.lang);
+    setActive(btn.dataset.lang);
+  }));
+});
+</script>
+
+
+<script src="js/i18n.js"></script>
 </body>
 
 </html>

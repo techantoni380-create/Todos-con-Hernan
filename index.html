@@ -2,6 +2,8 @@
 <html lang="es">
 
 <head>
+  <meta name="view-transition" content="same-origin">
+  <style>html { background: #071a28; }</style>
 
   <!-- =====================================================
        CONFIGURACIÓN DEL DOCUMENTO
@@ -40,7 +42,7 @@
 
   <link
     rel="stylesheet"
-    href="css/style.css"
+    href="css/style.css?v=3"
   >
 
 
@@ -539,6 +541,170 @@
     @media(max-width:600px){.routePlanner{padding:16px}.routePlannerHeader h3{font-size:20px}.plannerActions{grid-template-columns:1fr}.plannerClearBtn{width:100%}}
 
   </style>
+
+
+<style>
+.spotPracticalInfo{margin-top:18px;display:grid;gap:10px}.spotPracticalItem{padding:11px 13px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.045)}.spotPracticalLabel{font-weight:800;font-size:.78rem;letter-spacing:.06em;margin-bottom:4px}.spotPracticalText{font-size:.92rem;line-height:1.45;white-space:pre-line;opacity:.94}
+</style>
+<style>
+.swissFlagIcon{width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px}
+</style>
+
+<style id="grand-tour-transparency-safe">
+/* Grand Tour: transparencia suave sin modificar estructura ni funcionalidad */
+body {
+  background: #061825 url("img/Suiza10.jpe") center center / cover fixed no-repeat;
+}
+
+.topbar {
+  background: rgba(4,17,26,.88) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.sidePanel,
+.infoPanel {
+  background: rgba(6,24,37,.72) !important;
+  border-color: rgba(255,255,255,.14) !important;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.sideScroll,
+.infoScroll {
+  background: transparent !important;
+}
+
+.carouselWrap {
+  background: rgba(6,23,34,.72) !important;
+  border-color: rgba(255,255,255,.16) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.footer {
+  background: rgba(2,10,17,.82) !important;
+  border-top-color: rgba(255,255,255,.12) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* No alteramos mapa, marcadores, dimensiones ni JavaScript. */
+</style>
+
+<style id="community-panel-fix">
+.infoPanel .spotCommunity{width:100%;box-sizing:border-box;overflow:hidden}.infoPanel .communityHeader{width:100%;box-sizing:border-box}.infoPanel .communityHeader h3{margin:8px 0 12px;line-height:1.15}.infoPanel .communityHeader p{margin:0 0 16px;line-height:1.4}.infoPanel .communityRating{width:100%;box-sizing:border-box;margin-bottom:16px}.infoPanel .ratingStars{display:flex;flex-wrap:nowrap;gap:5px;margin:7px 0 5px}.infoPanel .ratingStars button{box-sizing:border-box;width:31px;min-width:31px;height:31px;padding:0;margin:0}.infoPanel .communityForm{width:100%;box-sizing:border-box}.infoPanel .communityForm>label{display:block;width:100%;margin:0 0 5px;line-height:1.2}.infoPanel .communityForm>input,.infoPanel .communityForm>textarea{display:block;box-sizing:border-box;width:100%;max-width:100%;margin:0 0 12px;font-family:inherit}.infoPanel .communityForm>input{min-height:40px;padding:8px 10px}.infoPanel .communityForm>textarea{min-height:95px;padding:9px 10px;resize:vertical}.infoPanel .communityUpload{width:100%;box-sizing:border-box;margin-top:2px}.infoPanel .communityUpload .uploadLabel{display:block;width:100%;box-sizing:border-box;margin:0 0 6px;line-height:1.2}.infoPanel .communityUpload input[type=file]{display:block;box-sizing:border-box;width:100%;max-width:100%;margin:0 0 5px;font-size:12px}.infoPanel .communityPhotoName{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.3}.infoPanel .communitySubmit{display:block;width:100%;max-width:100%;box-sizing:border-box;margin-top:14px;white-space:nowrap}.infoPanel .communityPostsHeader{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;box-sizing:border-box;margin-top:16px}.infoPanel .communityPostsHeader strong{min-width:0;line-height:1.25}.infoPanel .communityPosts{width:100%;box-sizing:border-box}.infoPanel .accessCard{box-sizing:border-box}.infoPanel .accessCard p{margin-bottom:0;line-height:1.45}@media(max-width:900px){.infoPanel .communitySubmit{font-size:13px}.infoPanel .communityForm>input,.infoPanel .communityForm>textarea,.infoPanel .communityUpload input[type=file]{width:100%}}
+</style>
+
+<style id="grand-tour-remove-relief-only">
+/* Grand Tour:
+   mantener ZOOM y MAPA/SATÉLITE.
+   Eliminar únicamente el control independiente de RELIEVE/3D. */
+.leaflet-top.leaflet-right > .leaflet-control:not(.leaflet-control-zoom):not(.leaflet-control-layers) {
+  display: none !important;
+}
+</style>
+
+
+<style id="grand-tour-unified-footer">
+footer.site-credits{width:100% !important;min-height:72px !important;box-sizing:border-box !important;display:grid !important;grid-template-columns:1fr !important;grid-template-rows:auto auto !important;align-items:center !important;justify-items:center !important;gap:4px !important;margin:0 !important;padding:16px 20px !important;background:rgba(3,16,26,.38) !important;border-top:1px solid rgba(255,255,255,.12) !important;box-shadow:0 -4px 18px rgba(0,0,0,.06) !important;backdrop-filter:blur(5px) !important;-webkit-backdrop-filter:blur(5px) !important;color:rgba(255,255,255,.78) !important;font-size:12px !important;text-align:center !important;white-space:normal !important}
+footer.site-credits>p{display:block !important;width:100% !important;max-width:1200px !important;margin:0 !important;padding:0 !important;text-align:center !important;line-height:1.5 !important;color:rgba(255,255,255,.78) !important;text-shadow:0 1px 6px rgba(0,0,0,.55)}
+footer.site-credits>p.developer-credit{color:#fff !important;font-size:12px !important;font-weight:700 !important}
+@media(max-width:600px){footer.site-credits{padding:18px 10px !important;gap:6px !important}footer.site-credits>p{font-size:12px !important;line-height:1.6 !important}}
+</style>
+<style id="grand-tour-footer-visible-fix">
+/* =========================================================
+   FOOTER INDEX · DOS LÍNEAS SIEMPRE VISIBLES
+   ========================================================= */
+html, body {
+  min-height: 100%;
+}
+
+body {
+  padding-bottom: 70px !important;
+}
+
+footer.site-credits {
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 20000 !important;
+  width: 100% !important;
+  min-height: 70px !important;
+  height: 70px !important;
+  box-sizing: border-box !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto !important;
+  align-content: center !important;
+  align-items: center !important;
+  justify-items: center !important;
+  gap: 2px !important;
+  margin: 0 !important;
+  padding: 8px 20px !important;
+  overflow: visible !important;
+  background: rgba(2, 10, 17, .94) !important;
+  border-top: 1px solid rgba(255,255,255,.18) !important;
+  box-shadow: 0 -5px 20px rgba(0,0,0,.28) !important;
+  backdrop-filter: blur(7px) !important;
+  -webkit-backdrop-filter: blur(7px) !important;
+  color: #dbe7ed !important;
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+footer.site-credits > p {
+  display: block !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+footer.site-credits > p:first-child {
+  color: #dbe7ed !important;
+}
+
+footer.site-credits > p.developer-credit {
+  color: #ffffff !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+}
+
+footer.site-credits > p.developer-credit a {
+  display: inline !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+@media (max-width: 600px) {
+  body { padding-bottom: 78px !important; }
+  footer.site-credits {
+    height: 78px !important;
+    min-height: 78px !important;
+    padding: 9px 10px !important;
+    gap: 3px !important;
+  }
+  footer.site-credits > p {
+    white-space: normal !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+  }
+}
+</style>
 
 </head>
 
@@ -1080,6 +1246,8 @@
 
           </p>
 
+          <div id="spotPracticalInfo" class="spotPracticalInfo" aria-label="Información práctica del Photo Spot"></div>
+
 
 
           <!-- =================================================
@@ -1113,7 +1281,7 @@
 
             <div>
 
-              🗺️
+              ▶️
 
               <span>
                 Grand Tour de Suiza
@@ -1140,27 +1308,156 @@
 
           </button>
 
-
-
           <!-- =================================================
-               INFORMACIÓN OFICIAL
+               VÍDEO DEL GRAND TOUR DE SUIZA
                ================================================= -->
 
-          <a
-            id="official"
-            class="btn"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            id="spotVideoBtn"
+            class="btn videoBtn"
+            type="button"
           >
-
-            VER INFORMACIÓN OFICIAL
-
-          </a>
-
+            ▶️ VER VÍDEO DEL GRAND TOUR DE SUIZA
+          </button>
 
 
           <!-- =================================================
+               COMUNIDAD · EXPERIENCIAS DEL PHOTO SPOT
+               ================================================= -->
+
+          <section
+            id="spotCommunity"
+            class="spotCommunity"
+            aria-label="Comunidad del Photo Spot"
+          >
+
+            <div class="communityHeader">
+              <span class="communityEyebrow">💬 COMUNIDAD</span>
+              <h3>Comparte tu experiencia</h3>
+              <p>
+                Comparte tu experiencia en este Photo Spot,
+                deja un comentario, valora el lugar y sube tu foto.
+              </p>
+            </div>
+
+            <div class="communityRating">
+              <span>⭐ VALORA ESTE PHOTO SPOT</span>
+              <div
+                id="ratingStars"
+                class="ratingStars"
+                role="group"
+                aria-label="Valoración de 1 a 5 estrellas"
+              >
+                <button type="button" data-rating="1" aria-label="1 estrella">★</button>
+                <button type="button" data-rating="2" aria-label="2 estrellas">★</button>
+                <button type="button" data-rating="3" aria-label="3 estrellas">★</button>
+                <button type="button" data-rating="4" aria-label="4 estrellas">★</button>
+                <button type="button" data-rating="5" aria-label="5 estrellas">★</button>
+              </div>
+              <small id="ratingSummary">Sé el primero en valorar este lugar.</small>
+            </div>
+
+            <form id="communityForm" class="communityForm">
+              <label for="communityName">TU NOMBRE</label>
+              <input
+                id="communityName"
+                type="text"
+                maxlength="40"
+                placeholder="¿Cómo te llamas?"
+                autocomplete="name"
+              >
+
+              <label for="communityComment">TU EXPERIENCIA</label>
+              <textarea
+                id="communityComment"
+                maxlength="500"
+                rows="4"
+                placeholder="Cuéntanos cómo fue tu experiencia..."
+                required
+              ></textarea>
+
+              <div class="communityUpload">
+                <label for="communityPhoto" class="uploadLabel">
+                  📷 AÑADIR UNA FOTO
+                </label>
+                <input
+                  id="communityPhoto"
+                  type="file"
+                  accept="image/*"
+                >
+                <span id="communityPhotoName">Ninguna foto seleccionada</span>
+              </div>
+
+              <button
+                class="btn red communitySubmit"
+                type="submit"
+              >
+                💬 PUBLICAR EXPERIENCIA
+              </button>
+
+              <div
+                id="communityStatus"
+                class="communityStatus"
+                aria-live="polite"
+              ></div>
+            </form>
+
+            <div class="communityPostsHeader">
+              <strong>📸 EXPERIENCIAS DE LA COMUNIDAD</strong>
+              <span id="communityPostCount">0</span>
+            </div>
+
+            <div
+              id="communityPosts"
+              class="communityPosts"
+            ></div>
+
+          </section>
+
+
+          <!-- =================================================
+               VENTANA DE VÍDEO
+               ================================================= -->
+
+          <div
+            id="videoModal"
+            class="videoModal"
+            hidden
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="videoModalTitle"
+          >
+            <div class="videoModalBackdrop" data-close-video></div>
+
+            <div class="videoModalCard">
+              <button
+                id="closeVideoModal"
+                class="videoModalClose"
+                type="button"
+                aria-label="Cerrar vídeo"
+              >
+                ×
+              </button>
+
+              <div class="videoModalTitle">
+                <span>▶️ GRAND TOUR DE SUIZA</span>
+                <strong id="videoModalTitle">Vídeo del Photo Spot</strong>
+              </div>
+
+              <div class="videoFrame">
+                <iframe
+                  id="spotVideoFrame"
+                  title="Vídeo del Grand Tour de Suiza"
+                  src=""
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+
+<!-- =================================================
                GPS TURÍSTICO
                ================================================= -->
 
@@ -1408,17 +1705,9 @@
 
 
             <p>
-
               Utiliza los marcadores del mapa,
               la lista lateral o las flechas para
               recorrer los 92 Photo Spots.
-
-              <br><br>
-
-              Próximamente podrás utilizar tu
-              ubicación para encontrar los Photo Spots
-              más cercanos y calcular cómo llegar.
-
             </p>
 
 
@@ -1440,32 +1729,19 @@
        PIE DE PÁGINA
        ===================================================== -->
 
-  <footer class="footer">
+  <footer class="site-credits">
 
+  <p>
+    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+  </p>
 
-    <span>
-      GRAND TOUR DE SUIZA
-    </span>
+  <p class="developer-credit">
+    <a href="https://www.instagram.com/techantoni/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
+      Yonathan Alvarado · Full Stack Web Developer · Spain
+    </a>
+  </p>
 
-
-    <span>
-      92 PHOTO SPOTS
-    </span>
-
-
-    <span>
-      MAPA INTERACTIVO
-    </span>
-
-
-    <span>
-      🧭 GPS TURÍSTICO
-    </span>
-
-
-    
-
-  </footer>
+</footer>
 
   
 
@@ -1495,6 +1771,18 @@
   ></script>
 
 
+  <!-- =====================================================
+       INFORMACIÓN LOCAL DE LOS 92 PHOTO SPOTS
+
+       photo-spots-info.js crea window.PHOTO_SPOTS_INFO.
+       Tiene que cargarse antes de script.js.
+       ===================================================== -->
+
+  <script
+    src="data/photo-spots-info.js"
+  ></script>
+
+
 
   <!-- =====================================================
        JAVASCRIPT PRINCIPAL
@@ -1516,6 +1804,41 @@
   ></script>
 
 
+
+<script id="grand-tour-remove-relief-runtime">
+(function () {
+  function removeReliefControl() {
+    document.querySelectorAll('.leaflet-top.leaflet-right > .leaflet-control')
+      .forEach(function (control) {
+        if (
+          !control.classList.contains('leaflet-control-zoom') &&
+          !control.classList.contains('leaflet-control-layers')
+        ) {
+          control.remove();
+        }
+      });
+  }
+
+  window.addEventListener('load', removeReliefControl);
+  document.addEventListener('DOMContentLoaded', removeReliefControl);
+
+  function observeMap() {
+    var map = document.getElementById('map');
+    if (!map) return;
+    var observer = new MutationObserver(removeReliefControl);
+    observer.observe(map, { childList: true, subtree: true });
+    removeReliefControl();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', observeMap);
+  } else {
+    observeMap();
+  }
+})();
+</script>
+
+<script src="js/i18n.js"></script>
 </body>
 
 </html>

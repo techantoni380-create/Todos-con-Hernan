@@ -194,7 +194,8 @@ window.SPOTS = [
     "name": "Castillo de Burgdorf",
     "lat": 47.06,
     "lng": 7.63,
-    "officialUrl": "https://www.myswitzerland.com/es-es/descubrir-suiza/photo-spot-burgdorf-castle/"
+    "officialUrl": "https://www.myswitzerland.com/es-es/descubrir-suiza/photo-spot-burgdorf-castle/",
+    "youtubeUrl": "https://www.youtube.com/watch?v=6rEjgpwgXX0"
   },
   {
     "id": 29,

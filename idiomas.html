@@ -2,6 +2,8 @@
 <html lang="es">
 
 <head>
+  <meta name="view-transition" content="same-origin">
+  <style>html { background: #071a28; }</style>
 
     <meta charset="UTF-8">
 
@@ -968,82 +970,7 @@
 
         }
 
-    
-
-/* =========================================================
-   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
-   ========================================================= */
-
-footer.site-credits {
-  width: 100% !important;
-  min-height: 0 !important;
-
-  box-sizing: border-box !important;
-
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  grid-template-rows: auto auto !important;
-
-  align-items: center !important;
-  justify-items: center !important;
-
-  gap: 8px !important;
-
-  margin: 0 !important;
-  padding: 22px 15px !important;
-
-  background: #020a11 !important;
-  border-top: 1px solid #183347 !important;
-
-  color: #9db0bc !important;
-  font-size: 13px !important;
-
-  text-align: center !important;
-  white-space: normal !important;
-}
-
-footer.site-credits > p {
-  display: block !important;
-
-  width: 100% !important;
-  max-width: 1200px !important;
-
-  margin: 0 !important;
-  padding: 0 !important;
-
-  text-align: center !important;
-  line-height: 1.5 !important;
-
-  white-space: normal !important;
-}
-
-footer.site-credits > p.developer-credit {
-  margin: 0 !important;
-
-  color: #ffffff !important;
-  font-weight: 700 !important;
-}
-
-
-/* =========================================================
-   FOOTER · MÓVIL
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-  footer.site-credits {
-    padding: 18px 10px !important;
-    gap: 6px !important;
-  }
-
-  footer.site-credits > p {
-    font-size: 12px !important;
-    line-height: 1.6 !important;
-  }
-
-}
-
-</style>
+    </style>
 
 </head>
 
@@ -2323,6 +2250,123 @@ footer.site-credits > p.developer-credit {
 
 
 <!-- =====================================================
+     APRENDER IDIOMAS · CONTACTOS Y CURSOS
+===================================================== -->
+
+<section id="cursos-idiomas">
+
+    <h2 class="section-title">
+        🇨🇭 Aprende el idioma
+    </h2>
+
+    <div class="card full">
+
+        <div class="card-icon">
+            📚
+        </div>
+
+        <h2>
+            Opciones para estudiar idiomas
+        </h2>
+
+        <p>
+            Si estás pensando en vivir en Suiza, aprender el idioma puede
+            facilitar mucho tu adaptación y tu vida cotidiana.
+            Aquí iremos reuniendo opciones de cursos, personas de contacto,
+            precios y formas de contactar para que puedas encontrar la
+            alternativa que mejor encaje contigo.
+        </p>
+
+    </div>
+
+
+    <div class="resource-grid">
+
+        <article class="resource-card">
+
+            <div>
+
+                <span class="resource-label">
+                    🇩🇪 ALEMÁN
+                </span>
+
+                <h3>
+                    Laura
+                </h3>
+
+                <p>
+                    Información sobre clases y opciones para estudiar alemán.
+                </p>
+
+                <p>
+                    <strong>Precio:</strong> información pendiente.
+                </p>
+
+            </div>
+
+            <div class="button-row">
+
+                <span class="button secondary">
+                    Próximamente · cursos y contacto
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <article class="resource-card">
+
+            <div>
+
+                <span class="resource-label">
+                    🇫🇷 FRANCÉS
+                </span>
+
+                <h3>
+                    Marien
+                </h3>
+
+                <p>
+                    Información sobre clases y opciones para estudiar francés.
+                </p>
+
+                <p>
+                    <strong>Precio:</strong> información pendiente.
+                </p>
+
+            </div>
+
+            <div class="button-row">
+
+                <span class="button secondary">
+                    Próximamente · cursos y contacto
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <div class="tip" style="margin-top: 22px;">
+
+        <strong>
+            💡 Esta sección irá creciendo:
+        </strong>
+
+        cuando tengamos los precios, redes sociales, enlaces y formas
+        de contacto de cada profesor o curso, podremos añadirlos aquí
+        sin llenar la página de Inicio.
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
      RECURSOS DE ALEMÁN
 ===================================================== -->
 
@@ -3418,17 +3462,25 @@ footer.site-credits > p.developer-credit {
 
 <footer class="site-credits">
 
-  <p>
-    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
-  </p>
+    <p>
+        © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+    </p>
 
-  <p class="developer-credit">
-    Yonathan Alvarado · Full Stack Web Developer · Spain
-  </p>
+    <p class="developer-credit">
+        <a
+            href="https://www.instagram.com/techantoni/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: inherit; text-decoration: none;"
+        >
+            Yonathan Alvarado · Full Stack Web Developer · Spain
+        </a>
+    </p>
 
 </footer>
 
 
+<script src="js/i18n.js"></script>
 </body>
 
 </html>
