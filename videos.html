@@ -1549,6 +1549,18 @@ body.video-page .videoCard:hover .smallPlay {
     background: rgba(239,24,32,.88) !important;
 }
 
+body.video-page button.videoThumbnail {
+    display: block;
+    width: 100%;
+    padding: 0;
+    cursor: pointer;
+}
+
+body.video-page button.videoThumbnail:focus-visible {
+    outline: 3px solid #ffd000;
+    outline-offset: 3px;
+}
+
 /* Panel inferior mucho más ligero */
 body.video-page .videoInfo {
     padding: 15px 16px 17px !important;
@@ -2649,8 +2661,6 @@ body.video-page::after {
             </button>
         </div>
 
-        </nav>
-
     </header>
 
 
@@ -2706,7 +2716,7 @@ body.video-page::after {
             <div class="videosGrid">
 
                 <article class="videoCard">
-                    <button type="button" class="videoThumbnail" data-video-id="6rEjgpwgXX0">
+                    <button type="button" class="videoThumbnail" data-video-id="6rEjgpwgXX0" aria-label="Reproducir vídeo de Burgdorf">
                         <img src="https://img.youtube.com/vi/6rEjgpwgXX0/maxresdefault.jpg"
                              alt="CH Burgdorf · Grand Tour de Suiza">
                         <div class="videoOverlay"><div class="smallPlay">▶</div></div>
@@ -2720,7 +2730,7 @@ body.video-page::after {
                 </article>
 
                 <article class="videoCard">
-                    <button type="button" class="videoThumbnail" data-video-id="zbBKTvOw83I" data-video-start="412">
+                    <button type="button" class="videoThumbnail" data-video-id="zbBKTvOw83I" data-video-start="412" aria-label="Reproducir vídeo del castillo de Hallwyl">
                         <img src="https://img.youtube.com/vi/zbBKTvOw83I/maxresdefault.jpg"
                              alt="Hallwyl Castle · Grand Tour de Suiza">
                         <div class="videoOverlay"><div class="smallPlay">▶</div></div>
@@ -2734,7 +2744,7 @@ body.video-page::after {
                 </article>
 
                 <article class="videoCard">
-                    <button type="button" class="videoThumbnail" data-video-id="GtCiNSdS9nE" data-video-start="522">
+                    <button type="button" class="videoThumbnail" data-video-id="GtCiNSdS9nE" data-video-start="522" aria-label="Reproducir vídeo de Aarburg">
                         <img src="https://img.youtube.com/vi/GtCiNSdS9nE/maxresdefault.jpg"
                              alt="Aarburg · Grand Tour de Suiza">
                         <div class="videoOverlay"><div class="smallPlay">▶</div></div>
@@ -2748,15 +2758,15 @@ body.video-page::after {
                 </article>
 
                 <article class="videoCard">
-                    <button type="button" class="videoThumbnail" data-video-id="OQ8C0IZM-C4">
+                    <button type="button" class="videoThumbnail" data-video-id="OQ8C0IZM-C4" aria-label="Reproducir vídeo de Emmental">
                         <img src="https://img.youtube.com/vi/OQ8C0IZM-C4/maxresdefault.jpg"
-                             alt="Grand Tour de Suiza">
+                             alt="Emmental · Grand Tour de Suiza">
                         <div class="videoOverlay"><div class="smallPlay">▶</div></div>
                     </button>
                     <div class="videoInfo">
                         <div class="videoCategory">GRAND TOUR DE SUIZA</div>
-                        <h3>Un Photo Spot más del Grand Tour of Switzerland</h3>
-                        <p>Descubre este lugar del Grand Tour of Switzerland.</p>
+                        <h3>Emmental: paisaje y tradición quesera</h3>
+                        <p>Descubre Emmental, uno de los Photo Spots del Grand Tour of Switzerland.</p>
                         <button type="button" class="btn outline" data-video-id="OQ8C0IZM-C4">VER VÍDEO →</button>
                     </div>
                 </article>
@@ -2805,12 +2815,10 @@ body.video-page::after {
 
 
                 <a
-                    href="https://www.youtube.com/@todosconhernan/videos"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#videos"
                     class="btn red"
                 >
-                    ▶ VER MÁS VÍDEOS DE HERNÁN
+                    ▶ VER VÍDEOS DE HERNÁN
                 </a>
 
 
@@ -2909,7 +2917,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     document.querySelectorAll("[data-video-id]").forEach(function (el) {
-        el.addEventListener("click", function () {
+        el.addEventListener("click", function (event) {
+            event.preventDefault();
             openVideo(el.dataset.videoId, el.dataset.videoStart);
         });
     });

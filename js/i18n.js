@@ -34,6 +34,10 @@
 
   function ensureHeaderAndFlags() {
     let header = document.querySelector('.topbar');
+    if (!header && document.body.hasAttribute('data-no-main-nav')) {
+      header = document.querySelector('.top-header, .top');
+      if (!header) header = document.body;
+    }
     if (!header) {
       document.body.insertAdjacentHTML('afterbegin', headerMarkup());
       header = document.querySelector('.topbar');
@@ -86,7 +90,7 @@
     const tools = document.createElement('div');
     tools.className = 'grandTourMobileTools';
     tools.innerHTML = '<button type="button" data-tour-panel="sidePanel">&#128269; Lista y búsqueda</button>' +
-      '<button type="button" data-tour-panel="infoPanel">&#8505; Detalles del lugar</button>';
+      '<button type="button" data-tour-panel="infoPanel" data-scroll-target="gpsPanel">&#128205; GPS y destino</button>';
     mapPanel.appendChild(tools);
     [sidePanel, infoPanel].forEach(function (panel) {
       const close = document.createElement('button');
@@ -104,6 +108,12 @@
       sidePanel.classList.remove('mobile-tour-panel-open');
       infoPanel.classList.remove('mobile-tour-panel-open');
       panel.classList.add('mobile-tour-panel-open');
+      if (button.dataset.scrollTarget) {
+        window.setTimeout(function () {
+          const target = document.getElementById(button.dataset.scrollTarget);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
     });
   }
 

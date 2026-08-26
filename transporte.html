@@ -1,3396 +1,705 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
   <meta name="view-transition" content="same-origin">
   <style>html { background: #071a28; }</style>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Transporte en Suiza | Todos con Hernán</title>
-
-    <meta
-        name="description"
-        content="Guía completa sobre transporte en Suiza: trenes, autobuses, tranvías, coches, bicicletas, abonos y cómo llegar a los 92 Photo Spots del Grand Tour of Switzerland."
-    >
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-
-        body {
-            margin: 0;
-
-            background: #061522;
-
-            color: #f4f7fb;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            line-height: 1.6;
-        }
-
-
-        /* =====================================================
-           CABECERA SUPERIOR
-        ===================================================== */
-
-        .top-header {
-
-            width: 100%;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding: 18px 7%;
-
-            background: #061522;
-
-            border-bottom:
-                1px solid rgba(255,255,255,0.08);
-        }
-
-
-        .logo {
-
-            font-size: 28px;
-
-            font-weight: 800;
-
-            color: #f4f7fb;
-        }
-
-
-        .logo span {
-
-            color: #42a6ff;
-        }
-
-
-        .back-button {
-
-            display: inline-block;
-
-            padding: 10px 18px;
-
-            color: #dce7f2;
-
-            text-decoration: none;
-
-            border:
-                1px solid rgba(255,255,255,0.16);
-
-            border-radius: 12px;
-
-            font-size: 16px;
-
-            transition: 0.2s;
-        }
-
-
-        .back-button:hover {
-
-            background: #10263a;
-
-            color: white;
-
-            border-color:
-                rgba(66,166,255,0.45);
-        }
-
-
-        /* =====================================================
-           CABECERA
-        ===================================================== */
-
-        .page-header {
-
-            max-width: 1250px;
-
-            margin: auto;
-
-            padding: 55px 40px 35px;
-        }
-
-
-        .eyebrow {
-
-            color: #ffd400;
-
-            font-weight: 800;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1.5px;
-
-            margin-bottom: 8px;
-        }
-
-
-        h1 {
-
-            font-size:
-                clamp(42px, 7vw, 82px);
-
-            line-height: 0.95;
-
-            margin: 0 0 25px;
-
-            font-weight: 900;
-
-            text-transform: uppercase;
-        }
-
-
-        h1 span {
-
-            color: #42a6ff;
-        }
-
-
-        .intro {
-
-            max-width: 1050px;
-
-            font-size: 20px;
-
-            color: #d8e4ef;
-        }
-
-
-        /* =====================================================
-           CONTENEDOR
-        ===================================================== */
-
-        main {
-
-            max-width: 1250px;
-
-            margin: auto;
-
-            padding: 0 40px 80px;
-        }
-
-
-        .section-title {
-
-            margin-top: 50px;
-
-            margin-bottom: 25px;
-
-            font-size: 32px;
-
-            color: white;
-        }
-
-
-        /* =====================================================
-           TARJETAS
-        ===================================================== */
-
-        .cards {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, minmax(0, 1fr));
-
-            gap: 22px;
-        }
-
-
-        .card {
-
-            background: #0d1c2e;
-
-            border:
-                1px solid rgba(255,255,255,0.10);
-
-            border-radius: 16px;
-
-            padding: 30px;
-
-            transition: 0.2s;
-        }
-
-
-        .card:hover {
-
-            transform:
-                translateY(-3px);
-
-            border-color:
-                rgba(66,166,255,0.45);
-        }
-
-
-        .card.full {
-
-            grid-column:
-                1 / -1;
-        }
-
-
-        .card-icon {
-
-            font-size: 38px;
-
-            margin-bottom: 12px;
-        }
-
-
-        .card h2 {
-
-            margin:
-                0 0 15px;
-
-            font-size: 25px;
-
-            color: white;
-        }
-
-
-        .card h3 {
-
-            margin-top: 25px;
-
-            color: white;
-
-            font-size: 20px;
-        }
-
-
-        .card p {
-
-            color: #c9d8e8;
-
-            font-size: 17px;
-
-            margin-bottom: 15px;
-        }
-
-
-        .card ul {
-
-            padding-left: 22px;
-
-            color: #c9d8e8;
-        }
-
-
-        .card li {
-
-            margin-bottom: 9px;
-        }
-
-
-        /* =====================================================
-           BLOQUES DESTACADOS
-        ===================================================== */
-
-        .important {
-
-            border-left:
-                4px solid #ffd400;
-
-            background: #10263a;
-
-            padding:
-                18px 20px;
-
-            border-radius: 10px;
-
-            margin:
-                18px 0;
-
-            color: #e7f0f8;
-        }
-
-
-        .tip {
-
-            border-left:
-                4px solid #27e88b;
-
-            background: #0d2923;
-
-            padding:
-                18px 20px;
-
-            border-radius: 10px;
-
-            margin:
-                18px 0;
-
-            color: #dff8ec;
-        }
-
-
-        .warning {
-
-            border-left:
-                4px solid #ff2028;
-
-            background: #24151a;
-
-            padding:
-                18px 20px;
-
-            border-radius: 10px;
-
-            margin:
-                18px 0;
-
-            color: #f4dfe2;
-        }
-
-
-        /* =====================================================
-           BOTONES
-        ===================================================== */
-
-        .button-row {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 12px;
-
-            margin-top: 20px;
-        }
-
-
-        .button {
-
-            display: inline-block;
-
-            padding:
-                11px 18px;
-
-            border-radius: 10px;
-
-            background: #42a6ff;
-
-            color: #061522;
-
-            font-weight: 800;
-
-            text-decoration: none;
-
-            transition: 0.2s;
-        }
-
-
-        .button:hover {
-
-            background: #78c2ff;
-
-            color: #061522;
-        }
-
-
-        .button.secondary {
-
-            background: #132a40;
-
-            color: #dce7f2;
-
-            border:
-                1px solid rgba(255,255,255,0.12);
-        }
-
-
-        .button.secondary:hover {
-
-            background: #1b3a56;
-
-            color: white;
-        }
-
-
-        /* =====================================================
-           TABLA
-        ===================================================== */
-
-        .table-wrapper {
-
-            overflow-x: auto;
-
-            margin-top: 20px;
-        }
-
-
-        table {
-
-            width: 100%;
-
-            border-collapse: collapse;
-
-            min-width: 700px;
-        }
-
-
-        th,
-        td {
-
-            border-bottom:
-                1px solid rgba(255,255,255,0.10);
-
-            padding: 14px;
-
-            text-align: left;
-        }
-
-
-        th {
-
-            background: #132a40;
-
-            color: white;
-        }
-
-
-        td {
-
-            color: #cbd9e8;
-        }
-
-
-        /* =====================================================
-           PHOTO SPOTS
-        ===================================================== */
-
-        .photo-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, minmax(0, 1fr));
-
-            gap: 18px;
-
-            margin-top: 25px;
-        }
-
-
-        .photo-card {
-
-            background: #10263a;
-
-            border:
-                1px solid rgba(255,255,255,0.09);
-
-            border-radius: 14px;
-
-            padding: 22px;
-
-            transition: 0.2s;
-        }
-
-
-        .photo-card:hover {
-
-            transform:
-                translateY(-3px);
-
-            border-color:
-                rgba(66,166,255,0.40);
-        }
-
-
-        .photo-number {
-
-            display: inline-block;
-
-            margin-bottom: 10px;
-
-            color: #ffd400;
-
-            font-weight: 800;
-        }
-
-
-        .photo-card h3 {
-
-            margin:
-                0 0 8px;
-
-            font-size: 20px;
-
-            color: white;
-        }
-
-
-        .photo-card p {
-
-            margin:
-                0 0 15px;
-
-            color: #b9ccdc;
-
-            font-size: 15px;
-        }
-
-
-        .photo-card a {
-
-            color: #55adff;
-
-            text-decoration: none;
-
-            font-weight: 700;
-        }
-
-
-        .photo-card a:hover {
-
-            text-decoration: underline;
-        }
-
-
-        /* =====================================================
-           LISTA DE CONSEJOS
-        ===================================================== */
-
-        .checklist {
-
-            list-style: none;
-
-            padding: 0;
-
-            margin: 0;
-        }
-
-
-        .checklist li {
-
-            padding:
-                13px 0;
-
-            border-bottom:
-                1px solid rgba(255,255,255,0.08);
-
-            color: #c9d8e8;
-        }
-
-
-        /* =====================================================
-           ENLACES
-        ===================================================== */
-
-        a {
-
-            color: #55adff;
-        }
-
-
-        /* =====================================================
-           FUENTES
-        ===================================================== */
-
-        .source-list {
-
-            list-style: none;
-
-            padding: 0;
-        }
-
-
-        .source-list li {
-
-            background: #132a40;
-
-            margin-bottom: 10px;
-
-            padding:
-                15px 18px;
-
-            border-radius: 10px;
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-
-            min-height: 70px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            padding:
-                25px 20px;
-
-            background: #020a11;
-
-            border-top:
-                1px solid #183347;
-
-            color: #9db0bc;
-
-            font-size: 13px;
-        }
-
-
-        footer p {
-
-            margin: 0;
-        }
-
-
-        .developer-credit {
-
-            margin-top: 10px;
-
-            font-size: 12px;
-
-            color: #71869a;
-        }
-
-
-        .developer-credit a {
-
-            color: #42a6ff;
-
-            text-decoration: none;
-
-            font-weight: 600;
-        }
-
-
-        .developer-credit a:hover {
-
-            text-decoration: underline;
-        }
-
-
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
-
-        @media (max-width: 950px) {
-
-            .photo-grid {
-
-                grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
-            }
-
-        }
-
-
-        @media (max-width: 850px) {
-
-            .top-header {
-
-                padding:
-                    16px 20px;
-            }
-
-
-            .logo {
-
-                font-size: 22px;
-            }
-
-
-            .back-button {
-
-                font-size: 15px;
-
-                padding:
-                    8px 12px;
-            }
-
-
-            .page-header {
-
-                padding:
-                    35px 20px 25px;
-            }
-
-
-            main {
-
-                padding:
-                    0 20px 60px;
-            }
-
-
-            .cards {
-
-                grid-template-columns: 1fr;
-            }
-
-
-            .card.full {
-
-                grid-column: auto;
-            }
-
-
-            .photo-grid {
-
-                grid-template-columns: 1fr;
-            }
-
-
-            .intro {
-
-                font-size: 18px;
-            }
-
-
-            h1 {
-
-                font-size: 48px;
-            }
-
-        }
-
-    
-
-/* =========================================================
-   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
-   ========================================================= */
-
-footer.site-credits {
-  width: 100% !important;
-  min-height: 0 !important;
-
-  box-sizing: border-box !important;
-
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  grid-template-rows: auto auto !important;
-
-  align-items: center !important;
-  justify-items: center !important;
-
-  gap: 8px !important;
-
-  margin: 0 !important;
-  padding: 22px 15px !important;
-
-  background: #020a11 !important;
-  border-top: 1px solid #183347 !important;
-
-  color: #9db0bc !important;
-  font-size: 13px !important;
-
-  text-align: center !important;
-  white-space: normal !important;
-}
-
-footer.site-credits > p {
-  display: block !important;
-
-  width: 100% !important;
-  max-width: 1200px !important;
-
-  margin: 0 !important;
-  padding: 0 !important;
-
-  text-align: center !important;
-  line-height: 1.5 !important;
-
-  white-space: normal !important;
-}
-
-footer.site-credits > p.developer-credit {
-  margin: 0 !important;
-
-  color: #ffffff !important;
-  font-weight: 700 !important;
-}
-
-
-/* =========================================================
-   FOOTER · MÓVIL
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-  footer.site-credits {
-    padding: 18px 10px !important;
-    gap: 6px !important;
-  }
-
-  footer.site-credits > p {
-    font-size: 12px !important;
-    line-height: 1.6 !important;
-  }
-
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transporte en Suiza | Todos con Hernan</title>
+  <meta name="description" content="Guia clara y minimalista de transporte en Suiza: precios reales, circuitos entre cantones y paneles de referencia.">
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: #061522;
+      color: #f4f7fb;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    .top-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 7%;
+      background: #061522;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #f4f7fb;
+    }
+
+    .logo span { color: #42a6ff; }
+
+    .back-button {
+      display: inline-block;
+      padding: 10px 18px;
+      color: #dce7f2;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 12px;
+      font-size: 16px;
+      transition: 0.2s;
+    }
+
+    .back-button:hover {
+      background: #10263a;
+      color: white;
+      border-color: rgba(66,166,255,0.45);
+    }
+
+    .page-header {
+      max-width: 1200px;
+      margin: auto;
+      padding: 55px 24px 20px;
+    }
+
+    .eyebrow {
+      color: #ffd400;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 0.95;
+      margin: 0 0 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    h1 span { color: #42a6ff; }
+
+    .intro {
+      max-width: 980px;
+      font-size: 19px;
+      color: #d8e4ef;
+      margin: 0;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px 70px;
+    }
+
+    .section { margin-top: 34px; }
+
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .section-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #12314e;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 31px;
+      color: white;
+    }
+
+    .section-intro {
+      color: #aebfd1;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #0d1c2e;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 25px;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(74,168,255,0.45);
+    }
+
+    .card.full { grid-column: 1 / -1; }
+
+    .card-icon {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .card p {
+      margin: 0 0 12px;
+      color: #b8c8d8;
+      font-size: 15px;
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #b8c8d8;
+    }
+
+    .card li { margin-bottom: 8px; }
+
+    .card-note {
+      margin-top: 10px;
+      color: #8fb8d8;
+      font-size: 14px;
+    }
+
+    .download-maps {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .map-download {
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+    }
+
+    .map-download.featured { grid-column: 1 / -1; }
+
+    .map-preview {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #e9f0f4;
+    }
+
+    .official-map-frame {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      background: #eef3f5;
+    }
+
+    .map-svg { padding: 16px; }
+    .map-svg svg { display: block; width: 100%; height: 100%; }
+    .map-brand {
+      position: absolute;
+      top: 26px;
+      right: 26px;
+      width: clamp(82px, 12vw, 150px);
+      height: auto;
+      z-index: 2;
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,.2));
+      pointer-events: none;
+    }
+
+    .map-download-body { padding: 20px 22px 22px; }
+    .map-download-body h3 { margin: 0 0 7px; color: #fff; font-size: 23px; }
+    .map-download-body p { margin: 0 0 16px; color: #b8c8d8; font-size: 15px; }
+
+    .map-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .map-button {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 10px;
+      color: #f4f7fb;
+      background: #12314e;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .map-button:hover { background: #1b4770; border-color: #42a6ff; }
+    .map-button.secondary { color: #102033; background: #ffd400; border-color: #ffd400; }
+    .map-button.secondary:hover { background: #ffe045; }
+
+    footer.site-credits {
+      width: 100%;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      align-items: center;
+      justify-items: center;
+      gap: 8px;
+      margin: 0;
+      padding: 22px 15px;
+      background: #020a11;
+      border-top: 1px solid #183347;
+      color: #9db0bc;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    footer.site-credits > p {
+      margin: 0;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    footer.site-credits > p.developer-credit {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    @media (max-width: 850px) {
+      .top-header { padding: 16px 20px; }
+      .logo { font-size: 22px; }
+      .back-button { font-size: 15px; padding: 8px 12px; }
+      .page-header { padding: 35px 20px 20px; }
+      .content { padding: 0 20px 60px; }
+      .intro { font-size: 17px; }
+      h1 { font-size: 48px; }
+      .section-title { font-size: 27px; }
+      .download-maps { grid-template-columns: 1fr; }
+      .map-download.featured { grid-column: auto; }
+    }
+  </style>
 </head>
 
-
-<body>
-
-
-<!-- =====================================================
-     CABECERA
-===================================================== -->
+<body data-no-main-nav>
 
 <header class="top-header">
-
-    <div class="logo">
-
-        Todos con <span>Hernán</span>
-
-    </div>
-
-
-    <a
-        href="vivir-en-suiza.html"
-        class="back-button"
-    >
-        ← Vivir en Suiza
-    </a>
-
+  <div class="logo">Todos con <span>Hernan</span></div>
+  <a href="vivir-en-suiza.html" class="back-button">← Vivir en Suiza</a>
 </header>
-
-
-
-<!-- =====================================================
-     INTRODUCCIÓN
-===================================================== -->
 
 <header class="page-header">
-
-    <div class="eyebrow">
-        GUÍA PARA VIVIR EN SUIZA
-    </div>
-
-
-    <h1>
-        TRANSPORTE EN <span>SUIZA</span>
-    </h1>
-
-
-    <p class="intro">
-
-        Suiza cuenta con una extensa red de trenes, autobuses,
-        tranvías, barcos y otros medios de transporte que permiten
-        desplazarse por prácticamente todo el país.
-
-        En esta guía encontrarás información para utilizar el
-        transporte público, conducir, moverte por las ciudades,
-        elegir abonos y planificar excursiones.
-
-    </p>
-
+  <div class="eyebrow">GUIA PARA VIVIR EN SUIZA</div>
+  <h1>TRANSPORTE EN <span>SUIZA</span></h1>
+  <p class="intro" data-no-translate data-l10n="transport.intro">
+    Guia rapida para moverte por Suiza sin complicarte: precios reales,
+    accesibilidad, circuitos entre cantones y paneles de referencia para
+    tren, bus, tranvia y redes urbanas.
+  </p>
 </header>
 
+<main class="content">
 
-
-<main>
-
-
-<!-- =====================================================
-     RESUMEN
-===================================================== -->
-
-<section>
-
-    <h2 class="section-title">
-        🚆 Moverse por Suiza
-    </h2>
-
-
-    <div class="card full">
-
-        <div class="card-icon">
-            🇨🇭
-        </div>
-
-
-        <h2>
-            Un país preparado para viajar sin coche
-        </h2>
-
-
-        <p>
-
-            Una de las principales ventajas de Suiza es la posibilidad
-            de combinar trenes, autobuses, tranvías, barcos y
-            transportes de montaña para llegar a ciudades, pueblos,
-            lagos y zonas alpinas.
-
-        </p>
-
-
-        <p>
-
-            Para consultar una conexión concreta conviene utilizar
-            las herramientas oficiales de SBB, ya que los horarios
-            pueden cambiar por obras, temporada, incidencias o
-            modificaciones del servicio.
-
-        </p>
-
-
-        <div class="button-row">
-
-            <a
-                class="button"
-                href="https://www.sbb.ch/en"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                🚆 Consultar SBB
-            </a>
-
-
-            <a
-                class="button secondary"
-                href="https://www.sbb.ch/en/tickets-offers/buy.html"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                🎫 Comprar billetes
-            </a>
-
-        </div>
-
+  <section class="section" id="resumen-transporte">
+    <div class="section-head">
+      <div class="section-icon">🚆</div>
+      <div>
+        <h2 class="section-title" data-no-translate data-l10n="transport.summary.title">Resumen rapido del transporte en Suiza</h2>
+        <p class="section-intro" data-no-translate data-l10n="transport.summary.intro">Paneles claros y directos, al estilo de Integrarse en Suiza.</p>
+      </div>
     </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     RESUMEN PARA TODOS: ACCESIBILIDAD, PRECIOS Y PAGO
-===================================================== -->
-
-<section id="resumen-transporte">
-
-    <h2 class="section-title">
-        ♿ Transporte para todo tipo de personas
-    </h2>
-
 
     <div class="cards">
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                ♿
-            </div>
-
-
-            <h2>
-                Accesibilidad y discapacidad
-            </h2>
-
-
-            <p>
-                La mayoría de estaciones y trenes están adaptados para
-                sillas de ruedas, con rampas, ascensores y espacios
-                reservados. Los autobuses urbanos suelen tener piso bajo.
-            </p>
-
-            <ul>
-                <li>Pide ayuda con antelación en el Call Center Handicap de SBB.</li>
-                <li>Consulta si tu estación de origen y destino están adaptadas.</li>
-                <li>Los perros guía y de asistencia viajan gratis.</li>
-            </ul>
-
-            <a
-                href="https://www.sbb.ch/en/travel-information/travel-without-barriers.html"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Información oficial sobre viajes sin barreras →
-            </a>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🎫
-            </div>
-
-
-            <h2>
-                ¿Cuánto cuestan los billetes?
-            </h2>
-
-
-            <p>
-                El precio depende de la distancia, la clase y el descuento
-                aplicado. Como referencia orientativa:
-            </p>
-
-            <ul>
-                <li>Billete sencillo urbano: CHF 2-4.</li>
-                <li>Trayecto regional (30-60 km): CHF 8-20.</li>
-                <li>Half Fare Travelcard: CHF 190/año (adulto).</li>
-                <li>GA Travelcard: desde CHF 2.780/año en 2.ª clase.</li>
-            </ul>
-
-            <p class="card-note" style="color:#8fb8d8; font-size:14px; margin-top:10px;">
-                Precios orientativos: comprueba siempre la tarifa vigente en SBB antes de viajar.
-            </p>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                💳
-            </div>
-
-
-            <h2>
-                Formas de pago
-            </h2>
-
-            <ul>
-                <li>App SBB Mobile: tarjeta, Twint o cuenta SwissPass.</li>
-                <li>Máquinas de estación: efectivo, tarjeta y Twint.</li>
-                <li>Taquilla: efectivo y tarjeta.</li>
-                <li>EasyRide: check-in/check-out automático, cobro mensual.</li>
-            </ul>
-
-            <p class="card-note" style="color:#8fb8d8; font-size:14px; margin-top:10px;">
-                No todos los puntos de venta aceptan efectivo; lleva tarjeta o Twint como respaldo.
-            </p>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     TIPOS DE TRANSPORTE
-===================================================== -->
-
-<section>
-
-    <h2 class="section-title">
-        🚉 Principales medios de transporte
-    </h2>
-
-
-    <div class="cards">
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🚆
-            </div>
-
-
-            <h2>
-                Trenes
-            </h2>
-
-
-            <p>
-
-                El tren es uno de los principales medios para
-                desplazarse por Suiza.
-
-            </p>
-
-
-            <ul>
-
-                <li>
-                    Conexiones entre ciudades.
-                </li>
-
-                <li>
-                    Trenes regionales.
-                </li>
-
-                <li>
-                    S-Bahn.
-                </li>
-
-                <li>
-                    Trenes panorámicos.
-                </li>
-
-                <li>
-                    Trenes de montaña.
-                </li>
-
-            </ul>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🚌
-            </div>
-
-
-            <h2>
-                Autobuses y PostBus
-            </h2>
-
-
-            <p>
-
-                Los autobuses permiten conectar estaciones de tren
-                con localidades pequeñas y regiones de montaña.
-
-            </p>
-
-
-            <p>
-
-                PostBus es especialmente importante para llegar a
-                muchas zonas rurales y alpinas.
-
-            </p>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🚋
-            </div>
-
-
-            <h2>
-                Tranvías
-            </h2>
-
-
-            <p>
-
-                Varias ciudades suizas cuentan con redes de tranvía
-                integradas con autobuses y otros medios.
-
-            </p>
-
-
-            <ul>
-
-                <li>
-                    Zúrich.
-                </li>
-
-                <li>
-                    Basilea.
-                </li>
-
-                <li>
-                    Berna.
-                </li>
-
-                <li>
-                    Ginebra.
-                </li>
-
-            </ul>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🚢
-            </div>
-
-
-            <h2>
-                Barcos
-            </h2>
-
-
-            <p>
-
-                Los barcos forman parte del transporte público en
-                diferentes lagos suizos.
-
-            </p>
-
-
-            <ul>
-
-                <li>
-                    Lago de Zúrich.
-                </li>
-
-                <li>
-                    Lago de Lucerna.
-                </li>
-
-                <li>
-                    Lago Lemán.
-                </li>
-
-                <li>
-                    Lago de Thun.
-                </li>
-
-                <li>
-                    Lago de Biel.
-                </li>
-
-            </ul>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🚠
-            </div>
-
-
-            <h2>
-                Teleféricos y funiculares
-            </h2>
-
-
-            <p>
-
-                En las zonas alpinas es habitual combinar tren,
-                autobús y transporte de montaña.
-
-            </p>
-
-
-            <p>
-
-                Algunos Photo Spots requieren utilizar teleféricos,
-                funiculares, trenes de montaña o realizar un tramo
-                a pie.
-
-            </p>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🚲
-            </div>
-
-
-            <h2>
-                Bicicleta
-            </h2>
-
-
-            <p>
-
-                La bicicleta puede combinarse con el transporte
-                público para realizar rutas y excursiones.
-
-            </p>
-
-
-            <p>
-
-                Antes de viajar con bicicleta conviene comprobar
-                las condiciones del operador y del trayecto.
-
-            </p>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     BILLETES
-===================================================== -->
-
-<section>
-
-    <h2 class="section-title">
-        🎫 Billetes y abonos
-    </h2>
-
-
-    <div class="cards">
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🎟️
-            </div>
-
-
-            <h2>
-                Billete normal
-            </h2>
-
-
-            <p>
-
-                Puedes comprar billetes para trayectos concretos
-                utilizando SBB y otros operadores de transporte.
-
-            </p>
-
-
-            <p>
-
-                SBB permite comprar billetes punto a punto,
-                billetes Supersaver y diferentes tipos de pases.
-
-            </p>
-
-
-            <a
-                href="https://www.sbb.ch/en/tickets-offers/buy.html"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Consultar billetes en SBB →
-            </a>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                ½
-            </div>
-
-
-            <h2>
-                Half Fare Travelcard
-            </h2>
-
-
-            <p>
-
-                El Half Fare Travelcard permite viajar con tarifas
-                reducidas en numerosos servicios de transporte.
-
-            </p>
-
-
-            <div class="important">
-
-                Como referencia, el precio anual publicado por SBB
-                para adultos es CHF 190 y para jóvenes de 16 a
-                24,99 años CHF 120. Comprueba siempre el precio
-                vigente antes de contratarlo.
-
-            </div>
-
-
-            <a
-                href="https://www.sbb.ch/en/offers/half-fare-travelcard"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Ver Half Fare Travelcard →
-            </a>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🌟
-            </div>
-
-
-            <h2>
-                GA Travelcard
-            </h2>
-
-
-            <p>
-
-                El GA Travelcard permite realizar viajes ilimitados
-                dentro de su área de validez y es especialmente
-                interesante para personas que utilizan
-                frecuentemente el transporte público.
-
-            </p>
-
-
-            <p>
-
-                Las condiciones y precios dependen del tipo de
-                GA, edad y clase.
-
-            </p>
-
-
-            <a
-                href="https://www.sbb.ch/en/offers/ga-travelcard"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Ver GA Travelcard →
-            </a>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                💸
-            </div>
-
-
-            <h2>
-                Saver Day Pass
-            </h2>
-
-
-            <p>
-
-                Si sabes con antelación cuándo vas a viajar,
-                puedes encontrar Saver Day Pass a precios más
-                económicos dependiendo de disponibilidad.
-
-            </p>
-
-
-            <div class="tip">
-
-                Comprueba siempre el precio disponible para la
-                fecha concreta antes de comprar.
-
-            </div>
-
-
-            <a
-                href="https://www.sbb.ch/en/offers/day-passes/saver-day-pass.html"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Consultar Saver Day Pass →
-            </a>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     VISITANTES
-===================================================== -->
-
-<section>
-
-    <h2 class="section-title">
-        🧳 Si vienes de visita
-    </h2>
-
-
-    <div class="card full">
-
-        <h2>
-            Swiss Half Fare Card
-        </h2>
-
-
-        <p>
-
-            Para personas cuyo domicilio permanente está fuera de
-            Suiza y Liechtenstein existe la Swiss Half Fare Card,
-            que permite obtener tarifas reducidas durante un mes.
-
-        </p>
-
-
-        <div class="important">
-
-            SBB publica actualmente la Swiss Half Fare Card a
-            CHF 150 y con una validez de un mes. Comprueba las
-            condiciones vigentes antes de comprarla.
-
-        </div>
-
-
-        <a
-            href="https://www.sbb.ch/en/offers/swiss-half-fare-card"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Ver Swiss Half Fare Card →
-        </a>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     NIÑOS
-===================================================== -->
-
-<section>
-
-    <h2 class="section-title">
-        👨‍👩‍👧 Viajar con niños
-    </h2>
-
-
-    <div class="card full">
-
-        <p>
-
-            Las condiciones de transporte para niños dependen de
-            su edad y del producto utilizado.
-
-        </p>
-
-
-        <ul>
-
-            <li>
-                Los niños menores de 6 años normalmente no necesitan
-                billete para el transporte público.
-            </li>
-
-            <li>
-                Existen productos específicos para niños y familias.
-            </li>
-
-            <li>
-                La Junior Travelcard y la Children's Co-Travelcard
-                permiten viajar bajo determinadas condiciones.
-            </li>
-
+      <article class="card">
+        <div class="card-icon">♿</div>
+        <h2 data-no-translate data-l10n="transport.access.title">Accesibilidad</h2>
+        <p data-no-translate data-l10n="transport.access.text">La red suiza prioriza accesos adaptados y mejor conectividad para todos los perfiles de movilidad.</p>
+        <ul data-no-translate data-l10n="transport.access.list">
+          <li>Estaciones principales con ascensores y rampas.</li>
+          <li>Asistencia planificada en trayectos complejos.</li>
+          <li>Cobertura urbana con material de piso bajo.</li>
         </ul>
+      </article>
 
+      <article class="card">
+        <div class="card-icon">🎫</div>
+        <h2 data-no-translate data-l10n="transport.prices.title">Precios reales (referencia)</h2>
+        <ul data-no-translate data-l10n="transport.prices.list">
+          <li>Half Fare Adulto: CHF 190/anio.</li>
+          <li>Half Fare Jovenes: CHF 120/anio.</li>
+          <li>GA Adulto 2a clase: CHF 3.995/anio.</li>
+          <li>GA Adulto 1a clase: CHF 6.520/anio.</li>
+          <li>GA Senior 2a clase: CHF 3.040/anio.</li>
+          <li>GA 1 mes Adulto 2a clase: CHF 440.</li>
+        </ul>
+        <p class="card-note" data-no-translate data-l10n="transport.prices.note">Los precios de trayectos individuales cambian segun zona, hora y antelacion de compra.</p>
+      </article>
 
-        <div class="tip">
-
-            Antes de comprar, indica correctamente la edad del
-            menor en SBB para que el sistema muestre las opciones
-            disponibles.
-
-        </div>
-
+      <article class="card">
+        <div class="card-icon">💳</div>
+        <h2 data-no-translate data-l10n="transport.payment.title">Pago y validacion</h2>
+        <ul data-no-translate data-l10n="transport.payment.list">
+          <li>Compra digital y presencial segun red local.</li>
+          <li>Validacion previa cuando el sistema lo exige.</li>
+          <li>Conviene llevar una alternativa de pago.</li>
+        </ul>
+      </article>
     </div>
+  </section>
 
-</section>
-
-
-
-<!-- =====================================================
-     APPS
-===================================================== -->
-
-<section>
-
-    <h2 class="section-title">
-        📱 Aplicaciones útiles
-    </h2>
-
+  <section class="section" id="circuito-cantones">
+    <div class="section-head">
+      <div class="section-icon">🔁</div>
+      <div>
+        <h2 class="section-title" data-no-translate data-l10n="transport.circuit.title">Circuito entre cantones y ciudades</h2>
+        <p class="section-intro" data-no-translate data-l10n="transport.circuit.intro">El viaje suele combinar un tramo principal intercity y redes locales en origen y destino.</p>
+      </div>
+    </div>
 
     <div class="cards">
+      <article class="card">
+        <div class="card-icon">🧭</div>
+        <h2 data-no-translate data-l10n="transport.routes.title">Rutas tipo</h2>
+        <ul data-no-translate data-l10n="transport.routes.list">
+          <li>Zurich ↔ Berna ↔ Lausana ↔ Ginebra.</li>
+          <li>Zurich ↔ Basilea ↔ Lucerna.</li>
+          <li>Berna ↔ Interlaken ↔ Valais.</li>
+          <li>Zurich ↔ St. Gallen ↔ Graubunden.</li>
+        </ul>
+      </article>
 
+      <article class="card">
+        <div class="card-icon">🚉</div>
+        <h2 data-no-translate data-l10n="transport.logic.title">Logica del trayecto</h2>
+        <ul data-no-translate data-l10n="transport.logic.list">
+          <li>Acceso local: bus, tranvia o S-Bahn.</li>
+          <li>Tramo principal: tren regional o intercity.</li>
+          <li>Ultimo tramo: red local o transporte de montania.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
 
-        <article class="card">
-
-            <div class="card-icon">
-                📱
-            </div>
-
-
-            <h2>
-                SBB Mobile
-            </h2>
-
-
-            <p>
-
-                Una de las aplicaciones principales para consultar
-                conexiones, comprar billetes y gestionar productos
-                de transporte.
-
-            </p>
-
-
-            <a
-                href="https://www.sbb.ch/en/travel-information/apps/sbb-mobile.html"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Información oficial →
-            </a>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🗺️
-            </div>
-
-
-            <h2>
-                Planificador de rutas
-            </h2>
-
-
-            <p>
-
-                Para cada viaje comprueba la conexión actual,
-                las correspondencias y posibles cambios de servicio.
-
-            </p>
-
-
-            <a
-                href="https://www.sbb.ch/en"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Planificar viaje →
-            </a>
-
-        </article>
-
-
+  <section class="section" id="mapas-transporte">
+    <div class="section-head">
+      <div class="section-icon">🗺️</div>
+      <div>
+        <h2 class="section-title">Mapas de transporte para descargar</h2>
+        <p class="section-intro">Planos oficiales de redes: consulta las líneas, paradas, terminales e intercambios y descárgalos en PDF.</p>
+      </div>
     </div>
 
-</section>
+    <div class="download-maps">
+      <article class="card map-download featured">
+        <iframe class="official-map-frame" title="Plano oficial de trenes de larga distancia" loading="lazy" src="docs/mapas-transporte/larga-distancia-sbb.pdf#view=FitH"></iframe>
+        <div class="map-download-body"><h3>Trenes de larga distancia</h3><p>Plano oficial IC, IR y RE: cada línea, sus paradas y sus terminales.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/larga-distancia-sbb.pdf" download>↓ Descargar PDF</a></div></div>
+      </article>
+      <article class="card map-download">
+        <iframe class="official-map-frame" title="Plano oficial de la red nacional multimodal" loading="lazy" src="docs/mapas-transporte/red-nacional-sbb.pdf#view=FitH"></iframe>
+        <div class="map-download-body"><h3>Red nacional multimodal</h3><p>Plano oficial con ferrocarril, autobuses, barcos y transportes por cable.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/red-nacional-sbb.pdf" download>↓ Descargar PDF</a></div></div>
+      </article>
+      <article class="card map-download">
+        <iframe class="official-map-frame" title="Plano oficial de Zúrich" loading="lazy" src="docs/mapas-transporte/zurich-zvv.pdf#view=FitH"></iframe>
+        <div class="map-download-body"><h3>Zúrich: S-Bahn, bus y barco</h3><p>Plano oficial con líneas numeradas, estaciones, paradas y terminales.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/zurich-zvv.pdf" download>↓ Descargar PDF</a></div></div>
+      </article>
+      <article class="card map-download">
+        <iframe class="official-map-frame" title="Plano oficial de Lausana" loading="lazy" src="docs/mapas-transporte/lausana-mobilis.pdf#view=FitH"></iframe>
+        <div class="map-download-body"><h3>Lausana: metro, bus y tren regional</h3><p>Plano oficial con M1, M2, líneas de bus, trenes y todas sus paradas.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/lausana-mobilis.pdf" download>↓ Descargar PDF</a></div></div>
+      </article>
+      <article class="card map-download">
+        <iframe class="official-map-frame" title="Plano oficial de Ginebra" loading="lazy" src="docs/mapas-transporte/ginebra-tpg.pdf#view=FitH"></iframe>
+        <div class="map-download-body"><h3>Ginebra: tranvía, bus y red regional</h3><p>Plano oficial de líneas y paradas del área de Ginebra.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/ginebra-tpg.pdf" download>↓ Descargar PDF</a></div></div>
+      </article>
+      <article class="card map-download">
+        <iframe class="official-map-frame" title="Plano oficial de Basilea" loading="lazy" src="docs/mapas-transporte/basilea-tnw.pdf#view=FitH"></iframe>
+        <div class="map-download-body"><h3>Basilea: tranvía, bus y tren regional</h3><p>Plano oficial con todas las líneas, paradas y terminales del área urbana.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/basilea-tnw.pdf" download>↓ Descargar PDF</a></div></div>
+      </article>
+    </div>
+  </section>
 
-
-
-<!-- =====================================================
-     COCHE
-===================================================== -->
-
-<section>
-
-    <h2 class="section-title">
-        🚗 Conducir en Suiza
-    </h2>
-
-
+  <section class="section" id="aviso-transporte">
     <div class="cards">
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🛣️
-            </div>
-
-
-            <h2>
-                Autopistas y vignette
-            </h2>
-
-
-            <p>
-
-                Los vehículos que utilizan determinadas autopistas
-                y vías rápidas suizas necesitan una vignette.
-
-            </p>
-
-
-            <div class="important">
-
-                La vignette 2026 cuesta CHF 40 y es válida desde
-                el 1 de diciembre de 2025 hasta el 31 de enero de
-                2027.
-
-            </div>
-
-
-            <p>
-
-                No existen vignette de un día, una semana o un mes.
-
-            </p>
-
-
-            <a
-                href="https://www.ch.ch/en/vehicles-and-traffic/how-to-behave-in-road-traffic/motorway-vignette/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Información oficial sobre la vignette →
-            </a>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🅿️
-            </div>
-
-
-            <h2>
-                Aparcamiento
-            </h2>
-
-
-            <p>
-
-                Aparcar en las ciudades puede ser considerablemente
-                más caro y limitado que en zonas rurales.
-
-            </p>
-
-
-            <ul>
-
-                <li>
-                    Zonas azules.
-                </li>
-
-                <li>
-                    Aparcamientos públicos.
-                </li>
-
-                <li>
-                    Aparcamientos privados.
-                </li>
-
-                <li>
-                    Park & Ride.
-                </li>
-
-            </ul>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                ❄️
-            </div>
-
-
-            <h2>
-                Conducir en invierno
-            </h2>
-
-
-            <p>
-
-                En zonas alpinas las condiciones meteorológicas
-                pueden cambiar rápidamente.
-
-            </p>
-
-
-            <ul>
-
-                <li>
-                    Comprueba las condiciones de la carretera.
-                </li>
-
-                <li>
-                    Lleva el equipamiento adecuado.
-                </li>
-
-                <li>
-                    Presta atención a la nieve y el hielo.
-                </li>
-
-                <li>
-                    Consulta restricciones de puertos de montaña.
-                </li>
-
-            </ul>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🪪
-            </div>
-
-
-            <h2>
-                Permiso de conducir
-            </h2>
-
-
-            <p>
-
-                Si te estableces en Suiza y utilizas un permiso
-                extranjero, debes comprobar las condiciones y
-                plazos aplicables a tu situación.
-
-            </p>
-
-
-            <a
-                href="https://www.ch.ch/en/vehicles-and-traffic/driving-licence/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Información oficial →
-            </a>
-
-        </article>
-
-
+      <article class="card full">
+        <div class="card-icon">⚠️</div>
+        <h2 data-no-translate data-l10n="transport.notice.title">Aviso importante</h2>
+        <p data-no-translate data-l10n="transport.notice.text1">Esta guia es informativa y resume de forma simple el funcionamiento general del transporte en Suiza.</p>
+        <p data-no-translate data-l10n="transport.notice.text2">Tarifas, frecuencias y coberturas pueden cambiar segun zona, temporada y operador.</p>
+      </article>
     </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     BICICLETA
-===================================================== -->
-
-<section>
-
-    <h2 class="section-title">
-        🚲 Bicicletas y bicicletas eléctricas
-    </h2>
-
-
-    <div class="card full">
-
-        <p>
-
-            La bicicleta puede ser una excelente forma de combinar
-            ejercicio, turismo y transporte.
-
-        </p>
-
-
-        <h3>
-            Antes de subir una bicicleta al tren
-        </h3>
-
-
-        <ul>
-
-            <li>
-                Comprueba si el trayecto permite transportar bicicletas.
-            </li>
-
-            <li>
-                Comprueba si necesitas un billete específico.
-            </li>
-
-            <li>
-                En determinadas conexiones puede ser necesaria una
-                reserva.
-            </li>
-
-            <li>
-                En temporada alta conviene comprobar las condiciones
-                con antelación.
-            </li>
-
-        </ul>
-
-
-        <a
-            href="https://www.sbb.ch/en/travel-information/travel-without-barriers/travel-with-bikes.html"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Información sobre bicicletas en SBB →
-        </a>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PHOTO SPOTS
-===================================================== -->
-
-<section id="photo-spots">
-
-    <h2 class="section-title">
-        📸 Cómo llegar a los 92 Photo Spots de Suiza
-    </h2>
-
-
-    <div class="card full">
-
-        <div class="card-icon">
-            📸
-        </div>
-
-
-        <h2>
-            Descubre los 92 Photo Spots del Grand Tour of Switzerland
-        </h2>
-
-
-        <p>
-
-            Switzerland Tourism mantiene actualmente un listado
-            oficial de <strong>92 Grand Tour Photo Spots</strong>
-            repartidos por Suiza.
-
-        </p>
-
-
-        <p>
-
-            En esta guía queremos ayudarte a utilizar el transporte
-            público para llegar a ellos, especialmente si partes
-            desde <strong>Zúrich</strong> o <strong>Berna</strong>.
-
-        </p>
-
-
-        <div class="important">
-
-            Los horarios y conexiones cambian. Por eso no vamos a
-            publicar horarios fijos de trenes en esta página.
-            Utiliza SBB para consultar la conexión exacta para el
-            día en que quieras viajar.
-
-        </div>
-
-
-        <div class="button-row">
-
-            <a
-                class="button"
-                href="https://www.myswitzerland.com/en/experiences/experience-tour/grand-tour-of-switzerland/photo-spots-search/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                🗺️ Ver los 92 Photo Spots oficiales
-            </a>
-
-
-            <a
-                class="button secondary"
-                href="https://www.sbb.ch/en"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                🚆 Planificar viaje en SBB
-            </a>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- DESDE ZURICH -->
-
-    <div class="card full">
-
-        <h2>
-            🚆 Salir desde Zúrich
-        </h2>
-
-
-        <p>
-
-            Zúrich es uno de los principales puntos de partida
-            para recorrer Suiza. Desde la ciudad puedes utilizar
-            trenes y conexiones regionales para comenzar rutas
-            hacia Suiza Oriental, Suiza Central, los Alpes y otras
-            regiones.
-
-        </p>
-
-
-        <h3>
-            Algunas ideas de excursión
-        </h3>
-
-
-        <div class="photo-grid">
-
-
-            <article class="photo-card">
-
-                <span class="photo-number">
-                    📸 Photo Spot
-                </span>
-
-                <h3>
-                    Rhine Falls
-                </h3>
-
-                <p>
-                    Dachsen · Suiza Oriental
-                </p>
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🚆 Planificar desde Zúrich →
-                </a>
-
-            </article>
-
-
-
-            <article class="photo-card">
-
-                <span class="photo-number">
-                    📸 Photo Spot
-                </span>
-
-                <h3>
-                    Stein am Rhein
-                </h3>
-
-                <p>
-                    Stein am Rhein · Suiza Oriental
-                </p>
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🚆 Planificar desde Zúrich →
-                </a>
-
-            </article>
-
-
-
-            <article class="photo-card">
-
-                <span class="photo-number">
-                    📸 Photo Spot
-                </span>
-
-                <h3>
-                    Stäfa
-                </h3>
-
-                <p>
-                    Stäfa · Lago de Zúrich
-                </p>
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🚆 Planificar desde Zúrich →
-                </a>
-
-            </article>
-
-
-
-            <article class="photo-card">
-
-                <span class="photo-number">
-                    📸 Photo Spot
-                </span>
-
-                <h3>
-                    Meilen
-                </h3>
-
-                <p>
-                    Meilen · Lago de Zúrich
-                </p>
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🚆 Planificar desde Zúrich →
-                </a>
-
-            </article>
-
-
-
-            <article class="photo-card">
-
-                <span class="photo-number">
-                    📸 Photo Spot
-                </span>
-
-                <h3>
-                    Heidi House
-                </h3>
-
-                <p>
-                    Maienfeld · Grisones
-                </p>
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🚆 Planificar desde Zúrich →
-                </a>
-
-            </article>
-
-
-
-            <article class="photo-card">
-
-                <span class="photo-number">
-                    📸 Photo Spot
-                </span>
-
-                <h3>
-                    Pizol Summit
-                </h3>
-
-                <p>
-                    Pizol · Grisones
-                </p>
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🚆 Planificar desde Zúrich →
-                </a>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-
-
-    <!-- DESDE BERNA -->
-
-    <div class="card full">
-
-        <h2>
-            🚆 Salir desde Berna
-        </h2>
-
-
-        <p>
-
-            Berna es un excelente punto de partida para explorar
-            el Oberland bernés, la Suiza occidental y diferentes
-            regiones alpinas.
-
-        </p>
-
-
-        <h3>
-            Algunas ideas de excursión
-        </h3>
-
-
-        <div class="photo-grid">
-
-
-            <article class="photo-card">
-
-                <span class="photo-number">
-                    📸 Photo Spot
-                </span>
-
-                <h3>
-                    Stockhorn - Simmental
-                </h3>
-
-                <p>
-                    Erlenbach im Simmental
-                </p>
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🚆 Planificar desde Berna →
-                </a>
-
-            </article>
-
-
-
-            <article class="photo-card">
-
-                <span class="photo-number">
-                    📸 Photo Spot
-                </span>
-
-                <h3>
-                    Gruyères
-                </h3>
-
-                <p>
-                    La Gruyère
-                </p>
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🚆 Planificar desde Berna →
-                </a>
-
-            </article>
-
-
-
-            <article class="photo-card">
-
-                <span class="photo-number">
-                    📸 Photo Spot
-                </span>
-
-                <h3>
-                    Grosser Mythen
-                </h3>
-
-                <p>
-                    Rickenbach bei Schwyz
-                </p>
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🚆 Planificar desde Berna →
-                </a>
-
-            </article>
-
-
-
-            <article class="photo-card">
-
-                <span class="photo-number">
-                    📸 Photo Spot
-                </span>
-
-                <h3>
-                    St. Moritz
-                </h3>
-
-                <p>
-                    St. Moritz · Grisones
-                </p>
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🚆 Planificar desde Berna →
-                </a>
-
-            </article>
-
-
-
-            <article class="photo-card">
-
-                <span class="photo-number">
-                    📸 Photo Spot
-                </span>
-
-                <h3>
-                    Great Aletsch Glacier
-                </h3>
-
-                <p>
-                    Eggishorn · Valais
-                </p>
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🚆 Planificar desde Berna →
-                </a>
-
-            </article>
-
-
-
-            <article class="photo-card">
-
-                <span class="photo-number">
-                    📸 Photo Spot
-                </span>
-
-                <h3>
-                    Erlach
-                </h3>
-
-                <p>
-                    Región de los Tres Lagos
-                </p>
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    🚆 Planificar desde Berna →
-                </a>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-
-
-    <!-- EJEMPLOS ADICIONALES -->
-
-    <div class="card full">
-
-        <h2>
-            🗺️ Otros Photo Spots oficiales
-        </h2>
-
-
-        <p>
-
-            El listado oficial incluye 92 ubicaciones. Algunos de
-            los Photo Spots que aparecen actualmente son:
-
-        </p>
-
-
-        <div class="table-wrapper">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            Photo Spot
-                        </th>
-
-                        <th>
-                            Localidad / región
-                        </th>
-
-                        <th>
-                            Planificar
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody>
-
-                    <tr>
-                        <td>Great Aletsch Glacier</td>
-                        <td>Eggishorn</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Alpstein</td>
-                        <td>Brülisau</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Cardada</td>
-                        <td>Orselina</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>St. Gallen</td>
-                        <td>St. Gallen</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Maloja</td>
-                        <td>Maloja</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Tremola</td>
-                        <td>San Gottardo</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Castel San Pietro</td>
-                        <td>San Pietro</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Meilen</td>
-                        <td>Meilen</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Gemmi 2350 - Leukerbad</td>
-                        <td>Leukerbad</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Gruyères</td>
-                        <td>La Gruyère</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Morcote</td>
-                        <td>Morcote</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Region Dents du Midi</td>
-                        <td>Morgins</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Stockhorn - Simmental</td>
-                        <td>Erlenbach im Simmental</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Heidi House</td>
-                        <td>Maienfeld</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Pizol Summit</td>
-                        <td>Pizol</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Stein am Rhein</td>
-                        <td>Stein am Rhein</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Piz Bernina</td>
-                        <td>Samedan</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Landquart Fashion Outlet</td>
-                        <td>Landquart</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Abbaye de Saint-Maurice</td>
-                        <td>Saint-Maurice</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Ascona</td>
-                        <td>Ascona</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Valais Barn im Goms</td>
-                        <td>Reckingen</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Val Surses</td>
-                        <td>Val Surses Savognin Bivio</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Erlach</td>
-                        <td>Erlach</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Stockalper Palace</td>
-                        <td>Brig</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>The Earth Pyramids of Euseigne</td>
-                        <td>Hérémence</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Burgdorf Castle</td>
-                        <td>Burgdorf</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>The Port of Morges</td>
-                        <td>Morges</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Pays-d’Enhaut</td>
-                        <td>Château-d'Oex</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Aarburg</td>
-                        <td>Aarburg</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Les Grottes de Vallorbe</td>
-                        <td>Vallorbe</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>St. Moritz</td>
-                        <td>St. Moritz</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Muottas Muragl</td>
-                        <td>Samedan</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Grosser Mythen</td>
-                        <td>Rickenbach bei Schwyz</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Davos Klosters</td>
-                        <td>Davos</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Stäfa</td>
-                        <td>Stäfa</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td>Rhine Falls</td>
-                        <td>Dachsen</td>
-                        <td>
-                            <a
-                                href="https://www.sbb.ch/en"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                SBB
-                            </a>
-                        </td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-        <div class="tip">
-
-            <strong>Importante:</strong>
-
-            esta tabla muestra parte del listado oficial. El
-            listado completo y actualizado de los 92 Photo Spots
-            debe consultarse en Switzerland Tourism, donde también
-            se puede utilizar el mapa y los filtros.
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CONSEJOS PHOTO SPOTS
-===================================================== -->
-
-<section>
-
-    <h2 class="section-title">
-        📸 Consejos para visitar Photo Spots
-    </h2>
-
-
-    <div class="cards">
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🕐
-            </div>
-
-
-            <h2>
-                Comprueba el horario
-            </h2>
-
-
-            <p>
-
-                Los horarios de trenes, autobuses, teleféricos,
-                funiculares y barcos pueden variar.
-
-            </p>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🌦️
-            </div>
-
-
-            <h2>
-                Mira el tiempo
-            </h2>
-
-
-            <p>
-
-                En las montañas las condiciones meteorológicas
-                pueden cambiar rápidamente.
-
-            </p>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🥾
-            </div>
-
-
-            <h2>
-                Comprueba el último tramo
-            </h2>
-
-
-            <p>
-
-                Llegar a una localidad no significa necesariamente
-                que el Photo Spot esté junto a la estación.
-
-            </p>
-
-        </article>
-
-
-
-        <article class="card">
-
-            <div class="card-icon">
-                🚠
-            </div>
-
-
-            <h2>
-                Comprueba los remontes
-            </h2>
-
-
-            <p>
-
-                Algunos lugares requieren teleféricos, funiculares
-                o trenes de montaña que pueden tener horarios
-                estacionales.
-
-            </p>
-
-        </article>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     RECOMENDACIONES
-===================================================== -->
-
-<section>
-
-    <h2 class="section-title">
-        ✅ Consejos para viajar por Suiza
-    </h2>
-
-
-    <div class="card full">
-
-        <ul class="checklist">
-
-            <li>
-                🚆 Comprueba la conexión en SBB antes de salir.
-            </li>
-
-            <li>
-                🎫 Compra el billete correcto antes de subir cuando
-                sea necesario.
-            </li>
-
-            <li>
-                📱 Lleva el billete en el móvil si lo has comprado
-                digitalmente.
-            </li>
-
-            <li>
-                ⏰ Si tienes varias conexiones, deja margen para
-                posibles cambios.
-            </li>
-
-            <li>
-                🌦️ Comprueba la previsión meteorológica en zonas
-                de montaña.
-            </li>
-
-            <li>
-                🚠 Comprueba la temporada de funcionamiento de
-                teleféricos y funiculares.
-            </li>
-
-            <li>
-                🚗 Si vas en coche, comprueba las carreteras y
-                condiciones de montaña.
-            </li>
-
-            <li>
-                🗺️ Guarda el mapa de la zona si vas a caminar.
-            </li>
-
-        </ul>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FUENTES
-===================================================== -->
-
-<section>
-
-    <h2 class="section-title">
-        📚 Fuentes oficiales y útiles
-    </h2>
-
-
-    <div class="card full">
-
-        <p>
-
-            Los precios, horarios, rutas y condiciones de transporte
-            pueden cambiar. Consulta siempre las fuentes oficiales
-            antes de realizar un viaje.
-
-        </p>
-
-
-        <ul class="source-list">
-
-
-            <li>
-
-                🚆
-
-                <a
-                    href="https://www.sbb.ch/en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    SBB — Ferrocarriles Federales Suizos
-                </a>
-
-            </li>
-
-
-            <li>
-
-                🎫
-
-                <a
-                    href="https://www.sbb.ch/en/tickets-offers/buy.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    SBB — Billetes y abonos
-                </a>
-
-            </li>
-
-
-            <li>
-
-                📸
-
-                <a
-                    href="https://www.myswitzerland.com/en/experiences/experience-tour/grand-tour-of-switzerland/photo-spots-search/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Switzerland Tourism — 92 Grand Tour Photo Spots
-                </a>
-
-            </li>
-
-
-            <li>
-
-                🚗
-
-                <a
-                    href="https://www.ch.ch/en/vehicles-and-traffic/how-to-behave-in-road-traffic/motorway-vignette/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Confederación Suiza — Vignette de autopista
-                </a>
-
-            </li>
-
-
-            <li>
-
-                🇨🇭
-
-                <a
-                    href="https://www.ch.ch/en/vehicles-and-traffic/public-transport/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    ch.ch — Transporte público
-                </a>
-
-            </li>
-
-
-        </ul>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     AVISO
-===================================================== -->
-
-<section>
-
-    <div class="card full">
-
-        <h2>
-            ⚠️ Importante
-        </h2>
-
-
-        <p>
-
-            Esta página tiene finalidad informativa. Los precios,
-            horarios, rutas, servicios y condiciones pueden cambiar.
-
-        </p>
-
-
-        <p>
-
-            Para un viaje concreto, comprueba siempre la conexión
-            actual en SBB y las condiciones de la empresa de
-            transporte correspondiente.
-
-        </p>
-
-
-        <p>
-
-            En el caso de los Photo Spots, consulta también la
-            información oficial de Switzerland Tourism antes de
-            desplazarte, especialmente cuando el punto se encuentre
-            en zonas de montaña o dependa de remontes.
-
-        </p>
-
-    </div>
-
-</section>
-
+  </section>
 
 </main>
 
-
-
-<!-- =====================================================
-     PIE DE PÁGINA
-     ===================================================== -->
-
 <footer class="site-credits">
-
-  <p>
-    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
-  </p>
-
+  <p>© 2026 Todos con Hernan · Suiza · Todos los derechos reservados.</p>
   <p class="developer-credit">
-    <a
-      href="https://www.instagram.com/techantoni/"
-      target="_blank"
-      rel="noopener noreferrer"
-      style="color: inherit; text-decoration: none;"
-    >
+    <a href="https://www.instagram.com/techantoni/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
       Yonathan Alvarado · Full Stack Web Developer · Spain
     </a>
   </p>
-
 </footer>
 
+<script>
+function downloadMapImage(id, filename) {
+  const card = document.getElementById(id);
+  const map = card && card.querySelector('.map-preview');
+  if (!map) return;
+  const svg = map.querySelector('svg');
+  if (!svg) return;
+  const source = new XMLSerializer().serializeToString(svg);
+  const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const mapImage = new Image();
+  mapImage.onload = function () {
+    const canvas = document.createElement('canvas');
+    canvas.width = svg.viewBox.baseVal.width || 1200;
+    canvas.height = svg.viewBox.baseVal.height || 675;
+    const context = canvas.getContext('2d');
+    context.drawImage(mapImage, 0, 0, canvas.width, canvas.height);
+    const logo = new Image();
+    logo.onload = function () {
+      const width = canvas.width * 0.15;
+      const height = logo.naturalHeight * (width / logo.naturalWidth);
+      context.drawImage(logo, canvas.width - width - 26, 26, width, height);
+      canvas.toBlob(function (imageBlob) {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(imageBlob);
+        link.download = filename + '.png';
+        link.click();
+        setTimeout(function () { URL.revokeObjectURL(link.href); }, 0);
+      }, 'image/png');
+    };
+    logo.src = 'img/LogoOficial.png';
+    URL.revokeObjectURL(url);
+  };
+  mapImage.src = url;
+}
+
+function printMap(id, title) {
+  const card = document.getElementById(id);
+  if (!card) return;
+  const preview = card.querySelector('.map-preview');
+  const brand = card.querySelector('.map-brand');
+  const printWindow = window.open('', '_blank', 'width=1000,height=760');
+  if (!printWindow) return;
+  let visual = preview.outerHTML;
+  const svg = preview.querySelector('svg');
+  if (svg) visual = new XMLSerializer().serializeToString(svg);
+  const brandMarkup = brand ? '<img class="map-print-brand" src="' + brand.src + '" alt="Todos con Hernan">' : '';
+  printWindow.document.write('<!doctype html><html><head><meta charset="utf-8"><title>' + title + '</title><style>body{margin:0;padding:32px;font-family:Arial,sans-serif;color:#102c45}h1{font-size:24px;margin:0 0 18px}.map-print{position:relative}.map-print-preview,.map-print svg{display:block;width:100%;height:auto;max-height:80vh}.map-print-brand{position:absolute;top:18px;right:18px;width:130px;height:auto;filter:drop-shadow(0 3px 6px rgba(0,0,0,.2))}p{font-size:13px;color:#496276;margin-top:16px}</style></head><body><h1>' + title + '</h1><div class="map-print">' + visual.replace('class="map-preview', 'class="map-print-preview') + brandMarkup + '</div><p>Mapa orientativo para uso informativo.</p><script>window.onload=function(){window.print();};<\\/script></body></html>');
+  printWindow.document.close();
+}
+</script>
+
+<script>
+(function () {
+  'use strict';
+
+  const STORAGE_KEY = 'todosConHernanLanguage';
+  const DICT = {
+    es: {
+      'transport.intro': 'Guia rapida para moverte por Suiza sin complicarte: precios reales, accesibilidad, circuitos entre cantones y paneles de referencia para tren, bus, tranvia y redes urbanas.',
+      'transport.summary.title': 'Resumen rapido del transporte en Suiza',
+      'transport.summary.intro': 'Paneles claros y directos, al estilo de Integrarse en Suiza.',
+      'transport.access.title': 'Accesibilidad',
+      'transport.access.text': 'La red suiza prioriza accesos adaptados y mejor conectividad para todos los perfiles de movilidad.',
+      'transport.access.list': '<li>Estaciones principales con ascensores y rampas.</li><li>Asistencia planificada en trayectos complejos.</li><li>Cobertura urbana con material de piso bajo.</li>',
+      'transport.prices.title': 'Precios reales (referencia)',
+      'transport.prices.list': '<li>Half Fare Adulto: CHF 190/anio.</li><li>Half Fare Jovenes: CHF 120/anio.</li><li>GA Adulto 2a clase: CHF 3.995/anio.</li><li>GA Adulto 1a clase: CHF 6.520/anio.</li><li>GA Senior 2a clase: CHF 3.040/anio.</li><li>GA 1 mes Adulto 2a clase: CHF 440.</li>',
+      'transport.prices.note': 'Los precios de trayectos individuales cambian segun zona, hora y antelacion de compra.',
+      'transport.payment.title': 'Pago y validacion',
+      'transport.payment.list': '<li>Compra digital y presencial segun red local.</li><li>Validacion previa cuando el sistema lo exige.</li><li>Conviene llevar una alternativa de pago.</li>',
+      'transport.circuit.title': 'Circuito entre cantones y ciudades',
+      'transport.circuit.intro': 'El viaje suele combinar un tramo principal intercity y redes locales en origen y destino.',
+      'transport.routes.title': 'Rutas tipo',
+      'transport.routes.list': '<li>Zurich ↔ Berna ↔ Lausana ↔ Ginebra.</li><li>Zurich ↔ Basilea ↔ Lucerna.</li><li>Berna ↔ Interlaken ↔ Valais.</li><li>Zurich ↔ St. Gallen ↔ Graubunden.</li>',
+      'transport.logic.title': 'Logica del trayecto',
+      'transport.logic.list': '<li>Acceso local: bus, tranvia o S-Bahn.</li><li>Tramo principal: tren regional o intercity.</li><li>Ultimo tramo: red local o transporte de montania.</li>',
+      'transport.maps.title': 'Paneles de mapa por red',
+      'transport.maps.intro': 'Resumen visual por ambito: nacional, Zurich, Ginebra y Basilea.',
+      'transport.maps.national.title': 'Red nacional',
+      'transport.maps.national.text': 'Cobertura integrada de trenes, buses, barcos y transporte de montania.',
+      'transport.maps.zurich.title': 'Area de Zurich',
+      'transport.maps.zurich.text': 'Combinacion densa de S-Bahn, tranvia y bus para movilidad metropolitana.',
+      'transport.maps.geneva.title': 'Area de Ginebra',
+      'transport.maps.geneva.text': 'Red urbana e interurbana enfocada en tranvia, trolebus y bus.',
+      'transport.maps.basel.title': 'Area de Basilea',
+      'transport.maps.basel.text': 'Sistema combinado de tranvia y bus para ciudad y periferia.',
+      'transport.notice.title': 'Aviso importante',
+      'transport.notice.text1': 'Esta guia es informativa y resume de forma simple el funcionamiento general del transporte en Suiza.',
+      'transport.notice.text2': 'Tarifas, frecuencias y coberturas pueden cambiar segun zona, temporada y operador.'
+    },
+    de: {
+      'transport.intro': 'Schneller Leitfaden fur Mobilitat in der Schweiz: reale Preise, Barrierefreiheit, Verbindungen zwischen Kantonen und Referenzpanels fur Zug, Bus, Tram und stadtische Netze.',
+      'transport.summary.title': 'Schnelle Ubersicht zum Verkehr in der Schweiz',
+      'transport.summary.intro': 'Klare und direkte Panels im Stil von Integrarse en Suiza.',
+      'transport.access.title': 'Barrierefreiheit',
+      'transport.access.text': 'Das Schweizer Netz priorisiert angepasste Zugange und bessere Erreichbarkeit fur alle Mobilitatsprofile.',
+      'transport.access.list': '<li>Hauptbahnhofe mit Aufzugen und Rampen.</li><li>Geplante Hilfe fur komplexe Fahrten.</li><li>Mehr angepasste Abdeckung in stadtischen Netzen.</li>',
+      'transport.prices.title': 'Reale Preise (Referenz)',
+      'transport.prices.list': '<li>Half Fare Erwachsene: CHF 190/Jahr.</li><li>Half Fare Jugend: CHF 120/Jahr.</li><li>GA Erwachsene 2. Klasse: CHF 3.995/Jahr.</li><li>GA Erwachsene 1. Klasse: CHF 6.520/Jahr.</li><li>GA Senioren 2. Klasse: CHF 3.040/Jahr.</li><li>GA 1 Monat Erwachsene 2. Klasse: CHF 440.</li>',
+      'transport.prices.note': 'Einzelfahrpreise variieren nach Zone, Uhrzeit und Vorlauf beim Kauf.',
+      'transport.payment.title': 'Zahlung und Validierung',
+      'transport.payment.list': '<li>Digitaler und prasenter Kauf je nach lokalem Netz.</li><li>Vorherige Validierung, wenn das System es verlangt.</li><li>Es ist sinnvoll, immer eine alternative Zahlungsoption zu haben.</li>',
+      'transport.circuit.title': 'Verkehr zwischen Kantonen und Stadten',
+      'transport.circuit.intro': 'Die Reise kombiniert meist eine Hauptstrecke im Intercity und lokale Netze am Start und Ziel.',
+      'transport.routes.title': 'Typische Routen',
+      'transport.routes.list': '<li>Zurich ↔ Bern ↔ Lausanne ↔ Genf.</li><li>Zurich ↔ Basel ↔ Luzern.</li><li>Bern ↔ Interlaken ↔ Wallis.</li><li>Zurich ↔ St. Gallen ↔ Graubunden.</li>',
+      'transport.logic.title': 'Fahrlogik',
+      'transport.logic.list': '<li>Lokaler Zugang: Bus, Tram oder S-Bahn.</li><li>Hauptabschnitt: Regional- oder Intercityzug.</li><li>Letzter Abschnitt: lokales Netz oder Bergtransport.</li>',
+      'transport.maps.title': 'Netzwerk-Panels',
+      'transport.maps.intro': 'Visuelle Ubersicht nach Bereich: national, Zurich, Genf und Basel.',
+      'transport.maps.national.title': 'Nationales Netz',
+      'transport.maps.national.text': 'Integrierte Abdeckung von Zugen, Bussen, Schiffen und Bergtransport.',
+      'transport.maps.zurich.title': 'Region Zurich',
+      'transport.maps.zurich.text': 'Dichtes Zusammenspiel von S-Bahn, Tram und Bus fur die Metropolmobilitat.',
+      'transport.maps.geneva.title': 'Region Genf',
+      'transport.maps.geneva.text': 'Stadtisches und uberstadtisches Netz mit Fokus auf Tram, Trolleybus und Bus.',
+      'transport.maps.basel.title': 'Region Basel',
+      'transport.maps.basel.text': 'Kombiniertes Tram- und Bussystem fur Stadt und Peripherie.',
+      'transport.notice.title': 'Wichtiger Hinweis',
+      'transport.notice.text1': 'Dieser Leitfaden ist informativ und fasst die allgemeine Funktionsweise des Verkehrs in der Schweiz einfach zusammen.',
+      'transport.notice.text2': 'Tarife, Frequenzen und Abdeckung konnen je nach Zone, Saison und Betreiber variieren.'
+    },
+    fr: {
+      'transport.intro': 'Guide rapide pour se deplacer en Suisse: prix reels, accessibilite, circuits entre cantons et panneaux de reference pour train, bus, tram et reseaux urbains.',
+      'transport.summary.title': 'Resume rapide du transport en Suisse',
+      'transport.summary.intro': 'Panneaux clairs et directs, dans le style de Integrarse en Suiza.',
+      'transport.access.title': 'Accessibilite',
+      'transport.access.text': 'Le reseau suisse privilegie les acces adaptes et une meilleure connectivite pour tous les profils de mobilite.',
+      'transport.access.list': '<li>Grandes gares avec ascenseurs et rampes.</li><li>Assistance planifiee pour trajets complexes.</li><li>Couverture urbaine adaptee plus etendue.</li>',
+      'transport.prices.title': 'Prix reels (reference)',
+      'transport.prices.list': '<li>Half Fare Adulte: CHF 190/an.</li><li>Half Fare Jeunes: CHF 120/an.</li><li>AG Adulte 2e classe: CHF 3.995/an.</li><li>AG Adulte 1re classe: CHF 6.520/an.</li><li>AG Senior 2e classe: CHF 3.040/an.</li><li>AG 1 mois Adulte 2e classe: CHF 440.</li>',
+      'transport.prices.note': 'Les prix des trajets individuels varient selon la zone, l heure et l anticipation de l achat.',
+      'transport.payment.title': 'Paiement et validation',
+      'transport.payment.list': '<li>Achat numerique et en presentiel selon le reseau local.</li><li>Validation prealable lorsque le systeme l exige.</li><li>Il est recommande d avoir une option de paiement alternative.</li>',
+      'transport.circuit.title': 'Circuit entre cantons et villes',
+      'transport.circuit.intro': 'Le trajet combine en general un troncon principal intercity et des reseaux locaux au depart et a l arrivee.',
+      'transport.routes.title': 'Itineraires types',
+      'transport.routes.list': '<li>Zurich ↔ Berne ↔ Lausanne ↔ Geneve.</li><li>Zurich ↔ Bale ↔ Lucerne.</li><li>Berne ↔ Interlaken ↔ Valais.</li><li>Zurich ↔ Saint-Gall ↔ Grisons.</li>',
+      'transport.logic.title': 'Logique du trajet',
+      'transport.logic.list': '<li>Acces local: bus, tram ou S-Bahn.</li><li>Troncon principal: train regional ou intercity.</li><li>Dernier troncon: reseau local ou transport de montagne.</li>',
+      'transport.maps.title': 'Panneaux par reseau',
+      'transport.maps.intro': 'Resume visuel par zone: national, Zurich, Geneve et Bale.',
+      'transport.maps.national.title': 'Reseau national',
+      'transport.maps.national.text': 'Couverture integree de trains, bus, bateaux et transport de montagne.',
+      'transport.maps.zurich.title': 'Zone de Zurich',
+      'transport.maps.zurich.text': 'Combinaison dense de S-Bahn, tram et bus pour la mobilite metropolitaine.',
+      'transport.maps.geneva.title': 'Zone de Geneve',
+      'transport.maps.geneva.text': 'Reseau urbain et interurbain axe sur tram, trolleybus et bus.',
+      'transport.maps.basel.title': 'Zone de Bale',
+      'transport.maps.basel.text': 'Systeme combine de tram et bus pour la ville et la peripherie.',
+      'transport.notice.title': 'Avis important',
+      'transport.notice.text1': 'Ce guide est informatif et resume de maniere simple le fonctionnement general du transport en Suisse.',
+      'transport.notice.text2': 'Tarifs, frequences et couverture peuvent changer selon la zone, la saison et l operateur.'
+    },
+    it: {
+      'transport.intro': 'Guida rapida per muoversi in Svizzera: prezzi reali, accessibilita, circuiti tra cantoni e pannelli di riferimento per treno, bus, tram e reti urbane.',
+      'transport.summary.title': 'Riepilogo rapido del trasporto in Svizzera',
+      'transport.summary.intro': 'Pannelli chiari e diretti, nello stile di Integrarse en Suiza.',
+      'transport.access.title': 'Accessibilita',
+      'transport.access.text': 'La rete svizzera da priorita ad accessi adattati e migliore connettivita per tutti i profili di mobilita.',
+      'transport.access.list': '<li>Stazioni principali con ascensori e rampe.</li><li>Assistenza pianificata per viaggi complessi.</li><li>Maggiore copertura adattata nelle reti urbane.</li>',
+      'transport.prices.title': 'Prezzi reali (riferimento)',
+      'transport.prices.list': '<li>Half Fare Adulti: CHF 190/anno.</li><li>Half Fare Giovani: CHF 120/anno.</li><li>GA Adulti 2a classe: CHF 3.995/anno.</li><li>GA Adulti 1a classe: CHF 6.520/anno.</li><li>GA Senior 2a classe: CHF 3.040/anno.</li><li>GA 1 mese Adulti 2a classe: CHF 440.</li>',
+      'transport.prices.note': 'I prezzi dei singoli tragitti variano per zona, orario e anticipo di acquisto.',
+      'transport.payment.title': 'Pagamento e convalida',
+      'transport.payment.list': '<li>Acquisto digitale e in presenza secondo la rete locale.</li><li>Convalida preventiva quando il sistema lo richiede.</li><li>Conviene avere sempre un opzione di pagamento alternativa.</li>',
+      'transport.circuit.title': 'Circuito tra cantoni e citta',
+      'transport.circuit.intro': 'Il viaggio combina di solito una tratta principale intercity e reti locali a partenza e arrivo.',
+      'transport.routes.title': 'Rotte tipo',
+      'transport.routes.list': '<li>Zurigo ↔ Berna ↔ Losanna ↔ Ginevra.</li><li>Zurigo ↔ Basilea ↔ Lucerna.</li><li>Berna ↔ Interlaken ↔ Vallese.</li><li>Zurigo ↔ San Gallo ↔ Grigioni.</li>',
+      'transport.logic.title': 'Logica del percorso',
+      'transport.logic.list': '<li>Accesso locale: bus, tram o S-Bahn.</li><li>Tratta principale: treno regionale o intercity.</li><li>Ultima tratta: rete locale o trasporto di montagna.</li>',
+      'transport.maps.title': 'Pannelli per rete',
+      'transport.maps.intro': 'Riepilogo visivo per area: nazionale, Zurigo, Ginevra e Basilea.',
+      'transport.maps.national.title': 'Rete nazionale',
+      'transport.maps.national.text': 'Copertura integrata di treni, bus, battelli e trasporto di montagna.',
+      'transport.maps.zurich.title': 'Area di Zurigo',
+      'transport.maps.zurich.text': 'Combinazione fitta di S-Bahn, tram e bus per la mobilita metropolitana.',
+      'transport.maps.geneva.title': 'Area di Ginevra',
+      'transport.maps.geneva.text': 'Rete urbana e interurbana centrata su tram, filobus e bus.',
+      'transport.maps.basel.title': 'Area di Basilea',
+      'transport.maps.basel.text': 'Sistema combinato tram e bus per citta e periferia.',
+      'transport.notice.title': 'Avviso importante',
+      'transport.notice.text1': 'Questa guida e informativa e riassume in modo semplice il funzionamento generale del trasporto in Svizzera.',
+      'transport.notice.text2': 'Tariffe, frequenze e copertura possono cambiare secondo zona, stagione e operatore.'
+    },
+    en: {
+      'transport.intro': 'Quick guide to moving around Switzerland: real prices, accessibility, inter-cantonal circuits, and reference panels for train, bus, tram, and urban networks.',
+      'transport.summary.title': 'Quick overview of transport in Switzerland',
+      'transport.summary.intro': 'Clear and direct panels, in the style of Integrarse en Suiza.',
+      'transport.access.title': 'Accessibility',
+      'transport.access.text': 'The Swiss network prioritizes adapted access and better connectivity for all mobility profiles.',
+      'transport.access.list': '<li>Main stations with elevators and ramps.</li><li>Planned assistance for complex trips.</li><li>Broader adapted coverage in urban networks.</li>',
+      'transport.prices.title': 'Real prices (reference)',
+      'transport.prices.list': '<li>Half Fare Adult: CHF 190/year.</li><li>Half Fare Youth: CHF 120/year.</li><li>GA Adult 2nd class: CHF 3,995/year.</li><li>GA Adult 1st class: CHF 6,520/year.</li><li>GA Senior 2nd class: CHF 3,040/year.</li><li>GA 1 month Adult 2nd class: CHF 440.</li>',
+      'transport.prices.note': 'Individual trip prices vary by zone, time, and purchase lead time.',
+      'transport.payment.title': 'Payment and validation',
+      'transport.payment.list': '<li>Digital and in-person purchase depending on local network.</li><li>Pre-validation when required by the system.</li><li>It is advisable to keep an alternative payment option.</li>',
+      'transport.circuit.title': 'Circuit between cantons and cities',
+      'transport.circuit.intro': 'Trips usually combine a main intercity segment and local networks at origin and destination.',
+      'transport.routes.title': 'Typical routes',
+      'transport.routes.list': '<li>Zurich ↔ Bern ↔ Lausanne ↔ Geneva.</li><li>Zurich ↔ Basel ↔ Lucerne.</li><li>Bern ↔ Interlaken ↔ Valais.</li><li>Zurich ↔ St. Gallen ↔ Graubunden.</li>',
+      'transport.logic.title': 'Trip logic',
+      'transport.logic.list': '<li>Local access: bus, tram, or S-Bahn.</li><li>Main segment: regional or intercity train.</li><li>Last segment: local network or mountain transport.</li>',
+      'transport.maps.title': 'Network map panels',
+      'transport.maps.intro': 'Visual summary by area: national, Zurich, Geneva, and Basel.',
+      'transport.maps.national.title': 'National network',
+      'transport.maps.national.text': 'Integrated coverage of trains, buses, boats, and mountain transport.',
+      'transport.maps.zurich.title': 'Zurich area',
+      'transport.maps.zurich.text': 'Dense combination of S-Bahn, tram, and bus for metro mobility.',
+      'transport.maps.geneva.title': 'Geneva area',
+      'transport.maps.geneva.text': 'Urban and interurban network focused on tram, trolleybus, and bus.',
+      'transport.maps.basel.title': 'Basel area',
+      'transport.maps.basel.text': 'Combined tram and bus system for city and outskirts.',
+      'transport.notice.title': 'Important notice',
+      'transport.notice.text1': 'This guide is informational and summarizes in a simple way how transport generally works in Switzerland.',
+      'transport.notice.text2': 'Fares, frequencies, and coverage may change by zone, season, and operator.'
+    }
+  };
+
+  function applyL10n(lang) {
+    const dict = DICT[lang] || DICT.es;
+    document.querySelectorAll('[data-l10n]').forEach(function (el) {
+      const key = el.getAttribute('data-l10n');
+      const value = dict[key];
+      if (!value) return;
+      if (el.tagName === 'UL') el.innerHTML = value;
+      else el.textContent = value;
+    });
+  }
+
+  function currentLang() {
+    return localStorage.getItem(STORAGE_KEY) || 'es';
+  }
+
+  function init() {
+    applyL10n(currentLang());
+    document.addEventListener('click', function (event) {
+      const flag = event.target.closest('.languageFlag');
+      if (!flag) return;
+      setTimeout(function () { applyL10n(flag.dataset.lang || currentLang()); }, 0);
+    });
+    window.addEventListener('storage', function (event) {
+      if (event.key === STORAGE_KEY) applyL10n(event.newValue || 'es');
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+}());
+</script>
 
 <script src="js/i18n.js"></script>
 </body>
-
 </html>

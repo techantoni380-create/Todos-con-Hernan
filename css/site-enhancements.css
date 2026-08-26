@@ -1,5 +1,5 @@
 /* Shared shell for every page: navigation, language control and media. */
-:root { --site-header-height: 64px; }
+:root { --site-header-height: 58px; }
 html, body { overflow-x: hidden; }
 img, video, iframe { max-width: 100%; }
 
@@ -16,13 +16,13 @@ img, video, iframe { max-width: 100%; }
   z-index: 1000 !important;
   min-height: var(--site-header-height) !important;
   height: var(--site-header-height) !important;
-  width: 100% !important;
-  display: flex !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
   align-items: center !important;
-  justify-content: center !important;
-  padding: 0 176px 0 20px !important;
-  background: rgba(4, 17, 27, .96) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, .13) !important;
+  justify-content: stretch !important;
+  padding: 0 176px 0 18px !important;
+  background: rgba(3, 15, 24, .78) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .16) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -31,40 +31,113 @@ img, video, iframe { max-width: 100%; }
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  height: 100% !important;
+  height: 58px !important;
+  gap: 28px !important;
+  width: 100%;
   max-width: 1120px;
-  gap: clamp(12px, 2vw, 32px) !important;
+  justify-self: center;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
 }
 
 .mainNav a {
-  height: 100% !important;
+  height: 58px !important;
+  min-height: 58px !important;
   display: flex !important;
   align-items: center !important;
-  font-size: clamp(10px, 1vw, 13px) !important;
+  font-size: 12px !important;
   letter-spacing: .02em;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* Custom headers also receive the language selector from the shared script. */
+.top-header,
+.top {
+  position: relative;
+  padding-right: 176px !important;
+  gap: 20px;
+  background: rgba(3, 15, 24, .78) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .16) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.top-header .languageSelector,
+.top .languageSelector {
+  right: 14px !important;
+  top: 0 !important;
 }
 
 .languageSelector {
   position: absolute !important;
   top: 0 !important;
-  right: 18px !important;
-  height: var(--site-header-height) !important;
+  right: 14px !important;
+  height: 58px !important;
   display: flex !important;
   align-items: center !important;
-  gap: 7px !important;
-  z-index: 1002 !important;
+  gap: 4px !important;
+  visibility: visible !important;
+  opacity: 1;
+}
+
+@media (max-width: 1180px) and (min-width: 761px) {
+  .topbar { padding-left: 12px !important; padding-right: 176px !important; }
+  .mainNav { justify-content: flex-start !important; gap: 14px !important; }
+  .mainNav a { font-size: 10px !important; }
+  .languageSelector { right: 8px !important; gap: 4px !important; }
+  .languageFlag { width: 27px !important; height: 27px !important; flex-basis: 27px; }
 }
 
 .languageFlag {
-  width: 32px !important;
-  height: 32px !important;
-  flex: 0 0 32px;
+  width: 29px !important;
+  height: 29px !important;
+  flex: 0 0 29px;
+  display: inline-flex !important;
+  visibility: visible !important;
 }
 
 .languageFlag img { filter: none !important; }
 .languageSelector.is-translating { opacity: .7; pointer-events: none; }
 .mobileMenuToggle { display: none; }
 .grandTourMobileTools, .mobileTourClose { display: none; }
+
+/* Hernan follows the same compact header profile as Inicio. */
+body[data-header-compact] .topbar {
+  min-height: 58px !important;
+  height: 58px !important;
+  padding: 0 176px 0 18px !important;
+}
+
+body[data-header-compact] .mainNav {
+  height: 58px !important;
+  gap: 28px !important;
+}
+
+body[data-header-compact] .mainNav a {
+  height: 58px !important;
+  min-height: 58px !important;
+  font-size: 12px !important;
+}
+
+body[data-header-compact] .languageSelector {
+  right: 14px !important;
+  height: 58px !important;
+  gap: 4px !important;
+}
+
+body[data-header-compact] .languageFlag {
+  width: 29px !important;
+  height: 29px !important;
+  flex-basis: 29px !important;
+}
+
+body[data-header-compact] .languageFlag img {
+  width: 17px !important;
+  height: 12px !important;
+}
 
 /* A consistent, subtle lift so editorial photography and video stand out. */
 body img { filter: brightness(1.09) contrast(1.035) saturate(1.07); }
@@ -90,16 +163,23 @@ footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-hei
 
 @media (max-width: 900px) {
   .topbar { height: auto !important; min-height: 58px !important; padding: 0 152px 0 12px !important; }
-  .mainNav { width: 100%; overflow-x: auto; justify-content: flex-start !important; gap: 16px !important; }
+  .mainNav { width: 100%; max-width: none; overflow-x: auto; justify-content: flex-start !important; gap: 16px !important; }
   .mainNav a { min-height: 58px; font-size: 10px !important; }
   .languageSelector { right: 8px !important; gap: 4px !important; }
   .languageFlag { width: 27px !important; height: 27px !important; flex-basis: 27px; }
+  .top-header, .top { padding-right: 165px !important; }
 }
 
 @media (max-width: 520px) {
   .topbar { padding-right: 8px !important; padding-top: 40px !important; }
   .languageSelector { left: 8px !important; right: auto !important; height: 40px !important; }
   .mainNav a { min-height: 50px; }
+  .top-header, .top { padding-right: 8px !important; padding-top: 48px !important; }
+  .top-header .languageSelector, .top .languageSelector {
+    left: 8px !important;
+    right: auto !important;
+    height: 40px !important;
+  }
 }
 
 /* Mobile site navigation: it remains easy to reach without squeezing eight links
@@ -187,32 +267,60 @@ footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-hei
    panels become full-height drawers that can be opened on demand. */
 @media (max-width: 760px) {
   body:has(#map) { padding-bottom: 78px !important; }
-  body:has(#map) .layout { height: calc(100dvh - 136px) !important; min-height: 360px; }
+  body:has(#map) .layout {
+    height: calc(100dvh - var(--site-header-height) - 78px) !important;
+    min-height: 360px;
+  }
+  body:has(#map) .mapPanel {
+    position: relative !important;
+    min-height: 0 !important;
+    height: 100% !important;
+  }
+  body:has(#map) #map {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 360px !important;
+  }
   body:has(#map) .mapBadge,
   body:has(#map) .mapLegend { display: none !important; }
-  body:has(#map) .carouselWrap { bottom: 6px !important; height: 132px; padding: 24px 38px 8px; }
-  body:has(#map) .carousel { height: 98px; }
+  body:has(#map) .carouselWrap {
+    bottom: 6px !important;
+    height: 160px !important;
+    padding: 14px 38px 8px !important;
+  }
+  body:has(#map) .carousel {
+    height: 120px !important;
+  }
   body:has(#map) .thumb { flex-basis: 104px; }
   body:has(#map) .carouselArrow { width: 34px; height: 34px; font-size: 26px; }
 
   .grandTourMobileTools {
     position: absolute;
     z-index: 1100;
-    top: 12px;
-    left: 12px;
+    top: 10px;
+    left: 10px;
     display: grid;
-    gap: 7px;
+    gap: 4px;
   }
   .grandTourMobileTools button {
-    min-height: 38px;
-    padding: 0 12px;
+    min-height: 31px;
+    padding: 0 8px;
     border: 1px solid rgba(255,255,255,.35);
-    border-radius: 10px;
+    border-radius: 8px;
     background: rgba(4,17,27,.92);
     box-shadow: 0 4px 14px rgba(0,0,0,.28);
     color: #fff;
-    font: 800 11px/1 Arial, sans-serif;
+    font: 800 9px/1 Arial, sans-serif;
     cursor: pointer;
+  }
+  body:has(#map) .leaflet-control-zoom,
+  body:has(#map) .leaflet-control-layers {
+    display: block !important;
+    z-index: 1200 !important;
+  }
+  body:has(#map) .leaflet-control-zoom a,
+  body:has(#map) .leaflet-control-layers {
+    touch-action: manipulation;
   }
 
   body:has(#map) .sidePanel,

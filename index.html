@@ -704,6 +704,39 @@ footer.site-credits > p.developer-credit a {
     line-height: 1.35 !important;
   }
 }
+
+@media (min-width: 761px) {
+  /* Keep the fixed footer below the interactive map and carousel. */
+  body:has(#map) .layout {
+    height: calc(100vh - var(--site-header-height, 58px) - 70px) !important;
+  }
+}
+
+footer.site-credits > p {
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+}
+
+@media (min-width: 761px) {
+  body:has(#map) {
+    padding-bottom: 54px !important;
+  }
+
+  body:has(#map) .layout {
+    height: calc(100vh - var(--site-header-height, 58px) - 54px) !important;
+  }
+
+  body:has(#map) footer.site-credits {
+    height: 54px !important;
+    min-height: 54px !important;
+    padding: 4px 20px !important;
+    gap: 0 !important;
+  }
+
+  body:has(#map) footer.site-credits > p {
+    line-height: 1.05 !important;
+  }
+}
 </style>
 
 </head>
@@ -1067,17 +1100,6 @@ footer.site-credits > p.developer-credit a {
       <section class="carouselWrap">
 
 
-        <div class="carouselHeader">
-
-          PHOTO SPOTS
-
-          <b>
-            01–92
-          </b>
-
-        </div>
-
-
         <button
           id="carouselPrev"
           class="carouselArrow left"
@@ -1217,7 +1239,7 @@ footer.site-credits > p.developer-credit a {
              INFORMACIÓN DEL SPOT
              ================================================= -->
 
-        <div class="infoBody">
+        <div class="infoBody" id="infoBody">
 
 
           <h2 id="infoName">
@@ -1463,6 +1485,7 @@ footer.site-credits > p.developer-credit a {
 
           <section
             class="gpsPanel"
+            id="gpsPanel"
             aria-label="Navegación GPS"
           >
 
