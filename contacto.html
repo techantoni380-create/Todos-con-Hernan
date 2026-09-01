@@ -637,7 +637,7 @@
         }
 
         .team-intro {
-            max-width: 860px;
+            max-width: 1180px;
             margin: 0 auto 54px;
             text-align: center;
         }
@@ -658,14 +658,38 @@
         }
 
         .team-intro h2 {
-            margin: 20px 0 14px;
+            display: block;
+            box-sizing: border-box;
+            width: fit-content;
+            max-width: 100%;
+            margin: 20px auto 14px;
+            text-align: center;
             color: #10283a;
             font-size: clamp(34px, 5vw, 56px);
             line-height: 1.04;
             letter-spacing: -.035em;
+            white-space: nowrap;
+            background: transparent;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,.7);
+            border-radius: 20px;
+            padding: 14px 32px;
+            box-shadow: 0 10px 30px rgba(16,40,58,.14);
         }
 
-        .team-intro h2 span { color: #ef1820; }
+        .team-intro h2 span {
+            color: #ef1820;
+            text-shadow:
+                -3px -3px 0 #FFFFFF,
+                 3px -3px 0 #FFFFFF,
+                -3px  3px 0 #FFFFFF,
+                 3px  3px 0 #FFFFFF,
+                -3px  0    0 #FFFFFF,
+                 3px  0    0 #FFFFFF,
+                 0   -3px 0 #FFFFFF,
+                 0    3px 0 #FFFFFF;
+        }
 
         .team-intro p {
             max-width: 790px;
@@ -673,6 +697,34 @@
             color: #617486;
             font-size: 18px;
             line-height: 1.7;
+        }
+
+        .team-intro p.team-intro-highlight {
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #FFFFFF;
+            background: rgba(16, 40, 58, .38);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 18px;
+            padding: 30px 38px;
+            font-size: 23px;
+            text-wrap: balance;
+            box-shadow: 0 8px 26px rgba(16,40,58,.18);
+        }
+
+        .agenda-note-highlight {
+            color: #FFFFFF;
+            background: rgba(16, 40, 58, .38);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 18px;
+            padding: 20px 26px;
+            font-size: 19px;
+            box-shadow: 0 8px 26px rgba(16,40,58,.18);
         }
 
         .team-cards {
@@ -699,6 +751,47 @@
             box-shadow: 0 25px 60px rgba(16,40,58,.16);
         }
 
+        .team-profile::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            border-radius: inherit;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 0 1px rgba(255,255,255,.45), 0 0 30px 4px rgba(239,24,32,.16), 0 0 60px 12px rgba(16,40,58,.10);
+            transition: opacity .5s ease;
+        }
+
+        .team-profile::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -60%;
+            width: 35%;
+            height: 100%;
+            z-index: 4;
+            pointer-events: none;
+            background: linear-gradient(115deg, transparent, rgba(255,255,255,.32), transparent);
+            transform: skewX(-18deg);
+            opacity: 0;
+            transition: opacity .35s ease;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .team-profile:hover::before { opacity: 1; }
+
+            .team-profile:hover::after {
+                opacity: 1;
+                animation: teamCardSheen 1.15s ease forwards;
+            }
+        }
+
+        @keyframes teamCardSheen {
+            0% { left: -60%; }
+            100% { left: 130%; }
+        }
+
         .team-photo {
             position: relative;
             aspect-ratio: 4 / 4.5;
@@ -712,10 +805,14 @@
             display: block;
             object-fit: cover;
             object-position: center 28%;
-            transition: transform .5s ease;
+            transition: transform .5s ease, filter .5s ease;
         }
 
         .team-profile:hover .team-photo img { transform: scale(1.035); }
+
+        @media (hover: hover) and (pointer: fine) {
+            .team-profile:hover .team-photo img { filter: brightness(1.06); }
+        }
 
         .team-profile.hernan .team-photo img { object-position: center 30%; }
         .team-profile.yury .team-photo img { object-position: center 25%; }
@@ -745,6 +842,14 @@
             backdrop-filter: blur(7px);
         }
 
+        .team-country .team-flag {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin: -2px 2px 0 0;
+        }
+
         .team-content { padding: 28px 28px 30px; }
 
         .team-profile h3 {
@@ -752,6 +857,11 @@
             color: #10283a;
             font-size: 28px;
             line-height: 1.1;
+        }
+
+        .team-profile h3 .team-name-link {
+            color: inherit;
+            text-decoration: none;
         }
 
         .team-role {
@@ -762,6 +872,10 @@
             letter-spacing: .055em;
             text-transform: uppercase;
             line-height: 1.45;
+        }
+
+        .team-profile.hernan .team-role {
+            text-shadow: 0 0 1px rgba(255,255,255,.85), 0 1px 2px rgba(16,40,58,.35);
         }
 
         .team-profile p {
@@ -783,7 +897,7 @@
         }
 
         .team-bottom {
-            max-width: 900px;
+            max-width: 1180px;
             margin: 46px auto 0;
             padding: 24px 28px;
             border-radius: 18px;
@@ -803,8 +917,11 @@
         @media (max-width: 620px) {
             .team-section { padding: 72px 18px 82px; }
             .team-intro { margin-bottom: 36px; }
+            .team-intro h2 { font-size: 6.6vw; padding: 10px 18px; }
             .team-intro p { font-size: 16px; }
             .team-content { padding: 24px; }
+            .team-bottom { padding: 28px 22px; }
+            .team-bottom p { font-size: 17px; }
         }
 
         .booking-form {
@@ -1471,7 +1588,8 @@
 
         .team-intro h2 span {
             color: #ef1820 !important;
-            text-shadow: 0 3px 12px rgba(0,0,0,.60);
+            text-shadow: none !important;
+            -webkit-text-stroke: 1px #FFFFFF;
         }
 
         .team-intro p {
@@ -1487,15 +1605,25 @@
             text-shadow: 0 2px 10px rgba(0,0,0,.55);
         }
 
+        .team-bottom .team-line-nowrap {
+            white-space: nowrap;
+        }
+
+        @media (max-width: 700px) {
+            .team-bottom .team-line-nowrap {
+                white-space: normal;
+            }
+        }
+
 
         /* =====================================================
            AGENDA · PANEL ÚNICO, COMPACTO Y TRANSPARENTE
            ===================================================== */
         .appointment-single {
-            max-width: 1120px;
+            max-width: 720px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: minmax(270px, .78fr) minmax(0, 1.22fr);
+            grid-template-columns: 1fr;
             gap: 0;
             align-items: stretch;
             overflow: hidden;
@@ -1548,7 +1676,6 @@
             min-height: 0;
             padding: 26px 30px;
             border: 0;
-            border-left: 1px solid rgba(255,255,255,.16);
             border-radius: 0;
             background: rgba(3, 17, 27, .34);
             text-align: center;
@@ -1561,17 +1688,39 @@
             color: #ffffff;
         }
 
+        .appointment-single .bookingPlaceholder h3 .booking-title-red {
+            color: #ef1820;
+        }
+
         .appointment-single .bookingPlaceholder > p {
             margin: 0 0 15px;
             color: #ffffff;
+            font-size: 21px;
             line-height: 1.35;
             text-shadow: 0 2px 10px rgba(0,0,0,.45);
+        }
+
+        .whatsapp-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin: -3px 2px 0 2px;
+        }
+
+        @media (max-width: 620px) {
+            .appointment-single .bookingPlaceholder > p {
+                font-size: 16px;
+            }
         }
 
         .appointment-single .booking-form {
             width: 100%;
             max-width: 620px;
             margin-top: 16px;
+        }
+
+        .appointment-single .booking-form label {
+            font-size: 19px;
         }
 
         .appointment-single .booking-form .btn {
@@ -1582,7 +1731,7 @@
             border: 1px solid rgba(255,255,255,.55);
             color: #ffffff;
             box-shadow: none;
-            font-size: 13px;
+            font-size: 19px;
         }
 
         .appointment-single .booking-form .btn:hover {
@@ -1594,11 +1743,6 @@
         @media (max-width: 820px) {
             .appointment-single {
                 grid-template-columns: 1fr;
-            }
-
-            .appointment-single .bookingPlaceholder {
-                border-left: 0;
-                border-top: 1px solid rgba(255,255,255,.16);
             }
 
             .appointmentInfo {
@@ -1798,8 +1942,12 @@
         }
 
         .team-bottom {
-            margin-top: 28px;
-            padding: 20px 24px;
+            margin-top: 44px;
+            padding: 66px 66px;
+        }
+
+        .team-bottom p {
+            font-size: 23px;
         }
 
         /* Acerca la agenda al bloque del equipo */
@@ -1926,8 +2074,8 @@ footer.site-credits > p.developer-credit {
         }
 
         .contact-team-label + .team-section .team-bottom {
-            margin-top: 20px;
-            padding: 16px 22px;
+            margin-top: 32px;
+            padding: 46px 40px;
         }
 
         .contact-team-label + .team-section + .section {
@@ -1999,18 +2147,6 @@ body::after {
 main,
 main > section,
 .section,
-        <section class="hero contact-hero">
-            <div class="heroContent">
-                <div class="label">TODOS CON HERNÁN · CONTACTO</div>
-                <h1>HABLEMOS<br><span>CONTIGO</span></h1>
-                <p>
-                    Orientación cercana, información clara y un espacio para
-                    contar tus planes antes de dar el paso hacia Suiza.
-                </p>
-            </div>
-        </section>
-
-
 .section.dark,
 .hero {
     background: transparent !important;
@@ -2189,14 +2325,6 @@ body::after {
 
         </nav>
 
-        <div class="languageSelector" aria-label="Selector de idioma">
-            <button class="languageFlag" data-lang="es" type="button" title="Español" aria-label="Español"><img src="img/bandera-es.svg" alt="Español"></button>
-            <button class="languageFlag" data-lang="de" type="button" title="Deutsch" aria-label="Deutsch"><img src="img/bandera-de.svg" alt="Deutsch"></button>
-            <button class="languageFlag" data-lang="fr" type="button" title="Français" aria-label="Français"><img src="img/bandera-fr.svg" alt="Français"></button>
-            <button class="languageFlag" data-lang="it" type="button" title="Italiano" aria-label="Italiano"><img src="img/bandera-it.svg" alt="Italiano"></button>
-            <button class="languageFlag" data-lang="en" type="button" title="English" aria-label="English"><img src="img/bandera-en.svg" alt="English"></button>
-        </div>
-
     </header>
 
 
@@ -2241,7 +2369,7 @@ body::after {
                     </svg>
                 </a>
 
-                <a href="https://www.facebook.com/todosconhernan"
+                <a href="https://www.facebook.com/profile.php?id=61578717322853&rdid=l8vElcXJznSmmHkw&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1S1TAV2En7%2F#"
                    target="_blank" rel="noopener noreferrer"
                    aria-label="Facebook" title="Facebook">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -2259,46 +2387,45 @@ body::after {
              AGENDA
              ================================================= -->
 
-        <div class="contact-team-label">CONTACTO DIRECTO</div>
-
         <section class="team-section" id="equipo">
             <div class="team-section-inner">
                 <div class="team-intro">
                     <div class="team-kicker">✦ Nuestro equipo</div>
                     <h2>Personas detrás de <span>Todos con Hernán</span></h2>
-                    <p>Un equipo internacional que combina experiencia en Suiza, producción audiovisual y tecnología para crear contenidos y proyectos digitales con una visión europea e internacional.</p>
+                    <p class="team-intro-highlight">Un equipo internacional que combina experiencia en Suiza, producción audiovisual y tecnología para crear contenidos y proyectos digitales con una visión europea e&nbsp;internacional.</p>
                 </div>
 
                 <div class="team-cards">
                     <article class="team-profile hernan">
                         <div class="team-photo">
                             <img src="img/HernanManager.png" alt="Hernán, fundador y director de Todos con Hernán" loading="lazy">
-                            <span class="team-country">🇨🇭 Suiza</span>
+                            <span class="team-country"><svg class="team-flag" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#d52b1e"/><rect x="13" y="7" width="6" height="18" fill="#fff"/><rect x="7" y="13" width="18" height="6" fill="#fff"/></svg> Suiza</span>
                         </div>
                         <div class="team-content">
-                            <h3>Hernán</h3>
+                            <h3><a class="team-name-link" href="https://www.instagram.com/todosconhernan/" target="_blank" rel="noopener noreferrer">Hernán</a></h3>
                             <div class="team-role">Fundador · Dirección · Contenido · Comunidad</div>
                             <p>Nacido en Esmeraldas, Ecuador, lleva más de 26 años viviendo y desarrollando su trayectoria profesional en Suiza. Su experiencia, formación continua y conocimiento del país son la base de un proyecto creado para conectar experiencias, información y oportunidades con la comunidad hispanohablante.</p>
-                            <a class="profile-link" href="hernan.html">Conocer su historia →</a>
+                            <a class="profile-link" href="https://www.instagram.com/todosconhernan/" target="_blank" rel="noopener noreferrer">Ver perfil →</a>
                         </div>
                     </article>
 
                     <article class="team-profile yury">
                         <div class="team-photo">
                             <img src="img/YuryYoutube.png" alt="Yury, dirección y edición audiovisual" loading="lazy">
-                            <span class="team-country">🇨🇴 Colombia</span>
+                            <span class="team-country"><svg class="team-flag" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#fcd116"/><rect y="16" width="32" height="8" fill="#003893"/><rect y="24" width="32" height="8" fill="#ce1126"/></svg> Colombia</span>
                         </div>
                         <div class="team-content">
-                            <h3>Yury</h3>
+                            <h3><a class="team-name-link" href="https://www.instagram.com/yurysiegfried?igsi=dWtnNjI0dXRxbno0" target="_blank" rel="noopener noreferrer">Yury</a></h3>
                             <div class="team-role">Dirección audiovisual · Edición · Producción</div>
                             <p>Desde Colombia, Yury aporta su experiencia profesional en edición y producción audiovisual. Es responsable de transformar las grabaciones, ideas y experiencias del proyecto en contenidos cuidados, atractivos y adaptados a las plataformas digitales.</p>
+                            <a class="profile-link" href="https://www.instagram.com/yurysiegfried?igsi=dWtnNjI0dXRxbno0" target="_blank" rel="noopener noreferrer">Ver perfil →</a>
                         </div>
                     </article>
 
                     <article class="team-profile yonathan">
                         <div class="team-photo">
                             <img src="img/YonathanTech.png" alt="Yonathan, Full Stack Developer y responsable tecnológico" loading="lazy">
-                            <span class="team-country">🇪🇸 España</span>
+                            <span class="team-country"><svg class="team-flag" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" fill="#aa151b"/><rect y="8" width="32" height="16" fill="#f1bf00"/></svg> España</span>
                         </div>
                         <div class="team-content">
                             <h3>Yonathan</h3>
@@ -2312,7 +2439,7 @@ body::after {
                 <div class="team-bottom">
                     <p>
                         <strong>Un equipo. Tres países. Una visión internacional.</strong><br>
-                        Experiencia en Suiza, comunicación audiovisual desde Colombia y tecnología desarrollada desde España.
+                        <span class="team-line-nowrap">Experiencia en Suiza, comunicación audiovisual desde Colombia y tecnología desarrollada desde España.</span>
                         <br><span class="team-global-line">Con proyección desde Suiza hacia el mundo, conectamos experiencia, creatividad y tecnología para crear contenidos y proyectos sin fronteras.</span>
                     </p>
                 </div>
@@ -2338,7 +2465,7 @@ body::after {
                 </h2>
 
 
-                <p>
+                <p class="agenda-note-highlight">
 
                     Estamos preparando un sistema para que
                     puedas consultar los horarios disponibles
@@ -2350,35 +2477,14 @@ body::after {
             </div>
             <div class="appointment appointment-single">
 
-                <div class="appointmentInfo">
-                    <div class="appointmentInfoText">
-                        <p>
-                            Cuéntanos brevemente tu situación y te responderemos
-                            con empatía, claridad y sin promesas imposibles.
-                        </p>
-
-                        <ul class="appointmentList">
-                            <li>Asesoramiento cercano y práctico</li>
-                            <li>Horario y día acordados previamente</li>
-                            <li>Respuesta de confirmación</li>
-                        </ul>
-                    </div>
-                </div>
-
                 <div class="bookingPlaceholder" id="reserva">
-                    <h3>📅 Solicita tu llamada</h3>
-                    <p>Rellena el formulario y te contactaremos para confirmar día y horario.</p>
+                    <h3>📅 Solicita tu llamada con <span class="booking-title-red">Hernán</span> Totalmente GRATIS</h3>
+                    <p>Rellena el formulario y te contactaremos por <svg class="whatsapp-icon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M22.7 9.3a8.7 8.7 0 0 0-13.9 10.4L7 26l6.5-1.7a8.7 8.7 0 0 0 12.4-7.8 8.6 8.6 0 0 0-3.2-7.2Zm-6.6 13.4a7.2 7.2 0 0 1-3.7-1l-.3-.2-3.9 1 1-3.8-.2-.3a7.3 7.3 0 1 1 13.5-3.9 7.3 7.3 0 0 1-6.4 8.2Zm4-5.5c-.2-.1-1.3-.6-1.5-.7-.2-.1-.3-.1-.5.1-.1.2-.5.7-.6.8-.1.1-.2.2-.4.1a6 6 0 0 1-1.7-1.1 6.4 6.4 0 0 1-1.2-1.5c-.1-.2 0-.3.1-.4l.3-.4.2-.3a.4.4 0 0 0 0-.4c-.1-.1-.5-1.2-.7-1.7-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.9 2 4.7 4.7 0 0 0 1 2.5 10.7 10.7 0 0 0 4.1 3.6c.6.2 1 .4 1.4.5.6.2 1.1.1 1.5.1.5-.1 1.3-.5 1.5-1 .2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg> WhatsApp para confirmar día y horario.</p>
 
                     <form class="booking-form" id="bookingForm">
-                        <div class="form-row">
-                            <label>Nombre completo<input name="nombre" type="text" autocomplete="name" required></label>
-                            <label>País desde el que escribes<input name="pais" type="text" autocomplete="country-name" required></label>
-                        </div>
-                        <div class="form-row">
-                            <label>Teléfono / WhatsApp<input name="telefono" type="tel" autocomplete="tel" required></label>
-                            <label>¿Pasaporte europeo?<select name="pasaporte" required><option value="">Selecciona</option><option>Sí</option><option>No</option><option>En trámite</option></select></label>
-                        </div>
-                        <label>¿Qué planes tienes para venir a Suiza?<textarea name="planes" required></textarea></label>
+                        <label>Nombre completo<input name="nombre" type="text" autocomplete="name" required></label>
+                        <label>País desde el que escribes<input name="pais" type="text" autocomplete="country-name" required></label>
+                        <label>¿Cuál sería tu pregunta?<textarea name="pregunta" rows="6" required></textarea></label>
                         <button type="submit" class="btn red">ENVIAR SOLICITUD</button>
                         <p class="form-status" id="formStatus" aria-live="polite"></p>
                     </form>
@@ -2389,20 +2495,6 @@ body::after {
 
 
 
-
-
-
-
-        <section class="section">
-            <div class="case-study">
-                <div>
-                    <div class="sectionLabel">TESTIMONIO DE DENISE</div>
-                    <h2>Una historia real de preparación y confianza</h2>
-                    <p>Denise ha recibido orientación de Hernán durante más de un año y ha seguido sus recomendaciones para preparar su llegada a Suiza con tiempo, información y prudencia. Su experiencia refleja la importancia de preguntar, comprobar cada paso y no dejarse llevar por promesas de personas que pueden ofrecer oportunidades o servicios y desaparecer después de recibir el dinero. Prepararse con calma y avanzar paso a paso puede marcar la diferencia.</p>
-                </div>
-                <iframe src="https://www.youtube-nocookie.com/embed/5Fjf2j2D594?start=298" title="Testimonio de Denise y su preparación para llegar a Suiza" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-        </section>
 
 
     </main>
@@ -2482,10 +2574,8 @@ body::after {
             const subject = encodeURIComponent('Solicitud de llamada · ' + data.get('nombre'));
             const body = encodeURIComponent(
                 'Nombre: ' + data.get('nombre') + '\n' +
-                'Teléfono / WhatsApp: ' + data.get('telefono') + '\n' +
                 'País: ' + data.get('pais') + '\n' +
-                'Pasaporte europeo: ' + data.get('pasaporte') + '\n' +
-                'Planes para venir a Suiza:\n' + data.get('planes')
+                '¿Cuál sería tu pregunta?:\n' + data.get('pregunta')
             );
 
             status.textContent = 'Se abrirá tu correo para completar el envío.';
@@ -2526,6 +2616,8 @@ body::after {
   };
 </script>
 <script src="js/i18n.js"></script>
+<script src="js/legal-footer.js"></script>
+<script src="js/chat-widget.js"></script>
 
 
 </body>

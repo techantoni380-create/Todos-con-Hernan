@@ -496,7 +496,8 @@ window.SPOTS = [
     "name": "Emmental",
     "lat": 46.94,
     "lng": 7.76,
-    "officialUrl": "https://www.myswitzerland.com/es-es/descubrir-suiza/photo-spot-emmental/"
+    "officialUrl": "https://www.myswitzerland.com/es-es/descubrir-suiza/photo-spot-emmental/",
+    "youtubeUrl": "https://www.youtube.com/watch?v=ur8TAH_2Ja8"
   },
   {
     "id": 72,

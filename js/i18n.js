@@ -8,7 +8,13 @@
     de: { name: 'Deutsch', flag: 'img/bandera-de.svg' },
     fr: { name: 'Français', flag: 'img/bandera-fr.svg' },
     it: { name: 'Italiano', flag: 'img/bandera-it.svg' },
-    en: { name: 'English', flag: 'img/bandera-en.svg' }
+    en: { name: 'English', flag: 'img/bandera-en.svg' },
+    zh: { name: '中文', flag: 'img/bandera-zh.svg' },
+    pt: { name: 'Português', flag: 'img/bandera-pt.svg' }
+  };
+  const TRANSLATE_API_LANG = {
+    zh: 'zh-CN',
+    pt: 'pt-PT'
   };
   const STORAGE_KEY = 'todosConHernanLanguage';
   const CACHE_PREFIX = 'todosConHernanTranslation:';
@@ -166,7 +172,8 @@
     const key = cacheKey(lang, source);
     const cached = localStorage.getItem(key);
     if (cached) return cached;
-    const endpoint = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=es&tl=' + lang + '&dt=t&q=' + encodeURIComponent(source);
+    const apiLang = TRANSLATE_API_LANG[lang] || lang;
+    const endpoint = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=es&tl=' + apiLang + '&dt=t&q=' + encodeURIComponent(source);
     const response = await fetch(endpoint);
     if (!response.ok) throw new Error('Translation service unavailable');
     const data = await response.json();

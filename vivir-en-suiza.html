@@ -388,6 +388,24 @@
     }
 
 
+    .heroText.heroTextHighlight {
+      display: inline-block;
+
+      color: #ffffff;
+
+      background: rgba(255, 255, 255, .08);
+
+      border: 1px solid rgba(255, 255, 255, .16);
+
+      border-radius: 14px;
+
+      padding: 10px 20px;
+
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+
     .heroButtons {
       display: flex;
 
@@ -1139,14 +1157,6 @@ a.btn,
 
 </nav>
 
-    <div class="languageSelector" aria-label="Selector de idioma">
-      <button class="languageFlag" data-lang="es" title="Español" aria-label="Español"><img src="img/bandera-es.svg" alt="Español"></button>
-      <button class="languageFlag" data-lang="de" title="Deutsch" aria-label="Deutsch"><img src="img/bandera-de.svg" alt="Deutsch"></button>
-      <button class="languageFlag" data-lang="fr" title="Français" aria-label="Français"><img src="img/bandera-fr.svg" alt="Français"></button>
-      <button class="languageFlag" data-lang="it" title="Italiano" aria-label="Italiano"><img src="img/bandera-it.svg" alt="Italiano"></button>
-      <button class="languageFlag" data-lang="en" title="English" aria-label="English"><img src="img/bandera-en.svg" alt="English"></button>
-    </div>
-
   </header>
 
 
@@ -1167,18 +1177,13 @@ a.btn,
       <div class="heroContent">
 
 
-        <div class="eyebrow">
-          TODOS CON HERNÁN · GUÍA DE SUIZA <span class="swissFlag" aria-label="Bandera de Suiza"><span class="swissCross"></span></span>
-        </div>
-
-
         <h1>
           VIVIR EN
           <span>SUIZA</span>
         </h1>
 
 
-        <p class="heroText">
+        <p class="heroText heroTextHighlight">
 
           Una sección para conocer cómo es
           vivir en Suiza, descubrir sus regiones,
@@ -1458,6 +1463,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 <script src="js/i18n.js"></script>
+<script src="js/legal-footer.js"></script>
+<script src="js/chat-widget.js"></script>
 </body>
 
 </html>

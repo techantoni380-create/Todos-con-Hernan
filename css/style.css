@@ -1372,8 +1372,14 @@ input {
   max-height:
     45px !important;
 
+  border-radius:
+    50% !important;
+
+  overflow:
+    hidden !important;
+
   object-fit:
-    contain !important;
+    cover !important;
 
   object-position:
     center;

@@ -513,38 +513,17 @@
     }
 
   
-    /* =====================================================
-       PLANIFICADOR PRO · FASE 3.5
-       ===================================================== */
-    .routePlanner{margin-top:20px;padding:20px;border:1px solid #294c62;border-radius:18px;background:linear-gradient(135deg,#071a28,#0a2030);box-shadow:0 15px 40px rgba(0,0,0,.24)}
-    .routePlannerHeader{margin-bottom:16px}.routePlannerEyebrow{display:inline-block;margin-bottom:7px;color:#ffd000;font-size:10px;font-weight:900;letter-spacing:1px}
-    .routePlannerHeader h3{margin:0 0 7px;color:#fff;font-size:22px;line-height:1.1;font-weight:950}.routePlannerHeader p{margin:0;color:#a7bac7;font-size:12px;line-height:1.5}
-    .plannerField{position:relative;margin-top:14px}.plannerField label{display:block;margin-bottom:7px;color:#fff;font-size:9px;font-weight:900;letter-spacing:.7px}
-    .plannerSearch{display:flex;gap:6px}.plannerSearch input,.plannerSelect{box-sizing:border-box;width:100%;min-height:43px;border:1px solid #31556c;border-radius:11px;outline:none;background:#04111b;color:#fff;font-family:inherit;font-size:12px;font-weight:700}
-    .plannerSearch input{padding:0 12px}.plannerSearch input::placeholder{color:#718795}.plannerSearch input:focus,.plannerSelect:focus{border-color:#ffd000;box-shadow:0 0 0 2px rgba(255,208,0,.08)}
-    .plannerSearch button{width:46px;min-width:46px;border:1px solid #ffd000;border-radius:11px;background:rgba(255,208,0,.1);color:#ffd000;font-size:16px;cursor:pointer}
-    .plannerResults{position:absolute;top:72px;left:0;right:0;z-index:6000;max-height:240px;overflow-y:auto;border:1px solid #31556c;border-radius:11px;background:#071722;box-shadow:0 15px 35px rgba(0,0,0,.45)}
-    .plannerResultItem{width:100%;padding:11px 12px;border:0;border-bottom:1px solid #19374a;background:transparent;color:#fff;text-align:left;font-family:inherit;cursor:pointer}
-    .plannerResultItem:last-child{border-bottom:0}.plannerResultItem:hover{background:#0a2030}.plannerResultItem strong{display:block;margin-bottom:3px;color:#fff;font-size:11px;font-weight:900}.plannerResultItem span{display:block;color:#7f96a5;font-size:9px;line-height:1.35}
-    .plannerLocationBtn{width:100%;min-height:40px;margin-top:7px;border:1px solid #29e879;border-radius:21px;background:rgba(41,232,121,.07);color:#29e879;font-family:inherit;font-size:10px;font-weight:900;cursor:pointer}
-    .plannerLocationBtn:hover{background:rgba(41,232,121,.15)}.plannerSelect{padding:0 11px;cursor:pointer}
-    .plannerSelected{display:flex;align-items:center;gap:10px;margin-top:8px;padding:9px 11px;border:1px solid #29485d;border-radius:10px;background:#071722}
-    .plannerSelectedIcon{font-size:18px}.plannerSelected strong{display:block;color:#fff;font-size:11px;font-weight:900}.plannerSelected small{display:block;margin-top:3px;color:#78909d;font-size:9px}
-    .plannerActions{display:grid;grid-template-columns:1fr auto;gap:7px;margin-top:14px}.plannerCalculateBtn,.plannerClearBtn,.plannerNavigationBtn{min-height:43px;border-radius:22px;font-family:inherit;font-size:10px;font-weight:950;cursor:pointer}
-    .plannerCalculateBtn{border:1px solid #ffd000;background:#ffd000;color:#071a28}.plannerClearBtn{padding:0 14px;border:1px solid #31556c;background:#04111b;color:#a7bac7}
-    .plannerRouteResult{margin-top:12px;padding:12px;border:1px solid #31556c;border-radius:12px;background:#04111b}
-    .plannerRouteStatus span{display:block;margin-bottom:4px;color:#ffd000;font-size:8px;font-weight:900;letter-spacing:.7px}.plannerRouteStatus strong{display:block;color:#fff;font-size:12px;font-weight:950;line-height:1.35}
-    .plannerRouteStats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}.plannerRouteStats>div{padding:9px;border:1px solid #29485d;border-radius:10px;background:#071722}
-    .plannerRouteStats span{display:block;margin-bottom:4px;color:#78909d;font-size:8px;font-weight:900}.plannerRouteStats strong{color:#ffd000;font-size:17px;font-weight:950}
-    .plannerNavigationBtn{width:100%;margin-top:9px;border:1px solid #29e879;background:rgba(41,232,121,.08);color:#29e879}
-    .plannerStatus{min-height:16px;margin-top:9px;color:#a7bac7;font-size:9px;font-weight:700;line-height:1.4}
-    @media(max-width:600px){.routePlanner{padding:16px}.routePlannerHeader h3{font-size:20px}.plannerActions{grid-template-columns:1fr}.plannerClearBtn{width:100%}}
-
   </style>
 
 
 <style>
 .spotPracticalInfo{margin-top:18px;display:grid;gap:10px}.spotPracticalItem{padding:11px 13px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.045)}.spotPracticalLabel{font-weight:800;font-size:.78rem;letter-spacing:.06em;margin-bottom:4px}.spotPracticalText{font-size:.92rem;line-height:1.45;white-space:pre-line;opacity:.94}
+.spotRouteButton{display:inline-flex;align-items:center;gap:4px;margin-top:8px;padding:0 14px;min-height:32px;border:1px solid #ffd000;border-radius:18px;background:rgba(255,208,0,.1);color:#ffd000;font-family:inherit;font-size:.74rem;font-weight:900;letter-spacing:.02em;cursor:pointer;transition:background .2s ease,transform .2s ease}
+.spotRouteButton:hover:not(:disabled){transform:translateY(-1px);background:rgba(255,208,0,.2)}
+.spotRouteButton:disabled{opacity:.55;cursor:default;transform:none}
+.spotRouteStatus{display:block;margin-top:6px;font-size:.72rem;line-height:1.4;color:#c7d3da}
+.destination-marker{background:transparent!important;border:0!important}
+.destination-pin{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;border:2px solid #ffd000;background:#04111b;font-size:14px;box-shadow:0 3px 10px rgba(0,0,0,.45)}
 </style>
 <style>
 .swissFlagIcon{width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-right:4px}
@@ -593,7 +572,7 @@ body {
 </style>
 
 <style id="community-panel-fix">
-.infoPanel .spotCommunity{width:100%;box-sizing:border-box;overflow:hidden}.infoPanel .communityHeader{width:100%;box-sizing:border-box}.infoPanel .communityHeader h3{margin:8px 0 12px;line-height:1.15}.infoPanel .communityHeader p{margin:0 0 16px;line-height:1.4}.infoPanel .communityRating{width:100%;box-sizing:border-box;margin-bottom:16px}.infoPanel .ratingStars{display:flex;flex-wrap:nowrap;gap:5px;margin:7px 0 5px}.infoPanel .ratingStars button{box-sizing:border-box;width:31px;min-width:31px;height:31px;padding:0;margin:0}.infoPanel .communityForm{width:100%;box-sizing:border-box}.infoPanel .communityForm>label{display:block;width:100%;margin:0 0 5px;line-height:1.2}.infoPanel .communityForm>input,.infoPanel .communityForm>textarea{display:block;box-sizing:border-box;width:100%;max-width:100%;margin:0 0 12px;font-family:inherit}.infoPanel .communityForm>input{min-height:40px;padding:8px 10px}.infoPanel .communityForm>textarea{min-height:95px;padding:9px 10px;resize:vertical}.infoPanel .communityUpload{width:100%;box-sizing:border-box;margin-top:2px}.infoPanel .communityUpload .uploadLabel{display:block;width:100%;box-sizing:border-box;margin:0 0 6px;line-height:1.2}.infoPanel .communityUpload input[type=file]{display:block;box-sizing:border-box;width:100%;max-width:100%;margin:0 0 5px;font-size:12px}.infoPanel .communityPhotoName{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.3}.infoPanel .communitySubmit{display:block;width:100%;max-width:100%;box-sizing:border-box;margin-top:14px;white-space:nowrap}.infoPanel .communityPostsHeader{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;box-sizing:border-box;margin-top:16px}.infoPanel .communityPostsHeader strong{min-width:0;line-height:1.25}.infoPanel .communityPosts{width:100%;box-sizing:border-box}.infoPanel .accessCard{box-sizing:border-box}.infoPanel .accessCard p{margin-bottom:0;line-height:1.45}@media(max-width:900px){.infoPanel .communitySubmit{font-size:13px}.infoPanel .communityForm>input,.infoPanel .communityForm>textarea,.infoPanel .communityUpload input[type=file]{width:100%}}
+.infoPanel .spotCommunity{width:100%;box-sizing:border-box;overflow:hidden}.infoPanel .communityHeader{width:100%;box-sizing:border-box}.infoPanel .communityHeader h3{margin:8px 0 12px;line-height:1.15}.infoPanel .communityHeader p{margin:0 0 16px;line-height:1.4}.infoPanel .communityRating{width:100%;box-sizing:border-box;margin-bottom:16px}.infoPanel .ratingStars{display:flex;flex-wrap:nowrap;gap:5px;margin:7px 0 5px}.infoPanel .ratingStars button{box-sizing:border-box;width:31px;min-width:31px;height:31px;padding:0;margin:0}.infoPanel .communityForm{width:100%;box-sizing:border-box}.infoPanel .communityForm>label{display:block;width:100%;margin:0 0 5px;line-height:1.2}.infoPanel .communityForm>input,.infoPanel .communityForm>textarea{display:block;box-sizing:border-box;width:100%;max-width:100%;margin:0 0 12px;font-family:inherit}.infoPanel .communityForm>input{min-height:40px;padding:8px 10px}.infoPanel .communityForm>textarea{min-height:95px;padding:9px 10px;resize:vertical}.infoPanel .communityUpload{width:100%;box-sizing:border-box;margin-top:2px}.infoPanel .communityUpload .uploadLabel{display:block;width:100%;box-sizing:border-box;margin:0 0 6px;line-height:1.2}.infoPanel .communityUpload input[type=file]{display:block;box-sizing:border-box;width:100%;max-width:100%;margin:0 0 5px;font-size:12px}.infoPanel .communityPhotoName{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.3}.infoPanel .communitySubmit{display:block;width:100%;max-width:100%;box-sizing:border-box;margin-top:14px;white-space:nowrap}.infoPanel .communityPostsHeader{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;box-sizing:border-box;margin-top:16px}.infoPanel .communityPostsHeader strong{min-width:0;line-height:1.25}.infoPanel .communityPosts{width:100%;box-sizing:border-box}@media(max-width:900px){.infoPanel .communitySubmit{font-size:13px}.infoPanel .communityForm>input,.infoPanel .communityForm>textarea,.infoPanel .communityUpload input[type=file]{width:100%}}
 </style>
 
 <style id="grand-tour-remove-relief-only">
@@ -1249,6 +1228,19 @@ footer.site-credits > p {
           </h2>
 
 
+          <!-- =================================================
+               VÍDEO DEL GRAND TOUR DE SUIZA
+               ================================================= -->
+
+          <button
+            id="spotVideoBtn"
+            class="btn videoBtn"
+            type="button"
+          >
+            ▶️ VER VÍDEO DEL GRAND TOUR DE SUIZA
+          </button>
+
+
           <div
             id="infoLocation"
             class="location"
@@ -1273,50 +1265,6 @@ footer.site-credits > p {
 
 
           <!-- =================================================
-               DATOS RÁPIDOS
-               ================================================= -->
-
-          <div class="quickFacts">
-
-
-            <div>
-
-              📍
-
-              <span>
-                Suiza
-              </span>
-
-            </div>
-
-
-            <div>
-
-              📸
-
-              <span>
-                Photo Spot
-              </span>
-
-            </div>
-
-
-            <div>
-
-              ▶️
-
-              <span>
-                Grand Tour de Suiza
-              </span>
-
-            </div>
-
-
-          </div>
-
-
-
-          <!-- =================================================
                SIGUIENTE PHOTO SPOT
                ================================================= -->
 
@@ -1329,19 +1277,6 @@ footer.site-credits > p {
             SIGUIENTE PHOTO SPOT →
 
           </button>
-
-          <!-- =================================================
-               VÍDEO DEL GRAND TOUR DE SUIZA
-               ================================================= -->
-
-          <button
-            id="spotVideoBtn"
-            class="btn videoBtn"
-            type="button"
-          >
-            ▶️ VER VÍDEO DEL GRAND TOUR DE SUIZA
-          </button>
-
 
           <!-- =================================================
                COMUNIDAD · EXPERIENCIAS DEL PHOTO SPOT
@@ -1646,97 +1581,6 @@ footer.site-credits > p {
           </section>
 
 
-
-          <!-- =================================================
-               INFORMACIÓN DE ACCESO
-               ================================================= -->
-
-          
-            <!-- =================================================
-                 PLANIFICADOR PRO DE RUTAS
-                 ================================================= -->
-
-            <section id="routePlanner" class="routePlanner" aria-label="Planificador de rutas">
-
-              <div class="routePlannerHeader">
-                <span class="routePlannerEyebrow">🧭 PLANIFICADOR PRO</span>
-                <h3>PLANIFICA TU RUTA</h3>
-                <p>Elige cualquier ciudad, pueblo o dirección como punto de partida y descubre cómo llegar a cualquiera de los 92 Photo Spots.</p>
-              </div>
-
-              <div class="plannerField">
-                <label for="routeOriginInput">📍 DESDE DÓNDE SALES</label>
-                <div class="plannerSearch">
-                  <input id="routeOriginInput" type="search" placeholder="Ciudad, pueblo o dirección..." autocomplete="off">
-                  <button id="routeOriginSearchBtn" type="button" aria-label="Buscar lugar de origen">🔎</button>
-                </div>
-                <div id="routeOriginResults" class="plannerResults" hidden></div>
-                <button id="routeUseLocationBtn" class="plannerLocationBtn" type="button">📍 USAR MI UBICACIÓN</button>
-                <div id="routeOriginSelected" class="plannerSelected" hidden>
-                  <span class="plannerSelectedIcon">📍</span>
-                  <div>
-                    <strong id="routeOriginName">—</strong>
-                    <small id="routeOriginDetails">—</small>
-                  </div>
-                </div>
-              </div>
-
-              <div class="plannerField">
-                <label for="routeDestinationSelect">📸 A DÓNDE QUIERES IR</label>
-                <select id="routeDestinationSelect" class="plannerSelect">
-                  <option value="">Selecciona un Photo Spot...</option>
-                </select>
-                <div id="routeDestinationSelected" class="plannerSelected" hidden>
-                  <span class="plannerSelectedIcon">📸</span>
-                  <div>
-                    <strong id="routeDestinationName">—</strong>
-                    <small id="routeDestinationDetails">—</small>
-                  </div>
-                </div>
-              </div>
-
-              <div class="plannerActions">
-                <button id="calculatePlannerRouteBtn" class="plannerCalculateBtn" type="button">🧭 CALCULAR RUTA</button>
-                <button id="clearPlannerRouteBtn" class="plannerClearBtn" type="button">LIMPIAR</button>
-              </div>
-
-              <div id="plannerRouteResult" class="plannerRouteResult" hidden>
-                <div class="plannerRouteStatus">
-                  <span>🛣️ RUTA CALCULADA</span>
-                  <strong id="plannerRouteTitle">—</strong>
-                </div>
-                <div class="plannerRouteStats">
-                  <div><span>📏 DISTANCIA</span><strong id="plannerRouteDistance">—</strong></div>
-                  <div><span>⏱️ TIEMPO</span><strong id="plannerRouteDuration">—</strong></div>
-                </div>
-                <button id="plannerStartNavigationBtn" class="plannerNavigationBtn" type="button">🧭 INICIAR NAVEGACIÓN</button>
-              </div>
-
-              <div id="plannerStatus" class="plannerStatus" aria-live="polite"></div>
-
-            </section>
-
-
-            <div class="accessCard">
-
-
-            <strong>
-
-              ℹ️ Información
-
-            </strong>
-
-
-            <p>
-              Utiliza los marcadores del mapa,
-              la lista lateral o las flechas para
-              recorrer los 92 Photo Spots.
-            </p>
-
-
-          </div>
-
-
         </div>
 
       </div>
@@ -1806,6 +1650,18 @@ footer.site-credits > p {
   ></script>
 
 
+  <!-- =====================================================
+       DESTINOS DE RUTA (PARKING / ACCESO / SENDERO)
+
+       photo-spots-routes.js crea window.PHOTO_SPOTS_ROUTES.
+       Tiene que cargarse antes de script.js.
+       ===================================================== -->
+
+  <script
+    src="data/photo-spots-routes.js"
+  ></script>
+
+
 
   <!-- =====================================================
        JAVASCRIPT PRINCIPAL
@@ -1862,6 +1718,8 @@ footer.site-credits > p {
 </script>
 
 <script src="js/i18n.js"></script>
+<script src="js/legal-footer.js"></script>
+<script src="js/chat-widget.js"></script>
 </body>
 
 </html>

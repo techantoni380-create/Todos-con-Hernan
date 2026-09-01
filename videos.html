@@ -586,6 +586,27 @@
         }
 
 
+        .sectionHeader p.videosIntroNote {
+
+            display: inline-block;
+
+            color: #ffffff;
+
+            background: rgba(255, 255, 255, .08);
+
+            border: 1px solid rgba(255, 255, 255, .16);
+
+            border-radius: 14px;
+
+            padding: 10px 20px;
+
+            backdrop-filter: blur(4px);
+
+            -webkit-backdrop-filter: blur(4px);
+
+        }
+
+
         /* =====================================================
            VIDEO DESTACADO
            ===================================================== */
@@ -1693,6 +1714,37 @@ body.video-page .youtubeSection .btn.red {
 }
 </style>
 
+<style id="youtube-channel-link">
+body.video-page .youtubeSection .youtubeChannelLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color .2s ease, transform .2s ease;
+    color: #ffffff !important;
+    font-size: clamp(24px, 3.4vw, 34px) !important;
+    font-weight: 900 !important;
+    letter-spacing: .5px;
+}
+body.video-page .youtubeSection .youtubeChannelLink:hover,
+body.video-page .youtubeSection .youtubeChannelLink:focus-visible {
+    color: #ff2b32 !important;
+    transform: translateY(-1px);
+}
+body.video-page .youtubeSection .youtubeChannelIcon {
+    width: 36px;
+    height: 36px;
+    color: #ef1820;
+    flex-shrink: 0;
+}
+body.video-page .youtubeSection h2 .grandTourOutline {
+    -webkit-text-stroke: 1px #ffffff;
+    text-stroke: 1px #ffffff;
+    paint-order: stroke fill;
+}
+</style>
+
 
 <style id="videos-clean-header-footer">
 /* =========================================================
@@ -2643,24 +2695,6 @@ body.video-page::after {
 
         </nav>
 
-        <div class="languageSelector" aria-label="Selector de idioma">
-            <button class="languageFlag active" data-lang="es" type="button" title="Español" aria-label="Español">
-                <img src="img/bandera-es.svg" alt="Español">
-            </button>
-            <button class="languageFlag" data-lang="de" type="button" title="Deutsch" aria-label="Deutsch">
-                <img src="img/bandera-de.svg" alt="Deutsch">
-            </button>
-            <button class="languageFlag" data-lang="fr" type="button" title="Français" aria-label="Français">
-                <img src="img/bandera-fr.svg" alt="Français">
-            </button>
-            <button class="languageFlag" data-lang="it" type="button" title="Italiano" aria-label="Italiano">
-                <img src="img/bandera-it.svg" alt="Italiano">
-            </button>
-            <button class="languageFlag" data-lang="en" type="button" title="English" aria-label="English">
-                <img src="img/bandera-en.svg" alt="English">
-            </button>
-        </div>
-
     </header>
 
 
@@ -2689,11 +2723,6 @@ body.video-page::after {
             <div class="sectionHeader">
 
 
-                <div class="sectionLabel">
-                    GRAND TOUR DE SUIZA
-                </div>
-
-
                 <h2>
 
                     VÍDEOS DEL
@@ -2702,7 +2731,7 @@ body.video-page::after {
                 </h2>
 
 
-                <p>
+                <p class="videosIntroNote">
 
                     Descubre los vídeos del Grand Tour de Suiza
                     y conoce cada lugar de la mano de Hernán.
@@ -2723,8 +2752,8 @@ body.video-page::after {
                     </button>
                     <div class="videoInfo">
                         <div class="videoCategory">GRAND TOUR DE SUIZA</div>
-                        <h3>CH BURGdorf: El Castillo Medieval que Esconde Suiza</h3>
-                        <p>Photo Spot del Grand Tour of Switzerland.</p>
+                        <h3>🇨🇭 Burgdorf: El Castillo Medieval que Esconde Suiza | Grand Tour of Switzerland</h3>
+                        <p>Photo Spot de Burgdorf del Grand Tour of Switzerland.</p>
                         <button type="button" class="btn outline" data-video-id="6rEjgpwgXX0">VER VÍDEO →</button>
                     </div>
                 </article>
@@ -2737,8 +2766,8 @@ body.video-page::after {
                     </button>
                     <div class="videoInfo">
                         <div class="videoCategory">GRAND TOUR DE SUIZA</div>
-                        <h3>El secreto mejor guardado de Suiza</h3>
-                        <p>Hallwyl Castle y el Grand Tour of Switzerland.</p>
+                        <h3>El secreto mejor guardado de Suiza | Hallwyl Castle y el Grand Tour of Switzerland 🇨🇭</h3>
+                        <p>Photo Spot del castillo de Hallwyl, Grand Tour of Switzerland.</p>
                         <button type="button" class="btn outline" data-video-id="zbBKTvOw83I" data-video-start="412">VER VÍDEO →</button>
                     </div>
                 </article>
@@ -2758,16 +2787,16 @@ body.video-page::after {
                 </article>
 
                 <article class="videoCard">
-                    <button type="button" class="videoThumbnail" data-video-id="OQ8C0IZM-C4" aria-label="Reproducir vídeo de Emmental">
-                        <img src="https://img.youtube.com/vi/OQ8C0IZM-C4/maxresdefault.jpg"
+                    <button type="button" class="videoThumbnail" data-video-id="ur8TAH_2Ja8" aria-label="Reproducir vídeo de Emmental">
+                        <img src="https://img.youtube.com/vi/ur8TAH_2Ja8/maxresdefault.jpg"
                              alt="Emmental · Grand Tour de Suiza">
                         <div class="videoOverlay"><div class="smallPlay">▶</div></div>
                     </button>
                     <div class="videoInfo">
                         <div class="videoCategory">GRAND TOUR DE SUIZA</div>
-                        <h3>Emmental: paisaje y tradición quesera</h3>
+                        <h3>🇨🇭 EL SECRETO DEL QUESO SUIZO | Photo Spot Emmental 🧀 | Grand Tour of Switzerland</h3>
                         <p>Descubre Emmental, uno de los Photo Spots del Grand Tour of Switzerland.</p>
-                        <button type="button" class="btn outline" data-video-id="OQ8C0IZM-C4">VER VÍDEO →</button>
+                        <button type="button" class="btn outline" data-video-id="ur8TAH_2Ja8">VER VÍDEO →</button>
                     </div>
                 </article>
 
@@ -2788,38 +2817,25 @@ body.video-page::after {
             <div class="youtubeSection">
 
 
-                <div class="youtubeIcon">
-                    ▶️
-                </div>
-
-
-                <div class="sectionLabel">
-                    CANAL OFICIAL
-                </div>
+                <a
+                    href="https://www.youtube.com/@todosconhernan/videos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="sectionLabel youtubeChannelLink"
+                >
+                    <svg class="youtubeChannelIcon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor" d="M23.498 6.186a2.999 2.999 0 0 0-2.112-2.122C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.386.564A2.999 2.999 0 0 0 .502 6.186 31.36 31.36 0 0 0 0 12a31.36 31.36 0 0 0 .502 5.814 2.999 2.999 0 0 0 2.112 2.122C4.495 20.5 12 20.5 12 20.5s7.505 0 9.386-.564a2.999 2.999 0 0 0 2.112-2.122A31.36 31.36 0 0 0 24 12a31.36 31.36 0 0 0-.502-5.814ZM9.75 15.5v-7l6.5 3.5-6.5 3.5Z"/>
+                    </svg>
+                    <span>CANAL OFICIAL DE YOUTUBE</span>
+                </a>
 
 
                 <h2>
 
                     MÁS VÍDEOS DEL
-                    <span>GRAND TOUR</span>
+                    <span class="grandTourOutline">GRAND TOUR DE SUIZA</span>
 
                 </h2>
-
-
-                <p>
-
-                    Esta selección irá creciendo con nuevos vídeos del Grand Tour.
-                    Para conocer más vídeos de Hernán, visita su canal oficial de YouTube.
-
-                </p>
-
-
-                <a
-                    href="#videos"
-                    class="btn red"
-                >
-                    ▶ VER VÍDEOS DE HERNÁN
-                </a>
 
 
             </div>
@@ -2936,6 +2952,8 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script src="js/i18n.js"></script>
+<script src="js/legal-footer.js"></script>
+<script src="js/chat-widget.js"></script>
 </body>
 
 </html>

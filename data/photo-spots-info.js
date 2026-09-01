@@ -16,7 +16,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "400 m a pie por el pueblo.",
     "note": "La capilla Maria zum Schnee, construida en 1697, está a unos 1.950 m.",
-    "access": "Desde Betten, subir en góndola hasta Bettmeralp (unos 7 min)."
+    "access": "Desde Betten, subir en góndola hasta Bettmeralp (unos 7 min).",
+    "photoSpotReason": "La capilla Maria zum Schnee, construida en 1697, corona una cresta rocosa a unos 1.950 m y es uno de los emblemas de Bettmeralp. El encuadre une la arquitectura alpina tradicional con el paisaje abierto de la Aletsch Arena en una sola fotografía.",
+    "historyContext": "La capilla es un punto religioso y visual histórico del pueblo, integrado en el entorno de montaña que caracteriza esta parada del Grand Tour de Suiza."
   },
   {
     "id": 2,
@@ -34,7 +36,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Acceso directo desde la estación de Gornergrat.",
     "note": "El Photo Spot está abierto todo el año y está incluido en el billete.",
-    "access": "Desde Zermatt, tren cremallera del Gornergrat; unos 33 min hasta 3.089 m."
+    "access": "Desde Zermatt, tren cremallera del Gornergrat; unos 33 min hasta 3.089 m.",
+    "photoSpotReason": "A 3.089 m, Gornergrat ofrece una vista frontal del Matterhorn junto a un panorama de 29 cumbres de más de 4.000 m, incluido el Monte Rosa y la Dufourspitze.",
+    "historyContext": "El tren de cremallera de Gornergrat conecta Zermatt con el mirador y permite el acceso durante todo el año, formando parte de la oferta ferroviaria alpina clásica de la región."
   },
   {
     "id": 3,
@@ -52,7 +56,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "3 min a pie.",
     "note": "El punto permite fotografiar el casco antiguo, el castillo y el Aare.",
-    "access": "Acceso desde el centro histórico de Thun hasta Bälliz/Mühlebrücke."
+    "access": "Acceso desde el centro histórico de Thun hasta Bälliz/Mühlebrücke.",
+    "photoSpotReason": "Bälliz y el puente de Mühlebrücke enmarcan en una sola imagen el casco antiguo de Thun, su castillo medieval y el curso del río Aare.",
+    "historyContext": "Thun es históricamente una puerta de entrada al Oberland bernés, punto de paso habitual hacia los lagos y montañas de la región."
   },
   {
     "id": 4,
@@ -70,7 +76,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Acceso directo desde el aparcamiento del entorno.",
     "note": "Swissminiatur abrió en 1959 y reúne más de 100 maquetas a escala 1:25.",
-    "access": "Acceso directo a Swissminiatur en Melide, junto al lago de Lugano."
+    "access": "Acceso directo a Swissminiatur en Melide, junto al lago de Lugano.",
+    "photoSpotReason": "Swissminiatur reúne más de 100 maquetas a escala 1:25 de edificios, monumentos y medios de transporte suizos, junto al lago de Lugano.",
+    "historyContext": "El parque abrió sus puertas en 1959 como el gran museo de miniaturas al aire libre del país, y sigue siendo un clásico familiar del Ticino."
   },
   {
     "id": 5,
@@ -88,7 +96,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Acceso a pie desde el aparcamiento del castillo.",
     "note": "Castillo con foso documentado desde 1304; restaurado tras el incendio de 1963.",
-    "access": "Acceso por Ettiswil siguiendo las indicaciones hacia Schloss Wyher."
+    "access": "Acceso por Ettiswil siguiendo las indicaciones hacia Schloss Wyher.",
+    "photoSpotReason": "El castillo con foso de Wyher, rodeado de agua y vegetación, ofrece una estampa arquitectónica poco habitual en el paisaje agrícola de Ettiswil.",
+    "historyContext": "Documentado desde 1304, el castillo fue restaurado tras el incendio de 1963 y hoy acoge actividades culturales y celebraciones abiertas al público."
   },
   {
     "id": 6,
@@ -106,7 +116,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "1 min; precaución al cruzar la carretera.",
     "note": "Desde Bissone se contempla Monte San Giorgio, Patrimonio Mundial de la UNESCO.",
-    "access": "Acceso por Via Maroggia, en Bissone."
+    "access": "Acceso por Via Maroggia, en Bissone.",
+    "photoSpotReason": "Desde Bissone se recorta la silueta característica del Monte San Giorgio sobre las aguas del lago de Lugano.",
+    "historyContext": "El Monte San Giorgio es Patrimonio Natural Mundial de la UNESCO por sus yacimientos de fósiles de peces y reptiles marinos de hace más de 200 millones de años."
   },
   {
     "id": 7,
@@ -124,7 +136,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min.",
     "note": "El punto está en medio de los viñedos de Lavaux.",
-    "access": "Llegar por carretera a Route de Vevey, en Chexbres."
+    "access": "Llegar por carretera a Route de Vevey, en Chexbres.",
+    "photoSpotReason": "El Photo Spot se sitúa en pleno viñedo en terrazas de Lavaux, con el lago Lemán como telón de fondo.",
+    "historyContext": "Lavaux es una de las regiones vitivinícolas históricas más reconocidas de Suiza, con un paisaje de terrazas moldeado durante siglos en el cantón de Vaud."
   },
   {
     "id": 8,
@@ -142,7 +156,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "3 min a pie.",
     "note": "Vistas sobre Lugano, el lago y Monte San Salvatore.",
-    "access": "Acceso al Parco San Michele en Lugano."
+    "access": "Acceso al Parco San Michele en Lugano.",
+    "photoSpotReason": "El Parco San Michele regala una vista elevada de Lugano, el lago y el Monte San Salvatore, entre vegetación de carácter meridional.",
+    "historyContext": "Es un parque especialmente valorado al atardecer, con un ambiente casi mediterráneo poco habitual en el resto de Suiza."
   },
   {
     "id": 9,
@@ -160,7 +176,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "1 min hasta la estación inferior; después 8 min de funicular.",
     "note": "El funicular no funciona aproximadamente de principios de abril a principios de junio y de mediados de octubre a mediados de diciembre.",
-    "access": "Desde Punt Muragl, funicular hasta Muottas Muragl; 8 min y de pago."
+    "access": "Desde Punt Muragl, funicular hasta Muottas Muragl; 8 min y de pago.",
+    "photoSpotReason": "Muottas Muragl es uno de los grandes miradores de la Alta Engadina, con vistas abiertas sobre los lagos y picos de la región.",
+    "historyContext": "Su funicular funciona desde 1907 y el hotel de la cima ha sido reconocido por su enfoque energético sostenible."
   },
   {
     "id": 10,
@@ -178,7 +196,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "5 min a pie.",
     "note": "La resurgencia es la única entrada natural conocida a las cuevas.",
-    "access": "Acceso por carretera a las Cuevas de Vallorbe y la resurgencia de la Orbe."
+    "access": "Acceso por carretera a las Cuevas de Vallorbe y la resurgencia de la Orbe.",
+    "photoSpotReason": "La resurgencia de la Orbe marca la entrada natural a las cuevas de Vallorbe, un espectáculo subterráneo de estalactitas y galerías.",
+    "historyContext": "Las primeras exploraciones comenzaron a finales del siglo XIX, y las grandes salas de las cuevas fueron descubiertas en 1961."
   },
   {
     "id": 11,
@@ -196,7 +216,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min.",
     "note": "El punto ofrece vistas del paisaje de la Alta Engadina.",
-    "access": "Acceso por Via Dimlej, en St. Moritz."
+    "access": "Acceso por Via Dimlej, en St. Moritz.",
+    "photoSpotReason": "St. Moritz combina lago, montaña y patrimonio termal en un único encuadre representativo de la Alta Engadina.",
+    "historyContext": "Fue pionero del turismo de invierno en los Alpes y conserva la memoria de sus antiguos manantiales medicinales."
   },
   {
     "id": 12,
@@ -214,7 +236,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min.",
     "note": "Solo accesible de junio a octubre.",
-    "access": "Acceso por la carretera del paso de Flüela hacia Wägerhus."
+    "access": "Acceso por la carretera del paso de Flüela hacia Wägerhus.",
+    "photoSpotReason": "El paso de Flüela, a unos 2.383 m, ofrece paisajes alpinos abiertos entre el valle de Landwasser y la Engadina.",
+    "historyContext": "Antigua conexión de montaña entre valles, hoy es escenario de excursiones, ciclismo y motociclismo en verano."
   },
   {
     "id": 13,
@@ -232,7 +256,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Teleférico aprox. 12–20 min; 1 min a pie desde la estación superior.",
     "note": "El Grosser Mythen alcanza 1.898 m y ofrece un amplio panorama sobre el centro de Suiza.",
-    "access": "Desde Rickenbach, teleférico hasta Rotenflue; el acceso final al punto es desde la estación superior."
+    "access": "Desde Rickenbach, teleférico hasta Rotenflue; el acceso final al punto es desde la estación superior.",
+    "photoSpotReason": "Conocido como el «Cervino de Suiza Central», el Grosser Mythen domina las vistas hacia Schwyz y los lagos de Lauerz y Zug.",
+    "historyContext": "Con unos 1.898 m de altitud, es uno de los símbolos montañosos más reconocibles del centro del país."
   },
   {
     "id": 14,
@@ -250,7 +276,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "1 min por el camino junto al Aare.",
     "note": "La fortaleza y el casco histórico conservan más de 900 años de historia.",
-    "access": "Acceso por el casco histórico de Aarburg y la ribera del Aare."
+    "access": "Acceso por el casco histórico de Aarburg y la ribera del Aare.",
+    "photoSpotReason": "El paseo junto al Aare y el mirador de la iglesia enmarcan la fortaleza y el casco urbano de Aarburg en una sola imagen.",
+    "historyContext": "Aarburg conserva más de 900 años de historia urbana, con el fenómeno natural del Aarewaage como curiosidad añadida."
   },
   {
     "id": 15,
@@ -268,7 +296,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "2 min.",
     "note": "La Badhütte fue destruida por un incendio el 23 de diciembre de 2024; el marco del Grand Tour permanece como homenaje.",
-    "access": "Acceso por la Seepromenade de Rorschach."
+    "access": "Acceso por la Seepromenade de Rorschach.",
+    "photoSpotReason": "La antigua Badhütte de Rorschach, construida sobre pilares dentro del lago de Constanza, fue un símbolo del paseo lacustre de la ciudad.",
+    "historyContext": "Levantada entre 1923 y 1924, fue destruida por un incendio el 23 de diciembre de 2024; el Photo Spot se conserva ahora como recuerdo mientras se planea su reconstrucción."
   },
   {
     "id": 16,
@@ -286,7 +316,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min.",
     "note": "El puerto de Ötikon es uno de los asentamientos históricos más antiguos del lago de Zúrich.",
-    "access": "Acceso directo al embarcadero de Stäfa."
+    "access": "Acceso directo al embarcadero de Stäfa.",
+    "photoSpotReason": "El histórico puerto de Ötikon retrata la vida junto al lago de Zúrich desde el embarcadero de Stäfa.",
+    "historyContext": "El muelle para los antiguos barcos de vapor se inauguró en 1867, en una época en la que el transporte lacustre era esencial para la región."
   },
   {
     "id": 17,
@@ -304,7 +336,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Más de 10 min desde la estación superior hasta el Photo Spot.",
     "note": "No accesible durante los meses de invierno.",
-    "access": "Desde Mülenen, funicular del Niesen; el trayecto hasta Niesen Kulm dura unos 30 min."
+    "access": "Desde Mülenen, funicular del Niesen; el trayecto hasta Niesen Kulm dura unos 30 min.",
+    "photoSpotReason": "Con forma de pirámide y 2.362 m de altitud, el Niesen ofrece un panorama de 360° sobre los Alpes berneses y los lagos de Thun y Brienz.",
+    "historyContext": "La montaña es célebre por su funicular y por una escalera de servicio de 11.674 peldaños, una de las más largas del mundo."
   },
   {
     "id": 18,
@@ -322,7 +356,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "5 min hasta la plataforma de observación; la plataforma es de pago.",
     "note": "Las cataratas pueden visitarse durante todo el año, 24/7.",
-    "access": "Acceso por Schloss Laufen y la zona de visitantes de las cataratas."
+    "access": "Acceso por Schloss Laufen y la zona de visitantes de las cataratas.",
+    "photoSpotReason": "Con unos 150 m de anchura, las Cataratas del Rin son uno de los grandes espectáculos naturales de Europa, vistas desde la plataforma Känzeli.",
+    "historyContext": "El castillo de Laufen, situado justo sobre las cataratas, ha servido como mirador histórico del fenómeno desde hace siglos."
   },
   {
     "id": 19,
@@ -340,7 +376,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Acceso a pie desde el punto de aparcamiento del Photo Spot.",
     "note": "Val Surses está rodeado por el Parc Ela y reúne 11 pueblos.",
-    "access": "Acceso por carretera al valle de Val Surses, entre Savognin y Bivio."
+    "access": "Acceso por carretera al valle de Val Surses, entre Savognin y Bivio.",
+    "photoSpotReason": "Val Surses reúne Savognin, Bivio y once pueblos entre lagos de montaña, bosques y actividades al aire libre.",
+    "historyContext": "La región está rodeada por el Parc Ela y conserva viva la cultura y la lengua romanche."
   },
   {
     "id": 20,
@@ -358,7 +396,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "5 min hacia el este.",
     "note": "Granero construido en 1617, ejemplo de arquitectura tradicional del Valais.",
-    "access": "Desde Reckingen, dirigirse a Unterdorf 10."
+    "access": "Desde Reckingen, dirigirse a Unterdorf 10.",
+    "photoSpotReason": "El granero típico del Valais en Reckingen es un ejemplo de arquitectura agrícola tradicional, con pilares de piedra que protegen la estructura de los roedores.",
+    "historyContext": "Data de 1617 y representa las técnicas constructivas tradicionales de la región de Goms."
   },
   {
     "id": 21,
@@ -376,7 +416,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "12 min a pie desde el aparcamiento.",
     "note": "Erlach ofrece vistas del lago de Bienne y de la isla de San Pedro.",
-    "access": "El Photo Spot está en el casco antiguo; el acceso final es a pie."
+    "access": "El Photo Spot está en el casco antiguo; el acceso final es a pie.",
+    "photoSpotReason": "Calles históricas, viñedos y vistas al lago de Bienne y la isla de San Pedro se combinan en el casco antiguo de Erlach.",
+    "historyContext": "El castillo de Erlach, del siglo XI, domina el núcleo urbano, que ha sido tradicionalmente punto de partida hacia la isla de San Pedro."
   },
   {
     "id": 22,
@@ -394,7 +436,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min.",
     "note": "El Piz Bernina, con 4.049 m, es el único cuatromil de los Alpes orientales.",
-    "access": "Acceso por la carretera hacia Morteratsch desde Pontresina."
+    "access": "Acceso por la carretera hacia Morteratsch desde Pontresina.",
+    "photoSpotReason": "El Piz Bernina, único cuatromil de los Alpes orientales, se recorta sobre la carretera hacia Morteratsch desde Pontresina.",
+    "historyContext": "La primera ascensión registrada a su cumbre fue en 1850, liderada por el geógrafo Johann Wilhelm Coaz."
   },
   {
     "id": 23,
@@ -412,7 +456,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "10 min a pie.",
     "note": "Está a unos 10 min de Heidiland.",
-    "access": "Directamente por la A13, entre la salida de Landquart y la estación de tren."
+    "access": "Directamente por la A13, entre la salida de Landquart y la estación de tren.",
+    "photoSpotReason": "El Landquart Fashion Outlet, inspirado en un pueblo de chalets de los Grisones, se integra en el paisaje montañoso circundante.",
+    "historyContext": "Reúne tiendas de moda, deporte y estilo de vida junto a la autopista A13, a pocos minutos de Heidiland."
   },
   {
     "id": 24,
@@ -430,7 +476,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "7 min recorriendo el paseo ribereño.",
     "note": "El Photo Spot se desmonta durante la temporada navideña y durante JazzAscona.",
-    "access": "Acceso por el paseo del lago de Ascona."
+    "access": "Acceso por el paseo del lago de Ascona.",
+    "photoSpotReason": "Casas de colores junto al lago, antiguas viviendas de pescadores y un ambiente casi mediterráneo definen el paseo lacustre de Ascona.",
+    "historyContext": "El paseo ofrece vistas de las islas de Brissago; el Photo Spot se retira temporalmente durante la Navidad y el festival JazzAscona."
   },
   {
     "id": 25,
@@ -448,7 +496,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "A pie desde el centro y los aparcamientos del entorno.",
     "note": "La abadía fue fundada en 515 y conserva más de 1.500 años de vida monástica.",
-    "access": "Acceso por Avenue d’Agaune, en Saint-Maurice."
+    "access": "Acceso por Avenue d’Agaune, en Saint-Maurice.",
+    "photoSpotReason": "La fachada de la abadía de Saint-Maurice, junto a la Avenue d'Agaune, resume siglos de arquitectura y vida monástica.",
+    "historyContext": "Fundada en 515, es una de las abadías más antiguas de Europa occidental en funcionamiento continuo, con más de 1.500 años de historia."
   },
   {
     "id": 26,
@@ -466,7 +516,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie desde la zona de acceso.",
     "note": "El Pays-d’Enhaut destaca por sus paisajes alpinos, pueblos y tradición quesera.",
-    "access": "Acceso por carretera a la región de Pays-d’Enhaut y al punto fotográfico."
+    "access": "Acceso por carretera a la región de Pays-d’Enhaut y al punto fotográfico.",
+    "photoSpotReason": "La reserva natural de La Pierreuse, alrededor del macizo de Gummfluh, forma un paisaje prealpino de 34 km² ideal para la fotografía de montaña.",
+    "historyContext": "Pays-d'Enhaut es una región tradicionalmente ligada al senderismo y a la cultura quesera de Château-d'Oex."
   },
   {
     "id": 27,
@@ -484,7 +536,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Acceso inmediato desde el puerto.",
     "note": "El punto ofrece vistas del lago y del entorno de Morges.",
-    "access": "Acceso directo al puerto de Morges junto al lago Lemán."
+    "access": "Acceso directo al puerto de Morges junto al lago Lemán.",
+    "photoSpotReason": "El puerto de Morges combina el lago Lemán, los viñedos y el Jura, con las cumbres del Mont Blanc asomando en días claros.",
+    "historyContext": "Sus muelles fueron un importante puerto comercial; el castillo de Morges alberga hoy cinco museos."
   },
   {
     "id": 28,
@@ -502,7 +556,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "3 min.",
     "note": "El castillo fue sede de los gobernadores de Berna y hoy alberga museo, albergue juvenil y restaurante.",
-    "access": "Desde el aparcamiento, subir hacia el castillo de Burgdorf."
+    "access": "Desde el aparcamiento, subir hacia el castillo de Burgdorf.",
+    "photoSpotReason": "El castillo de Burgdorf, sobre el casco histórico, es uno de los edificios románicos seculares más antiguos conservados en Suiza.",
+    "historyContext": "Construido hacia 1200, fue sede del bailío de Berna y hoy alberga un museo, un albergue juvenil y un restaurante."
   },
   {
     "id": 29,
@@ -520,7 +576,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "1 min desde el aparcamiento.",
     "note": "El Palacio Stockalper fue construido entre 1651 y 1671 y tiene tres cúpulas doradas.",
-    "access": "Aparcar en Parkhaus Altstadt y continuar hacia el palacio."
+    "access": "Aparcar en Parkhaus Altstadt y continuar hacia el palacio.",
+    "photoSpotReason": "Las tres torres con esferas doradas del palacio de Stockalper reflejan la enorme fortuna del comerciante conocido como el «rey del Simplon».",
+    "historyContext": "Fue construido entre 1651 y 1671 por Kaspar Stockalper, que controló el comercio a través del paso del Simplon."
   },
   {
     "id": 30,
@@ -538,7 +596,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Acceso corto a pie desde el mirador.",
     "note": "Las pirámides de tierra están protegidas como monumento natural desde 1983.",
-    "access": "Acceso por carretera a Euseigne, en el valle de Hérens."
+    "access": "Acceso por carretera a Euseigne, en el valle de Hérens.",
+    "photoSpotReason": "Las pirámides de tierra de Euseigne, columnas coronadas por grandes piedras, son un fenómeno geológico singular tallado por la erosión.",
+    "historyContext": "Formadas durante y después de la última glaciación, están protegidas como monumento natural desde 1983."
   },
   {
     "id": 31,
@@ -556,7 +616,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto desde la estación de montaña.",
     "note": "Cardada ofrece una panorámica sobre Locarno, el lago Maggiore y los Alpes.",
-    "access": "Desde Orselina, subir en funicular y teleférico hacia Cardada."
+    "access": "Desde Orselina, subir en funicular y teleférico hacia Cardada.",
+    "photoSpotReason": "Cardada ofrece una panorámica que va desde Locarno y el lago Maggiore hasta el macizo del Monte Rosa.",
+    "historyContext": "El teleférico, construido originalmente en 1952, fue rediseñado por el arquitecto Mario Botta."
   },
   {
     "id": 32,
@@ -574,7 +636,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie desde el aparcamiento.",
     "note": "Maloja se encuentra en la transición entre la Alta Engadina y el Bergell.",
-    "access": "Acceso por carretera al pueblo de Maloja."
+    "access": "Acceso por carretera al pueblo de Maloja.",
+    "photoSpotReason": "El paso de Maloja conecta Val Bregaglia con la Engadina, junto a la divisoria de aguas de Piz Lunghin.",
+    "historyContext": "Es geográficamente singular porque su vertiente norte es casi llana mientras el descenso hacia el sur es mucho más abrupto."
   },
   {
     "id": 33,
@@ -592,7 +656,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "5 min, unos 270 m, señalizado.",
     "note": "El punto se encuentra en la zona de los estanques de Drei Weieren.",
-    "access": "Acceso a Drei Weieren por Dreilindenstrasse."
+    "access": "Acceso a Drei Weieren por Dreilindenstrasse.",
+    "photoSpotReason": "Los estanques de Drei Weieren regalan una vista abierta hacia el lago de Constanza, la ciudad de San Galo y su catedral.",
+    "historyContext": "Fueron creados en 1610 para abastecer de agua a la industria textil y a los cuerpos de bomberos de la ciudad."
   },
   {
     "id": 34,
@@ -610,7 +676,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Teleférico aprox. 20 min; 1 min desde la estación superior.",
     "note": "Solo accesible de junio a octubre.",
-    "access": "Teleférico hacia Eggishorn; cambio en Fiescheralp."
+    "access": "Teleférico hacia Eggishorn; cambio en Fiescheralp.",
+    "photoSpotReason": "Desde Eggishorn se contempla el Gran Glaciar Aletsch, de unos 20 km de longitud, con un panorama de 360° que incluye el Eiger, el Mönch, el Jungfrau y el Cervino.",
+    "historyContext": "El glaciar es el corazón del área Jungfrau-Aletsch, declarada Patrimonio Mundial de la UNESCO."
   },
   {
     "id": 35,
@@ -628,7 +696,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Teleférico 8 min; 2 min desde la estación superior.",
     "note": "El Photo Spot está en Alpstein y ofrece un amplio panorama alpino.",
-    "access": "Desde Brülisau, teleférico hasta Hoher Kasten."
+    "access": "Desde Brülisau, teleférico hasta Hoher Kasten.",
+    "photoSpotReason": "Hoher Kasten regala un panorama de 360° que puede abarcar hasta seis países, con restaurante giratorio incluido.",
+    "historyContext": "Es también punto de partida de una ruta geológica y de senderos de montaña por el macizo del Alpstein."
   },
   {
     "id": 36,
@@ -646,7 +716,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido a pie desde la estación superior según el punto fotográfico.",
     "note": "El Pizol alcanza unos 2.844 m.",
-    "access": "Acceso mediante los teleféricos del Pizol desde Wangs o Bad Ragaz."
+    "access": "Acceso mediante los teleféricos del Pizol desde Wangs o Bad Ragaz.",
+    "photoSpotReason": "A 2.844 m, el Pizol domina el valle del Rin de San Galo con vistas hacia los Alpes orientales, Vorarlberg y el lago de Constanza.",
+    "historyContext": "El macizo conserva un pequeño glaciar y zonas tradicionales de senderismo y esquí."
   },
   {
     "id": 37,
@@ -664,7 +736,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "5 min, siguiendo la señalización de Heididorf.",
     "note": "El pueblo de Heidi recrea el entorno de la historia de Johanna Spyri.",
-    "access": "Desde Maienfeld, seguir las indicaciones hacia Heididorf."
+    "access": "Desde Maienfeld, seguir las indicaciones hacia Heididorf.",
+    "photoSpotReason": "Maienfeld recrea el universo de Heidi, con paisaje vinícola y de montaña como escenario de la célebre historia.",
+    "historyContext": "La escritora Johanna Spyri se inspiró en esta región para escribir su novela, hoy recreada en el pueblo de Heididorf."
   },
   {
     "id": 38,
@@ -682,7 +756,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "10 min.",
     "note": "Stein am Rhein es conocido por sus fachadas pintadas y su casco histórico junto al Rin.",
-    "access": "Acceso desde el casco histórico de Stein am Rhein hacia el Photo Spot."
+    "access": "Acceso desde el casco histórico de Stein am Rhein hacia el Photo Spot.",
+    "photoSpotReason": "Las fachadas pintadas y las casas de entramado de madera del casco histórico de Stein am Rhein son de las más fotografiadas de Suiza.",
+    "historyContext": "Sobre la ciudad, el castillo de Hohenklingen domina la región de Hegau y el lago de Constanza."
   },
   {
     "id": 39,
@@ -700,7 +776,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido a pie desde el aparcamiento exterior del pueblo.",
     "note": "El castillo domina la villa medieval de Gruyères.",
-    "access": "Acceso al casco histórico y al castillo de Gruyères."
+    "access": "Acceso al casco histórico y al castillo de Gruyères.",
+    "photoSpotReason": "Gruyères es una villa medieval al pie de los Prealpes, con calles empedradas y un castillo que domina el conjunto.",
+    "historyContext": "El castillo conserva más de ocho siglos de historia, estrechamente ligada a la tradición del queso Gruyère."
   },
   {
     "id": 40,
@@ -718,7 +796,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie desde el puerto.",
     "note": "El punto ofrece vistas sobre el lago de Zúrich hacia los Alpes.",
-    "access": "Acceso por la ribera de Meilen; también se puede llegar en ferry Horgen–Meilen."
+    "access": "Acceso por la ribera de Meilen; también se puede llegar en ferry Horgen–Meilen.",
+    "photoSpotReason": "El antiguo complejo lacustre de Meilen ofrece vistas hacia Albis y los Alpes de Glaris desde el lago de Zúrich.",
+    "historyContext": "Recuerda una época en la que el transporte por el lago era esencial para la vida de la región."
   },
   {
     "id": 41,
@@ -736,7 +816,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie desde el aparcamiento.",
     "note": "El entorno ofrece vistas del paisaje del Mendrisiotto.",
-    "access": "Acceso por carretera hasta Castel San Pietro y continuación a pie."
+    "access": "Acceso por carretera hasta Castel San Pietro y continuación a pie.",
+    "photoSpotReason": "Castel San Pietro domina el paisaje del Mendrisiotto combinando patrimonio rural, iglesias y viñedos.",
+    "historyContext": "Conserva elementos históricos como la iglesia de San Pietro, la Masseria Cuntitt y la iglesia de San Antonino en Colle di Obino."
   },
   {
     "id": 42,
@@ -754,7 +836,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Acceso directo desde la carretera.",
     "note": "La Tremola es la histórica carretera adoquinada del paso de San Gotardo.",
-    "access": "Acceso por la antigua carretera de la Tremola hacia el puerto de San Gotardo."
+    "access": "Acceso por la antigua carretera de la Tremola hacia el puerto de San Gotardo.",
+    "photoSpotReason": "La Tremola, con sus 24 curvas de adoquines de granito, es una de las carreteras de montaña más fotogénicas de Suiza.",
+    "historyContext": "Su pavimento se construyó entre 1937 y 1941 sobre el trazado de una antigua ruta del siglo XIX hacia el paso de San Gotardo."
   },
   {
     "id": 43,
@@ -772,7 +856,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto desde la estación superior.",
     "note": "El punto se encuentra a unos 2.350 m y ofrece vistas alpinas.",
-    "access": "Desde Leukerbad, subir en el teleférico Gemmi hasta el paso."
+    "access": "Desde Leukerbad, subir en el teleférico Gemmi hasta el paso.",
+    "photoSpotReason": "El mirador de Gemmi 2350 ofrece panoramas de alta montaña de 360° entre los cantones de Valais y Berna.",
+    "historyContext": "Se trata de un paso histórico documentado desde 1182, hoy accesible en teleférico desde Leukerbad."
   },
   {
     "id": 44,
@@ -790,7 +876,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido a pie desde la estación superior.",
     "note": "El Stockhorn domina el Simmental y ofrece vistas de los Alpes berneses.",
-    "access": "Desde Erlenbach, teleférico hasta Stockhorn."
+    "access": "Desde Erlenbach, teleférico hasta Stockhorn.",
+    "photoSpotReason": "Stockhorn ofrece una panorámica del Simmental con el lago Oberstockensee como protagonista del primer plano.",
+    "historyContext": "Es uno de los puntos más representativos del paisaje de los Alpes berneses centrales."
   },
   {
     "id": 45,
@@ -808,7 +896,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie desde la zona de acceso.",
     "note": "Las Dents du Midi forman una espectacular cadena de siete cumbres.",
-    "access": "Acceso por carretera a Morgins y a los puntos panorámicos de Dents du Midi."
+    "access": "Acceso por carretera a Morgins y a los puntos panorámicos de Dents du Midi.",
+    "photoSpotReason": "Desde La Foilleuse, a unos 1.850 m, se enmarca la cadena de Dents du Midi, de unos tres kilómetros de longitud.",
+    "historyContext": "Sus siete cumbres destacan con claridad sobre el paisaje montañoso que rodea Morgins."
   },
   {
     "id": 46,
@@ -826,7 +916,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido a pie por las calles y escalinatas del pueblo.",
     "note": "Morcote está considerado uno de los pueblos más bellos del Ticino.",
-    "access": "Acceso a pie por el casco histórico y el paseo del lago."
+    "access": "Acceso a pie por el casco histórico y el paseo del lago.",
+    "photoSpotReason": "Conocida como la «perla del Ceresio», Morcote combina calles estrechas, soportales y vegetación subtropical frente al lago.",
+    "historyContext": "Santa Maria del Sasso, la escalinata monumental y la Torre del Capitano forman parte de un conjunto histórico con vistas a Porto Ceresio."
   },
   {
     "id": 47,
@@ -844,7 +936,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Acceso corto a pie desde el punto de aparcamiento.",
     "note": "San Bernardino es una localidad alpina situada junto al puerto del mismo nombre.",
-    "access": "Acceso por la carretera del paso de San Bernardino."
+    "access": "Acceso por la carretera del paso de San Bernardino.",
+    "photoSpotReason": "San Bernardino es una localidad alpina asentada junto al histórico paso de montaña del mismo nombre.",
+    "historyContext": "La ruta comercial se construyó entre 1817 y 1823 para conectar Bellinzona con Coira a través de los Alpes."
   },
   {
     "id": 48,
@@ -862,7 +956,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie por el paseo del lago.",
     "note": "Romanshorn es uno de los principales puertos suizos del lago de Constanza.",
-    "access": "Acceso directo al puerto de Romanshorn."
+    "access": "Acceso directo al puerto de Romanshorn.",
+    "photoSpotReason": "El ambiente portuario de Romanshorn, en pleno lago de Constanza, permite ver el Säntis en días de buena visibilidad.",
+    "historyContext": "Es uno de los principales puertos suizos del lago, tradicional punto de partida para senderismo, ciclismo y deportes acuáticos."
   },
   {
     "id": 49,
@@ -880,7 +976,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie desde el aparcamiento.",
     "note": "La torre de Hospental es uno de los símbolos históricos del valle de Ursern.",
-    "access": "Acceso por Hospental y el camino hacia la torre medieval."
+    "access": "Acceso por Hospental y el camino hacia la torre medieval.",
+    "photoSpotReason": "La torre medieval de Hospental domina el valle de Urserntal y es el edificio más emblemático del pueblo.",
+    "historyContext": "Construida en la primera mitad del siglo XIII, ha permanecido deshabitada desde el siglo XV y hoy es un mirador abierto al público."
   },
   {
     "id": 50,
@@ -898,7 +996,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min.",
     "note": "El Photo Spot está a bordo del ferry del lago de Lucerna.",
-    "access": "Subir al ferry en Gersau o Beckenried según el sentido del recorrido."
+    "access": "Subir al ferry en Gersau o Beckenried según el sentido del recorrido.",
+    "photoSpotReason": "El ferry entre Beckenried y Gersau es el único «Photo Spot móvil» del Grand Tour, con el lago de Lucerna como escenario.",
+    "historyContext": "El servicio de ferry tiene una historia que se remonta a 1930; el barco actual puede transportar también vehículos."
   },
   {
     "id": 51,
@@ -916,7 +1016,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido a pie por el centro y hacia los castillos.",
     "note": "Bellinzona conserva tres castillos incluidos en el Patrimonio Mundial de la UNESCO.",
-    "access": "Acceso al casco histórico y a los castillos de Bellinzona."
+    "access": "Acceso al casco histórico y a los castillos de Bellinzona.",
+    "photoSpotReason": "El mirador de Montebello, unos 90 m sobre Bellinzona, ofrece una vista dominante sobre Castelgrande y el paisaje del Ticino.",
+    "historyContext": "Bellinzona conserva tres castillos incluidos en el Patrimonio Mundial de la UNESCO."
   },
   {
     "id": 52,
@@ -934,7 +1036,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Depende del mirador elegido.",
     "note": "El Matterhorn alcanza 4.478 m y es uno de los símbolos de Suiza.",
-    "access": "Llegar a Zermatt en tren desde Täsch y continuar a pie o en transporte de montaña hacia el punto de vista."
+    "access": "Llegar a Zermatt en tren desde Täsch y continuar a pie o en transporte de montaña hacia el punto de vista.",
+    "photoSpotReason": "La zona de Sunnegga-Rothorn regala vistas clásicas del Matterhorn, con el lago Stellisee como uno de los reflejos más buscados.",
+    "historyContext": "El Cervino, de 4.478 m, es uno de los símbolos montañosos más reconocibles de Suiza."
   },
   {
     "id": 53,
@@ -952,7 +1056,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto por el pueblo.",
     "note": "Obermutten conserva un conjunto tradicional de casas de madera.",
-    "access": "Acceso por carretera de montaña hasta Obermutten."
+    "access": "Acceso por carretera de montaña hasta Obermutten.",
+    "photoSpotReason": "Obermutten conserva una iglesia completamente de madera, construida en 1718, en un pueblo de casas oscurecidas por el sol.",
+    "historyContext": "El conjunto ofrece un paisaje tradicional de montaña poco alterado por el paso del tiempo."
   },
   {
     "id": 54,
@@ -970,7 +1076,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto desde la estación superior.",
     "note": "La cumbre ofrece vistas del lago de Lugano y del norte de Italia.",
-    "access": "Desde Capolago, tren de cremallera hasta Monte Generoso."
+    "access": "Desde Capolago, tren de cremallera hasta Monte Generoso.",
+    "photoSpotReason": "A 1.704 m, Monte Generoso ofrece una panorámica hacia el valle del Po, Monte San Giorgio, el lago de Lugano, Monte Rosa, el Cervino y el Jungfrau.",
+    "historyContext": "En la cima, la arquitectura contemporánea de Mario Botta convive con una capilla histórica del lugar."
   },
   {
     "id": 55,
@@ -988,7 +1096,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie desde el puerto.",
     "note": "El lago Lemán y el castillo de Rolle forman el paisaje del Photo Spot.",
-    "access": "Acceso al paseo del lago de Rolle."
+    "access": "Acceso al paseo del lago de Rolle.",
+    "photoSpotReason": "Rolle es una ciudad portuaria del lago Lemán con una isla artificial creada a partir de un dique en el siglo XIX.",
+    "historyContext": "La isla lleva el nombre de Frédéric-César de La Harpe y alberga un obelisco de 13 m inaugurado en 1844."
   },
   {
     "id": 56,
@@ -1006,7 +1116,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido a pie por la ribera del lago.",
     "note": "El Jet d’Eau alcanza 140 m y es uno de los símbolos de Ginebra.",
-    "access": "Acceso al lago y al Jet d’Eau desde el centro de Ginebra."
+    "access": "Acceso al lago y al Jet d’Eau desde el centro de Ginebra.",
+    "photoSpotReason": "El Jet d'Eau, de 140 m de altura, es el símbolo más reconocible de Ginebra en la cuenca portuaria del lago Lemán.",
+    "historyContext": "El casco antiguo y la catedral de Saint-Pierre dominan históricamente la orilla izquierda de la ciudad."
   },
   {
     "id": 57,
@@ -1024,7 +1136,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min.",
     "note": "El paisaje de los glaciares de Bernina incluye el glaciar de Morteratsch.",
-    "access": "Acceso por la carretera de Morteratsch desde Pontresina."
+    "access": "Acceso por la carretera de Morteratsch desde Pontresina.",
+    "photoSpotReason": "Desde el bucle de Montebello se observa el glaciar Morteratsch junto a Piz Bernina, Piz Palü, Piz Roseg y Bellavista.",
+    "historyContext": "Pontresina está históricamente rodeada de los grandes glaciares del macizo del Bernina."
   },
   {
     "id": 58,
@@ -1042,7 +1156,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie por el parque.",
     "note": "El parque ofrece una vista clásica hacia el Jungfrau.",
-    "access": "Acceso a Höhematte desde el centro de Interlaken."
+    "access": "Acceso a Höhematte desde el centro de Interlaken.",
+    "photoSpotReason": "Höhematte ofrece la vista clásica hacia el Jungfrau desde el corazón mismo de Interlaken.",
+    "historyContext": "Esta zona verde está protegida desde 1864 y es uno de los símbolos paisajísticos históricos de la ciudad."
   },
   {
     "id": 59,
@@ -1060,7 +1176,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto desde la estación superior.",
     "note": "El Niederhorn ofrece vistas sobre el lago de Thun y los Alpes.",
-    "access": "Teleférico y funicular desde Beatenbucht hacia Niederhorn."
+    "access": "Teleférico y funicular desde Beatenbucht hacia Niederhorn.",
+    "photoSpotReason": "Niederhorn regala una panorámica de 360° sobre el lago de Thun, la Meseta suiza y los Alpes berneses.",
+    "historyContext": "Se accede tradicionalmente por barco y teleférico desde Beatenbucht, histórico punto de trasbordo del lago de Thun."
   },
   {
     "id": 60,
@@ -1078,7 +1196,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido a pie por el centro histórico.",
     "note": "La Torre de San Sisinio es el emblema de Mendrisio y se contempla junto al Monte San Giorgio.",
-    "access": "Acceso al casco histórico de Mendrisio y a La Torre."
+    "access": "Acceso al casco histórico de Mendrisio y a La Torre.",
+    "photoSpotReason": "El casco histórico de Mendrisio, con La Torre como protagonista, se asocia visualmente a la silueta del Monte San Giorgio.",
+    "historyContext": "La Torre de la iglesia de San Sisinio recuerda el antiguo castillo de la familia Torriani."
   },
   {
     "id": 61,
@@ -1096,7 +1216,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie desde el aparcamiento.",
     "note": "El castillo ofrece una combinación de arquitectura histórica y vistas al lago.",
-    "access": "Acceso al castillo Hünegg junto al lago de Thun."
+    "access": "Acceso al castillo Hünegg junto al lago de Thun.",
+    "photoSpotReason": "El castillo Hünegg combina arquitectura modernista, con mobiliario prácticamente intacto desde 1900, y un parque junto al lago de Thun.",
+    "historyContext": "Fue construido entre 1861 y 1863; su parque reúne especies vegetales autóctonas y exóticas."
   },
   {
     "id": 62,
@@ -1114,7 +1236,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min.",
     "note": "Los siete Churfirsten forman una silueta montañosa característica del Toggenburg.",
-    "access": "Acceso por Wildhaus y el puerto hacia el Hotel Hirschen."
+    "access": "Acceso por Wildhaus y el puerto hacia el Hotel Hirschen.",
+    "photoSpotReason": "Los siete Churfirsten forman una cadena de cumbres entre 2.205 y 2.306 m, vista desde el paso de Wildhaus.",
+    "historyContext": "Chäserrugg es la cumbre más accesible de la cadena, alcanzable mediante dos teleféricos desde Unterwasser."
   },
   {
     "id": 63,
@@ -1132,7 +1256,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie.",
     "note": "Friburgo combina el casco medieval con el valle del Sarine.",
-    "access": "Acceso desde el centro de Friburgo hacia el Pont du Gottéron."
+    "access": "Acceso desde el centro de Friburgo hacia el Pont du Gottéron.",
+    "photoSpotReason": "El Pont du Gottéron, sobre el río Sarine, es uno de los puntos de encuentro visual entre el casco medieval de Friburgo y su entorno natural.",
+    "historyContext": "Fundada en 1157, Friburgo marca históricamente la frontera entre las culturas francófona y germanoparlante de Suiza."
   },
   {
     "id": 64,
@@ -1150,7 +1276,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido a pie desde el aparcamiento hasta el mirador.",
     "note": "La garganta alcanza unos 300 m de profundidad y es una de las grandes formaciones del Graubünden.",
-    "access": "Acceso por la carretera hacia la entrada de la garganta."
+    "access": "Acceso por la carretera hacia la entrada de la garganta.",
+    "photoSpotReason": "La garganta de Viamala combina paredes rocosas, agua y marmitas de gigante esculpidas por la erosión, accesibles por una escalera de 321 peldaños.",
+    "historyContext": "Formó parte de la histórica Via Spluga, una ruta comercial alpina transitada desde época romana."
   },
   {
     "id": 65,
@@ -1168,7 +1296,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "3 min en dirección al muelle de los barcos.",
     "note": "El embarcadero se adentra unos 270 m en el lago de Constanza.",
-    "access": "Acceso al puerto de Altnau y al embarcadero."
+    "access": "Acceso al puerto de Altnau y al embarcadero.",
+    "photoSpotReason": "El embarcadero de Altnau, de unos 270 m, ofrece una de las perspectivas más abiertas sobre el Obersee del lago de Constanza.",
+    "historyContext": "El Obersee, con unos 540 km², es el tramo del lago que toca Alemania, Austria y Suiza."
   },
   {
     "id": 66,
@@ -1186,7 +1316,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie.",
     "note": "El Photo Spot está sobre el barrio de Gravelone, entre viñedos y un paisaje panorámico.",
-    "access": "Acceso por las calles de Sion hacia el Bisse de Montorge."
+    "access": "Acceso por las calles de Sion hacia el Bisse de Montorge.",
+    "photoSpotReason": "El paisaje bajo la Bisse de Montorge combina viñedos, el tranquilo barrio de Gravelone y una panorámica característica de Sion.",
+    "historyContext": "Los bisses son los antiguos canales de riego tradicionales del Valais, aún visibles en el paisaje agrícola de la región."
   },
   {
     "id": 67,
@@ -1204,7 +1336,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "1 min.",
     "note": "El mirador domina Lucerna y el lago de los Cuatro Cantones.",
-    "access": "Acceso desde Lucerna hasta Château Gütsch."
+    "access": "Acceso desde Lucerna hasta Château Gütsch.",
+    "photoSpotReason": "Desde el entorno del Château Gütsch se domina el casco histórico de Lucerna, el lago y las montañas circundantes.",
+    "historyContext": "El castillo-hotel se construyó en 1888 sobre una colina que ya entonces ofrecía la mejor vista de la ciudad."
   },
   {
     "id": 68,
@@ -1222,7 +1356,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie.",
     "note": "La ciudad medieval se encuentra junto al Doubs.",
-    "access": "Acceso a pie por el puente histórico y las calles de Saint-Ursanne."
+    "access": "Acceso a pie por el puente histórico y las calles de Saint-Ursanne.",
+    "photoSpotReason": "Conocida como la «Perla del Jura», Saint-Ursanne se asienta junto al río Doubs, con un puente histórico y tres puertas medievales.",
+    "historyContext": "Su colegiata y su claustro datan de los siglos XII y XIII."
   },
   {
     "id": 69,
@@ -1240,7 +1376,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min desde el aparcamiento de la estación; 5 min desde Turmattschulhaus.",
     "note": "El CabriO es un teleférico de dos pisos con cubierta abierta.",
-    "access": "Subida mediante funicular y teleférico CabriO; unos 24 min."
+    "access": "Subida mediante funicular y teleférico CabriO; unos 24 min.",
+    "photoSpotReason": "El CabriO de Stanserhorn ofrece vistas de unos 100 km de cumbres y diez lagos suizos desde el primer teleférico del mundo con cubierta abierta.",
+    "historyContext": "En la cima se encuentra el restaurante giratorio Rondorama, otro de los sellos distintivos de la montaña."
   },
   {
     "id": 70,
@@ -1258,7 +1396,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "2 min hacia el museo; el Photo Spot está en el parque.",
     "note": "El punto está en la región del Untersee, con vistas sobre el lago de Constanza.",
-    "access": "Acceso al parque de Arenenberg y al Museo Napoleón."
+    "access": "Acceso al parque de Arenenberg y al Museo Napoleón.",
+    "photoSpotReason": "El Untersee del lago de Constanza se contempla desde la finca de Arenenberg, con vistas lacustres de gran valor paisajístico.",
+    "historyContext": "Arenenberg estuvo vinculada a la familia Bonaparte y hoy alberga el Napoleon Museum."
   },
   {
     "id": 71,
@@ -1276,7 +1416,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "10 min, señalizado.",
     "note": "El Emmental es conocido por sus paisajes ondulados y su tradición quesera.",
-    "access": "Acceso a la quesería demostrativa de Affoltern im Emmental."
+    "access": "Acceso a la quesería demostrativa de Affoltern im Emmental.",
+    "photoSpotReason": "El Emmental combina colinas y valles rurales con vistas hacia el Eiger, el Mönch y el Jungfrau en días despejados.",
+    "historyContext": "La quesería demostrativa de Affoltern muestra la elaboración tradicional del queso que da nombre a la región."
   },
   {
     "id": 72,
@@ -1294,7 +1436,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie.",
     "note": "Fully es conocido por sus viñedos y el paisaje del valle del Ródano.",
-    "access": "Acceso por carretera al municipio y a los viñedos de Fully."
+    "access": "Acceso por carretera al municipio y a los viñedos de Fully.",
+    "photoSpotReason": "La Combe d'Enfer, en Fully, es un viñedo extremadamente escarpado con unos 200 m de desnivel sostenido por muros de piedra seca.",
+    "historyContext": "Solo se accede al viñedo a través de un sendero peatonal, reflejo de la viticultura tradicional del valle del Ródano."
   },
   {
     "id": 73,
@@ -1312,7 +1456,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido a pie desde el aparcamiento hasta el punto.",
     "note": "Las cuevas se encuentran junto al lago de Thun y están asociadas a la leyenda de San Beato.",
-    "access": "Acceso por carretera desde Interlaken hacia Beatenberg y las cuevas."
+    "access": "Acceso por carretera desde Interlaken hacia Beatenberg y las cuevas.",
+    "photoSpotReason": "Las Cuevas de San Beato ofrecen un recorrido iluminado de un kilómetro entre estalactitas y estalagmitas, junto al lago de Thun.",
+    "historyContext": "Están asociadas a la leyenda del ermitaño San Beato, que habría vivido en ellas según la tradición local."
   },
   {
     "id": 74,
@@ -1330,7 +1476,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido a pie por el centro.",
     "note": "El casco antiguo está dominado por la catedral de Basilea.",
-    "access": "Acceso al casco histórico y a la ribera del Rin."
+    "access": "Acceso al casco histórico y a la ribera del Rin.",
+    "photoSpotReason": "El Rin, el casco histórico y la vida urbana conviven en Basilea, ciudad situada en una región de tres fronteras.",
+    "historyContext": "El puerto del Rin conecta históricamente la ciudad con la navegación fluvial hacia el mar del Norte."
   },
   {
     "id": 75,
@@ -1348,7 +1496,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Sendero de montaña hasta el borde del circo.",
     "note": "Las paredes calizas alcanzan unos 200 m de altura y el lugar es reserva natural desde 1876.",
-    "access": "Acceso por carretera hacia el circo rocoso y continuación a pie."
+    "access": "Acceso por carretera hacia el circo rocoso y continuación a pie.",
+    "photoSpotReason": "El Creux du Van forma un circo de roca caliza de casi 200 m de altura y 1,4 km de circunferencia, uno de los grandes espectáculos geológicos del Jura.",
+    "historyContext": "La zona es reserva natural desde 1876 y ofrece vistas hacia los Alpes desde su borde superior."
   },
   {
     "id": 76,
@@ -1366,7 +1516,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min.",
     "note": "El punto ofrece vistas del lago Lemán y del entorno de Coppet.",
-    "access": "Acceso por Route Suisse y el puerto de Coppet."
+    "access": "Acceso por Route Suisse y el puerto de Coppet.",
+    "photoSpotReason": "El lago Lemán se combina con los viñedos de La Côte y las montañas del Jura desde el entorno del puerto de Coppet.",
+    "historyContext": "La región es tradicionalmente asociada a los paseos en barcos históricos que aún navegan el lago."
   },
   {
     "id": 77,
@@ -1384,7 +1536,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido a pie dentro del recinto según la ubicación del Photo Spot.",
     "note": "Ballenberg reúne edificios tradicionales de todas las regiones de Suiza.",
-    "access": "Acceso directo a Ballenberg por carretera."
+    "access": "Acceso directo a Ballenberg por carretera.",
+    "photoSpotReason": "Ballenberg reúne más de 100 edificios rurales históricos procedentes de todas las regiones de Suiza en un único museo al aire libre.",
+    "historyContext": "Permite descubrir oficios tradicionales, jardines y animales de granja representativos de distintas zonas del país."
   },
   {
     "id": 78,
@@ -1402,7 +1556,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "7 min.",
     "note": "La ficha oficial señala que el punto fotográfico puede cambiar temporalmente de ubicación.",
-    "access": "Acceso desde la estación y el centro de Spiez."
+    "access": "Acceso desde la estación y el centro de Spiez.",
+    "photoSpotReason": "Spiez combina lago, viñedos, castillo y montañas en un destino muy bien conectado del lago de Thun.",
+    "historyContext": "Formado por varias comunidades agrícolas, es uno de los enclaves clásicos del paisaje del Oberland bernés."
   },
   {
     "id": 79,
@@ -1420,7 +1576,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto desde la estación de montaña.",
     "note": "Rigi ofrece vistas panorámicas sobre varios lagos y los Alpes.",
-    "access": "Desde Vitznau, tren de cremallera hasta Rigi Kulm; también hay acceso por teleféricos desde otros puntos."
+    "access": "Desde Vitznau, tren de cremallera hasta Rigi Kulm; también hay acceso por teleféricos desde otros puntos.",
+    "photoSpotReason": "El histórico muelle de Vitznau, de 1912, es la puerta de entrada tradicional a la «Reina de las Montañas».",
+    "historyContext": "Desde aquí parte el tren de cremallera más antiguo de Europa, además de los barcos que recorren el lago de Lucerna."
   },
   {
     "id": 80,
@@ -1438,7 +1596,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "2 min, señalizado.",
     "note": "La Punt conserva casas históricas de la Engadina y la Chesa Merleda.",
-    "access": "Acceso directo al pueblo de La Punt."
+    "access": "Acceso directo al pueblo de La Punt.",
+    "photoSpotReason": "Las casas nobles y posadas de los siglos XVI y XVII de La Punt reflejan la importancia histórica de la ruta del Albula.",
+    "historyContext": "La Chesa Merleda es uno de los edificios más representativos de este pueblo de la Engadina."
   },
   {
     "id": 81,
@@ -1456,7 +1616,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min desde el aparcamiento.",
     "note": "El Säntis domina el Alpstein y ofrece un panorama de varios países.",
-    "access": "Desde Schwägalp, teleférico hasta Säntis."
+    "access": "Desde Schwägalp, teleférico hasta Säntis.",
+    "photoSpotReason": "Desde los 2.502 m del Säntis pueden verse hasta seis países en condiciones de buena visibilidad.",
+    "historyContext": "El teleférico conecta la cima con Schwägalp, punto de partida clásico de la ascensión desde hace décadas."
   },
   {
     "id": 82,
@@ -1474,7 +1636,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie desde el aparcamiento.",
     "note": "El castillo con foso se encuentra junto al lago Hallwil.",
-    "access": "Acceso por carretera al castillo de Hallwyl y su recinto."
+    "access": "Acceso por carretera al castillo de Hallwyl y su recinto.",
+    "photoSpotReason": "El castillo de Hallwyl, uno de los castillos con foso más destacados de Suiza, se asienta junto al lago Hallwil.",
+    "historyContext": "Sus exposiciones muestran la historia del edificio y de sus antiguos propietarios, junto a la vida cotidiana de campesinos y molineros."
   },
   {
     "id": 83,
@@ -1492,7 +1656,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto desde el aparcamiento.",
     "note": "La quesería muestra la elaboración tradicional del queso Appenzeller.",
-    "access": "Acceso a la Appenzell Show Dairy en Stein AR."
+    "access": "Acceso a la Appenzell Show Dairy en Stein AR.",
+    "photoSpotReason": "La Appenzeller Schaukäserei combina la tradición de los pastos alpinos con la producción moderna de queso Appenzeller.",
+    "historyContext": "La visita permite conocer de cerca el proceso de elaboración y la cultura local de la región de Appenzell."
   },
   {
     "id": 84,
@@ -1510,7 +1676,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "1 min.",
     "note": "La vista muestra el casco antiguo y el castillo de Rapperswil.",
-    "access": "Acceso al paseo junto al lago y al casco antiguo de Rapperswil."
+    "access": "Acceso al paseo junto al lago y al casco antiguo de Rapperswil.",
+    "photoSpotReason": "Conocida como la ciudad de las rosas, Rapperswil-Jona combina jardines, casco histórico y castillo medieval junto al lago de Zúrich.",
+    "historyContext": "El castillo y el paseo lacustre forman uno de los conjuntos patrimoniales más fotografiados de la región."
   },
   {
     "id": 85,
@@ -1528,7 +1696,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min.",
     "note": "El punto ofrece vistas sobre el lago de Lucerna y el entorno del Rütli.",
-    "access": "Acceso al puerto de Brunnen y al paseo del lago."
+    "access": "Acceso al puerto de Brunnen y al paseo del lago.",
+    "photoSpotReason": "El lago de Lucerna aparece enmarcado por montañas y por el paisaje histórico del Rütli desde la zona de Brunnen.",
+    "historyContext": "Seelisberg y Brunnen están históricamente vinculados a los orígenes de la Confederación Suiza."
   },
   {
     "id": 86,
@@ -1546,7 +1716,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "3 min desde la estación de montaña.",
     "note": "El punto está a unos 2.100 m y ofrece vistas del grupo Weisshorn.",
-    "access": "5 min a pie hasta la estación de góndola; después góndola hasta Hannigalp."
+    "access": "5 min a pie hasta la estación de góndola; después góndola hasta Hannigalp.",
+    "photoSpotReason": "Desde Hannigalp, cerca de Grächen, el grupo Weisshorn domina el paisaje junto a Bishorn, Brunegghorn y otras grandes cumbres.",
+    "historyContext": "El Weisshorn, de 4.505 m, es uno de los grandes miradores alpinos característicos del Valais."
   },
   {
     "id": 87,
@@ -1564,7 +1736,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie.",
     "note": "Rheinfelden conserva un casco histórico medieval junto al Rin.",
-    "access": "Acceso a pie por el centro histórico y la ribera del Rin."
+    "access": "Acceso a pie por el centro histórico y la ribera del Rin.",
+    "photoSpotReason": "El casco histórico de Rheinfelden, junto al Rin, conserva más de ocho siglos de historia urbana.",
+    "historyContext": "La ciudad pasó por diferentes dominios territoriales hasta integrarse finalmente en el cantón de Argovia."
   },
   {
     "id": 88,
@@ -1582,7 +1756,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto a pie desde el aparcamiento.",
     "note": "El Photo Spot enmarca la fachada barroca de la abadía.",
-    "access": "Acceso directo a Klosterplatz y a la abadía."
+    "access": "Acceso directo a Klosterplatz y a la abadía.",
+    "photoSpotReason": "El gran conjunto barroco del siglo XVIII de la abadía de Einsiedeln se enmarca perfectamente desde Klosterplatz.",
+    "historyContext": "La abadía recibe peregrinos desde hace más de mil años y alberga en su Santuario la imagen de la Virgen Negra."
   },
   {
     "id": 89,
@@ -1600,7 +1776,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto desde el punto de parada.",
     "note": "A 2.429 m, es el puerto alpino más alto del Grand Tour de Suiza y cerca nace el Ródano.",
-    "access": "Acceso por la carretera del puerto de Furka, sujeto a apertura estacional."
+    "access": "Acceso por la carretera del puerto de Furka, sujeto a apertura estacional.",
+    "photoSpotReason": "A 2.429 m, el paso de Furka es el puerto alpino más alto del Grand Tour de Suiza, cerca del nacimiento del río Ródano.",
+    "historyContext": "Marca la divisoria continental entre las aguas que fluyen hacia el Mediterráneo y las que fluyen hacia el mar del Norte."
   },
   {
     "id": 90,
@@ -1618,7 +1796,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Aproximadamente 1 min a pie.",
     "note": "El edificio fue diseñado por Christ & Gantenbein y el chocolate se produce aquí desde 1899.",
-    "access": "Acceso a Lindt Home of Chocolate en Kilchberg desde Zúrich."
+    "access": "Acceso a Lindt Home of Chocolate en Kilchberg desde Zúrich.",
+    "photoSpotReason": "Lindt Home of Chocolate combina arquitectura contemporánea con el emplazamiento histórico de la fábrica de Lindt & Sprüngli en Kilchberg.",
+    "historyContext": "El chocolate se produce en este lugar desde 1899; el edificio actual fue diseñado por el estudio Christ & Gantenbein."
   },
   {
     "id": 91,
@@ -1636,7 +1816,9 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "0 min, a la izquierda del Hotel Huus.",
     "note": "La región de Saanenland se extiende entre 1.000 y 3.000 m y ofrece vistas de montañas, bosques y lagos.",
-    "access": "Acceso por Schönriedstrasse hasta Hotel Huus."
+    "access": "Acceso por Schönriedstrasse hasta Hotel Huus.",
+    "photoSpotReason": "Gstaad-Saanenland reúne cinco valles laterales y paisajes alpinos entre 1.000 y 3.000 m, con el Hotel Huus como punto de referencia.",
+    "historyContext": "Saanenland es una región histórica de montañas, bosques y lagos del Berner Oberland, muy ligada al turismo alpino."
   },
   {
     "id": 92,
@@ -1654,6 +1836,8 @@ window.PHOTO_SPOTS_INFO = [
     "dataNote": "Resumen redactado a partir de la ficha oficial; comprobar condiciones de acceso antes del viaje.",
     "trail": "Recorrido corto desde el aparcamiento.",
     "note": "El Totem Ticino simboliza la unión de Locarno, Bellinzona y Lugano y el final del proyecto AlpTransit.",
-    "access": "Acceso por carretera al puerto de Monte Ceneri y a Piazza Ticino; también está en La Via del Ceneri."
+    "access": "Acceso por carretera al puerto de Monte Ceneri y a Piazza Ticino; también está en La Via del Ceneri.",
+    "photoSpotReason": "Piazza Ticino, en el puerto de Monte Ceneri, simboliza con su tótem la unión de Locarno, Bellinzona y Lugano.",
+    "historyContext": "El tótem está construido con roca procedente de las excavaciones del túnel de base de AlpTransit, y la plaza forma parte de la ruta de senderismo Via del Ceneri."
   }
 ];

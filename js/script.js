@@ -59,6 +59,29 @@ const map = L.map('map', {
 
 
 /* =========================================================
+   DIAGNÓSTICO TEMPORAL · INTERCEPTAR CAMBIOS DE VISTA DEL MAPA
+   (setView / flyTo / panTo / fitBounds)
+   ========================================================= */
+
+['setView', 'flyTo', 'panTo', 'fitBounds'].forEach(methodName => {
+
+  const originalMethod = map[methodName];
+
+  map[methodName] = function (...args) {
+
+    console.log(
+      `[viewDiag][${methodName}] llamado con args:`, args,
+      '\n[viewDiag] stack:', new Error().stack
+    );
+
+    return originalMethod.apply(this, args);
+
+  };
+
+});
+
+
+/* =========================================================
    CONTROL DE ZOOM
    ========================================================= */
 
@@ -288,7 +311,7 @@ const hernanIcon =
     html: `
 
       <img
-        src="img/H1.png"
+        src="img/1.png"
         alt="Hernán"
       >
 
@@ -467,6 +490,23 @@ let userAccuracyCircle = null;
 let selectedSpotForGPS = null;
 
 let gpsWatchId = null;
+
+
+/* =========================================================
+   RUTAS A DESTINOS DEL PHOTO SPOT · ESTADO
+   (declarado aquí, antes de la primera llamada a
+   selectSpot/clearDestinationRoute en la carga inicial)
+   ========================================================= */
+
+let destinationRouteLayer = null;
+
+let destinationRouteMarker = null;
+
+let destinationRouteController = null;
+
+let destinationRouteRequestId = 0;
+
+let destinationRouteActiveButton = null;
 
 
 /* =========================================================
@@ -1837,6 +1877,14 @@ function selectSpot(
 
 
   /* =======================================================
+     LIMPIAR RUTA A DESTINO DEL SPOT ANTERIOR
+     (parking / cómo llegar / sendero)
+     ======================================================= */
+
+  clearDestinationRoute();
+
+
+  /* =======================================================
      MARCADORES
      ======================================================= */
 
@@ -1969,18 +2017,66 @@ function selectSpot(
 
   const practical = document.getElementById('spotPracticalInfo');
   if (practical) {
+    const routeData = (window.PHOTO_SPOTS_ROUTES && window.PHOTO_SPOTS_ROUTES[id]) || {};
+
+    const parkingRoute = (routeData.parkingName && hasValidCoords(routeData.parkingLat, routeData.parkingLng))
+      ? { lat: routeData.parkingLat, lng: routeData.parkingLng, label: routeData.parkingName || 'el parking', text: '📍 IR AL PARKING →', icon: '🅿️', mode: 'driving' }
+      : null;
+
+    const accessRoute = (routeData.accessName && hasValidCoords(routeData.accessLat, routeData.accessLng))
+      ? { lat: routeData.accessLat, lng: routeData.accessLng, label: routeData.accessName || 'el destino', text: '📍 IR AL DESTINO →', icon: '🇨🇭', mode: 'driving' }
+      : null;
+
+    const trailRoute = (routeData.trailName && hasValidCoords(routeData.trailLat, routeData.trailLng))
+      ? { lat: routeData.trailLat, lng: routeData.trailLng, label: routeData.trailName || 'el sendero', text: '🥾 INICIAR RUTA →', icon: '🥾', mode: 'walking' }
+      : null;
+
     const fields = [
-      ['📍 DIRECCIÓN', spotInfo?.address],
-      ['🅿️ PARKING', spotInfo?.parking],
-      ['🚗 CÓMO LLEGAR', spotInfo?.howToGetThere],
-      ['🥾 SENDERO / TRAYECTO', spotInfo?.trail],
-      ['ℹ️ NOTA', spotInfo?.note]
+      ['� ¿POR QUÉ ES UN PHOTO SPOT?', spotInfo?.photoSpotReason, null],
+      ['🏛️ HISTORIA / CONTEXTO', spotInfo?.historyContext, null],
+      ['�📍 DIRECCIÓN', spotInfo?.address, null],
+      ['🅿️ PARKING', spotInfo?.parking, parkingRoute],
+      ['🚗 CÓMO LLEGAR', spotInfo?.howToGetThere, accessRoute],
+      ['🥾 SENDERO / TRAYECTO', spotInfo?.trail, trailRoute],
+      ['ℹ️ NOTA', spotInfo?.note, null]
     ];
-    practical.innerHTML = fields.map(([label, value]) => `
+
+    practical.innerHTML = fields.map(([label, value, route]) => `
       <div class="spotPracticalItem">
         <div class="spotPracticalLabel">${escapeHtml(label)}</div>
         <div class="spotPracticalText">${escapeHtml(value || '')}</div>
+        ${route ? `
+        <button
+          type="button"
+          class="spotRouteButton"
+          data-lat="${route.lat}"
+          data-lng="${route.lng}"
+          data-label="${escapeHtml(route.label)}"
+          data-icon="${route.icon}"
+          data-mode="${route.mode}"
+        >${escapeHtml(route.text)}</button>
+        <small class="spotRouteStatus"></small>` : ''}
       </div>`).join('');
+
+    practical.querySelectorAll('.spotRouteButton').forEach(button => {
+      button.addEventListener('click', () => {
+        if (button.dataset.mode === 'walking') {
+          setDestinationRouteStatus(
+            button,
+            '🥾 La ruta a pie estará disponible próximamente: el servicio de rutas actual no soporta senderismo.'
+          );
+          return;
+        }
+
+        startDestinationRoute(
+          parseFloat(button.dataset.lat),
+          parseFloat(button.dataset.lng),
+          button.dataset.label,
+          button.dataset.icon,
+          button
+        );
+      });
+    });
   }
 
 
@@ -2013,10 +2109,13 @@ function selectSpot(
 
   image.onclick = null;
   image.onkeydown = null;
-  image.style.cursor = '';
   image.removeAttribute('title');
   image.removeAttribute('role');
   image.removeAttribute('tabindex');
+
+  const hasVideo = Boolean(getYoutubeEmbedUrl(spot.youtubeUrl));
+  image.ondblclick = hasVideo ? openSpotVideo : null;
+  image.style.cursor = hasVideo ? 'pointer' : '';
 
   updateCommunityForSpot(spot);
   /* =======================================================
@@ -4445,6 +4544,13 @@ async function calculateRealRoute() {
    Ahora dibuja la ruta en nuestro mapa
    ========================================================= */
 
+function handleNavigationClickDrawRoute() {
+
+  calculateRealRoute();
+
+}
+
+
 if (
   navigationBtn
 ) {
@@ -4459,11 +4565,7 @@ if (
 
     'click',
 
-    () => {
-
-      calculateRealRoute();
-
-    }
+    handleNavigationClickDrawRoute
 
   );
 
@@ -4553,6 +4655,528 @@ handlePosition =
 
 /* =========================================================
    FIN FASE 2
+   ========================================================= */
+
+/* =========================================================
+   RUTAS A DESTINOS DEL PHOTO SPOT
+   (PARKING / CÓMO LLEGAR / SENDERO)
+   ---------------------------------------------------------
+   Funcionalidad independiente del sistema de "Cómo llegar"
+   al propio Photo Spot: usa su propia capa de mapa
+   (destinationRouteLayer) y no comparte estado con
+   currentRouteLayer/routeInfoPanel, para no interferir con
+   la navegación ya existente.
+   ========================================================= */
+
+function hasValidCoords(lat, lng) {
+
+  return (
+    typeof lat === 'number' &&
+    typeof lng === 'number' &&
+    Number.isFinite(lat) &&
+    Number.isFinite(lng)
+  );
+
+}
+
+
+function clearDestinationRoute() {
+
+  if (destinationRouteController) {
+    destinationRouteController.abort();
+    destinationRouteController = null;
+  }
+
+  if (destinationRouteLayer) {
+    map.removeLayer(destinationRouteLayer);
+    destinationRouteLayer = null;
+  }
+
+  if (destinationRouteMarker) {
+    map.removeLayer(destinationRouteMarker);
+    destinationRouteMarker = null;
+  }
+
+  if (destinationRouteActiveButton) {
+    destinationRouteActiveButton.disabled = false;
+    destinationRouteActiveButton = null;
+  }
+
+}
+
+
+function setDestinationRouteStatus(button, message) {
+
+  if (!button || !button.parentElement) return;
+
+  const statusEl =
+    button.parentElement.querySelector('.spotRouteStatus');
+
+  if (statusEl) {
+    statusEl.textContent = message || '';
+  }
+
+}
+
+
+function destinationMarkerIcon(emoji) {
+
+  return L.divIcon({
+    className: 'destination-marker',
+    html: `<div class="destination-pin">${emoji || '📍'}</div>`,
+    iconSize: [30, 30],
+    iconAnchor: [15, 28]
+  });
+
+}
+
+
+function startDestinationRoute(destLat, destLng, destLabel, iconEmoji, button) {
+
+  if (!hasValidCoords(destLat, destLng)) {
+    return;
+  }
+
+  if (button && button.disabled) {
+    return;
+  }
+
+  clearDestinationRoute();
+
+  destinationRouteActiveButton = button;
+
+  if (button) {
+    button.disabled = true;
+  }
+
+  setDestinationRouteStatus(button, '📍 Solicitando tu ubicación...');
+
+  if (!navigator.geolocation) {
+
+    setDestinationRouteStatus(
+      button,
+      '⚠️ Tu navegador no permite geolocalización. Actívala para calcular la ruta.'
+    );
+
+    if (button) button.disabled = false;
+    destinationRouteActiveButton = null;
+
+    return;
+
+  }
+
+  navigator.geolocation.getCurrentPosition(
+
+    position => {
+
+      fetchDestinationRoute(
+
+        {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        },
+
+        {
+          lat: destLat,
+          lng: destLng
+        },
+
+        destLabel,
+        iconEmoji,
+        button
+
+      );
+
+    },
+
+    () => {
+
+      setDestinationRouteStatus(
+        button,
+        '⚠️ Necesitamos tu ubicación para calcular la ruta. Actívala e inténtalo de nuevo.'
+      );
+
+      if (button) button.disabled = false;
+      destinationRouteActiveButton = null;
+
+    },
+
+    {
+      enableHighAccuracy: true,
+      timeout: 12000,
+      maximumAge: 0
+    }
+
+  );
+
+}
+
+
+async function fetchDestinationRoute(origin, destination, destLabel, iconEmoji, button) {
+
+  destinationRouteRequestId++;
+
+  const requestId = destinationRouteRequestId;
+
+  destinationRouteController = new AbortController();
+
+  setDestinationRouteStatus(button, '🛰️ Calculando ruta real...');
+
+  const url =
+    `https://router.project-osrm.org/route/v1/driving/` +
+    `${origin.lng},${origin.lat};${destination.lng},${destination.lat}` +
+    `?overview=full&geometries=geojson&steps=false&alternatives=false`;
+
+  try {
+
+    const response =
+      await fetch(url, { signal: destinationRouteController.signal });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    /* Si ha llegado una petición más reciente, descartamos ésta. */
+    if (requestId !== destinationRouteRequestId) {
+      return;
+    }
+
+    if (data.code !== 'Ok' || !data.routes || !data.routes.length) {
+      throw new Error(data.message || 'No se encontró una ruta.');
+    }
+
+    const route = data.routes[0];
+
+    if (destinationRouteLayer) {
+      map.removeLayer(destinationRouteLayer);
+      destinationRouteLayer = null;
+    }
+
+    if (destinationRouteMarker) {
+      map.removeLayer(destinationRouteMarker);
+      destinationRouteMarker = null;
+    }
+
+    destinationRouteLayer =
+      L.featureGroup([
+
+        /* Línea exterior/glow: mismo patrón que el sistema principal de navegación. */
+        L.geoJSON(route.geometry, {
+          style: {
+            color: '#ffd000',
+            weight: 9,
+            opacity: 0.30
+          }
+        }),
+
+        /* Núcleo blanco: da el contraste que hace visible la ruta. */
+        L.geoJSON(route.geometry, {
+          style: {
+            color: '#ffffff',
+            weight: 4,
+            opacity: 0.95
+          }
+        })
+
+      ]).addTo(map);
+
+    /* DIAGNÓSTICO TEMPORAL · renderizado de destinationRouteLayer */
+    console.log('[destinationRoute][RENDER-1] getLayers().length:', destinationRouteLayer.getLayers().length);
+
+    destinationRouteLayer.getLayers().forEach((subLayer, index) => {
+
+      const innerLayers =
+        typeof subLayer.getLayers === 'function' ? subLayer.getLayers() : [];
+
+      console.log(`[destinationRoute][RENDER-2] subcapa ${index} → subcapas internas:`, innerLayers.length);
+
+      innerLayers.forEach((innerLayer, innerIndex) => {
+
+        const isPolyline = innerLayer instanceof L.Polyline;
+
+        const pointCount =
+          isPolyline && typeof innerLayer.getLatLngs === 'function'
+            ? innerLayer.getLatLngs().length
+            : 'n/a';
+
+        console.log(
+          `[destinationRoute][RENDER-3] subcapa ${index}.${innerIndex} → esPolyline:`, isPolyline,
+          '· nº de puntos (getLatLngs):', pointCount
+        );
+
+      });
+
+    });
+
+    const mapContainer = map.getContainer();
+    const interactivePaths = mapContainer.querySelectorAll('path.leaflet-interactive');
+
+    console.log('[destinationRoute][RENDER-4] nº de <path class="leaflet-interactive"> en el mapa:', interactivePaths.length);
+
+    interactivePaths.forEach((pathEl, index) => {
+      console.log(`[destinationRoute][RENDER-5] path ${index} atributos:`, {
+        d: pathEl.getAttribute('d'),
+        stroke: pathEl.getAttribute('stroke'),
+        'stroke-width': pathEl.getAttribute('stroke-width'),
+        opacity: pathEl.getAttribute('opacity') || pathEl.getAttribute('stroke-opacity')
+      });
+    });
+
+    const overlayPane = map.getPane('overlayPane');
+    const svgInOverlayPane = overlayPane ? overlayPane.querySelector('svg') : null;
+
+    console.log('[destinationRoute][RENDER-6] map.getPane("overlayPane"):', overlayPane);
+    console.log('[destinationRoute][RENDER-7] ¿SVG de Leaflet presente en overlayPane?', Boolean(svgInOverlayPane), svgInOverlayPane);
+
+    /* DIAGNÓSTICO TEMPORAL · renderer Canvas de Leaflet */
+    const canvasDiagPolylines = [];
+
+    destinationRouteLayer.getLayers().forEach(subLayer => {
+      if (typeof subLayer.getLayers === 'function') {
+        subLayer.getLayers().forEach(innerLayer => {
+          if (innerLayer instanceof L.Polyline) {
+            canvasDiagPolylines.push(innerLayer);
+          }
+        });
+      }
+    });
+
+    /* DIAGNÓSTICO TEMPORAL · envolver _update/_reset del renderer Canvas (una sola vez) */
+    canvasDiagPolylines.forEach(polyline => {
+
+      const renderer = map.getRenderer(polyline);
+
+      if (!renderer || renderer.__diagPatched) return;
+
+      renderer.__diagPatched = true;
+
+      if (typeof renderer._update === 'function') {
+
+        const originalUpdate = renderer._update;
+
+        renderer._update = function (...args) {
+          console.log(
+            '[destinationRoute][CANVAS-UPDATE] _update() ejecutado · canvas:',
+            this._container && `${this._container.width}x${this._container.height}`,
+            '· nº capas (_layers):', this._layers ? Object.keys(this._layers).length : 'n/a'
+          );
+          console.trace('[destinationRoute][CANVAS-UPDATE] stack');
+          return originalUpdate.apply(this, args);
+        };
+
+      }
+
+      if (typeof renderer._reset === 'function') {
+
+        const originalReset = renderer._reset;
+
+        renderer._reset = function (...args) {
+          console.log(
+            '[destinationRoute][CANVAS-RESET] _reset() ejecutado · canvas:',
+            this._container && `${this._container.width}x${this._container.height}`,
+            '· nº capas (_layers):', this._layers ? Object.keys(this._layers).length : 'n/a'
+          );
+          console.trace('[destinationRoute][CANVAS-RESET] stack');
+          return originalReset.apply(this, args);
+        };
+
+      }
+
+    });
+
+    canvasDiagPolylines.forEach((polyline, index) => {
+
+      const renderer = map.getRenderer(polyline);
+
+      console.log(
+        `[destinationRoute][CANVAS-1] polyline ${index} → renderer:`, renderer,
+        '· constructor:', renderer && renderer.constructor && renderer.constructor.name,
+        '· instanceof L.Canvas:', renderer instanceof L.Canvas
+      );
+
+      console.log(
+        `[destinationRoute][CANVAS-2] polyline ${index} → polyline._renderer existe:`, Boolean(polyline._renderer),
+        '· polyline._map === map:', polyline._map === map
+      );
+
+      if (renderer && renderer._container) {
+
+        const canvasEl = renderer._container;
+        const isCanvasEl = canvasEl instanceof HTMLCanvasElement;
+        const computed = window.getComputedStyle(canvasEl);
+        const overlayPaneEl = map.getPane('overlayPane');
+
+        console.log(`[destinationRoute][CANVAS-3] polyline ${index} → renderer._container:`, canvasEl, '· esHTMLCanvasElement:', isCanvasEl);
+        console.log(`[destinationRoute][CANVAS-4] polyline ${index} → canvas.width/height:`, canvasEl.width, canvasEl.height, '· style.width/height:', canvasEl.style.width, canvasEl.style.height);
+        console.log(`[destinationRoute][CANVAS-5] polyline ${index} → getBoundingClientRect():`, canvasEl.getBoundingClientRect());
+        console.log(`[destinationRoute][CANVAS-6] polyline ${index} → overlayPane.contains(canvas):`, overlayPaneEl ? overlayPaneEl.contains(canvasEl) : 'sin overlayPane');
+        console.log(`[destinationRoute][CANVAS-7] polyline ${index} → estilos computados:`, {
+          display: computed.display,
+          visibility: computed.visibility,
+          opacity: computed.opacity,
+          zIndex: computed.zIndex,
+          position: computed.position
+        });
+
+      } else {
+        console.warn(`[destinationRoute][CANVAS-3] polyline ${index} → renderer o renderer._container no existe.`);
+      }
+
+      console.log(`[destinationRoute][CANVAS-8] polyline ${index} → options:`, {
+        color: polyline.options.color,
+        weight: polyline.options.weight,
+        opacity: polyline.options.opacity
+      });
+
+      const polylineBounds = polyline.getBounds();
+      console.log(`[destinationRoute][CANVAS-9] polyline ${index} → getBounds():`, polylineBounds, '· isValid():', polylineBounds.isValid());
+
+      const latlngs = polyline.getLatLngs();
+      const samplePoints = [
+        { label: 'primero', latlng: latlngs[0] },
+        { label: 'medio', latlng: latlngs[Math.floor(latlngs.length / 2)] },
+        { label: 'último', latlng: latlngs[latlngs.length - 1] }
+      ];
+
+      samplePoints.forEach(({ label, latlng }) => {
+        if (!latlng) return;
+        const containerPoint = map.latLngToContainerPoint(latlng);
+        console.log(`[destinationRoute][CANVAS-10] polyline ${index} → punto ${label} → LatLng:`, latlng, '· ContainerPoint:', containerPoint);
+      });
+
+    });
+
+    console.log('[destinationRoute][CANVAS-11] map.getSize():', map.getSize());
+    console.log('[destinationRoute][CANVAS-12] map.getPixelBounds():', map.getPixelBounds());
+    console.log('[destinationRoute][CANVAS-13] map.getBounds():', map.getBounds());
+
+    destinationRouteMarker =
+      L.marker(
+        [destination.lat, destination.lng],
+        { icon: destinationMarkerIcon(iconEmoji) }
+      ).addTo(map);
+
+    updateUserMarker(origin.lat, origin.lng, 0);
+
+    const bounds = destinationRouteLayer.getBounds();
+
+    /* DIAGNÓSTICO TEMPORAL · snapshot del renderer/canvas antes y después de fitBounds */
+    function logCanvasSnapshot(tag) {
+
+      canvasDiagPolylines.forEach((polyline, index) => {
+
+        const renderer = map.getRenderer(polyline);
+        const canvasEl = renderer && renderer._container;
+        const parts = polyline._parts;
+
+        console.log(
+          `[destinationRoute][${tag}] polyline ${index} → renderer:`, renderer,
+          '· renderer._container (canvas):', canvasEl,
+          '· polyline._renderer === renderer:', polyline._renderer === renderer
+        );
+
+        console.log(
+          `[destinationRoute][${tag}] polyline ${index} → canvas.width/height:`,
+          canvasEl ? canvasEl.width : 'n/a', canvasEl ? canvasEl.height : 'n/a',
+          '· getBoundingClientRect():', canvasEl ? canvasEl.getBoundingClientRect() : 'n/a'
+        );
+
+        console.log(
+          `[destinationRoute][${tag}] polyline ${index} → _parts existe:`, Boolean(parts),
+          '· nº de partes:', parts ? parts.length : 'n/a',
+          '· puntos en _parts[0]:', (parts && parts[0]) ? parts[0].length : 'n/a'
+        );
+
+        console.log(
+          `[destinationRoute][${tag}] polyline ${index} → renderer._layers registrada:`,
+          Boolean(renderer && renderer._layers && renderer._layers[L.Util.stamp(polyline)]),
+          '· renderer._drawnLayers existe:', Boolean(renderer && renderer._drawnLayers),
+          '· renderer._redrawRequest:', renderer ? renderer._redrawRequest : 'n/a'
+        );
+
+      });
+
+    }
+
+    logCanvasSnapshot('CANVAS-BEFORE');
+
+    /* DIAGNÓSTICO TEMPORAL · destinationRouteLayer bounds/fitBounds */
+    if (!bounds.isValid()) {
+      console.warn('[destinationRoute] bounds NO válidos:', bounds);
+    } else {
+      console.log(
+        '[destinationRoute] bounds válidos → SW:', bounds.getSouthWest(),
+        'NE:', bounds.getNorthEast(),
+        '→ ejecutando map.fitBounds()'
+      );
+    }
+
+    if (bounds.isValid()) {
+      map.fitBounds(bounds, { padding: [70, 70], maxZoom: 14, animate: false });
+      console.log('[destinationRoute] map.fitBounds() ejecutado.');
+    }
+
+    logCanvasSnapshot('CANVAS-AFTER');
+
+    /* DIAGNÓSTICO TEMPORAL · estado del mapa justo tras fitBounds (A) */
+    console.log(
+      '[destinationRoute][A · justo tras fitBounds] center:', map.getCenter(),
+      'zoom:', map.getZoom(),
+      'hasLayer(destinationRouteLayer):', map.hasLayer(destinationRouteLayer),
+      'destinationRouteLayer.getLayers().length:', destinationRouteLayer.getLayers().length,
+      'destinationRouteLayer.getBounds():', destinationRouteLayer.getBounds()
+    );
+
+    setTimeout(() => {
+      console.log(
+        '[destinationRoute][B · +500ms] center:', map.getCenter(),
+        'zoom:', map.getZoom(),
+        'hasLayer(destinationRouteLayer):', map.hasLayer(destinationRouteLayer)
+      );
+    }, 500);
+
+    setTimeout(() => {
+      console.log(
+        '[destinationRoute][C · +1500ms] center:', map.getCenter(),
+        'zoom:', map.getZoom(),
+        'hasLayer(destinationRouteLayer):', map.hasLayer(destinationRouteLayer)
+      );
+    }, 1500);
+
+    setDestinationRouteStatus(
+      button,
+      `✅ Ruta hasta ${destLabel}: ${formatRouteDistance(route.distance)} · ${formatRouteDuration(route.duration)}`
+    );
+
+  } catch (error) {
+
+    if (error.name === 'AbortError') {
+      return;
+    }
+
+    console.error('Error calculando ruta de destino:', error);
+
+    setDestinationRouteStatus(button, '⚠️ No se pudo calcular la ruta.');
+
+  } finally {
+
+    if (button) {
+      button.disabled = false;
+    }
+
+    if (destinationRouteActiveButton === button) {
+      destinationRouteActiveButton = null;
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   FIN RUTAS A DESTINOS DEL PHOTO SPOT
    ========================================================= */
 
    /* =========================================================
@@ -6411,13 +7035,20 @@ function stopNavigation() {
 
 /* =========================================================
    BOTÓN CÓMO LLEGAR
-   Capturamos el click antes que los listeners
-   anteriores de Fase 1/Fase 2.
+   Único listener efectivo: se retira el de Fase 2
+   (calculateRealRoute) para que un solo clic no
+   dispare dos solicitudes de ruta a la vez.
    ========================================================= */
 
 if (
   navigationBtn
 ) {
+
+  navigationBtn.removeEventListener(
+    'click',
+    handleNavigationClickDrawRoute
+  );
+
 
   navigationBtn.addEventListener(
 
@@ -6559,2064 +7190,6 @@ createNavigationInterface();
    FIN FASE 3
    ========================================================= */
 
-   /* =========================================================
-   FASE 3.5 · PLANIFICADOR PRO
-   TODOS CON HERNÁN · GRAND TOUR DE SUIZA
-   ========================================================= */
-
-
-/* =========================================================
-   ESTADO DEL PLANIFICADOR
-   ========================================================= */
-
-let plannerOrigin = null;
-
-let plannerOriginName = '';
-
-let plannerDestination = null;
-
-let plannerRouteLayer = null;
-
-let plannerSearchController = null;
-
-let plannerSearchTimer = null;
-
-
-let plannerSearchRequestId = 0;
-
-let plannerRouteRequestController = null;
-
-let plannerRouteRequestId = 0;
-
-
-/* =========================================================
-   ELEMENTOS HTML
-   ========================================================= */
-
-const plannerOriginInput =
-  document.getElementById(
-    'routeOriginInput'
-  );
-
-const plannerOriginSearchBtn =
-  document.getElementById(
-    'routeOriginSearchBtn'
-  );
-
-const plannerOriginResults =
-  document.getElementById(
-    'routeOriginResults'
-  );
-
-const plannerUseLocationBtn =
-  document.getElementById(
-    'routeUseLocationBtn'
-  );
-
-const plannerOriginSelected =
-  document.getElementById(
-    'routeOriginSelected'
-  );
-
-const plannerOriginNameElement =
-  document.getElementById(
-    'routeOriginName'
-  );
-
-const plannerOriginDetails =
-  document.getElementById(
-    'routeOriginDetails'
-  );
-
-const plannerDestinationSelect =
-  document.getElementById(
-    'routeDestinationSelect'
-  );
-
-const plannerDestinationSelected =
-  document.getElementById(
-    'routeDestinationSelected'
-  );
-
-const plannerDestinationNameElement =
-  document.getElementById(
-    'routeDestinationName'
-  );
-
-const plannerDestinationDetails =
-  document.getElementById(
-    'routeDestinationDetails'
-  );
-
-const plannerCalculateBtn =
-  document.getElementById(
-    'calculatePlannerRouteBtn'
-  );
-
-const plannerClearBtn =
-  document.getElementById(
-    'clearPlannerRouteBtn'
-  );
-
-const plannerRouteResult =
-  document.getElementById(
-    'plannerRouteResult'
-  );
-
-const plannerRouteTitle =
-  document.getElementById(
-    'plannerRouteTitle'
-  );
-
-const plannerRouteDistance =
-  document.getElementById(
-    'plannerRouteDistance'
-  );
-
-const plannerRouteDuration =
-  document.getElementById(
-    'plannerRouteDuration'
-  );
-
-const plannerStartNavigationBtn =
-  document.getElementById(
-    'plannerStartNavigationBtn'
-  );
-
-const plannerStatus =
-  document.getElementById(
-    'plannerStatus'
-  );
-
-
-/* =========================================================
-   COMPROBAR QUE EL HTML EXISTE
-   ========================================================= */
-
-const plannerReady =
-
-  !!plannerOriginInput &&
-
-  !!plannerOriginSearchBtn &&
-
-  !!plannerOriginResults &&
-
-  !!plannerUseLocationBtn &&
-
-  !!plannerDestinationSelect &&
-
-  !!plannerCalculateBtn &&
-
-  !!plannerClearBtn;
-
-
-/* =========================================================
-   MOSTRAR ESTADO
-   ========================================================= */
-
-function setPlannerStatus(
-  message
-) {
-
-  if (
-    plannerStatus
-  ) {
-
-    plannerStatus.textContent =
-      message;
-
-  }
-
-}
-
-
-/* =========================================================
-   ESCAPAR HTML
-   Evita introducir directamente texto externo
-   dentro del HTML.
-   ========================================================= */
-
-function escapePlannerHTML(
-  value
-) {
-
-  return String(
-    value || ''
-  )
-
-    .replace(
-      /&/g,
-      '&amp;'
-    )
-
-    .replace(
-      /</g,
-      '&lt;'
-    )
-
-    .replace(
-      />/g,
-      '&gt;'
-    )
-
-    .replace(
-      /"/g,
-      '&quot;'
-    )
-
-    .replace(
-      /'/g,
-      '&#039;'
-    );
-
-}
-
-
-/* =========================================================
-   RELLENAR LOS 92 PHOTO SPOTS
-   ========================================================= */
-
-function populatePlannerSpots() {
-
-  if (
-    !plannerDestinationSelect
-  ) {
-
-    return;
-
-  }
-
-
-  if (
-    typeof spots ===
-    'undefined'
-  ) {
-
-    console.error(
-      'Planner: no existe la variable spots.'
-    );
-
-    return;
-
-  }
-
-
-  plannerDestinationSelect.innerHTML = `
-
-    <option value="">
-      Selecciona un Photo Spot...
-    </option>
-
-  `;
-
-
-  spots.forEach(
-    (
-      spot,
-      index
-    ) => {
-
-      if (
-        !spot
-      ) {
-
-        return;
-
-      }
-
-
-      const option =
-        document.createElement(
-          'option'
-        );
-
-
-      option.value =
-        spot.id;
-
-
-      option.textContent =
-
-        `${index + 1}. ${spot.name || 'Photo Spot'}`;
-
-
-      plannerDestinationSelect.appendChild(
-        option
-      );
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   SELECCIONAR PHOTO SPOT
-   ========================================================= */
-
-function selectPlannerDestination(
-  spot
-) {
-
-  if (
-    !spot
-  ) {
-
-    plannerDestination =
-      null;
-
-
-    if (
-      plannerDestinationSelected
-    ) {
-
-      plannerDestinationSelected.hidden =
-        true;
-
-    }
-
-
-    return;
-
-  }
-
-
-  plannerDestination =
-    spot;
-
-
-  if (
-    plannerDestinationSelected
-  ) {
-
-    plannerDestinationSelected.hidden =
-      false;
-
-  }
-
-
-  if (
-    plannerDestinationNameElement
-  ) {
-
-    plannerDestinationNameElement.textContent =
-
-      spot.name ||
-      'Photo Spot';
-
-  }
-
-
-  if (
-    plannerDestinationDetails
-  ) {
-
-    const lat =
-      Number(
-        spot.lat
-      );
-
-
-    const lng =
-      Number(
-        spot.lng
-      );
-
-
-    if (
-      Number.isFinite(lat) &&
-      Number.isFinite(lng)
-    ) {
-
-      plannerDestinationDetails.textContent =
-
-        `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
-
-    }
-
-    else {
-
-      plannerDestinationDetails.textContent =
-        'Coordenadas no disponibles';
-
-    }
-
-  }
-
-}
-
-
-/* =========================================================
-   CAMBIO DE DESTINO
-   ========================================================= */
-
-if (
-  plannerDestinationSelect
-) {
-
-  plannerDestinationSelect.addEventListener(
-
-    'change',
-
-    () => {
-
-      const id =
-        plannerDestinationSelect.value;
-
-
-      if (
-        !id
-      ) {
-
-        selectPlannerDestination(
-          null
-        );
-
-        return;
-
-      }
-
-
-      const spot =
-        spots.find(
-
-          item =>
-
-            String(
-              item.id
-            ) ===
-            String(
-              id
-            )
-
-        );
-
-
-      selectPlannerDestination(
-        spot
-      );
-
-    }
-
-  );
-
-}
-
-
-/* =========================================================
-   USAR UBICACIÓN GPS COMO ORIGEN
-   ========================================================= */
-
-function plannerUseCurrentLocation() {
-
-  if (
-    !userLocation
-  ) {
-
-    setPlannerStatus(
-      '📍 Activa primero tu ubicación GPS.'
-    );
-
-
-    /*
-       Intentamos utilizar el botón GPS existente.
-    */
-
-    if (
-      locateMeBtn
-    ) {
-
-      locateMeBtn.click();
-
-    }
-
-
-    return;
-
-  }
-
-
-  plannerOrigin = {
-
-    lat:
-      Number(
-        userLocation.lat
-      ),
-
-    lng:
-      Number(
-        userLocation.lng
-      )
-
-  };
-
-
-  plannerOriginName =
-    'Mi ubicación';
-
-
-  if (
-    plannerOriginInput
-  ) {
-
-    plannerOriginInput.value =
-      'Mi ubicación';
-
-  }
-
-
-  if (
-    plannerOriginSelected
-  ) {
-
-    plannerOriginSelected.hidden =
-      false;
-
-  }
-
-
-  if (
-    plannerOriginNameElement
-  ) {
-
-    plannerOriginNameElement.textContent =
-      'Mi ubicación';
-
-  }
-
-
-  if (
-    plannerOriginDetails
-  ) {
-
-    plannerOriginDetails.textContent =
-
-      `${plannerOrigin.lat.toFixed(5)}, ${plannerOrigin.lng.toFixed(5)}`;
-
-  }
-
-
-  setPlannerStatus(
-    '📍 Origen establecido mediante GPS.'
-  );
-
-}
-
-
-/* =========================================================
-   BOTÓN MI UBICACIÓN
-   ========================================================= */
-
-if (
-  plannerUseLocationBtn
-) {
-
-  plannerUseLocationBtn.addEventListener(
-
-    'click',
-
-    plannerUseCurrentLocation
-
-  );
-
-}
-
-
-/* =========================================================
-   GEOCODIFICACIÓN
-   Nominatim / OpenStreetMap
-   ========================================================= */
-
-async function searchPlannerLocation(
-  query
-) {
-
-  const cleanQuery =
-    String(
-      query || ''
-    ).trim();
-
-
-  if (
-    cleanQuery.length <
-    2
-  ) {
-
-    setPlannerStatus(
-      'Escribe una ciudad, pueblo o dirección.'
-    );
-
-    return;
-
-  }
-
-
- /* =========================================================
-   CANCELAR BÚSQUEDA ANTERIOR
-   Y CREAR ID ÚNICO PARA ESTA BÚSQUEDA
-   ========================================================= */
-
-plannerSearchRequestId++;
-
-const requestId =
-  plannerSearchRequestId;
-
-
-if (
-  plannerSearchController
-) {
-
-  plannerSearchController.abort();
-
-}
-
-
-plannerSearchController =
-  new AbortController();
-
-
-  setPlannerStatus(
-    '🔎 Buscando lugar...'
-  );
-
-
-  if (
-    plannerOriginResults
-  ) {
-
-    plannerOriginResults.hidden =
-      false;
-
-
-    plannerOriginResults.innerHTML = `
-
-      <div class="plannerResultItem">
-
-        <strong>
-          🔎 Buscando...
-        </strong>
-
-      </div>
-
-    `;
-
-  }
-
-
-  const url =
-
-    'https://nominatim.openstreetmap.org/search'
-
-    +
-
-    `?q=${encodeURIComponent(cleanQuery)}`
-
-    +
-
-    '&format=jsonv2'
-
-    +
-
-    '&addressdetails=1'
-
-    +
-
-    '&limit=6';
-
-
-  try {
-
-    const response =
-      await fetch(
-
-        url,
-
-        {
-
-          signal:
-            plannerSearchController.signal,
-
-          headers: {
-
-            'Accept':
-              'application/json'
-
-          }
-
-        }
-
-      );
-
-
-    if (
-      !response.ok
-    ) {
-
-      throw new Error(
-        `HTTP ${response.status}`
-      );
-
-    }
-
-
-const results =
-  await response.json();
-
-
-/* -------------------------------------------------------
-   IGNORAR RESPUESTAS DE BÚSQUEDAS ANTERIORES
-   ------------------------------------------------------- */
-
-if (
-  requestId !==
-  plannerSearchRequestId
-) {
-
-  return;
-
-}
-
-
-renderPlannerSearchResults(
-  results
-);
-
-  }
-
-  catch (
-    error
-  ) {
-
-    if (
-      error.name ===
-      'AbortError'
-    ) {
-
-      return;
-
-    }
-
-
-    console.error(
-      'Planner geocoding error:',
-      error
-    );
-
-
-    if (
-      plannerOriginResults
-    ) {
-
-      plannerOriginResults.innerHTML = `
-
-        <div class="plannerResultItem">
-
-          <strong>
-            ⚠️ No se pudo realizar la búsqueda
-          </strong>
-
-          <span>
-            Inténtalo de nuevo.
-          </span>
-
-        </div>
-
-      `;
-
-    }
-
-
-    setPlannerStatus(
-      '⚠️ No se pudo buscar ese lugar.'
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   MOSTRAR RESULTADOS
-   ========================================================= */
-
-function renderPlannerSearchResults(
-  results
-) {
-
-  if (
-    !plannerOriginResults
-  ) {
-
-    return;
-
-  }
-
-
-  plannerOriginResults.innerHTML =
-    '';
-
-
-  if (
-    !Array.isArray(
-      results
-    ) ||
-    !results.length
-  ) {
-
-    plannerOriginResults.innerHTML = `
-
-      <div class="plannerResultItem">
-
-        <strong>
-          No encontramos ese lugar
-        </strong>
-
-        <span>
-          Prueba con otra ciudad, pueblo o dirección.
-        </span>
-
-      </div>
-
-    `;
-
-
-    plannerOriginResults.hidden =
-      false;
-
-
-    setPlannerStatus(
-      'No se encontraron resultados.'
-    );
-
-
-    return;
-
-  }
-
-
-  results.forEach(
-
-    result => {
-
-      const button =
-        document.createElement(
-          'button'
-        );
-
-
-      button.type =
-        'button';
-
-
-      button.className =
-        'plannerResultItem';
-
-
-      const displayName =
-        result.display_name ||
-        'Lugar';
-
-
-      const address =
-        result.address || {};
-
-
-      const country =
-        address.country ||
-        '';
-
-
-      const type =
-        result.type ||
-        '';
-
-
-      button.innerHTML = `
-
-        <strong>
-          📍 ${escapePlannerHTML(
-            getPlannerShortName(
-              result
-            )
-          )}
-        </strong>
-
-        <span>
-          ${escapePlannerHTML(
-            country
-          )}
-
-          ${country && type ? ' · ' : ''}
-
-          ${escapePlannerHTML(
-            type
-          )}
-
-        </span>
-
-      `;
-
-
-      button.addEventListener(
-
-        'click',
-
-        () => {
-
-          choosePlannerOrigin(
-            result
-          );
-
-        }
-
-      );
-
-
-      plannerOriginResults.appendChild(
-        button
-      );
-
-    }
-
-  );
-
-
-  plannerOriginResults.hidden =
-    false;
-
-
-  setPlannerStatus(
-    'Selecciona un resultado.'
-  );
-
-}
-
-
-/* =========================================================
-   NOMBRE CORTO
-   ========================================================= */
-
-function getPlannerShortName(
-  result
-) {
-
-  const address =
-    result.address ||
-    {};
-
-
-  return (
-
-    address.city ||
-
-    address.town ||
-
-    address.village ||
-
-    address.municipality ||
-
-    address.county ||
-
-    result.display_name ||
-
-    'Lugar'
-
-  );
-
-}
-
-
-/* =========================================================
-   SELECCIONAR ORIGEN
-   ========================================================= */
-
-function choosePlannerOrigin(
-  result
-) {
-
-  const lat =
-    Number(
-      result.lat
-    );
-
-
-  const lng =
-    Number(
-      result.lon
-    );
-
-
-  if (
-    !Number.isFinite(lat) ||
-    !Number.isFinite(lng)
-  ) {
-
-    setPlannerStatus(
-      '⚠️ Ese resultado no tiene coordenadas válidas.'
-    );
-
-
-    return;
-
-  }
-
-  
-
-
-  plannerOrigin = {
-
-    lat:
-      lat,
-
-    lng:
-      lng
-
-  };
-
-
-  plannerOriginName =
-    getPlannerShortName(
-      result
-    );
-
-
-  if (
-    plannerOriginInput
-  ) {
-
-    plannerOriginInput.value =
-
-      plannerOriginName;
-
-  }
-
-
-  if (
-    plannerOriginSelected
-  ) {
-
-    plannerOriginSelected.hidden =
-      false;
-
-  }
-
-
-  if (
-    plannerOriginNameElement
-  ) {
-
-    plannerOriginNameElement.textContent =
-
-      plannerOriginName;
-
-  }
-
-
-  if (
-    plannerOriginDetails
-  ) {
-
-    plannerOriginDetails.textContent =
-
-      result.display_name ||
-      `${lat.toFixed(5)}, ${lng.toFixed(5)}`;
-
-  }
-
-
-  if (
-    plannerOriginResults
-  ) {
-
-    plannerOriginResults.hidden =
-      true;
-
-  }
-
-
-  setPlannerStatus(
-    `📍 Origen: ${plannerOriginName}`
-  );
-
-
-  /*
-     Centrar suavemente el mapa en el origen.
-  */
-
-  if (
-    typeof map !==
-    'undefined' &&
-    map
-  ) {
-
-    map.flyTo(
-
-      [
-        lat,
-        lng
-      ],
-
-      9,
-
-      {
-
-        animate:
-          true,
-
-        duration:
-          1.1
-
-      }
-
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   BUSCAR AL PULSAR 🔎
-   ========================================================= */
-
-if (
-  plannerOriginSearchBtn
-) {
-
-  plannerOriginSearchBtn.addEventListener(
-
-    'click',
-
-    () => {
-
-      searchPlannerLocation(
-
-        plannerOriginInput
-          ?
-
-          plannerOriginInput.value
-
-          :
-
-          ''
-
-      );
-
-    }
-
-  );
-
-}
-
-
-/* =========================================================
-   ENTER EN EL BUSCADOR
-   ========================================================= */
-
-if (
-  plannerOriginInput
-) {
-
-  plannerOriginInput.addEventListener(
-
-    'keydown',
-
-    event => {
-
-      if (
-        event.key ===
-        'Enter'
-      ) {
-
-        event.preventDefault();
-
-
-        searchPlannerLocation(
-          plannerOriginInput.value
-        );
-
-      }
-
-    }
-
-  );
-
-
-  /*
-     Búsqueda automática después de una pausa.
-  */
-
-  plannerOriginInput.addEventListener(
-
-    'input',
-
-    () => {
-
-      if (
-        plannerSearchTimer
-      ) {
-
-        clearTimeout(
-          plannerSearchTimer
-        );
-
-      }
-
-
-      const value =
-        plannerOriginInput.value.trim();
-
-
-      if (
-        value.length <
-        3
-      ) {
-
-        if (
-          plannerOriginResults
-        ) {
-
-          plannerOriginResults.hidden =
-            true;
-
-        }
-
-        return;
-
-      }
-
-
-      plannerSearchTimer =
-
-        setTimeout(
-
-          () => {
-
-            searchPlannerLocation(
-              value
-            );
-
-          },
-
-          650
-
-        );
-
-    }
-
-  );
-
-}
-
-
-/* =========================================================
-   CERRAR RESULTADOS AL HACER CLICK FUERA
-   ========================================================= */
-
-document.addEventListener(
-
-  'click',
-
-  event => {
-
-    if (
-      !plannerOriginResults ||
-      !plannerOriginInput
-    ) {
-
-      return;
-
-    }
-
-
-    const field =
-      plannerOriginInput.closest(
-        '.plannerField'
-      );
-
-
-    if (
-      field &&
-      !field.contains(
-        event.target
-      )
-    ) {
-
-      plannerOriginResults.hidden =
-        true;
-
-    }
-
-  }
-
-);
-
-
-/* =========================================================
-   BORRAR RUTA DEL PLANIFICADOR
-   ========================================================= */
-
-function clearPlannerRoute() {
-
-  if (
-    plannerRouteLayer
-  ) {
-
-    map.removeLayer(
-      plannerRouteLayer
-    );
-
-    plannerRouteLayer =
-      null;
-
-  }
-
-
-  if (
-    plannerRouteResult
-  ) {
-
-    plannerRouteResult.hidden =
-      true;
-
-  }
-
-
-  if (
-    plannerRouteTitle
-  ) {
-
-    plannerRouteTitle.textContent =
-      '—';
-
-  }
-
-
-  if (
-    plannerRouteDistance
-  ) {
-
-    plannerRouteDistance.textContent =
-      '—';
-
-  }
-
-
-  if (
-    plannerRouteDuration
-  ) {
-
-    plannerRouteDuration.textContent =
-      '—';
-
-  }
-
-
-  setPlannerStatus(
-    ''
-  );
-
-}
-
-
-/* =========================================================
-   BOTÓN LIMPIAR
-   ========================================================= */
-
-if (
-  plannerClearBtn
-) {
-
-  plannerClearBtn.addEventListener(
-
-    'click',
-
-    clearPlannerRoute
-
-  );
-
-}
-
-
-/* =========================================================
-   CALCULAR RUTA PRO
-   ========================================================= */
-
-async function calculatePlannerRoute() {
-
-  if (
-    !plannerOrigin
-  ) {
-
-    setPlannerStatus(
-      '📍 Primero selecciona un lugar de salida.'
-    );
-
-
-    return;
-
-  }
-
-
-  if (
-    !plannerDestination
-  ) {
-
-    setPlannerStatus(
-      '📸 Primero selecciona un Photo Spot de destino.'
-    );
-
-
-    return;
-
-  }
-
-
-  const originLat =
-    Number(
-      plannerOrigin.lat
-    );
-
-
-  const originLng =
-    Number(
-      plannerOrigin.lng
-    );
-
-
-  const destinationLat =
-    Number(
-      plannerDestination.lat
-    );
-
-
-  const destinationLng =
-    Number(
-      plannerDestination.lng
-    );
-
-
-  if (
-
-    !Number.isFinite(
-      originLat
-    ) ||
-
-    !Number.isFinite(
-      originLng
-    ) ||
-
-    !Number.isFinite(
-      destinationLat
-    ) ||
-
-    !Number.isFinite(
-      destinationLng
-    )
-
-  ) {
-
-    setPlannerStatus(
-      '⚠️ Las coordenadas no son válidas.'
-    );
-
-
-    return;
-
-  }
-
-
-  if (
-    plannerRouteLayer
-  ) {
-
-    map.removeLayer(
-      plannerRouteLayer
-    );
-
-    plannerRouteLayer =
-      null;
-
-  }
-
-
-  if (
-    plannerRouteResult
-  ) {
-
-    plannerRouteResult.hidden =
-      false;
-
-  }
-
-
-  if (
-    plannerRouteTitle
-  ) {
-
-    plannerRouteTitle.textContent =
-
-      `${plannerOriginName} → ${plannerDestination.name}`;
-
-  }
-
-
-  if (
-    plannerRouteDistance
-  ) {
-
-    plannerRouteDistance.textContent =
-      '...';
-
-  }
-
-
-  if (
-    plannerRouteDuration
-  ) {
-
-    plannerRouteDuration.textContent =
-      '...';
-
-  }
-
-
-
-  setPlannerStatus(
-    '🛰️ Calculando ruta real por carretera...'
-  );
-
-
-  
-  /* =========================================================
-   CONTROL DE RUTA PRO
-   SOLO UNA RUTA ACTIVA
-   ========================================================= */
-
-if (
-  plannerRouteRequestController
-) {
-
-  plannerRouteRequestController.abort();
-
-}
-
-
-plannerRouteRequestId++;
-
-const requestId =
-  plannerRouteRequestId;
-
-
-plannerRouteRequestController =
-  new AbortController();
-
-
-const origin =
-
-  `${originLng},${originLat}`;
-
-
-const destination =
-
-  `${destinationLng},${destinationLat}`;
-
-
-const url =
-
-  `https://router.project-osrm.org/route/v1/driving/`
-
-  +
-
-  `${origin};${destination}`
-
-  +
-
-  '?overview=full'
-
-  +
-
-  '&geometries=geojson'
-
-  +
-
-  '&steps=true'
-
-  +
-
-  '&alternatives=false';
-
-
-try {
-
-const response =
-  await fetch(
-
-    url,
-
-    {
-
-      signal:
-        plannerRouteRequestController.signal
-
-    }
-
-  );
-
-
-    if (
-      !response.ok
-    ) {
-
-      throw new Error(
-        `HTTP ${response.status}`
-      );
-
-    }
-
-
-    const data =
-      await response.json();
-
-/* =========================================================
-   IGNORAR RESPUESTAS DE RUTAS ANTERIORES
-   ========================================================= */
-
-if (
-  requestId !==
-  plannerRouteRequestId
-) {
-
-  return;
-
-}
-
-
-    if (
-      data.code !==
-      'Ok'
-    ) {
-
-      throw new Error(
-        data.message ||
-        'No se encontró una ruta.'
-      );
-
-    }
-
-
-    if (
-      !data.routes ||
-      !data.routes.length
-    ) {
-
-      throw new Error(
-        'No se encontró una ruta.'
-      );
-
-    }
-
-
-    const route =
-      data.routes[0];
-
-
-    /* =====================================================
-       DIBUJAR RUTA
-       ===================================================== */
-
-    const routeOuter =
-      L.geoJSON(
-
-        route.geometry,
-
-        {
-
-          style: {
-
-            color:
-              '#ffd000',
-
-            weight:
-              9,
-
-            opacity:
-              0.30
-
-          }
-
-        }
-
-      );
-
-
-    const routeInner =
-      L.geoJSON(
-
-        route.geometry,
-
-        {
-
-          style: {
-
-            color:
-              '#ffffff',
-
-            weight:
-              4,
-
-            opacity:
-              0.95
-
-          }
-
-        }
-
-      );
-
-
-    plannerRouteLayer =
-      L.layerGroup(
-
-        [
-
-          routeOuter,
-
-          routeInner
-
-        ]
-
-      );
-
-
-    plannerRouteLayer.addTo(
-      map
-    );
-
-
-    /* =====================================================
-       INFORMACIÓN
-       ===================================================== */
-
-    if (
-      plannerRouteDistance
-    ) {
-
-      plannerRouteDistance.textContent =
-
-        formatRouteDistance(
-          route.distance
-        );
-
-    }
-
-
-    if (
-      plannerRouteDuration
-    ) {
-
-      plannerRouteDuration.textContent =
-
-        formatRouteDuration(
-          route.duration
-        );
-
-    }
-
-
-    if (
-      plannerRouteTitle
-    ) {
-
-      plannerRouteTitle.textContent =
-
-        `${plannerOriginName} → ${plannerDestination.name}`;
-
-    }
-
-
-    setPlannerStatus(
-      '✅ Ruta calculada correctamente.'
-    );
-
-
-    /* =====================================================
-       ENCUADRAR RUTA
-       ===================================================== */
-
-    const bounds =
-      plannerRouteLayer.getBounds();
-
-
-    if (
-      bounds.isValid()
-    ) {
-
-      map.fitBounds(
-
-        bounds,
-
-        {
-
-          padding:
-            [70, 70],
-
-          maxZoom:
-            10,
-
-          animate:
-            true
-
-        }
-
-      );
-
-    }
-
-
-    console.log(
-      'Planificador PRO:',
-      route
-    );
-
-  }
-
-  catch (
-    error
-  ) {
-
-    /* =========================================================
-   IGNORAR CANCELACIONES DE RUTAS ANTERIORES
-   ========================================================= */
-
-if (
-  error.name ===
-  'AbortError'
-) {
-
-  return;
-
-}
-
-    console.error(
-      'Planner route error:',
-      error
-    );
-
-
-    if (
-      plannerRouteDistance
-    ) {
-
-      plannerRouteDistance.textContent =
-        '—';
-
-    }
-
-
-    if (
-      plannerRouteDuration
-    ) {
-
-      plannerRouteDuration.textContent =
-        '—';
-
-    }
-
-
-    setPlannerStatus(
-      '⚠️ No se pudo calcular la ruta. Prueba otro origen.'
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   BOTÓN CALCULAR
-   ========================================================= */
-
-if (
-  plannerCalculateBtn
-) {
-
-  plannerCalculateBtn.addEventListener(
-
-    'click',
-
-    calculatePlannerRoute
-
-  );
-
-}
-
-
-/* =========================================================
-   INICIAR NAVEGACIÓN DESDE EL PLANIFICADOR
-   ========================================================= */
-
-if (
-  plannerStartNavigationBtn
-) {
-
-  plannerStartNavigationBtn.addEventListener(
-
-    'click',
-
-    () => {
-
-      if (
-        !plannerDestination
-      ) {
-
-        setPlannerStatus(
-          '📸 Selecciona primero un Photo Spot.'
-        );
-
-
-        return;
-
-      }
-
-
-      /*
-         Si el origen seleccionado es la posición GPS
-         actual, podemos pasar directamente al sistema
-         de navegación de la Fase 3.
-      */
-
-      if (
-        plannerOriginName ===
-        'Mi ubicación' &&
-        userLocation
-      ) {
-
-        selectedSpotForGPS =
-          plannerDestination;
-
-
-        startNavigation();
-
-
-        return;
-
-      }
-
-
-      /*
-         Si el origen es Madrid, París, Zúrich, etc.,
-         todavía no podemos "navegar" físicamente desde
-         ese lugar porque el usuario no está allí.
-
-         La ruta sí queda calculada en el mapa.
-      */
-
-      setPlannerStatus(
-
-        '🗺️ Ruta preparada. Para navegación GPS en vivo, usa "Mi ubicación" cuando estés en el punto de salida.'
-
-      );
-
-    }
-
-  );
-
-
-}
-
-
-/* =========================================================
-   ACTUALIZAR EL DESTINO DEL PLANIFICADOR CUANDO
-   SE SELECCIONA UN PHOTO SPOT DESDE OTRA PARTE
-   ========================================================= */
-
-function syncPlannerWithSelectedSpot(
-  spot
-) {
-
-  if (
-    !spot
-  ) {
-
-    return;
-
-  }
-
-
-  plannerDestination =
-    spot;
-
-
-  if (
-    plannerDestinationSelect
-  ) {
-
-    plannerDestinationSelect.value =
-      spot.id;
-
-  }
-
-
-  if (
-    plannerDestinationSelected
-  ) {
-
-    plannerDestinationSelected.hidden =
-      false;
-
-  }
-
-
-  if (
-    plannerDestinationNameElement
-  ) {
-
-    plannerDestinationNameElement.textContent =
-      spot.name;
-
-  }
-
-
-  if (
-    plannerDestinationDetails
-  ) {
-
-    plannerDestinationDetails.textContent =
-
-      `${Number(spot.lat).toFixed(5)}, ${Number(spot.lng).toFixed(5)}`;
-
-  }
-
-}
-
-
-/* =========================================================
-   INICIALIZAR
-   ========================================================= */
-
-if (
-  plannerReady
-) {
-
-  populatePlannerSpots();
-
-
-  setPlannerStatus(
-    'Elige un origen y un Photo Spot para empezar.'
-  );
-
-
-  console.log(
-    '🧭 Planificador PRO iniciado.'
-  );
-
-}
-
-
-/* =========================================================
-   FIN FASE 3.5
-   ========================================================= */
 
    /* =========================================================
    FASE 3.6 · MAPA EUROPA PRO
@@ -9098,240 +7671,3 @@ document.addEventListener('keydown', event => {
   }
 });
 
-/* =========================================================
-   FASE 3.6 · MARCADOR DEL ORIGEN DEL PLANIFICADOR
-   ========================================================= */
-
-let plannerOriginMarker = null;
-
-
-/* =========================================================
-   MOSTRAR ORIGEN EN EL MAPA
-   ========================================================= */
-
-function showPlannerOriginOnMap() {
-
-  if (
-    !plannerOrigin ||
-    typeof map === 'undefined' ||
-    !map
-  ) {
-    return;
-  }
-
-
-  const lat =
-    Number(
-      plannerOrigin.lat
-    );
-
-  const lng =
-    Number(
-      plannerOrigin.lng
-    );
-
-
-  if (
-    !Number.isFinite(lat) ||
-    !Number.isFinite(lng)
-  ) {
-    return;
-  }
-
-
-  /* -------------------------------------------------------
-     Eliminar marcador anterior
-     ------------------------------------------------------- */
-
-  if (
-    plannerOriginMarker
-  ) {
-
-    map.removeLayer(
-      plannerOriginMarker
-    );
-
-    plannerOriginMarker =
-      null;
-
-  }
-
-
-  /* -------------------------------------------------------
-     Crear icono del origen
-     ------------------------------------------------------- */
-
-  const originIcon =
-    L.divIcon({
-
-      className:
-        'planner-origin-marker',
-
-      html: `
-
-        <div style="
-          width:34px;
-          height:34px;
-          border-radius:50%;
-          background:#1677ff;
-          border:4px solid #ffffff;
-          box-shadow:0 3px 12px rgba(0,0,0,.45);
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          color:#ffffff;
-          font-size:16px;
-        ">
-          📍
-        </div>
-
-      `,
-
-      iconSize:
-        [34, 34],
-
-      iconAnchor:
-        [17, 17]
-
-    });
-
-
-  /* -------------------------------------------------------
-     Crear marcador
-     ------------------------------------------------------- */
-
-  plannerOriginMarker =
-    L.marker(
-
-      [
-        lat,
-        lng
-      ],
-
-      {
-        icon:
-          originIcon,
-
-        zIndexOffset:
-          5000
-
-      }
-
-    );
-
-
-  /* -------------------------------------------------------
-     Popup
-     ------------------------------------------------------- */
-
-  plannerOriginMarker.bindPopup(`
-
-    <div style="
-      min-width:170px;
-      font-family:Arial,sans-serif;
-    ">
-
-      <strong style="
-        display:block;
-        margin-bottom:5px;
-        font-size:14px;
-      ">
-        📍 ORIGEN
-      </strong>
-
-      <span style="
-        font-size:12px;
-      ">
-        ${escapePlannerHTML(
-          plannerOriginName ||
-          'Punto de partida'
-        )}
-      </span>
-
-    </div>
-
-  `);
-
-
-  plannerOriginMarker.addTo(
-    map
-  );
-
-
-  /* -------------------------------------------------------
-     Abrir popup
-     ------------------------------------------------------- */
-
-  plannerOriginMarker.openPopup();
-
-}
-
-
-/* =========================================================
-   ACTUALIZAR LA FUNCIÓN DE SELECCIÓN DE ORIGEN
-   ========================================================= */
-
-const originalChoosePlannerOrigin =
-  choosePlannerOrigin;
-
-
-/*
-   Guardamos la función original y añadimos
-   el marcador después de seleccionar.
-*/
-
-choosePlannerOrigin =
-  function(result) {
-
-    originalChoosePlannerOrigin(
-      result
-    );
-
-
-    setTimeout(
-
-      () => {
-
-        showPlannerOriginOnMap();
-
-      },
-
-      50
-
-    );
-
-  };
-
-
-/* =========================================================
-   ACTUALIZAR MI UBICACIÓN
-   ========================================================= */
-
-const originalPlannerUseCurrentLocation =
-  plannerUseCurrentLocation;
-
-
-plannerUseCurrentLocation =
-  function() {
-
-    originalPlannerUseCurrentLocation();
-
-
-    setTimeout(
-
-      () => {
-
-        showPlannerOriginOnMap();
-
-      },
-
-      100
-
-    );
-
-  };
-
-
-/* =========================================================
-   FIN MARCADOR DE ORIGEN
-   ========================================================= */
