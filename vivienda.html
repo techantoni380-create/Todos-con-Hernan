@@ -794,8 +794,9 @@
             .cards,
             .steps {
 
+                /* minmax(0,...) evita que la tabla ancha estire la tarjeta fuera de pantalla. */
                 grid-template-columns:
-                    1fr;
+                    minmax(0, 1fr);
             }
 
 

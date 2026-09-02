@@ -34,8 +34,10 @@
     return '<header class="topbar site-header"><nav class="mainNav" aria-label="Navegación principal">' +
       '<a href="inicio.html">INICIO</a><a href="index.html">EL GRAND TOUR</a>' +
       '<a href="videos.html">VÍDEOS</a><a href="vivir-en-suiza.html">VIVIR EN SUIZA</a>' +
+      '<a href="trabajos-suiza.html">TRABAJOS EN SUIZA</a>' +
       '<a href="comunidad.html">COMUNIDAD</a><a href="proyectos.html">PROYECTOS</a>' +
-      '<a href="hernan.html">HERNÁN</a><a href="contacto.html">CONTACTO</a></nav></header>';
+      '<a href="sponsors.html">SPONSORS</a>' +
+      '<a href="contacto.html">CONTACTO</a></nav></header>';
   }
 
   function ensureHeaderAndFlags() {
@@ -65,7 +67,19 @@
 
   function ensureMobileMenu() {
     const header = document.querySelector('.topbar');
-    if (!header || header.querySelector('.mobileMenuToggle')) return;
+    // Sin menú principal no hay panel que abrir: la cabecera se deja como está.
+    if (!header || !header.querySelector('.mainNav a') || header.querySelector('.mobileMenuToggle')) return;
+
+    const brand = document.createElement('a');
+    brand.className = 'mobileBrand';
+    brand.href = 'inicio.html';
+    brand.innerHTML = '<img src="img/LogoOficial.png" alt=""><span>TODOS CON HERNÁN</span>';
+    header.insertBefore(brand, header.firstChild);
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'mobileMenuBackdrop';
+    header.appendChild(backdrop);
+
     const button = document.createElement('button');
     button.className = 'mobileMenuToggle';
     button.type = 'button';
@@ -73,19 +87,63 @@
     button.setAttribute('aria-expanded', 'false');
     button.innerHTML = '&#9776;';
     header.appendChild(button);
-    button.addEventListener('click', function () {
-      const open = header.classList.toggle('mobile-menu-open');
+
+    function setMenu(open) {
+      header.classList.toggle('mobile-menu-open', open);
+      document.body.classList.toggle('mobile-menu-open', open);
       button.setAttribute('aria-expanded', String(open));
       button.setAttribute('aria-label', open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
       button.innerHTML = open ? '&#215;' : '&#9776;';
+    }
+
+    button.addEventListener('click', function () {
+      setMenu(!header.classList.contains('mobile-menu-open'));
     });
+
+    backdrop.addEventListener('click', function () { setMenu(false); });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setMenu(false);
+    });
+
     header.querySelectorAll('.mainNav a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        header.classList.remove('mobile-menu-open');
-        button.setAttribute('aria-expanded', 'false');
-        button.innerHTML = '&#9776;';
-      });
+      link.addEventListener('click', function () { setMenu(false); });
     });
+
+    // Las banderas viven dentro del menú en móvil: al elegir idioma se cierra el panel.
+    header.addEventListener('click', function (event) {
+      if (event.target.closest('.mainNav .languageFlag')) setMenu(false);
+    });
+  }
+
+  /* El selector de idiomas es único: en móvil se traslada al panel del menú
+     y en escritorio vuelve a su posición original en la cabecera. */
+  function syncLanguagePlacement() {
+    const header = document.querySelector('.topbar');
+    if (!header) return;
+    const nav = header.querySelector('.mainNav');
+    const selector = header.querySelector('.languageSelector');
+    if (!nav || !selector) return;
+
+    const isMobile = window.matchMedia('(max-width: 760px)').matches;
+    let group = nav.querySelector('.mobileLanguageGroup');
+
+    if (isMobile) {
+      if (!group) {
+        group = document.createElement('div');
+        group.className = 'mobileLanguageGroup';
+        const title = document.createElement('span');
+        title.className = 'mobileLanguageTitle';
+        title.textContent = 'IDIOMA';
+        group.appendChild(title);
+        nav.appendChild(group);
+      }
+      if (selector.parentElement !== group) group.appendChild(selector);
+      return;
+    }
+
+    if (selector.parentElement !== header) header.appendChild(selector);
+    if (group) group.remove();
   }
 
   function ensureGrandTourMobilePanels() {
@@ -223,6 +281,8 @@
     addSharedStyles();
     ensureHeaderAndFlags();
     ensureMobileMenu();
+    syncLanguagePlacement();
+    window.matchMedia('(max-width: 760px)').addEventListener('change', syncLanguagePlacement);
     ensureGrandTourMobilePanels();
     document.addEventListener('click', function (event) {
       const button = event.target.closest('.languageFlag');

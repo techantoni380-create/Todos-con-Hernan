@@ -182,8 +182,53 @@ footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-hei
   }
 }
 
-/* Mobile site navigation: it remains easy to reach without squeezing eight links
-   and five language flags into a single line. */
+/* Solo existen en móvil: en escritorio no se muestran. */
+.mobileBrand, .mobileMenuBackdrop { display: none; }
+
+/* La identidad de marca acompaña también a la cabecera de escritorio,
+   reutilizando el mismo elemento que ya se usa en móvil. */
+@media (min-width: 761px) {
+  /* .topbar.topbar eleva la especificidad para las páginas con cabecera propia. */
+  body .topbar.topbar {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    column-gap: 18px;
+  }
+
+  /* El menú se mantiene dentro de su columna aunque la página fije su ancho. */
+  body .topbar .mainNav {
+    width: 100% !important;
+    max-width: 1120px !important;
+    min-width: 0 !important;
+    justify-self: center !important;
+    overflow-x: auto;
+  }
+
+  body .topbar .mobileBrand {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 9px;
+    flex: 0 0 auto;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  body .topbar .mobileBrand img {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    object-fit: contain;
+    filter: none !important;
+  }
+
+  body .topbar .mobileBrand span {
+    font: 900 12px/1.1 Arial, Helvetica, sans-serif;
+    letter-spacing: .06em;
+    white-space: nowrap;
+  }
+}
+
+/* Mobile site navigation: cabecera limpia (marca + ☰) y panel lateral con los
+   enlaces y el selector de idiomas dentro. */
 @media (max-width: 760px) {
   :root { --site-header-height: 58px; }
 
@@ -192,38 +237,145 @@ footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-hei
     height: var(--site-header-height) !important;
     padding: 0 !important;
     overflow: visible !important;
+    justify-content: flex-start !important;
   }
 
-  .mainNav {
+  /* La cabecera crea su propio contexto de apilado (sticky + z-index), así que el
+     panel se eleva subiendo la cabecera por encima de mapa, carrusel, controles,
+     asistente y pie mientras el menú está abierto. */
+  body .topbar.mobile-menu-open {
+    z-index: 30000 !important;
+    isolation: isolate;
+  }
+
+  .mobileBrand {
+    position: absolute;
+    top: 0;
+    left: 12px;
+    z-index: 1003;
+    height: var(--site-header-height);
+    max-width: calc(100% - 74px);
+    display: inline-flex !important;
+    align-items: center;
+    gap: 9px;
+    color: #fff;
+    text-decoration: none;
+    overflow: hidden;
+  }
+  .mobileBrand img {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    object-fit: contain;
+    filter: none !important;
+  }
+  .mobileBrand span {
+    font: 900 12px/1.1 Arial, Helvetica, sans-serif;
+    letter-spacing: .06em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* absolute (y no fixed) porque algunas cabeceras crean contexto de contención. */
+  .mobileMenuBackdrop {
     position: absolute !important;
-    top: var(--site-header-height) !important;
+    top: 100% !important;
     left: 0 !important;
     right: 0 !important;
-    width: 100% !important;
-    height: auto !important;
+    height: calc(100dvh - var(--site-header-height)) !important;
+    z-index: 1001;
+    display: block !important;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(2, 10, 17, .55);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    transition: opacity .25s ease;
+  }
+  .topbar.mobile-menu-open .mobileMenuBackdrop { opacity: 1; pointer-events: auto; }
+
+  /* Especificidad alta: algunas páginas fijan su propio tamaño de .mainNav. */
+  body .topbar .mainNav {
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    bottom: auto !important;
+    left: auto !important;
+    z-index: 1002 !important;
+    width: min(310px, 86vw) !important;
+    height: calc(100dvh - var(--site-header-height)) !important;
+    min-height: 0 !important;
     max-width: none !important;
-    max-height: calc(100vh - var(--site-header-height)) !important;
-    display: none !important;
+    max-height: none !important;
+    display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
     gap: 0 !important;
     overflow-y: auto !important;
-    padding: 8px 14px 14px !important;
-    background: rgba(4, 17, 27, .98) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, .14);
-    box-shadow: 0 14px 26px rgba(0, 0, 0, .28);
+    overscroll-behavior: contain;
+    padding: 14px 16px 26px !important;
+    background: rgba(4, 17, 27, .86) !important;
+    border-left: 1px solid rgba(255, 255, 255, .18);
+    border-bottom: 0;
+    box-shadow: -16px 0 38px rgba(0, 0, 0, .45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform .28s cubic-bezier(.22, 1, .36, 1), visibility .28s;
   }
 
-  .topbar.mobile-menu-open .mainNav { display: flex !important; }
-  .mainNav a {
+  body .topbar.mobile-menu-open .mainNav {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  body .topbar .mainNav a {
     width: 100%;
-    min-height: 45px !important;
-    height: 45px !important;
-    justify-content: center !important;
-    font-size: 12px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    min-height: 46px !important;
+    height: auto !important;
+    justify-content: flex-start !important;
+    padding: 0 6px !important;
+    font-size: 13px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .10);
   }
+  body .topbar .mainNav a.active { color: #fff !important; }
+  body .topbar .mainNav a.active::after { display: none; }
 
+  /* Sección IDIOMA dentro del panel: el selector es el mismo de escritorio. */
+  .mobileLanguageGroup {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, .18);
+  }
+  .mobileLanguageTitle {
+    display: block;
+    margin-bottom: 12px;
+    color: #ffd000;
+    font: 900 11px/1 Arial, Helvetica, sans-serif;
+    letter-spacing: .12em;
+  }
+  body .topbar .mainNav .languageSelector {
+    position: static !important;
+    right: auto !important;
+    left: auto !important;
+    top: auto !important;
+    height: auto !important;
+    transform: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+  body .topbar .mainNav .languageFlag {
+    width: 44px !important;
+    height: 44px !important;
+    flex-basis: 44px;
+  }
+  body .topbar .mainNav .languageFlag img { width: 26px; height: 19px; }
+
+  /* Fuera del panel el selector no ocupa sitio en la cabecera móvil. */
   .languageSelector {
     right: 8px !important;
     left: auto !important;
@@ -233,18 +385,23 @@ footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-hei
   .languageFlag { width: 25px !important; height: 25px !important; flex-basis: 25px; }
   .languageFlag img { width: 16px; height: 12px; }
 
+  body.mobile-menu-open { overflow: hidden; }
+
+  /* El asistente flotante no se superpone al panel mientras está abierto. */
+  body.mobile-menu-open .chatWidgetButton { opacity: 0; pointer-events: none; }
+
   .mobileMenuToggle {
     position: absolute;
     top: 11px;
-    right: 162px;
-    z-index: 1003;
-    width: 36px;
-    height: 36px;
+    right: 12px;
+    z-index: 1004;
+    width: 38px;
+    height: 38px;
     display: inline-grid;
     place-items: center;
     padding: 0;
     border: 1px solid rgba(255, 255, 255, .34);
-    border-radius: 9px;
+    border-radius: 10px;
     background: rgba(4, 17, 27, .85);
     color: #fff;
     font-size: 21px;
@@ -256,17 +413,65 @@ footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-hei
   main, .page-header, .hero, section { max-width: 100%; }
   .hero h1, h1 { overflow-wrap: anywhere; }
   footer.site-credits, footer.site-footer { padding: 15px 12px !important; }
+
+  /* Páginas sin menú principal: el selector sigue en su cabecera propia. */
+  .top-header .languageSelector,
+  .top .languageSelector { position: absolute !important; }
+}
+
+@media (max-width: 380px) {
+  .mobileBrand span { font-size: 11px; }
+  body .topbar .mainNav .languageFlag { width: 42px !important; height: 42px !important; flex-basis: 42px; }
 }
 
 @media (max-width: 360px) {
   .languageFlag { width: 23px !important; height: 23px !important; flex-basis: 23px; }
-  .mobileMenuToggle { right: 151px; width: 34px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mainNav, .mobileMenuBackdrop { transition: none !important; }
 }
 
 /* Grand Tour mobile layout: the map remains central and its two desktop side
    panels become full-height drawers that can be opened on demand. */
 @media (max-width: 760px) {
-  body:has(#map) { padding-bottom: 78px !important; }
+  /* El pie deja de ser una barra fija: sus enlaces legales no caben en la altura
+     reservada y se pintaban encima del mapa y del carrusel. */
+  body:has(#map) { padding-bottom: 0 !important; }
+
+  /* La página del mapa puede desplazarse para llegar al pie. */
+  html:has(#map),
+  body:has(#map) {
+    height: auto !important;
+    min-height: 100dvh !important;
+    overflow-y: auto !important;
+  }
+
+  /* El panel de ruta que script.js añade al final del body no debe alargar la
+     página: solo aparece cuando la navegación lo activa (clase .visible). */
+  body:has(#map) #routePanel:not(.visible) { display: none; }
+  body:has(#map) #routePanel.visible {
+    position: fixed;
+    z-index: 3000;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    max-height: 46dvh;
+    overflow-y: auto;
+  }
+
+  body:has(#map) footer.site-credits {
+    position: static !important;
+    z-index: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-top: 20px !important;
+    padding: 18px 14px 92px !important;
+    gap: 8px !important;
+    grid-template-rows: none !important;
+    box-shadow: none !important;
+  }
+
   body:has(#map) .layout {
     height: calc(100dvh - var(--site-header-height) - 78px) !important;
     min-height: 360px;
@@ -329,7 +534,7 @@ footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-hei
     z-index: 3200 !important;
     top: var(--site-header-height) !important;
     right: 0 !important;
-    bottom: 78px !important;
+    bottom: 0 !important;
     left: 0 !important;
     width: 100% !important;
     min-height: 0 !important;
@@ -404,3 +609,103 @@ footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-hei
   border: 0;
   max-width: none;
 }
+
+/* =========================================================
+   AJUSTE FINO PARA MÓVIL (320–430 px)
+   Solo afecta a pantallas pequeñas: el diseño de escritorio
+   permanece exactamente igual. El Grand Tour (#map) queda fuera.
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  /* Las rejillas no pueden estirarse por el contenido más ancho
+     (tablas, textos largos): así nada queda cortado fuera de pantalla. */
+  body:not(:has(#map)) .cards,
+  body:not(:has(#map)) .steps,
+  body:not(:has(#map)) .grid,
+  body:not(:has(#map)) .videosGrid,
+  body:not(:has(#map)) .projectsGrid,
+  body:not(:has(#map)) .jobsGrid,
+  body:not(:has(#map)) .adviceGrid,
+  body:not(:has(#map)) .team-cards {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body:not(:has(#map)) .cards > *,
+  body:not(:has(#map)) .steps > *,
+  body:not(:has(#map)) .grid > *,
+  body:not(:has(#map)) .videosGrid > *,
+  body:not(:has(#map)) .projectsGrid > *,
+  body:not(:has(#map)) .jobsGrid > *,
+  body:not(:has(#map)) .adviceGrid > *,
+  body:not(:has(#map)) .team-cards > *,
+  body:not(:has(#map)) .heroButtons > *,
+  body:not(:has(#map)) .social-icons > * {
+    min-width: 0;
+  }
+
+  /* Títulos y textos largos se ajustan al ancho disponible. */
+  body:not(:has(#map)) h1,
+  body:not(:has(#map)) h2,
+  body:not(:has(#map)) h3,
+  body:not(:has(#map)) .sectionTitle,
+  body:not(:has(#map)) .page-header h1 {
+    overflow-wrap: anywhere !important;
+    hyphens: auto;
+  }
+
+  /* Las tablas anchas siguen completas: se desplazan dentro de su caja. */
+  body:not(:has(#map)) .table-wrap,
+  body:not(:has(#map)) .table-wrapper {
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  /* Botones cómodos para el dedo sin cambiar su aspecto. */
+  body:not(:has(#map)) main .btn,
+  body:not(:has(#map)) main .heroButton,
+  body:not(:has(#map)) main button,
+  body:not(:has(#map)) .back-button {
+    min-height: 44px !important;
+  }
+
+  /* Formularios a ancho completo y sin zoom automático al enfocar. */
+  body:not(:has(#map)) input:not([type="checkbox"]):not([type="radio"]),
+  body:not(:has(#map)) select,
+  body:not(:has(#map)) textarea {
+    max-width: 100% !important;
+    font-size: 16px !important;
+  }
+
+  /* El pie se ve entero y no queda tapado por el asistente flotante. */
+  body:not(:has(#map)) footer.site-credits,
+  body:not(:has(#map)) footer.site-footer {
+    padding-bottom: 86px !important;
+  }
+
+  .legalFooterCookieSettings {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center;
+  }
+
+}
+
+@media (max-width: 430px) {
+
+  /* Márgenes laterales homogéneos en pantallas pequeñas. */
+  body:not(:has(#map)) main,
+  body:not(:has(#map)) main.content {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  body:not(:has(#map)) .section,
+  body:not(:has(#map)) .hero {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+}
+

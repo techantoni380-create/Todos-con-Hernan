@@ -328,19 +328,45 @@
     }
 
 
+    /* Mismo acabado que las etiquetas informativas de contacto.html (.agenda-note-highlight). */
     .heroText {
 
-      max-width: 680px;
+      display: inline-block;
+
+      max-width: min(680px, 100%);
 
       margin:
         25px 0 0;
 
-      color: #dbe7ed;
+      padding: 20px 26px;
+
+      border: 1px solid rgba(255, 255, 255, .35);
+
+      border-radius: 18px;
+
+      background: rgba(16, 40, 58, .38);
+
+      box-shadow: 0 8px 26px rgba(16, 40, 58, .18);
+
+      backdrop-filter: blur(8px);
+
+      -webkit-backdrop-filter: blur(8px);
+
+      color: #ffffff;
 
       font-size:
         clamp(17px, 2vw, 21px);
 
       line-height: 1.5;
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .heroText {
+        padding: 16px 18px;
+      }
 
     }
 
@@ -420,6 +446,109 @@
 
       border:
         1px solid #416379;
+
+    }
+
+
+    /* Mismo botón que "ENTRAR AL GRAND TOUR →" de inicio.html (.heroButton.primary.btn-shine). */
+    .heroButtons .btn.red,
+    .heroButtons .btn.outline {
+
+      position: relative;
+
+      overflow: hidden;
+
+      min-height: 42px;
+
+      padding: 0 19px;
+
+      border: 0;
+
+      border-radius: 21px;
+
+      background: var(--red);
+
+      color: #fff;
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .22);
+
+      backdrop-filter: none;
+
+      -webkit-backdrop-filter: none;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+
+      animation: reveladoBotonHero 1.35s cubic-bezier(.22, 1, .36, 1) .12s backwards;
+
+    }
+
+
+    .heroButtons .btn.red::after,
+    .heroButtons .btn.outline::after {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+
+      left: -60%;
+
+      width: 35%;
+
+      height: 100%;
+
+      background: linear-gradient(115deg, transparent, rgba(255, 255, 255, .35), transparent);
+
+      transform: skewX(-20deg);
+
+      transition: left .6s ease;
+
+      pointer-events: none;
+
+    }
+
+
+    .heroButtons .btn.red:hover::after,
+    .heroButtons .btn.outline:hover::after {
+
+      left: 130%;
+
+    }
+
+
+    .heroButtons .btn.red:hover,
+    .heroButtons .btn.outline:hover {
+
+      transform: translateY(-2px);
+
+      background: #ff252d;
+
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .45);
+
+    }
+
+
+    @keyframes reveladoBotonHero {
+
+      from {
+        opacity: 0;
+        transform: translateY(15px) scale(.97);
+        filter: blur(2px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
 
     }
 
@@ -548,11 +677,15 @@
       margin:
         18px auto 0;
 
-      color: #bdccd4;
+      color: #ffffff;
 
       font-size: 17px;
 
+      font-weight: 500;
+
       line-height: 1.6;
+
+      text-shadow: 0 1px 6px rgba(0, 0, 0, .45);
 
     }
 
@@ -1563,6 +1696,191 @@ footer.site-credits > p.developer-credit {
     .community-internal-link { cursor: pointer; }
     @media (max-width: 600px) { .community-modal { padding: 10px; } .community-modal-dialog { width: 100%; max-height: 92vh; border-radius: 17px; } .community-modal-header { padding: 14px 16px; } .community-modal-body { padding: 14px; } }
 
+    body.community-modal-open { overflow: hidden; }
+
+
+    /* =====================================================
+       TARJETAS AUDIOVISUALES
+       Mismo estilo visual que las tarjetas de videos.html
+    ===================================================== */
+
+    .videosGrid {
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .videoCard {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.38);
+      border-radius: 16px;
+      background: rgba(4,17,27,.28);
+      box-shadow: 0 14px 35px rgba(0,0,0,.22);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .videoCard:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.70);
+    }
+
+    button.videoThumbnail {
+      display: block;
+      position: relative;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      background: transparent;
+      font: inherit;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    button.videoThumbnail:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .videoThumbnail img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      transition: transform .3s ease;
+    }
+
+    .videoCard:hover .videoThumbnail img {
+      transform: scale(1.03);
+    }
+
+    .videoOverlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+
+    .smallPlay {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.75);
+      background: rgba(4,17,27,.20);
+      color: #fff;
+      font-size: 21px;
+      padding-left: 4px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.30);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+
+    .videoCard:hover .smallPlay {
+      background: rgba(239,24,32,.88);
+    }
+
+    .videoInfo {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 15px 16px 17px;
+      background: rgba(4,17,27,.40);
+    }
+
+    .videoCategory {
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 8px;
+      padding: 5px 9px;
+      border-radius: 14px;
+      background: var(--red);
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .5px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.20);
+    }
+
+    .videoInfo h3 {
+      margin: 0 0 13px;
+      font-size: 19px;
+      line-height: 1.2;
+      text-shadow: 0 2px 9px rgba(0,0,0,.75);
+    }
+
+    /* Mismo acabado que el botón del hero (referencia: .heroButton.primary.btn-shine de inicio.html). */
+    .videoInfo .btn {
+      position: relative;
+      overflow: hidden;
+      margin-top: auto;
+      align-self: flex-start;
+      min-height: 42px;
+      padding: 0 19px;
+      border: 0;
+      border-radius: 21px;
+      background: var(--red);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .22);
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      font-family: inherit;
+    }
+
+    .videoInfo .btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -60%;
+      width: 35%;
+      height: 100%;
+      background: linear-gradient(115deg, transparent, rgba(255, 255, 255, .35), transparent);
+      transform: skewX(-20deg);
+      transition: left .6s ease;
+      pointer-events: none;
+    }
+
+    .videoInfo .btn:hover::after {
+      left: 130%;
+    }
+
+    .videoInfo .btn:hover {
+      transform: translateY(-2px);
+      background: #ff252d;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .45);
+    }
+
+    @media (max-width: 900px) {
+      .videosGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 600px) {
+      .videosGrid { grid-template-columns: 1fr; }
+      .videoInfo { background: rgba(4,17,27,.50); }
+      .videoInfo h3 { font-size: 17px; }
+    }
+
   </style>
 
 </head>
@@ -1603,6 +1921,11 @@ footer.site-credits > p.developer-credit {
       </a>
 
 
+      <a href="trabajos-suiza.html">
+        <span data-i18n="nav.trabajos">TRABAJOS EN SUIZA</span>
+      </a>
+
+
       <a
         href="comunidad.html"
         class="active"
@@ -1616,8 +1939,8 @@ footer.site-credits > p.developer-credit {
       </a>
 
 
-      <a href="hernan.html">
-        <span data-i18n="nav.hernan">HERNÁN</span>
+      <a href="sponsors.html">
+        <span data-i18n="nav.sponsors">SPONSORS</span>
       </a>
 
 
@@ -1646,11 +1969,6 @@ footer.site-credits > p.developer-credit {
 
       <div class="heroContent">
 
-        <div class="eyebrow" data-i18n="hero.eyebrow">
-          TODOS CON HERNÁN · COMUNIDAD
-        </div>
-
-
         <h1 data-i18n="hero.title">
 
           UNA COMUNIDAD
@@ -1673,10 +1991,10 @@ footer.site-credits > p.developer-credit {
         <div class="heroButtons">
 
           <a
-            href="#mundial"
+            href="#podcasts"
             class="btn red"
           >
-            DESCUBRIR PROYECTOS
+            ESCUCHAR PODCAST
           </a>
 
 
@@ -1702,6 +2020,33 @@ footer.site-credits > p.developer-credit {
         >
 
       </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         �️ PODCASTS
+    =================================================== -->
+
+    <section class="section dark" id="podcasts">
+
+      <div class="sectionHeader">
+
+        <div class="sectionLabel">🎙️ PODCASTS</div>
+
+        <h2 class="sectionTitle">
+          TEMPORADAS DEL
+          <span>PODCAST</span>
+        </h2>
+
+        <p class="sectionDescription">
+          Todas las temporadas del podcast Todos con Hernán.
+          Cada tarjeta abre la lista de reproducción completa dentro de esta página.
+        </p>
+
+      </div>
+
+      <div class="videosGrid" id="communityPodcastsGrid"></div>
 
     </section>
 
@@ -1732,6 +2077,58 @@ footer.site-credits > p.developer-credit {
 
 </footer>
 
+<!-- =====================================================
+     REPRODUCTOR INTERNO · SIN SALIR DE LA WEB
+     ===================================================== -->
+
+<div class="community-modal" id="communityPlayerModal" aria-hidden="true">
+
+  <div
+    class="community-modal-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="communityPlayerTitle"
+  >
+
+    <div class="community-modal-header">
+
+      <h2 class="community-modal-title" id="communityPlayerTitle">Reproductor</h2>
+
+      <button
+        type="button"
+        class="community-modal-close"
+        id="communityPlayerClose"
+        aria-label="Cerrar reproductor"
+      >×</button>
+
+    </div>
+
+    <div class="community-modal-body">
+
+      <div class="community-modal-video">
+        <iframe
+          id="communityPlayerFrame"
+          src=""
+          title="Reproductor de vídeo"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <p class="community-modal-note">
+        Reproductor oficial de YouTube. Pulsa ▶ para iniciar la reproducción.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+  <script src="data/community-content.js"></script>
+  <script src="js/community-media.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/legal-footer.js"></script>
   <script src="js/chat-widget.js"></script>

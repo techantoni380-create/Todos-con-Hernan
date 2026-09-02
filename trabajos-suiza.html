@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta name="view-transition" content="same-origin">
+  <style>html { background: #071a28; }</style>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Trabajos en Suiza · Todos con Hernán"
+  >
+
+  <title>Trabajos en Suiza · Todos con Hernán</title>
+
+  <link rel="stylesheet" href="css/language-selector.css">
+
+
+  <style>
+
+    /* =====================================================
+       VARIABLES
+       ===================================================== */
+
+    :root {
+      --bg: #04111b;
+      --panel: #071a28;
+
+      --line: #23465d;
+
+      --red: #ef1820;
+      --gold: #ffd000;
+
+      --text: #f5f8fa;
+      --muted: #a7bac7;
+    }
+
+
+    /* =====================================================
+       RESET
+       ===================================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+
+      width: 100%;
+      min-height: 100%;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background: var(--bg);
+      color: var(--text);
+    }
+
+
+    body {
+      overflow-x: hidden;
+    }
+
+
+    a {
+      color: inherit;
+    }
+
+
+    /* =====================================================
+       FONDO SUIZA · IMAGEN NATURAL EN MOVIMIENTO
+       ===================================================== */
+
+    html,
+    body {
+      background: #04111b;
+    }
+
+    body {
+      position: relative;
+      isolation: isolate;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -3%;
+      z-index: -2;
+      pointer-events: none;
+      background: url("img/Suiza3.jpg") center center / cover no-repeat;
+      animation: suizaPan 24s ease-in-out infinite alternate;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: transparent;
+    }
+
+    @keyframes suizaPan {
+      0% {
+        transform: scale(1.02) translate3d(0, 0, 0);
+      }
+      100% {
+        transform: scale(1.07) translate3d(-1.2%, -0.7%, 0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before {
+        animation: none;
+        transform: none;
+      }
+    }
+
+
+    /* =====================================================
+       BARRA SUPERIOR
+       ===================================================== */
+
+    .topbar {
+
+      min-height: 64px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 0 20px;
+
+      background: #04111a;
+
+      border-bottom:
+        1px solid #183347;
+
+      position: relative;
+
+      z-index: 1000;
+
+    }
+
+
+    .mainNav {
+
+      min-height: 64px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 34px;
+
+    }
+
+
+    .mainNav a {
+
+      min-height: 64px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+
+      color: #dbe4ea;
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      white-space: nowrap;
+
+    }
+
+
+    .mainNav a:hover {
+      color: #fff;
+    }
+
+
+    .mainNav a.active {
+
+      color: #fff;
+
+      font-weight: 900;
+
+    }
+
+
+    .mainNav a.active::after {
+
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+
+      bottom: 0;
+
+      height: 4px;
+
+      background: var(--red);
+
+      border-radius:
+        3px 3px 0 0;
+
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .hero {
+
+      min-height: 380px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 0;
+
+      padding:
+        65px
+        7vw
+        45px;
+
+      position: relative;
+
+      text-align: center;
+
+      background: transparent;
+
+    }
+
+
+    .heroContent {
+
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 900px;
+
+    }
+
+
+    .eyebrow {
+
+      display: inline-block;
+
+      margin-bottom: 18px;
+
+      padding:
+        8px 15px;
+
+      border:
+        1px solid #31556c;
+
+      border-radius: 20px;
+
+      background: #071a28cc;
+
+      color: var(--gold);
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .hero h1 {
+
+      margin: 0;
+
+      font-size:
+        clamp(44px, 5.4vw, 74px);
+
+      line-height: .95;
+
+      letter-spacing: -3px;
+
+      font-weight: 950;
+
+    }
+
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+
+    /* Mismo acabado que las etiquetas destacadas de contacto.html (.agenda-note-highlight). */
+    .heroText {
+
+      display: inline-block;
+
+      max-width: min(720px, 100%);
+
+      margin:
+        25px auto 0;
+
+      padding: 20px 26px;
+
+      border: 1px solid rgba(255, 255, 255, .35);
+
+      border-radius: 18px;
+
+      background: rgba(16, 40, 58, .38);
+
+      box-shadow: 0 8px 26px rgba(16, 40, 58, .18);
+
+      backdrop-filter: blur(8px);
+
+      -webkit-backdrop-filter: blur(8px);
+
+      color: #ffffff;
+
+      font-size:
+        clamp(17px, 2vw, 21px);
+
+      line-height: 1.5;
+
+    }
+
+
+    .heroText strong {
+
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-size:
+        clamp(18px, 2.1vw, 23px);
+
+      font-weight: 800;
+
+    }
+
+
+    /* =====================================================
+       SECCIÓN
+       ===================================================== */
+
+    .section {
+
+      padding:
+        45px
+        7vw
+        80px;
+
+      background: transparent;
+
+    }
+
+
+    .sectionHeader {
+
+      max-width: 900px;
+
+      margin:
+        0
+        auto
+        35px;
+
+      text-align: center;
+
+    }
+
+
+    .sectionLabel {
+
+      margin-bottom: 10px;
+
+      color: var(--gold);
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .sectionTitle {
+
+      margin: 0;
+
+      font-size:
+        clamp(32px, 3.6vw, 48px);
+
+      line-height: 1;
+
+      font-weight: 950;
+
+      text-shadow: 0 2px 10px rgba(0, 0, 0, .55);
+
+    }
+
+
+    .sectionTitle span {
+      color: var(--red);
+    }
+
+
+    /* =====================================================
+       TARJETAS
+       ===================================================== */
+
+    .jobsGrid {
+
+      max-width: 1200px;
+
+      margin: 0 auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
+    }
+
+
+    .jobCard {
+
+      display: flex;
+
+      flex-direction: column;
+
+      min-height: 240px;
+
+      padding: 30px 28px;
+
+      border: 1px solid rgba(255, 255, 255, .35);
+
+      border-radius: 20px;
+
+      background: rgba(4, 17, 27, .28);
+
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .28);
+
+      backdrop-filter: blur(8px);
+
+      -webkit-backdrop-filter: blur(8px);
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+
+    }
+
+
+    .jobCard:hover {
+
+      transform: translateY(-5px);
+
+      border-color: var(--red);
+
+      box-shadow: 0 24px 50px rgba(0, 0, 0, .42);
+
+    }
+
+
+    .jobCardIcon {
+
+      margin-bottom: 16px;
+
+      font-size: 38px;
+
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, .35));
+
+    }
+
+
+    .jobCard h3 {
+
+      margin: 0 0 10px;
+
+      color: #ffffff;
+
+      font-size: 22px;
+
+      line-height: 1.2;
+
+      text-shadow: 0 2px 8px rgba(0, 0, 0, .72);
+
+    }
+
+
+    .jobCard p {
+
+      margin: 0;
+
+      color: #ffffff;
+
+      font-size: 15px;
+
+      line-height: 1.55;
+
+      text-shadow: 0 2px 8px rgba(0, 0, 0, .72);
+
+    }
+
+
+    /* Espacio reservado para futuras funciones (ofertas, empresas, candidaturas). */
+    .jobsNote {
+
+      max-width: 900px;
+
+      margin: 35px auto 0;
+
+      padding: 26px 30px;
+
+      border: 1px solid rgba(255, 255, 255, .45);
+
+      border-radius: 20px;
+
+      background: rgba(4, 17, 27, .28);
+
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .28);
+
+      backdrop-filter: blur(8px);
+
+      -webkit-backdrop-filter: blur(8px);
+
+      color: #ffffff;
+
+      text-align: center;
+
+      line-height: 1.55;
+
+      text-shadow: 0 2px 8px rgba(0, 0, 0, .72);
+
+    }
+
+
+    .jobsNote strong {
+
+      font-weight: 800;
+
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1050px) {
+
+      .mainNav {
+        gap: 21px;
+      }
+
+
+      .jobsGrid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+      .topbar {
+
+        overflow-x: auto;
+
+        justify-content:
+          flex-start;
+
+      }
+
+
+      .mainNav {
+
+        flex:
+          0 0 auto;
+
+      }
+
+
+      .hero {
+
+        padding:
+          50px
+          20px
+          30px;
+
+      }
+
+
+      .jobsGrid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .heroText {
+        padding: 16px 18px;
+      }
+
+
+      .jobCard {
+        padding: 24px 20px;
+      }
+
+
+      .jobsNote {
+        padding: 22px 18px;
+      }
+
+    }
+
+
+    @media (max-width: 520px) {
+
+      .mainNav {
+        gap: 18px;
+      }
+
+
+      .mainNav a {
+        font-size: 11px;
+      }
+
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+    }
+
+
+
+/* =========================================================
+   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
+   ========================================================= */
+
+footer.site-credits {
+  width: 100% !important;
+  min-height: 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto !important;
+
+  align-items: center !important;
+  justify-items: center !important;
+
+  gap: 8px !important;
+
+  margin: 0 !important;
+  padding: 26px 20px !important;
+
+  background: #04111a !important;
+  border-top: 1px solid #183347 !important;
+
+  color: #9db0bc !important;
+  font-size: 12px !important;
+  text-align: center !important;
+}
+
+footer.site-credits > p {
+  margin: 0 !important;
+}
+
+@media (max-width: 600px) {
+
+  footer.site-credits {
+    padding: 18px 10px !important;
+    gap: 6px !important;
+  }
+
+  footer.site-credits > p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       BARRA SUPERIOR
+       ===================================================== -->
+
+  <header class="topbar">
+
+    <nav
+      class="mainNav"
+      aria-label="Navegación principal"
+    >
+
+      <a href="inicio.html">
+        <span data-i18n="nav.inicio">INICIO</span>
+      </a>
+
+
+      <a href="index.html">
+        <span data-i18n="nav.tour">EL GRAND TOUR</span>
+      </a>
+
+
+      <a href="videos.html">
+        <span data-i18n="nav.videos">VÍDEOS</span>
+      </a>
+
+
+      <a href="vivir-en-suiza.html">
+        <span data-i18n="nav.vivir">VIVIR EN SUIZA</span>
+      </a>
+
+
+      <a
+        href="trabajos-suiza.html"
+        class="active"
+      >
+        <span data-i18n="nav.trabajos">TRABAJOS EN SUIZA</span>
+      </a>
+
+
+      <a href="comunidad.html">
+        <span data-i18n="nav.comunidad">COMUNIDAD</span>
+      </a>
+
+
+      <a href="proyectos.html">
+        <span data-i18n="nav.proyectos">PROYECTOS</span>
+      </a>
+
+
+      <a href="sponsors.html">
+        <span data-i18n="nav.sponsors">SPONSORS</span>
+      </a>
+
+
+      <a href="contacto.html">
+        <span data-i18n="nav.contacto">CONTACTO</span>
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- =====================================================
+       CONTENIDO
+       ===================================================== -->
+
+  <main>
+
+
+    <!-- ===================================================
+         HERO
+         =================================================== -->
+
+    <section class="hero">
+
+
+      <div class="heroContent">
+
+
+        <div class="eyebrow" data-i18n="hero.eyebrow">
+          🇨🇭 TRABAJOS EN SUIZA
+        </div>
+
+
+        <h1 data-i18n="hero.title">
+
+          TRABAJAR
+          <br>
+
+          <span>EN SUIZA</span>
+
+        </h1>
+
+
+        <p class="heroText" data-i18n="hero.text">
+
+          <strong>Tu próximo paso profesional puede empezar en Suiza.</strong>
+
+          Información, oportunidades y recursos para
+          quienes quieren trabajar y desarrollar su
+          carrera profesional en Suiza.
+
+        </p>
+
+
+      </div>
+
+
+    </section>
+
+
+    <!-- ===================================================
+         BUSCA TU OPORTUNIDAD
+         =================================================== -->
+
+    <section class="section" id="oportunidades">
+
+
+      <div class="sectionHeader">
+
+        <div class="sectionLabel">🔎 BUSCA TU OPORTUNIDAD</div>
+
+        <h2 class="sectionTitle">
+          POR DÓNDE
+          <span>EMPEZAR</span>
+        </h2>
+
+      </div>
+
+
+      <div class="jobsGrid">
+
+
+        <article class="jobCard">
+
+          <div class="jobCardIcon">💼</div>
+
+          <h3>Portales de empleo suizos</h3>
+
+          <p>
+            Plataformas y recursos para encontrar
+            oportunidades laborales en Suiza.
+          </p>
+
+        </article>
+
+
+        <article class="jobCard">
+
+          <div class="jobCardIcon">🏢</div>
+
+          <h3>Empresas y sectores con demanda</h3>
+
+          <p>
+            Información sobre empresas y sectores
+            profesionales con oportunidades en Suiza.
+          </p>
+
+        </article>
+
+
+        <article class="jobCard">
+
+          <div class="jobCardIcon">🤝</div>
+
+          <h3>Agencias de trabajo</h3>
+
+          <p>
+            Agencias de empleo y selección que pueden
+            ayudar a encontrar oportunidades laborales
+            en Suiza.
+          </p>
+
+        </article>
+
+
+      </div>
+
+
+      <p class="jobsNote">
+        <strong>Esta es la primera versión de la sección.</strong>
+        Iremos ampliándola con nuevos recursos y contenidos
+        sobre el mercado laboral suizo.
+      </p>
+
+
+    </section>
+
+
+  </main>
+
+
+<!-- =====================================================
+     PIE DE PÁGINA
+     ===================================================== -->
+
+<footer class="site-credits">
+
+  <p>
+    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+  </p>
+
+  <p class="developer-credit">
+    <a
+      href="https://www.instagram.com/techantoni/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: inherit; text-decoration: none;"
+    >
+      Yonathan Alvarado · Full Stack Web Developer · Spain
+    </a>
+  </p>
+
+</footer>
+
+
+<script>
+  window.PAGE_TRANSLATIONS = {
+    es: {
+      "hero.eyebrow": "🇨🇭 TRABAJOS EN SUIZA",
+      "hero.title": "TRABAJAR<br><span>EN SUIZA</span>"
+    },
+    de: {
+      "hero.eyebrow": "🇨🇭 JOBS IN DER SCHWEIZ",
+      "hero.title": "ARBEITEN<br><span>IN DER SCHWEIZ</span>"
+    },
+    fr: {
+      "hero.eyebrow": "🇨🇭 EMPLOIS EN SUISSE",
+      "hero.title": "TRAVAILLER<br><span>EN SUISSE</span>"
+    },
+    it: {
+      "hero.eyebrow": "🇨🇭 LAVORO IN SVIZZERA",
+      "hero.title": "LAVORARE<br><span>IN SVIZZERA</span>"
+    },
+    en: {
+      "hero.eyebrow": "🇨🇭 JOBS IN SWITZERLAND",
+      "hero.title": "WORKING<br><span>IN SWITZERLAND</span>"
+    }
+  };
+</script>
+<script src="js/i18n.js"></script>
+<script src="js/legal-footer.js"></script>
+<script src="js/chat-widget.js"></script>
+
+
+</body>
+
+</html>

@@ -327,19 +327,45 @@
     }
 
 
+    /* Mismo acabado que las etiquetas destacadas de contacto.html (.agenda-note-highlight). */
     .heroText {
 
-      max-width: 680px;
+      display: inline-block;
+
+      max-width: min(680px, 100%);
 
       margin:
-        25px 0 0;
+        25px auto 0;
 
-      color: #dbe7ed;
+      padding: 20px 26px;
+
+      border: 1px solid rgba(255, 255, 255, .35);
+
+      border-radius: 18px;
+
+      background: rgba(16, 40, 58, .38);
+
+      box-shadow: 0 8px 26px rgba(16, 40, 58, .18);
+
+      backdrop-filter: blur(8px);
+
+      -webkit-backdrop-filter: blur(8px);
+
+      color: #ffffff;
 
       font-size:
         clamp(17px, 2vw, 21px);
 
       line-height: 1.5;
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .heroText {
+        padding: 16px 18px;
+      }
 
     }
 
@@ -880,6 +906,163 @@
     }
 
 
+    /* Tarjetas de proyecto con imagen que enlazan al canal. */
+    /* Sin cabecera de sección: se compensa el espacio superior. */
+    .projectsSection {
+
+      padding-top: 40px;
+
+    }
+
+
+    .projectsSection .projectsGrid {
+
+      margin-top: 0;
+
+    }
+
+
+    .projectCardLink {
+
+      display: flex;
+
+      flex-direction: column;
+
+      min-height: 0;
+
+      padding: 0;
+
+      overflow: hidden;
+
+      color: inherit;
+
+      text-decoration: none;
+
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .28);
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+
+    }
+
+
+    .projectCardLink:hover {
+
+      box-shadow: 0 16px 38px rgba(0, 0, 0, .42);
+
+    }
+
+
+    /* Las imágenes son cuadradas: caja 1/1 para que el logotipo se vea completo y a tamaño máximo. */
+    .projectCardMedia {
+
+      aspect-ratio: 1 / 1;
+
+      width: 100%;
+
+      margin: 0;
+
+      padding: 0;
+
+      overflow: hidden;
+
+      background: #04111b;
+
+      line-height: 0;
+
+    }
+
+
+    .projectCardMedia img {
+
+      width: 100%;
+
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      object-position: center;
+
+      transition: transform .35s ease;
+
+    }
+
+
+    .projectCardLink:hover .projectCardMedia img {
+
+      transform: scale(1.05);
+
+    }
+
+
+    .projectCardBody {
+
+      display: flex;
+
+      flex-direction: column;
+
+      flex: 1;
+
+      padding: 22px 24px 24px;
+
+    }
+
+
+    .projectCardLink h3 {
+
+      margin: 0 0 8px;
+
+      color: #ffffff;
+
+      font-size: 22px;
+
+    }
+
+
+    .projectCardLink p {
+
+      margin: 0 0 18px;
+
+    }
+
+
+    .projectCardCta {
+
+      margin-top: auto;
+
+      color: var(--red);
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      letter-spacing: .04em;
+
+      transition: transform .2s ease;
+
+    }
+
+
+    .projectCardLink:hover .projectCardCta {
+
+      transform: translateX(4px);
+
+    }
+
+
+    .projectCardLink:focus-visible {
+
+      outline: 2px solid var(--red);
+
+      outline-offset: 3px;
+
+    }
+
+
     /* =====================================================
        PROYECTO UN MILLÓN
        ===================================================== */
@@ -1095,6 +1278,41 @@
 
       color: #ffffff;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.72);
+
+    }
+
+
+    .future p + p {
+
+      margin-top: 14px;
+
+    }
+
+
+    .futureLead {
+
+      font-size:
+        clamp(19px, 2vw, 23px);
+
+      font-weight: 800;
+
+      line-height: 1.35;
+
+    }
+
+
+    .futureClosing {
+
+      font-weight: 700;
+
+    }
+
+
+    .future strong {
+
+      color: #ffffff;
+
+      font-weight: 800;
 
     }
 
@@ -1432,6 +1650,11 @@ footer.site-credits > p.developer-credit {
       </a>
 
 
+      <a href="trabajos-suiza.html">
+        <span data-i18n="nav.trabajos">TRABAJOS EN SUIZA</span>
+      </a>
+
+
       <a href="comunidad.html">
         <span data-i18n="nav.comunidad">COMUNIDAD</span>
       </a>
@@ -1445,9 +1668,9 @@ footer.site-credits > p.developer-credit {
       </a>
 
 
-<a href="hernan.html">
-    <span data-i18n="nav.hernan">HERNÁN</span>
-</a>
+      <a href="sponsors.html">
+        <span data-i18n="nav.sponsors">SPONSORS</span>
+      </a>
 
 
 <a href="contacto.html">
@@ -1476,11 +1699,6 @@ footer.site-credits > p.developer-credit {
       <div class="heroContent">
 
 
-        <div class="eyebrow" data-i18n="hero.eyebrow">
-          TODOS CON HERNÁN · PROYECTOS
-        </div>
-
-
         <h1 data-i18n="hero.title">
 
           PROYECTOS
@@ -1506,9 +1724,121 @@ footer.site-credits > p.developer-credit {
       <div class="heroHernan">
 
         <img
-          src="img/H1.png"
-          alt="Hernán · Todos con Hernán"
+          src="img/H1 (2).png"
+          alt="Proyectos en Suiza · Todos con Hernán"
         >
+
+      </div>
+
+
+    </section>
+
+
+    <!-- ===================================================
+         PROYECTOS DEL CANAL
+         =================================================== -->
+
+    <section class="section projectsSection">
+
+
+      <div class="projectsGrid">
+
+
+        <a
+          class="projectCard projectCardLink"
+          href="https://www.youtube.com/@todosconhernan/search?query=expo%20feria"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="projectCardMedia">
+            <img
+              src="img/expoferiasuiza.png"
+              alt="Expo Feria · Todos con Hernán"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+
+          <div class="projectCardBody">
+
+            <h3>EXPO FERIA</h3>
+
+            <p>
+              Encuentros, stands y comunidad en las ferias
+              donde Todos con Hernán está presente.
+            </p>
+
+            <span class="projectCardCta">Ver en YouTube →</span>
+
+          </div>
+
+        </a>
+
+
+        <a
+          class="projectCard projectCardLink"
+          href="https://www.youtube.com/@todosconhernan/search?query=raices%20culturales"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="projectCardMedia">
+            <img
+              src="img/raicesculturalessuiza.png"
+              alt="Raíces Culturales · Todos con Hernán"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+
+          <div class="projectCardBody">
+
+            <h3>RAÍCES CULTURALES</h3>
+
+            <p>
+              Cultura, tradiciones y personas que mantienen
+              vivas sus raíces desde Suiza.
+            </p>
+
+            <span class="projectCardCta">Ver en YouTube →</span>
+
+          </div>
+
+        </a>
+
+
+        <a
+          class="projectCard projectCardLink"
+          href="https://www.youtube.com/@todosconhernan/search?query=plato%20tipico%20mundial"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <div class="projectCardMedia">
+            <img
+              src="img/platotipico.png"
+              alt="Plato Típico Mundial · Todos con Hernán"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+
+          <div class="projectCardBody">
+
+            <h3>PLATO TÍPICO MUNDIAL</h3>
+
+            <p>
+              Sabores del mundo cocinados desde Suiza:
+              recetas, historias y cultura en cada plato.
+            </p>
+
+            <span class="projectCardCta">Ver en YouTube →</span>
+
+          </div>
+
+        </a>
+
 
       </div>
 
@@ -1527,22 +1857,38 @@ footer.site-credits > p.developer-credit {
 
 
         <div class="futureIcon">
-          💡
+          🤝
         </div>
 
 
         <h3>
-          PRÓXIMAMENTE
+          ¿QUIERES FORMAR PARTE?
         </h3>
 
 
+        <p class="futureLead">
+          Las grandes ideas empiezan cuando las
+          personas adecuadas se conectan.
+        </p>
+
+
         <p>
+          En <strong>Todos con Hernán</strong> estamos abiertos
+          a nuevas colaboraciones, proyectos, iniciativas y
+          oportunidades entre Suiza y el mundo.
+        </p>
 
-          Esta sección irá creciendo con nuevos
-          proyectos de Todos con Hernán.
-          Aquí podremos añadir cada nueva
-          iniciativa cuando esté preparada.
 
+        <p>
+          Si tienes una idea, representas una empresa,
+          quieres colaborar o simplemente crees que podemos
+          hacer algo juntos, <strong>queremos conocerte</strong>.
+        </p>
+
+
+        <p class="futureClosing">
+          Cuéntanos tu propuesta y exploremos juntos
+          lo que podemos crear.
         </p>
 
       </div>
