@@ -14,11 +14,42 @@
     html { scroll-behavior: smooth; }
 
     body {
+      position: relative;
       margin: 0;
-      background: #061522;
+      background: #06131d;
       color: #f4f7fb;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: url("img/11ZurichSuiza.jpg");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      transform: scale(1.03);
+      filter: saturate(1.06) contrast(1.03);
+      animation: transporteFondo 30s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes transporteFondo {
+      from { transform: scale(1.03) translate3d(0, 0, 0); }
+      to { transform: scale(1.07) translate3d(-0.6%, -0.4%, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before { animation: none; transform: scale(1.03); }
+    }
+
+    body > * {
+      position: relative;
+      z-index: 1;
     }
 
     .top-header {
@@ -207,6 +238,15 @@
       background: #eef3f5;
     }
 
+    .official-map-visual { position: relative; width: 100%; }
+
+    .official-map-canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #eef3f5;
+    }
+
     .map-svg { padding: 16px; }
     .map-svg svg { display: block; width: 100%; height: 100%; }
     .map-brand {
@@ -245,6 +285,21 @@
     .map-button:hover { background: #1b4770; border-color: #42a6ff; }
     .map-button.secondary { color: #102033; background: #ffd400; border-color: #ffd400; }
     .map-button.secondary:hover { background: #ffe045; }
+
+    .ticket-tools { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); gap: 18px; align-items: stretch; }
+    .ticket-card, .ticket-cta { background: rgba(13, 28, 46, .94); border: 1px solid rgba(255,255,255,.1); border-radius: 16px; padding: 25px; }
+    .ticket-card h3, .ticket-cta h3 { margin: 0 0 10px; color: #fff; font-size: 22px; }
+    .ticket-card > p, .ticket-cta > p { margin: 0 0 20px; color: #b8c8d8; font-size: 15px; }
+    .ticket-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .ticket-field { display: grid; gap: 6px; }
+    .ticket-field label { color: #d8e4ef; font-size: 13px; font-weight: 700; }
+    .ticket-field input, .ticket-field select { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid rgba(255,255,255,.16); border-radius: 10px; background: #f4f7fb; color: #102033; font: inherit; }
+    .ticket-form .map-button { grid-column: 1 / -1; width: fit-content; margin-top: 2px; }
+    .ticket-status { min-height: 20px; margin: 12px 0 0; color: #8fb8d8; font-size: 14px; }
+    .ticket-cta { display: flex; flex-direction: column; justify-content: center; border-color: rgba(255,212,0,.3); background: rgba(18,49,78,.94); }
+    .ticket-cta .map-button { align-self: flex-start; }
+    @media (max-width: 850px) { .ticket-tools { grid-template-columns: 1fr; } }
+    @media (max-width: 520px) { .ticket-form { grid-template-columns: 1fr; } .ticket-card, .ticket-cta { padding: 20px; } }
 
     footer.site-credits {
       width: 100%;
@@ -286,6 +341,7 @@
       .section-title { font-size: 27px; }
       .download-maps { grid-template-columns: 1fr; }
       .map-download.featured { grid-column: auto; }
+      .official-map-frame { display: none; }
     }
   </style>
 </head>
@@ -400,29 +456,122 @@
 
     <div class="download-maps">
       <article class="card map-download featured">
-        <iframe class="official-map-frame" title="Plano oficial de trenes de larga distancia" loading="lazy" src="docs/mapas-transporte/larga-distancia-sbb.pdf#view=FitH"></iframe>
+        <div class="official-map-visual">
+          <iframe class="official-map-frame" title="Plano oficial de trenes de larga distancia" loading="lazy" src="docs/mapas-transporte/larga-distancia-sbb.pdf#view=FitH"></iframe>
+          <canvas class="official-map-canvas" data-pdf-src="docs/mapas-transporte/larga-distancia-sbb.pdf" role="img" aria-label="Plano oficial de trenes de larga distancia" hidden></canvas>
+        </div>
         <div class="map-download-body"><h3>Trenes de larga distancia</h3><p>Plano oficial IC, IR y RE: cada línea, sus paradas y sus terminales.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/larga-distancia-sbb.pdf" download>↓ Descargar PDF</a></div></div>
       </article>
       <article class="card map-download">
-        <iframe class="official-map-frame" title="Plano oficial de la red nacional multimodal" loading="lazy" src="docs/mapas-transporte/red-nacional-sbb.pdf#view=FitH"></iframe>
+        <div class="official-map-visual">
+          <iframe class="official-map-frame" title="Plano oficial de la red nacional multimodal" loading="lazy" src="docs/mapas-transporte/red-nacional-sbb.pdf#view=FitH"></iframe>
+          <canvas class="official-map-canvas" data-pdf-src="docs/mapas-transporte/red-nacional-sbb.pdf" role="img" aria-label="Plano oficial de la red nacional multimodal" hidden></canvas>
+        </div>
         <div class="map-download-body"><h3>Red nacional multimodal</h3><p>Plano oficial con ferrocarril, autobuses, barcos y transportes por cable.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/red-nacional-sbb.pdf" download>↓ Descargar PDF</a></div></div>
       </article>
       <article class="card map-download">
-        <iframe class="official-map-frame" title="Plano oficial de Zúrich" loading="lazy" src="docs/mapas-transporte/zurich-zvv.pdf#view=FitH"></iframe>
+        <div class="official-map-visual">
+          <iframe class="official-map-frame" title="Plano oficial de Zúrich" loading="lazy" src="docs/mapas-transporte/zurich-zvv.pdf#view=FitH"></iframe>
+          <canvas class="official-map-canvas" data-pdf-src="docs/mapas-transporte/zurich-zvv.pdf" role="img" aria-label="Plano oficial de Zúrich" hidden></canvas>
+        </div>
         <div class="map-download-body"><h3>Zúrich: S-Bahn, bus y barco</h3><p>Plano oficial con líneas numeradas, estaciones, paradas y terminales.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/zurich-zvv.pdf" download>↓ Descargar PDF</a></div></div>
       </article>
       <article class="card map-download">
-        <iframe class="official-map-frame" title="Plano oficial de Lausana" loading="lazy" src="docs/mapas-transporte/lausana-mobilis.pdf#view=FitH"></iframe>
+        <div class="official-map-visual">
+          <iframe class="official-map-frame" title="Plano oficial de Lausana" loading="lazy" src="docs/mapas-transporte/lausana-mobilis.pdf#view=FitH"></iframe>
+          <canvas class="official-map-canvas" data-pdf-src="docs/mapas-transporte/lausana-mobilis.pdf" role="img" aria-label="Plano oficial de Lausana" hidden></canvas>
+        </div>
         <div class="map-download-body"><h3>Lausana: metro, bus y tren regional</h3><p>Plano oficial con M1, M2, líneas de bus, trenes y todas sus paradas.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/lausana-mobilis.pdf" download>↓ Descargar PDF</a></div></div>
       </article>
       <article class="card map-download">
-        <iframe class="official-map-frame" title="Plano oficial de Ginebra" loading="lazy" src="docs/mapas-transporte/ginebra-tpg.pdf#view=FitH"></iframe>
+        <div class="official-map-visual">
+          <iframe class="official-map-frame" title="Plano oficial de Ginebra" loading="lazy" src="docs/mapas-transporte/ginebra-tpg.pdf#view=FitH"></iframe>
+          <canvas class="official-map-canvas" data-pdf-src="docs/mapas-transporte/ginebra-tpg.pdf" role="img" aria-label="Plano oficial de Ginebra" hidden></canvas>
+        </div>
         <div class="map-download-body"><h3>Ginebra: tranvía, bus y red regional</h3><p>Plano oficial de líneas y paradas del área de Ginebra.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/ginebra-tpg.pdf" download>↓ Descargar PDF</a></div></div>
       </article>
       <article class="card map-download">
-        <iframe class="official-map-frame" title="Plano oficial de Basilea" loading="lazy" src="docs/mapas-transporte/basilea-tnw.pdf#view=FitH"></iframe>
+        <div class="official-map-visual">
+          <iframe class="official-map-frame" title="Plano oficial de Basilea" loading="lazy" src="docs/mapas-transporte/basilea-tnw.pdf#view=FitH"></iframe>
+          <canvas class="official-map-canvas" data-pdf-src="docs/mapas-transporte/basilea-tnw.pdf" role="img" aria-label="Plano oficial de Basilea" hidden></canvas>
+        </div>
         <div class="map-download-body"><h3>Basilea: tranvía, bus y tren regional</h3><p>Plano oficial con todas las líneas, paradas y terminales del área urbana.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/basilea-tnw.pdf" download>↓ Descargar PDF</a></div></div>
       </article>
+    </div>
+  </section>
+
+  <script type="module">
+    (function () {
+      const mq = window.matchMedia("(max-width: 850px)");
+      let rendering = false;
+      async function renderMobilePdfMaps() {
+        if (rendering) return;
+        const canvases = document.querySelectorAll(".official-map-canvas");
+        if (!canvases.length) return;
+        rendering = true;
+        try {
+          const pdfjsLib = await import("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/6.3.289/pdf.min.mjs");
+          pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/6.3.289/pdf.worker.min.mjs";
+          for (const canvas of canvases) {
+            const src = canvas.dataset.pdfSrc;
+            if (!src) continue;
+            const url = new URL(src, document.baseURI).href;
+            try {
+              const pdf = await pdfjsLib.getDocument({ url }).promise;
+              const page = await pdf.getPage(1);
+              const unscaled = page.getViewport({ scale: 1 });
+              const containerWidth = canvas.parentElement.clientWidth || unscaled.width;
+              const dpr = window.devicePixelRatio || 1;
+              const scale = (containerWidth / unscaled.width) * dpr;
+              const viewport = page.getViewport({ scale });
+              canvas.width = Math.ceil(viewport.width);
+              canvas.height = Math.ceil(viewport.height);
+              canvas.style.width = containerWidth + "px";
+              canvas.style.height = (viewport.height / dpr) + "px";
+              const ctx = canvas.getContext("2d");
+              await page.render({ canvasContext: ctx, viewport }).promise;
+              canvas.hidden = false;
+            } catch (err) {
+              console.error("No se pudo renderizar el mapa en movil:", url, err);
+            }
+          }
+        } catch (err) {
+          console.error("No se pudo cargar PDF.js:", err);
+        }
+      }
+      if (mq.matches) renderMobilePdfMaps();
+      mq.addEventListener("change", (e) => { if (e.matches) renderMobilePdfMaps(); });
+    })();
+  </script>
+
+  <section class="section" id="compra-billete">
+    <div class="section-head">
+      <div class="section-icon">🎫</div>
+      <div>
+        <h2 class="section-title">COMPRA TU BILLETE DE TRANSPORTE</h2>
+        <p class="section-intro">Planifica tu viaje por Suiza y accede a las opciones oficiales de transporte.</p>
+      </div>
+    </div>
+
+    <div class="ticket-tools">
+      <article class="ticket-card">
+        <h3>Busca tu viaje</h3>
+        <p>Completa los datos para preparar tu consulta. Los resultados y la compra se realizan en los canales oficiales.</p>
+        <form class="ticket-form" id="ticketSearchForm">
+          <div class="ticket-field"><label for="ticketOrigin">Origen</label><input id="ticketOrigin" name="origin" type="text" placeholder="Ej. Zürich HB" required></div>
+          <div class="ticket-field"><label for="ticketDestination">Destino</label><input id="ticketDestination" name="destination" type="text" placeholder="Ej. Genève" required></div>
+          <div class="ticket-field"><label for="ticketDate">Fecha</label><input id="ticketDate" name="date" type="date" required></div>
+          <div class="ticket-field"><label for="ticketPassengers">Pasajeros</label><select id="ticketPassengers" name="passengers"><option value="1">1 pasajero</option><option value="2">2 pasajeros</option><option value="3">3 pasajeros</option><option value="4">4 pasajeros</option><option value="5">5 pasajeros</option></select></div>
+          <button class="map-button secondary" type="submit">BUSCAR VIAJE →</button>
+        </form>
+        <p class="ticket-status" id="ticketSearchStatus" role="status" aria-live="polite"></p>
+      </article>
+
+      <aside class="ticket-cta">
+        <h3>🎟️ ¿QUIERES COMPRAR DIRECTAMENTE?</h3>
+        <p>Compra tu billete a través de la página oficial de SBB.</p>
+        <a class="map-button secondary" href="https://www.sbb.ch/en/tickets-offers/buy.html" target="_blank" rel="noopener noreferrer">COMPRAR BILLETE EN SBB →</a>
+      </aside>
     </div>
   </section>
 
@@ -698,6 +847,13 @@ function printMap(id, title) {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 }());
+</script>
+
+<script>
+  document.getElementById('ticketSearchForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    document.getElementById('ticketSearchStatus').textContent = 'Consulta preparada. Para horarios, tarifas y compra, utiliza la web oficial de SBB.';
+  });
 </script>
 
 <script src="js/i18n.js"></script>

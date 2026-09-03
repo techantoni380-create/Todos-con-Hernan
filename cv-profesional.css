@@ -1,0 +1,43 @@
+@page{size:A4 portrait;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#eee;color:#171717;font-family:Arial,Helvetica,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cv-page{width:210mm;min-height:297mm;margin:12px auto;background:#fff;padding:12mm 8mm 10mm;overflow:hidden}
+.cv-header{display:grid;grid-template-columns:32% 68%;align-items:start;min-height:39mm}
+.photo-column{width:100%;padding-right:2mm}
+.photo{width:100%;height:39mm;display:block;object-fit:cover}
+.photo-placeholder{width:100%;height:39mm;background:#f1f1f1;border:1px solid #d0d0d0;display:flex;align-items:center;justify-content:center;color:#999;font-size:8pt}
+.name-column{padding-left:7mm;padding-top:0}
+.name-column h1{margin:0;font-size:27pt;line-height:1.08;font-weight:400;letter-spacing:.005em}
+.header-rule{height:1.1mm;border-top:.35mm solid #1b1b1b;border-bottom:.35mm solid #1b1b1b;margin:0 -8mm 9mm}
+.cv-grid{display:grid;grid-template-columns:32% 68%;align-items:start}
+.sidebar{padding-right:9mm}
+.main-column{padding-left:7mm;min-width:0}
+.cv-section{margin:0 0 8.5mm}
+.cv-section h2{margin:0 0 5mm;font-size:13.2pt;line-height:1.1;font-weight:700;letter-spacing:.005em}
+.cv-section p,.cv-section li,.contact-item,.company,.education,.language,.level-caption{font-size:10.6pt;line-height:1.38}
+.cv-section p{margin:0}
+.cv-section ul{margin:0;padding-left:5mm}
+.cv-section li{margin:0 0 3mm;padding-left:.7mm}
+.contact-item{display:grid;grid-template-columns:7mm 1fr;gap:2mm;margin-bottom:5mm;align-items:start}
+.icon{font-size:13pt;line-height:1}
+.language{display:flex;justify-content:space-between;gap:3mm;margin-bottom:2.5mm}
+.level-code{min-width:8mm;text-align:right}
+.language-bar{display:flex;gap:1mm;height:2.4mm;margin:1mm 0 1mm}
+.language-bar i{display:block;flex:1;background:#d9d9d9}
+.language-bar i:nth-child(-n+3){background:#999}
+.level-caption{font-size:8.8pt;margin:0 0 4mm}
+.sidebar-software{border-top:.25mm solid #aaa;padding-top:6mm}
+.main-column .cv-section{margin-bottom:9mm}
+.main-column .cv-section h2{margin-bottom:6mm}
+.experience{padding:0 0 5mm;margin:0 0 5mm;break-inside:avoid;page-break-inside:avoid}
+.experience:last-child{margin-bottom:0}
+.experience h3,.education h3{margin:0 0 1.5mm;font-size:12pt;line-height:1.2;font-weight:700}
+.company{margin-bottom:3.5mm}
+.experience ul{margin-top:2mm}
+.education{break-inside:avoid;page-break-inside:avoid}
+.education h3{margin-bottom:1mm}
+.main-column .cv-section[data-section="software-main"]{border-top:.25mm solid #aaa;padding-top:6mm}
+.signature{margin-top:8mm;font-family:cursive;font-size:20pt;font-style:italic}
+[data-section].is-empty{display:none!important}
+@media print{html,body{width:210mm;min-width:0;background:#fff}.cv-page{width:210mm;min-height:297mm;margin:0;overflow:visible}}
+@media screen and (max-width:900px){body{min-width:0}.cv-page{margin:16px auto}}
