@@ -4,6 +4,14 @@
 <head>
   <meta name="view-transition" content="same-origin">
   <style>html { background: #071a28; }</style>
+  <style>
+    /* Enlaces de cabecera: mismo aspecto base que en videos.html (la referencia). */
+    .mainNav a { color: #dbe4ea; text-decoration: none; font-weight: 700; }
+    .mainNav a:hover { color: #ffffff; }
+    .mainNav a.active { color: #fff; font-weight: 900; border-bottom: 4px solid var(--red); }
+  </style>
+
+  <link rel="stylesheet" href="css/language-selector.css">
 
   <meta charset="UTF-8">
 
@@ -13,6 +21,76 @@
   >
 
   <title>Todos con Hernán · Suiza</title>
+  <style id="grand-tour-intro-styles">
+    body.grand-tour-intro-active {
+      overflow: hidden !important;
+      overflow-y: hidden !important;
+    }
+
+    .grand-tour-intro {
+      position: fixed;
+      z-index: 99999;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: #020a11;
+      opacity: 1;
+      transition: opacity .8s ease, visibility .8s ease;
+    }
+
+    .grand-tour-intro.is-leaving {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .grand-tour-intro video {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .grand-tour-intro::after {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .12);
+      content: '';
+      pointer-events: none;
+    }
+
+    .grand-tour-intro-skip {
+      position: absolute;
+      z-index: 1;
+      right: clamp(16px, 3vw, 42px);
+      bottom: clamp(16px, 3vw, 34px);
+      border: 1px solid rgba(255,255,255,.48);
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(2,10,17,.58);
+      color: #fff;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+    }
+
+    .grand-tour-intro-skip:hover,
+    .grand-tour-intro-skip:focus-visible {
+      border-color: #ffd000;
+      color: #ffd000;
+      outline: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .grand-tour-intro {
+        transition-duration: .01ms;
+      }
+    }
+  </style>
     <style>
 /* =========================================================
    TODOS CON HERNÁN · INICIO
@@ -119,71 +197,6 @@ body::after {
   .bgSlide.active {
     animation: none;
   }
-}
-
-/* =========================================================
-   CABECERA
-   ========================================================= */
-
-.topbar {
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-
-  background: rgba(4, 17, 26, .96);
-  border-bottom: 1px solid #183347;
-
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.mainNav {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 34px;
-}
-
-.mainNav a {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  position: relative;
-
-  color: #dbe4ea;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 700;
-  white-space: nowrap;
-
-  transition: color .2s ease;
-}
-
-.mainNav a:hover {
-  color: #ffffff;
-}
-
-.mainNav a.active {
-  color: #ffffff;
-  font-weight: 900;
-}
-
-.mainNav a.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 4px;
-  background: var(--red);
-  border-radius: 3px 3px 0 0;
 }
 
 /* =========================================================
@@ -1175,79 +1188,7 @@ footer.site-credits > p.developer-credit {
   font-weight: 700 !important;
 }
 
-
-/* =========================================================
-   SELECTOR DE IDIOMA
-   ========================================================= */
-
-.languageSelector {
-  position: absolute;
-  right: 20px;
-  top: 0;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  z-index: 1002;
-}
-
-.languageFlag {
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, .32);
-  border-radius: 50%;
-  background: rgba(4, 17, 27, .72);
-  color: #fff;
-  font-size: 16px;
-  line-height: 1;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-}
-
-.languageFlag:hover {
-  transform: translateY(-2px) scale(1.08);
-  background: rgba(239, 24, 32, .25);
-  border-color: rgba(255, 255, 255, .9);
-  box-shadow: 0 5px 14px rgba(0, 0, 0, .25);
-}
-
-.languageFlag.active {
-  background: rgba(4, 17, 27, .92);
-  border-color: #ef1820;
-  box-shadow: 0 0 0 2px rgba(239, 24, 32, .55);
-  transform: scale(1.08);
-}
-
-.languageFlag img {
-  width: 18px;
-  height: 13px;
-  display: block;
-  object-fit: cover;
-  border-radius: 2px;
-  pointer-events: none;
-}
-
-.languageFlag:focus-visible {
-  outline: 2px solid #ffd000;
-  outline-offset: 2px;
-}
-
 @media (max-width: 800px) {
-  .languageSelector {
-    position: fixed;
-    right: 8px;
-    top: 0;
-  }
-
-  .mainNav {
-    padding-right: 180px;
-  }
 }
 
 /* =========================================================
@@ -1255,9 +1196,6 @@ footer.site-credits > p.developer-credit {
    ========================================================= */
 
 @media (max-width: 1050px) {
-  .mainNav {
-    gap: 20px;
-  }
 
   .cards {
     grid-template-columns: repeat(2, 1fr);
@@ -1265,14 +1203,6 @@ footer.site-credits > p.developer-credit {
 }
 
 @media (max-width: 800px) {
-  .topbar {
-    overflow-x: auto;
-    justify-content: flex-start;
-  }
-
-  .mainNav {
-    flex: 0 0 auto;
-  }
 
   .hero {
     min-height: calc(100vh - 64px);
@@ -1301,13 +1231,6 @@ footer.site-credits > p.developer-credit {
 }
 
 @media (max-width: 520px) {
-  .mainNav {
-    gap: 18px;
-  }
-
-  .mainNav a {
-    font-size: 11px;
-  }
 
   .hero {
     padding: 55px 20px 75px;
@@ -1590,54 +1513,6 @@ body::after {
     );
 }
 
-/* Cabecera más fina y ligera */
-.topbar {
-  height: 58px;
-  min-height: 58px;
-  padding: 0 18px;
-  background: rgba(3, 15, 24, .78);
-  border-bottom: 1px solid rgba(255,255,255,.16);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.mainNav {
-  height: 58px;
-  gap: 28px;
-}
-
-.mainNav a {
-  height: 58px;
-  font-size: 12px;
-  color: rgba(255,255,255,.88);
-}
-
-.mainNav a.active::after {
-  height: 3px;
-  background: var(--red);
-}
-
-/* Idiomas discretos */
-.languageSelector {
-  right: 14px;
-  height: 58px;
-  gap: 4px;
-}
-
-.languageFlag {
-  width: 29px;
-  height: 29px;
-  background: rgba(3,15,24,.42);
-  border-color: rgba(255,255,255,.25);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-.languageFlag img {
-  width: 17px;
-  height: 12px;
-}
-
 /* Hero: menos altura y más aire visual */
 .hero {
   min-height: 690px;
@@ -1837,25 +1712,9 @@ footer.site-credits > p.developer-credit {
 
 /* Ajustes de pantalla pequeña */
 @media (max-width: 1050px) {
-  .mainNav {
-    gap: 19px;
-  }
 }
 
 @media (max-width: 800px) {
-  .topbar,
-  .mainNav {
-    height: 56px;
-    min-height: 56px;
-  }
-
-  .languageSelector {
-    height: 56px;
-  }
-
-  .mainNav {
-    padding-right: 170px;
-  }
 
   .hero {
     min-height: 620px;
@@ -1872,22 +1731,6 @@ footer.site-credits > p.developer-credit {
 }
 
 @media (max-width: 520px) {
-  .mainNav {
-    gap: 14px;
-  }
-
-  .mainNav a {
-    font-size: 10px;
-  }
-
-  .languageSelector {
-    right: 7px;
-  }
-
-  .languageFlag {
-    width: 27px;
-    height: 27px;
-  }
 
   .hero {
     min-height: 600px;
@@ -2206,53 +2049,6 @@ footer.site-credits > p.developer-credit {
   </div>
 
 
-  <!-- =====================================================
-       CABECERA
-       ===================================================== -->
-
-  <header class="topbar">
-
-    <nav class="mainNav">
-
-<a href="inicio.html" class="active">
-    <span data-i18n="nav.inicio">INICIO</span>
-</a>
-
-<a href="index.html">
-    <span data-i18n="nav.tour">EL GRAND TOUR</span>
-</a>
-
-<a href="videos.html">
-    <span data-i18n="nav.videos">VÍDEOS</span>
-</a>
-
-<a href="vivir-en-suiza.html">
-    <span data-i18n="nav.vivir">VIVIR EN SUIZA</span>
-</a>
-
-<a href="trabajos-suiza.html">
-    <span data-i18n="nav.trabajos">TRABAJOS EN SUIZA</span>
-</a>
-
-<a href="comunidad.html">
-    <span data-i18n="nav.comunidad">COMUNIDAD</span>
-</a>
-
-<a href="proyectos.html">
-    <span data-i18n="nav.proyectos">PROYECTOS</span>
-</a>
-
-<a href="sponsors.html">
-    <span data-i18n="nav.sponsors">SPONSORS</span>
-</a>
-
-<a href="contacto.html">
-    <span data-i18n="nav.contacto">CONTACTO</span>
-</a>
-
-    </nav>
-
-  </header>
 
 
   <!-- =====================================================
@@ -2775,9 +2571,59 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<script src="js/i18n.js"></script>
+<script src="js/site-header.js"></script>
+  <script src="js/i18n.js"></script>
 <script src="js/legal-footer.js"></script>
 <script src="js/chat-widget.js"></script>
 </body>
+
+  <div class="grand-tour-intro" id="grandTourIntro" role="dialog" aria-label="Introducción de Todos con Hernán">
+    <video id="grandTourIntroVideo" autoplay muted playsinline preload="auto" aria-hidden="true">
+      <source src="videos/intro-logo.mp4.mp4" type="video/mp4">
+    </video>
+    <button class="grand-tour-intro-skip" id="grandTourIntroSkip" type="button">Saltar intro →</button>
+  </div>
+
+  <script>
+    (function () {
+      const intro = document.getElementById('grandTourIntro');
+      const video = document.getElementById('grandTourIntroVideo');
+      const skip = document.getElementById('grandTourIntroSkip');
+      if (!intro || !video || !skip) return;
+
+      const INTRO_SESSION_KEY = 'grandTourIntroShown';
+      if (sessionStorage.getItem(INTRO_SESSION_KEY)) {
+        intro.remove();
+        return;
+      }
+
+      document.body.classList.add('grand-tour-intro-active');
+      let closed = false;
+
+      function closeIntro() {
+        if (closed) return;
+        closed = true;
+        try { sessionStorage.setItem(INTRO_SESSION_KEY, '1'); } catch (_) { /* Modo privado sin sessionStorage disponible. */ }
+        video.pause();
+        try { video.currentTime = 0; } catch (_) { /* El vídeo puede no haber cargado metadatos. */ }
+        video.removeAttribute('src');
+        video.querySelectorAll('source').forEach(function (source) { source.removeAttribute('src'); });
+        video.load();
+        intro.classList.add('is-leaving');
+        document.body.classList.remove('grand-tour-intro-active');
+        window.setTimeout(function () { intro.remove(); }, 850);
+      }
+
+      function startVideo() {
+        video.play().catch(closeIntro);
+      }
+
+      skip.addEventListener('click', closeIntro);
+      video.addEventListener('ended', closeIntro);
+      video.addEventListener('error', closeIntro);
+      video.addEventListener('canplay', startVideo, { once: true });
+      startVideo();
+    }());
+  </script>
 
 </html>

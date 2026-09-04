@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -86,6 +86,36 @@
       font-weight: 700;
       outline: none;
       min-width: 150px;
+    }
+
+    .cv-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      margin: 0 0 18px;
+      padding: 10px 18px;
+      border: 1px solid rgba(29,77,118,0.25);
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+
+    .cv-back-btn:hover,
+    .cv-back-btn:focus-visible {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(29,77,118,0.22);
+      transform: translateY(-1px);
+    }
+
+    .cv-back-btn:active {
+      transform: translateY(0);
     }
 
     .progress {
@@ -1419,12 +1449,23 @@
     .mobile-only { display: none; }
 
     @media (max-width: 980px) {
+      .cv-app {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+      }
+
       .editor-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr) !important;
       }
 
       .preview-panel {
         position: static;
+        max-width: 100%;
+      }
+
+      .form-panel {
+        max-width: 100%;
       }
 
       .template-grid {
@@ -1433,6 +1474,24 @@
 
       .mobile-only {
         display: inline-block;
+      }
+
+      /* Móvil/tablet: la hoja A4 de la vista previa puede escalarse por debajo
+         de 210mm. Sin esto, min-width:210mm impide que el escalado JS reduzca
+         la vista previa y desborda la pantalla. */
+      .cv-sheet.classic .classic-preview-document,
+      .cv-sheet.classic .classic-preview-document .cv-classic-page,
+      .cv-sheet.professional .professional-preview-document {
+        min-width: 0;
+      }
+
+      /* El contenedor de la vista previa no debe superar el ancho disponible. */
+      .preview-panel,
+      .preview-stage,
+      .classic-preview-viewport,
+      .professional-preview-viewport {
+        max-width: 100%;
+        overflow-x: hidden;
       }
     }
 
@@ -1592,7 +1651,7 @@
     }
   </style>
 </head>
-<body>
+<body data-no-site-header>
   <div class="cv-app">
     <header class="cv-header">
       <h1>🇨🇭 <span>CV</span> BUILDER</h1>
@@ -1609,6 +1668,8 @@
         </select>
       </div>
     </header>
+
+    <a href="vivir-en-suiza.html" id="cvBackBtn" class="cv-back-btn">← Volver</a>
 
     <div class="progress" aria-label="Progreso del CV">
       <div class="progress-step active" data-step-indicator="choose"><strong>①</strong> Elige</div>
@@ -1628,7 +1689,7 @@
             <img class="template-card-image" src="img/CVC.png" alt="Vista previa del CV Suizo Clásico">
           </div>
           <h3>CV Suizo Clásico</h3>
-          <p>Diseño tradicional, serio y muy claro. Ideal para perfiles profesionales y experiencia sólida.</p>
+          <p>Estilo moderno, limpio y muy elegante. Perfecto para destacar experiencia y formación.</p>
         </article>
 
         <article class="template-card" data-template="professional" tabindex="0" role="button" aria-label="Elegir CV Profesional">
@@ -1636,7 +1697,7 @@
             <img class="template-card-image" src="img/CVP.png" alt="Vista previa del CV Profesional">
           </div>
           <h3>CV Profesional</h3>
-          <p>Estilo moderno, limpio y muy elegante. Perfecto para destacar experiencia y formación.</p>
+          <p>Diseño tradicional, serio y muy claro. Ideal para perfiles profesionales y experiencia sólida.</p>
         </article>
       </div>
 
@@ -1809,6 +1870,7 @@
     </section>
   </div>
 
+  <script src="js/site-header.js"></script>
   <script src="js/i18n.js"></script>
   <script>
     const STORAGE_KEY = 'cvBuilderSimpleDraft';
@@ -2558,6 +2620,13 @@
     setStep('choose');
     renderFormValues();
     renderPreview();
+
+    document.getElementById('cvBackBtn').addEventListener('click', (event) => {
+      if (window.history.length > 1) {
+        event.preventDefault();
+        window.history.back();
+      }
+    });
   </script>
 </body>
 </html>

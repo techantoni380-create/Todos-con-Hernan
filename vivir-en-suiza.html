@@ -4,6 +4,14 @@
 <head>
   <meta name="view-transition" content="same-origin">
   <style>html { background: #071a28; }</style>
+  <style>
+    /* Enlaces de cabecera: mismo aspecto base que en videos.html (la referencia). */
+    .mainNav a { color: #dbe4ea; text-decoration: none; font-weight: 700; }
+    .mainNav a:hover { color: #ffffff; }
+    .mainNav a.active { color: #fff; font-weight: 900; border-bottom: 4px solid var(--red); }
+  </style>
+
+  <link rel="stylesheet" href="css/language-selector.css">
 
   <meta charset="UTF-8">
 
@@ -87,170 +95,7 @@
       color: inherit;
     }
 
-
-    /* =====================================================
-       CABECERA
-       ===================================================== */
-
-    .topbar {
-      height: 64px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding: 0 20px;
-
-      background: #04111a;
-
-      border-bottom:
-        1px solid #183347;
-
-      position: relative;
-
-      z-index: 1000;
-    }
-
-
-    .mainNav {
-      height: 100%;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 34px;
-    }
-
-
-    .mainNav a {
-      height: 100%;
-
-      display: flex;
-
-      align-items: center;
-
-      position: relative;
-
-      color: #dbe4ea;
-
-      text-decoration: none;
-
-      font-size: 13px;
-
-      font-weight: 700;
-
-      white-space: nowrap;
-    }
-
-
-    .mainNav a:hover {
-      color: #fff;
-    }
-
-
-    .mainNav a.active {
-      color: #fff;
-
-      font-weight: 900;
-    }
-
-
-    .mainNav a.active::after {
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-      right: 0;
-
-      bottom: 0;
-
-      height: 4px;
-
-      background: var(--red);
-
-      border-radius:
-        3px 3px 0 0;
-    }
-
-
-    /* =====================================================
-       SELECTOR DE IDIOMA
-       ===================================================== */
-
-    .languageSelector {
-      position: absolute;
-      right: 20px;
-      top: 0;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      z-index: 1002;
-    }
-
-    .languageFlag {
-      width: 32px;
-      height: 32px;
-      padding: 0;
-      border: 1px solid rgba(255, 255, 255, .32);
-      border-radius: 50%;
-      background: rgba(4, 17, 27, .72);
-      color: #fff;
-      font-size: 16px;
-      line-height: 1;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-    }
-
-    .languageFlag:hover {
-      transform: translateY(-2px) scale(1.08);
-      background: rgba(239, 24, 32, .25);
-      border-color: rgba(255, 255, 255, .9);
-      box-shadow: 0 5px 14px rgba(0, 0, 0, .25);
-    }
-
-    .languageFlag.active {
-      background: rgba(4, 17, 27, .92);
-      border-color: #ef1820;
-      box-shadow: 0 0 0 2px rgba(239, 24, 32, .55);
-      transform: scale(1.08);
-    }
-
-    .languageFlag img {
-      width: 18px;
-      height: 13px;
-      display: block;
-      object-fit: cover;
-      border-radius: 2px;
-      pointer-events: none;
-    }
-
-    .languageFlag:focus-visible {
-      outline: 2px solid #ffd000;
-      outline-offset: 2px;
-    }
-
     @media (max-width: 800px) {
-      .languageSelector {
-        position: fixed;
-        right: 8px;
-        top: 0;
-      }
-
-      .mainNav {
-        padding-right: 180px;
-      }
     }
 
 
@@ -656,9 +501,11 @@
       display: grid;
 
       grid-template-columns:
-        1fr 1fr;
+        repeat(3, minmax(0, 1fr));
 
       gap: 18px;
+
+      align-items: stretch;
     }
 
 
@@ -695,6 +542,190 @@
       color: #bdccd4;
 
       line-height: 1.55;
+    }
+
+
+    .infoCard[data-open-entrepreneurship] {
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+
+    .infoCard[data-open-entrepreneurship]:hover,
+    .infoCard[data-open-entrepreneurship]:focus-visible {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.7);
+      box-shadow: 0 12px 28px rgba(0,0,0,.22);
+      outline: none;
+    }
+
+
+    .infoCard[data-open-folklore] {
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+
+    .infoCard[data-open-folklore]:hover,
+    .infoCard[data-open-folklore]:focus-visible {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.7);
+      box-shadow: 0 12px 28px rgba(0,0,0,.22);
+      outline: none;
+    }
+
+
+    .infoCard[data-open-cities] {
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+
+    .infoCard[data-open-cities]:hover,
+    .infoCard[data-open-cities]:focus-visible {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.7);
+      box-shadow: 0 12px 28px rgba(0,0,0,.22);
+      outline: none;
+    }
+
+
+    .entrepreneurshipModal {
+      width: min(1040px, calc(100% - 28px));
+      max-height: min(820px, calc(100% - 28px));
+      padding: 0;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 16px;
+      background: #071a28;
+      color: var(--text);
+      box-shadow: 0 24px 80px rgba(0,0,0,.55);
+    }
+
+
+    .entrepreneurshipModal::backdrop {
+      background: rgba(0,0,0,.72);
+    }
+
+
+    .entrepreneurshipModalPanel {
+      position: relative;
+      padding: 28px;
+      overflow: auto;
+    }
+
+
+    .entrepreneurshipModal h2 {
+      margin: 0 46px 8px 0;
+      color: #fff;
+    }
+
+
+    .entrepreneurshipModalIntro {
+      margin: 0 0 20px;
+      color: #bdccd4;
+    }
+
+
+    .entrepreneurshipModalClose {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      border: 0;
+      background: none;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+
+    .entrepreneurshipVideoGrid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+
+    .entrepreneurshipVideoCard {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 12px;
+      background: rgba(255,255,255,.045);
+    }
+
+
+    .entrepreneurshipThumbnail {
+      position: relative;
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      background: #020b12;
+      cursor: pointer;
+    }
+
+
+    .entrepreneurshipThumbnail img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+    .entrepreneurshipPlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: grid;
+      width: 54px;
+      height: 38px;
+      place-items: center;
+      transform: translate(-50%,-50%);
+      border-radius: 10px;
+      background: rgba(239,24,32,.92);
+      color: #fff;
+      font-size: 18px;
+    }
+
+
+    .entrepreneurshipVideoCard h3 {
+      margin: 0;
+      padding: 14px 15px 16px;
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+
+    .entrepreneurshipPlayer {
+      display: none;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+    }
+
+
+    .entrepreneurshipVideoCard.is-playing .entrepreneurshipThumbnail {
+      display: none;
+    }
+
+
+    .entrepreneurshipVideoCard.is-playing .entrepreneurshipPlayer {
+      display: block;
+    }
+
+
+    @media (max-width: 700px) {
+      .entrepreneurshipModalPanel {
+        padding: 24px 18px;
+      }
+
+      .entrepreneurshipVideoGrid {
+        grid-template-columns: 1fr;
+      }
     }
 
 
@@ -751,10 +782,6 @@
 
     @media (max-width: 1050px) {
 
-      .mainNav {
-        gap: 21px;
-      }
-
 
       .hero {
         grid-template-columns:
@@ -768,21 +795,16 @@
           repeat(2, 1fr);
       }
 
+
+      .infoGrid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
     }
 
 
     @media (max-width: 800px) {
-
-      .topbar {
-        overflow-x: auto;
-
-        justify-content: flex-start;
-      }
-
-
-      .mainNav {
-        flex: 0 0 auto;
-      }
 
 
       .hero {
@@ -823,15 +845,6 @@
 
 
     @media (max-width: 520px) {
-
-      .mainNav {
-        gap: 18px;
-      }
-
-
-      .mainNav a {
-        font-size: 11px;
-      }
 
 
       .hero h1 {
@@ -891,15 +904,6 @@
     body > footer {
       position: relative;
       z-index: 1;
-    }
-
-    /* CABECERA TRANSPARENTE */
-    .topbar {
-      background: rgba(3, 16, 26, .42) !important;
-      border-bottom: 1px solid rgba(255,255,255,.12) !important;
-      box-shadow: 0 4px 18px rgba(0,0,0,.08) !important;
-      backdrop-filter: blur(5px) !important;
-      -webkit-backdrop-filter: blur(5px) !important;
     }
 
     /* HERO TRANSPARENTE */
@@ -1115,53 +1119,6 @@ a.btn,
 <body>
 
 
-  <!-- =====================================================
-       CABECERA
-       ===================================================== -->
-
-  <header class="topbar">
-
-<nav class="mainNav" aria-label="Navegación principal">
-
-    <a href="inicio.html">
-        INICIO
-    </a>
-
-    <a href="index.html">
-        EL GRAND TOUR
-    </a>
-
-<a href="videos.html">
-    VÍDEOS
-</a>
-
-    <a href="vivir-en-suiza.html" class="active">
-        VIVIR EN SUIZA
-    </a>
-
-<a href="trabajos-suiza.html">
-    TRABAJOS EN SUIZA
-</a>
-
-<a href="comunidad.html">
-    COMUNIDAD
-</a>
-
-<a href="proyectos.html">
-    PROYECTOS
-</a>
-
-<a href="sponsors.html">
-    SPONSORS
-</a>
-
-<a href="contacto.html">
-    CONTACTO
-</a>
-
-</nav>
-
-  </header>
 
 
   <!-- =====================================================
@@ -1352,54 +1309,36 @@ a.btn,
       <div class="infoGrid">
 
 
-        <article class="infoCard">
+        <article class="infoCard" data-open-entrepreneurship role="button" tabindex="0" aria-controls="entrepreneurshipModal" aria-haspopup="dialog">
 
           <h3>
-            🇨🇭 Los <span>cantones</span>
+            💼 Emprendedores en Suiza
           </h3>
 
           <p>
-            Suiza está formada por diferentes
-            cantones, cada uno con sus propias
-            características, tradiciones y
-            particularidades.
+            Historias, proyectos y experiencias de personas que han decidido
+            emprender y desarrollar sus propios proyectos en Suiza.
           </p>
 
         </article>
 
 
-        <article class="infoCard">
+        <article class="infoCard" data-open-folklore role="button" tabindex="0" aria-controls="folkloreModal" aria-haspopup="dialog">
 
           <h3>
-            🏔️ Las <span>regiones</span>
+            🌍 El Folklore del Mundo en Suiza
           </h3>
 
           <p>
-            Alpes, meseta suiza y Jura forman
-            paisajes y formas de vida muy
-            diferentes a lo largo del país.
+            Descubre las culturas, tradiciones, música, gastronomía y
+            expresiones culturales de las diferentes comunidades que forman
+            parte de Suiza.
           </p>
 
         </article>
 
 
-        <article class="infoCard">
-
-          <h3>
-            🚆 Moverse por <span>Suiza</span>
-          </h3>
-
-          <p>
-            El transporte público permite
-            conectar ciudades, pueblos,
-            lagos y regiones de una manera
-            muy sencilla.
-          </p>
-
-        </article>
-
-
-        <article class="infoCard">
+        <article class="infoCard" data-open-cities role="button" tabindex="0" aria-controls="citiesModal" aria-haspopup="dialog">
 
           <h3>
             🏙️ Ciudades y <span>pueblos</span>
@@ -1418,6 +1357,36 @@ a.btn,
       </div>
 
     </section>
+
+
+    <dialog class="entrepreneurshipModal" id="entrepreneurshipModal" aria-labelledby="entrepreneurshipModalTitle">
+      <div class="entrepreneurshipModalPanel">
+        <button class="entrepreneurshipModalClose" type="button" aria-label="Cerrar vídeos de emprendimiento">&times;</button>
+        <h2 id="entrepreneurshipModalTitle">💼 Emprendedores en Suiza</h2>
+        <p class="entrepreneurshipModalIntro">Historias, proyectos y experiencias de personas que han decidido emprender y desarrollar sus propios proyectos en Suiza.</p>
+        <div class="entrepreneurshipVideoGrid"></div>
+      </div>
+    </dialog>
+
+
+    <dialog class="entrepreneurshipModal" id="folkloreModal" aria-labelledby="folkloreModalTitle">
+      <div class="entrepreneurshipModalPanel">
+        <button class="entrepreneurshipModalClose" type="button" aria-label="Cerrar vídeos de folklore">&times;</button>
+        <h2 id="folkloreModalTitle">🌍 El Folklore del Mundo en Suiza</h2>
+        <p class="entrepreneurshipModalIntro">Descubre las culturas, tradiciones, música, gastronomía y expresiones culturales de las diferentes comunidades que forman parte de Suiza.</p>
+        <div class="entrepreneurshipVideoGrid"></div>
+      </div>
+    </dialog>
+
+
+    <dialog class="entrepreneurshipModal" id="citiesModal" aria-labelledby="citiesModalTitle">
+      <div class="entrepreneurshipModalPanel">
+        <button class="entrepreneurshipModalClose" type="button" aria-label="Cerrar vídeos de ciudades y pueblos">&times;</button>
+        <h2 id="citiesModalTitle">🏙️ Ciudades y pueblos</h2>
+        <p class="entrepreneurshipModalIntro">Desde grandes ciudades hasta pequeños pueblos alpinos, cada lugar ofrece una experiencia diferente.</p>
+        <div class="entrepreneurshipVideoGrid"></div>
+      </div>
+    </dialog>
 
 
   </main>
@@ -1465,8 +1434,263 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const trigger = document.querySelector("[data-open-folklore]");
+  const modal = document.getElementById("folkloreModal");
+  const grid = modal?.querySelector(".entrepreneurshipVideoGrid");
+  const close = modal?.querySelector(".entrepreneurshipModalClose");
+  const ids = [
+    "9h6zCPnFhUk", "1sMvsu4VTtM", "KVSYJ_0Rhx4", "IgmiL2Do2Cs",
+    "UaQmswrFnrw", "W07XMXlx4o8", "xD3ISgZIeb8", "F0xlCtXXTbs",
+    "brIWU1WsDLU", "IBi_cs_w5Fo", "lMwmD8qrVtI", "edCYxM1yBag",
+    "8TvcCpWL9YA", "EX-vsiH2Ycg", "OxRquTjAadg", "n7gUliIltfE",
+    "DCecWMC7BB4", "wUKR-wz8POE", "7xsC4n7-d4o", "bHa-5eah85g",
+    "l3icuvymY2g", "oT7s7T7jjpQ", "iFkTl0e4nDc", "r1doL_SFhIw",
+    "mVIpzX9Yy4E", "PSR9K2D6lb4", "uTAE2-pLbxs", "qcGZWBB7qek",
+    "MNsUL77D9gk", "znohwQNcaZY", "uFApB2PUJDw", "LvHplknPAVA"
+  ];
+  let lastTrigger;
 
-<script src="js/i18n.js"></script>
+  if (!trigger || !modal || !grid) return;
+
+  function buildCard(id, index) {
+    const card = document.createElement("article");
+    card.className = "entrepreneurshipVideoCard";
+    const thumb = document.createElement("button");
+    thumb.type = "button";
+    thumb.className = "entrepreneurshipThumbnail";
+    thumb.setAttribute("aria-label", `Reproducir vídeo de folklore ${index + 1}`);
+    const image = document.createElement("img");
+    image.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+    image.alt = `Vídeo de folklore en Suiza ${index + 1}`;
+    image.loading = "lazy";
+    const play = document.createElement("span");
+    play.className = "entrepreneurshipPlay";
+    play.setAttribute("aria-hidden", "true");
+    play.textContent = "▶";
+    thumb.append(image, play);
+    const title = document.createElement("h3");
+    title.textContent = `Vídeo de folklore en Suiza ${index + 1}`;
+    const frame = document.createElement("iframe");
+    frame.className = "entrepreneurshipPlayer";
+    frame.title = title.textContent;
+    frame.loading = "lazy";
+    frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    frame.allowFullscreen = true;
+    thumb.addEventListener("click", () => {
+      frame.src = `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`;
+      card.classList.add("is-playing");
+    });
+    card.append(thumb, frame, title);
+    return { card, title };
+  }
+
+  const cards = ids.map(buildCard);
+  cards.forEach(item => grid.appendChild(item.card));
+
+  async function loadTitles() {
+    await Promise.all(cards.map(async (item, index) => {
+      try {
+        const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${ids[index]}&format=json`);
+        if (!response.ok) return;
+        const data = await response.json();
+        if (data.title) {
+          item.title.textContent = data.title;
+          item.card.querySelector("iframe").title = data.title;
+          item.card.querySelector("img").alt = data.title;
+        }
+      } catch (_) { /* Mantener el título neutro si oEmbed no está disponible. */ }
+    }));
+  }
+
+  function openModal() {
+    lastTrigger = document.activeElement;
+    modal.showModal();
+    close?.focus();
+    loadTitles();
+  }
+  function closeModal() {
+    modal.close();
+    grid.querySelectorAll(".entrepreneurshipVideoCard").forEach(card => {
+      card.classList.remove("is-playing");
+      card.querySelector("iframe").src = "";
+    });
+    lastTrigger?.focus();
+  }
+  trigger.addEventListener("click", openModal);
+  trigger.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openModal(); }
+  });
+  close?.addEventListener("click", closeModal);
+  modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
+});
+</script>
+
+<script src="data/community-content.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const trigger = document.querySelector("[data-open-entrepreneurship]");
+  const modal = document.getElementById("entrepreneurshipModal");
+  const grid = modal?.querySelector(".entrepreneurshipVideoGrid");
+  const close = modal?.querySelector(".entrepreneurshipModalClose");
+  const videos = window.COMMUNITY_CONTENT?.emprendimientos || [];
+  let lastTrigger;
+
+  if (!trigger || !modal || !grid) return;
+
+  videos.forEach(video => {
+    const card = document.createElement("article");
+    card.className = "entrepreneurshipVideoCard";
+    const thumb = document.createElement("button");
+    thumb.type = "button";
+    thumb.className = "entrepreneurshipThumbnail";
+    thumb.setAttribute("aria-label", `Reproducir: ${video.title}`);
+    const image = document.createElement("img");
+    image.src = `https://i.ytimg.com/vi/${encodeURIComponent(video.id)}/hqdefault.jpg`;
+    image.alt = video.title;
+    image.loading = "lazy";
+    const play = document.createElement("span");
+    play.className = "entrepreneurshipPlay";
+    play.setAttribute("aria-hidden", "true");
+    play.textContent = "▶";
+    thumb.append(image, play);
+    const title = document.createElement("h3");
+    title.textContent = video.title;
+    const frame = document.createElement("iframe");
+    frame.className = "entrepreneurshipPlayer";
+    frame.title = video.title;
+    frame.loading = "lazy";
+    frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    frame.allowFullscreen = true;
+    function playVideo() {
+      let source = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(video.id)}?rel=0&modestbranding=1`;
+      if (video.start) source += `&start=${encodeURIComponent(video.start)}`;
+      if (/^https?:$/.test(window.location.protocol)) source += `&origin=${encodeURIComponent(window.location.origin)}`;
+      frame.src = source;
+      card.classList.add("is-playing");
+    }
+    thumb.addEventListener("click", playVideo);
+    card.append(thumb, frame, title);
+    grid.appendChild(card);
+  });
+
+  function openModal() {
+    lastTrigger = document.activeElement;
+    modal.showModal();
+    close?.focus();
+  }
+  function closeModal() {
+    modal.close();
+    grid.querySelectorAll(".entrepreneurshipVideoCard").forEach(card => {
+      card.classList.remove("is-playing");
+      const frame = card.querySelector("iframe");
+      if (frame) frame.src = "";
+    });
+    lastTrigger?.focus();
+  }
+  trigger.addEventListener("click", openModal);
+  trigger.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openModal(); }
+  });
+  close?.addEventListener("click", closeModal);
+  modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const trigger = document.querySelector("[data-open-cities]");
+  const modal = document.getElementById("citiesModal");
+  const grid = modal?.querySelector(".entrepreneurshipVideoGrid");
+  const close = modal?.querySelector(".entrepreneurshipModalClose");
+  const videos = [
+    ["MEQXUbs5Jhs", 25], ["nCdXr864zI0"], ["UFSSP5-8Xhc", 1],
+    ["wSwMZLXTG1M"], ["gtsoEXgdwmk", 1], ["3Qi4fulNLXM", 1],
+    ["Vh-iBlBrhuA"], ["bAXdtsfHm7w", 418], ["qr8Pc33tvMk"],
+    ["AYtDQCFdDGw"], ["WN1NYqX6gLs"], ["rUZ7N6mo8_s"],
+    ["jvkI-F-UXuw"], ["XS3EOENz8n0"], ["weYGxwtPkQc"],
+    ["N1JgsM2JC14"], ["GOtG5R-AMMU"], ["-mhagj6dKiU"], ["rw9tviIBuNg", 1]
+  ];
+  let lastTrigger;
+
+  if (!trigger || !modal || !grid) return;
+
+  function buildCard(video, index) {
+    const [id, start] = video;
+    const card = document.createElement("article");
+    card.className = "entrepreneurshipVideoCard";
+    const thumb = document.createElement("button");
+    thumb.type = "button";
+    thumb.className = "entrepreneurshipThumbnail";
+    thumb.setAttribute("aria-label", `Reproducir vídeo de ciudades y pueblos ${index + 1}`);
+    const image = document.createElement("img");
+    image.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+    image.alt = `Vídeo de ciudades y pueblos ${index + 1}`;
+    image.loading = "lazy";
+    const play = document.createElement("span");
+    play.className = "entrepreneurshipPlay";
+    play.setAttribute("aria-hidden", "true");
+    play.textContent = "▶";
+    thumb.append(image, play);
+    const title = document.createElement("h3");
+    title.textContent = `Vídeo de ciudades y pueblos ${index + 1}`;
+    const frame = document.createElement("iframe");
+    frame.className = "entrepreneurshipPlayer";
+    frame.title = title.textContent;
+    frame.loading = "lazy";
+    frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    frame.allowFullscreen = true;
+    thumb.addEventListener("click", async () => {
+      let source = `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`;
+      if (start) source += `&start=${start}`;
+      if (/^https?:$/.test(window.location.protocol)) source += `&origin=${encodeURIComponent(window.location.origin)}`;
+      frame.src = source;
+      card.classList.add("is-playing");
+      try {
+        const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.title) {
+            title.textContent = data.title;
+            frame.title = data.title;
+            image.alt = data.title;
+          }
+        }
+      } catch (_) { /* Mantener el título neutro si oEmbed no está disponible. */ }
+    });
+    card.append(thumb, frame, title);
+    return card;
+  }
+
+  videos.forEach((video, index) => grid.appendChild(buildCard(video, index)));
+
+  function openModal() {
+    lastTrigger = document.activeElement;
+    modal.showModal();
+    close?.focus();
+  }
+  function closeModal() {
+    modal.close();
+    grid.querySelectorAll(".entrepreneurshipVideoCard").forEach(card => {
+      card.classList.remove("is-playing");
+      card.querySelector("iframe").src = "";
+    });
+    lastTrigger?.focus();
+  }
+  trigger.addEventListener("click", openModal);
+  trigger.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openModal(); }
+  });
+  close?.addEventListener("click", closeModal);
+  modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
+});
+</script>
+
+
+<script src="js/site-header.js"></script>
+  <script src="js/i18n.js"></script>
 <script src="js/legal-footer.js"></script>
 <script src="js/chat-widget.js"></script>
 </body>

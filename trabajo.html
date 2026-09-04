@@ -48,9 +48,9 @@
             color: #f4f7fb;
 
             line-height: 1.7;
+
+
         }
-
-
         a {
             color: inherit;
             text-decoration: none;
@@ -61,81 +61,90 @@
            CABECERA
         ========================================================= */
 
-        .topbar {
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 1000;
-
-            background:
-                rgba(7, 17, 31, 0.96);
-
-            border-bottom:
-                1px solid rgba(255,255,255,0.08);
-
-            backdrop-filter:
-                blur(12px);
-        }
-
-
-        .topbar-inner {
-
-            max-width: 1200px;
-
-            margin: auto;
-
-            padding: 16px 24px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-        }
-
-
+        /* Marca y botón de regreso (misma familia visual que el resto de
+           páginas secundarias). */
         .brand {
-
-            font-size: 20px;
-
-            font-weight: 800;
-
-            letter-spacing: 0.5px;
+            font-weight: 900;
+            letter-spacing: .03em;
+            color: #f4f7fb;
+            text-decoration: none;
         }
-
 
         .brand span {
-
             color: #4aa8ff;
         }
 
-
         .back-link {
-
-            padding: 9px 16px;
-
-            border:
-                1px solid rgba(255,255,255,0.15);
-
-            border-radius: 10px;
-
-            color: #dce8f5;
-
+            display: inline-block;
+            padding: 10px 18px;
+            color: #dce7f2;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 12px;
+            font-size: 16px;
             transition: 0.2s;
         }
 
-
         .back-link:hover {
-
-            background:
-                rgba(255,255,255,0.08);
+            background: #10263a;
+            color: white;
+            border-color: rgba(66,166,255,0.45);
         }
 
+        /* Mismo patron que transporte.html: el bloque "volver" queda pegado al
+           grupo de banderas con un margen visible, separado de la marca.
+           css/site-enhancements.css fuerza .topbar a "display:grid !important",
+           por eso el id eleva la especificidad para poder pasarlo a flex. */
+        #trabajoTopbar {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            flex-wrap: nowrap !important;
+            gap: 0 !important;
+            padding-right: 24px !important;
+        }
 
+        #trabajoTopbar .topbar-inner {
+            flex: 0 0 auto;
+            margin: 0;
+        }
+
+        #trabajoTopbar .back-link {
+            flex: 0 0 auto;
+            margin-left: auto;
+            margin-right: 30px;
+            white-space: nowrap;
+        }
+
+        #trabajoTopbar .languageSelector {
+            position: static !important;
+            top: auto !important;
+            right: auto !important;
+            left: auto !important;
+            height: auto !important;
+            flex: 0 0 auto;
+        }
+
+        @media (max-width: 700px) {
+            #trabajoTopbar {
+                flex-wrap: wrap !important;
+                gap: 14px !important;
+                height: auto !important;
+                min-height: auto !important;
+                padding: 14px 16px !important;
+            }
+
+            #trabajoTopbar .back-link {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            #trabajoTopbar .languageSelector {
+                width: 100% !important;
+                justify-content: center !important;
+
+}
+        }
         /* =========================================================
            HERO
         ========================================================= */
@@ -175,9 +184,9 @@
             font-weight: 700;
 
             margin-bottom: 20px;
+
+
         }
-
-
         .hero h1 {
 
             font-size:
@@ -186,9 +195,9 @@
             line-height: 1.05;
 
             margin-bottom: 22px;
+
+
         }
-
-
         .hero h1 span {
 
             color: #4aa8ff;
@@ -257,9 +266,9 @@
                 repeat(auto-fit, minmax(220px, 1fr));
 
             gap: 10px;
+
+
         }
-
-
         .toc a {
 
             background: #13263b;
@@ -285,9 +294,9 @@
 
             transform:
                 translateY(-2px);
+
+
         }
-
-
         /* =========================================================
            SECCIONES
         ========================================================= */
@@ -358,9 +367,9 @@
                 repeat(auto-fit, minmax(270px, 1fr));
 
             gap: 18px;
+
+
         }
-
-
         .card {
 
             background: #0d1c2e;
@@ -383,9 +392,9 @@
 
             border-color:
                 rgba(74,168,255,0.45);
+
+
         }
-
-
         .card h3 {
 
             font-size: 19px;
@@ -489,9 +498,9 @@
             border-radius: 10px;
 
             color: #cbd9e7;
+
+
         }
-
-
         .notice strong {
 
             color: white;
@@ -556,9 +565,9 @@
 
             transform:
                 translateX(3px);
+
+
         }
-
-
         /* =========================================================
            FOOTER
         ========================================================= */
@@ -583,13 +592,7 @@
            MÓVIL
         ========================================================= */
 
-        @media (max-width: 700px) {
-
-            .topbar-inner {
-
-                padding:
-                    13px 16px;
-            }
+        @media (max-width: 700px) 
 
 
             .hero {
@@ -629,7 +632,6 @@
                 columns: 1;
             }
 
-        }
 
     
 
@@ -694,6 +696,7 @@ footer.site-credits > p.developer-credit {
 
 @media (max-width: 600px) {
 
+}
   footer.site-credits {
     padding: 18px 10px !important;
     gap: 6px !important;
@@ -704,7 +707,6 @@ footer.site-credits > p.developer-credit {
     line-height: 1.6 !important;
   }
 
-}
 
 
 /* =========================================================
@@ -731,9 +733,9 @@ body::before {
 @keyframes gimmelwaldSlowMove {
     from { transform: scale(1.03) translate3d(0, 0, 0); }
     to { transform: scale(1.08) translate3d(-0.5%, -0.5%, 0); }
+
+
 }
-
-
 /* =========================================================
    DISEÑO GLASS · VERSIÓN TOP
    Paneles transparentes, texto blanco y fondo protagonista
@@ -758,8 +760,8 @@ html {
 body {
     background: transparent !important;
     color: var(--white-main) !important;
-}
 
+}
 /* Fondo fotográfico + velo oscuro elegante */
 body::before {
     background-image:
@@ -770,37 +772,9 @@ body::before {
         url("img/22GimmelwaldSuiza.jpg") !important;
     background-size: cover !important;
     background-position: center center !important;
-}
 
+}
 /* CABECERA */
-.topbar {
-    background: rgba(3, 12, 22, 0.76) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.18) !important;
-    backdrop-filter: blur(14px) saturate(125%);
-    -webkit-backdrop-filter: blur(14px) saturate(125%);
-}
-
-.brand {
-    color: #ffffff !important;
-    font-size: 22px !important;
-}
-
-.brand span {
-    color: var(--accent) !important;
-}
-
-.back-link {
-    color: #ffffff !important;
-    border-color: rgba(255,255,255,0.20) !important;
-    background: rgba(255,255,255,0.035) !important;
-    border-radius: 12px !important;
-    backdrop-filter: blur(8px);
-}
-
-.back-link:hover {
-    background: rgba(255,255,255,0.10) !important;
-    border-color: rgba(74,168,255,0.55) !important;
-}
 
 /* HERO */
 .hero {
@@ -827,8 +801,8 @@ body::before {
 .hero p {
     color: #ffffff !important;
     text-shadow: 0 2px 15px rgba(0,0,0,0.55);
-}
 
+}
 /* ÍNDICE / NAVEGACIÓN */
 .toc {
     background: rgba(5, 16, 29, 0.42) !important;
@@ -855,8 +829,8 @@ body::before {
     border-color: rgba(74,168,255,0.65) !important;
     color: #ffffff !important;
     transform: translateY(-3px);
-}
 
+}
 /* CABECERAS DE SECCIÓN */
 .section-icon {
     background: rgba(20, 43, 68, 0.58) !important;
@@ -874,8 +848,8 @@ body::before {
 .section-intro {
     color: #ffffff !important;
     text-shadow: 0 2px 12px rgba(0,0,0,0.45);
-}
 
+}
 /* PANELES */
 .card {
     background: rgba(7, 21, 36, 0.57) !important;
@@ -883,11 +857,11 @@ body::before {
     color: #ffffff !important;
     box-shadow:
         0 14px 38px rgba(0,0,0,0.18),
+}
         inset 0 1px 0 rgba(255,255,255,0.035);
     backdrop-filter: blur(9px) saturate(120%);
     -webkit-backdrop-filter: blur(9px) saturate(120%);
     border-radius: 17px !important;
-}
 
 .card:hover {
     background: rgba(9, 28, 48, 0.66) !important;
@@ -911,8 +885,8 @@ body::before {
 
 .profession-list li::before {
     color: #4aa8ff !important;
-}
 
+}
 /* AVISOS */
 .notice {
     background: rgba(7, 21, 36, 0.42) !important;
@@ -927,8 +901,8 @@ body::before {
 
 .notice strong {
     color: #ffffff !important;
-}
 
+}
 /* FUENTES OFICIALES · MUCHO MÁS COMPACTA */
 .sources {
     background: rgba(4, 14, 25, 0.52) !important;
@@ -979,8 +953,8 @@ body::before {
     background: rgba(74,168,255,0.12) !important;
     border-color: rgba(74,168,255,0.45) !important;
     transform: translateY(-1px);
-}
 
+}
 /* FOOTER */
 footer.site-credits {
     background: rgba(2, 10, 17, 0.78) !important;
@@ -992,8 +966,8 @@ footer.site-credits {
 
 footer.site-credits > p.developer-credit {
     color: #ffffff !important;
-}
 
+}
 /* Espaciado general para aspecto más editorial */
 .section {
     margin-bottom: 72px;
@@ -1016,10 +990,10 @@ footer.site-credits > p.developer-credit {
 
     .section {
         margin-bottom: 55px;
-    }
+
+
 }
-
-
+}
 /* Aviso de acceso al mercado laboral */
 #antes .notice strong:first-child {
     color: #ffffff !important;
@@ -1090,8 +1064,8 @@ footer.site-credits > p.developer-credit {
 
 .section {
     display: none !important;
-}
 
+}
 /* Ventana de contenido */
 .guide-modal {
     position: fixed;
@@ -1181,9 +1155,9 @@ body.modal-open {
 @media (max-width: 900px) {
     .toc-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
 
+}
+}
 @media (max-width: 560px) {
     .guide-modal {
         padding: 10px;
@@ -1202,10 +1176,10 @@ body.modal-open {
 
     .toc-grid {
         grid-template-columns: 1fr;
-    }
+
+
 }
-
-
+}
 /* =========================================================
    GUÍA COMPACTA: GRANDES BLOQUES
 ========================================================= */
@@ -1275,8 +1249,8 @@ body.modal-open {
 .toc-pdf span {
     color: rgba(255,255,255,0.72);
     font-size: 13px;
-}
 
+}
 /* El contenido de los 5 grupos se monta dinámicamente en el modal. */
 .guide-group-source {
     display: none !important;
@@ -1293,8 +1267,8 @@ body.modal-open {
 
 .guide-group-source > .section:last-child {
     margin-bottom: 0 !important;
-}
 
+}
 /* PDF limpio y profesional */
 @media print {
     @page {
@@ -1435,8 +1409,8 @@ body.modal-open {
         margin: 0 0 7mm;
         padding: 0 0 3mm;
         border-bottom: 2px solid #4aa8ff;
-    }
 
+}
     /* The source sections are displayed fully in the PDF, with no modal/scroll behavior. */
     #pdfPrintArea .section {
         display: block !important;
@@ -1593,24 +1567,24 @@ body.modal-open {
         font-size: 8pt;
         text-align: center;
         color: #666666 !important;
-    }
-}
 
+}
+}
 @media (max-width: 700px) {
     .toc-grid-5,
     .toc-grid-6 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
 
+}
+}
 @media (max-width: 480px) {
     .toc-grid-5,
     .toc-grid-6 {
         grid-template-columns: 1fr;
-    }
+
+
 }
-
-
+}
 /* =========================================================
    IDENTIDAD DE LA GUÍA · INTEGRARSE EN SUIZA
 ========================================================= */
@@ -1631,10 +1605,10 @@ body.modal-open {
 @media (max-width: 600px) {
     .guide-tagline {
         font-size: 15px;
-    }
+
+
 }
-
-
+}
 /* =========================================================
    PDF · NOTA DE HERNÁN / INTRODUCCIÓN
 ========================================================= */
@@ -1925,7 +1899,54 @@ body.modal-open {
     font-size: 15px;
 }
 
+.podcast-accordion {
+    margin-top: 28px;
+}
+
+.podcast-season {
+    margin-top: 12px;
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 12px;
+    background: rgba(7,22,37,0.62);
+    overflow: hidden;
+}
+
+.podcast-season summary {
+    padding: 16px 18px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 800;
+    list-style-position: inside;
+}
+
+.podcast-season summary::marker {
+    color: #ffd000;
+}
+
+.podcast-season[open] summary {
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.podcast-season-content {
+    padding: 18px;
+}
+
+.podcast-season-content .video-library-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.podcast-season-content .video-library-item {
+    padding: 12px;
+}
+
+@media (max-width: 700px) {
+    .podcast-season-content .video-library-grid {
+        grid-template-columns: 1fr;
+
+}
 .housing-prices,
+}
 .price-table {
     margin-top: 20px;
     overflow-x: auto;
@@ -1985,9 +2006,9 @@ body.modal-open {
 @media (max-width: 850px) {
     .video-library-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
 
+}
+}
 @media (max-width: 560px) {
     .video-library {
         padding: 14px;
@@ -1999,9 +2020,9 @@ body.modal-open {
 
     .sector-video-card .video-library-grid {
         grid-template-columns: 1fr;
-    }
-}
 
+}
+}
 @media (max-width: 760px) {
     .sector-info-modal {
         padding: 10px;
@@ -2013,9 +2034,9 @@ body.modal-open {
 
     .sector-info-grid {
         grid-template-columns: 1fr;
-    }
-}
 
+}
+}
 /* =========================================================
    MODAL DEL SECTOR FARMACÉUTICO Y QUÍMICO
 ========================================================= */
@@ -2228,43 +2249,17 @@ body.modal-open {
     .pharma-grid,
     .pharma-steps {
         grid-template-columns: 1fr;
-    }
-}
 
-</style>
+
+}
+}</style>
 
 </head>
 
 
-<body>
+<body data-header-back="vivir-en-suiza.html|Vivir en Suiza|trabajoTopbar">
 
 
-<!-- =============================================================
-     CABECERA
-============================================================= -->
-
-<header class="topbar">
-
-    <div class="topbar-inner">
-
-        <a
-            href="index.html"
-            class="brand"
-        >
-            Todos con <span>Hernán</span>
-        </a>
-
-
-        <a
-            href="vivir-en-suiza.html"
-            class="back-link"
-        >
-            <span data-i18n="nav.vivir">← Vivir en Suiza</span>
-        </a>
-
-    </div>
-
-</header>
 
 
 
@@ -3748,7 +3743,6 @@ body.modal-open {
             <article class="video-library-item"><h4>Registro para ciudadanos UE/AELC</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/ilxIjIewKWc" title="Dos formas de registrarte en Suiza si eres de la UE" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
             <article class="video-library-item"><h4>Permisos de residencia en Suiza</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/HpL6oB1l0Zg" title="Permisos de residencia en Suiza" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
             <article class="video-library-item"><h4>Permisos de residencia: explicación general</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/BvAuurue0P4" title="Permisos de residencia en Suiza: explicación general" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
-            <article class="video-library-item"><h4>Leyes clave para migrantes</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/WdgORNMwZz4" title="Leyes clave en Suiza para migrantes" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
         </div>
     </div>
 
@@ -4508,6 +4502,67 @@ body.modal-open {
         </div>
     </div>
 
+    <div class="video-library sector-video-card podcast-accordion" id="podcastVideoLibrary">
+        <h3>🎙️ Podcasts de Todos con Hernán</h3>
+        <p class="video-library-intro">
+            Descubre todas las temporadas del podcast de Todos con Hernán y conoce experiencias, consejos e historias sobre vivir en Suiza.
+        </p>
+
+        <details class="podcast-season" open>
+            <summary>Temporada 1</summary>
+            <div class="podcast-season-content">
+                <div class="video-library-grid">
+                    <article class="video-library-item"><h4>Temporada 1 · Podcast Todos con Hernán</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/l_OcMJZpxtM?list=PLJrfbrk0_Ktn6PxjEyajZZF5FlXJ6yITK&amp;rel=0&amp;modestbranding=1" title="Temporada 1 del podcast Todos con Hernán" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
+                </div>
+            </div>
+        </details>
+
+        <details class="podcast-season">
+            <summary>Temporada 2</summary>
+            <div class="podcast-season-content">
+                <div class="video-library-grid">
+                    <article class="video-library-item"><h4>Temporada 2 · Podcast Todos con Hernán</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/FQPc2AjUQnc?list=PLJrfbrk0_KtmYFWuj0KNMJ9Lif_SSKt2k&amp;rel=0&amp;modestbranding=1" title="Temporada 2 del podcast Todos con Hernán" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
+                </div>
+            </div>
+        </details>
+
+        <details class="podcast-season">
+            <summary>Temporada 3</summary>
+            <div class="podcast-season-content">
+                <div class="video-library-grid">
+                    <article class="video-library-item"><h4>Temporada 3 · Podcast Todos con Hernán</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/1Hje-vqRWoo?list=PLJrfbrk0_Ktmclq0CqBCotF8caoyg0HLE&amp;rel=0&amp;modestbranding=1" title="Temporada 3 del podcast Todos con Hernán" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
+                </div>
+            </div>
+        </details>
+
+        <details class="podcast-season">
+            <summary>Temporada 4</summary>
+            <div class="podcast-season-content">
+                <div class="video-library-grid">
+                    <article class="video-library-item"><h4>Temporada 4 · Podcast Todos con Hernán</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/66JyUsx177M?list=PLJrfbrk0_KtmCiR0ay619zGSkEQWzW_Nl&amp;rel=0&amp;modestbranding=1" title="Temporada 4 del podcast Todos con Hernán" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
+                </div>
+            </div>
+        </details>
+
+        <details class="podcast-season">
+            <summary>Temporada 5</summary>
+            <div class="podcast-season-content">
+                <div class="video-library-grid">
+                    <article class="video-library-item"><h4>Temporada 5 · Podcast Todos con Hernán</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/8XmeOPSBcRs?list=PLJrfbrk0_KtlRB6J2Fq1tV8blxnI9OKlE&amp;rel=0&amp;modestbranding=1" title="Temporada 5 del podcast Todos con Hernán" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
+                </div>
+            </div>
+        </details>
+
+        <details class="podcast-season">
+            <summary>Temporada 6</summary>
+            <div class="podcast-season-content">
+                <div class="video-library-grid">
+                    <article class="video-library-item"><h4>Temporada 6 · Podcast Todos con Hernán</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/fPdxKwoC9yg?list=PLJrfbrk0_KtnT4EduiNUEJpipMyWYO94p&amp;rel=0&amp;modestbranding=1" title="Temporada 6 del podcast Todos con Hernán" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
+                </div>
+            </div>
+        </details>
+    </div>
+
 </section>
 
 
@@ -5031,6 +5086,7 @@ body.modal-open {
             <article class="video-library-item"><h4>Elegir seguro médico</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/LsunjY8etSo?start=5" title="Cuál es el mejor seguro médico en Suiza" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
             <article class="video-library-item"><h4>Cuidado con el seguro médico</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/MayklsfcOy8?start=6" title="Cuidado con el seguro médico en Suiza" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
             <article class="video-library-item"><h4>El coste del seguro médico</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/LtFFO8rH2SU" title="Todos pagamos un seguro médico en Suiza" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
+            <article class="video-library-item"><h4>Punto Hispano: papeles, piso, trámites y seguro médico</h4><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/Wt-P_6MDTao?start=956" title="Punto Hispano: papeles, piso, trámites y seguro médico en Suiza" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></article>
         </div>
     </div>
 
@@ -5827,7 +5883,8 @@ window.PAGE_TRANSLATIONS = {
     }
 };
 </script>
-<script src="js/i18n.js"></script>
+<script src="js/site-header.js"></script>
+  <script src="js/i18n.js"></script>
 <script src="js/legal-footer.js"></script>
 <script src="js/chat-widget.js"></script>
 

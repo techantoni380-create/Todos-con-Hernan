@@ -247,4 +247,43 @@
   .chatWidgetBody {
     max-height: 34vh;
   }
+
+  .chatWidgetTopics .chatWidgetChip {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+/* Botón de enlace a la página relacionada dentro de las respuestas */
+.chatWidgetMessage .chatWidgetLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 212, 0, .45);
+  background: rgba(255, 212, 0, .08);
+  color: #ffd400;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background .18s ease, border-color .18s ease;
+}
+
+.chatWidgetMessage .chatWidgetLinkBtn:hover {
+  background: rgba(255, 212, 0, .18);
+  border-color: rgba(255, 212, 0, .7);
+  text-decoration: none;
+}
+
+/* Fila de temas sugeridos dentro de la conversación */
+.chatWidgetTopics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-self: flex-start;
+  max-width: 100%;
+  padding: 2px 0;
+  flex-shrink: 0;
 }

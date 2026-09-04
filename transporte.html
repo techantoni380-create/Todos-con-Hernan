@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -7,6 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Transporte en Suiza | Todos con Hernan</title>
+  <link rel="stylesheet" href="css/language-selector.css">
   <meta name="description" content="Guia clara y minimalista de transporte en Suiza: precios reales, circuitos entre cantones y paneles de referencia.">
 
   <style>
@@ -56,7 +57,9 @@
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      position: relative;
       padding: 18px 7%;
       background: #061522;
       border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -85,6 +88,49 @@
       background: #10263a;
       color: white;
       border-color: rgba(66,166,255,0.45);
+    }
+
+    /* css/site-enhancements.css fuerza el selector de idioma como "position: absolute"
+       (pensado para reservar 176px), pero con 7 banderas ocupa ~227px y se solapa con
+       el botón. El id eleva la especificidad para ganarle a esas reglas !important y
+       convertirlo en un bloque de flex normal, separado del botón con un gap visible. */
+    #transporteTopHeader {
+      justify-content: flex-start !important;
+      flex-wrap: nowrap !important;
+      padding-right: 7% !important;
+      gap: 0 !important;
+    }
+
+    #transporteTopHeader .back-button {
+      margin-left: auto;
+      margin-right: 30px;
+    }
+
+    #transporteTopHeader .languageSelector {
+      position: static !important;
+      top: auto !important;
+      right: auto !important;
+      left: auto !important;
+      height: auto !important;
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 850px) {
+      #transporteTopHeader {
+        flex-wrap: wrap !important;
+        gap: 14px !important;
+        padding-right: 20px !important;
+      }
+
+      #transporteTopHeader .back-button {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      #transporteTopHeader .languageSelector {
+        width: 100% !important;
+        justify-content: center !important;
+      }
     }
 
     .page-header {
@@ -346,12 +392,9 @@
   </style>
 </head>
 
-<body data-no-main-nav>
+<body data-header-back="vivir-en-suiza.html|Vivir en Suiza|transporteTopHeader">
 
-<header class="top-header">
-  <div class="logo">Todos con <span>Hernan</span></div>
-  <a href="vivir-en-suiza.html" class="back-button">← Vivir en Suiza</a>
-</header>
+
 
 <header class="page-header">
   <div class="eyebrow">GUIA PARA VIVIR EN SUIZA</div>
@@ -856,7 +899,8 @@ function printMap(id, title) {
   });
 </script>
 
-<script src="js/i18n.js"></script>
+<script src="js/site-header.js"></script>
+  <script src="js/i18n.js"></script>
 <script src="js/legal-footer.js"></script>
 <script src="js/chat-widget.js"></script>
 </body>

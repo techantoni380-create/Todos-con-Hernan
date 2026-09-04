@@ -20,6 +20,12 @@
   <title>Proyectos · Todos con Hernán</title>
 
   <link rel="stylesheet" href="css/language-selector.css">
+  <style>
+    /* Enlaces de cabecera: mismo aspecto base que en videos.html (la referencia). */
+    .mainNav a { color: #dbe4ea; text-decoration: none; font-weight: 700; }
+    .mainNav a:hover { color: #ffffff; }
+    .mainNav a.active { color: #fff; font-weight: 900; border-bottom: 4px solid var(--red); }
+  </style>
 
 
   <style>
@@ -133,105 +139,6 @@
         animation: none;
         transform: none;
       }
-    }
-
-/* =====================================================
-       BARRA SUPERIOR
-       ===================================================== */
-
-    .topbar {
-
-      min-height: 64px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 0 20px;
-
-      background: #04111a;
-
-      border-bottom:
-        1px solid #183347;
-
-      position: relative;
-
-      z-index: 1000;
-
-    }
-
-
-    .mainNav {
-
-      min-height: 64px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      gap: 34px;
-
-    }
-
-
-    .mainNav a {
-
-      min-height: 64px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      position: relative;
-
-      color: #dbe4ea;
-
-      text-decoration: none;
-
-      font-size: 13px;
-
-      font-weight: 700;
-
-      white-space: nowrap;
-
-    }
-
-
-    .mainNav a:hover {
-      color: #fff;
-    }
-
-
-    .mainNav a.active {
-
-      color: #fff;
-
-      font-weight: 900;
-
-    }
-
-
-    .mainNav a.active::after {
-
-      content: "";
-
-      position: absolute;
-
-      left: 0;
-      right: 0;
-
-      bottom: 0;
-
-      height: 4px;
-
-      background: var(--red);
-
-      border-radius:
-        3px 3px 0 0;
-
     }
 
 
@@ -1414,10 +1321,6 @@
 
     @media (max-width: 1050px) {
 
-      .mainNav {
-        gap: 21px;
-      }
-
 
       .hero {
         grid-template-columns:
@@ -1441,23 +1344,6 @@
 
 
     @media (max-width: 800px) {
-
-      .topbar {
-
-        overflow-x: auto;
-
-        justify-content:
-          flex-start;
-
-      }
-
-
-      .mainNav {
-
-        flex:
-          0 0 auto;
-
-      }
 
 
       .hero {
@@ -1514,15 +1400,6 @@
 
 
     @media (max-width: 520px) {
-
-      .mainNav {
-        gap: 18px;
-      }
-
-
-      .mainNav a {
-        font-size: 11px;
-      }
 
 
       .hero h1 {
@@ -1619,67 +1496,6 @@ footer.site-credits > p.developer-credit {
 <body>
 
 
-  <!-- =====================================================
-       BARRA SUPERIOR
-       ===================================================== -->
-
-  <header class="topbar">
-
-    <nav
-      class="mainNav"
-      aria-label="Navegación principal"
-    >
-
-      <a href="inicio.html">
-        <span data-i18n="nav.inicio">INICIO</span>
-      </a>
-
-
-      <a href="index.html">
-        <span data-i18n="nav.tour">EL GRAND TOUR</span>
-      </a>
-
-
-<a href="videos.html">
-    <span data-i18n="nav.videos">VÍDEOS</span>
-</a>
-
-
-      <a href="vivir-en-suiza.html">
-        <span data-i18n="nav.vivir">VIVIR EN SUIZA</span>
-      </a>
-
-
-      <a href="trabajos-suiza.html">
-        <span data-i18n="nav.trabajos">TRABAJOS EN SUIZA</span>
-      </a>
-
-
-      <a href="comunidad.html">
-        <span data-i18n="nav.comunidad">COMUNIDAD</span>
-      </a>
-
-
-      <a
-        href="proyectos.html"
-        class="active"
-      >
-        <span data-i18n="nav.proyectos">PROYECTOS</span>
-      </a>
-
-
-      <a href="sponsors.html">
-        <span data-i18n="nav.sponsors">SPONSORS</span>
-      </a>
-
-
-<a href="contacto.html">
-    <span data-i18n="nav.contacto">CONTACTO</span>
-</a>
-
-    </nav>
-
-  </header>
 
 
   <!-- =====================================================
@@ -1953,7 +1769,8 @@ footer.site-credits > p.developer-credit {
     }
   };
 </script>
-<script src="js/i18n.js"></script>
+<script src="js/site-header.js"></script>
+  <script src="js/i18n.js"></script>
 <script src="js/legal-footer.js"></script>
 <script src="js/chat-widget.js"></script>
 

@@ -132,208 +132,6 @@
 
 
         /* =====================================================
-           BARRA SUPERIOR
-           ===================================================== */
-
-        .topbar {
-
-            min-height: 64px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 0 20px;
-
-            background: #04111a;
-
-            border-bottom:
-                1px solid #183347;
-
-            position: sticky;
-
-            top: 0;
-
-            z-index: 1000;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            overflow: visible !important;
-
-        }
-
-
-        .topbar .languageSelector {
-
-            position: absolute !important;
-            top: 0 !important;
-            right: 18px !important;
-            height: 64px !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 7px !important;
-            z-index: 1005 !important;
-            visibility: visible !important;
-
-        }
-
-
-        .topbar .languageFlag {
-
-            width: 32px !important;
-            height: 32px !important;
-            min-width: 32px !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            visibility: visible !important;
-            cursor: pointer !important;
-
-        }
-
-
-        .topbar .languageFlag img {
-
-            width: 18px !important;
-            height: 13px !important;
-            display: block !important;
-
-        }
-
-
-        .topbar .hernanLanguages {
-
-            position: absolute !important;
-            top: 0 !important;
-            right: 14px !important;
-            height: 58px !important;
-            width: 161px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: flex-end !important;
-            gap: 4px !important;
-            z-index: 1100 !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-
-        }
-
-
-        .topbar .hernanLanguages .languageFlag {
-
-            position: relative !important;
-            width: 29px !important;
-            height: 29px !important;
-            min-width: 29px !important;
-            padding: 0 !important;
-            display: inline-flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            background: rgba(3,15,24,.72) !important;
-            border: 1px solid rgba(255,255,255,.42) !important;
-            border-radius: 50% !important;
-
-        }
-
-
-        .topbar .hernanLanguages .languageFlag img {
-
-            width: 17px !important;
-            height: 12px !important;
-            max-width: none !important;
-            opacity: 1 !important;
-
-        }
-
-
-        .mainNav {
-
-            min-height: 64px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 34px;
-
-        }
-
-
-        .mainNav a {
-
-            height: 64px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            position: relative;
-
-            color: #dbe4ea;
-
-            text-decoration: none;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-            white-space: nowrap;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-        }
-
-
-        .mainNav a:hover {
-
-            color: #ffffff;
-
-        }
-
-
-        .mainNav a.active {
-
-            color: #ffffff;
-
-            font-weight: 900;
-
-        }
-
-
-        .mainNav a.active::after {
-
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-
-            right: 0;
-
-            bottom: 0;
-
-            height: 4px;
-
-            background: var(--red);
-
-            border-radius:
-                3px 3px 0 0;
-
-        }
-
-
-        /* =====================================================
            HERO
            ===================================================== */
 
@@ -1060,13 +858,6 @@
 
         @media (max-width: 1000px) {
 
-            .mainNav {
-
-                gap:
-                    22px;
-
-            }
-
 
             .hero {
 
@@ -1130,35 +921,6 @@
 
 
         @media (max-width: 700px) {
-
-            .topbar {
-
-                overflow-x:
-                    auto;
-
-                justify-content:
-                    flex-start;
-
-            }
-
-
-            .mainNav {
-
-                flex:
-                    0 0 auto;
-
-                gap:
-                    18px;
-
-            }
-
-
-            .mainNav a {
-
-                font-size:
-                    11px;
-
-            }
 
 
             .hero {
@@ -1307,64 +1069,6 @@ footer.site-credits > p.developer-credit {
 <body data-header-compact>
 
 
-    <!-- =====================================================
-         NAVEGACIÓN
-         ===================================================== -->
-
-    <header class="topbar site-header">
-
-        <nav
-            class="mainNav"
-            aria-label="Navegación principal"
-        >
-
-            <a href="inicio.html">
-                <span data-i18n="nav.inicio">INICIO</span>
-            </a>
-
-
-            <a href="index.html">
-                <span data-i18n="nav.tour">EL GRAND TOUR</span>
-            </a>
-
-
-<a href="videos.html">
-    <span data-i18n="nav.videos">VÍDEOS</span>
-</a>
-
-
-            <a href="vivir-en-suiza.html">
-                <span data-i18n="nav.vivir">VIVIR EN SUIZA</span>
-            </a>
-
-
-            <a href="trabajos-suiza.html">
-                <span data-i18n="nav.trabajos">TRABAJOS EN SUIZA</span>
-            </a>
-
-
-            <a href="comunidad.html">
-                <span data-i18n="nav.comunidad">COMUNIDAD</span>
-            </a>
-
-
-            <a href="proyectos.html">
-                <span data-i18n="nav.proyectos">PROYECTOS</span>
-            </a>
-
-
-            <a href="sponsors.html">
-                <span data-i18n="nav.sponsors">SPONSORS</span>
-            </a>
-
-
-<a href="contacto.html">
-    <span data-i18n="nav.contacto">CONTACTO</span>
-</a>
-
-        </nav>
-
-    </header>
 
 
 
@@ -1633,7 +1337,8 @@ footer.site-credits > p.developer-credit {
     }
   };
 </script>
-<script src="js/i18n.js"></script>
+<script src="js/site-header.js"></script>
+  <script src="js/i18n.js"></script>
 <script src="js/legal-footer.js"></script>
 <script src="js/chat-widget.js"></script>
 

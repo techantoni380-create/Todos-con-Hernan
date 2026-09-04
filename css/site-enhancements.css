@@ -1,5 +1,9 @@
 /* Shared shell for every page: navigation, language control and media. */
-:root { --site-header-height: 58px; }
+/* Espacio reservado a las 7 banderas en las cabeceras secundarias
+   (.top-header/.top): 7×29px + 6 gaps × 4px + margen 14px = 241px.
+   En la cabecera principal (.topbar) no hace falta reserva: las banderas
+   ocupan su propia pista del grid (ver @media min-width: 761px). */
+:root { --site-header-height: 58px; --site-flags-space: 241px; }
 html, body { overflow-x: hidden; }
 img, video, iframe { max-width: 100%; }
 
@@ -20,7 +24,7 @@ img, video, iframe { max-width: 100%; }
   grid-template-columns: minmax(0, 1fr) auto !important;
   align-items: center !important;
   justify-content: stretch !important;
-  padding: 0 176px 0 18px !important;
+  padding: 0 18px !important;
   background: rgba(3, 15, 24, .78) !important;
   border-bottom: 1px solid rgba(255, 255, 255, .16) !important;
   backdrop-filter: blur(10px);
@@ -30,7 +34,10 @@ img, video, iframe { max-width: 100%; }
 .mainNav {
   display: flex !important;
   align-items: center !important;
-  justify-content: center !important;
+  /* safe center: centrado cuando cabe; si el idioma alarga los textos,
+     se alinea al inicio y se desplaza dentro de su propia pista del grid
+     sin recortar el primer enlace ni tocar las banderas. */
+  justify-content: safe center !important;
   height: 58px !important;
   gap: 28px !important;
   width: 100%;
@@ -56,7 +63,7 @@ img, video, iframe { max-width: 100%; }
 .top-header,
 .top {
   position: relative;
-  padding-right: 176px !important;
+  padding-right: var(--site-flags-space) !important;
   gap: 20px;
   background: rgba(3, 15, 24, .78) !important;
   border-bottom: 1px solid rgba(255, 255, 255, .16) !important;
@@ -84,7 +91,7 @@ img, video, iframe { max-width: 100%; }
 }
 
 @media (max-width: 1180px) and (min-width: 761px) {
-  .topbar { padding-left: 12px !important; padding-right: 176px !important; }
+  .topbar { padding-left: 12px !important; padding-right: 12px !important; }
   .mainNav { justify-content: flex-start !important; gap: 14px !important; }
   .mainNav a { font-size: 10px !important; }
   .languageSelector { right: 8px !important; gap: 4px !important; }
@@ -108,7 +115,7 @@ img, video, iframe { max-width: 100%; }
 body[data-header-compact] .topbar {
   min-height: 58px !important;
   height: 58px !important;
-  padding: 0 176px 0 18px !important;
+  padding: 0 18px !important;
 }
 
 body[data-header-compact] .mainNav {
@@ -162,7 +169,7 @@ footer.site-credits, footer.site-footer {
 footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-height: 1.5; }
 
 @media (max-width: 900px) {
-  .topbar { height: auto !important; min-height: 58px !important; padding: 0 152px 0 12px !important; }
+  .topbar { height: auto !important; min-height: 58px !important; padding: 0 12px !important; }
   .mainNav { width: 100%; max-width: none; overflow-x: auto; justify-content: flex-start !important; gap: 16px !important; }
   .mainNav a { min-height: 58px; font-size: 10px !important; }
   .languageSelector { right: 8px !important; gap: 4px !important; }
@@ -188,10 +195,23 @@ footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-hei
 /* La identidad de marca acompaña también a la cabecera de escritorio,
    reutilizando el mismo elemento que ya se usa en móvil. */
 @media (min-width: 761px) {
-  /* .topbar.topbar eleva la especificidad para las páginas con cabecera propia. */
+  /* .topbar.topbar eleva la especificidad para las páginas con cabecera propia.
+     Tercera columna "auto" para las banderas: espacio reservado independiente
+     que se autoajusta a su ancho real, con el column-gap de 18px como
+     separación mínima. El menú (minmax(0, 1fr)) nunca puede invadirlo. */
   body .topbar.topbar {
-    grid-template-columns: auto minmax(0, 1fr) !important;
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
     column-gap: 18px;
+  }
+
+  body .topbar > .languageSelector {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    height: var(--site-header-height) !important;
+    justify-self: end;
+    flex: 0 0 auto;
   }
 
   /* El menú se mantiene dentro de su columna aunque la página fije su ancho. */
@@ -277,10 +297,11 @@ footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-hei
     text-overflow: ellipsis;
   }
 
-  /* absolute (y no fixed) porque algunas cabeceras crean contexto de contención. */
+  /* fixed (no absolute): el fondo a pantalla completa no debe ensanchar el
+     documento en móvil. */
   .mobileMenuBackdrop {
-    position: absolute !important;
-    top: 100% !important;
+    position: fixed !important;
+    top: var(--site-header-height) !important;
     left: 0 !important;
     right: 0 !important;
     height: calc(100dvh - var(--site-header-height)) !important;
@@ -297,8 +318,10 @@ footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-hei
 
   /* Especificidad alta: algunas páginas fijan su propio tamaño de .mainNav. */
   body .topbar .mainNav {
-    position: absolute !important;
-    top: 100% !important;
+    /* fixed (no absolute) para que el panel cerrado, desplazado fuera con
+       translateX(100%), no ensanche el documento ni cause scroll horizontal. */
+    position: fixed !important;
+    top: var(--site-header-height) !important;
     right: 0 !important;
     bottom: auto !important;
     left: auto !important;
