@@ -1488,6 +1488,138 @@ footer.site-credits > p.developer-credit {
 
 }
 
+
+/* =====================================================
+   EXPO FERIA · MODAL DE VÍDEOS
+   ===================================================== */
+
+.expoFeriaModal {
+  width: min(1040px, calc(100% - 28px));
+  max-height: min(820px, calc(100% - 28px));
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 16px;
+  background: #071a28;
+  color: #e7f0f6;
+  box-shadow: 0 24px 80px rgba(0,0,0,.55);
+}
+
+.expoFeriaModal::backdrop {
+  background: rgba(0,0,0,.72);
+}
+
+.expoFeriaModalPanel {
+  position: relative;
+  padding: 28px;
+  overflow: auto;
+}
+
+.expoFeriaModal h2 {
+  margin: 0 46px 8px 0;
+  color: #fff;
+}
+
+.expoFeriaModalIntro {
+  margin: 0 0 20px;
+  color: #bdccd4;
+}
+
+.expoFeriaModalClose {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.expoFeriaVideoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.expoFeriaVideoCard {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 12px;
+  background: rgba(255,255,255,.045);
+}
+
+.expoFeriaVideoCard--playlist {
+  grid-column: 1 / -1;
+}
+
+.expoFeriaThumbnail {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: #020b12;
+  cursor: pointer;
+}
+
+.expoFeriaThumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.expoFeriaPlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 54px;
+  height: 38px;
+  place-items: center;
+  transform: translate(-50%,-50%);
+  border-radius: 10px;
+  background: rgba(239,24,32,.92);
+  color: #fff;
+  font-size: 18px;
+}
+
+.expoFeriaVideoCard h3 {
+  margin: 0;
+  padding: 14px 15px 16px;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.expoFeriaPlayer {
+  display: none;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+.expoFeriaVideoCard.is-playing .expoFeriaThumbnail {
+  display: none;
+}
+
+.expoFeriaVideoCard.is-playing .expoFeriaPlayer {
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .expoFeriaModalPanel {
+    padding: 24px 18px;
+  }
+
+  .expoFeriaVideoGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
 
 </head>
@@ -1562,9 +1694,10 @@ footer.site-credits > p.developer-credit {
 
         <a
           class="projectCard projectCardLink"
-          href="https://www.youtube.com/@todosconhernan/search?query=expo%20feria"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="https://www.youtube.com/playlist?list=PLJrfbrk0_KtlBCRykYAXSRwozlOO2cCs0"
+          data-open-expoferia
+          aria-controls="expoFeriaModal"
+          aria-haspopup="dialog"
         >
 
           <div class="projectCardMedia">
@@ -1594,9 +1727,10 @@ footer.site-credits > p.developer-credit {
 
         <a
           class="projectCard projectCardLink"
-          href="https://www.youtube.com/@todosconhernan/search?query=raices%20culturales"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="https://www.youtube.com/watch?v=EDtY6bO6nIA&t=3s"
+          data-open-raices
+          aria-controls="raicesModal"
+          aria-haspopup="dialog"
         >
 
           <div class="projectCardMedia">
@@ -1626,9 +1760,10 @@ footer.site-credits > p.developer-credit {
 
         <a
           class="projectCard projectCardLink"
-          href="https://www.youtube.com/@todosconhernan/search?query=plato%20tipico%20mundial"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="https://www.youtube.com/watch?v=Bg8fW1hwAH8&t=1s"
+          data-open-plato
+          aria-controls="platoModal"
+          aria-haspopup="dialog"
         >
 
           <div class="projectCardMedia">
@@ -1713,6 +1848,36 @@ footer.site-credits > p.developer-credit {
     </section>
 
 
+    <dialog class="expoFeriaModal" id="expoFeriaModal" aria-labelledby="expoFeriaModalTitle">
+      <div class="expoFeriaModalPanel">
+        <button class="expoFeriaModalClose" type="button" aria-label="Cerrar vídeos de Expo Feria">&times;</button>
+        <h2 id="expoFeriaModalTitle">🎟️ EXPO FERIA</h2>
+        <p class="expoFeriaModalIntro">Encuentros, stands y comunidad en las ferias donde Todos con Hernán está presente.</p>
+        <div class="expoFeriaVideoGrid"></div>
+      </div>
+    </dialog>
+
+
+    <dialog class="expoFeriaModal" id="raicesModal" aria-labelledby="raicesModalTitle">
+      <div class="expoFeriaModalPanel">
+        <button class="expoFeriaModalClose" type="button" aria-label="Cerrar vídeo de Raíces Culturales">&times;</button>
+        <h2 id="raicesModalTitle">🌿 RAÍCES CULTURALES</h2>
+        <p class="expoFeriaModalIntro">Cultura, tradiciones y personas que mantienen vivas sus raíces desde Suiza.</p>
+        <div class="expoFeriaVideoGrid"></div>
+      </div>
+    </dialog>
+
+
+    <dialog class="expoFeriaModal" id="platoModal" aria-labelledby="platoModalTitle">
+      <div class="expoFeriaModalPanel">
+        <button class="expoFeriaModalClose" type="button" aria-label="Cerrar vídeos de Plato Típico Mundial">&times;</button>
+        <h2 id="platoModalTitle">🍽️ PLATO TÍPICO MUNDIAL</h2>
+        <p class="expoFeriaModalIntro">Sabores del mundo cocinados desde Suiza: recetas, historias y cultura en cada plato.</p>
+        <div class="expoFeriaVideoGrid"></div>
+      </div>
+    </dialog>
+
+
   </main>
 
 
@@ -1738,6 +1903,243 @@ footer.site-credits > p.developer-credit {
   </p>
 
 </footer>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const trigger = document.querySelector("[data-open-expoferia]");
+  const modal = document.getElementById("expoFeriaModal");
+  const grid = modal?.querySelector(".expoFeriaVideoGrid");
+  const close = modal?.querySelector(".expoFeriaModalClose");
+  // Playlist oficial de Expo Feria: el reproductor incluye todos sus vídeos y permite pasar de uno a otro sin salir de la web.
+  const PLAYLIST_ID = "PLJrfbrk0_KtlBCRykYAXSRwozlOO2cCs0";
+  const COVER_ID = "UaQmswrFnrw";
+  let lastTrigger;
+
+  if (!trigger || !modal || !grid || typeof modal.showModal !== "function") return;
+
+  const card = document.createElement("article");
+  card.className = "expoFeriaVideoCard expoFeriaVideoCard--playlist";
+  const thumb = document.createElement("button");
+  thumb.type = "button";
+  thumb.className = "expoFeriaThumbnail";
+  thumb.setAttribute("aria-label", "Reproducir los vídeos de Expo Feria");
+  const image = document.createElement("img");
+  image.src = `https://i.ytimg.com/vi/${COVER_ID}/hqdefault.jpg`;
+  image.alt = "Vídeos de Expo Feria";
+  image.loading = "lazy";
+  const play = document.createElement("span");
+  play.className = "expoFeriaPlay";
+  play.setAttribute("aria-hidden", "true");
+  play.textContent = "▶";
+  thumb.append(image, play);
+  const title = document.createElement("h3");
+  title.textContent = "Vídeos de Expo Feria";
+  const frame = document.createElement("iframe");
+  frame.className = "expoFeriaPlayer";
+  frame.title = "Vídeos de Expo Feria";
+  frame.loading = "lazy";
+  frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+  frame.allowFullscreen = true;
+  thumb.addEventListener("click", () => {
+    frame.src = `https://www.youtube-nocookie.com/embed/videoseries?list=${PLAYLIST_ID}&rel=0&modestbranding=1&autoplay=1`;
+    card.classList.add("is-playing");
+  });
+  card.append(thumb, frame, title);
+  grid.appendChild(card);
+
+  function openModal() {
+    lastTrigger = document.activeElement;
+    modal.showModal();
+    close?.focus();
+  }
+
+  function closeModal() {
+    modal.close();
+    grid.querySelectorAll(".expoFeriaVideoCard").forEach(card => {
+      card.classList.remove("is-playing");
+      card.querySelector("iframe").src = "";
+    });
+    lastTrigger?.focus();
+  }
+
+  trigger.addEventListener("click", event => { event.preventDefault(); openModal(); });
+  close?.addEventListener("click", closeModal);
+  modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const trigger = document.querySelector("[data-open-raices]");
+  const modal = document.getElementById("raicesModal");
+  const grid = modal?.querySelector(".expoFeriaVideoGrid");
+  const close = modal?.querySelector(".expoFeriaModalClose");
+  const VIDEO_ID = "EDtY6bO6nIA";
+  const START = 3;
+  let lastTrigger;
+
+  if (!trigger || !modal || !grid || typeof modal.showModal !== "function") return;
+
+  const card = document.createElement("article");
+  card.className = "expoFeriaVideoCard expoFeriaVideoCard--playlist";
+  const thumb = document.createElement("button");
+  thumb.type = "button";
+  thumb.className = "expoFeriaThumbnail";
+  thumb.setAttribute("aria-label", "Reproducir el vídeo de Raíces Culturales");
+  const image = document.createElement("img");
+  image.src = `https://i.ytimg.com/vi/${VIDEO_ID}/hqdefault.jpg`;
+  image.alt = "Vídeo de Raíces Culturales";
+  image.loading = "lazy";
+  const play = document.createElement("span");
+  play.className = "expoFeriaPlay";
+  play.setAttribute("aria-hidden", "true");
+  play.textContent = "▶";
+  thumb.append(image, play);
+  const title = document.createElement("h3");
+  title.textContent = "Vídeo de Raíces Culturales";
+  const frame = document.createElement("iframe");
+  frame.className = "expoFeriaPlayer";
+  frame.title = "Vídeo de Raíces Culturales";
+  frame.loading = "lazy";
+  frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+  frame.allowFullscreen = true;
+  thumb.addEventListener("click", () => {
+    frame.src = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0&modestbranding=1&autoplay=1&start=${START}`;
+    card.classList.add("is-playing");
+  });
+  card.append(thumb, frame, title);
+  grid.appendChild(card);
+
+  async function loadTitle() {
+    try {
+      const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${VIDEO_ID}&format=json`);
+      if (!response.ok) return;
+      const data = await response.json();
+      if (data.title) {
+        title.textContent = data.title;
+        frame.title = data.title;
+        image.alt = data.title;
+      }
+    } catch (_) { /* Mantener el título neutro si oEmbed no está disponible. */ }
+  }
+
+  function openModal() {
+    lastTrigger = document.activeElement;
+    modal.showModal();
+    close?.focus();
+    loadTitle();
+  }
+
+  function closeModal() {
+    modal.close();
+    card.classList.remove("is-playing");
+    frame.src = "";
+    lastTrigger?.focus();
+  }
+
+  trigger.addEventListener("click", event => { event.preventDefault(); openModal(); });
+  close?.addEventListener("click", closeModal);
+  modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const trigger = document.querySelector("[data-open-plato]");
+  const modal = document.getElementById("platoModal");
+  const grid = modal?.querySelector(".expoFeriaVideoGrid");
+  const close = modal?.querySelector(".expoFeriaModalClose");
+  // start refleja el parámetro t= del enlace original de cada vídeo.
+  const videos = [
+    { id: "Bg8fW1hwAH8", start: 1 },
+    { id: "DlqkSft9mP4", start: 334 },
+    { id: "wh9troJWQB4" },
+    { id: "SPUKtbLoNGU" },
+    { id: "C7V278dhlX8", start: 40 },
+    { id: "BkdgQsixz_M", start: 518 },
+    { id: "XeVdFxQH0BU", start: 175 },
+    { id: "vMCF4jNSnR0" }
+  ];
+  let lastTrigger;
+
+  if (!trigger || !modal || !grid || typeof modal.showModal !== "function") return;
+
+  function buildCard(video, index) {
+    const card = document.createElement("article");
+    card.className = "expoFeriaVideoCard";
+    const thumb = document.createElement("button");
+    thumb.type = "button";
+    thumb.className = "expoFeriaThumbnail";
+    thumb.setAttribute("aria-label", `Reproducir vídeo de Plato Típico Mundial ${index + 1}`);
+    const image = document.createElement("img");
+    image.src = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+    image.alt = `Vídeo de Plato Típico Mundial ${index + 1}`;
+    image.loading = "lazy";
+    const play = document.createElement("span");
+    play.className = "expoFeriaPlay";
+    play.setAttribute("aria-hidden", "true");
+    play.textContent = "▶";
+    thumb.append(image, play);
+    const title = document.createElement("h3");
+    title.textContent = `Vídeo de Plato Típico Mundial ${index + 1}`;
+    const frame = document.createElement("iframe");
+    frame.className = "expoFeriaPlayer";
+    frame.title = title.textContent;
+    frame.loading = "lazy";
+    frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    frame.allowFullscreen = true;
+    thumb.addEventListener("click", () => {
+      let src = `https://www.youtube-nocookie.com/embed/${video.id}?rel=0&modestbranding=1&autoplay=1`;
+      if (video.start) src += `&start=${video.start}`;
+      frame.src = src;
+      card.classList.add("is-playing");
+    });
+    card.append(thumb, frame, title);
+    return { card, title };
+  }
+
+  const cards = videos.map(buildCard);
+  cards.forEach(item => grid.appendChild(item.card));
+
+  async function loadTitles() {
+    await Promise.all(cards.map(async (item, index) => {
+      try {
+        const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videos[index].id}&format=json`);
+        if (!response.ok) return;
+        const data = await response.json();
+        if (data.title) {
+          item.title.textContent = data.title;
+          item.card.querySelector("iframe").title = data.title;
+          item.card.querySelector("img").alt = data.title;
+        }
+      } catch (_) { /* Mantener el título neutro si oEmbed no está disponible. */ }
+    }));
+  }
+
+  function openModal() {
+    lastTrigger = document.activeElement;
+    modal.showModal();
+    close?.focus();
+    loadTitles();
+  }
+
+  function closeModal() {
+    modal.close();
+    grid.querySelectorAll(".expoFeriaVideoCard").forEach(card => {
+      card.classList.remove("is-playing");
+      card.querySelector("iframe").src = "";
+    });
+    lastTrigger?.focus();
+  }
+
+  trigger.addEventListener("click", event => { event.preventDefault(); openModal(); });
+  close?.addEventListener("click", closeModal);
+  modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
+});
+</script>
 
 
 <script>
