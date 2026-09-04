@@ -52,6 +52,25 @@
       object-position: center;
     }
 
+    /* Móvil: el vídeo es horizontal (16:9) y el logo ocupa el centro del
+       fotograma con mucho fondo vacío alrededor. Para que el logo se vea
+       grande, el vídeo ocupa TODO el ancho del móvil y se amplía con
+       "cover" recortando solo fondo sobrante por arriba y abajo; el logo
+       (zona central) queda siempre completo y centrado. Sin scroll
+       horizontal. El fondo de la intro sigue ocupando toda la pantalla. */
+    @media (max-width: 760px) {
+      .grand-tour-intro video {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        max-height: none;
+        margin: 0 auto;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
     .grand-tour-intro::after {
       position: absolute;
       inset: 0;
@@ -2579,7 +2598,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   <div class="grand-tour-intro" id="grandTourIntro" role="dialog" aria-label="Introducción de Todos con Hernán">
     <video id="grandTourIntroVideo" autoplay muted playsinline preload="auto" aria-hidden="true">
-      <source src="videos/intro-logo.mp4.mp4" type="video/mp4">
+      <source src="videos/intro-logo.mp4" type="video/mp4">
     </video>
     <button class="grand-tour-intro-skip" id="grandTourIntroSkip" type="button">Saltar intro →</button>
   </div>
