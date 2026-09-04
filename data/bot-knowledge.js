@@ -133,7 +133,7 @@
         id: 'grandtour',
         icon: '📍',
         label: 'Grand Tour de Suiza',
-        href: 'index.html',
+        href: 'grand-tour.html',
         linkLabel: '📍 Ver el Grand Tour →',
         keywords: ['grand tour', 'ruta', 'recorrido', 'itinerario', 'mapa'],
         response: 'El "Grand Tour de Suiza" es la sección con el mapa interactivo, la ruta turística y la navegación GPS.'
@@ -142,7 +142,7 @@
         id: 'photospots',
         icon: '📸',
         label: 'Photo Spots',
-        href: 'index.html',
+        href: 'grand-tour.html',
         linkLabel: '📸 Ver Photo Spots →',
         keywords: ['photo spot', 'photo spots', 'fotos', 'lugares para fotos', 'puntos fotograficos', 'puntos fotográficos'],
         response: 'Los 92 Photo Spots oficiales de Suiza están disponibles en el mapa del Grand Tour.'

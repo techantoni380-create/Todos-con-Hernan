@@ -36,7 +36,7 @@
   /* Enlaces del nav principal: [href, clave i18n, texto por defecto]. */
   const NAV_ITEMS = [
     ['inicio.html', 'nav.inicio', 'INICIO'],
-    ['index.html', 'nav.tour', 'EL GRAND TOUR'],
+    ['grand-tour.html', 'nav.tour', 'EL GRAND TOUR'],
     ['videos.html', 'nav.videos', 'VÍDEOS'],
     ['vivir-en-suiza.html', 'nav.vivir', 'VIVIR EN SUIZA'],
     ['trabajos-suiza.html', 'nav.trabajos', 'TRABAJOS EN SUIZA'],
