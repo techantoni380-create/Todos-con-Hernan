@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta name="view-transition" content="same-origin">
+  <style>html { background: #071a28; }</style>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Comunidad Todos con Hernán · Gastronomía, cultura, Grand Tour of Switzerland, proyectos y comunidad en Suiza."
+  >
+
+  <title>Comunidad · Todos con Hernán</title>
+
+  <link rel="stylesheet" href="css/language-selector.css">
+  <style>
+    /* Enlaces de cabecera: mismo aspecto base que en videos.html (la referencia). */
+    .mainNav a { color: #dbe4ea; text-decoration: none; font-weight: 700; }
+    .mainNav a:hover { color: #ffffff; }
+    .mainNav a.active { color: #fff; font-weight: 900; border-bottom: 4px solid var(--red); }
+  </style>
+
+  <style>
+
+    /* =====================================================
+       VARIABLES
+    ===================================================== */
+
+    :root {
+
+      --bg: #04111b;
+      --bg2: #061825;
+      --panel: #071a28;
+      --panel2: #0a2030;
+
+      --line: #23465d;
+
+      --red: #ef1820;
+      --red-dark: #b90f15;
+
+      --gold: #ffd000;
+
+      --green: #29e879;
+
+      --text: #f5f8fa;
+      --muted: #a7bac7;
+
+    }
+
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    html,
+    body {
+
+      margin: 0;
+      padding: 0;
+
+      width: 100%;
+      min-height: 100%;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background: var(--bg);
+
+      color: var(--text);
+
+    }
+
+
+    body {
+      overflow-x: hidden;
+    }
+
+
+    a {
+      color: inherit;
+    }
+
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+
+      min-height: 560px;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(400px, 540px);
+
+      align-items: center;
+
+      gap: 35px;
+
+      padding:
+        65px
+        7vw
+        50px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+
+        radial-gradient(
+          circle at 78% 45%,
+          #3b1d2a 0,
+          #102b3b 28%,
+          #071a28 55%,
+          #04111b 80%
+        );
+
+    }
+
+
+    .hero::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 650px;
+
+      height: 650px;
+
+      right: -220px;
+
+      top: -190px;
+
+      border-radius: 50%;
+
+      background:
+
+        radial-gradient(
+          circle,
+          #ef18201d,
+          transparent 68%
+        );
+
+      pointer-events: none;
+
+    }
+
+
+    .heroContent {
+
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 720px;
+
+    }
+
+
+    .eyebrow {
+
+      display: inline-block;
+
+      margin-bottom: 18px;
+
+      padding:
+        8px 15px;
+
+      border:
+        1px solid #31556c;
+
+      border-radius: 20px;
+
+      background:
+        #071a28cc;
+
+      color: var(--gold);
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .hero h1 {
+
+      margin: 0;
+
+      font-size:
+        clamp(48px, 6vw, 82px);
+
+      line-height: .92;
+
+      letter-spacing: -4px;
+
+      font-weight: 950;
+
+    }
+
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+
+    /* Mismo acabado que las etiquetas informativas de contacto.html (.agenda-note-highlight). */
+    .heroText {
+
+      display: inline-block;
+
+      max-width: min(680px, 100%);
+
+      margin:
+        25px 0 0;
+
+      padding: 20px 26px;
+
+      border: 1px solid rgba(255, 255, 255, .35);
+
+      border-radius: 18px;
+
+      background: rgba(16, 40, 58, .38);
+
+      box-shadow: 0 8px 26px rgba(16, 40, 58, .18);
+
+      backdrop-filter: blur(8px);
+
+      -webkit-backdrop-filter: blur(8px);
+
+      color: #ffffff;
+
+      font-size:
+        clamp(17px, 2vw, 21px);
+
+      line-height: 1.5;
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .heroText {
+        padding: 16px 18px;
+      }
+
+    }
+
+
+    .heroButtons {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 28px;
+
+    }
+
+
+
+    /* =====================================================
+       BOTONES
+    ===================================================== */
+
+    .btn {
+
+      min-height: 47px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        0 23px;
+
+      border-radius: 25px;
+
+      text-decoration: none;
+
+      font-weight: 900;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+    }
+
+
+    .btn:hover {
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    .btn.red {
+
+      background: var(--red);
+
+      color: #ffffff;
+
+      box-shadow:
+        0
+        8px
+        25px
+        #0007;
+
+    }
+
+
+    .btn.outline {
+
+      background: transparent;
+
+      color: #ffffff;
+
+      border:
+        1px solid #416379;
+
+    }
+
+
+    /* Mismo botón que "ENTRAR AL GRAND TOUR →" de inicio.html (.heroButton.primary.btn-shine). */
+    .heroButtons .btn.red,
+    .heroButtons .btn.outline {
+
+      position: relative;
+
+      overflow: hidden;
+
+      min-height: 42px;
+
+      padding: 0 19px;
+
+      border: 0;
+
+      border-radius: 21px;
+
+      background: var(--red);
+
+      color: #fff;
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .22);
+
+      backdrop-filter: none;
+
+      -webkit-backdrop-filter: none;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+
+      animation: reveladoBotonHero 1.35s cubic-bezier(.22, 1, .36, 1) .12s backwards;
+
+    }
+
+
+    .heroButtons .btn.red::after,
+    .heroButtons .btn.outline::after {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+
+      left: -60%;
+
+      width: 35%;
+
+      height: 100%;
+
+      background: linear-gradient(115deg, transparent, rgba(255, 255, 255, .35), transparent);
+
+      transform: skewX(-20deg);
+
+      transition: left .6s ease;
+
+      pointer-events: none;
+
+    }
+
+
+    .heroButtons .btn.red:hover::after,
+    .heroButtons .btn.outline:hover::after {
+
+      left: 130%;
+
+    }
+
+
+    .heroButtons .btn.red:hover,
+    .heroButtons .btn.outline:hover {
+
+      transform: translateY(-2px);
+
+      background: #ff252d;
+
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .45);
+
+    }
+
+
+    @keyframes reveladoBotonHero {
+
+      from {
+        opacity: 0;
+        transform: translateY(15px) scale(.97);
+        filter: blur(2px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+
+    }
+
+
+
+    /* =====================================================
+       IMAGEN HERO
+    ===================================================== */
+
+    .heroImage {
+
+      height: 460px;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: center;
+
+      position: relative;
+
+      z-index: 2;
+
+    }
+
+
+    .heroImage img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: contain;
+
+      object-position:
+        center bottom;
+
+      filter:
+        drop-shadow(
+          0
+          18px
+          25px
+          #000b
+        );
+
+    }
+
+
+
+    /* =====================================================
+       SECCIONES
+    ===================================================== */
+
+    .section {
+
+      padding:
+        80px
+        7vw;
+
+      background:
+        var(--bg2);
+
+    }
+
+
+    .section.dark {
+
+      background:
+        #04111b;
+
+    }
+
+
+    .sectionHeader {
+
+      max-width: 900px;
+
+      margin:
+        0
+        auto
+        35px;
+
+      text-align: center;
+
+    }
+
+
+    .sectionLabel {
+
+      margin-bottom: 10px;
+
+      color: var(--gold);
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .sectionTitle {
+
+      margin: 0;
+
+      font-size:
+        clamp(34px, 4vw, 52px);
+
+      line-height: 1;
+
+      font-weight: 950;
+
+    }
+
+
+    .sectionTitle span {
+      color: var(--red);
+    }
+
+
+    .sectionDescription {
+
+      max-width: 800px;
+
+      margin:
+        18px auto 0;
+
+      color: #ffffff;
+
+      font-size: 17px;
+
+      font-weight: 500;
+
+      line-height: 1.6;
+
+      text-shadow: 0 1px 6px rgba(0, 0, 0, .45);
+
+    }
+
+
+
+    /* =====================================================
+       PROYECTO DESTACADO
+    ===================================================== */
+
+    .featuredProject {
+
+      max-width: 1250px;
+
+      margin: auto;
+
+      padding: 30px;
+
+      border:
+        1px solid #31556c;
+
+      border-radius: 20px;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #0a2030,
+          #071722
+        );
+
+      box-shadow:
+
+        0
+        20px
+        60px
+        #0005;
+
+    }
+
+
+    .featuredTop {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      gap: 30px;
+
+      align-items: center;
+
+    }
+
+
+    .featuredText h3 {
+
+      margin:
+        0
+        0
+        15px;
+
+      font-size: 32px;
+
+      line-height: 1.1;
+
+    }
+
+
+    .featuredText h3 span {
+      color: var(--red);
+    }
+
+
+    .featuredText p {
+
+      margin:
+        0
+        0
+        20px;
+
+      color: #c8d6dd;
+
+      line-height: 1.6;
+
+    }
+
+
+    .projectBadge {
+
+      display: inline-block;
+
+      margin-bottom: 15px;
+
+      padding:
+        7px
+        12px;
+
+      border-radius: 15px;
+
+      background:
+        var(--red);
+
+      color: #ffffff;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+    }
+
+
+    .projectImage {
+
+      border-radius: 15px;
+
+      overflow: hidden;
+
+      background:
+        #000;
+
+      border:
+        1px solid #31556c;
+
+    }
+
+
+    .projectImage img {
+
+      width: 100%;
+
+      display: block;
+
+      aspect-ratio:
+        16 / 9;
+
+      object-fit: cover;
+
+    }
+
+
+
+    /* =====================================================
+       TARJETAS
+    ===================================================== */
+
+    .countryGrid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
+      max-width: 1250px;
+
+      margin:
+        35px auto
+        0;
+
+    }
+
+
+    .countryCard {
+
+      overflow: hidden;
+
+      border:
+        1px solid #294c62;
+
+      border-radius: 16px;
+
+      background:
+        #071a28;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+
+    }
+
+
+    .countryCard:hover {
+
+      transform:
+        translateY(-5px);
+
+      border-color:
+        var(--red);
+
+    }
+
+
+    .countryImage {
+
+      width: 100%;
+
+      aspect-ratio:
+        16 / 9;
+
+      object-fit: cover;
+
+      display: block;
+
+      background:
+        #0d2a3b;
+
+    }
+
+
+    .countryContent {
+
+      padding: 18px;
+
+    }
+
+
+    .countryTitle {
+
+      margin:
+        0
+        0
+        8px;
+
+      font-size: 20px;
+
+    }
+
+
+    .countryTitle span {
+      color: var(--gold);
+    }
+
+
+    .countryDescription {
+
+      margin:
+        0
+        0
+        15px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+    }
+
+
+    .countryButton {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      min-height: 38px;
+
+      padding:
+        0
+        17px;
+
+      border-radius: 20px;
+
+      background:
+        var(--red);
+
+      color: #ffffff;
+
+      text-decoration: none;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      transition:
+        transform .2s ease,
+        background .2s ease;
+
+    }
+
+
+    .countryButton:hover {
+
+      transform:
+        translateY(-2px);
+
+      background:
+        var(--red-dark);
+
+    }
+
+
+
+    /* =====================================================
+       GRAND TOUR
+    ===================================================== */
+
+    .grandTourIntro {
+
+      max-width: 950px;
+
+      margin:
+        0 auto
+        30px;
+
+      text-align: center;
+
+      color: #c5d4dc;
+
+      line-height: 1.6;
+
+    }
+
+
+    .grandTourGrid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 22px;
+
+      max-width: 1250px;
+
+      margin:
+        35px auto
+        0;
+
+    }
+
+
+    .grandTourCard {
+
+      overflow: hidden;
+
+      border:
+        1px solid #294c62;
+
+      border-radius: 18px;
+
+      background:
+        #071a28;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+
+    }
+
+
+    .grandTourCard:hover {
+
+      transform:
+        translateY(-5px);
+
+      border-color:
+        var(--gold);
+
+    }
+
+
+    .grandTourImage {
+
+      width: 100%;
+
+      aspect-ratio:
+        16 / 9;
+
+      object-fit: cover;
+
+      display: block;
+
+      background:
+        #0d2a3b;
+
+    }
+
+
+    .grandTourContent {
+
+      padding: 22px;
+
+    }
+
+
+    .grandTourTag {
+
+      display: inline-block;
+
+      margin-bottom: 10px;
+
+      color: var(--gold);
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+
+    }
+
+
+    .grandTourContent h3 {
+
+      margin:
+        0
+        0
+        12px;
+
+      font-size: 22px;
+
+      line-height: 1.2;
+
+    }
+
+
+    .grandTourContent p {
+
+      margin:
+        0
+        0
+        18px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.6;
+
+    }
+
+
+
+    /* =====================================================
+       PROYECTO UN MILLÓN
+    ===================================================== */
+
+    .million {
+
+      max-width: 1200px;
+
+      margin: auto;
+
+      padding: 45px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      border:
+        1px solid #5b4650;
+
+      border-radius: 20px;
+
+      background:
+
+        radial-gradient(
+          circle at 80% 50%,
+          #ef18201c,
+          transparent 50%
+        ),
+
+        linear-gradient(
+          135deg,
+          #111b26,
+          #071a28
+        );
+
+    }
+
+
+    .millionContent {
+
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 700px;
+
+    }
+
+
+    .millionNumber {
+
+      margin:
+        0
+        0
+        10px;
+
+      color: var(--gold);
+
+      font-size:
+        clamp(55px, 8vw, 100px);
+
+      line-height: .9;
+
+      font-weight: 950;
+
+    }
+
+
+    .millionTitle {
+
+      margin:
+        0
+        0
+        15px;
+
+      font-size: 34px;
+
+      font-weight: 950;
+
+    }
+
+
+    .millionText {
+
+      margin:
+        0
+        0
+        22px;
+
+      color: #c8d5dc;
+
+      font-size: 17px;
+
+      line-height: 1.6;
+
+    }
+
+
+
+    /* =====================================================
+       ASESORAMIENTO
+    ===================================================== */
+
+    .adviceGrid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
+      max-width: 1200px;
+
+      margin:
+        35px auto
+        0;
+
+    }
+
+
+    .adviceCard {
+
+      padding: 28px;
+
+      border:
+        1px solid #294c62;
+
+      border-radius: 16px;
+
+      background:
+        #071a28;
+
+    }
+
+
+    .adviceIcon {
+
+      font-size: 34px;
+
+      margin-bottom: 15px;
+
+    }
+
+
+    .adviceCard h3 {
+
+      margin:
+        0
+        0
+        10px;
+
+      font-size: 20px;
+
+    }
+
+
+    .adviceCard p {
+
+      margin: 0;
+
+      color: var(--muted);
+
+      line-height: 1.5;
+
+      font-size: 14px;
+
+    }
+
+
+
+    /* =====================================================
+       CTA
+    ===================================================== */
+
+    .cta {
+
+      padding:
+        85px 20px;
+
+      text-align: center;
+
+      background:
+
+        linear-gradient(
+          135deg,
+          #081d2c,
+          #05131e
+        );
+
+      border-top:
+        1px solid #183347;
+
+    }
+
+
+    .cta h2 {
+
+      margin:
+        0
+        0
+        15px;
+
+      font-size:
+        clamp(35px, 5vw, 55px);
+
+      font-weight: 950;
+
+    }
+
+
+    .cta h2 span {
+      color: var(--red);
+    }
+
+
+    .cta p {
+
+      max-width: 650px;
+
+      margin:
+        0
+        auto
+        25px;
+
+      color: #bdccd4;
+
+      line-height: 1.6;
+
+    }
+
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+
+      min-height: 90px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      padding:
+        25px 20px;
+
+      background:
+        #020a11;
+
+      border-top:
+        1px solid #183347;
+
+      color: #9db0bc;
+
+      font-size: 12px;
+
+      text-align: center;
+
+    }
+
+
+    footer p {
+      margin: 0;
+    }
+
+
+    .developer-credit {
+
+      color: #71869a;
+
+      font-size: 12px;
+
+    }
+
+
+    .developer-credit a {
+
+      color: #42a6ff;
+
+      text-decoration: none;
+
+      font-weight: 700;
+
+    }
+
+
+    .developer-credit a:hover {
+      text-decoration: underline;
+    }
+
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 1050px) {
+
+
+      .hero {
+
+        grid-template-columns:
+          1fr
+          420px;
+
+      }
+
+
+      .countryGrid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
+
+      .adviceGrid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+      }
+
+    }
+
+
+
+    @media (max-width: 800px) {
+
+
+      .hero {
+
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        padding:
+          50px
+          20px
+          0;
+
+      }
+
+
+      .heroContent {
+
+        margin:
+          0 auto;
+
+      }
+
+
+      .heroButtons {
+
+        justify-content:
+          center;
+
+      }
+
+
+      .heroImage {
+
+        height: 380px;
+
+      }
+
+
+      .featuredTop {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .countryGrid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .grandTourGrid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .adviceGrid {
+
+        grid-template-columns: 1fr;
+
+      }
+
+
+      .featuredProject {
+
+        padding: 20px;
+
+      }
+
+
+      .million {
+
+        padding:
+          30px 22px;
+
+        text-align: center;
+
+      }
+
+    }
+
+
+
+    @media (max-width: 520px) {
+
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+
+      .heroImage {
+        height: 320px;
+      }
+
+    }
+
+  
+
+/* =========================================================
+   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
+   ========================================================= */
+
+footer.site-credits {
+  width: 100% !important;
+  min-height: 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto !important;
+
+  align-items: center !important;
+  justify-items: center !important;
+
+  gap: 8px !important;
+
+  margin: 0 !important;
+  padding: 22px 15px !important;
+
+  background: #020a11 !important;
+  border-top: 1px solid #183347 !important;
+
+  color: #9db0bc !important;
+  font-size: 13px !important;
+
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+footer.site-credits > p {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+  line-height: 1.5 !important;
+
+  white-space: normal !important;
+}
+
+footer.site-credits > p.developer-credit {
+  margin: 0 !important;
+
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   FOOTER · MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  footer.site-credits {
+    padding: 18px 10px !important;
+    gap: 6px !important;
+  }
+
+  footer.site-credits > p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+}
+
+
+    /* FONDO FOTOGRAFICO SUIZA */
+    body { position: relative; background: #04111b url("img/08suiza.jpg") center center / cover fixed no-repeat; }
+    body::before { content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; background: rgba(2,10,17,.42); }
+    .hero { background: linear-gradient(rgba(4,17,27,.30), rgba(4,17,27,.48)), transparent; }
+    .section { background: rgba(6,24,37,.72); }
+    .section.dark { background: rgba(4,17,27,.76); }
+    .cta { background: linear-gradient(135deg, rgba(8,29,44,.82), rgba(5,19,30,.88)); }
+
+
+    /* =====================================================
+       VENTANA INTERNA · CONTENIDO SIN SALIR DE LA WEB
+       Inspirada en el sistema modal de trabajo.html
+    ===================================================== */
+    .community-modal { position: fixed; inset: 0; z-index: 5000; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(0,0,0,.68); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    .community-modal.is-open { display: flex; }
+    .community-modal-dialog { width: min(980px, 94vw); max-height: min(88vh, 820px); overflow: hidden; border: 1px solid rgba(255,255,255,.20); border-radius: 22px; background: rgba(7,22,37,.96); box-shadow: 0 30px 90px rgba(0,0,0,.60); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+    .community-modal-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; border-bottom: 1px solid rgba(255,255,255,.12); background: rgba(4,17,27,.90); }
+    .community-modal-title { margin: 0; color: #fff; font-size: clamp(20px, 3vw, 30px); line-height: 1.2; }
+    .community-modal-close { width: 42px; height: 42px; flex: 0 0 42px; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; background: rgba(255,255,255,.06); color: #fff; font-size: 25px; line-height: 1; cursor: pointer; }
+    .community-modal-close:hover { background: rgba(255,255,255,.12); border-color: rgba(74,168,255,.55); }
+    .community-modal-body { padding: 22px; overflow-y: auto; }
+    .community-modal-video { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid rgba(255,255,255,.14); border-radius: 15px; background: #000; }
+    .community-modal-video iframe { width: 100%; height: 100%; display: block; border: 0; }
+    .community-modal-note { margin: 14px 0 0; color: #c7d6e2; font-size: 13px; line-height: 1.5; text-align: center; }
+    .community-internal-link { cursor: pointer; }
+    @media (max-width: 600px) { .community-modal { padding: 10px; } .community-modal-dialog { width: 100%; max-height: 92vh; border-radius: 17px; } .community-modal-header { padding: 14px 16px; } .community-modal-body { padding: 14px; } }
+
+    body.community-modal-open { overflow: hidden; }
+
+
+    /* =====================================================
+       TARJETAS AUDIOVISUALES
+       Mismo estilo visual que las tarjetas de videos.html
+    ===================================================== */
+
+    .videosGrid {
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .videoCard {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.38);
+      border-radius: 16px;
+      background: rgba(4,17,27,.28);
+      box-shadow: 0 14px 35px rgba(0,0,0,.22);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .videoCard:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,.70);
+    }
+
+    button.videoThumbnail {
+      display: block;
+      position: relative;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      background: transparent;
+      font: inherit;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    button.videoThumbnail:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .videoThumbnail img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      transition: transform .3s ease;
+    }
+
+    .videoCard:hover .videoThumbnail img {
+      transform: scale(1.03);
+    }
+
+    .videoOverlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+
+    .smallPlay {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.75);
+      background: rgba(4,17,27,.20);
+      color: #fff;
+      font-size: 21px;
+      padding-left: 4px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.30);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+    }
+
+    .videoCard:hover .smallPlay {
+      background: rgba(239,24,32,.88);
+    }
+
+    .videoInfo {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 15px 16px 17px;
+      background: rgba(4,17,27,.40);
+    }
+
+    .videoCategory {
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 8px;
+      padding: 5px 9px;
+      border-radius: 14px;
+      background: var(--red);
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .5px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.20);
+    }
+
+    .videoInfo h3 {
+      margin: 0 0 13px;
+      font-size: 19px;
+      line-height: 1.2;
+      text-shadow: 0 2px 9px rgba(0,0,0,.75);
+    }
+
+    /* Mismo acabado que el botón del hero (referencia: .heroButton.primary.btn-shine de inicio.html). */
+    .videoInfo .btn {
+      position: relative;
+      overflow: hidden;
+      margin-top: auto;
+      align-self: flex-start;
+      min-height: 42px;
+      padding: 0 19px;
+      border: 0;
+      border-radius: 21px;
+      background: var(--red);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .22);
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      font-family: inherit;
+    }
+
+    .videoInfo .btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -60%;
+      width: 35%;
+      height: 100%;
+      background: linear-gradient(115deg, transparent, rgba(255, 255, 255, .35), transparent);
+      transform: skewX(-20deg);
+      transition: left .6s ease;
+      pointer-events: none;
+    }
+
+    .videoInfo .btn:hover::after {
+      left: 130%;
+    }
+
+    .videoInfo .btn:hover {
+      transform: translateY(-2px);
+      background: #ff252d;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .45);
+    }
+
+    @media (max-width: 900px) {
+      .videosGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 600px) {
+      .videosGrid { grid-template-columns: 1fr; }
+      .videoInfo { background: rgba(4,17,27,.50); }
+      .videoInfo h3 { font-size: 17px; }
+    }
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+
+
+
+
+  <!-- =====================================================
+       CONTENIDO
+  ===================================================== -->
+
+  <main>
+
+
+    <!-- ===================================================
+         HERO
+    =================================================== -->
+
+    <section class="hero">
+
+      <div class="heroContent">
+
+        <h1 data-i18n="hero.title">
+
+          UNA COMUNIDAD
+          <br>
+
+          <span>QUE CRECE</span>
+
+        </h1>
+
+
+        <p class="heroText" data-i18n="hero.text">
+
+          Personas, historias, gastronomía,
+          viajes, proyectos y experiencias que
+          conectan diferentes culturas desde Suiza.
+
+        </p>
+
+
+        <div class="heroButtons">
+
+          <a
+            href="#podcasts"
+            class="btn red"
+          >
+            ESCUCHAR PODCAST
+          </a>
+
+
+          <a
+            href="https://www.youtube.com/@todosconhernan/videos"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn outline"
+          >
+            VER YOUTUBE
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="heroImage">
+
+        <img
+          src="img/LogoOficial.png"
+          alt="Hernán · Todos con Hernán"
+        >
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         �️ PODCASTS
+    =================================================== -->
+
+    <section class="section dark" id="podcasts">
+
+      <div class="sectionHeader">
+
+        <div class="sectionLabel">🎙️ PODCASTS</div>
+
+        <h2 class="sectionTitle">
+          TEMPORADAS DEL
+          <span>PODCAST</span>
+        </h2>
+
+        <p class="sectionDescription">
+          Todas las temporadas del podcast Todos con Hernán.
+          Cada tarjeta abre la lista de reproducción completa dentro de esta página.
+        </p>
+
+      </div>
+
+      <div class="videosGrid" id="communityPodcastsGrid"></div>
+
+    </section>
+
+  </main>
+
+
+
+<!-- =====================================================
+     PIE DE PÁGINA
+     ===================================================== -->
+
+<footer class="site-credits">
+
+  <p>
+    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+  </p>
+
+  <p class="developer-credit">
+    <a
+      href="https://www.instagram.com/techantoni/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: inherit; text-decoration: none;"
+    >
+      Yonathan Alvarado · Full Stack Web Developer · Spain
+    </a>
+  </p>
+
+</footer>
+
+<!-- =====================================================
+     REPRODUCTOR INTERNO · SIN SALIR DE LA WEB
+     ===================================================== -->
+
+<div class="community-modal" id="communityPlayerModal" aria-hidden="true">
+
+  <div
+    class="community-modal-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="communityPlayerTitle"
+  >
+
+    <div class="community-modal-header">
+
+      <h2 class="community-modal-title" id="communityPlayerTitle">Reproductor</h2>
+
+      <button
+        type="button"
+        class="community-modal-close"
+        id="communityPlayerClose"
+        aria-label="Cerrar reproductor"
+      >×</button>
+
+    </div>
+
+    <div class="community-modal-body">
+
+      <div class="community-modal-video">
+        <iframe
+          id="communityPlayerFrame"
+          src=""
+          title="Reproductor de vídeo"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <p class="community-modal-note">
+        Reproductor oficial de YouTube. Pulsa ▶ para iniciar la reproducción.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+  <script src="data/community-content.js"></script>
+  <script src="js/community-media.js"></script>
+  <script src="js/site-header.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/legal-footer.js"></script>
+  <script src="js/chat-widget.js"></script>
+
+
+</body>
+
+</html>

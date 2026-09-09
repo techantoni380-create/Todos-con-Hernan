@@ -1,0 +1,734 @@
+/* Shared shell for every page: navigation, language control and media. */
+/* Espacio reservado a las 7 banderas en las cabeceras secundarias
+   (.top-header/.top): 7×29px + 6 gaps × 4px + margen 14px = 241px.
+   En la cabecera principal (.topbar) no hace falta reserva: las banderas
+   ocupan su propia pista del grid (ver @media min-width: 761px). */
+:root { --site-header-height: 58px; --site-flags-space: 241px; }
+html, body { overflow-x: hidden; }
+img, video, iframe { max-width: 100%; }
+
+/* Smooth cross-page navigation in browsers that support View Transitions. */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) {
+  animation-duration: .18s;
+  animation-timing-function: ease-out;
+}
+
+.topbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  min-height: var(--site-header-height) !important;
+  height: var(--site-header-height) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  justify-content: stretch !important;
+  padding: 0 18px !important;
+  background: rgba(3, 15, 24, .78) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .16) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mainNav {
+  display: flex !important;
+  align-items: center !important;
+  /* safe center: centrado cuando cabe; si el idioma alarga los textos,
+     se alinea al inicio y se desplaza dentro de su propia pista del grid
+     sin recortar el primer enlace ni tocar las banderas. */
+  justify-content: safe center !important;
+  height: 58px !important;
+  gap: 28px !important;
+  width: 100%;
+  max-width: 1120px;
+  justify-self: center;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.mainNav a {
+  height: 58px !important;
+  min-height: 58px !important;
+  display: flex !important;
+  align-items: center !important;
+  font-size: 12px !important;
+  letter-spacing: .02em;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* Custom headers also receive the language selector from the shared script. */
+.top-header,
+.top {
+  position: relative;
+  padding-right: var(--site-flags-space) !important;
+  gap: 20px;
+  background: rgba(3, 15, 24, .78) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .16) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.top-header .languageSelector,
+.top .languageSelector {
+  right: 14px !important;
+  top: 0 !important;
+}
+
+.languageSelector {
+  position: absolute !important;
+  top: 0 !important;
+  right: 14px !important;
+  height: 58px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  visibility: visible !important;
+  opacity: 1;
+}
+
+@media (max-width: 1180px) and (min-width: 761px) {
+  .topbar { padding-left: 12px !important; padding-right: 12px !important; }
+  .mainNav { justify-content: flex-start !important; gap: 14px !important; }
+  .mainNav a { font-size: 10px !important; }
+  .languageSelector { right: 8px !important; gap: 4px !important; }
+  .languageFlag { width: 27px !important; height: 27px !important; flex-basis: 27px; }
+}
+
+.languageFlag {
+  width: 29px !important;
+  height: 29px !important;
+  flex: 0 0 29px;
+  display: inline-flex !important;
+  visibility: visible !important;
+}
+
+.languageFlag img { filter: none !important; }
+.languageSelector.is-translating { opacity: .7; pointer-events: none; }
+.mobileMenuToggle { display: none; }
+.grandTourMobileTools, .mobileTourClose { display: none; }
+
+/* Hernan follows the same compact header profile as Inicio. */
+body[data-header-compact] .topbar {
+  min-height: 58px !important;
+  height: 58px !important;
+  padding: 0 18px !important;
+}
+
+body[data-header-compact] .mainNav {
+  height: 58px !important;
+  gap: 28px !important;
+}
+
+body[data-header-compact] .mainNav a {
+  height: 58px !important;
+  min-height: 58px !important;
+  font-size: 12px !important;
+}
+
+body[data-header-compact] .languageSelector {
+  right: 14px !important;
+  height: 58px !important;
+  gap: 4px !important;
+}
+
+body[data-header-compact] .languageFlag {
+  width: 29px !important;
+  height: 29px !important;
+  flex-basis: 29px !important;
+}
+
+body[data-header-compact] .languageFlag img {
+  width: 17px !important;
+  height: 12px !important;
+}
+
+/* A consistent, subtle lift so editorial photography and video stand out. */
+body img { filter: brightness(1.09) contrast(1.035) saturate(1.07); }
+body video, body iframe[src*="youtube"], body iframe[src*="vimeo"] {
+  filter: brightness(1.09) contrast(1.035) saturate(1.06);
+}
+
+footer.site-credits, footer.site-footer {
+  width: 100% !important;
+  min-height: 76px !important;
+  margin: 0 !important;
+  padding: 16px 20px !important;
+  display: grid !important;
+  place-items: center !important;
+  gap: 4px !important;
+  text-align: center !important;
+  background: rgba(3, 16, 26, .82) !important;
+  border-top: 1px solid rgba(255, 255, 255, .13) !important;
+  color: rgba(255, 255, 255, .82) !important;
+}
+
+footer.site-credits > p, footer.site-footer > p { margin: 0 !important; line-height: 1.5; }
+
+@media (max-width: 900px) {
+  .topbar { height: auto !important; min-height: 58px !important; padding: 0 12px !important; }
+  .mainNav { width: 100%; max-width: none; overflow-x: auto; justify-content: flex-start !important; gap: 16px !important; }
+  .mainNav a { min-height: 58px; font-size: 10px !important; }
+  .languageSelector { right: 8px !important; gap: 4px !important; }
+  .languageFlag { width: 27px !important; height: 27px !important; flex-basis: 27px; }
+  .top-header, .top { padding-right: 165px !important; }
+}
+
+@media (max-width: 520px) {
+  .topbar { padding-right: 8px !important; padding-top: 40px !important; }
+  .languageSelector { left: 8px !important; right: auto !important; height: 40px !important; }
+  .mainNav a { min-height: 50px; }
+  .top-header, .top { padding-right: 8px !important; padding-top: 48px !important; }
+  .top-header .languageSelector, .top .languageSelector {
+    left: 8px !important;
+    right: auto !important;
+    height: 40px !important;
+  }
+}
+
+/* Solo existen en móvil: en escritorio no se muestran. */
+.mobileBrand, .mobileMenuBackdrop { display: none; }
+
+/* La identidad de marca acompaña también a la cabecera de escritorio,
+   reutilizando el mismo elemento que ya se usa en móvil. */
+@media (min-width: 761px) {
+  /* .topbar.topbar eleva la especificidad para las páginas con cabecera propia.
+     Tercera columna "auto" para las banderas: espacio reservado independiente
+     que se autoajusta a su ancho real, con el column-gap de 18px como
+     separación mínima. El menú (minmax(0, 1fr)) nunca puede invadirlo. */
+  body .topbar.topbar {
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
+    column-gap: 18px;
+  }
+
+  body .topbar > .languageSelector {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    height: var(--site-header-height) !important;
+    justify-self: end;
+    flex: 0 0 auto;
+  }
+
+  /* El menú se mantiene dentro de su columna aunque la página fije su ancho. */
+  body .topbar .mainNav {
+    width: 100% !important;
+    max-width: 1120px !important;
+    min-width: 0 !important;
+    justify-self: center !important;
+    overflow-x: auto;
+  }
+
+  body .topbar .mobileBrand {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 9px;
+    flex: 0 0 auto;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  body .topbar .mobileBrand img {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    object-fit: contain;
+    filter: none !important;
+  }
+
+  body .topbar .mobileBrand span {
+    font: 900 12px/1.1 Arial, Helvetica, sans-serif;
+    letter-spacing: .06em;
+    white-space: nowrap;
+  }
+}
+
+/* Mobile site navigation: cabecera limpia (marca + ☰) y panel lateral con los
+   enlaces y el selector de idiomas dentro. */
+@media (max-width: 760px) {
+  :root { --site-header-height: 58px; }
+
+  .topbar {
+    min-height: var(--site-header-height) !important;
+    height: var(--site-header-height) !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    justify-content: flex-start !important;
+  }
+
+  /* La cabecera crea su propio contexto de apilado (sticky + z-index), así que el
+     panel se eleva subiendo la cabecera por encima de mapa, carrusel, controles,
+     asistente y pie mientras el menú está abierto. */
+  body .topbar.mobile-menu-open {
+    z-index: 30000 !important;
+    isolation: isolate;
+  }
+
+  .mobileBrand {
+    position: absolute;
+    top: 0;
+    left: 12px;
+    z-index: 1003;
+    height: var(--site-header-height);
+    max-width: calc(100% - 74px);
+    display: inline-flex !important;
+    align-items: center;
+    gap: 9px;
+    color: #fff;
+    text-decoration: none;
+    overflow: hidden;
+  }
+  .mobileBrand img {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    object-fit: contain;
+    filter: none !important;
+  }
+  .mobileBrand span {
+    font: 900 12px/1.1 Arial, Helvetica, sans-serif;
+    letter-spacing: .06em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* fixed (no absolute): el fondo a pantalla completa no debe ensanchar el
+     documento en móvil. */
+  .mobileMenuBackdrop {
+    position: fixed !important;
+    top: var(--site-header-height) !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: calc(100dvh - var(--site-header-height)) !important;
+    z-index: 1001;
+    display: block !important;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(2, 10, 17, .55);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    transition: opacity .25s ease;
+  }
+  .topbar.mobile-menu-open .mobileMenuBackdrop { opacity: 1; pointer-events: auto; }
+
+  /* Especificidad alta: algunas páginas fijan su propio tamaño de .mainNav. */
+  body .topbar .mainNav {
+    /* fixed (no absolute) para que el panel cerrado, desplazado fuera con
+       translateX(100%), no ensanche el documento ni cause scroll horizontal. */
+    position: fixed !important;
+    top: var(--site-header-height) !important;
+    right: 0 !important;
+    bottom: auto !important;
+    left: auto !important;
+    z-index: 1002 !important;
+    width: min(310px, 86vw) !important;
+    height: calc(100dvh - var(--site-header-height)) !important;
+    min-height: 0 !important;
+    max-width: none !important;
+    max-height: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    padding: 14px 16px 26px !important;
+    background: rgba(4, 17, 27, .86) !important;
+    border-left: 1px solid rgba(255, 255, 255, .18);
+    border-bottom: 0;
+    box-shadow: -16px 0 38px rgba(0, 0, 0, .45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform .28s cubic-bezier(.22, 1, .36, 1), visibility .28s;
+  }
+
+  body .topbar.mobile-menu-open .mainNav {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  body .topbar .mainNav a {
+    width: 100%;
+    min-height: 46px !important;
+    height: auto !important;
+    justify-content: flex-start !important;
+    padding: 0 6px !important;
+    font-size: 13px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, .10);
+  }
+  body .topbar .mainNav a.active { color: #fff !important; }
+  body .topbar .mainNav a.active::after { display: none; }
+
+  /* Sección IDIOMA dentro del panel: el selector es el mismo de escritorio. */
+  .mobileLanguageGroup {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, .18);
+  }
+  .mobileLanguageTitle {
+    display: block;
+    margin-bottom: 12px;
+    color: #ffd000;
+    font: 900 11px/1 Arial, Helvetica, sans-serif;
+    letter-spacing: .12em;
+  }
+  body .topbar .mainNav .languageSelector {
+    position: static !important;
+    right: auto !important;
+    left: auto !important;
+    top: auto !important;
+    height: auto !important;
+    transform: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+  body .topbar .mainNav .languageFlag {
+    width: 44px !important;
+    height: 44px !important;
+    flex-basis: 44px;
+  }
+  body .topbar .mainNav .languageFlag img { width: 26px; height: 19px; }
+
+  /* Fuera del panel el selector no ocupa sitio en la cabecera móvil. */
+  .languageSelector {
+    right: 8px !important;
+    left: auto !important;
+    height: var(--site-header-height) !important;
+    gap: 3px !important;
+  }
+  .languageFlag { width: 25px !important; height: 25px !important; flex-basis: 25px; }
+  .languageFlag img { width: 16px; height: 12px; }
+
+  body.mobile-menu-open { overflow: hidden; }
+
+  /* El asistente flotante no se superpone al panel mientras está abierto. */
+  body.mobile-menu-open .chatWidgetButton { opacity: 0; pointer-events: none; }
+
+  .mobileMenuToggle {
+    position: absolute;
+    top: 11px;
+    right: 12px;
+    z-index: 1004;
+    width: 38px;
+    height: 38px;
+    display: inline-grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, .34);
+    border-radius: 10px;
+    background: rgba(4, 17, 27, .85);
+    color: #fff;
+    font-size: 21px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .mobileMenuToggle[aria-expanded="true"] { background: #ef1820; border-color: #ef1820; }
+
+  main, .page-header, .hero, section { max-width: 100%; }
+  .hero h1, h1 { overflow-wrap: anywhere; }
+  footer.site-credits, footer.site-footer { padding: 15px 12px !important; }
+
+  /* Páginas sin menú principal: el selector sigue en su cabecera propia. */
+  .top-header .languageSelector,
+  .top .languageSelector { position: absolute !important; }
+}
+
+@media (max-width: 380px) {
+  .mobileBrand span { font-size: 11px; }
+  body .topbar .mainNav .languageFlag { width: 42px !important; height: 42px !important; flex-basis: 42px; }
+}
+
+@media (max-width: 360px) {
+  .languageFlag { width: 23px !important; height: 23px !important; flex-basis: 23px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mainNav, .mobileMenuBackdrop { transition: none !important; }
+}
+
+/* Grand Tour mobile layout: the map remains central and its two desktop side
+   panels become full-height drawers that can be opened on demand. */
+@media (max-width: 760px) {
+  /* El pie deja de ser una barra fija: sus enlaces legales no caben en la altura
+     reservada y se pintaban encima del mapa y del carrusel. */
+  body:has(#map) { padding-bottom: 0 !important; }
+
+  /* La página del mapa puede desplazarse para llegar al pie. */
+  html:has(#map),
+  body:has(#map) {
+    height: auto !important;
+    min-height: 100dvh !important;
+    overflow-y: auto !important;
+  }
+
+  /* El panel de ruta que script.js añade al final del body no debe alargar la
+     página: solo aparece cuando la navegación lo activa (clase .visible). */
+  body:has(#map) #routePanel:not(.visible) { display: none; }
+  body:has(#map) #routePanel.visible {
+    position: fixed;
+    z-index: 3000;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    max-height: 46dvh;
+    overflow-y: auto;
+  }
+
+  body:has(#map) footer.site-credits {
+    position: static !important;
+    z-index: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-top: 20px !important;
+    padding: 18px 14px 92px !important;
+    gap: 8px !important;
+    grid-template-rows: none !important;
+    box-shadow: none !important;
+  }
+
+  body:has(#map) .layout {
+    height: calc(100dvh - var(--site-header-height) - 78px) !important;
+    min-height: 360px;
+  }
+  body:has(#map) .mapPanel {
+    position: relative !important;
+    min-height: 0 !important;
+    height: 100% !important;
+  }
+  body:has(#map) #map {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 360px !important;
+  }
+  body:has(#map) .mapBadge,
+  body:has(#map) .mapLegend { display: none !important; }
+  body:has(#map) .carouselWrap {
+    bottom: 6px !important;
+    height: 160px !important;
+    padding: 14px 38px 8px !important;
+  }
+  body:has(#map) .carousel {
+    height: 120px !important;
+  }
+  body:has(#map) .thumb { flex-basis: 104px; }
+  body:has(#map) .carouselArrow { width: 34px; height: 34px; font-size: 26px; }
+
+  .grandTourMobileTools {
+    position: absolute;
+    z-index: 1100;
+    top: 10px;
+    left: 10px;
+    display: grid;
+    gap: 4px;
+  }
+  .grandTourMobileTools button {
+    min-height: 31px;
+    padding: 0 8px;
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 8px;
+    background: rgba(4,17,27,.92);
+    box-shadow: 0 4px 14px rgba(0,0,0,.28);
+    color: #fff;
+    font: 800 9px/1 Arial, sans-serif;
+    cursor: pointer;
+  }
+  body:has(#map) .leaflet-control-zoom,
+  body:has(#map) .leaflet-control-layers {
+    display: block !important;
+    z-index: 1200 !important;
+  }
+  body:has(#map) .leaflet-control-zoom a,
+  body:has(#map) .leaflet-control-layers {
+    touch-action: manipulation;
+  }
+
+  body:has(#map) .sidePanel,
+  body:has(#map) .infoPanel {
+    position: fixed !important;
+    z-index: 3200 !important;
+    top: var(--site-header-height) !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    border: 0 !important;
+    background: #061825 !important;
+  }
+  body:has(#map) .sidePanel.mobile-tour-panel-open,
+  body:has(#map) .infoPanel.mobile-tour-panel-open { display: block !important; }
+  body:has(#map) .sideScroll,
+  body:has(#map) .infoScroll { height: 100% !important; padding: 62px 16px 24px !important; }
+  .mobileTourClose {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    top: 12px;
+    right: 14px;
+    min-width: 42px;
+    height: 38px;
+    border: 1px solid rgba(255,255,255,.34);
+    border-radius: 9px;
+    background: #ef1820;
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+}
+
+/* Video modal for the existing #spotVideoFrame system (#videoModal / openSpotVideo / closeSpotVideo). */
+#videoModal {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+#videoModal[hidden] { display: none; }
+.videoModalBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 10, 17, .86);
+}
+.videoModalCard {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  overflow: auto;
+  background: #071a28;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .55);
+}
+.videoFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 12px;
+  background: #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#spotVideoFrame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  max-width: none;
+}
+
+/* =========================================================
+   AJUSTE FINO PARA MÓVIL (320–430 px)
+   Solo afecta a pantallas pequeñas: el diseño de escritorio
+   permanece exactamente igual. El Grand Tour (#map) queda fuera.
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  /* Las rejillas no pueden estirarse por el contenido más ancho
+     (tablas, textos largos): así nada queda cortado fuera de pantalla. */
+  body:not(:has(#map)) .cards,
+  body:not(:has(#map)) .steps,
+  body:not(:has(#map)) .grid,
+  body:not(:has(#map)) .videosGrid,
+  body:not(:has(#map)) .projectsGrid,
+  body:not(:has(#map)) .jobsGrid,
+  body:not(:has(#map)) .adviceGrid,
+  body:not(:has(#map)) .team-cards {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body:not(:has(#map)) .cards > *,
+  body:not(:has(#map)) .steps > *,
+  body:not(:has(#map)) .grid > *,
+  body:not(:has(#map)) .videosGrid > *,
+  body:not(:has(#map)) .projectsGrid > *,
+  body:not(:has(#map)) .jobsGrid > *,
+  body:not(:has(#map)) .adviceGrid > *,
+  body:not(:has(#map)) .team-cards > *,
+  body:not(:has(#map)) .heroButtons > *,
+  body:not(:has(#map)) .social-icons > * {
+    min-width: 0;
+  }
+
+  /* Títulos y textos largos se ajustan al ancho disponible. */
+  body:not(:has(#map)) h1,
+  body:not(:has(#map)) h2,
+  body:not(:has(#map)) h3,
+  body:not(:has(#map)) .sectionTitle,
+  body:not(:has(#map)) .page-header h1 {
+    overflow-wrap: anywhere !important;
+    hyphens: auto;
+  }
+
+  /* Las tablas anchas siguen completas: se desplazan dentro de su caja. */
+  body:not(:has(#map)) .table-wrap,
+  body:not(:has(#map)) .table-wrapper {
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  /* Botones cómodos para el dedo sin cambiar su aspecto. */
+  body:not(:has(#map)) main .btn,
+  body:not(:has(#map)) main .heroButton,
+  body:not(:has(#map)) main button,
+  body:not(:has(#map)) .back-button {
+    min-height: 44px !important;
+  }
+
+  /* Formularios a ancho completo y sin zoom automático al enfocar. */
+  body:not(:has(#map)) input:not([type="checkbox"]):not([type="radio"]),
+  body:not(:has(#map)) select,
+  body:not(:has(#map)) textarea {
+    max-width: 100% !important;
+    font-size: 16px !important;
+  }
+
+  /* El pie se ve entero y no queda tapado por el asistente flotante. */
+  body:not(:has(#map)) footer.site-credits,
+  body:not(:has(#map)) footer.site-footer {
+    padding-bottom: 86px !important;
+  }
+
+  .legalFooterCookieSettings {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center;
+  }
+
+}
+
+@media (max-width: 430px) {
+
+  /* Márgenes laterales homogéneos en pantallas pequeñas. */
+  body:not(:has(#map)) main,
+  body:not(:has(#map)) main.content {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  body:not(:has(#map)) .section,
+  body:not(:has(#map)) .hero {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+}
+

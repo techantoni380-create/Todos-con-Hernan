@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta name="view-transition" content="same-origin">
+  <style>html { background: #071a28; }</style>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Vídeos de Todos con Hernán"
+    >
+
+    <title>Vídeos · Todos con Hernán</title>
+
+    <link rel="stylesheet" href="css/language-selector.css">
+
+
+    <style>
+
+        /* =====================================================
+           VARIABLES
+           ===================================================== */
+
+        :root {
+
+            --bg: #04111b;
+            --bg2: #061925;
+            --panel: #071b29;
+            --panel2: #0a2232;
+
+            --red: #ef1820;
+            --red-dark: #bd1017;
+
+            --gold: #ffd000;
+
+            --green: #29e879;
+
+            --white: #f5f8fa;
+            --text: #dce7ed;
+            --muted: #9fb3bf;
+
+            --line: #244b62;
+
+        }
+
+
+        /* =====================================================
+           RESET
+           ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            margin: 0;
+            padding: 0;
+
+            min-height: 100vh;
+
+            background: var(--bg);
+
+            color: var(--white);
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            overflow-x: hidden;
+
+        }
+
+
+        a {
+            color: inherit;
+        }
+
+
+        /* Esta página no carga css/style.css: se replican aquí las mismas
+           propiedades base de los enlaces de cabecera que usa el resto de
+           la web, para que el header global (js/site-header.js) se vea
+           idéntico al de index.html. */
+        .mainNav a {
+            color: #dbe4ea;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .mainNav a:hover {
+            color: #ffffff;
+        }
+
+        .mainNav a.active {
+            color: #fff;
+            font-weight: 900;
+            border-bottom: 4px solid var(--red);
+        }
+
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+
+        /* =====================================================
+           FONDO CINEMATOGRÁFICO · GRAND TOUR
+           ===================================================== */
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: -2;
+            transform: scale(1.04);
+        }
+
+        body::before {
+            background-image:
+                linear-gradient(180deg, rgba(2,10,17,.18), rgba(4,17,27,.28)),
+                url("img/Aigle\ suiza.jpg");
+            animation: swissA 24s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            background-image:
+                linear-gradient(180deg, rgba(2,10,17,.16), rgba(4,17,27,.25)),
+                url("img/Grindelwald\ Suiza.jpg");
+            opacity: 0;
+            animation: swissB 24s ease-in-out infinite alternate;
+        }
+
+        @keyframes swissA {
+            from { transform: scale(1.04) translate3d(0,0,0); }
+            to { transform: scale(1.10) translate3d(-1%,-1%,0); }
+        }
+
+        @keyframes swissB {
+            0%,45% { opacity: 0; transform: scale(1.06) translate3d(1%,1%,0); }
+            60%,100% { opacity: 1; transform: scale(1.11) translate3d(-1%,-1%,0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body::before, body::after { animation: none; }
+        }
+
+
+        /* Página de vídeos: entrada directa al contenido */
+        body.video-page .section {
+            padding-top: 55px;
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .hero {
+
+            min-height: 500px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                80px 20px 70px;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 35%,
+                    #173c50 0,
+                    #071a28 38%,
+                    #04111b 80%
+                );
+
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 700px;
+
+            height: 700px;
+
+            left: 50%;
+
+            top: -320px;
+
+            transform:
+                translateX(-50%);
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    #ef18201c,
+                    transparent 68%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .heroContent {
+
+            max-width: 900px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .label {
+
+            display: inline-block;
+
+            padding:
+                8px 15px;
+
+            margin-bottom: 20px;
+
+            border:
+                1px solid #35576c;
+
+            border-radius: 20px;
+
+            background:
+                #071b29cc;
+
+            color: var(--gold);
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .hero h1 {
+
+            margin: 0;
+
+            font-size:
+                clamp(52px, 7vw, 90px);
+
+            line-height: .9;
+
+            letter-spacing: -4px;
+
+            font-weight: 950;
+
+        }
+
+
+        .hero h1 span {
+
+            color: var(--red);
+
+        }
+
+
+        .hero p {
+
+            max-width: 700px;
+
+            margin:
+                28px auto 0;
+
+            color: var(--text);
+
+            font-size:
+                clamp(17px, 2vw, 21px);
+
+            line-height: 1.6;
+
+        }
+
+
+        .heroButtons {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 30px;
+
+        }
+
+
+        /* =====================================================
+           BOTONES
+           ===================================================== */
+
+        .btn {
+
+            min-height:
+                48px;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                0 24px;
+
+            border-radius:
+                26px;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                900;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+
+        }
+
+
+        .btn:hover {
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .btn.red {
+
+            background:
+                var(--red);
+
+            color:
+                #ffffff;
+
+            box-shadow:
+                0 10px 25px #0007;
+
+        }
+
+
+        .btn.outline {
+
+            border:
+                1px solid #416579;
+
+            background:
+                transparent;
+
+            color:
+                #ffffff;
+
+        }
+
+
+        /* =====================================================
+           SECCIONES
+           ===================================================== */
+
+        .section {
+
+            padding:
+                85px 7vw;
+
+            background:
+                rgba(6, 25, 37, .30);
+
+        }
+
+
+        .section.dark {
+
+            background:
+                rgba(4, 17, 27, .24);
+
+        }
+
+
+        .sectionHeader {
+
+            max-width:
+                850px;
+
+            margin:
+                0 auto 40px;
+
+            text-align:
+                center;
+
+        }
+
+
+        .sectionLabel {
+
+            color:
+                var(--gold);
+
+            font-size:
+                13px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                1px;
+
+            margin-bottom:
+                12px;
+
+        }
+
+
+        .sectionHeader h2 {
+
+            margin:
+                0;
+
+            font-size:
+                clamp(36px, 5vw, 58px);
+
+            line-height:
+                1;
+
+            font-weight:
+                950;
+
+        }
+
+
+        .sectionHeader h2 span {
+
+            color:
+                var(--red);
+
+        }
+
+
+        .sectionHeader p {
+
+            max-width:
+                720px;
+
+            margin:
+                18px auto 0;
+
+            color:
+                var(--muted);
+
+            font-size:
+                17px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        .sectionHeader p.videosIntroNote {
+
+            display: inline-block;
+
+            color: #ffffff;
+
+            background: rgba(255, 255, 255, .08);
+
+            border: 1px solid rgba(255, 255, 255, .16);
+
+            border-radius: 14px;
+
+            padding: 10px 20px;
+
+            backdrop-filter: blur(4px);
+
+            -webkit-backdrop-filter: blur(4px);
+
+        }
+
+
+        /* =====================================================
+           VIDEO DESTACADO
+           ===================================================== */
+
+        .featuredVideo {
+
+            max-width:
+                1100px;
+
+            margin:
+                auto;
+
+            padding:
+                20px;
+
+            border:
+                1px solid #31556c;
+
+            border-radius:
+                22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0a2232,
+                    #061722
+                );
+
+            box-shadow:
+                0 25px 60px #0007;
+
+        }
+
+
+        .featuredThumbnail {
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            border-radius:
+                16px;
+
+            background:
+                #000;
+
+        }
+
+
+        .featuredThumbnail img {
+
+            width:
+                100%;
+
+            aspect-ratio:
+                16 / 9;
+
+            object-fit:
+                cover;
+
+        }
+
+
+        .featuredOverlay {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                linear-gradient(
+                    to top,
+                    #0009,
+                    transparent 60%
+                );
+
+        }
+
+
+        .playButton {
+
+            width:
+                95px;
+
+            height:
+                95px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--red);
+
+            color:
+                #fff;
+
+            font-size:
+                38px;
+
+            padding-left:
+                7px;
+
+            box-shadow:
+                0 12px 35px #0009;
+
+            transition:
+                transform .2s ease;
+
+        }
+
+
+        .featuredThumbnail:hover .playButton {
+
+            transform:
+                scale(1.1);
+
+        }
+
+
+        .featuredInfo {
+
+            padding:
+                25px 5px 5px;
+
+        }
+
+
+        .videoCategory {
+
+            display:
+                inline-block;
+
+            margin-bottom:
+                10px;
+
+            padding:
+                6px 11px;
+
+            border-radius:
+                14px;
+
+            background:
+                var(--red);
+
+            color:
+                #ffffff;
+
+            font-size:
+                10px;
+
+            font-weight:
+                900;
+
+            letter-spacing:
+                .5px;
+
+        }
+
+
+        .featuredInfo h3 {
+
+            margin:
+                0 0 12px;
+
+            font-size:
+                clamp(25px, 3vw, 36px);
+
+        }
+
+
+        .featuredInfo p {
+
+            max-width:
+                800px;
+
+            margin:
+                0 0 22px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                16px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           GRID DE VÍDEOS
+           ===================================================== */
+
+        .videosGrid {
+
+            max-width:
+                1250px;
+
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap:
+                22px;
+
+        }
+
+
+        .videoCard {
+
+            overflow:
+                hidden;
+
+            border:
+                1px solid var(--line);
+
+            border-radius:
+                18px;
+
+            background:
+                #071b29;
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease;
+
+        }
+
+
+        .videoCard:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                var(--red);
+
+        }
+
+
+        .videoThumbnail {
+
+            display:
+                block;
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            background:
+                #000;
+
+        }
+
+
+        .videoThumbnail img {
+
+            width:
+                100%;
+
+            aspect-ratio:
+                16 / 9;
+
+            object-fit:
+                cover;
+
+            transition:
+                transform .3s ease;
+
+        }
+
+
+        .videoCard:hover .videoThumbnail img {
+
+            transform:
+                scale(1.03);
+
+        }
+
+
+        .videoOverlay {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                #0002;
+
+        }
+
+
+        .smallPlay {
+
+            width:
+                65px;
+
+            height:
+                65px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--red);
+
+            color:
+                #fff;
+
+            font-size:
+                25px;
+
+            padding-left:
+                4px;
+
+            box-shadow:
+                0 8px 25px #0008;
+
+        }
+
+
+        .videoInfo {
+
+            padding:
+                22px;
+
+        }
+
+
+        .videoInfo h3 {
+
+            margin:
+                0 0 10px;
+
+            font-size:
+                22px;
+
+            line-height:
+                1.2;
+
+        }
+
+
+        .videoInfo p {
+
+            margin:
+                0 0 18px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                14px;
+
+            line-height:
+                1.55;
+
+        }
+
+
+        /* =====================================================
+           CANAL YOUTUBE
+           ===================================================== */
+
+        .youtubeSection {
+
+            max-width:
+                1050px;
+
+            margin:
+                auto;
+
+            padding:
+                45px;
+
+            text-align:
+                center;
+
+            border:
+                1px solid #5b4650;
+
+            border-radius:
+                22px;
+
+            background:
+
+                radial-gradient(
+                    circle at 50% 0%,
+                    #ef18201c,
+                    transparent 60%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #111b26,
+                    #071a28
+                );
+
+        }
+
+
+        .youtubeIcon {
+
+            font-size:
+                55px;
+
+            margin-bottom:
+                15px;
+
+        }
+
+
+        .youtubeSection h2 {
+
+            margin:
+                0 0 12px;
+
+            font-size:
+                clamp(30px, 4vw, 45px);
+
+            font-weight:
+                950;
+
+        }
+
+
+        .youtubeSection h2 span {
+
+            color:
+                var(--red);
+
+        }
+
+
+        .youtubeSection p {
+
+            max-width:
+                700px;
+
+            margin:
+                0 auto 25px;
+
+            color:
+                var(--muted);
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        footer {
+
+            min-height:
+                70px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                20px;
+
+            background:
+                #020a11;
+
+            border-top:
+                1px solid #183347;
+
+            color:
+                #8fa4b0;
+
+            font-size:
+                12px;
+
+            text-align:
+                center;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 1000px) {
+
+        }
+
+
+        @media (max-width: 750px) {
+
+
+            .hero {
+
+                padding:
+                    55px 20px;
+
+            }
+
+
+            .section {
+
+                padding:
+                    60px 20px;
+
+            }
+
+
+            .videosGrid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .featuredVideo {
+
+                padding:
+                    10px;
+
+            }
+
+
+            .featuredInfo {
+
+                padding:
+                    20px 5px 5px;
+
+            }
+
+
+            .youtubeSection {
+
+                padding:
+                    30px 20px;
+
+            }
+
+        }
+
+    
+
+/* =========================================================
+   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
+   ========================================================= */
+
+footer.site-credits {
+  width: 100% !important;
+  min-height: 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto !important;
+
+  align-items: center !important;
+  justify-items: center !important;
+
+  gap: 8px !important;
+
+  margin: 0 !important;
+  padding: 22px 15px !important;
+
+  background: #020a11 !important;
+  border-top: 1px solid #183347 !important;
+
+  color: #9db0bc !important;
+  font-size: 13px !important;
+
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+footer.site-credits > p {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+  line-height: 1.5 !important;
+
+  white-space: normal !important;
+}
+
+footer.site-credits > p.developer-credit {
+  margin: 0 !important;
+
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   FOOTER · MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  footer.site-credits {
+    padding: 18px 10px !important;
+    gap: 6px !important;
+  }
+
+  footer.site-credits > p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+}
+
+
+        /* =====================================================
+           AJUSTE FINAL · FONDO SUIZA MÁS LIMPIO Y NÍTIDO
+           ===================================================== */
+
+        body {
+            background: #06131d;
+        }
+
+        body::before,
+        body::after {
+            transform: scale(1.015);
+            filter: saturate(1.06) contrast(1.03);
+        }
+
+        body::before {
+            background-image:
+                linear-gradient(180deg, rgba(2,10,17,.035), rgba(4,17,27,.10)),
+                url("img/Aigle\ suiza.jpg");
+            animation: swissAclean 28s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            background-image:
+                linear-gradient(180deg, rgba(2,10,17,.035), rgba(4,17,27,.10)),
+                url("img/Grindelwald\ Suiza.jpg");
+            animation: swissBclean 28s ease-in-out infinite alternate;
+        }
+
+        @keyframes swissAclean {
+            from { transform: scale(1.015) translate3d(0,0,0); }
+            to   { transform: scale(1.045) translate3d(-.5%,-.4%,0); }
+        }
+
+        @keyframes swissBclean {
+            0%,45% { opacity: 0; transform: scale(1.02) translate3d(.5%,.4%,0); }
+            60%,100% { opacity: 1; transform: scale(1.045) translate3d(-.5%,-.4%,0); }
+        }
+
+        /* Las secciones dejan ver el paisaje */
+        body.video-page .section,
+        body.video-page .section.dark {
+            background: rgba(4,17,27,.12);
+            backdrop-filter: none;
+        }
+
+        .sectionHeader p {
+            color: #edf5f8;
+            text-shadow: 0 2px 12px rgba(0,0,0,.75);
+        }
+
+        .sectionLabel {
+            text-shadow: 0 2px 10px rgba(0,0,0,.8);
+        }
+
+        .sectionHeader h2 {
+            text-shadow: 0 3px 18px rgba(0,0,0,.85);
+        }
+
+        /* Tarjetas: imagen protagonista, panel inferior ligero */
+        .videoCard {
+            background: rgba(4,17,27,.68);
+            border-color: rgba(255,255,255,.20);
+            box-shadow: 0 18px 45px rgba(0,0,0,.32);
+        }
+
+        .videoThumbnail {
+            background: transparent;
+        }
+
+        .videoOverlay {
+            background: rgba(0,0,0,.06);
+        }
+
+        .smallPlay {
+            width: 58px;
+            height: 58px;
+            font-size: 22px;
+            background: var(--red);
+            box-shadow: 0 7px 22px rgba(0,0,0,.45);
+        }
+
+        .videoInfo {
+            padding: 18px 20px 20px;
+            background: rgba(4,17,27,.76);
+        }
+
+        .videoInfo h3 {
+            text-shadow: 0 2px 10px rgba(0,0,0,.7);
+        }
+
+        .videoInfo p {
+            color: #c7d7de;
+        }
+
+        .videoInfo .btn {
+            min-height: 42px;
+            padding: 0 18px;
+            background: rgba(4,17,27,.58);
+            border-color: rgba(255,255,255,.28);
+            box-shadow: 0 5px 16px rgba(0,0,0,.22);
+        }
+
+        .videoInfo .btn:hover {
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        /* Bloque del canal: también deja respirar al paisaje */
+        .youtubeSection {
+            background: rgba(4,17,27,.70);
+            border-color: rgba(255,255,255,.20);
+            box-shadow: 0 20px 55px rgba(0,0,0,.30);
+        }
+
+        .youtubeSection p {
+            color: #d3e0e5;
+        }
+
+        @media (max-width: 750px) {
+            .videoCard {
+                background: rgba(4,17,27,.74);
+            }
+
+            .videoInfo {
+                background: rgba(4,17,27,.82);
+            }
+        }
+
+
+
+/* =========================================================
+   PROPUESTA FINAL · VÍDEOS GRAND TOUR
+   Fondo protagonista + tarjetas minimalistas
+   ========================================================= */
+
+html, body {
+    min-height: 100%;
+}
+
+body.video-page {
+    background: #06131d !important;
+}
+
+/* Fondo nítido y con movimiento suave */
+body.video-page::before,
+body.video-page::after {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    transform: scale(1.015) !important;
+    filter: saturate(1.08) contrast(1.04) !important;
+}
+
+body.video-page::before {
+    background-image:
+        linear-gradient(180deg, rgba(2,10,17,.05), rgba(4,17,27,.10)),
+        url("img/Aigle\ suiza.jpg") !important;
+    animation: swissFinalA 30s ease-in-out infinite alternate !important;
+    opacity: 1 !important;
+}
+
+body.video-page::after {
+    background-image:
+        linear-gradient(180deg, rgba(2,10,17,.04), rgba(4,17,27,.08)),
+        url("img/Grindelwald\ Suiza.jpg") !important;
+    animation: swissFinalB 30s ease-in-out infinite alternate !important;
+}
+
+@keyframes swissFinalA {
+    from { transform: scale(1.015) translate3d(0,0,0); }
+    to   { transform: scale(1.055) translate3d(-.7%,-.5%,0); }
+}
+
+@keyframes swissFinalB {
+    0%, 42% { opacity: 0; transform: scale(1.02) translate3d(.5%,.3%,0); }
+    58%, 100% { opacity: .88; transform: scale(1.055) translate3d(-.5%,-.4%,0); }
+}
+
+/* La página deja respirar al paisaje */
+body.video-page .section,
+body.video-page .section.dark {
+    background: transparent !important;
+    backdrop-filter: none !important;
+}
+
+/* Encabezado */
+body.video-page .sectionHeader {
+    margin-bottom: 34px;
+}
+
+body.video-page .sectionLabel {
+    text-shadow: 0 2px 10px rgba(0,0,0,.65);
+}
+
+body.video-page .sectionHeader h2 {
+    text-shadow: 0 3px 18px rgba(0,0,0,.65);
+}
+
+body.video-page .sectionHeader p {
+    color: #f1f7fa !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,.65);
+}
+
+/* Tres tarjetas en escritorio */
+body.video-page .videosGrid {
+    max-width: 1250px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+/* Tarjeta casi transparente: la imagen manda */
+body.video-page .videoCard {
+    background: rgba(4,17,27,.28) !important;
+    border: 1px solid rgba(255,255,255,.38) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 14px 35px rgba(0,0,0,.22) !important;
+    backdrop-filter: blur(2px);
+}
+
+body.video-page .videoCard:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,255,255,.70) !important;
+}
+
+/* Mantener thumbnails originales del canal */
+body.video-page .videoThumbnail img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+body.video-page .videoOverlay {
+    background: transparent !important;
+}
+
+/* Play pequeño y limpio, sin tapar la miniatura */
+body.video-page .smallPlay {
+    width: 56px !important;
+    height: 56px !important;
+    border: 1px solid rgba(255,255,255,.75);
+    background: rgba(4,17,27,.20) !important;
+    box-shadow: 0 5px 18px rgba(0,0,0,.30) !important;
+    backdrop-filter: blur(3px);
+    font-size: 21px !important;
+}
+
+body.video-page .videoCard:hover .smallPlay {
+    background: rgba(239,24,32,.88) !important;
+}
+
+body.video-page button.videoThumbnail {
+    display: block;
+    width: 100%;
+    padding: 0;
+    cursor: pointer;
+}
+
+body.video-page button.videoThumbnail:focus-visible {
+    outline: 3px solid #ffd000;
+    outline-offset: 3px;
+}
+
+/* Panel inferior mucho más ligero */
+body.video-page .videoInfo {
+    padding: 15px 16px 17px !important;
+    background: rgba(4,17,27,.40) !important;
+}
+
+body.video-page .videoInfo h3 {
+    margin-bottom: 8px;
+    font-size: 19px;
+    text-shadow: 0 2px 9px rgba(0,0,0,.75);
+}
+
+body.video-page .videoInfo p {
+    margin-bottom: 13px;
+    color: #e2edf1 !important;
+    font-size: 13px;
+    text-shadow: 0 2px 8px rgba(0,0,0,.60);
+}
+
+/* Etiqueta compacta */
+body.video-page .videoCategory {
+    padding: 5px 9px;
+    margin-bottom: 8px;
+    font-size: 9px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.20);
+}
+
+/* Botón minimalista */
+body.video-page .videoInfo .btn {
+    min-height: 38px !important;
+    padding: 0 15px !important;
+    border: 1px solid rgba(255,255,255,.60) !important;
+    border-radius: 20px !important;
+    background: rgba(4,17,27,.18) !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    font-size: 11px;
+}
+
+body.video-page .videoInfo .btn:hover {
+    background: rgba(239,24,32,.88) !important;
+    border-color: var(--red) !important;
+}
+
+/* Bloque YouTube también minimalista */
+body.video-page .youtubeSection {
+    background: rgba(4,17,27,.28) !important;
+    border: 1px solid rgba(255,255,255,.32) !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,.20) !important;
+    backdrop-filter: blur(3px);
+}
+
+body.video-page .youtubeSection p {
+    color: #eef6f8 !important;
+    text-shadow: 0 2px 9px rgba(0,0,0,.60);
+}
+
+body.video-page .youtubeSection .btn.red {
+    background: rgba(239,24,32,.82) !important;
+    box-shadow: none !important;
+}
+
+/* En pantallas pequeñas volvemos a una columna */
+@media (max-width: 900px) {
+    body.video-page .videosGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    body.video-page .videosGrid {
+        grid-template-columns: 1fr;
+    }
+
+    body.video-page .videoInfo {
+        background: rgba(4,17,27,.50) !important;
+    }
+
+    body.video-page .section {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+</style>
+
+</style>
+
+<style id="youtube-compact-update">
+/* BLOQUE YOUTUBE MÁS COMPACTO */
+body.video-page .youtubeSection {
+    max-width: 820px !important;
+    margin: 0 auto !important;
+    padding: 26px 32px !important;
+    border-radius: 18px !important;
+}
+
+body.video-page .youtubeIcon {
+    font-size: 38px !important;
+    margin-bottom: 7px !important;
+}
+
+body.video-page .youtubeSection .sectionLabel {
+    margin-bottom: 7px !important;
+    font-size: 11px !important;
+}
+
+body.video-page .youtubeSection h2 {
+    margin: 0 0 9px !important;
+    font-size: clamp(25px, 3vw, 38px) !important;
+}
+
+body.video-page .youtubeSection p {
+    max-width: 650px !important;
+    margin: 0 auto 16px !important;
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+}
+
+body.video-page .youtubeSection .btn.red {
+    min-height: 40px !important;
+    padding: 0 20px !important;
+    font-size: 12px !important;
+}
+
+@media (max-width: 600px) {
+    body.video-page .youtubeSection {
+        max-width: calc(100% - 20px) !important;
+        padding: 22px 18px !important;
+    }
+}
+</style>
+
+<style id="youtube-channel-link">
+body.video-page .youtubeSection .youtubeChannelLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color .2s ease, transform .2s ease;
+    color: #ffffff !important;
+    font-size: clamp(24px, 3.4vw, 34px) !important;
+    font-weight: 900 !important;
+    letter-spacing: .5px;
+}
+body.video-page .youtubeSection .youtubeChannelLink:hover,
+body.video-page .youtubeSection .youtubeChannelLink:focus-visible {
+    color: #ff2b32 !important;
+    transform: translateY(-1px);
+}
+body.video-page .youtubeSection .youtubeChannelIcon {
+    width: 36px;
+    height: 36px;
+    color: #ef1820;
+    flex-shrink: 0;
+}
+body.video-page .youtubeSection h2 .grandTourOutline {
+    -webkit-text-stroke: 1px #ffffff;
+    text-stroke: 1px #ffffff;
+    paint-order: stroke fill;
+}
+</style>
+
+
+<style id="videos-clean-header-footer">
+
+/* Idiomas: pequeños, limpios y sin competir con el menú */
+.languageSwitcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    padding-left: 8px;
+}
+
+.languageSwitcher .langBtn {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 50%;
+    background: rgba(3,16,26,.42);
+    opacity: .88;
+    overflow: hidden;
+    transition: transform .18s ease, border-color .18s ease,
+                opacity .18s ease, background .18s ease;
+}
+
+.languageSwitcher .langBtn::after {
+    display: none !important;
+}
+
+.languageSwitcher .langBtn img {
+    width: 21px;
+    height: 21px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.languageSwitcher .langBtn:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    border-color: rgba(255,255,255,.65);
+    background: rgba(255,255,255,.08);
+}
+
+.languageSwitcher .langBtn.active {
+    border: 2px solid #ef1820 !important;
+    opacity: 1;
+    background: rgba(239,24,32,.08);
+}
+
+/* Pie de página limpio, sin bloque pesado */
+footer.site-credits {
+    min-height: 72px !important;
+    padding: 16px 20px !important;
+    gap: 4px !important;
+    background: rgba(3,16,26,.92) !important;
+    border-top: 1px solid rgba(255,255,255,.10) !important;
+    box-shadow: 0 -6px 20px rgba(0,0,0,.08);
+    backdrop-filter: blur(8px);
+}
+
+footer.site-credits > p {
+    color: rgba(255,255,255,.62) !important;
+    font-size: 12px !important;
+}
+
+footer.site-credits > p.developer-credit {
+    color: rgba(255,255,255,.88) !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+/* Botones del contenido: menos peso visual */
+body.video-page .btn {
+    box-shadow: none !important;
+    transition: transform .18s ease, background .18s ease,
+                border-color .18s ease, opacity .18s ease;
+}
+
+body.video-page .btn:hover {
+    transform: translateY(-1px);
+}
+
+body.video-page .btn.red {
+    background: rgba(239,24,32,.92) !important;
+}
+
+body.video-page .btn.outline {
+    background: rgba(3,16,26,.16) !important;
+    border-color: rgba(255,255,255,.48) !important;
+}
+
+body.video-page .btn.outline:hover {
+    background: rgba(239,24,32,.90) !important;
+    border-color: #ef1820 !important;
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+
+    .languageSwitcher {
+        gap: 6px;
+        padding-left: 2px;
+    }
+
+    .languageSwitcher .langBtn {
+        width: 29px !important;
+        height: 29px !important;
+        min-width: 29px;
+    }
+
+    .languageSwitcher .langBtn img {
+        width: 19px;
+        height: 19px;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .languageSwitcher {
+        margin-left: 4px;
+        padding-right: 5px;
+    }
+}
+</style>
+
+
+<style id="transparent-header-footer-fix">
+
+.languageSwitcher {
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    margin-left: auto !important;
+}
+
+.languageSwitcher .langBtn {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(255,255,255,.30) !important;
+    border-radius: 50% !important;
+    background: rgba(3,16,26,.22) !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 19px !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    opacity: .95 !important;
+    box-shadow: none !important;
+}
+
+.languageSwitcher .langBtn:hover {
+    background: rgba(255,255,255,.12) !important;
+    border-color: rgba(255,255,255,.65) !important;
+    transform: translateY(-1px);
+}
+
+.languageSwitcher .langBtn.active {
+    background: rgba(3,16,26,.28) !important;
+    border: 2px solid #ef1820 !important;
+}
+
+/* El pie deja ver claramente el paisaje */
+footer.site-credits {
+    background: rgba(3,16,26,.38) !important;
+    border-top: 1px solid rgba(255,255,255,.12) !important;
+    box-shadow: 0 -4px 18px rgba(0,0,0,.06) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+}
+
+footer.site-credits > p {
+    color: rgba(255,255,255,.78) !important;
+    text-shadow: 0 1px 6px rgba(0,0,0,.55);
+}
+
+footer.site-credits > p.developer-credit {
+    color: #fff !important;
+    text-shadow: 0 1px 6px rgba(0,0,0,.55);
+}
+
+@media (max-width: 750px) {
+    .languageSwitcher .langBtn {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        font-size: 17px !important;
+    }
+}
+</style>
+
+
+<style id="header-match-inicio-final">
+
+/* Idiomas: NO participan en el centrado del menú */
+.languageSwitcher {
+    position: absolute !important;
+    right: 24px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.languageSwitcher .langBtn {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    box-sizing: border-box !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border: 1px solid rgba(255,255,255,.28) !important;
+    border-radius: 50% !important;
+    background: rgba(4,17,27,.25) !important;
+
+    color: #fff !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+
+    box-shadow: none !important;
+    opacity: .95 !important;
+    transition: .2s ease !important;
+}
+
+.languageSwitcher .langBtn:hover {
+    background: rgba(255,255,255,.12) !important;
+    border-color: rgba(255,255,255,.65) !important;
+    transform: translateY(-1px) !important;
+}
+
+.languageSwitcher .langBtn.active {
+    border: 2px solid #ef1820 !important;
+    background: rgba(4,17,27,.30) !important;
+    color: #fff !important;
+}
+
+/* El contenido sigue empezando justo debajo de la cabecera */
+.hero {
+    margin-top: 0 !important;
+}
+
+/* Pie: limpio, centrado y translúcido como el estilo de Inicio */
+footer.site-credits {
+    min-height: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-items: center !important;
+    align-items: center !important;
+
+    gap: 5px !important;
+    margin: 0 !important;
+    padding: 18px 20px !important;
+
+    background: rgba(4,17,27,.48) !important;
+    border-top: 1px solid rgba(255,255,255,.10) !important;
+    box-shadow: 0 -4px 18px rgba(0,0,0,.06) !important;
+
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+
+    text-align: center !important;
+}
+
+footer.site-credits > p {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    text-align: center !important;
+    color: rgba(255,255,255,.78) !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    text-shadow: 0 1px 5px rgba(0,0,0,.45);
+}
+
+footer.site-credits > p.developer-credit {
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+
+/* Responsive: en pantallas pequeñas se compacta sin romper el centrado */
+@media (max-width: 1100px) {
+
+    .languageSwitcher {
+        right: 14px !important;
+        gap: 5px !important;
+    }
+
+    .languageSwitcher .langBtn {
+        width: 31px !important;
+        height: 31px !important;
+        min-width: 31px !important;
+        font-size: 11px !important;
+    }
+}
+
+@media (max-width: 820px) {
+
+    .languageSwitcher {
+        position: static !important;
+        transform: none !important;
+        margin-left: 8px !important;
+        padding-right: 8px !important;
+        flex: 0 0 auto !important;
+    }
+}
+</style>
+
+
+<style id="videos-match-inicio-final">
+
+/* Pie exactamente en el mismo lenguaje limpio de Inicio */
+footer.site-credits {
+    width: 100% !important;
+    min-height: 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    align-items: center !important;
+    justify-items: center !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 22px 15px !important;
+    background: #020a11 !important;
+    border-top: 1px solid #183347 !important;
+    color: #9db0bc !important;
+    font-size: 13px !important;
+    text-align: center !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+footer.site-credits > p {
+    display: block !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    line-height: 1.5 !important;
+    color: #9db0bc !important;
+    font-size: 13px !important;
+}
+
+footer.site-credits > p.developer-credit {
+    margin: 0 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+@media (max-width: 800px) {
+}
+
+@media (max-width: 750px) {
+}
+</style>
+
+
+<style id="videos-header-footer-match-inicio">
+/* =========================================================
+   VÍDEOS · PIE IGUAL A INICIO
+   (La cabecera la gestiona el componente global js/site-header.js;
+   no hay reglas locales de cabecera en esta página.)
+   ========================================================= */
+
+/* Pie: transparente/translúcido para que se intuya la imagen de Suiza,
+   como en Inicio, en lugar del bloque negro sólido */
+body.video-page footer.site-credits {
+    width: 100% !important;
+    min-height: 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    align-items: center !important;
+    justify-items: center !important;
+    padding: 22px 15px !important;
+    margin: 0 !important;
+    gap: 8px !important;
+    background: rgba(3, 15, 24, .78) !important;
+    border-top: 1px solid rgba(255,255,255,.16) !important;
+    color: #9db0bc !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+body.video-page footer.site-credits > p {
+    margin: 0 !important;
+    color: #9db0bc !important;
+    text-align: center !important;
+}
+
+body.video-page footer.site-credits > p.developer-credit {
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+
+/* =====================================================
+   REPRODUCTOR DE VÍDEO EN LA MISMA PÁGINA
+   ===================================================== */
+
+button.videoThumbnail,
+button.btn {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.videoPlayerModal {
+    position: fixed;
+    inset: 0;
+    z-index: 4000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.videoPlayerModal.is-open {
+    display: flex;
+}
+
+.videoPlayerDialog {
+    position: relative;
+    width: min(960px, 96vw);
+}
+
+.videoPlayerFrame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 30px 80px rgba(0,0,0,.55);
+}
+
+.videoPlayerFrame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.videoPlayerClose {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.3);
+    background: rgba(0,0,0,.55);
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.videoPlayerClose:hover {
+    background: rgba(239,24,32,.55);
+}
+
+body.video-modal-open {
+    overflow: hidden;
+}
+</style>
+
+<style id="videos-animated-background-visible">
+/* Mantiene el paisaje animado detrás del contenido, sin ocultarlo tras el fondo base. */
+body.video-page {
+    isolation: isolate;
+}
+
+body.video-page::before,
+body.video-page::after {
+    z-index: -1;
+}
+</style>
+
+</head>
+
+
+<body class="video-page">
+
+
+
+
+
+    <!-- =====================================================
+         CONTENIDO
+         ===================================================== -->
+
+    <main>
+
+
+
+
+        <!-- Miniaturas originales del canal de YouTube; no se sustituyen. -->
+
+        <!-- =================================================
+             OTROS VÍDEOS
+             ================================================= -->
+
+        <section
+            class="section dark"
+            id="videos"
+        >
+
+
+            <div class="sectionHeader">
+
+
+                <h2>
+
+                    VÍDEOS DEL
+                    <span>GRAND TOUR</span>
+
+                </h2>
+
+
+                <p class="videosIntroNote">
+
+                    Descubre los vídeos del Grand Tour de Suiza
+                    y conoce cada lugar de la mano de Hernán.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="videosGrid">
+
+                <article class="videoCard">
+                    <button type="button" class="videoThumbnail" data-video-id="6rEjgpwgXX0" aria-label="Reproducir vídeo de Burgdorf">
+                        <img src="https://img.youtube.com/vi/6rEjgpwgXX0/maxresdefault.jpg"
+                             alt="CH Burgdorf · Grand Tour de Suiza">
+                        <div class="videoOverlay"><div class="smallPlay">▶</div></div>
+                    </button>
+                    <div class="videoInfo">
+                        <div class="videoCategory">GRAND TOUR DE SUIZA</div>
+                        <h3>🇨🇭 Burgdorf: El Castillo Medieval que Esconde Suiza | Grand Tour of Switzerland</h3>
+                        <p>Photo Spot de Burgdorf del Grand Tour of Switzerland.</p>
+                        <button type="button" class="btn outline" data-video-id="6rEjgpwgXX0">VER VÍDEO →</button>
+                    </div>
+                </article>
+
+                <article class="videoCard">
+                    <button type="button" class="videoThumbnail" data-video-id="zbBKTvOw83I" data-video-start="412" aria-label="Reproducir vídeo del castillo de Hallwyl">
+                        <img src="https://img.youtube.com/vi/zbBKTvOw83I/maxresdefault.jpg"
+                             alt="Hallwyl Castle · Grand Tour de Suiza">
+                        <div class="videoOverlay"><div class="smallPlay">▶</div></div>
+                    </button>
+                    <div class="videoInfo">
+                        <div class="videoCategory">GRAND TOUR DE SUIZA</div>
+                        <h3>El secreto mejor guardado de Suiza | Hallwyl Castle y el Grand Tour of Switzerland 🇨🇭</h3>
+                        <p>Photo Spot del castillo de Hallwyl, Grand Tour of Switzerland.</p>
+                        <button type="button" class="btn outline" data-video-id="zbBKTvOw83I" data-video-start="412">VER VÍDEO →</button>
+                    </div>
+                </article>
+
+                <article class="videoCard">
+                    <button type="button" class="videoThumbnail" data-video-id="GtCiNSdS9nE" data-video-start="522" aria-label="Reproducir vídeo de Aarburg">
+                        <img src="https://img.youtube.com/vi/GtCiNSdS9nE/maxresdefault.jpg"
+                             alt="Aarburg · Grand Tour de Suiza">
+                        <div class="videoOverlay"><div class="smallPlay">▶</div></div>
+                    </button>
+                    <div class="videoInfo">
+                        <div class="videoCategory">GRAND TOUR DE SUIZA</div>
+                        <h3>El Photo Spot de Aarburg-Suiza</h3>
+                        <p>El secreto del Grand Tour of Switzerland.</p>
+                        <button type="button" class="btn outline" data-video-id="GtCiNSdS9nE" data-video-start="522">VER VÍDEO →</button>
+                    </div>
+                </article>
+
+                <article class="videoCard">
+                    <button type="button" class="videoThumbnail" data-video-id="ur8TAH_2Ja8" aria-label="Reproducir vídeo de Emmental">
+                        <img src="https://img.youtube.com/vi/ur8TAH_2Ja8/maxresdefault.jpg"
+                             alt="Emmental · Grand Tour de Suiza">
+                        <div class="videoOverlay"><div class="smallPlay">▶</div></div>
+                    </button>
+                    <div class="videoInfo">
+                        <div class="videoCategory">GRAND TOUR DE SUIZA</div>
+                        <h3>🇨🇭 EL SECRETO DEL QUESO SUIZO | Photo Spot Emmental 🧀 | Grand Tour of Switzerland</h3>
+                        <p>Descubre Emmental, uno de los Photo Spots del Grand Tour of Switzerland.</p>
+                        <button type="button" class="btn outline" data-video-id="ur8TAH_2Ja8">VER VÍDEO →</button>
+                    </div>
+                </article>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             CANAL COMPLETO
+             ================================================= -->
+
+        <section class="section">
+
+
+            <div class="youtubeSection">
+
+
+                <a
+                    href="https://www.youtube.com/@todosconhernan/videos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="sectionLabel youtubeChannelLink"
+                >
+                    <svg class="youtubeChannelIcon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor" d="M23.498 6.186a2.999 2.999 0 0 0-2.112-2.122C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.386.564A2.999 2.999 0 0 0 .502 6.186 31.36 31.36 0 0 0 0 12a31.36 31.36 0 0 0 .502 5.814 2.999 2.999 0 0 0 2.112 2.122C4.495 20.5 12 20.5 12 20.5s7.505 0 9.386-.564a2.999 2.999 0 0 0 2.112-2.122A31.36 31.36 0 0 0 24 12a31.36 31.36 0 0 0-.502-5.814ZM9.75 15.5v-7l6.5 3.5-6.5 3.5Z"/>
+                    </svg>
+                    <span>CANAL OFICIAL DE YOUTUBE</span>
+                </a>
+
+
+                <h2>
+
+                    MÁS VÍDEOS DEL
+                    <span class="grandTourOutline">GRAND TOUR DE SUIZA</span>
+
+                </h2>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+<!-- =====================================================
+     PIE DE PÁGINA
+     ===================================================== -->
+
+<footer class="site-credits">
+
+  <p>
+    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+  </p>
+
+  <p class="developer-credit">
+    <a
+      href="https://www.instagram.com/techantoni/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: inherit; text-decoration: none;"
+    >
+      Yonathan Alvarado · Full Stack Web Developer · Spain
+    </a>
+  </p>
+
+</footer>
+
+
+<!-- =====================================================
+     REPRODUCTOR DE VÍDEO EN LA MISMA PÁGINA
+     ===================================================== -->
+
+<div class="videoPlayerModal" id="videoPlayerModal" aria-hidden="true">
+    <div class="videoPlayerDialog" role="dialog" aria-modal="true" aria-label="Reproductor de vídeo">
+        <button type="button" class="videoPlayerClose" id="videoPlayerClose" aria-label="Cerrar">×</button>
+        <div class="videoPlayerFrame">
+            <iframe
+                id="videoPlayerIframe"
+                src=""
+                title="Reproductor de vídeo"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const flags = document.querySelectorAll(".languageFlag");
+    const saved = localStorage.getItem("todosConHernanLanguage") || "es";
+
+    flags.forEach(flag => {
+        flag.classList.toggle("active", flag.dataset.lang === saved);
+
+        flag.addEventListener("click", () => {
+            flags.forEach(item => item.classList.remove("active"));
+            flag.classList.add("active");
+            document.documentElement.lang = flag.dataset.lang;
+            localStorage.setItem("todosConHernanLanguage", flag.dataset.lang);
+        });
+    });
+});
+
+(function () {
+    const modal = document.getElementById("videoPlayerModal");
+    const iframe = document.getElementById("videoPlayerIframe");
+    const closeBtn = document.getElementById("videoPlayerClose");
+
+    function openVideo(id, start) {
+        if (!id) return;
+        let src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+        if (start) src += "&start=" + start;
+        iframe.src = src;
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("video-modal-open");
+    }
+
+    function closeVideo() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("video-modal-open");
+        iframe.src = "";
+    }
+
+    document.querySelectorAll("[data-video-id]").forEach(function (el) {
+        el.addEventListener("click", function (event) {
+            event.preventDefault();
+            openVideo(el.dataset.videoId, el.dataset.videoStart);
+        });
+    });
+
+    closeBtn.addEventListener("click", closeVideo);
+
+    modal.addEventListener("click", function (event) {
+        if (event.target === modal) closeVideo();
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && modal.classList.contains("is-open")) closeVideo();
+    });
+})();
+</script>
+
+<script src="js/site-header.js"></script>
+  <script src="js/i18n.js"></script>
+<script src="js/legal-footer.js"></script>
+<script src="js/chat-widget.js"></script>
+</body>
+
+</html>

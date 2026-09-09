@@ -1,0 +1,2182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta name="view-transition" content="same-origin">
+  <style>html { background: #071a28; }</style>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Proyectos · Todos con Hernán"
+  >
+
+  <title>Proyectos · Todos con Hernán</title>
+
+  <link rel="stylesheet" href="css/language-selector.css">
+  <style>
+    /* Enlaces de cabecera: mismo aspecto base que en videos.html (la referencia). */
+    .mainNav a { color: #dbe4ea; text-decoration: none; font-weight: 700; }
+    .mainNav a:hover { color: #ffffff; }
+    .mainNav a.active { color: #fff; font-weight: 900; border-bottom: 4px solid var(--red); }
+  </style>
+
+
+  <style>
+
+    /* =====================================================
+       VARIABLES
+       ===================================================== */
+
+    :root {
+      --bg: #04111b;
+      --bg2: #061825;
+      --panel: #071a28;
+      --panel2: #0a2030;
+
+      --line: #23465d;
+
+      --red: #ef1820;
+      --gold: #ffd000;
+      --green: #29e879;
+
+      --text: #f5f8fa;
+      --muted: #a7bac7;
+    }
+
+
+    /* =====================================================
+       RESET
+       ===================================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+
+      width: 100%;
+      min-height: 100%;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background: var(--bg);
+      color: var(--text);
+    }
+
+
+    body {
+      overflow-x: hidden;
+    }
+
+
+    a {
+      color: inherit;
+    }
+
+
+    
+    /* =====================================================
+       FONDO SUIZA · IMAGEN NATURAL EN MOVIMIENTO
+       ===================================================== */
+
+    html,
+    body {
+      background: #04111b;
+    }
+
+    body {
+      position: relative;
+      isolation: isolate;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -3%;
+      z-index: -2;
+      pointer-events: none;
+      background: url("img/Suiza3.jpg") center center / cover no-repeat;
+      animation: suizaPan 24s ease-in-out infinite alternate;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    /* Sin capa oscura sobre la fotografía: se ve natural. */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: transparent;
+    }
+
+    @keyframes suizaPan {
+      0% {
+        transform: scale(1.02) translate3d(0, 0, 0);
+      }
+      100% {
+        transform: scale(1.07) translate3d(-1.2%, -0.7%, 0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::before {
+        animation: none;
+        transform: none;
+      }
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .hero {
+
+      min-height: 500px;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(380px, 500px);
+
+      align-items: center;
+
+      gap: 40px;
+
+      padding:
+        65px
+        7vw
+        50px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background: transparent;
+
+    }
+    .hero::before { display: none; }
+
+
+    .heroContent {
+
+      position: relative;
+
+      z-index: 2;
+
+      max-width: 750px;
+
+    }
+
+
+    .eyebrow {
+
+      display: inline-block;
+
+      margin-bottom: 18px;
+
+      padding:
+        8px 15px;
+
+      border:
+        1px solid #31556c;
+
+      border-radius: 20px;
+
+      background: #071a28cc;
+
+      color: var(--gold);
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .hero h1 {
+
+      margin: 0;
+
+      font-size:
+        clamp(50px, 6vw, 82px);
+
+      line-height: .9;
+
+      letter-spacing: -4px;
+
+      font-weight: 950;
+
+    }
+
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+
+    /* Mismo acabado que las etiquetas destacadas de contacto.html (.agenda-note-highlight). */
+    .heroText {
+
+      display: inline-block;
+
+      max-width: min(680px, 100%);
+
+      margin:
+        25px auto 0;
+
+      padding: 20px 26px;
+
+      border: 1px solid rgba(255, 255, 255, .35);
+
+      border-radius: 18px;
+
+      background: rgba(16, 40, 58, .38);
+
+      box-shadow: 0 8px 26px rgba(16, 40, 58, .18);
+
+      backdrop-filter: blur(8px);
+
+      -webkit-backdrop-filter: blur(8px);
+
+      color: #ffffff;
+
+      font-size:
+        clamp(17px, 2vw, 21px);
+
+      line-height: 1.5;
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .heroText {
+        padding: 16px 18px;
+      }
+
+    }
+
+
+    .heroButtons {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 28px;
+
+    }
+
+
+    /* =====================================================
+       BOTONES
+       ===================================================== */
+
+    .btn {
+
+      min-height: 47px;
+
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding:
+        0 23px;
+
+      border-radius: 25px;
+
+      text-decoration: none;
+
+      font-weight: 900;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+    }
+
+
+    .btn:hover {
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    .btn.red {
+
+      background: var(--red);
+
+      color: #fff;
+
+      box-shadow:
+        0
+        8px
+        25px
+        #0007;
+
+    }
+
+
+    .btn.outline {
+
+      background: transparent;
+
+      color: #fff;
+
+      border:
+        1px solid #416379;
+
+    }
+
+
+    /* =====================================================
+       HERNÁN
+       ===================================================== */
+
+    .heroHernan {
+
+      height: 420px;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      justify-content: center;
+
+      position: relative;
+
+      z-index: 2;
+
+    }
+
+
+    .heroHernan img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      object-position:
+        center bottom;
+
+      filter:
+        drop-shadow(
+          0
+          18px
+          25px
+          #000b
+        );
+
+    }
+
+
+    /* =====================================================
+       SECCIÓN
+       ===================================================== */
+
+    .section {
+
+      padding:
+        80px
+        7vw;
+
+      background: transparent;
+
+    }
+
+
+    .section.dark {
+      background: transparent;
+    }
+
+
+    .sectionHeader {
+
+      max-width: 900px;
+
+      margin:
+        0
+        auto
+        35px;
+
+      text-align: center;
+
+    }
+
+
+    .sectionLabel {
+
+      margin-bottom: 10px;
+
+      color: var(--gold);
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+    }
+
+
+    .sectionTitle {
+
+      margin: 0;
+
+      font-size:
+        clamp(35px, 4vw, 55px);
+
+      line-height: 1;
+
+      font-weight: 950;
+
+    }
+
+
+    .sectionTitle span {
+      color: var(--red);
+    }
+
+
+    .sectionDescription {
+
+      max-width: 800px;
+
+      margin:
+        18px auto 0;
+
+      color: #bdccd4;
+
+      font-size: 17px;
+
+      line-height: 1.6;
+
+    }
+
+
+    /* =====================================================
+       GRAND TOUR DESTACADO
+       ===================================================== */
+
+    .tourProject {
+
+      max-width: 1250px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      gap: 35px;
+
+      align-items: center;
+
+      padding: 30px;
+
+      border:
+        1px solid #31556c;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #0b2434,
+          #071722
+        );
+
+      box-shadow:
+        0
+        20px
+        60px
+        #0005;
+
+    }
+
+
+    .tourProjectText h3 {
+
+      margin:
+        0
+        0
+        15px;
+
+      font-size:
+        clamp(30px, 4vw, 46px);
+
+      line-height: 1;
+
+    }
+
+
+    .tourProjectText h3 span {
+      color: var(--red);
+    }
+
+
+    .tourProjectText p {
+
+      margin:
+        0
+        0
+        16px;
+
+      color: #c7d5dc;
+
+      font-size: 16px;
+
+      line-height: 1.6;
+
+    }
+
+
+    .tourBadge {
+
+      display: inline-block;
+
+      margin-bottom: 15px;
+
+      padding:
+        7px 12px;
+
+      border-radius: 15px;
+
+      background: var(--red);
+
+      color: #fff;
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+    }
+
+
+    .tourStats {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin:
+        22px
+        0;
+
+    }
+
+
+    .tourStat {
+
+      padding:
+        13px
+        17px;
+
+      border:
+        1px solid #31556c;
+
+      border-radius: 12px;
+
+      background:
+        #061825;
+
+    }
+
+
+    .tourStat strong {
+
+      display: block;
+
+      color: var(--gold);
+
+      font-size: 25px;
+
+      line-height: 1;
+
+    }
+
+
+    .tourStat small {
+
+      display: block;
+
+      margin-top: 5px;
+
+      color: #a9bbc5;
+
+      font-size: 11px;
+
+      font-weight: 800;
+
+    }
+
+
+    .tourImage {
+
+      min-height: 350px;
+
+      overflow: hidden;
+
+      border-radius: 16px;
+
+      border:
+        1px solid #31556c;
+
+      background:
+        #071a28;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+    }
+
+
+    .tourImage img {
+
+      width: 100%;
+      height: 100%;
+
+      min-height: 350px;
+
+      object-fit: cover;
+
+    }
+
+
+    .tourPlaceholder {
+
+      text-align: center;
+
+      padding: 30px;
+
+    }
+
+
+    .tourPlaceholderIcon {
+
+      font-size: 70px;
+
+      margin-bottom: 15px;
+
+    }
+
+
+    .tourPlaceholder strong {
+
+      display: block;
+
+      color: var(--gold);
+
+      font-size: 24px;
+
+    }
+
+
+    .tourPlaceholder span {
+
+      display: block;
+
+      margin-top: 8px;
+
+      color: var(--muted);
+
+    }
+
+
+    /* =====================================================
+       OTROS PROYECTOS
+       ===================================================== */
+
+    .projectsGrid {
+
+      max-width: 1200px;
+
+      margin:
+        35px
+        auto
+        0;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
+    }
+
+
+    .projectCard {
+
+      min-height: 280px;
+
+      padding: 27px;
+
+      border:
+        1px solid #294c62;
+
+      border-radius: 16px;
+
+      background:
+        #071a28;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
+
+    }
+
+
+    .projectCard:hover {
+
+      transform:
+        translateY(-5px);
+
+      border-color:
+        var(--red);
+
+    }
+
+
+    .projectIcon {
+
+      font-size: 38px;
+
+      margin-bottom: 20px;
+
+    }
+
+
+    .projectCard h3 {
+
+      margin:
+        0
+        0
+        10px;
+
+      font-size: 22px;
+
+    }
+
+
+    .projectCard h3 span {
+      color: var(--red);
+    }
+
+
+    .projectCard p {
+
+      margin:
+        0
+        0
+        20px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.55;
+
+    }
+
+
+    /* Tarjetas de proyecto con imagen que enlazan al canal. */
+    /* Sin cabecera de sección: se compensa el espacio superior. */
+    .projectsSection {
+
+      padding-top: 40px;
+
+    }
+
+
+    .projectsSection .projectsGrid {
+
+      margin-top: 0;
+
+    }
+
+
+    .projectCardLink {
+
+      display: flex;
+
+      flex-direction: column;
+
+      min-height: 0;
+
+      padding: 0;
+
+      overflow: hidden;
+
+      color: inherit;
+
+      text-decoration: none;
+
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .28);
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+
+    }
+
+
+    .projectCardLink:hover {
+
+      box-shadow: 0 16px 38px rgba(0, 0, 0, .42);
+
+    }
+
+
+    /* Las imágenes son cuadradas: caja 1/1 para que el logotipo se vea completo y a tamaño máximo. */
+    .projectCardMedia {
+
+      aspect-ratio: 1 / 1;
+
+      width: 100%;
+
+      margin: 0;
+
+      padding: 0;
+
+      overflow: hidden;
+
+      background: #04111b;
+
+      line-height: 0;
+
+    }
+
+
+    .projectCardMedia img {
+
+      width: 100%;
+
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+
+      object-position: center;
+
+      transition: transform .35s ease;
+
+    }
+
+
+    .projectCardLink:hover .projectCardMedia img {
+
+      transform: scale(1.05);
+
+    }
+
+
+    .projectCardBody {
+
+      display: flex;
+
+      flex-direction: column;
+
+      flex: 1;
+
+      padding: 22px 24px 24px;
+
+    }
+
+
+    .projectCardLink h3 {
+
+      margin: 0 0 8px;
+
+      color: #ffffff;
+
+      font-size: 22px;
+
+    }
+
+
+    .projectCardLink p {
+
+      margin: 0 0 18px;
+
+    }
+
+
+    .projectCardCta {
+
+      margin-top: auto;
+
+      color: var(--red);
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      letter-spacing: .04em;
+
+      transition: transform .2s ease;
+
+    }
+
+
+    .projectCardLink:hover .projectCardCta {
+
+      transform: translateX(4px);
+
+    }
+
+
+    .projectCardLink:focus-visible {
+
+      outline: 2px solid var(--red);
+
+      outline-offset: 3px;
+
+    }
+
+
+    /* =====================================================
+       PROYECTO UN MILLÓN
+       ===================================================== */
+
+    .million {
+
+      max-width: 1200px;
+
+      margin: auto;
+
+      padding: 45px;
+
+      border:
+        1px solid #5b4650;
+
+      border-radius: 20px;
+
+      background:
+        radial-gradient(
+          circle at 80% 50%,
+          #ef18201c,
+          transparent 50%
+        ),
+        linear-gradient(
+          135deg,
+          #111b26,
+          #071a28
+        );
+
+    }
+
+
+    .millionNumber {
+
+      color: var(--gold);
+
+      font-size:
+        clamp(55px, 8vw, 100px);
+
+      line-height: .9;
+
+      font-weight: 950;
+
+    }
+
+
+    .million h3 {
+
+      margin:
+        18px
+        0
+        12px;
+
+      font-size: 34px;
+
+    }
+
+
+    .million p {
+
+      max-width: 750px;
+
+      margin:
+        0
+        0
+        23px;
+
+      color: #c8d5dc;
+
+      font-size: 17px;
+
+      line-height: 1.6;
+
+    }
+
+
+    /* =====================================================
+       ASESORAMIENTO
+       ===================================================== */
+
+    .adviceGrid {
+
+      max-width: 1200px;
+
+      margin:
+        35px
+        auto
+        0;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
+    }
+
+
+    .adviceCard {
+
+      padding: 27px;
+
+      border:
+        1px solid #294c62;
+
+      border-radius: 16px;
+
+      background:
+        #071a28;
+
+    }
+
+
+    .adviceIcon {
+
+      font-size: 35px;
+
+      margin-bottom: 16px;
+
+    }
+
+
+    .adviceCard h3 {
+
+      margin:
+        0
+        0
+        10px;
+
+      font-size: 20px;
+
+    }
+
+
+    .adviceCard p {
+
+      margin: 0;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+    }
+
+
+    /* =====================================================
+       PRÓXIMOS PROYECTOS
+       ===================================================== */
+
+    .future {
+
+      max-width: 1000px;
+
+      margin: auto;
+
+      padding: 35px;
+
+      text-align: center;
+
+      border: 1px solid rgba(255, 255, 255, 0.45);
+
+      border-radius: 20px;
+
+      background: rgba(4, 17, 27, 0.28);
+
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+    }
+
+
+    .futureIcon {
+
+      font-size: 45px;
+
+      margin-bottom: 12px;
+
+      filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+
+    }
+
+
+    .future h3 {
+
+      margin:
+        0
+        0
+        10px;
+
+      font-size: 27px;
+
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.72);
+
+    }
+
+
+    .future p {
+
+      max-width: 650px;
+
+      margin:
+        0
+        auto;
+
+      color: var(--muted);
+
+      line-height: 1.5;
+
+      color: #ffffff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.72);
+
+    }
+
+
+    .future p + p {
+
+      margin-top: 14px;
+
+    }
+
+
+    .futureLead {
+
+      font-size:
+        clamp(19px, 2vw, 23px);
+
+      font-weight: 800;
+
+      line-height: 1.35;
+
+    }
+
+
+    .futureClosing {
+
+      font-weight: 700;
+
+    }
+
+
+    .future strong {
+
+      color: #ffffff;
+
+      font-weight: 800;
+
+    }
+
+
+    /* =====================================================
+       CTA
+       ===================================================== */
+
+    .cta {
+
+      padding:
+        85px
+        20px;
+
+      text-align: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          #081d2c,
+          #05131e
+        );
+
+      border-top:
+        1px solid #183347;
+
+    }
+
+
+    .cta h2 {
+
+      margin:
+        0
+        0
+        15px;
+
+      font-size:
+        clamp(35px, 5vw, 55px);
+
+      font-weight: 950;
+
+    }
+
+
+    .cta h2 span {
+      color: var(--red);
+    }
+
+
+    .cta p {
+
+      max-width: 650px;
+
+      margin:
+        0
+        auto
+        25px;
+
+      color: #bdccd4;
+
+      line-height: 1.6;
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    footer {
+
+      min-height: 70px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 20px;
+
+      background: #020a11;
+
+      border-top:
+        1px solid #183347;
+
+      color: #9db0bc;
+
+      font-size: 12px;
+
+      text-align: center;
+
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+       ===================================================== */
+
+    @media (max-width: 1050px) {
+
+
+      .hero {
+        grid-template-columns:
+          1fr
+          420px;
+      }
+
+
+      .projectsGrid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+
+      .adviceGrid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+    }
+
+
+    @media (max-width: 800px) {
+
+
+      .hero {
+
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        padding:
+          50px
+          20px
+          0;
+
+      }
+
+
+      .heroContent {
+        margin: auto;
+      }
+
+
+      .heroButtons {
+        justify-content: center;
+      }
+
+
+      .heroHernan {
+        height: 360px;
+      }
+
+
+      .tourProject {
+        grid-template-columns: 1fr;
+      }
+
+
+      .projectsGrid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .adviceGrid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .million {
+        padding: 30px 22px;
+
+        text-align: center;
+      }
+
+    }
+
+
+    @media (max-width: 520px) {
+
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+
+      .heroHernan {
+        height: 320px;
+      }
+
+    }
+
+  
+
+/* =========================================================
+   FOOTER UNIFICADO · TODAS LAS PÁGINAS DE CONTENIDO
+   ========================================================= */
+
+footer.site-credits {
+  width: 100% !important;
+  min-height: 0 !important;
+
+  box-sizing: border-box !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto !important;
+
+  align-items: center !important;
+  justify-items: center !important;
+
+  gap: 8px !important;
+
+  margin: 0 !important;
+  padding: 22px 15px !important;
+
+  background: #020a11 !important;
+  border-top: 1px solid #183347 !important;
+
+  color: #9db0bc !important;
+  font-size: 13px !important;
+
+  text-align: center !important;
+  white-space: normal !important;
+}
+
+footer.site-credits > p {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 1200px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+  line-height: 1.5 !important;
+
+  white-space: normal !important;
+}
+
+footer.site-credits > p.developer-credit {
+  margin: 0 !important;
+
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+
+/* =========================================================
+   FOOTER · MÓVIL
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  footer.site-credits {
+    padding: 18px 10px !important;
+    gap: 6px !important;
+  }
+
+  footer.site-credits > p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+}
+
+
+/* =====================================================
+   EXPO FERIA · MODAL DE VÍDEOS
+   ===================================================== */
+
+.expoFeriaModal {
+  width: min(1040px, calc(100% - 28px));
+  max-height: min(820px, calc(100% - 28px));
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 16px;
+  background: #071a28;
+  color: #e7f0f6;
+  box-shadow: 0 24px 80px rgba(0,0,0,.55);
+}
+
+.expoFeriaModal::backdrop {
+  background: rgba(0,0,0,.72);
+}
+
+.expoFeriaModalPanel {
+  position: relative;
+  padding: 28px;
+  overflow: auto;
+}
+
+.expoFeriaModal h2 {
+  margin: 0 46px 8px 0;
+  color: #fff;
+}
+
+.expoFeriaModalIntro {
+  margin: 0 0 20px;
+  color: #bdccd4;
+}
+
+.expoFeriaModalClose {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.expoFeriaVideoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.expoFeriaVideoCard {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 12px;
+  background: rgba(255,255,255,.045);
+}
+
+.expoFeriaVideoCard--playlist {
+  grid-column: 1 / -1;
+}
+
+.expoFeriaThumbnail {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: #020b12;
+  cursor: pointer;
+}
+
+.expoFeriaThumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.expoFeriaPlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 54px;
+  height: 38px;
+  place-items: center;
+  transform: translate(-50%,-50%);
+  border-radius: 10px;
+  background: rgba(239,24,32,.92);
+  color: #fff;
+  font-size: 18px;
+}
+
+.expoFeriaVideoCard h3 {
+  margin: 0;
+  padding: 14px 15px 16px;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.expoFeriaPlayer {
+  display: none;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+.expoFeriaVideoCard.is-playing .expoFeriaThumbnail {
+  display: none;
+}
+
+.expoFeriaVideoCard.is-playing .expoFeriaPlayer {
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .expoFeriaModalPanel {
+    padding: 24px 18px;
+  }
+
+  .expoFeriaVideoGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+
+
+  <!-- =====================================================
+       CONTENIDO
+       ===================================================== -->
+
+  <main>
+
+
+    <!-- ===================================================
+         HERO
+         =================================================== -->
+
+    <section class="hero">
+
+
+      <div class="heroContent">
+
+
+        <h1 data-i18n="hero.title">
+
+          PROYECTOS
+          <br>
+
+          <span>QUE CRECEN</span>
+
+        </h1>
+
+
+        <p class="heroText" data-i18n="hero.text">
+
+          Ideas, viajes, experiencias y
+          proyectos que forman parte de
+          Todos con Hernán.
+
+        </p>
+
+
+      </div>
+
+
+      <div class="heroHernan">
+
+        <img
+          src="img/H1 (2).png"
+          alt="Proyectos en Suiza · Todos con Hernán"
+        >
+
+      </div>
+
+
+    </section>
+
+
+    <!-- ===================================================
+         PROYECTOS DEL CANAL
+         =================================================== -->
+
+    <section class="section projectsSection">
+
+
+      <div class="projectsGrid">
+
+
+        <a
+          class="projectCard projectCardLink"
+          href="https://www.youtube.com/playlist?list=PLJrfbrk0_KtlBCRykYAXSRwozlOO2cCs0"
+          data-open-expoferia
+          aria-controls="expoFeriaModal"
+          aria-haspopup="dialog"
+        >
+
+          <div class="projectCardMedia">
+            <img
+              src="img/expoferiasuiza.png"
+              alt="Expo Feria · Todos con Hernán"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+
+          <div class="projectCardBody">
+
+            <h3>EXPO FERIA</h3>
+
+            <p>
+              Encuentros, stands y comunidad en las ferias
+              donde Todos con Hernán está presente.
+            </p>
+
+            <span class="projectCardCta">Ver en YouTube →</span>
+
+          </div>
+
+        </a>
+
+
+        <a
+          class="projectCard projectCardLink"
+          href="https://www.youtube.com/watch?v=EDtY6bO6nIA&t=3s"
+          data-open-raices
+          aria-controls="raicesModal"
+          aria-haspopup="dialog"
+        >
+
+          <div class="projectCardMedia">
+            <img
+              src="img/raicesculturalessuiza.png"
+              alt="Raíces Culturales · Todos con Hernán"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+
+          <div class="projectCardBody">
+
+            <h3>RAÍCES CULTURALES</h3>
+
+            <p>
+              Cultura, tradiciones y personas que mantienen
+              vivas sus raíces desde Suiza.
+            </p>
+
+            <span class="projectCardCta">Ver en YouTube →</span>
+
+          </div>
+
+        </a>
+
+
+        <a
+          class="projectCard projectCardLink"
+          href="https://www.youtube.com/watch?v=Bg8fW1hwAH8&t=1s"
+          data-open-plato
+          aria-controls="platoModal"
+          aria-haspopup="dialog"
+        >
+
+          <div class="projectCardMedia">
+            <img
+              src="img/platotipico.png"
+              alt="Plato Típico Mundial · Todos con Hernán"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+
+          <div class="projectCardBody">
+
+            <h3>PLATO TÍPICO MUNDIAL</h3>
+
+            <p>
+              Sabores del mundo cocinados desde Suiza:
+              recetas, historias y cultura en cada plato.
+            </p>
+
+            <span class="projectCardCta">Ver en YouTube →</span>
+
+          </div>
+
+        </a>
+
+
+      </div>
+
+
+    </section>
+
+
+    <!-- ===================================================
+         PRÓXIMOS PROYECTOS
+         =================================================== -->
+
+    <section class="section">
+
+
+      <div class="future">
+
+
+        <div class="futureIcon">
+          🤝
+        </div>
+
+
+        <h3>
+          ¿QUIERES FORMAR PARTE?
+        </h3>
+
+
+        <p class="futureLead">
+          Las grandes ideas empiezan cuando las
+          personas adecuadas se conectan.
+        </p>
+
+
+        <p>
+          En <strong>Todos con Hernán</strong> estamos abiertos
+          a nuevas colaboraciones, proyectos, iniciativas y
+          oportunidades entre Suiza y el mundo.
+        </p>
+
+
+        <p>
+          Si tienes una idea, representas una empresa,
+          quieres colaborar o simplemente crees que podemos
+          hacer algo juntos, <strong>queremos conocerte</strong>.
+        </p>
+
+
+        <p class="futureClosing">
+          Cuéntanos tu propuesta y exploremos juntos
+          lo que podemos crear.
+        </p>
+
+      </div>
+
+
+    </section>
+
+
+    <dialog class="expoFeriaModal" id="expoFeriaModal" aria-labelledby="expoFeriaModalTitle">
+      <div class="expoFeriaModalPanel">
+        <button class="expoFeriaModalClose" type="button" aria-label="Cerrar vídeos de Expo Feria">&times;</button>
+        <h2 id="expoFeriaModalTitle">🎟️ EXPO FERIA</h2>
+        <p class="expoFeriaModalIntro">Encuentros, stands y comunidad en las ferias donde Todos con Hernán está presente.</p>
+        <div class="expoFeriaVideoGrid"></div>
+      </div>
+    </dialog>
+
+
+    <dialog class="expoFeriaModal" id="raicesModal" aria-labelledby="raicesModalTitle">
+      <div class="expoFeriaModalPanel">
+        <button class="expoFeriaModalClose" type="button" aria-label="Cerrar vídeo de Raíces Culturales">&times;</button>
+        <h2 id="raicesModalTitle">🌿 RAÍCES CULTURALES</h2>
+        <p class="expoFeriaModalIntro">Cultura, tradiciones y personas que mantienen vivas sus raíces desde Suiza.</p>
+        <div class="expoFeriaVideoGrid"></div>
+      </div>
+    </dialog>
+
+
+    <dialog class="expoFeriaModal" id="platoModal" aria-labelledby="platoModalTitle">
+      <div class="expoFeriaModalPanel">
+        <button class="expoFeriaModalClose" type="button" aria-label="Cerrar vídeos de Plato Típico Mundial">&times;</button>
+        <h2 id="platoModalTitle">🍽️ PLATO TÍPICO MUNDIAL</h2>
+        <p class="expoFeriaModalIntro">Sabores del mundo cocinados desde Suiza: recetas, historias y cultura en cada plato.</p>
+        <div class="expoFeriaVideoGrid"></div>
+      </div>
+    </dialog>
+
+
+  </main>
+
+
+<!-- =====================================================
+     PIE DE PÁGINA
+     ===================================================== -->
+
+<footer class="site-credits">
+
+  <p>
+    © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
+  </p>
+
+  <p class="developer-credit">
+    <a
+      href="https://www.instagram.com/techantoni/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: inherit; text-decoration: none;"
+    >
+      Yonathan Alvarado · Full Stack Web Developer · Spain
+    </a>
+  </p>
+
+</footer>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const trigger = document.querySelector("[data-open-expoferia]");
+  const modal = document.getElementById("expoFeriaModal");
+  const grid = modal?.querySelector(".expoFeriaVideoGrid");
+  const close = modal?.querySelector(".expoFeriaModalClose");
+  // Playlist oficial de Expo Feria: el reproductor incluye todos sus vídeos y permite pasar de uno a otro sin salir de la web.
+  const PLAYLIST_ID = "PLJrfbrk0_KtlBCRykYAXSRwozlOO2cCs0";
+  const COVER_ID = "UaQmswrFnrw";
+  let lastTrigger;
+
+  if (!trigger || !modal || !grid || typeof modal.showModal !== "function") return;
+
+  const card = document.createElement("article");
+  card.className = "expoFeriaVideoCard expoFeriaVideoCard--playlist";
+  const thumb = document.createElement("button");
+  thumb.type = "button";
+  thumb.className = "expoFeriaThumbnail";
+  thumb.setAttribute("aria-label", "Reproducir los vídeos de Expo Feria");
+  const image = document.createElement("img");
+  image.src = `https://i.ytimg.com/vi/${COVER_ID}/hqdefault.jpg`;
+  image.alt = "Vídeos de Expo Feria";
+  image.loading = "lazy";
+  const play = document.createElement("span");
+  play.className = "expoFeriaPlay";
+  play.setAttribute("aria-hidden", "true");
+  play.textContent = "▶";
+  thumb.append(image, play);
+  const title = document.createElement("h3");
+  title.textContent = "Vídeos de Expo Feria";
+  const frame = document.createElement("iframe");
+  frame.className = "expoFeriaPlayer";
+  frame.title = "Vídeos de Expo Feria";
+  frame.loading = "lazy";
+  frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+  frame.allowFullscreen = true;
+  thumb.addEventListener("click", () => {
+    frame.src = `https://www.youtube-nocookie.com/embed/videoseries?list=${PLAYLIST_ID}&rel=0&modestbranding=1&autoplay=1`;
+    card.classList.add("is-playing");
+  });
+  card.append(thumb, frame, title);
+  grid.appendChild(card);
+
+  function openModal() {
+    lastTrigger = document.activeElement;
+    modal.showModal();
+    close?.focus();
+  }
+
+  function closeModal() {
+    modal.close();
+    grid.querySelectorAll(".expoFeriaVideoCard").forEach(card => {
+      card.classList.remove("is-playing");
+      card.querySelector("iframe").src = "";
+    });
+    lastTrigger?.focus();
+  }
+
+  trigger.addEventListener("click", event => { event.preventDefault(); openModal(); });
+  close?.addEventListener("click", closeModal);
+  modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const trigger = document.querySelector("[data-open-raices]");
+  const modal = document.getElementById("raicesModal");
+  const grid = modal?.querySelector(".expoFeriaVideoGrid");
+  const close = modal?.querySelector(".expoFeriaModalClose");
+  const VIDEO_ID = "EDtY6bO6nIA";
+  const START = 3;
+  let lastTrigger;
+
+  if (!trigger || !modal || !grid || typeof modal.showModal !== "function") return;
+
+  const card = document.createElement("article");
+  card.className = "expoFeriaVideoCard expoFeriaVideoCard--playlist";
+  const thumb = document.createElement("button");
+  thumb.type = "button";
+  thumb.className = "expoFeriaThumbnail";
+  thumb.setAttribute("aria-label", "Reproducir el vídeo de Raíces Culturales");
+  const image = document.createElement("img");
+  image.src = `https://i.ytimg.com/vi/${VIDEO_ID}/hqdefault.jpg`;
+  image.alt = "Vídeo de Raíces Culturales";
+  image.loading = "lazy";
+  const play = document.createElement("span");
+  play.className = "expoFeriaPlay";
+  play.setAttribute("aria-hidden", "true");
+  play.textContent = "▶";
+  thumb.append(image, play);
+  const title = document.createElement("h3");
+  title.textContent = "Vídeo de Raíces Culturales";
+  const frame = document.createElement("iframe");
+  frame.className = "expoFeriaPlayer";
+  frame.title = "Vídeo de Raíces Culturales";
+  frame.loading = "lazy";
+  frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+  frame.allowFullscreen = true;
+  thumb.addEventListener("click", () => {
+    frame.src = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0&modestbranding=1&autoplay=1&start=${START}`;
+    card.classList.add("is-playing");
+  });
+  card.append(thumb, frame, title);
+  grid.appendChild(card);
+
+  async function loadTitle() {
+    try {
+      const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${VIDEO_ID}&format=json`);
+      if (!response.ok) return;
+      const data = await response.json();
+      if (data.title) {
+        title.textContent = data.title;
+        frame.title = data.title;
+        image.alt = data.title;
+      }
+    } catch (_) { /* Mantener el título neutro si oEmbed no está disponible. */ }
+  }
+
+  function openModal() {
+    lastTrigger = document.activeElement;
+    modal.showModal();
+    close?.focus();
+    loadTitle();
+  }
+
+  function closeModal() {
+    modal.close();
+    card.classList.remove("is-playing");
+    frame.src = "";
+    lastTrigger?.focus();
+  }
+
+  trigger.addEventListener("click", event => { event.preventDefault(); openModal(); });
+  close?.addEventListener("click", closeModal);
+  modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const trigger = document.querySelector("[data-open-plato]");
+  const modal = document.getElementById("platoModal");
+  const grid = modal?.querySelector(".expoFeriaVideoGrid");
+  const close = modal?.querySelector(".expoFeriaModalClose");
+  // start refleja el parámetro t= del enlace original de cada vídeo.
+  const videos = [
+    { id: "Bg8fW1hwAH8", start: 1 },
+    { id: "DlqkSft9mP4", start: 334 },
+    { id: "wh9troJWQB4" },
+    { id: "SPUKtbLoNGU" },
+    { id: "C7V278dhlX8", start: 40 },
+    { id: "BkdgQsixz_M", start: 518 },
+    { id: "XeVdFxQH0BU", start: 175 },
+    { id: "vMCF4jNSnR0" }
+  ];
+  let lastTrigger;
+
+  if (!trigger || !modal || !grid || typeof modal.showModal !== "function") return;
+
+  function buildCard(video, index) {
+    const card = document.createElement("article");
+    card.className = "expoFeriaVideoCard";
+    const thumb = document.createElement("button");
+    thumb.type = "button";
+    thumb.className = "expoFeriaThumbnail";
+    thumb.setAttribute("aria-label", `Reproducir vídeo de Plato Típico Mundial ${index + 1}`);
+    const image = document.createElement("img");
+    image.src = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+    image.alt = `Vídeo de Plato Típico Mundial ${index + 1}`;
+    image.loading = "lazy";
+    const play = document.createElement("span");
+    play.className = "expoFeriaPlay";
+    play.setAttribute("aria-hidden", "true");
+    play.textContent = "▶";
+    thumb.append(image, play);
+    const title = document.createElement("h3");
+    title.textContent = `Vídeo de Plato Típico Mundial ${index + 1}`;
+    const frame = document.createElement("iframe");
+    frame.className = "expoFeriaPlayer";
+    frame.title = title.textContent;
+    frame.loading = "lazy";
+    frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    frame.allowFullscreen = true;
+    thumb.addEventListener("click", () => {
+      let src = `https://www.youtube-nocookie.com/embed/${video.id}?rel=0&modestbranding=1&autoplay=1`;
+      if (video.start) src += `&start=${video.start}`;
+      frame.src = src;
+      card.classList.add("is-playing");
+    });
+    card.append(thumb, frame, title);
+    return { card, title };
+  }
+
+  const cards = videos.map(buildCard);
+  cards.forEach(item => grid.appendChild(item.card));
+
+  async function loadTitles() {
+    await Promise.all(cards.map(async (item, index) => {
+      try {
+        const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videos[index].id}&format=json`);
+        if (!response.ok) return;
+        const data = await response.json();
+        if (data.title) {
+          item.title.textContent = data.title;
+          item.card.querySelector("iframe").title = data.title;
+          item.card.querySelector("img").alt = data.title;
+        }
+      } catch (_) { /* Mantener el título neutro si oEmbed no está disponible. */ }
+    }));
+  }
+
+  function openModal() {
+    lastTrigger = document.activeElement;
+    modal.showModal();
+    close?.focus();
+    loadTitles();
+  }
+
+  function closeModal() {
+    modal.close();
+    grid.querySelectorAll(".expoFeriaVideoCard").forEach(card => {
+      card.classList.remove("is-playing");
+      card.querySelector("iframe").src = "";
+    });
+    lastTrigger?.focus();
+  }
+
+  trigger.addEventListener("click", event => { event.preventDefault(); openModal(); });
+  close?.addEventListener("click", closeModal);
+  modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
+});
+</script>
+
+
+<script>
+  window.PAGE_TRANSLATIONS = {
+    es: {
+      "hero.eyebrow": "TODOS CON HERNÁN · PROYECTOS",
+      "hero.title": "PROYECTOS<br><span>QUE CRECEN</span>",
+      "hero.text": "Ideas, viajes, experiencias y proyectos que forman parte de Todos con Hernán."
+    },
+    de: {
+      "hero.eyebrow": "TODOS CON HERNÁN · PROJEKTE",
+      "hero.title": "PROJEKTE,<br><span>DIE WACHSEN</span>",
+      "hero.text": "Ideen, Reisen, Erfahrungen und Projekte, die Teil von Todos con Hernán sind."
+    },
+    fr: {
+      "hero.eyebrow": "TODOS CON HERNÁN · PROJETS",
+      "hero.title": "DES PROJETS<br><span>QUI GRANDISSENT</span>",
+      "hero.text": "Des idées, des voyages, des expériences et des projets qui font partie de Todos con Hernán."
+    },
+    it: {
+      "hero.eyebrow": "TODOS CON HERNÁN · PROGETTI",
+      "hero.title": "PROGETTI<br><span>CHE CRESCONO</span>",
+      "hero.text": "Idee, viaggi, esperienze e progetti che fanno parte di Todos con Hernán."
+    },
+    en: {
+      "hero.eyebrow": "TODOS CON HERNÁN · PROJECTS",
+      "hero.title": "PROJECTS<br><span>THAT GROW</span>",
+      "hero.text": "Ideas, trips, experiences and projects that are part of Todos con Hernán."
+    }
+  };
+</script>
+<script src="js/site-header.js"></script>
+  <script src="js/i18n.js"></script>
+<script src="js/legal-footer.js"></script>
+<script src="js/chat-widget.js"></script>
+
+
+</body>
+
+</html>

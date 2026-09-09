@@ -1,0 +1,31 @@
+@page{size:A4 portrait;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#eee;color:#111;font-family:Arial,Helvetica,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cv-page{width:210mm;min-height:297mm;margin:12px auto;padding:7mm;background:#fff}
+.cv-header{display:grid;grid-template-columns:34% 1fr;gap:10mm;align-items:start}
+.photo-wrap{width:100%;aspect-ratio:1.08/1;overflow:hidden}
+.photo{width:100%;height:100%;object-fit:cover;display:block}
+.photo-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f2f2f2;border:1px solid #ccc;color:#999;font-size:8pt}
+.header-content{min-width:0}
+h1{margin:5mm 0 2.5mm;font-size:27pt;line-height:1.04;font-weight:800;letter-spacing:.01em}
+.title{margin:0 0 8mm;font-size:13.5pt;line-height:1.25}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:10mm}
+.contact-col{display:flex;flex-direction:column;gap:3.5mm}
+.contact-col div{display:grid;grid-template-columns:6mm 1fr;gap:2mm;font-size:9.4pt;line-height:1.25}
+.contact-col b{font-size:11pt;text-align:center}
+.cv-body{display:grid;grid-template-columns:34% 1fr;gap:10mm;margin-top:11mm;align-items:start}
+.cv-section{margin:0 0 9mm}
+.cv-section h2{margin:0 0 4mm;padding:0 0 2.2mm;border-bottom:.35mm solid #222;font-size:12.2pt;line-height:1.1;font-weight:800}
+.cv-section p,.cv-section li,.company,.experience,.education{font-size:10.1pt;line-height:1.38}
+.cv-section p{margin:0}
+.cv-section ul{margin:0;padding-left:5mm}
+.cv-section li{margin:0 0 2.1mm;padding-left:.5mm}
+.experience{padding:0 0 7mm;margin:0 0 7mm;border-bottom:.25mm solid #d7d7d7;break-inside:avoid;page-break-inside:avoid}
+.entry-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7mm;align-items:baseline}
+.entry-head h3,.education h3{margin:0;font-size:12.2pt;line-height:1.18;font-weight:700}
+.entry-head span{white-space:nowrap;font-size:10.1pt}
+.company{margin:2.2mm 0 3.2mm}
+.education{break-inside:avoid;page-break-inside:avoid}
+[data-section].is-empty{display:none!important}
+@media print{html,body{width:210mm;min-width:0;background:#fff}.cv-page{width:210mm;min-height:297mm;margin:0;padding:7mm;overflow:visible}}
+@media screen and (max-width:900px){body{min-width:0}.cv-page{margin:16px auto}}
