@@ -7199,19 +7199,31 @@ createNavigationInterface();
 const europeStreetMap =
   L.tileLayer(
 
-    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
 
     {
 
+      maxNativeZoom:
+        18,
+
       maxZoom:
-        19,
+        18,
 
       attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+        'Tiles &copy; Esri'
 
     }
 
   );
+
+europeStreetMap.on('add', () => {
+  const tileContainer = europeStreetMap.getContainer();
+
+  if (tileContainer) {
+    tileContainer.style.filter =
+      'saturate(1.75) hue-rotate(8deg) brightness(0.98) contrast(1.04)';
+  }
+});
 
 
 /* =========================================================

@@ -40,7 +40,7 @@
     ['videos.html', 'nav.videos', 'VÍDEOS'],
     ['vivir-en-suiza.html', 'nav.vivir', 'VIVIR EN SUIZA'],
     ['trabajos-suiza.html', 'nav.trabajos', 'TRABAJOS EN SUIZA'],
-    ['comunidad.html', 'nav.comunidad', 'COMUNIDAD'],
+    ['comunidad.html', 'nav.comunidad', 'PODCASTS'],
     ['proyectos.html', 'nav.proyectos', 'PROYECTOS'],
     ['sponsors.html', 'nav.sponsors', 'SPONSORS'],
     ['contacto.html', 'nav.contacto', 'CONTACTO']
