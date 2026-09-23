@@ -1872,6 +1872,7 @@
 
   <script src="js/site-header.js"></script>
   <script src="js/i18n.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
   <script>
     const STORAGE_KEY = 'cvBuilderSimpleDraft';
     const TEMPLATE_KEY = 'cvBuilderSimpleTemplate';
@@ -2508,8 +2509,92 @@
       saveState();
     });
 
-    document.getElementById('downloadPdfBtn').addEventListener('click', () => {
-      window.print();
+    document.getElementById('downloadPdfBtn').addEventListener('click', async (event) => {
+      const button = event.currentTarget;
+      const sourceSheet = reviewRoot.querySelector('.review-sheet');
+      if (!sourceSheet || typeof window.html2pdf !== 'function') {
+        alert('No se pudo generar el PDF. Comprueba tu conexión a Internet y vuelve a intentarlo.');
+        return;
+      }
+
+      const stage = document.createElement('div');
+      stage.id = 'cvPdfExportStage';
+      stage.style.cssText = 'position:fixed;left:0;top:0;width:210mm;z-index:-1;opacity:0;pointer-events:none;overflow:visible;background:#fff;';
+      const sheet = sourceSheet.cloneNode(true);
+      stage.appendChild(sheet);
+      document.body.appendChild(stage);
+
+      const elements = [sheet, ...sheet.querySelectorAll('.classic-preview-viewport, .classic-preview-document, .professional-preview-viewport, .professional-preview-document')];
+      const pages = [...sheet.querySelectorAll('.cv-page, .cv-professional-master-page')];
+      const photos = [...sheet.querySelectorAll('.cv-classic-photo, .cv-professional-photo, .photo-wrap img')];
+      const photoFrames = [...sheet.querySelectorAll('.photo-wrap, .cv-classic-photo-wrap')];
+      button.disabled = true;
+      try {
+        sheet.style.width = '210mm';
+        sheet.style.maxWidth = 'none';
+        sheet.style.margin = '0';
+        sheet.style.transform = 'none';
+        sheet.style.background = '#fff';
+        sheet.style.boxShadow = 'none';
+        elements.slice(1).forEach(element => {
+          element.style.width = '210mm';
+          element.style.minWidth = '210mm';
+          element.style.height = 'auto';
+          element.style.minHeight = '0';
+          element.style.transform = 'none';
+          element.style.overflow = 'visible';
+        });
+        pages.forEach(page => {
+          page.style.height = 'auto';
+          page.style.minHeight = '0';
+        });
+        photos.forEach(photo => {
+          const isClassicPhoto = !!photo.closest('.photo-wrap');
+          photo.style.width = isClassicPhoto ? '100%' : 'auto';
+          photo.style.height = 'auto';
+          photo.style.maxWidth = isClassicPhoto ? 'none' : '39mm';
+          photo.style.maxHeight = isClassicPhoto ? 'none' : '52mm';
+          photo.style.objectFit = 'contain';
+          photo.style.objectPosition = 'center';
+        });
+        photoFrames.forEach(frame => {
+          frame.style.aspectRatio = 'auto';
+          frame.style.height = 'auto';
+          frame.style.display = 'block';
+          frame.style.overflow = 'visible';
+        });
+
+        const filename = (state.personal.name || 'CV')
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'CV';
+        await window.html2pdf().set({
+          margin: 0,
+          filename: `${filename}.pdf`,
+          image: { type: 'png' },
+          html2canvas: {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: '#ffffff',
+            scrollY: 0,
+            onclone: clonedDocument => {
+              const clonedStage = clonedDocument.getElementById('cvPdfExportStage');
+              if (clonedStage) {
+                clonedStage.style.opacity = '1';
+                clonedStage.style.zIndex = '1';
+              }
+            },
+            ignoreElements: element => element.id === 'cvBackBtn' || element.classList?.contains('cv-back-btn')
+          },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
+          pagebreak: { mode: ['css'] }
+        }).from(sheet).save();
+      } catch (error) {
+        console.error('Error al generar el PDF:', error);
+        alert('No se pudo generar el PDF. Vuelve a intentarlo.');
+      } finally {
+        stage.remove();
+        button.disabled = false;
+      }
     });
 
     document.getElementById('printCvBtn').addEventListener('click', () => {
