@@ -1399,7 +1399,7 @@ a.btn,
 <footer class="site-credits">
 
     <p>
-        © 2026 Todos con Hernán · Todos los derechos reservados.
+        © 2026 Todos con Hernán · Suiza · Todos los derechos reservados.
     </p>
 
     <p class="developer-credit">
@@ -1575,10 +1575,27 @@ document.addEventListener("DOMContentLoaded", () => {
     grid.appendChild(card);
   });
 
+  async function loadTitles() {
+    await Promise.all(videos.map(async (video, index) => {
+      try {
+        const response = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${encodeURIComponent(video.id)}&format=json`);
+        if (!response.ok) return;
+        const data = await response.json();
+        const card = grid.querySelectorAll(".entrepreneurshipVideoCard")[index];
+        if (data.title && card) {
+          card.querySelector("h3").textContent = data.title;
+          card.querySelector("iframe").title = data.title;
+          card.querySelector("img").alt = data.title;
+        }
+      } catch (_) { /* Mantener el título neutro si oEmbed no está disponible. */ }
+    }));
+  }
+
   function openModal() {
     lastTrigger = document.activeElement;
     modal.showModal();
     close?.focus();
+    loadTitles();
   }
   function closeModal() {
     modal.close();

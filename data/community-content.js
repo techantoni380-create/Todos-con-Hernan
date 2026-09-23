@@ -52,46 +52,90 @@ window.COMMUNITY_CONTENT = {
      =================================================== */
   podcasts: [
     {
-      playlistId: "PLJrfbrk0_Ktn6PxjEyajZZF5FlXJ6yITK",
-      id: "l_OcMJZpxtM",
-      title: "Temporada 1 · Podcast Todos con Hernán",
-      url: "https://www.youtube.com/watch?v=l_OcMJZpxtM&list=PLJrfbrk0_Ktn6PxjEyajZZF5FlXJ6yITK",
-      category: "TEMPORADA 1"
+      id: "-JDMKP1qWMM",
+      start: 3,
+      title: "Episodio seleccionado 1",
+      url: "https://www.youtube.com/watch?v=-JDMKP1qWMM&t=3s",
+      category: "PODCAST"
     },
     {
-      playlistId: "PLJrfbrk0_KtmYFWuj0KNMJ9Lif_SSKt2k",
-      id: "FQPc2AjUQnc",
-      title: "Temporada 2 · Podcast Todos con Hernán",
-      url: "https://www.youtube.com/watch?v=WdgORNMwZz4&list=PLJrfbrk0_KtmYFWuj0KNMJ9Lif_SSKt2k",
-      category: "TEMPORADA 2"
+      id: "qyPR0rI6vek",
+      title: "Episodio seleccionado 2",
+      url: "https://www.youtube.com/watch?v=qyPR0rI6vek",
+      category: "PODCAST"
     },
     {
-      playlistId: "PLJrfbrk0_Ktmclq0CqBCotF8caoyg0HLE",
-      id: "1Hje-vqRWoo",
-      title: "Temporada 3 · Podcast Todos con Hernán",
-      url: "https://www.youtube.com/watch?v=1Hje-vqRWoo&list=PLJrfbrk0_Ktmclq0CqBCotF8caoyg0HLE",
-      category: "TEMPORADA 3"
+      id: "AeAS9b8gozc",
+      title: "Episodio seleccionado 3",
+      url: "https://www.youtube.com/watch?v=AeAS9b8gozc",
+      category: "PODCAST"
     },
     {
-      playlistId: "PLJrfbrk0_KtmCiR0ay619zGSkEQWzW_Nl",
-      id: "66JyUsx177M",
-      title: "Temporada 4 · Podcast Todos con Hernán",
-      url: "https://www.youtube.com/watch?v=66JyUsx177M&list=PLJrfbrk0_KtmCiR0ay619zGSkEQWzW_Nl",
-      category: "TEMPORADA 4"
+      id: "BVqAklxewtg",
+      title: "Episodio seleccionado 4",
+      url: "https://www.youtube.com/watch?v=BVqAklxewtg",
+      category: "PODCAST"
     },
     {
-      playlistId: "PLJrfbrk0_KtlRB6J2Fq1tV8blxnI9OKlE",
-      id: "8XmeOPSBcRs",
-      title: "Temporada 5 · Podcast Todos con Hernán",
-      url: "https://www.youtube.com/watch?v=8XmeOPSBcRs&list=PLJrfbrk0_KtlRB6J2Fq1tV8blxnI9OKlE",
-      category: "TEMPORADA 5"
+      id: "bmmE1Jon8bc",
+      start: 169,
+      title: "Episodio seleccionado 5",
+      url: "https://www.youtube.com/watch?v=bmmE1Jon8bc&t=169s",
+      category: "PODCAST"
     },
     {
-      playlistId: "PLJrfbrk0_KtnT4EduiNUEJpipMyWYO94p",
-      id: "fPdxKwoC9yg",
-      title: "Temporada 6 · Podcast Todos con Hernán",
-      url: "https://www.youtube.com/watch?v=fPdxKwoC9yg&list=PLJrfbrk0_KtnT4EduiNUEJpipMyWYO94p",
-      category: "TEMPORADA 6"
+      id: "uPGY9-rvxgo",
+      title: "Episodio seleccionado 6",
+      url: "https://www.youtube.com/watch?v=uPGY9-rvxgo",
+      category: "PODCAST"
+    },
+    {
+      id: "mxjgoJwyKh4",
+      title: "Episodio seleccionado 7",
+      url: "https://www.youtube.com/watch?v=mxjgoJwyKh4",
+      category: "PODCAST"
+    },
+    {
+      id: "QvXKwU5Nuho",
+      title: "Episodio seleccionado 8",
+      url: "https://www.youtube.com/watch?v=QvXKwU5Nuho",
+      category: "PODCAST"
+    },
+    {
+      id: "Ga2BI6a9GrE",
+      title: "Episodio seleccionado 9",
+      url: "https://www.youtube.com/watch?v=Ga2BI6a9GrE",
+      category: "PODCAST"
+    },
+    {
+      id: "qAkgsBc1s-s",
+      title: "Episodio seleccionado 10",
+      url: "https://www.youtube.com/watch?v=qAkgsBc1s-s",
+      category: "PODCAST"
+    },
+    {
+      id: "f_CT1qfseYM",
+      title: "Episodio seleccionado 11",
+      url: "https://www.youtube.com/watch?v=f_CT1qfseYM",
+      category: "PODCAST"
+    },
+    {
+      id: "5VbLpfU8LYQ",
+      title: "Episodio seleccionado 12",
+      url: "https://www.youtube.com/watch?v=5VbLpfU8LYQ",
+      category: "PODCAST"
+    },
+    {
+      id: "Had-U5Z_zxQ",
+      title: "Episodio seleccionado 13",
+      url: "https://www.youtube.com/watch?v=Had-U5Z_zxQ",
+      category: "PODCAST"
+    },
+    {
+      id: "WXP2cLPgXaQ",
+      title: "Episodio seleccionado 14",
+      url: "https://www.youtube.com/watch?v=WXP2cLPgXaQ",
+      category: "PODCAST"
     }
   ],
 

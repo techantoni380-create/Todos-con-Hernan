@@ -154,7 +154,7 @@
       text-transform: uppercase;
     }
 
-    h1 span { color: #42a6ff; }
+    h1 span { color: #e30613; }
 
     .intro {
       max-width: 980px;
@@ -199,6 +199,20 @@
       color: #aebfd1;
       margin: 0;
       font-size: 15px;
+    }
+
+    .page-header .intro,
+    .section .section-head .section-intro {
+      display: inline-block;
+      max-width: 100%;
+      padding: 10px 14px;
+      color: #ffffff !important;
+      background: rgba(5, 16, 29, 0.76);
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      border-radius: 8px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
     }
 
     .cards {
@@ -265,7 +279,7 @@
       position: relative;
     }
 
-    .map-download.featured { grid-column: 1 / -1; }
+    .map-download.featured { grid-column: auto; }
 
     .map-preview {
       display: block;
@@ -275,21 +289,32 @@
       background: #e9f0f4;
     }
 
-    .official-map-frame {
-      display: block;
+    .official-map-visual {
+      position: relative;
       width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 0;
-      background: #eef3f5;
+      height: 360px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #0b1b30;
     }
 
-    .official-map-visual { position: relative; width: 100%; }
+    .official-map-link {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
 
-    .official-map-canvas {
+    .official-map-image {
       display: block;
       width: 100%;
-      height: auto;
-      background: #eef3f5;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
     }
 
     .map-svg { padding: 16px; }
@@ -343,6 +368,13 @@
     .ticket-status { min-height: 20px; margin: 12px 0 0; color: #8fb8d8; font-size: 14px; }
     .ticket-cta { display: flex; flex-direction: column; justify-content: center; border-color: rgba(255,212,0,.3); background: rgba(18,49,78,.94); }
     .ticket-cta .map-button { align-self: flex-start; }
+
+    .ticket-cta { text-align: center; }
+    .ticket-cta h3,
+    .ticket-cta > p,
+    .ticket-cta .map-button { color: #ffffff !important; }
+    .ticket-cta .map-button { align-self: center; }
+
     @media (max-width: 850px) { .ticket-tools { grid-template-columns: 1fr; } }
     @media (max-width: 520px) { .ticket-form { grid-template-columns: 1fr; } .ticket-card, .ticket-cta { padding: 20px; } }
 
@@ -386,12 +418,13 @@
       .section-title { font-size: 27px; }
       .download-maps { grid-template-columns: 1fr; }
       .map-download.featured { grid-column: auto; }
-      .official-map-frame { display: none; }
+      .official-map-visual { height: clamp(250px, 70vw, 360px); }
     }
   </style>
 </head>
 
 <body data-header-back="vivir-en-suiza.html|Vivir en Suiza|transporteTopHeader">
+
 
 
 
@@ -404,6 +437,53 @@
     tren, bus, tranvia y redes urbanas.
   </p>
 </header>
+
+<main class="content" style="padding-bottom:0">  <section class="section" id="compra-billete">
+    <div class="section-head">
+      <div class="section-icon">🎫</div>
+      <div>
+        <h2 class="section-title">COMPRA TU BILLETE DE TRANSPORTE</h2>
+        <p class="section-intro">Planifica tu viaje por Suiza y accede a las opciones oficiales de transporte.</p>
+      </div>
+    </div>
+
+    <div class="ticket-tools">
+      <article class="ticket-card">
+        <h3>Busca tu viaje</h3>
+        <p>Completa los datos para preparar tu consulta. Los resultados y la compra se realizan en los canales oficiales.</p>
+        <form class="ticket-form" id="ticketSearchForm">
+          <div class="ticket-field"><label for="ticketOrigin">Origen</label><input id="ticketOrigin" name="origin" type="text" placeholder="Ej. Zürich HB" required></div>
+          <div class="ticket-field"><label for="ticketDestination">Destino</label><input id="ticketDestination" name="destination" type="text" placeholder="Ej. Genève" required></div>
+          <div class="ticket-field"><label for="ticketDate">Fecha</label><input id="ticketDate" name="date" type="date" required></div>
+          <div class="ticket-field"><label for="ticketPassengers">Pasajeros</label><select id="ticketPassengers" name="passengers"><option value="1">1 pasajero</option><option value="2">2 pasajeros</option><option value="3">3 pasajeros</option><option value="4">4 pasajeros</option><option value="5">5 pasajeros</option></select></div>
+          <button class="map-button secondary" type="submit">BUSCAR VIAJE →</button>
+        </form>
+        <p class="ticket-status" id="ticketSearchStatus" role="status" aria-live="polite"></p>
+      </article>
+
+      <aside class="ticket-cta">
+        <h3>🎟️ ¿QUIERES COMPRAR DIRECTAMENTE?</h3>
+        <p>Compra tu billete a través de la página oficial de SBB.</p>
+        <a class="map-button secondary" href="https://www.sbb.ch/en/tickets-offers/buy.html" target="_blank" rel="noopener noreferrer">COMPRAR BILLETE EN SBB →</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="aviso-transporte">
+    <div class="cards">
+      <article class="card full">
+        <div class="card-icon">⚠️</div>
+        <h2 data-no-translate data-l10n="transport.notice.title">Aviso importante</h2>
+        <p data-no-translate data-l10n="transport.notice.text1">Esta guia es informativa y resume de forma simple el funcionamiento general del transporte en Suiza.</p>
+        <p data-no-translate data-l10n="transport.notice.text2">Tarifas, frecuencias y coberturas pueden cambiar segun zona, temporada y operador.</p>
+      </article>
+    </div>
+  </section>
+
+
+</main>
+
+
 
 <main class="content">
 
@@ -432,11 +512,11 @@
         <div class="card-icon">🎫</div>
         <h2 data-no-translate data-l10n="transport.prices.title">Precios reales (referencia)</h2>
         <ul data-no-translate data-l10n="transport.prices.list">
-          <li>Half Fare Adulto: CHF 190/anio.</li>
-          <li>Half Fare Jovenes: CHF 120/anio.</li>
-          <li>GA Adulto 2a clase: CHF 3.995/anio.</li>
-          <li>GA Adulto 1a clase: CHF 6.520/anio.</li>
-          <li>GA Senior 2a clase: CHF 3.040/anio.</li>
+          <li>Half Fare Adulto: CHF 190/año.</li>
+          <li>Half Fare Jovenes: CHF 120/año.</li>
+          <li>GA Adulto 2a clase: CHF 3.995/año.</li>
+          <li>GA Adulto 1a clase: CHF 6.520/año.</li>
+          <li>GA Senior 2a clase: CHF 3.040/año.</li>
           <li>GA 1 mes Adulto 2a clase: CHF 440.</li>
         </ul>
         <p class="card-note" data-no-translate data-l10n="transport.prices.note">Los precios de trayectos individuales cambian segun zona, hora y antelacion de compra.</p>
@@ -498,135 +578,34 @@
 
     <div class="download-maps">
       <article class="card map-download featured">
-        <div class="official-map-visual">
-          <iframe class="official-map-frame" title="Plano oficial de trenes de larga distancia" loading="lazy" src="docs/mapas-transporte/larga-distancia-sbb.pdf#view=FitH"></iframe>
-          <canvas class="official-map-canvas" data-pdf-src="docs/mapas-transporte/larga-distancia-sbb.pdf" role="img" aria-label="Plano oficial de trenes de larga distancia" hidden></canvas>
-        </div>
+        <div class="official-map-visual"><a class="official-map-link" href="docs/mapas-transporte/larga-distancia-sbb.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir Plano oficial de trenes de larga distancia en PDF"><img class="official-map-image" src="docs/mapas-transporte/previews/larga-distancia-sbb.png" alt="Plano oficial de trenes de larga distancia" loading="lazy"></a></div>
         <div class="map-download-body"><h3>Trenes de larga distancia</h3><p>Plano oficial IC, IR y RE: cada línea, sus paradas y sus terminales.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/larga-distancia-sbb.pdf" download>↓ Descargar PDF</a></div></div>
       </article>
       <article class="card map-download">
-        <div class="official-map-visual">
-          <iframe class="official-map-frame" title="Plano oficial de la red nacional multimodal" loading="lazy" src="docs/mapas-transporte/red-nacional-sbb.pdf#view=FitH"></iframe>
-          <canvas class="official-map-canvas" data-pdf-src="docs/mapas-transporte/red-nacional-sbb.pdf" role="img" aria-label="Plano oficial de la red nacional multimodal" hidden></canvas>
-        </div>
+        <div class="official-map-visual"><a class="official-map-link" href="docs/mapas-transporte/red-nacional-sbb.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir Plano oficial de la red nacional multimodal en PDF"><img class="official-map-image" src="docs/mapas-transporte/previews/red-nacional-sbb.png" alt="Plano oficial de la red nacional multimodal" loading="lazy"></a></div>
         <div class="map-download-body"><h3>Red nacional multimodal</h3><p>Plano oficial con ferrocarril, autobuses, barcos y transportes por cable.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/red-nacional-sbb.pdf" download>↓ Descargar PDF</a></div></div>
       </article>
       <article class="card map-download">
-        <div class="official-map-visual">
-          <iframe class="official-map-frame" title="Plano oficial de Zúrich" loading="lazy" src="docs/mapas-transporte/zurich-zvv.pdf#view=FitH"></iframe>
-          <canvas class="official-map-canvas" data-pdf-src="docs/mapas-transporte/zurich-zvv.pdf" role="img" aria-label="Plano oficial de Zúrich" hidden></canvas>
-        </div>
+        <div class="official-map-visual"><a class="official-map-link" href="docs/mapas-transporte/zurich-zvv.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir Plano oficial de Zúrich en PDF"><img class="official-map-image" src="docs/mapas-transporte/previews/zurich-zvv.png" alt="Plano oficial de Zúrich" loading="lazy"></a></div>
         <div class="map-download-body"><h3>Zúrich: S-Bahn, bus y barco</h3><p>Plano oficial con líneas numeradas, estaciones, paradas y terminales.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/zurich-zvv.pdf" download>↓ Descargar PDF</a></div></div>
       </article>
       <article class="card map-download">
-        <div class="official-map-visual">
-          <iframe class="official-map-frame" title="Plano oficial de Lausana" loading="lazy" src="docs/mapas-transporte/lausana-mobilis.pdf#view=FitH"></iframe>
-          <canvas class="official-map-canvas" data-pdf-src="docs/mapas-transporte/lausana-mobilis.pdf" role="img" aria-label="Plano oficial de Lausana" hidden></canvas>
-        </div>
+        <div class="official-map-visual"><a class="official-map-link" href="docs/mapas-transporte/lausana-mobilis.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir Plano oficial de Lausana en PDF"><img class="official-map-image" src="docs/mapas-transporte/previews/lausana-mobilis.png" alt="Plano oficial de Lausana" loading="lazy"></a></div>
         <div class="map-download-body"><h3>Lausana: metro, bus y tren regional</h3><p>Plano oficial con M1, M2, líneas de bus, trenes y todas sus paradas.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/lausana-mobilis.pdf" download>↓ Descargar PDF</a></div></div>
       </article>
       <article class="card map-download">
-        <div class="official-map-visual">
-          <iframe class="official-map-frame" title="Plano oficial de Ginebra" loading="lazy" src="docs/mapas-transporte/ginebra-tpg.pdf#view=FitH"></iframe>
-          <canvas class="official-map-canvas" data-pdf-src="docs/mapas-transporte/ginebra-tpg.pdf" role="img" aria-label="Plano oficial de Ginebra" hidden></canvas>
-        </div>
+        <div class="official-map-visual"><a class="official-map-link" href="docs/mapas-transporte/ginebra-tpg.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir Plano oficial de Ginebra en PDF"><img class="official-map-image" src="docs/mapas-transporte/previews/ginebra-tpg.png" alt="Plano oficial de Ginebra" loading="lazy"></a></div>
         <div class="map-download-body"><h3>Ginebra: tranvía, bus y red regional</h3><p>Plano oficial de líneas y paradas del área de Ginebra.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/ginebra-tpg.pdf" download>↓ Descargar PDF</a></div></div>
       </article>
       <article class="card map-download">
-        <div class="official-map-visual">
-          <iframe class="official-map-frame" title="Plano oficial de Basilea" loading="lazy" src="docs/mapas-transporte/basilea-tnw.pdf#view=FitH"></iframe>
-          <canvas class="official-map-canvas" data-pdf-src="docs/mapas-transporte/basilea-tnw.pdf" role="img" aria-label="Plano oficial de Basilea" hidden></canvas>
-        </div>
+        <div class="official-map-visual"><a class="official-map-link" href="docs/mapas-transporte/basilea-tnw.pdf" target="_blank" rel="noopener noreferrer" aria-label="Abrir Plano oficial de Basilea en PDF"><img class="official-map-image" src="docs/mapas-transporte/previews/basilea-tnw.png" alt="Plano oficial de Basilea" loading="lazy"></a></div>
         <div class="map-download-body"><h3>Basilea: tranvía, bus y tren regional</h3><p>Plano oficial con todas las líneas, paradas y terminales del área urbana.</p><div class="map-actions"><a class="map-button secondary" href="docs/mapas-transporte/basilea-tnw.pdf" download>↓ Descargar PDF</a></div></div>
       </article>
     </div>
   </section>
 
-  <script type="module">
-    (function () {
-      const mq = window.matchMedia("(max-width: 850px)");
-      let rendering = false;
-      async function renderMobilePdfMaps() {
-        if (rendering) return;
-        const canvases = document.querySelectorAll(".official-map-canvas");
-        if (!canvases.length) return;
-        rendering = true;
-        try {
-          const pdfjsLib = await import("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/6.3.289/pdf.min.mjs");
-          pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/6.3.289/pdf.worker.min.mjs";
-          for (const canvas of canvases) {
-            const src = canvas.dataset.pdfSrc;
-            if (!src) continue;
-            const url = new URL(src, document.baseURI).href;
-            try {
-              const pdf = await pdfjsLib.getDocument({ url }).promise;
-              const page = await pdf.getPage(1);
-              const unscaled = page.getViewport({ scale: 1 });
-              const containerWidth = canvas.parentElement.clientWidth || unscaled.width;
-              const dpr = window.devicePixelRatio || 1;
-              const scale = (containerWidth / unscaled.width) * dpr;
-              const viewport = page.getViewport({ scale });
-              canvas.width = Math.ceil(viewport.width);
-              canvas.height = Math.ceil(viewport.height);
-              canvas.style.width = containerWidth + "px";
-              canvas.style.height = (viewport.height / dpr) + "px";
-              const ctx = canvas.getContext("2d");
-              await page.render({ canvasContext: ctx, viewport }).promise;
-              canvas.hidden = false;
-            } catch (err) {
-              console.error("No se pudo renderizar el mapa en movil:", url, err);
-            }
-          }
-        } catch (err) {
-          console.error("No se pudo cargar PDF.js:", err);
-        }
-      }
-      if (mq.matches) renderMobilePdfMaps();
-      mq.addEventListener("change", (e) => { if (e.matches) renderMobilePdfMaps(); });
-    })();
-  </script>
 
-  <section class="section" id="compra-billete">
-    <div class="section-head">
-      <div class="section-icon">🎫</div>
-      <div>
-        <h2 class="section-title">COMPRA TU BILLETE DE TRANSPORTE</h2>
-        <p class="section-intro">Planifica tu viaje por Suiza y accede a las opciones oficiales de transporte.</p>
-      </div>
-    </div>
 
-    <div class="ticket-tools">
-      <article class="ticket-card">
-        <h3>Busca tu viaje</h3>
-        <p>Completa los datos para preparar tu consulta. Los resultados y la compra se realizan en los canales oficiales.</p>
-        <form class="ticket-form" id="ticketSearchForm">
-          <div class="ticket-field"><label for="ticketOrigin">Origen</label><input id="ticketOrigin" name="origin" type="text" placeholder="Ej. Zürich HB" required></div>
-          <div class="ticket-field"><label for="ticketDestination">Destino</label><input id="ticketDestination" name="destination" type="text" placeholder="Ej. Genève" required></div>
-          <div class="ticket-field"><label for="ticketDate">Fecha</label><input id="ticketDate" name="date" type="date" required></div>
-          <div class="ticket-field"><label for="ticketPassengers">Pasajeros</label><select id="ticketPassengers" name="passengers"><option value="1">1 pasajero</option><option value="2">2 pasajeros</option><option value="3">3 pasajeros</option><option value="4">4 pasajeros</option><option value="5">5 pasajeros</option></select></div>
-          <button class="map-button secondary" type="submit">BUSCAR VIAJE →</button>
-        </form>
-        <p class="ticket-status" id="ticketSearchStatus" role="status" aria-live="polite"></p>
-      </article>
-
-      <aside class="ticket-cta">
-        <h3>🎟️ ¿QUIERES COMPRAR DIRECTAMENTE?</h3>
-        <p>Compra tu billete a través de la página oficial de SBB.</p>
-        <a class="map-button secondary" href="https://www.sbb.ch/en/tickets-offers/buy.html" target="_blank" rel="noopener noreferrer">COMPRAR BILLETE EN SBB →</a>
-      </aside>
-    </div>
-  </section>
-
-  <section class="section" id="aviso-transporte">
-    <div class="cards">
-      <article class="card full">
-        <div class="card-icon">⚠️</div>
-        <h2 data-no-translate data-l10n="transport.notice.title">Aviso importante</h2>
-        <p data-no-translate data-l10n="transport.notice.text1">Esta guia es informativa y resume de forma simple el funcionamiento general del transporte en Suiza.</p>
-        <p data-no-translate data-l10n="transport.notice.text2">Tarifas, frecuencias y coberturas pueden cambiar segun zona, temporada y operador.</p>
-      </article>
-    </div>
-  </section>
 
 </main>
 
@@ -705,7 +684,7 @@ function printMap(id, title) {
       'transport.access.text': 'La red suiza prioriza accesos adaptados y mejor conectividad para todos los perfiles de movilidad.',
       'transport.access.list': '<li>Estaciones principales con ascensores y rampas.</li><li>Asistencia planificada en trayectos complejos.</li><li>Cobertura urbana con material de piso bajo.</li>',
       'transport.prices.title': 'Precios reales (referencia)',
-      'transport.prices.list': '<li>Half Fare Adulto: CHF 190/anio.</li><li>Half Fare Jovenes: CHF 120/anio.</li><li>GA Adulto 2a clase: CHF 3.995/anio.</li><li>GA Adulto 1a clase: CHF 6.520/anio.</li><li>GA Senior 2a clase: CHF 3.040/anio.</li><li>GA 1 mes Adulto 2a clase: CHF 440.</li>',
+      'transport.prices.list': '<li>Half Fare Adulto: CHF 190/año.</li><li>Half Fare Jovenes: CHF 120/año.</li><li>GA Adulto 2a clase: CHF 3.995/año.</li><li>GA Adulto 1a clase: CHF 6.520/año.</li><li>GA Senior 2a clase: CHF 3.040/año.</li><li>GA 1 mes Adulto 2a clase: CHF 440.</li>',
       'transport.prices.note': 'Los precios de trayectos individuales cambian segun zona, hora y antelacion de compra.',
       'transport.payment.title': 'Pago y validacion',
       'transport.payment.list': '<li>Compra digital y presencial segun red local.</li><li>Validacion previa cuando el sistema lo exige.</li><li>Conviene llevar una alternativa de pago.</li>',

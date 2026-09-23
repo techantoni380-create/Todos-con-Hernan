@@ -12,7 +12,7 @@
   var EMBED_BASE = "https://www.youtube-nocookie.com/embed/";
   var PLACEHOLDER_THUMB_WIDTH = 121;
 
-  var renderedPlaylistIds = new Set();
+  var renderedPodcastIds = new Set();
 
   function thumbnailUrl(id, quality) {
     return "https://i.ytimg.com/vi/" + encodeURIComponent(id) + "/" + quality + ".jpg";
@@ -94,25 +94,45 @@
     var grid = document.getElementById(gridId);
     if (!grid || !Array.isArray(items)) return;
 
-    items.forEach(function (item) {
-      if (!item || !item.playlistId || renderedPlaylistIds.has(item.playlistId)) return;
-      renderedPlaylistIds.add(item.playlistId);
+    items.forEach(function (item, index) {
+      if (!item || !item.id) return;
+      var uniqueId = item.playlistId ? "playlist:" + item.playlistId : "video:" + item.id;
+      if (renderedPodcastIds.has(uniqueId)) return;
+      renderedPodcastIds.add(uniqueId);
 
-      grid.appendChild(buildCard(item, {
+      var card = buildCard(item, {
         defaultCategory: "PODCAST",
-        actionLabel: "Reproducir temporada",
-        buttonLabel: "ESCUCHAR TEMPORADA →",
+        actionLabel: "Reproducir podcast",
+        buttonLabel: "ESCUCHAR PODCAST →",
         embedUrl: function (podcast) {
-          // /embed/videoseries devuelve el error 153: hay que embeber el primer vídeo con ?list=.
-          var src = EMBED_BASE + encodeURIComponent(podcast.id) +
-            "?list=" + encodeURIComponent(podcast.playlistId) +
-            "&rel=0&modestbranding=1";
+          var src = EMBED_BASE + encodeURIComponent(podcast.id);
+          var params = [];
+          if (podcast.playlistId) params.push("list=" + encodeURIComponent(podcast.playlistId));
+          if (podcast.start) params.push("start=" + encodeURIComponent(podcast.start));
+          params.push("rel=0", "modestbranding=1");
           if (/^https?:$/.test(window.location.protocol)) {
-            src += "&origin=" + encodeURIComponent(window.location.origin);
+            params.push("origin=" + encodeURIComponent(window.location.origin));
           }
-          return src;
+          return src + "?" + params.join("&");
         }
-      }));
+      });
+      grid.appendChild(card);
+
+      // Carga el título oficial; el nombre numerado permanece como respaldo.
+      fetch("https://www.youtube.com/oembed?url=" +
+        encodeURIComponent("https://www.youtube.com/watch?v=" + item.id) + "&format=json")
+        .then(function (response) { return response.ok ? response.json() : null; })
+        .then(function (data) {
+          if (!data || !data.title) return;
+          item.title = data.title;
+          var heading = card.querySelector(".videoInfo h3");
+          var image = card.querySelector("img");
+          var thumb = card.querySelector(".videoThumbnail");
+          if (heading) heading.textContent = data.title;
+          if (image) image.alt = data.title;
+          if (thumb) thumb.setAttribute("aria-label", "Reproducir podcast: " + data.title);
+        })
+        .catch(function () { /* Conservar título de respaldo si oEmbed no responde. */ });
     });
   }
 
