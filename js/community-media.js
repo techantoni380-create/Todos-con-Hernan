@@ -1,7 +1,7 @@
-/* Render de las temporadas de podcast de comunidad.html.
-   - Tarjetas con miniatura oficial de YouTube (sin descargar imágenes).
+/* Render de los episodios seleccionados de podcast en comunidad.html.
+   - Tarjetas con miniatura oficial de YouTube.
    - Un único reproductor a la vez, dentro de la página, sin autoplay.
-   - Protección automática contra duplicados por ID real de la playlist. */
+   - Protección automática contra duplicados por ID del vídeo. */
 
 (function () {
   "use strict";
@@ -12,7 +12,7 @@
   var EMBED_BASE = "https://www.youtube-nocookie.com/embed/";
   var PLACEHOLDER_THUMB_WIDTH = 121;
 
-  var renderedPodcastIds = new Set();
+  var renderedPodcastVideoIds = new Set();
 
   function thumbnailUrl(id, quality) {
     return "https://i.ytimg.com/vi/" + encodeURIComponent(id) + "/" + quality + ".jpg";
@@ -94,45 +94,25 @@
     var grid = document.getElementById(gridId);
     if (!grid || !Array.isArray(items)) return;
 
-    items.forEach(function (item, index) {
-      if (!item || !item.id) return;
-      var uniqueId = item.playlistId ? "playlist:" + item.playlistId : "video:" + item.id;
-      if (renderedPodcastIds.has(uniqueId)) return;
-      renderedPodcastIds.add(uniqueId);
+    items.forEach(function (item) {
+      if (!item || !item.id || renderedPodcastVideoIds.has(item.id)) return;
+      renderedPodcastVideoIds.add(item.id);
 
-      var card = buildCard(item, {
+      grid.appendChild(buildCard(item, {
         defaultCategory: "PODCAST",
-        actionLabel: "Reproducir podcast",
-        buttonLabel: "ESCUCHAR PODCAST →",
+        actionLabel: "Reproducir episodio",
+        buttonLabel: "VER EPISODIO →",
         embedUrl: function (podcast) {
-          var src = EMBED_BASE + encodeURIComponent(podcast.id);
-          var params = [];
-          if (podcast.playlistId) params.push("list=" + encodeURIComponent(podcast.playlistId));
-          if (podcast.start) params.push("start=" + encodeURIComponent(podcast.start));
-          params.push("rel=0", "modestbranding=1");
-          if (/^https?:$/.test(window.location.protocol)) {
-            params.push("origin=" + encodeURIComponent(window.location.origin));
+          var src = EMBED_BASE + encodeURIComponent(podcast.id) + "?rel=0&modestbranding=1";
+          if (Number.isFinite(Number(podcast.start)) && Number(podcast.start) > 0) {
+            src += "&start=" + Math.floor(Number(podcast.start));
           }
-          return src + "?" + params.join("&");
+          if (/^https?:$/.test(window.location.protocol)) {
+            src += "&origin=" + encodeURIComponent(window.location.origin);
+          }
+          return src;
         }
-      });
-      grid.appendChild(card);
-
-      // Carga el título oficial; el nombre numerado permanece como respaldo.
-      fetch("https://www.youtube.com/oembed?url=" +
-        encodeURIComponent("https://www.youtube.com/watch?v=" + item.id) + "&format=json")
-        .then(function (response) { return response.ok ? response.json() : null; })
-        .then(function (data) {
-          if (!data || !data.title) return;
-          item.title = data.title;
-          var heading = card.querySelector(".videoInfo h3");
-          var image = card.querySelector("img");
-          var thumb = card.querySelector(".videoThumbnail");
-          if (heading) heading.textContent = data.title;
-          if (image) image.alt = data.title;
-          if (thumb) thumb.setAttribute("aria-label", "Reproducir podcast: " + data.title);
-        })
-        .catch(function () { /* Conservar título de respaldo si oEmbed no responde. */ });
+      }));
     });
   }
 
