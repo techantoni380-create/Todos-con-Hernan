@@ -1,0 +1,11 @@
+ACTUALIZACIÓN: pestaña Idiomas
+
+Copia conservando estas rutas en la carpeta raíz de tu proyecto:
+- index.html
+- inicio.html
+- idiomas.html (archivo nuevo)
+- js/site-header.js
+- img/laura-aprende-aleman.png (imagen de Laura)
+- img/aprender-aleman-fondo.jpg (fondo de la página)
+
+La pestaña Idiomas aparece en el menú compartido de las páginas que usan js/site-header.js. La nueva página incluye la imagen de Laura, la imagen de fondo, contenido adicional para recorrer al bajar y el pie de página.

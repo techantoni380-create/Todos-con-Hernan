@@ -3,7 +3,7 @@
    --------------------------------------------------------------------------
    ÚNICA fuente del header/navbar principal de TODA la web.
 
-   - Genera el nav completo (9 enlaces) o, en páginas secundarias, la barra
+   - Genera el nav completo (10 enlaces) o, en páginas secundarias, la barra
      con marca + botón "← Volver", según el atributo data del <body>:
        <body>                              -> nav principal completo
        <body data-header-back="vivir-en-suiza.html|Vivir en Suiza">
@@ -40,6 +40,7 @@
     ['videos.html', 'nav.videos', 'VÍDEOS'],
     ['vivir-en-suiza.html', 'nav.vivir', 'VIVIR EN SUIZA'],
     ['trabajos-suiza.html', 'nav.trabajos', 'TRABAJOS EN SUIZA'],
+    ['idiomas.html', 'nav.idiomas', 'IDIOMAS'],
     ['comunidad.html', 'nav.comunidad', 'PODCASTS'],
     ['proyectos.html', 'nav.proyectos', 'PROYECTOS'],
     ['sponsors.html', 'nav.sponsors', 'SPONSORS'],
@@ -58,7 +59,8 @@
     const here = currentPage();
     const links = NAV_ITEMS.map(function (item) {
       const active = item[0].toLowerCase() === here ? ' class="active"' : '';
-      return '<a href="' + item[0] + '"' + active + '>' +
+      const idiomasAttr = item[1] === 'nav.idiomas' ? ' data-nav-idiomas' : '';
+      return '<a href="' + item[0] + '"' + active + idiomasAttr + '>' +
         '<span data-i18n="' + item[1] + '">' + item[2] + '</span></a>';
     }).join('');
     return '<nav class="mainNav" aria-label="Navegación principal">' + links + '</nav>';
@@ -195,6 +197,29 @@
     header.appendChild(buildLanguageSelector());
     ensureMobileMenu(header);
     syncLanguagePlacement(header);
+
+    // Mantiene la pestaña Idiomas traducida también en páginas cuyo i18n
+    // compartido aún no incluya la clave nav.idiomas.
+    const idiomaLabels = {
+      es: 'IDIOMAS', de: 'SPRACHEN', fr: 'LANGUES', it: 'LINGUE',
+      en: 'LANGUAGES', pt: 'IDIOMAS', zh: '语言'
+    };
+    function updateIdiomasLabel() {
+      const label = header.querySelector('[data-i18n="nav.idiomas"]');
+      if (!label) return;
+      const saved = localStorage.getItem('todosConHernanLanguage');
+      const language = (document.documentElement.lang || saved || 'es').toLowerCase().slice(0, 2);
+      const text = idiomaLabels[language] || 'IDIOMAS';
+      if (label.textContent !== text) label.textContent = text;
+    }
+    updateIdiomasLabel();
+    new MutationObserver(updateIdiomasLabel).observe(document.documentElement, {
+      attributes: true, attributeFilter: ['lang']
+    });
+    header.querySelectorAll('.languageFlag').forEach(function (button) {
+      button.addEventListener('click', function () { window.setTimeout(updateIdiomasLabel, 0); });
+    });
+
     return header;
   }
 
