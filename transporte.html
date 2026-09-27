@@ -70,7 +70,7 @@
       color: #f4f7fb;
     }
 
-    .logo span { color: #42a6ff; }
+    .logo span { color: #e30613; }
 
     .back-button {
       display: inline-block;
@@ -421,23 +421,201 @@
       .official-map-visual { height: clamp(250px, 70vw, 360px); }
     }
   </style>
+
+<style>
+.journey-planner{grid-template-columns:minmax(0,2fr) minmax(240px,1fr)}
+#compra-billete .ticket-card{border-top:4px solid #e30613}
+#compra-billete input:focus{outline:3px solid #ffda00;outline-offset:2px}
+#journeyResults{display:grid;gap:16px;margin-top:24px}
+.journey-result{background:rgba(9,29,47,.96);border:1px solid #476073;border-radius:18px;padding:24px;box-shadow:0 12px 30px #0003;color:#fff}
+.journey-times{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.journey-times strong{display:block;font-size:clamp(24px,4vw,36px)}
+.journey-times small{display:block;color:#d4e0eb;margin-top:6px}
+.journey-meta{color:#d4e0eb;margin:16px 0;line-height:1.6}
+.journey-result summary{cursor:pointer;padding:12px 0}
+.journey-result ol{padding-left:22px;line-height:1.8}
+.journey-result a{margin-top:12px}
+.journey-credit{font-size:13px;line-height:1.6;color:#e0e8ee;margin-top:16px}
+.journey-credit a{color:inherit}
+#compra-billete button:disabled{opacity:.6;cursor:wait}
+@media(max-width:760px){.journey-planner{grid-template-columns:1fr}.journey-result{padding:18px}.journey-times{gap:10px}.journey-times>div{max-width:45%}}
+</style>
+
+<style id="travel-app-design">
+.travel-app{overflow:hidden;border-radius:26px;background:#f3f4f5;box-shadow:0 24px 64px #0004;color:#202124;font-family:Arial,Helvetica,sans-serif}
+.travel-app-bar{display:flex;justify-content:space-between;align-items:center;padding:30px 34px 44px;background:#e30613;color:white}
+.travel-app-kicker{font-size:10px;font-weight:700;letter-spacing:1.8px}
+.travel-app-bar h3{margin:10px 0 0;font-size:clamp(26px,4vw,38px);font-weight:700;letter-spacing:-1px;color:white}
+.travel-app-symbol{display:grid;place-items:center;width:50px;height:50px;border:1px solid #ffffff66;border-radius:50%;font-size:32px}
+.travel-app-body{padding:0 26px 24px}
+.travel-app .journey-planner{position:relative;margin-top:-20px;gap:18px;grid-template-columns:minmax(0,1.8fr) minmax(220px,1fr)}
+#compra-billete .travel-app .ticket-card,#compra-billete .travel-app .ticket-cta{border:1px solid #e3e5e7;background:white;box-shadow:0 6px 20px #18212b0a;border-radius:18px;padding:26px}
+.travel-app .ticket-card h3{color:#202124;font-size:23px;letter-spacing:-.5px}
+.travel-app .ticket-card>p{color:#697079;font-size:14px;line-height:1.65}
+.travel-app .ticket-form{gap:12px;position:relative}
+.travel-app .ticket-field{background:#f6f7f8;border:1px solid #e4e6e9;border-radius:12px;padding:10px 14px;gap:2px;min-width:0}
+.travel-app .ticket-field:nth-child(-n+2){grid-column:1/-1;padding-left:40px;position:relative}
+.travel-app .ticket-field:nth-child(-n+2)::before{content:'';position:absolute;left:17px;top:35px;width:10px;height:10px;border:2px solid #555;border-radius:50%;background:white}
+.travel-app .ticket-field:nth-child(1)::after{content:'';position:absolute;left:22px;top:47px;height:43px;width:1px;background:#b6bbc0;z-index:1}
+.travel-app .ticket-field label{color:#626973;font-size:12px;font-weight:400}
+.travel-app .ticket-field input{min-width:0;min-height:34px;background:transparent;border:0;padding:3px 0;border-radius:3px;color:#1f2429;font-size:18px;box-shadow:none;color-scheme:light}
+#compra-billete .travel-app input:focus{outline:2px solid #e30613;outline-offset:4px}
+.travel-app .map-button{background:white;border:1px solid #cbd0d5;color:#333;border-radius:10px;min-height:46px;font-size:13px;transition:background .18s,box-shadow .18s}
+.travel-app .map-button:hover{background:#eceff1;border-color:#9ca3aa}
+.travel-app .map-button.secondary{background:#e30613;border-color:#e30613;color:white}
+.travel-app .map-button.secondary:hover{background:#bf0010;border-color:#bf0010;box-shadow:0 4px 12px #e3061324}
+.travel-app .ticket-form .map-button{width:100%;margin:0}
+.travel-app #swapStations{background:transparent;min-height:32px;border:0;color:#676c72;font-weight:400;font-size:12px}
+#compra-billete .travel-app .ticket-cta{background:#fff;text-align:left;align-items:flex-start;justify-content:center}
+#compra-billete .travel-app .ticket-cta h3{color:#202124!important;font-size:24px;line-height:1.25;letter-spacing:-.6px}
+#compra-billete .travel-app .ticket-cta>p{color:#6a7077!important;line-height:1.7;font-size:14px}
+.travel-purchase-icon{display:grid;place-items:center;background:#fff0f1;color:#e30613;width:52px;height:52px;border-radius:15px;font-size:28px;margin-bottom:22px}
+.travel-app .ticket-cta .map-button{align-self:flex-start}
+.travel-app #ticketSearchStatus{color:#525961;margin:14px 0 0;line-height:1.5}
+.travel-app #journeyResults{gap:12px;margin-top:18px}
+.travel-app .journey-result{border:1px solid #e3e5e7;border-radius:16px;background:white;color:#202124;padding:24px;box-shadow:0 4px 14px #18212b06}
+.travel-app .journey-times strong{color:#202124;font-weight:700;letter-spacing:-1.1px;font-variant-numeric:tabular-nums}
+.travel-app .journey-times small{color:#666e75;font-size:13px}
+.travel-app .journey-times>span{flex:1;text-align:center;color:#b0b5bb;position:relative}
+.travel-app .journey-meta{color:#656c73;font-size:13px;padding-bottom:16px;border-bottom:1px solid #eceef0}
+.travel-app .journey-result summary{color:#333;font-size:14px}
+.travel-app .journey-result ol{color:#535b63;font-size:13px;border-left:2px solid #e30613;margin-left:6px;padding-left:22px}
+.travel-app .journey-result li{padding:5px 0}
+.travel-app .journey-credit{color:#737b82;font-size:12px;line-height:1.65}
+.travel-app .journey-credit a{color:#535a60}
+.travel-app #journeyResults>.map-button{justify-self:center;color:#545c63;background:transparent;border:0;text-decoration:underline}
+@media(max-width:850px){.travel-app .journey-planner{grid-template-columns:1fr}.travel-app .ticket-cta{gap:0}.travel-purchase-icon{display:none}#compra-billete .travel-app .ticket-cta h3{font-size:20px}}
+@media(max-width:520px){.travel-app{border-radius:18px}.travel-app-bar{padding:24px 20px 38px}.travel-app-body{padding:0 12px 18px}#compra-billete .travel-app .ticket-card,#compra-billete .travel-app .ticket-cta{padding:18px}.travel-app .ticket-form{grid-template-columns:repeat(2,minmax(0,1fr))}.travel-app .ticket-field{padding:10px}.travel-app .ticket-field input{font-size:16px}.travel-app .journey-result{padding:18px}.travel-app .journey-result .map-button{width:100%}.travel-app-kicker{font-size:9px;letter-spacing:1px}}
+</style>
+
+<style id="transport-full-app">
+html{background:#f4f5f7}
+body.transport-app-page{background:#f4f5f7;color:#24272b;font-family:Arial,Helvetica,sans-serif}
+body.transport-app-page::before{display:none}
+.transport-app-page #transporteTopHeader{background:#fff;border-bottom:1px solid #e5e7eb;padding-top:14px;padding-bottom:14px}
+.transport-app-page .logo{color:#24272b;text-decoration:none;font-size:24px;letter-spacing:-.6px}
+.transport-app-page .logo span{color:#e30613}
+.transport-app-page .back-button{color:#42484f;background:#f6f7f8;border:1px solid #e2e5e9;font-size:13px;border-radius:9px}
+.transport-app-page .back-button:hover{background:#fff0f1;border-color:#e30613;color:#c40011}
+.transport-app-page .page-header{padding:30px 24px 12px;max-width:1200px}
+.transport-app-page .eyebrow{color:#7a8088;font-size:10px;letter-spacing:2px;margin-bottom:10px}
+.transport-app-page h1{font-size:clamp(32px,4vw,48px);text-transform:none;letter-spacing:-1.8px;line-height:1.1;margin-bottom:8px;color:#24272b}
+.transport-app-page .page-header .intro,.transport-app-page .section .section-head .section-intro{color:#68707a!important;background:none;border:0;padding:0;border-radius:0;text-shadow:none;backdrop-filter:none;font-size:14px;line-height:1.65}
+.transport-shortcuts{display:flex;gap:8px;max-width:1200px;margin:0 auto;padding:8px 24px 12px;overflow-x:auto;scrollbar-width:thin}
+.transport-shortcuts a{white-space:nowrap;padding:9px 16px;text-decoration:none;border:1px solid #dfe3e7;border-radius:24px;background:#fff;color:#565d66;font-size:13px;font-weight:600}
+.transport-shortcuts a:hover,.transport-shortcuts .selected{background:#e30613;color:#fff;border-color:#e30613}
+.transport-app-page .section{margin-top:38px;scroll-margin-top:22px}
+.transport-app-page #compra-billete{margin-top:6px}
+.transport-app-page #compra-billete>.section-head{display:none}
+.transport-app-page .travel-app{border:1px solid #e2e5e9;border-radius:20px;box-shadow:0 12px 36px #2029380a}
+.transport-app-page .travel-app-bar{padding:18px 26px 34px}
+.transport-app-page .travel-app-bar h3{font-size:25px;letter-spacing:-.6px;margin-top:5px}
+.transport-app-page .travel-app-symbol{width:38px;height:38px;font-size:24px}
+.transport-app-page .travel-app-kicker{font-size:9px}
+.transport-app-page #compra-billete .travel-app .ticket-card,.transport-app-page #compra-billete .travel-app .ticket-cta{padding:20px}
+.transport-app-page .travel-app .ticket-card h3{font-size:20px;margin-bottom:5px}
+.transport-app-page .travel-app .ticket-card>p{font-size:12px;line-height:1.5;margin-bottom:12px}
+.transport-app-page .travel-app .ticket-form{gap:8px}
+.transport-app-page .travel-app .ticket-field{padding-top:7px;padding-bottom:7px}
+.transport-app-page .travel-app .ticket-field:nth-child(1)::after{height:28px}
+.transport-app-page .travel-app #ticketSearchStatus:empty{display:none}
+.transport-app-page .section-title{color:#25292e;font-size:clamp(22px,3vw,28px);letter-spacing:-.6px;line-height:1.2}
+.transport-app-page .section-icon{background:#feecee;color:#e30613;width:42px;height:42px;border-radius:12px;font-size:20px}
+.transport-app-page .card{background:#fff;border:1px solid #e2e5e9;box-shadow:0 4px 16px #20293804;border-radius:16px;color:#262b30;padding:24px}
+.transport-app-page .card:hover{transform:translateY(-2px);border-color:#e5b3b7;box-shadow:0 10px 24px #2029380a}
+.transport-app-page .card h2,.transport-app-page .map-download-body h3{color:#24272b;font-size:20px;letter-spacing:-.4px}
+.transport-app-page .card p,.transport-app-page .card ul,.transport-app-page .map-download-body p{color:#626b75;font-size:14px;line-height:1.75}
+.transport-app-page .card strong{color:#292f35}
+.transport-app-page .card-note{color:#737c85;font-size:12px}
+.transport-app-page .card-icon{background:#f6f7f8;display:inline-grid;place-items:center;width:46px;height:46px;border-radius:13px;font-size:23px;margin-bottom:16px}
+.transport-app-page #aviso-transporte .card{background:#fff;border-left:4px solid #e30613;padding:18px 24px}
+.transport-app-page #aviso-transporte .card-icon{display:none}
+.transport-app-page .map-download{padding:0;overflow:hidden}
+.transport-app-page .official-map-visual{background:#f0f2f4;border-bottom:1px solid #e6e9ec}
+.transport-app-page .map-button{border-radius:9px;background:#fff;border:1px solid #d4d9df;color:#3c434b;min-height:44px}
+.transport-app-page .map-button.secondary{background:#e30613;border-color:#e30613;color:#fff}
+.transport-app-page .map-button:hover{background:#eceff2;border-color:#b4bbc3}
+.transport-app-page .map-button.secondary:hover{background:#c40011;border-color:#c40011;color:white}
+.transport-app-page .card a:not(.map-button):not(.official-map-link){color:#c40011;text-underline-offset:3px}
+.transport-app-page footer.site-credits{background:#fff;border-top:1px solid #e3e6ea;color:#747b85;margin-top:42px}
+.transport-app-page footer.site-credits p,.transport-app-page footer.site-credits p.developer-credit{color:#747b85}
+.transport-app-page footer.site-credits a{color:#bc0010}
+.transport-app-page :focus-visible{outline:2px solid #e30613;outline-offset:4px}
+@media(max-width:600px){
+.transport-app-page .page-header{padding:24px 16px 8px}
+.transport-app-page .content{padding-left:12px;padding-right:12px}
+.transport-shortcuts{padding-left:16px;padding-right:16px}
+.transport-shortcuts a{font-size:12px;padding:8px 13px}
+.transport-app-page .travel-app-bar{padding:18px 18px 32px}
+.transport-app-page .travel-app-body{padding-left:10px;padding-right:10px}
+.transport-app-page .cards,.transport-app-page .download-maps{grid-template-columns:minmax(0,1fr)}
+.transport-app-page .card{padding:20px}
+.transport-app-page .map-download{padding:0}
+.transport-app-page .logo{font-size:21px}
+.transport-app-page .section{margin-top:28px}
+}
+@media(prefers-reduced-motion:reduce){.transport-app-page *{scroll-behavior:auto!important;transition:none!important}}
+</style>
+<style>
+.travel-app .ticket-field:focus-within{z-index:10}
+.station-suggestions{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:30;background:#fff;border:1px solid #e1e4e8;border-radius:13px;box-shadow:0 15px 35px #17202b26;max-height:310px;overflow-y:auto;padding:6px;text-align:left}
+.station-suggestions[hidden]{display:none}
+.station-suggestions-title{padding:10px 12px;font-size:11px;color:#747b84;letter-spacing:.3px}
+.station-option{padding:12px;border-radius:8px;cursor:pointer;font-size:15px;color:#292e34;line-height:1.4}
+.station-option:hover,.station-option[aria-selected="true"]{background:#fff0f1;color:#cb0012}
+</style><style>.travel-app:has(.station-suggestions:not([hidden])){overflow:visible}.station-suggestions{max-height:320px}.station-option{min-height:48px;border-bottom:1px solid #f0f1f3}</style>
+<style>
+.station-picker{box-sizing:border-box;width:min(580px,calc(100% - 32px));max-height:85dvh;padding:28px;border:0;border-radius:24px;color:#18212b;background:#fff;box-shadow:0 24px 100px #0004}.station-picker::backdrop{background:#15202c99;backdrop-filter:blur(5px)}.picker-head{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}.picker-head small{font-size:11px;letter-spacing:2px;color:#b60012;font-weight:800}.picker-head h2{font-size:26px;margin:8px 0}.station-picker button{cursor:pointer;font:inherit}.picker-close{border:0;background:#f2f3f5;border-radius:50%;width:44px;height:44px;flex-shrink:0}.station-picker label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}.station-picker input{box-sizing:border-box;width:100%;padding:17px;border:2px solid #c8cdd3;border-radius:12px;font:inherit;color:#18212b;background:#fff}.station-picker input:focus{outline:2px solid #e30613;outline-offset:2px}.nearby-button{width:100%;padding:15px;text-align:left;border:0;border-radius:12px;background:#fff0f1;color:#b60012;margin-top:12px;font-weight:700!important}.picker-status{font-size:13px;color:#606773;min-height:20px}.picker-row{display:flex;border-bottom:1px solid #edf0f3}.picker-row button{border:0;background:white;min-height:56px;text-align:left;padding:12px;border-radius:8px}.picker-row button:first-child{flex:1}.picker-row button:last-child{color:#b60012;font-size:25px;width:52px;text-align:center}.picker-row button:hover{background:#f4f5f7}.saved-trips{margin-top:24px;padding-top:20px;border-top:1px solid #e1e5ea}.saved-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}.saved-trips button{font:inherit;cursor:pointer;border:1px solid #dce1e6;background:white;color:#24303b;border-radius:8px;padding:10px}.saved-heading button{color:#b60012;font-size:13px}.saved-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.saved-route{display:flex}.saved-note{font-size:12px!important;color:#65707b!important}.journey-result{position:relative;border:1px solid #e0e5eb!important;box-shadow:0 5px 22px #15202c08!important;border-radius:18px!important}.journey-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.journey-badges span{padding:5px 10px;background:#f0f3f6;border-radius:6px;font-size:12px;font-weight:700}.journey-badges .direct{background:#e8f5ed;color:#22623a}.journey-badges .fastest{background:#fff0f1;color:#ac0010}.journey-times strong{font-variant-numeric:tabular-nums}.journey-result details{padding:14px 0;border-top:1px solid #edf0f3;margin:16px 0}.journey-result summary{cursor:pointer;font-weight:600}.journey-result li{padding:8px 0;line-height:1.6}.ticket-status:not(:empty){padding:12px 16px;background:#f2f5f8;border-radius:10px}#journeyResults[aria-busy=true]::before{content:'Consultando horarios…';display:block;padding:32px;background:linear-gradient(100deg,#f1f3f5,#fff,#f1f3f5);border-radius:16px;color:#616b75}.transport-app-page button:focus-visible,.transport-app-page a:focus-visible{outline:3px solid #b60012;outline-offset:3px}.transport-app-page button:disabled{opacity:.6;cursor:wait}@media(max-width:600px){.station-picker{width:100%;max-width:none;max-height:100dvh;height:100dvh;margin:0;border-radius:0;padding:22px 18px}.picker-head h2{font-size:24px}.saved-heading{align-items:flex-start}.journey-result .map-button{box-sizing:border-box;width:100%;text-align:center;font-size:12px}.journey-times strong{font-size:28px!important}}
+</style>
+<style>
+.route-fields{grid-column:1/-1;background:#fff;border:1px solid #dce1e6;border-radius:14px;padding:0 18px;min-width:0}.route-fields>.ticket-field{position:relative;padding:14px 0 14px 30px!important;margin:0!important}.route-fields>.ticket-field::before{content:'◎';position:absolute;left:0;top:38px;color:#4a5057;font-size:20px}.route-fields>.ticket-field:first-child{border-bottom:1px solid #dce1e6}.route-fields>.ticket-field:first-child::after{content:'';position:absolute;left:9px;top:60px;height:50px;border-left:1px solid #adb3ba;pointer-events:none}.route-fields>.ticket-field label{margin:0!important;font-size:13px!important;color:#68717b!important}.route-fields>.ticket-field input{width:100%;box-sizing:border-box;border:0!important;box-shadow:none!important;background:white!important;border-radius:4px!important;padding:7px 4px!important;font-size:20px!important;color:#18212b!important}.route-fields>.ticket-field input:focus{outline:2px solid #e30613;outline-offset:2px}.station-inline{border-top:1px solid #e3e6ea;padding:8px 0 12px}.station-inline[hidden]{display:none!important}.station-inline .nearby-button{background:#f5f6f7;color:#1769a4;margin:0;border-radius:6px;font:inherit;font-weight:500!important;cursor:pointer}.station-inline .picker-list{max-height:310px;overflow:auto;overscroll-behavior:contain}.station-inline .picker-row button{font:inherit;cursor:pointer;color:#202a34}.station-inline .picker-row button:last-child{color:#b60012;font-size:25px}.station-inline .picker-status{margin:10px 8px;font-size:12px}.station-inline .picker-row button:focus-visible{outline:2px solid #e30613;outline-offset:-2px}@media(max-width:600px){.route-fields{padding:0 12px}.station-inline .picker-list{max-height:260px}.route-fields>.ticket-field input{font-size:18px!important}}
+</style>
+<style>
+.travel-app-bar{gap:24px;flex-wrap:wrap}.swiss-clock-widget{display:flex;align-items:center;gap:18px;padding:14px 20px;border:1px solid #ffffff45;border-radius:18px;background:#ffffff14;flex-shrink:0}.swiss-clock{display:block;width:106px;height:106px;filter:drop-shadow(0 3px 6px #0002)}.swiss-clock-caption{display:flex;flex-direction:column;gap:5px;color:white}.swiss-clock-caption>span{font-size:10px!important;letter-spacing:1.6px;font-weight:700}.swiss-clock-caption time{font:600 26px/1.2 system-ui,sans-serif;letter-spacing:1px;font-variant-numeric:tabular-nums}.swiss-clock-caption small{font-size:12px;color:#fff;opacity:.9}@media(max-width:600px){.travel-app-bar{gap:18px}.swiss-clock-widget{width:100%;box-sizing:border-box;padding:12px 16px;gap:18px}.swiss-clock{width:80px;height:80px}.swiss-clock-caption time{font-size:24px}}
+</style>
+<style>
+.transport-app-page .swiss-clock-strip{display:flex!important;justify-content:flex-end;position:relative;visibility:visible!important;opacity:1!important;margin:0 0 20px;padding:18px 24px;border:1px solid #e0e4e8;border-radius:16px;background:#f5f6f7}.transport-app-page .swiss-clock-strip .swiss-clock-widget{display:flex!important;visibility:visible!important;opacity:1!important;background:transparent;border:0;padding:0;gap:22px}.transport-app-page .swiss-clock-strip .swiss-clock{display:block!important;visibility:visible!important;opacity:1!important;width:120px!important;height:120px!important;min-width:120px;flex:none}.transport-app-page .swiss-clock-strip .swiss-clock-caption,.transport-app-page .swiss-clock-strip .swiss-clock-caption small{color:#20252b!important}.transport-app-page .swiss-clock-strip .swiss-clock-caption>span{color:#b60012!important}@media(max-width:600px){.transport-app-page .swiss-clock-strip{justify-content:center;padding:16px}.transport-app-page .swiss-clock-strip .swiss-clock-widget{width:auto}.transport-app-page .swiss-clock-strip .swiss-clock{width:96px!important;height:96px!important;min-width:96px}}
+</style>
+<style>
+.transport-app-page .travel-app .ticket-cta{display:flex;flex-direction:column;justify-content:flex-start;gap:0}.transport-app-page .swiss-clock-side{width:100%;padding:24px 0 30px;margin-bottom:26px;border-bottom:1px solid #e5e8ec;box-sizing:border-box}.transport-app-page .swiss-clock-side .swiss-clock-widget{display:flex;flex-direction:column;align-items:center;gap:16px;background:transparent;border:0;padding:0;width:100%;box-sizing:border-box}.transport-app-page .swiss-clock-side .swiss-clock{display:block;width:150px;height:150px;flex:none}.transport-app-page .swiss-clock-side .swiss-clock-caption{text-align:center;color:#20252b}.transport-app-page .swiss-clock-side .swiss-clock-caption small{color:#59636e}.transport-app-page .swiss-clock-side .swiss-clock-caption>span{color:#b60012!important}.transport-app-page .ticket-purchase-content{width:100%}@media(max-width:760px){.transport-app-page .swiss-clock-side{padding:8px 0 22px;margin-bottom:22px}.transport-app-page .swiss-clock-side .swiss-clock-widget{flex-direction:row;justify-content:center;gap:20px}.transport-app-page .swiss-clock-side .swiss-clock{width:100px;height:100px}.transport-app-page .swiss-clock-side .swiss-clock-caption{text-align:left}}
+</style>
+<style>
+/* Cabecera y pie de transporte: contraste blanco sobre fondo oscuro. */
+.transport-app-page .top-header .logo,.transport-app-page .top-header .logo span,.transport-app-page .top-header .brand,.transport-app-page .top-header .brand span,.transport-app-page .logo,.transport-app-page .logo span{color:#fff!important}
+.transport-app-page footer.site-credits{background:linear-gradient(rgba(5,17,25,.92),rgba(5,17,25,.92)),url('img/11ZurichSuiza.jpg') center 65%/cover!important;border-top:1px solid #ffffff24!important;padding:22px max(20px,calc((100% - 1500px)/2)) 24px!important;margin-top:42px;color:#d8dce0!important;font-family:Arial,Helvetica,sans-serif;font-size:14px!important;text-align:center}
+.transport-app-page footer.site-credits>p{color:#d8dce0!important;font-size:14px!important;line-height:1.6;margin:0 0 4px!important}
+.transport-app-page footer.site-credits>p.developer-credit,.transport-app-page footer.site-credits>p.developer-credit a{color:#fff!important;font-size:14px!important;font-weight:700!important}
+.transport-app-page footer.site-credits a{color:#d8dce0!important;font-size:14px!important;text-decoration:none}
+.transport-app-page footer.site-credits a:hover{color:#fff!important;text-decoration:underline}
+.transport-app-page footer.site-credits h2,.transport-app-page footer.site-credits h3,.transport-app-page footer.site-credits h4{color:#aeb5bb!important;font-size:14px!important;letter-spacing:1.4px}
+.transport-app-page footer.site-credits button{color:#fff!important;font-family:inherit}
+@media(max-width:600px){.transport-app-page footer.site-credits{padding:22px 18px!important}.transport-app-page footer.site-credits a{line-height:2!important}}
+</style>
+<style>
+.transport-app-page .top-header .logo span,.transport-app-page .top-header .brand span,.transport-app-page .logo span{color:#e30613!important}
+</style>
+<style>
+.transport-app-page footer.site-credits{box-sizing:border-box;padding:22px 24px 24px!important;gap:6px!important}
+.transport-app-page footer.site-credits>div,.transport-app-page footer.site-credits>section{width:100%!important;max-width:1500px!important;box-sizing:border-box}
+.transport-app-page footer.site-credits .transport-legal-row{display:flex!important;justify-content:center!important;align-items:center!important;flex-wrap:wrap!important;gap:8px 22px!important;width:100%!important;max-width:1500px!important;margin:8px auto 0!important;padding:0!important;box-sizing:border-box}
+.transport-app-page footer.site-credits .transport-legal-row>a,.transport-app-page footer.site-credits .transport-legal-row>button{display:inline-block!important;flex:0 0 auto!important;width:auto!important;margin:0!important;white-space:nowrap!important;font-size:14px!important;line-height:1.6!important}
+@media(max-width:700px){.transport-app-page footer.site-credits{padding:22px 18px!important}.transport-app-page footer.site-credits .transport-legal-row{gap:8px 16px!important}}
+</style>
 </head>
 
-<body data-header-back="vivir-en-suiza.html|Vivir en Suiza|transporteTopHeader">
+<body class="transport-app-page" data-header-back="vivir-en-suiza.html|Vivir en Suiza|transporteTopHeader">
 
 
 
 
 <header class="page-header">
   <div class="eyebrow">GUIA PARA VIVIR EN SUIZA</div>
-  <h1>TRANSPORTE EN <span>SUIZA</span></h1>
-  <p class="intro" data-no-translate data-l10n="transport.intro">
-    Guia rapida para moverte por Suiza sin complicarte: precios reales,
-    accesibilidad, circuitos entre cantones y paneles de referencia para
-    tren, bus, tranvia y redes urbanas.
-  </p>
+  <h1>Muévete por <span>Suiza.</span></h1>
+  <p class="intro">Encuentra tu conexión. Explora las rutas. Viaja a tu ritmo.</p>
 </header>
-
+<nav class="transport-shortcuts" aria-label="Secciones de transporte">
+<a href="#compra-billete" class="selected">Buscar viaje</a><a href="#resumen-transporte">Billetes y abonos</a><a href="#circuito-cantones">Rutas</a><a href="#mapas-transporte">Mapas</a>
+</nav>
 <main class="content" style="padding-bottom:0">  <section class="section" id="compra-billete">
     <div class="section-head">
       <div class="section-icon">🎫</div>
@@ -447,26 +625,37 @@
       </div>
     </div>
 
-    <div class="ticket-tools">
+    
+    <div class="travel-app">
+    <div class="travel-app-bar"><div><span class="travel-app-kicker">TODOS CON HERNÁN · MOVILIDAD</span><h3>Tu próximo viaje.</h3></div></div>
+    <div class="travel-app-body">
+    <div class="ticket-tools journey-planner">
       <article class="ticket-card">
-        <h3>Busca tu viaje</h3>
-        <p>Completa los datos para preparar tu consulta. Los resultados y la compra se realizan en los canales oficiales.</p>
+        <h3>¿Adónde vamos?</h3>
+        <p>Consulta conexiones, horarios y transbordos aquí. Selecciona un viaje y continúa en SBB para consultar el precio y comprar.</p>
         <form class="ticket-form" id="ticketSearchForm">
           <div class="ticket-field"><label for="ticketOrigin">Origen</label><input id="ticketOrigin" name="origin" type="text" placeholder="Ej. Zürich HB" required></div>
           <div class="ticket-field"><label for="ticketDestination">Destino</label><input id="ticketDestination" name="destination" type="text" placeholder="Ej. Genève" required></div>
           <div class="ticket-field"><label for="ticketDate">Fecha</label><input id="ticketDate" name="date" type="date" required></div>
-          <div class="ticket-field"><label for="ticketPassengers">Pasajeros</label><select id="ticketPassengers" name="passengers"><option value="1">1 pasajero</option><option value="2">2 pasajeros</option><option value="3">3 pasajeros</option><option value="4">4 pasajeros</option><option value="5">5 pasajeros</option></select></div>
+          <div class="ticket-field"><label for="ticketTime">Hora de salida (Suiza)</label><input id="ticketTime" type="time" required></div>
+          <button type="button" id="swapStations" class="map-button">⇅ Intercambiar origen y destino</button>
           <button class="map-button secondary" type="submit">BUSCAR VIAJE →</button>
         </form>
         <p class="ticket-status" id="ticketSearchStatus" role="status" aria-live="polite"></p>
       </article>
 
       <aside class="ticket-cta">
-        <h3>🎟️ ¿QUIERES COMPRAR DIRECTAMENTE?</h3>
+        <div class="swiss-clock-side"><div class="swiss-clock-widget" aria-label="Hora actual en Suiza"><svg viewBox="0 0 200 200" class="swiss-clock" aria-hidden="true"><circle cx="100" cy="100" r="98" fill="white"/><line x1="100" y1="12" x2="100" y2="31" stroke="#17191b" stroke-width="6" transform="rotate(0 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(6 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(12 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(18 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(24 100 100)"/><line x1="100" y1="12" x2="100" y2="31" stroke="#17191b" stroke-width="6" transform="rotate(30 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(36 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(42 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(48 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(54 100 100)"/><line x1="100" y1="12" x2="100" y2="31" stroke="#17191b" stroke-width="6" transform="rotate(60 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(66 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(72 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(78 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(84 100 100)"/><line x1="100" y1="12" x2="100" y2="31" stroke="#17191b" stroke-width="6" transform="rotate(90 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(96 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(102 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(108 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(114 100 100)"/><line x1="100" y1="12" x2="100" y2="31" stroke="#17191b" stroke-width="6" transform="rotate(120 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(126 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(132 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(138 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(144 100 100)"/><line x1="100" y1="12" x2="100" y2="31" stroke="#17191b" stroke-width="6" transform="rotate(150 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(156 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(162 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(168 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(174 100 100)"/><line x1="100" y1="12" x2="100" y2="31" stroke="#17191b" stroke-width="6" transform="rotate(180 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(186 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(192 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(198 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(204 100 100)"/><line x1="100" y1="12" x2="100" y2="31" stroke="#17191b" stroke-width="6" transform="rotate(210 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(216 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(222 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(228 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(234 100 100)"/><line x1="100" y1="12" x2="100" y2="31" stroke="#17191b" stroke-width="6" transform="rotate(240 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(246 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(252 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(258 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(264 100 100)"/><line x1="100" y1="12" x2="100" y2="31" stroke="#17191b" stroke-width="6" transform="rotate(270 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(276 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(282 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(288 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(294 100 100)"/><line x1="100" y1="12" x2="100" y2="31" stroke="#17191b" stroke-width="6" transform="rotate(300 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(306 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(312 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(318 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(324 100 100)"/><line x1="100" y1="12" x2="100" y2="31" stroke="#17191b" stroke-width="6" transform="rotate(330 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(336 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(342 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(348 100 100)"/><line x1="100" y1="10" x2="100" y2="18" stroke="#17191b" stroke-width="2.5" transform="rotate(354 100 100)"/><g id="swissHour"><path d="M96 111 L95 48 L105 48 L104 111 Z" fill="#17191b"/></g><g id="swissMinute"><path d="M97 116 L97 23 L103 23 L103 116 Z" fill="#17191b"/></g><g id="swissSecond"><line x1="100" y1="126" x2="100" y2="27" stroke="#e30613" stroke-width="2.5"/><circle cx="100" cy="29" r="9" fill="#e30613"/></g><circle cx="100" cy="100" r="3" fill="#e30613"/></svg><div class="swiss-clock-caption"><span>HORA EN SUIZA</span><time id="swissClockTime">--:--:--</time><small id="swissClockDate"></small></div></div></div>
+        <div class="ticket-purchase-content">
+        <span class="travel-purchase-icon" aria-hidden="true">↗</span><h3>¿Solo necesitas tu billete?</h3>
         <p>Compra tu billete a través de la página oficial de SBB.</p>
-        <a class="map-button secondary" href="https://www.sbb.ch/en/tickets-offers/buy.html" target="_blank" rel="noopener noreferrer">COMPRAR BILLETE EN SBB →</a>
+        <a class="map-button secondary" href="https://www.sbb.ch/en" target="_blank" rel="noopener noreferrer">IR A SBB ↗</a>
+        </div>
       </aside>
     </div>
+    <div id="journeyResults" aria-live="polite"></div>
+    <p class="journey-credit">Horarios: <a href="https://transport.opendata.ch/" target="_blank" rel="noopener noreferrer">Transport API · opendata.ch</a>. Horas de Suiza. Precios, pasajeros y descuentos se confirman en SBB.</p>
+    </div></div>
   </section>
 
   <section class="section" id="aviso-transporte">
@@ -871,15 +1060,177 @@ function printMap(id, title) {
 </script>
 
 <script>
-  document.getElementById('ticketSearchForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-    document.getElementById('ticketSearchStatus').textContent = 'Consulta preparada. Para horarios, tarifas y compra, utiliza la web oficial de SBB.';
+(function () {
+  'use strict';
+  const form = document.getElementById('ticketSearchForm');
+  const origin = document.getElementById('ticketOrigin');
+  const destination = document.getElementById('ticketDestination');
+  const date = document.getElementById('ticketDate');
+  const time = document.getElementById('ticketTime');
+  const status = document.getElementById('ticketSearchStatus');
+  const results = document.getElementById('journeyResults');
+  const button = form.querySelector('[type="submit"]');
+  const swiss = (value) => Object.fromEntries(new Intl.DateTimeFormat('en-GB', {
+    timeZone:'Europe/Zurich',year:'numeric',month:'2-digit',day:'2-digit',
+    hour:'2-digit',minute:'2-digit',hourCycle:'h23'
+  }).formatToParts(new Date(value)).map(p => [p.type,p.value]));
+  const now = swiss(Date.now());
+  date.value = date.min = now.year+'-'+now.month+'-'+now.day;
+  time.value = now.hour+':'+now.minute;
+  document.getElementById('swapStations').addEventListener('click', () => {
+    [origin.value,destination.value] = [destination.value,origin.value];
   });
+  const escape = value => String(value == null ? '' : value).replace(/[&<>"']/g,
+    c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function sbbLink(from,to,day,hour) {
+    const lang = document.documentElement.lang.slice(0,2);
+    const url = new URL('https://www.sbb.ch/'+(['de','fr','it','en'].includes(lang)?lang:'en'));
+    url.searchParams.set('von',from);
+    url.searchParams.set('nach',to);
+    url.searchParams.set('day',day);
+    url.searchParams.set('time',hour);
+    url.searchParams.set('moment','dep');
+    return url.href;
+  }
+  function clock(value) {
+    return new Intl.DateTimeFormat('es',{timeZone:'Europe/Zurich',hour:'2-digit',minute:'2-digit'}).format(new Date(value));
+  }
+  form.addEventListener('submit',async function(event) {
+    event.preventDefault();
+    if (!origin.value.trim() || !destination.value.trim()) {
+      status.textContent='Escribe un origen y un destino.'; return;
+    }
+    if(origin.value.trim().toLowerCase()===destination.value.trim().toLowerCase()){status.textContent='Elige un destino diferente del origen.';return;}
+    results.replaceChildren();
+    button.disabled=true;
+    status.textContent='Buscando conexiones…';
+    results.setAttribute('aria-busy','true');
+    const query={from:origin.value.trim(),to:destination.value.trim(),date:date.value,time:time.value};
+    const controller=new AbortController();
+    const timeout=setTimeout(()=>controller.abort(),18000);
+    try {
+      const url=new URL('https://transport.opendata.ch/v1/connections');
+      Object.entries({...query,limit:'6'}).forEach(([key,value])=>url.searchParams.set(key,value));
+      const response=await fetch(url,{signal:controller.signal});
+      if(!response.ok) throw new Error('HTTP '+response.status);
+      const data=await response.json();
+      if(!Array.isArray(data.connections)) throw new Error('Invalid response');
+      const connections=data.connections.filter(c=>c.from && c.to && c.from.departure && c.to.arrival);
+      status.textContent=connections.length ? connections.length+' conexiones encontradas. Escoge tu viaje.' :
+        'No se han encontrado conexiones. Prueba otra hora o confirma los nombres de las estaciones.';
+      const shortest=Math.min(...connections.map(c=>new Date(c.to.arrival)-new Date(c.from.departure)));
+      for(const c of connections) {
+        const dep=swiss(c.from.departure);
+        const day=dep.year+'-'+dep.month+'-'+dep.day;
+        const minutes=Math.round((new Date(c.to.arrival)-new Date(c.from.departure))/60000);
+        const sections=Array.isArray(c.sections)?c.sections:[];
+        const changes=Math.max(0,sections.filter(x=>x.journey).length-1);
+        const from=c.from.station.name, to=c.to.station.name;
+        const card=document.createElement('article');card.className='journey-result';
+        const details=sections.map(section=>{
+          const a=section.departure||{}, b=section.arrival||{};
+          const mode=section.journey ? section.journey.name || section.journey.category || 'Transporte' : 'A pie';
+          return '<li>'+escape(mode)+' · '+escape(a.station && a.station.name)+' → '+escape(b.station && b.station.name)+
+            (a.departure?' · '+clock(a.departure):'')+(a.platform?' · Andén '+escape(a.platform):'')+'</li>';
+        }).join('');
+        card.innerHTML='<div class="journey-badges">'+(changes===0?'<span class="direct">Directo</span>':'<span>'+changes+' transbordo(s)</span>')+(connections.length>1&&new Date(c.to.arrival)-new Date(c.from.departure)===shortest?'<span class="fastest">Más rápido de estos resultados</span>':'')+(c.from.platform?'<span>Andén '+escape(c.from.platform)+'</span>':'')+'</div><div class="journey-times"><div><strong>'+clock(c.from.departure)+'</strong><small>'+escape(from)+'</small></div><span aria-hidden="true">→</span><div><strong>'+clock(c.to.arrival)+'</strong><small>'+escape(to)+'</small></div></div>'+
+          '<p class="journey-meta">'+escape(day)+' · '+Math.floor(minutes/60)+' h '+minutes%60+' min · '+(changes?changes+' transbordo(s)':'Directo')+
+          (c.products?' · '+escape(c.products.join(' · ')):'')+'</p>'+
+          '<details><summary>Ver recorrido y paradas de transbordo</summary><ol>'+details+'</ol></details>'+
+          '<a class="map-button secondary" target="_blank" rel="noopener noreferrer" href="'+escape(sbbLink(from,to,day,dep.hour+':'+dep.minute))+'">VER PRECIO Y COMPRAR EN SBB ↗</a>'+
+          '<p class="journey-credit">En SBB, confirma la conexión, fecha y hora y selecciona pasajeros y descuentos.</p>';
+        results.appendChild(card);
+      }
+    } catch(error) {
+      status.textContent='No se han podido cargar los horarios. Puedes continuar la consulta en SBB o volver a intentarlo.';
+      const retry=document.createElement('button');retry.type='button';retry.className='map-button';retry.textContent='Reintentar búsqueda';retry.onclick=()=>form.requestSubmit();results.append(retry);
+    } finally {
+      clearTimeout(timeout);
+      const link=document.createElement('a');
+      link.className='map-button';
+      link.href=sbbLink(query.from,query.to,query.date,query.time);
+      link.target='_blank';link.rel='noopener noreferrer';link.textContent='Consultar esta búsqueda en SBB ↗';
+      results.appendChild(link);
+      button.disabled=false;results.setAttribute('aria-busy','false');
+    }
+  });
+}());
 </script>
 
 <script src="js/site-header.js"></script>
   <script src="js/i18n.js"></script>
 <script src="js/legal-footer.js"></script>
 <script src="js/chat-widget.js"></script>
+<script>
+(()=>{
+const popular=['Zürich HB','Genève','Bern','Basel SBB','Lausanne','Luzern','Winterthur','Zürich Flughafen'];
+const read=k=>{try{const a=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(a)?a:[]}catch{return []}};
+const save=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
+const form=document.getElementById('ticketSearchForm');
+const origin=document.getElementById('ticketOrigin'),dest=document.getElementById('ticketDestination');
+const dialog=document.createElement('div');dialog.className='station-inline';dialog.hidden=true;dialog.setAttribute('aria-label','Sugerencias de estaciones');
+dialog.innerHTML='<button type="button" class="nearby-button">◎ Ubicación actual</button><p class="picker-status" role="status"></p><div class="picker-list"></div>';
+const routeFields=document.createElement('div');routeFields.className='route-fields';form.prepend(routeFields);routeFields.append(origin.parentElement,dest.parentElement,dialog);
+const list=dialog.querySelector('.picker-list'),status=dialog.querySelector('.picker-status');
+let query=origin;
+let target,timer,controller,serial=0;
+function cancel(){clearTimeout(timer);serial++;controller?.abort()}
+function choose(name){target.value=name;save('transportRecentStations',[name,...read('transportRecentStations').filter(n=>n!==name)].slice(0,6));target.focus();closePicker()}
+function render(names,label){status.textContent=label;list.replaceChildren();names.forEach(name=>{const row=document.createElement('div');row.className='picker-row';const pick=document.createElement('button');pick.type='button';pick.textContent='◎  '+name;pick.onclick=()=>choose(name);const star=document.createElement('button');star.type='button';let favorite=read('transportFavoriteStations').includes(name);star.textContent=favorite?'★':'☆';star.setAttribute('aria-label','Guardar '+name+' en favoritos');star.setAttribute('aria-pressed',favorite);star.onclick=()=>{favorite=!favorite;save('transportFavoriteStations',favorite?[name,...read('transportFavoriteStations').filter(n=>n!==name)].slice(0,20):read('transportFavoriteStations').filter(n=>n!==name));star.textContent=favorite?'★':'☆';star.setAttribute('aria-pressed',favorite)};row.append(pick,star);list.append(row)})}
+function defaults(){render([...new Set([...read('transportFavoriteStations'),...read('transportRecentStations'),...popular])].filter(n=>typeof n==='string').slice(0,20),'Tus favoritos, recientes y estaciones habituales')}
+async function search(params,id){controller=new AbortController();const current=controller;const timeout=setTimeout(()=>current.abort(),10000);try{const r=await fetch('https://transport.opendata.ch/v1/locations?'+new URLSearchParams(params),{signal:current.signal});if(!r.ok)throw Error();const data=await r.json();if(id!==serial||dialog.hidden)return;const names=[...new Set((data.stations||[]).filter(s=>s.name&&s.type!=='refine').map(s=>s.name))].slice(0,12);render(names,names.length?'Selecciona tu estación · ☆ guarda tus favoritas':'Sin estaciones. Prueba con otra ciudad o nombre.')}catch{if(id===serial&&!dialog.hidden)render([],'No se pudieron cargar las estaciones. Prueba de nuevo.')}finally{clearTimeout(timeout)}}
+function update(){cancel();if(query.value.trim().length<2){defaults();return}render([],'Buscando estaciones…');const id=serial;const value=query.value.trim();timer=setTimeout(()=>search({query:value,type:'station'},id),300)}
+function closePicker(){cancel();dialog.hidden=true;[origin,dest].forEach(i=>i.setAttribute('aria-expanded','false'))}
+[origin,dest].forEach(input=>{input.readOnly=false;input.autocomplete='off';input.setAttribute('aria-expanded','false');input.setAttribute('aria-controls','inlineStationSuggestions');const open=()=>{target=input;query=input;dialog.hidden=false;[origin,dest].forEach(i=>i.setAttribute('aria-expanded',String(i===input)));update()};input.addEventListener('focus',open);input.addEventListener('click',()=>{if(dialog.hidden)open()});input.addEventListener('input',update);input.addEventListener('keydown',e=>{if(e.key==='Escape')closePicker();if(e.key==='ArrowDown'&&!dialog.hidden){e.preventDefault();dialog.querySelector('.picker-row button')?.focus()}})});
+dialog.id='inlineStationSuggestions';
+document.addEventListener('pointerdown',e=>{if(!routeFields.contains(e.target))closePicker()});
+routeFields.addEventListener('focusout',()=>setTimeout(()=>{if(!routeFields.contains(document.activeElement))closePicker()},0));
+form.addEventListener('submit',closePicker);
+dialog.querySelector('.nearby-button').onclick=()=>{cancel();const id=serial;if(!navigator.geolocation){status.textContent='Tu navegador no ofrece ubicación.';return}render([],'Localizando estaciones cercanas…');navigator.geolocation.getCurrentPosition(pos=>{if(id===serial&&!dialog.hidden)search({x:pos.coords.latitude,y:pos.coords.longitude,type:'station'},id)},()=>{if(id===serial&&!dialog.hidden)status.textContent='No se pudo obtener tu ubicación. Busca una estación por nombre.'},{timeout:12000,maximumAge:60000})};
+const tools=document.createElement('div');tools.className='saved-trips';tools.innerHTML='<div class="saved-heading"><strong>Tus trayectos</strong><button type="button">☆ Guardar trayecto</button></div><div class="saved-list"></div><p class="saved-note" role="status">Guarda tus rutas habituales en este navegador.</p>';form.after(tools);
+function routes(){const box=tools.querySelector('.saved-list');box.replaceChildren();read('transportFavoriteRoutes').filter(r=>r&&typeof r.from==='string'&&typeof r.to==='string').forEach((r,i)=>{const row=document.createElement('div');row.className='saved-route';const btn=document.createElement('button');btn.type='button';btn.textContent=r.from+' → '+r.to;btn.onclick=()=>{origin.value=r.from;dest.value=r.to;document.getElementById('ticketDate').focus()};const remove=document.createElement('button');remove.type='button';remove.textContent='×';remove.setAttribute('aria-label','Eliminar '+btn.textContent);remove.onclick=()=>{save('transportFavoriteRoutes',read('transportFavoriteRoutes').filter((_,j)=>i!==j));routes()};row.append(btn,remove);box.append(row)})}
+tools.querySelector('.saved-heading button').onclick=()=>{if(!origin.value||!dest.value){tools.querySelector('.saved-note').textContent='Selecciona primero origen y destino.';return}const r={from:origin.value,to:dest.value};save('transportFavoriteRoutes',[r,...read('transportFavoriteRoutes').filter(x=>x.from!==r.from||x.to!==r.to)].slice(0,5));routes();tools.querySelector('.saved-note').textContent='Trayecto guardado en este navegador.'};routes();
+})();
+</script>
+<script>
+(()=>{
+const zone='Europe/Zurich';
+const fmt=new Intl.DateTimeFormat('en-GB',{timeZone:zone,hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'});
+const hour=document.getElementById('swissHour'),minute=document.getElementById('swissMinute'),second=document.getElementById('swissSecond'),time=document.getElementById('swissClockTime'),date=document.getElementById('swissClockDate');
+let frame,lastSecond=-1,h=0,m=0,sec=0;
+function tick(){
+ const now=new Date(),stamp=Math.floor(now.getTime()/1000);
+ if(stamp!==lastSecond){
+  lastSecond=stamp;
+  const parts=Object.fromEntries(fmt.formatToParts(now).map(p=>[p.type,p.value]));
+  h=Number(parts.hour);m=Number(parts.minute);sec=Number(parts.second);
+  time.textContent=fmt.format(now);time.dateTime=now.toISOString();
+  date.textContent=new Intl.DateTimeFormat(document.documentElement.lang||'es',{timeZone:zone,weekday:'short',day:'numeric',month:'short'}).format(now);
+ }
+ const smoothSeconds=sec+now.getMilliseconds()/1000;
+ hour.setAttribute('transform','rotate('+((h%12)*30+m/2+smoothSeconds/120)+' 100 100)');
+ minute.setAttribute('transform','rotate('+(m*6+smoothSeconds/10)+' 100 100)');
+ second.setAttribute('transform','rotate('+(smoothSeconds*6)+' 100 100)');
+ frame=requestAnimationFrame(tick);
+}
+tick();
+document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(frame);if(!document.hidden){lastSecond=-1;tick()}});
+})();
+</script>
+<script>
+(()=>{
+const footer=document.querySelector('footer.site-credits');if(!footer)return;
+function alignLegal(){
+ const links=[...footer.querySelectorAll('a')].filter(a=>!a.closest('.developer-credit'));
+ if(links.length<3)return;
+ const parent=links[0].parentElement;
+ if(parent===footer)return;
+ parent.classList.add('transport-legal-row');
+ const cookie=[...footer.querySelectorAll('button,a')].find(el=>/configurar cookies|cookie settings|cookies konfigurieren|paramétrer les cookies|impostazioni cookie/i.test(el.textContent));
+ if(cookie&&cookie.parentElement!==parent)parent.append(cookie);
+}
+alignLegal();const observer=new MutationObserver(()=>{observer.disconnect();alignLegal();observer.observe(footer,{childList:true,subtree:true})});observer.observe(footer,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
