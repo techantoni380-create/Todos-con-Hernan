@@ -277,7 +277,7 @@
       } else if (matchesAnyPhrase(normalized,['perdon','disculpa','lo siento'])) {
         addMessage('No pasa nada 😊. Dime en qué puedo ayudarte.','bot');
       } else if (category && category.id === 'worldcup' && matchesAnyPhrase(normalized,['paises','participantes','quienes participan'])) {
-        addMessage('En el panel del Mundial aparecen banderas de Bolivia, República Dominicana, Nicaragua, Venezuela, Ecuador, Honduras, El Salvador, Perú, Guatemala, Paraguay, Argentina, Chile, Colombia, Costa Rica, Cuba, España, México, Panamá, Puerto Rico y Uruguay. Las que ya tienen vídeo te permiten abrirlo en YouTube; las demás quedan a la espera de contenido.<br><a class="chatWidgetLinkBtn" href="proyectos.html#mundial-2026">Ver países · Edición 2026</a>','bot');
+        addMessage('En el panel del Mundial aparecen banderas de Bolivia, República Dominicana, Nicaragua, Venezuela, Ecuador, Honduras, El Salvador, Perú, Guatemala, Paraguay, Argentina, Chile, Colombia, Costa Rica, Cuba, España, México, Panamá, Brasil y Uruguay. Las que ya tienen vídeo te permiten abrirlo en YouTube; las demás quedan a la espera de contenido.<br><a class="chatWidgetLinkBtn" href="proyectos.html#mundial-2026">Ver países · Edición 2026</a>','bot');
         context.lastCategory = 'worldcup';
       } else if (category) {
         /* Si saluda y pregunta a la vez, se responde con saludo + tema. */
