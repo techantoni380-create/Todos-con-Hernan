@@ -10,6 +10,15 @@
 
 const spots = window.SPOTS;
 
+// Vídeo del Grand Tour: Meilen (Photo Spot 40).
+const meilenSpot = Array.isArray(spots)
+  ? spots.find(spot => Number(spot.id) === 40)
+  : null;
+
+if (meilenSpot) {
+  meilenSpot.youtubeUrl = 'https://www.youtube.com/watch?v=kxWIPERtN6g';
+}
+
 /*
  * Información editorial adicional de cada Photo Spot.
  * Se mantiene spots.js como fuente principal de los datos
