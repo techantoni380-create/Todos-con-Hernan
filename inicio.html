@@ -2,7 +2,28 @@
 <html lang="es">
 
 <head>
-  <meta name="view-transition" content="same-origin">
+<meta charset="UTF-8">
+<style id="stable-page-paint">
+@view-transition { navigation: none; }
+html.page-preparing { background: #071a28; }
+html.page-preparing body { opacity: 0; animation: page-paint-fallback 0s 4s forwards; }
+@keyframes page-paint-fallback { to { opacity: 1; } }
+</style>
+<script id="stable-page-paint-init">
+(function () {
+  var root = document.documentElement;
+  root.classList.add('page-preparing');
+  function reveal() { root.classList.remove('page-preparing'); }
+  // Release after the page's synchronous initializers and their layout updates.
+  document.addEventListener('DOMContentLoaded', function () {
+    requestAnimationFrame(function () { requestAnimationFrame(reveal); });
+  }, { once: true });
+  window.addEventListener('pageshow', reveal);
+  window.setTimeout(reveal, 4000);
+}());
+</script>
+
+
   <style>html { background: #071a28; }</style>
   <style>
     /* Enlaces de cabecera: mismo aspecto base que en videos.html (la referencia). */
@@ -2153,6 +2174,56 @@ footer.site-credits > p.developer-credit {
 
 
 <body>
+  <div class="grand-tour-intro" id="grandTourIntro" role="dialog" aria-label="Introducción de Todos con Hernán">
+    <video id="grandTourIntroVideo" autoplay muted playsinline preload="auto" aria-hidden="true">
+      <source src="videos/intro-logo.mp4" type="video/mp4">
+    </video>
+    <button class="grand-tour-intro-skip" id="grandTourIntroSkip" type="button">Saltar intro →</button>
+  </div>
+
+  <script>
+    (function () {
+      const intro = document.getElementById('grandTourIntro');
+      const video = document.getElementById('grandTourIntroVideo');
+      const skip = document.getElementById('grandTourIntroSkip');
+      if (!intro || !video || !skip) return;
+
+      const INTRO_SESSION_KEY = 'grandTourIntroShown';
+      let introSeen = false;
+      try { introSeen = !!sessionStorage.getItem(INTRO_SESSION_KEY); } catch (_) {}
+      if (introSeen) {
+        intro.remove();
+        return;
+      }
+
+      document.body.classList.add('grand-tour-intro-active');
+      let closed = false;
+
+      function closeIntro() {
+        if (closed) return;
+        closed = true;
+        try { sessionStorage.setItem(INTRO_SESSION_KEY, '1'); } catch (_) { /* Modo privado sin sessionStorage disponible. */ }
+        video.pause();
+        try { video.currentTime = 0; } catch (_) { /* El vídeo puede no haber cargado metadatos. */ }
+        video.removeAttribute('src');
+        video.querySelectorAll('source').forEach(function (source) { source.removeAttribute('src'); });
+        video.load();
+        intro.classList.add('is-leaving');
+        document.body.classList.remove('grand-tour-intro-active');
+        window.setTimeout(function () { intro.remove(); }, 850);
+      }
+
+      function startVideo() {
+        video.play().catch(function(error){ if (error.name !== 'AbortError') closeIntro(); });
+      }
+
+      skip.addEventListener('click', closeIntro);
+      video.addEventListener('ended', closeIntro);
+      video.addEventListener('error', closeIntro);
+      video.addEventListener('canplay', startVideo, { once: true });
+      startVideo();
+    }());
+  </script>
 
   <div class="bgSlideshow" aria-hidden="true">
     <div class="bgSlide"></div>
@@ -4269,53 +4340,6 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now(
 </script>
 </body>
 
-  <div class="grand-tour-intro" id="grandTourIntro" role="dialog" aria-label="Introducción de Todos con Hernán">
-    <video id="grandTourIntroVideo" autoplay muted playsinline preload="auto" aria-hidden="true">
-      <source src="videos/intro-logo.mp4" type="video/mp4">
-    </video>
-    <button class="grand-tour-intro-skip" id="grandTourIntroSkip" type="button">Saltar intro →</button>
-  </div>
 
-  <script>
-    (function () {
-      const intro = document.getElementById('grandTourIntro');
-      const video = document.getElementById('grandTourIntroVideo');
-      const skip = document.getElementById('grandTourIntroSkip');
-      if (!intro || !video || !skip) return;
-
-      const INTRO_SESSION_KEY = 'grandTourIntroShown';
-      if (sessionStorage.getItem(INTRO_SESSION_KEY)) {
-        intro.remove();
-        return;
-      }
-
-      document.body.classList.add('grand-tour-intro-active');
-      let closed = false;
-
-      function closeIntro() {
-        if (closed) return;
-        closed = true;
-        try { sessionStorage.setItem(INTRO_SESSION_KEY, '1'); } catch (_) { /* Modo privado sin sessionStorage disponible. */ }
-        video.pause();
-        try { video.currentTime = 0; } catch (_) { /* El vídeo puede no haber cargado metadatos. */ }
-        video.removeAttribute('src');
-        video.querySelectorAll('source').forEach(function (source) { source.removeAttribute('src'); });
-        video.load();
-        intro.classList.add('is-leaving');
-        document.body.classList.remove('grand-tour-intro-active');
-        window.setTimeout(function () { intro.remove(); }, 850);
-      }
-
-      function startVideo() {
-        video.play().catch(closeIntro);
-      }
-
-      skip.addEventListener('click', closeIntro);
-      video.addEventListener('ended', closeIntro);
-      video.addEventListener('error', closeIntro);
-      video.addEventListener('canplay', startVideo, { once: true });
-      startVideo();
-    }());
-  </script>
 
 </html>

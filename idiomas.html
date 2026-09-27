@@ -1,6 +1,27 @@
 <!doctype html>
 <html lang="es">
 <head>
+<meta charset="UTF-8">
+<style id="stable-page-paint">
+@view-transition { navigation: none; }
+html.page-preparing { background: #071a28; }
+html.page-preparing body { opacity: 0; animation: page-paint-fallback 0s 4s forwards; }
+@keyframes page-paint-fallback { to { opacity: 1; } }
+</style>
+<script id="stable-page-paint-init">
+(function () {
+  var root = document.documentElement;
+  root.classList.add('page-preparing');
+  function reveal() { root.classList.remove('page-preparing'); }
+  // Release after the page's synchronous initializers and their layout updates.
+  document.addEventListener('DOMContentLoaded', function () {
+    requestAnimationFrame(function () { requestAnimationFrame(reveal); });
+  }, { once: true });
+  window.addEventListener('pageshow', reveal);
+  window.setTimeout(reveal, 4000);
+}());
+</script>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071a28">

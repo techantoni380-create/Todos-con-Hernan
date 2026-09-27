@@ -2,7 +2,28 @@
 <html lang="es">
 
 <head>
-  <meta name="view-transition" content="same-origin">
+<meta charset="UTF-8">
+<style id="stable-page-paint">
+@view-transition { navigation: none; }
+html.page-preparing { background: #071a28; }
+html.page-preparing body { opacity: 0; animation: page-paint-fallback 0s 4s forwards; }
+@keyframes page-paint-fallback { to { opacity: 1; } }
+</style>
+<script id="stable-page-paint-init">
+(function () {
+  var root = document.documentElement;
+  root.classList.add('page-preparing');
+  function reveal() { root.classList.remove('page-preparing'); }
+  // Release after the page's synchronous initializers and their layout updates.
+  document.addEventListener('DOMContentLoaded', function () {
+    requestAnimationFrame(function () { requestAnimationFrame(reveal); });
+  }, { once: true });
+  window.addEventListener('pageshow', reveal);
+  window.setTimeout(reveal, 4000);
+}());
+</script>
+
+
   <style>html { background: #071a28; }</style>
 
     <meta charset="UTF-8">
@@ -109,7 +130,7 @@
             inset: 0;
             z-index: 0;
             background-image:
-                var(--contact-bg-image, url("img/Suiza3.jpg"));
+                var(--contact-bg-image, url("img/07suiza.jpg"));
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -2407,12 +2428,13 @@ body::after {
 
     // Cambia SOLO después de 8 segundos y repite indefinidamente.
     setInterval(function () {
-        imageIndex = (imageIndex + 1) % backgroundImages.length;
-
-        document.documentElement.style.setProperty(
-            '--contact-bg-image',
-            'url("' + backgroundImages[imageIndex] + '")'
-        );
+        const nextIndex = (imageIndex + 1) % backgroundImages.length;
+        const nextImage = new Image();
+        nextImage.onload = function () {
+            imageIndex = nextIndex;
+            document.documentElement.style.setProperty('--contact-bg-image', 'url("' + backgroundImages[imageIndex] + '")');
+        };
+        nextImage.src = backgroundImages[nextIndex];
     }, 8000);
 
     const form = document.getElementById('bookingForm');
