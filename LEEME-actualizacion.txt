@@ -1,0 +1,92 @@
+TODOS CON HERNÁN · LIBRO GRATUITO Y PANEL DIGITAL
+Actualización preparada el 17/10/2026
+
+QUÉ INCLUYE
+- El libro a la izquierda de Hernán, en el hueco libre de Inicio.
+- Portada original, título y botón de descarga gratuita.
+- Panel inspirado en los circuitos del tiempo: fecha y hora de Suiza
+  con segundos (naranja), visitas a Inicio (verde), descargas (amarillo).
+- Diseño adaptable y textos del bloque en los siete idiomas del selector.
+  El libro descargable está en español.
+- El PDF original completo, sin modificar.
+
+CÓMO APLICARLO
+1. Guarda una copia de tu inicio.html actual.
+2. Descomprime este ZIP.
+3. Copia inicio.html a la raíz de tu proyecto, sustituyendo el anterior.
+4. Combina las carpetas css, js e img con las que ya tienes.
+   Añade también las carpetas descargas y api. No borres tus carpetas.
+5. Conserva todos tus vídeos, imágenes y demás archivos del proyecto.
+   Este ZIP es una actualización y no contiene el sitio completo.
+6. Abre inicio.html y comprueba el bloque, el calendario y el menú.
+
+ARCHIVOS DE LA ACTUALIZACIÓN
+inicio.html
+css/guia-libro.css
+js/guia-libro.js
+img/guia-todos-con-hernan.jpg
+descargas/guia-todos-con-hernan.pdf
+api/contador.php
+api/descargar-guia.php
+
+CONTADOR COMPARTIDO
+Se ha preparado una implementación para un alojamiento con PHP 8.x.
+El alojamiento de la web todavía está pendiente de confirmar.
+
+En un servidor con PHP:
+- Sube las carpetas conservando sus rutas.
+- El proceso PHP debe poder crear y escribir en api/.tch-data.
+- No configures caché de CDN para las dos rutas PHP.
+- El contador empieza en cero y guarda datos compartidos en el servidor.
+- No elimines api/.tch-data al actualizar la web: conserva los totales.
+- No se necesitan claves, cuentas externas ni una base de datos SQL.
+
+La página comprueba el servicio antes de utilizarlo. Cuando recibe una
+respuesta válida, muestra los totales y pasa a utilizar la descarga
+registrada. Si no hay servicio, muestra guiones y «Estadísticas no
+disponibles»; el enlace directo al PDF permanece disponible.
+
+Abrir el HTML con doble clic o servirlo en un hosting estático permite
+mostrar el libro, el reloj y descargar el PDF, pero no ejecutar PHP.
+Si el alojamiento es GitHub Pages u otro servidor estático, habrá que
+conectar el contador a un backend compatible antes de darlo por activado.
+No se ha publicado ni activado esta actualización en la web real.
+
+QUÉ CUENTA
+- Visitas: cargas de Inicio que llegan a registrar la visita mediante
+  JavaScript. Recargar vuelve a contar. No mide personas únicas ni todas
+  las páginas del sitio; empieza desde la instalación.
+- Descargas: solicitudes GET aceptadas por api/descargar-guia.php.
+  Incluye las que una persona inicia y después cancela. No puede asegurar
+  que el navegador guarde o que la persona lea el PDF.
+- Las descargas directas del PDF, sin pasar por ese endpoint, no cuentan.
+- HEAD y consultas de estadísticas no aumentan descargas ni visitas.
+- Se guardan únicamente dos totales; no se guardan IPs, identificadores
+  de visitantes ni cookies. No es un sistema de analítica antifraude:
+  tráfico automatizado puede aumentar las cifras.
+- Los contadores se consultan de nuevo tras la descarga, al regresar a
+  la pestaña y cada minuto mientras está visible.
+
+PRUEBA EN TU ALOJAMIENTO
+1. Abre api/contador.php?action=stats en tu dominio: debe responder JSON
+   con ok=true, visits y downloads, sin mostrar código PHP.
+2. Abre Inicio: la cifra de visitas debe aumentar una vez.
+3. Descarga el libro desde el botón: el PDF debe abrirse o guardarse y
+   el número de descargas actualizarse unos segundos después.
+4. Abre la página en otro navegador: debe mostrar los mismos totales
+   del servidor, más su nueva visita.
+
+DEPENDENCIAS EXISTENTES
+No se han cambiado los scripts, estilos globales ni otros bloques del
+sitio. Sus archivos originales deben seguir en el proyecto, incluidos
+los estilos que cargan dinámicamente los scripts: site-enhancements.css,
+legal-footer.css y chat-widget.css, así como data/bot-knowledge.js.
+
+VALIDACIÓN REALIZADA
+Sintaxis JavaScript y PHP comprobadas. Endpoints ejecutados con PHP
+WebAssembly: persistencia, métodos HTTP, rechazo de peticiones de otro
+origen, HEAD sin incremento y PDF descargado idéntico al original.
+Pruebas en Chromium: reloj, descarga registrada, fallback directo, siete
+idiomas y bloque sin desbordamiento a 1440, 1100, 800, 390 y 320 px.
+La revisión se ha hecho con los archivos facilitados. Los recursos
+originales no facilitados deben conservarse en el sitio al aplicar el ZIP.
