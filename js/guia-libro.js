@@ -2,7 +2,8 @@
 (function () {
  'use strict';
  const root=document.getElementById('guia-gratis');
- if(!root)return;
+ if(!root||root.dataset.tchCounterInitialized==='true')return;
+ root.dataset.tchCounterInitialized='true';
  const dictionary={
   es:{title:'La guía de Todos con Hernán',caption:'Suiza: empezar de nuevo',subtitle:'Una guía práctica y humana para tu nueva vida.',download:'Descargar gratis',format:'PDF en español · 54 páginas · 26,7 MB',date:'FECHA Y HORA · SUIZA',month:'MES',day:'DÍA',year:'AÑO',hour:'HORA',minute:'MIN',second:'SEG',visits:'VISITAS',visitLabel:'VISITAS A INICIO',downloads:'DESCARGAS',downloadLabel:'DESCARGAS DEL LIBRO',pending:'Estadísticas no disponibles',note:'Contadores desde la puesta en marcha. Visitas a Inicio y solicitudes de descarga; no personas únicas.',clock:'Fecha y hora de Suiza'},
   en:{title:'The Todos con Hernán guide',caption:'Switzerland: a new beginning',subtitle:'A practical, human guide to your new life.',download:'Download for free',format:'PDF in Spanish · 54 pages · 26.7 MB',date:'DATE & TIME · SWITZERLAND',month:'MON',day:'DAY',year:'YEAR',hour:'HOUR',minute:'MIN',second:'SEC',visits:'VISITS',visitLabel:'HOME PAGE VIEWS',downloads:'DOWNLOADS',downloadLabel:'BOOK DOWNLOADS',pending:'Statistics unavailable',note:'Counts since launch. Home page views and download requests; not unique people.',clock:'Date and time in Switzerland'},
@@ -16,10 +17,10 @@
  const polygons={a:'5,1 19,1 22,4 18,6 6,6 2,4',b:'20,6 23,4 23,18 20,21 18,18 18,9',c:'20,23 23,26 23,40 20,42 18,38 18,26',d:'5,40 19,40 22,43 18,46 6,46 2,43',e:'2,23 5,26 5,38 2,42 0,40 0,26',f:'2,5 5,9 5,18 2,21 0,18 0,5',g:'5,20 18,20 21,23 18,26 5,26 2,23'};
  let lang='es', statsReady=false, latestStats=null;
  const links=[...root.querySelectorAll('[data-tch-download]')];
- const directLinks=links.map(link=>link.href);
  const status=root.querySelector('.tch-stats-status');
- const endpoint=new URL(root.dataset.statsEndpoint,document.baseURI);
- const downloadEndpoint=new URL(root.dataset.downloadEndpoint,document.baseURI);
+ // Public browser key: grants access only to the counter RPC, not table writes.
+ const endpoint='https://lqxvuuogxenzsplsruok.supabase.co/rest/v1/rpc/tch_book_counter';
+ const publishableKey='sb_publishable_kBy973taie6QPk0awkdlIQ_21mxkXRS';
  function led(node,value,label){
   node.setAttribute('aria-label',label);
   if(node.dataset.value===value)return;
@@ -46,21 +47,25 @@
  }
  function renderStats(data){
   if(data?.ok!==true||!Number.isSafeInteger(data.visits)||data.visits<0||!Number.isSafeInteger(data.downloads)||data.downloads<0)throw Error('Invalid counters');
+  // Concurrent reads must not overwrite a newer increment with older totals.
+  if(latestStats)data={...data,visits:Math.max(data.visits,latestStats.visits),downloads:Math.max(data.downloads,latestStats.downloads)};
   led(root.querySelector('[data-counter="visits"]'),String(data.visits).padStart(8,'0'),dictionary[lang].visits+': '+data.visits);
   led(root.querySelector('[data-counter="downloads"]'),String(data.downloads).padStart(8,'0'),dictionary[lang].downloads+': '+data.downloads);
   statsReady=true;latestStats=data;status.textContent='';
-  links.forEach(link=>{link.href=downloadEndpoint.href;});
  }
  function unavailable(){
   statsReady=false;status.textContent=dictionary[lang].pending;
   root.querySelectorAll('[data-counter]').forEach(node=>led(node,'--------',dictionary[lang].pending));
-  links.forEach((link,i)=>{link.href=directLinks[i]});
  }
  async function request(action='stats'){
-  const url=new URL(endpoint);url.searchParams.set('action',action);
   const control=new AbortController(),timeout=setTimeout(()=>control.abort(),5000);
   try{
-   const response=await fetch(url,{method:action==='visit'?'POST':'GET',cache:'no-store',credentials:'omit',signal:control.signal,headers:{Accept:'application/json'}});
+   const response=await fetch(endpoint,{
+    method:'POST',cache:'no-store',credentials:'omit',signal:control.signal,
+    keepalive:action!=='stats',
+    headers:{Accept:'application/json','Content-Type':'application/json',apikey:publishableKey},
+    body:JSON.stringify({p_event:action})
+   });
    if(!response.ok||!response.headers.get('content-type')?.includes('application/json'))throw Error('Statistics unavailable');
    const data=await response.json();renderStats(data);
   }catch(error){unavailable();throw error}finally{clearTimeout(timeout)}
@@ -70,12 +75,18 @@
  const observer=new MutationObserver(translate);observer.observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
  setInterval(()=>{if(!document.hidden)clock()},1000);
  if(location.protocol==='http:'||location.protocol==='https:'){
-  request().then(()=>request('visit')).catch(()=>{});
-  links.forEach(link=>link.addEventListener('click',()=>{
-   if(!statsReady)return;
-   setTimeout(()=>request().catch(()=>{}),1500);
-   setTimeout(()=>request().catch(()=>{}),4000);
-  }));
+  // One visit per page load. Read-only refreshes never add visits.
+  request('visit').catch(()=>{});
+  links.forEach(link=>{
+   function trackDownload(event){
+    if(event.defaultPrevented||(event.type==='auxclick'&&event.button!==1))return;
+    // Keep the native PDF download working, even if statistics are unavailable.
+    // Never retry increments automatically: a lost reply may already be counted.
+    request('download').catch(()=>{});
+   }
+   link.addEventListener('click',trackDownload);
+   link.addEventListener('auxclick',trackDownload);
+  });
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){clock();if(statsReady)request().catch(()=>{})}});
   setInterval(()=>{if(!document.hidden)request().catch(()=>{})},60000);
  }
