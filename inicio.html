@@ -2217,6 +2217,59 @@ footer.site-credits > p.developer-credit {
 @media(prefers-reduced-motion:reduce){#tch-guide-reviews .tch-r-stars span{transition:none}}
 
 </style>
+
+<style id="tch-guide-reader-style">
+/* Lector de la guía: estilos limitados a sus botones y a la ventana. */
+.tch-guide .tch-read-guide{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;max-width:300px;margin:0 auto 8px;padding:12px 9px;min-height:46px;border:1px solid #c8e7ff;border-radius:7px;background:linear-gradient(#17659a,#12466b);color:#fff;font:800 14px Arial,Helvetica,sans-serif;cursor:pointer;box-shadow:0 5px 18px #0006,inset 0 1px #ffffff30}
+.tch-guide .tch-read-guide:hover{background:linear-gradient(#217caf,#155580)}
+.tch-guide .tch-read-guide svg{width:20px;height:20px;flex:none}
+.tch-guide .tch-read-guide:focus-visible{outline:3px solid #ffd16b;outline-offset:4px}
+#tchGuideReader{box-sizing:border-box;position:fixed;inset:0;width:1100px;max-width:94vw;height:90vh;height:90dvh;max-height:94vh;max-height:94dvh;margin:auto;padding:0;overflow:hidden;border:1px solid #ced9e2;border-radius:14px;background:#f8fafc;color:#14263b;box-shadow:0 20px 90px #0008;font:14px/1.4 Arial,Helvetica,sans-serif;letter-spacing:normal;text-align:left;text-shadow:none}
+#tchGuideReader:not([open]){display:none}
+#tchGuideReader::backdrop{background:rgba(2,12,23,.83)}
+#tchGuideReader.tch-reader-expanded{width:100vw;max-width:100vw;height:100vh;height:100dvh;max-height:100vh;max-height:100dvh;margin:0;border:0;border-radius:0}
+#tchGuideReader *{box-sizing:border-box;text-shadow:none}
+#tchGuideReader [hidden]{display:none!important}
+#tchGuideReader .tch-reader-shell{display:flex;flex-direction:column;width:100%;height:100%;min-height:0}
+#tchGuideReader .tch-reader-header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 18px;background:#0d2941;color:#fff;flex:none}
+#tchGuideReader h2{margin:0;color:#fff;font:700 19px/1.3 Arial,Helvetica,sans-serif}
+#tchGuideReader .tch-reader-header p{margin:4px 0 0;color:#d8e7f2;font-size:12px;line-height:1.4}
+#tchGuideReader button,#tchGuideReader .tch-reader-download{display:inline-flex;align-items:center;justify-content:center;min-width:40px;min-height:40px;margin:0;padding:7px 11px;border:1px solid #b9c9d6;border-radius:6px;background:#fff;color:#15334d;font:700 13px/1.2 Arial,Helvetica,sans-serif;letter-spacing:normal;text-decoration:none;cursor:pointer;box-shadow:none;white-space:nowrap}
+#tchGuideReader button:hover,#tchGuideReader .tch-reader-download:hover{background:#e5f1fa;border-color:#6287a5}
+#tchGuideReader button:disabled{opacity:.4;cursor:default}
+#tchGuideReader button:focus-visible,#tchGuideReader a:focus-visible,#tchGuideReader input:focus-visible,#tchGuideReader .tch-reader-stage:focus-visible{outline:3px solid #ce7900;outline-offset:2px}
+#tchGuideReader .tch-reader-close{flex:none;min-width:44px;min-height:44px;border-color:#547287;background:#193d58;color:#fff;font-size:30px;line-height:1;padding:0}
+#tchGuideReader .tch-reader-close:hover{background:#315774}
+#tchGuideReader .tch-reader-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:9px 16px;padding:10px 16px;border-bottom:1px solid #b9c9d6;background:#f8fafc;flex:none}
+#tchGuideReader .tch-reader-group{display:flex;align-items:center;gap:6px}
+#tchGuideReader .tch-reader-group label{display:inline;margin:0;font-size:12px;color:#304b61}
+#tchGuideReader .tch-reader-tools{margin-left:auto;flex-wrap:wrap}
+#tchGuideReader [data-reader-action="previous"],#tchGuideReader [data-reader-action="next"],#tchGuideReader [data-reader-action="zoom-in"],#tchGuideReader [data-reader-action="zoom-out"]{font-size:23px}
+#tchGuideReader #tchReaderPage{display:inline-block;flex:none;width:55px;min-height:40px;margin:0;padding:5px;border:1px solid #b9c9d6;border-radius:6px;background:white;color:#14263b;font:600 14px Arial,Helvetica,sans-serif;text-align:center;appearance:textfield}
+#tchGuideReader #tchReaderPage::-webkit-inner-spin-button,#tchGuideReader #tchReaderPage::-webkit-outer-spin-button{appearance:none;margin:0}
+#tchGuideReader #tchReaderZoom{min-width:43px;text-align:center;font-size:12px;font-variant-numeric:tabular-nums}
+#tchGuideReader .tch-reader-download{background:#ad2d27;border-color:#ad2d27;color:white}
+#tchGuideReader .tch-reader-download:hover{background:#c13931;color:white}
+#tchGuideReader .tch-reader-stage{flex:1;min-height:0;padding:20px;overflow:auto;background:#d6dee5;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y pinch-zoom}
+#tchGuideReader .tch-reader-pages{display:flex;justify-content:center;align-items:flex-start;width:max-content;min-width:100%;min-height:100%}
+#tchGuideReader canvas{display:block;flex:none;max-width:none!important;margin:0;background:#fff;box-shadow:0 3px 18px #263d5040}
+#tchGuideReader .tch-reader-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none;min-height:38px;padding:8px 16px;border-top:1px solid #c8d4de;background:#f8fafc}
+#tchGuideReader .tch-reader-footer p{margin:0;color:#40576b;font-size:12px;line-height:1.5}
+#tchGuideReader .tch-reader-footer [data-tone="error"]{color:#a12622}
+@media(max-width:600px){
+ #tchGuideReader{width:calc(100vw - 12px);max-width:calc(100vw - 12px);height:94vh;height:94dvh;max-height:96vh;max-height:96dvh;border-radius:10px}
+ #tchGuideReader .tch-reader-header{padding:10px 12px;gap:8px}
+ #tchGuideReader h2{font-size:16px}
+ #tchGuideReader .tch-reader-header p{font-size:11px}
+ #tchGuideReader .tch-reader-toolbar{gap:7px 10px;padding:8px}
+ #tchGuideReader .tch-reader-group{gap:4px}
+ #tchGuideReader .tch-reader-tools{width:100%;margin-left:0;justify-content:space-between}
+ #tchGuideReader button,#tchGuideReader .tch-reader-download{min-height:42px;padding:7px 8px}
+ #tchGuideReader .tch-reader-stage{padding:10px}
+ #tchGuideReader .tch-reader-footer{padding:7px 10px}
+}
+
+</style>
 </head>
 
 
@@ -2345,15 +2398,19 @@ footer.site-credits > p.developer-credit {
 <!-- TCH-GUIA:START -->
 <aside class="tch-guide" id="guia-gratis" aria-labelledby="tchGuideTitle" data-no-translate translate="no" data-stats-endpoint="api/contador.php" data-download-endpoint="api/descargar-guia.php">
   <h2 class="tch-guide-title" id="tchGuideTitle" data-tch-text="title">La guía de Todos con Hernán</h2>
-  <a class="tch-book-link" href="descargas/guia-todos-con-hernan.pdf" download="Suiza-empezar-de-nuevo-Todos-con-Hernan.pdf" data-tch-download>
+  <a class="tch-book-link" href="descargas/guia-todos-con-hernan.pdf?v=20261018-ligera" data-tch-read aria-haspopup="dialog" aria-controls="tchGuideReader" data-reader-label="read" aria-label="Leer guía">
     <img class="tch-book-cover" src="img/guia-todos-con-hernan.jpg" width="1024" height="1536" alt="Portada de Suiza: empezar de nuevo, de Todos con Hernán">
   </a>
   <p class="tch-guide-caption"><strong data-tch-text="caption">Suiza: empezar de nuevo</strong><span data-tch-text="subtitle">Una guía práctica y humana para tu nueva vida.</span></p>
-  <a class="tch-download" href="descargas/guia-todos-con-hernan.pdf" download="Suiza-empezar-de-nuevo-Todos-con-Hernan.pdf" data-tch-download>
+  <button type="button" class="tch-read-guide" data-tch-read aria-haspopup="dialog" aria-controls="tchGuideReader">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 6c-3-2-6-2-10-1v15c4-1 7-1 10 1m0-15c3-2 6-2 10-1v15c-4-1-7-1-10 1V6z"/></svg>
+    <span data-reader-text="read">Leer guía</span>
+  </button>
+  <a class="tch-download" href="descargas/guia-todos-con-hernan.pdf?v=20261018-ligera" download="Suiza-empezar-de-nuevo-Todos-con-Hernan.pdf" data-tch-download>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 15v5h16v-5"/></svg>
     <span data-tch-text="download">Descargar gratis</span>
   </a>
-  <p class="tch-guide-format" data-tch-text="format">PDF en español · 54 páginas · 26,7 MB</p>
+  <p class="tch-guide-format" data-reader-text="format">PDF en español · 54 páginas · 20,9 MB</p>
   <div class="tch-circuits" role="group" aria-label="Panel digital de Todos con Hernán">
     <div class="tch-circuit-row tch-date-row" role="img" aria-label="Fecha y hora de Suiza">
       <div class="tch-date-fields" aria-hidden="true">
@@ -2408,6 +2465,43 @@ footer.site-credits > p.developer-credit {
     <noscript><p>Activa JavaScript para leer y publicar opiniones sobre la guía.</p></noscript>
   </section>
   <!-- TCH-GUIA-REVIEWS:END -->
+<!-- TCH-GUIA-READER:START -->
+<dialog id="tchGuideReader" class="tch-reader" aria-labelledby="tchReaderTitle" data-no-translate translate="no">
+  <div class="tch-reader-shell">
+    <header class="tch-reader-header">
+      <div><h2 id="tchReaderTitle" data-reader-text="title">Suiza: empezar de nuevo</h2><p data-reader-text="subtitle">La guía de Todos con Hernán · PDF en español</p></div>
+      <button type="button" class="tch-reader-close" data-reader-action="close" data-reader-label="close" aria-label="Cerrar guía" title="Cerrar guía"><span aria-hidden="true">×</span></button>
+    </header>
+    <div class="tch-reader-toolbar" role="group" data-reader-label="controls" aria-label="Controles de lectura">
+      <div class="tch-reader-group">
+        <button type="button" data-reader-action="previous" data-reader-label="previous" aria-label="Página anterior" disabled><span aria-hidden="true">‹</span></button>
+        <label for="tchReaderPage" data-reader-text="page">Página</label>
+        <input id="tchReaderPage" type="number" min="1" max="54" step="1" value="1" inputmode="numeric" aria-label="Página" data-reader-label="page" disabled>
+        <span aria-hidden="true">/ <span id="tchReaderTotal">54</span></span>
+        <button type="button" data-reader-action="next" data-reader-label="next" aria-label="Página siguiente" disabled><span aria-hidden="true">›</span></button>
+      </div>
+      <div class="tch-reader-group">
+        <button type="button" data-reader-action="zoom-out" data-reader-label="zoomOut" aria-label="Reducir tamaño" disabled><span aria-hidden="true">−</span></button>
+        <output id="tchReaderZoom" aria-label="Zoom" data-reader-label="zoom">100%</output>
+        <button type="button" data-reader-action="zoom-in" data-reader-label="zoomIn" aria-label="Aumentar tamaño" disabled><span aria-hidden="true">+</span></button>
+        <button type="button" data-reader-action="fit" data-reader-text="fit" disabled>Ajustar</button>
+      </div>
+      <div class="tch-reader-group tch-reader-tools">
+        <button type="button" data-reader-action="expand" aria-pressed="false" data-reader-label="expand" aria-label="Ampliar ventana"><span data-reader-text="expand">Ampliar ventana</span></button>
+        <a class="tch-reader-download" href="descargas/guia-todos-con-hernan.pdf?v=20261018-ligera" download="Suiza-empezar-de-nuevo-Todos-con-Hernan.pdf" data-tch-download data-reader-text="download">Descargar PDF</a>
+      </div>
+    </div>
+    <div class="tch-reader-stage" tabindex="0" role="region" data-reader-label="document" aria-label="Guía de Todos con Hernán">
+      <div class="tch-reader-pages"></div>
+    </div>
+    <footer class="tch-reader-footer">
+      <p id="tchReaderStatus" role="status" aria-live="polite">Preparando la guía…</p>
+      <button type="button" data-reader-action="retry" data-reader-text="retry" hidden>Reintentar</button>
+    </footer>
+  </div>
+</dialog>
+<!-- TCH-GUIA-READER:END -->
+
 
 </aside>
 <!-- TCH-GUIA:END -->
@@ -3518,6 +3612,189 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now(
   });
   new MutationObserver(translate).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   translate(); load(true);
+})();
+
+</script>
+
+<script id="tch-guide-reader-script">
+/* PDF.js se carga únicamente al abrir la guía. Los contadores siguen en guia-libro.js. */
+(function () {
+  'use strict';
+  const root = document.getElementById('guia-gratis');
+  const dialog = document.getElementById('tchGuideReader');
+  if (!root || !dialog || dialog.dataset.initialized) return;
+  dialog.dataset.initialized = 'true';
+  const copy = {
+    es: { read: 'Leer guía', title: 'Suiza: empezar de nuevo', subtitle: 'La guía de Todos con Hernán · PDF en español', format: 'PDF en español · 54 páginas · 20,9 MB', close: 'Cerrar guía', controls: 'Controles de lectura', page: 'Página', previous: 'Página anterior', next: 'Página siguiente', zoom: 'Zoom', zoomOut: 'Reducir tamaño', zoomIn: 'Aumentar tamaño', fit: 'Ajustar', expand: 'Ampliar ventana', restore: 'Reducir ventana', download: 'Descargar PDF', document: 'Guía de Todos con Hernán', loading: 'Preparando la guía…', rendering: 'Cargando página {page}…', ready: 'Página {page} de {total} · PDF en español', failed: 'No se ha podido mostrar la guía. Puedes reintentar o descargar el PDF.', retry: 'Reintentar' },
+    en: { read: 'Read the guide', title: 'Switzerland: a new beginning', subtitle: 'The Todos con Hernán guide · PDF in Spanish', format: 'PDF in Spanish · 54 pages · 20.9 MB', close: 'Close guide', controls: 'Reading controls', page: 'Page', previous: 'Previous page', next: 'Next page', zoom: 'Zoom', zoomOut: 'Zoom out', zoomIn: 'Zoom in', fit: 'Fit width', expand: 'Expand window', restore: 'Restore window', download: 'Download PDF', document: 'Todos con Hernán guide', loading: 'Preparing the guide…', rendering: 'Loading page {page}…', ready: 'Page {page} of {total} · PDF in Spanish', failed: 'The guide could not be displayed. Try again or download the PDF.', retry: 'Try again' },
+    de: { read: 'Ratgeber lesen', title: 'Schweiz: ein neuer Anfang', subtitle: 'Der Ratgeber von Todos con Hernán · PDF auf Spanisch', format: 'PDF auf Spanisch · 54 Seiten · 20,9 MB', close: 'Ratgeber schließen', controls: 'Lesesteuerung', page: 'Seite', previous: 'Vorherige Seite', next: 'Nächste Seite', zoom: 'Zoom', zoomOut: 'Verkleinern', zoomIn: 'Vergrößern', fit: 'Einpassen', expand: 'Fenster vergrößern', restore: 'Fenster verkleinern', download: 'PDF herunterladen', document: 'Ratgeber von Todos con Hernán', loading: 'Ratgeber wird vorbereitet…', rendering: 'Seite {page} wird geladen…', ready: 'Seite {page} von {total} · PDF auf Spanisch', failed: 'Der Ratgeber konnte nicht angezeigt werden. Erneut versuchen oder das PDF herunterladen.', retry: 'Erneut versuchen' },
+    fr: { read: 'Lire le guide', title: 'Suisse : un nouveau départ', subtitle: 'Le guide de Todos con Hernán · PDF en espagnol', format: 'PDF en espagnol · 54 pages · 20,9 Mo', close: 'Fermer le guide', controls: 'Commandes de lecture', page: 'Page', previous: 'Page précédente', next: 'Page suivante', zoom: 'Zoom', zoomOut: 'Réduire', zoomIn: 'Agrandir', fit: 'Ajuster', expand: 'Agrandir la fenêtre', restore: 'Réduire la fenêtre', download: 'Télécharger le PDF', document: 'Guide de Todos con Hernán', loading: 'Préparation du guide…', rendering: 'Chargement de la page {page}…', ready: 'Page {page} sur {total} · PDF en espagnol', failed: 'Impossible d’afficher le guide. Réessayez ou téléchargez le PDF.', retry: 'Réessayer' },
+    it: { read: 'Leggi la guida', title: 'Svizzera: un nuovo inizio', subtitle: 'La guida di Todos con Hernán · PDF in spagnolo', format: 'PDF in spagnolo · 54 pagine · 20,9 MB', close: 'Chiudi guida', controls: 'Controlli di lettura', page: 'Pagina', previous: 'Pagina precedente', next: 'Pagina successiva', zoom: 'Zoom', zoomOut: 'Riduci', zoomIn: 'Ingrandisci', fit: 'Adatta', expand: 'Ingrandisci finestra', restore: 'Riduci finestra', download: 'Scarica PDF', document: 'Guida di Todos con Hernán', loading: 'Preparazione della guida…', rendering: 'Caricamento pagina {page}…', ready: 'Pagina {page} di {total} · PDF in spagnolo', failed: 'Impossibile visualizzare la guida. Riprova o scarica il PDF.', retry: 'Riprova' },
+    pt: { read: 'Ler o guia', title: 'Suíça: um novo começo', subtitle: 'O guia de Todos con Hernán · PDF em espanhol', format: 'PDF em espanhol · 54 páginas · 20,9 MB', close: 'Fechar guia', controls: 'Controlos de leitura', page: 'Página', previous: 'Página anterior', next: 'Página seguinte', zoom: 'Zoom', zoomOut: 'Reduzir', zoomIn: 'Ampliar', fit: 'Ajustar', expand: 'Ampliar janela', restore: 'Reduzir janela', download: 'Descarregar PDF', document: 'Guia de Todos con Hernán', loading: 'A preparar o guia…', rendering: 'A carregar a página {page}…', ready: 'Página {page} de {total} · PDF em espanhol', failed: 'Não foi possível mostrar o guia. Tente novamente ou descarregue o PDF.', retry: 'Tentar novamente' },
+    zh: { read: '阅读指南', title: '瑞士：重新开始', subtitle: 'Todos con Hernán 指南 · 西班牙语 PDF', format: '西班牙语 PDF · 54 页 · 20.9 MB', close: '关闭指南', controls: '阅读控件', page: '页码', previous: '上一页', next: '下一页', zoom: '缩放', zoomOut: '缩小', zoomIn: '放大', fit: '适合宽度', expand: '扩大窗口', restore: '还原窗口', download: '下载 PDF', document: 'Todos con Hernán 指南', loading: '正在准备指南…', rendering: '正在加载第 {page} 页…', ready: '第 {page} 页，共 {total} 页 · 西班牙语 PDF', failed: '无法显示指南。请重试或下载 PDF。', retry: '重试' }
+  };
+  const stage = dialog.querySelector('.tch-reader-stage');
+  const pages = dialog.querySelector('.tch-reader-pages');
+  const pageInput = document.getElementById('tchReaderPage');
+  const totalOutput = document.getElementById('tchReaderTotal');
+  const zoomOutput = document.getElementById('tchReaderZoom');
+  const status = document.getElementById('tchReaderStatus');
+  const button = action => dialog.querySelector('[data-reader-action="' + action + '"]');
+  const pdfUrl = new URL('descargas/guia-todos-con-hernan.pdf?v=20261018-ligera', document.baseURI).href;
+  let lang = 'es', pdf = null, loading = null, activeTask = null, lastPage = null;
+  let currentPage = 1, zoom = 1, generation = 0, resizeTimer = 0, statusKey = 'loading';
+  let opener = null, savedOverflow = '', savedPadding = '';
+  const t = key => (copy[lang][key] || copy.es[key] || '').replace('{page}', String(currentPage)).replace('{total}', String(pdf ? pdf.numPages : 54));
+  function setStatus(key) {
+    statusKey = key; status.textContent = t(key);
+    status.dataset.tone = key === 'failed' ? 'error' : '';
+    button('retry').hidden = key !== 'failed';
+    pages.hidden = key === 'failed';
+    stage.setAttribute('aria-busy', String(key === 'loading' || key === 'rendering'));
+  }
+  function controls() {
+    pageInput.disabled = !pdf; pageInput.value = String(currentPage);
+    pageInput.max = String(pdf ? pdf.numPages : 54); totalOutput.textContent = pageInput.max;
+    button('previous').disabled = !pdf || currentPage <= 1;
+    button('next').disabled = !pdf || currentPage >= pdf.numPages;
+    button('zoom-out').disabled = !pdf || zoom <= 0.5;
+    button('zoom-in').disabled = !pdf || zoom >= 3;
+    button('fit').disabled = !pdf;
+    zoomOutput.textContent = Math.round(zoom * 100) + '%';
+    const expanded = dialog.classList.contains('tch-reader-expanded');
+    const label = t(expanded ? 'restore' : 'expand');
+    button('expand').querySelector('span').textContent = label;
+    button('expand').setAttribute('aria-label', label);
+    button('expand').title = label;
+    button('expand').setAttribute('aria-pressed', String(expanded));
+  }
+  function translate() {
+    const selected = document.documentElement.lang.split('-')[0]; lang = copy[selected] ? selected : 'es';
+    root.querySelectorAll('[data-reader-text]').forEach(node => { node.textContent = t(node.dataset.readerText); });
+    root.querySelectorAll('[data-reader-label]').forEach(node => {
+      const label = t(node.dataset.readerLabel); node.setAttribute('aria-label', label); node.title = label;
+    });
+    const canvas = pages.querySelector('canvas');
+    if (canvas) canvas.setAttribute('aria-label', t('ready'));
+    controls(); setStatus(statusKey);
+  }
+  async function getPdf() {
+    if (pdf) return pdf;
+    if (loading) return loading;
+    loading = (async () => {
+      const libraryUrl = new URL('js/pdfjs/pdf.min.mjs', document.baseURI).href;
+      const pdfjs = await import(libraryUrl);
+      pdfjs.GlobalWorkerOptions.workerSrc = new URL('js/pdfjs/pdf.worker.min.mjs', document.baseURI).href;
+      const task = pdfjs.getDocument({ url: pdfUrl, disableAutoFetch: true, disableStream: true, rangeChunkSize: 262144, isEvalSupported: false });
+      try { pdf = await task.promise; return pdf; }
+      catch (error) { await task.destroy().catch(() => {}); throw error; }
+    })();
+    try { return await loading; } finally { loading = null; }
+  }
+  async function renderPage(resetScroll) {
+    if (!dialog.open || !pdf) return;
+    const ticket = ++generation, target = currentPage;
+    if (activeTask) { activeTask.cancel(); activeTask = null; }
+    setStatus('rendering'); controls();
+    let page = null;
+    try {
+      page = await pdf.getPage(target);
+      if (ticket !== generation || !dialog.open) return;
+      const unscaled = page.getViewport({ scale: 1 });
+      const style = getComputedStyle(stage);
+      const padding = (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.paddingRight) || 0);
+      const width = Math.max(160, Math.min(1000, stage.clientWidth - padding));
+      const viewport = page.getViewport({ scale: width / unscaled.width * zoom });
+      const density = Math.min(window.devicePixelRatio || 1, 2, Math.sqrt(12000000 / (viewport.width * viewport.height)));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.max(1, Math.floor(viewport.width * density));
+      canvas.height = Math.max(1, Math.floor(viewport.height * density));
+      canvas.style.width = Math.floor(viewport.width) + 'px';
+      canvas.style.height = Math.floor(viewport.height) + 'px';
+      canvas.setAttribute('role', 'img'); canvas.setAttribute('aria-label', t('ready'));
+      const task = page.render({ canvas, canvasContext: canvas.getContext('2d'), viewport, transform: density === 1 ? null : [density, 0, 0, density, 0, 0], background: '#ffffff' });
+      activeTask = task;
+      await task.promise;
+      if (ticket !== generation || !dialog.open) return;
+      activeTask = null;
+      pages.querySelectorAll('canvas').forEach(old => { old.width = 0; old.height = 0; });
+      pages.replaceChildren(canvas);
+      if (lastPage && lastPage !== page) lastPage.cleanup();
+      lastPage = page;
+      if (resetScroll) { stage.scrollTop = 0; stage.scrollLeft = 0; }
+      setStatus('ready');
+    } catch (error) {
+      if (ticket === generation && dialog.open && error.name !== 'RenderingCancelledException') { activeTask = null; setStatus('failed'); }
+    }
+  }
+  async function loadReader() {
+    setStatus('loading');
+    try { await getPdf(); if (dialog.open) { controls(); await renderPage(true); } }
+    catch (error) { if (dialog.open) setStatus('failed'); }
+  }
+  function openReader(event) {
+    event.preventDefault();
+    if (dialog.open) return;
+    opener = event.currentTarget;
+    savedOverflow = document.body.style.overflow; savedPadding = document.body.style.paddingRight;
+    const gap = Math.max(0, window.innerWidth - document.documentElement.clientWidth);
+    dialog.showModal();
+    if (gap) document.body.style.paddingRight = ((parseFloat(getComputedStyle(document.body).paddingRight) || 0) + gap) + 'px';
+    document.body.style.overflow = 'hidden';
+    button('close').focus({ preventScroll: true });
+    loadReader();
+  }
+  function restorePage() {
+    if (dialog.open) return;
+    generation++;
+    if (activeTask) { activeTask.cancel(); activeTask = null; }
+    document.body.style.overflow = savedOverflow; document.body.style.paddingRight = savedPadding;
+    pages.querySelectorAll('canvas').forEach(canvas => { canvas.width = 0; canvas.height = 0; });
+    pages.replaceChildren();
+    if (lastPage) { lastPage.cleanup(); lastPage = null; }
+    if (opener && opener.isConnected) opener.focus({ preventScroll: true });
+  }
+  function closeReader() { if (dialog.open) dialog.close(); }
+  function goTo(page) {
+    if (!pdf || !Number.isInteger(page) || page < 1 || page > pdf.numPages) { controls(); return; }
+    if (page !== currentPage) { currentPage = page; renderPage(true); }
+  }
+  function setZoom(value) {
+    const next = Math.min(3, Math.max(0.5, Math.round(value * 100) / 100));
+    if (next !== zoom) { zoom = next; renderPage(false); }
+  }
+  root.querySelectorAll('[data-tch-read]').forEach(node => node.addEventListener('click', openReader));
+  button('close').addEventListener('click', closeReader);
+  dialog.addEventListener('cancel', event => { event.preventDefault(); closeReader(); });
+  dialog.addEventListener('close', restorePage);
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeReader();
+  });
+  button('previous').addEventListener('click', () => goTo(currentPage - 1));
+  button('next').addEventListener('click', () => goTo(currentPage + 1));
+  pageInput.addEventListener('change', () => goTo(Number(pageInput.value)));
+  pageInput.addEventListener('keydown', event => { if (event.key === 'Enter') { event.preventDefault(); goTo(Number(pageInput.value)); } });
+  button('zoom-out').addEventListener('click', () => setZoom(zoom - 0.25));
+  button('zoom-in').addEventListener('click', () => setZoom(zoom + 0.25));
+  button('fit').addEventListener('click', () => setZoom(1));
+  button('expand').addEventListener('click', () => {
+    dialog.classList.toggle('tch-reader-expanded'); controls();
+    requestAnimationFrame(() => renderPage(false));
+  });
+  button('retry').addEventListener('click', loadReader);
+  dialog.addEventListener('keydown', event => {
+    if (/^(INPUT|TEXTAREA|SELECT)$/.test(event.target.tagName) || event.ctrlKey || event.metaKey || event.altKey) return;
+    if (event.key === 'ArrowRight') { event.preventDefault(); goTo(currentPage + 1); }
+    if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(currentPage - 1); }
+  });
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    if (dialog.open) resizeTimer = setTimeout(() => renderPage(false), 150);
+  });
+  new MutationObserver(translate).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  translate();
 })();
 
 </script>

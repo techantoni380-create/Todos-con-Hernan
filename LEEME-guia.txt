@@ -1,0 +1,27 @@
+ACTUALIZACIÓN DE LA GUÍA — TODOS CON HERNÁN
+
+El paquete está listo para subir al repositorio de la web. No está publicado automáticamente.
+
+1. Descomprime este ZIP.
+2. Sustituye inicio.html en la raíz del repositorio.
+3. Sustituye descargas/guia-todos-con-hernan.pdf por el PDF incluido.
+4. Añade la carpeta js/pdfjs con todos sus archivos dentro de la carpeta js que ya existe.
+   Conserva todos los demás archivos de js y descargas.
+5. Espera a que GitHub Pages termine de publicar y recarga la página.
+
+No hace falta cambiar index.html. Este LEEME no necesita subirse.
+
+QUÉ INCLUYE
+- El PDF aportado, sin modificar: 54 páginas, 20.862.525 bytes (20,9 MB).
+- Botón «Leer guía» y portada que abren una ventana dentro de la página.
+- Página anterior/siguiente, número de página, zoom, ajuste al ancho y ampliación de ventana.
+- Cierre con la X o Escape, regreso al punto de la página y descarga independiente.
+- La guía se carga al abrir el lector. Leerla no incrementa las descargas.
+- Se conservan los comentarios y las estrellas de la versión anterior.
+
+VERIFICACIÓN
+Comprobadas las interacciones con pruebas DOM y el renderizado real del PDF con PDF.js.
+Comprobado que el resto del HTML permanece idéntico a la entrega anterior.
+No se ha realizado una comprobación visual en un navegador real desde este entorno.
+
+El lector incluye PDF.js 6.4.299 localmente, con su licencia Apache-2.0.
