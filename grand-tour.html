@@ -846,6 +846,34 @@ body:has(#map) footer.site-credits {
 }
 </style>
 
+
+<style id="tch-grand-tour-community-style">
+/* Solo la comunidad: no cambia estilos del mapa, las rutas ni el carrusel. */
+#spotCommunity .ratingStars button{display:grid;place-items:center;width:38px;min-width:38px;height:40px;padding:0;border:1px solid #8295a1;border-radius:6px;background:#122f40;color:#c1ccd3;font-size:25px;cursor:pointer;transition:color .15s,background .15s}
+#spotCommunity .ratingStars button.is-selected{color:#ffd24d;background:#3c3620;border-color:#ffd24d}
+#spotCommunity .ratingStars button:hover{border-color:#ffd24d}
+#spotCommunity button:focus-visible,#spotCommunity input:focus-visible,#spotCommunity textarea:focus-visible{outline:3px solid #ffd24d;outline-offset:3px}
+#spotCommunity button:disabled{opacity:.55;cursor:wait}
+#spotCommunity [hidden]{display:none!important}
+#spotCommunity .tch-gt-context{margin:0 0 14px;color:#ffe08a;font-size:13px;font-weight:700;line-height:1.5;overflow-wrap:anywhere}
+#spotCommunity .tch-gt-privacy{font-size:11px;line-height:1.5;color:#d5e1e7;margin:12px 0}
+#spotCommunity .tch-gt-trap{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#spotCommunity .communityStatus{font-size:13px;line-height:1.5;margin-top:10px}
+#spotCommunity .communityStatus[data-tone="error"]{color:#ffb9b3}
+#spotCommunity .communityStatus[data-tone="success"]{color:#a4f5bf}
+#spotCommunity .communityPost{margin:12px 0;padding:14px;border:1px solid #ffffff30;border-radius:12px;background:#071c2bd9;overflow-wrap:anywhere}
+#spotCommunity .communityPostTop{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+#spotCommunity .communityPostName{font-size:14px;color:white}
+#spotCommunity .communityPostStars{flex:none;font-size:17px;letter-spacing:1px;color:#ffd24d;white-space:nowrap}
+#spotCommunity .communityPostDate{display:block;font-size:11px;color:#b6c9d5;margin:6px 0}
+#spotCommunity .communityPostText{margin:8px 0 0;font-size:13px;line-height:1.6;white-space:pre-wrap}
+#spotCommunity .tch-gt-photo-open{display:block;width:100%;margin:12px 0 0;padding:0;background:transparent;border:0;border-radius:8px;overflow:hidden;cursor:zoom-in}
+#spotCommunity .communityPostImage{display:block;width:100%;height:auto;max-height:340px;object-fit:contain;border-radius:8px}
+#spotCommunity .tch-gt-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+#spotCommunity .tch-gt-actions button{padding:9px 12px;min-height:40px;border:1px solid #ffffff60;border-radius:7px;background:#15364b;color:#fff;font:700 12px Arial,sans-serif;cursor:pointer}
+#spotCommunity .communityEmpty{font-size:13px;line-height:1.5;color:#d5e1e7;padding:10px 0}
+
+</style>
 </head>
 
 
@@ -1372,12 +1400,14 @@ body:has(#map) footer.site-credits {
               </p>
             </div>
 
+            <p id="gtCommunityContext" class="tch-gt-context" data-no-translate translate="no"></p>
+
             <div class="communityRating">
               <span>⭐ VALORA ESTE PHOTO SPOT</span>
               <div
-                id="ratingStars"
+                id="gtRatingStars"
                 class="ratingStars"
-                role="group"
+                role="radiogroup"
                 aria-label="Valoración de 1 a 5 estrellas"
               >
                 <button type="button" data-rating="1" aria-label="1 estrella">★</button>
@@ -1386,22 +1416,25 @@ body:has(#map) footer.site-credits {
                 <button type="button" data-rating="4" aria-label="4 estrellas">★</button>
                 <button type="button" data-rating="5" aria-label="5 estrellas">★</button>
               </div>
-              <small id="ratingSummary">Sé el primero en valorar este lugar.</small>
+              <small id="gtRatingSummary">Sé el primero en valorar este lugar.</small>
             </div>
 
-            <form id="communityForm" class="communityForm">
-              <label for="communityName">TU NOMBRE</label>
+            <form id="gtCommunityForm" class="communityForm">
+              <label class="tch-gt-trap" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+              <p id="gtCommunityPrivacy" class="tch-gt-privacy" data-no-translate translate="no">Tu nombre o alias, valoración, comentario y foto se mostrarán públicamente. La foto es opcional.</p>
+              <label for="gtCommunityName">TU NOMBRE</label>
               <input
-                id="communityName"
+                id="gtCommunityName"
                 type="text"
                 maxlength="40"
                 placeholder="¿Cómo te llamas?"
                 autocomplete="name"
               >
 
-              <label for="communityComment">TU EXPERIENCIA</label>
+              <label for="gtCommunityComment">TU EXPERIENCIA</label>
               <textarea
-                id="communityComment"
+                id="gtCommunityComment"
+                minlength="3"
                 maxlength="500"
                 rows="4"
                 placeholder="Cuéntanos cómo fue tu experiencia..."
@@ -1409,15 +1442,15 @@ body:has(#map) footer.site-credits {
               ></textarea>
 
               <div class="communityUpload">
-                <label for="communityPhoto" class="uploadLabel">
+                <label for="gtCommunityPhoto" class="uploadLabel">
                   📷 AÑADIR UNA FOTO
                 </label>
                 <input
-                  id="communityPhoto"
+                  id="gtCommunityPhoto"
                   type="file"
-                  accept="image/*"
+                  accept="image/jpeg,image/png,image/webp"
                 >
-                <span id="communityPhotoName">Ninguna foto seleccionada</span>
+                <span id="gtCommunityPhotoName">Ninguna foto seleccionada</span>
               </div>
 
               <button
@@ -1428,7 +1461,7 @@ body:has(#map) footer.site-credits {
               </button>
 
               <div
-                id="communityStatus"
+                id="gtCommunityStatus"
                 class="communityStatus"
                 aria-live="polite"
               ></div>
@@ -1436,13 +1469,15 @@ body:has(#map) footer.site-credits {
 
             <div class="communityPostsHeader">
               <strong>📸 EXPERIENCIAS DE LA COMUNIDAD</strong>
-              <span id="communityPostCount">0</span>
+              <span id="gtCommunityPostCount">0</span>
             </div>
 
             <div
-              id="communityPosts"
+              id="gtCommunityPosts"
+              data-no-translate translate="no"
               class="communityPosts"
             ></div>
+            <div class="tch-gt-actions"><button id="gtCommunityMore" type="button" hidden>Ver más experiencias</button><button id="gtCommunityRefresh" type="button">Actualizar</button></div>
 
           </section>
 
@@ -1873,6 +1908,210 @@ body:has(#map) footer.site-credits {
 }
 </style>
 
+
+<script id="tch-grand-tour-community-script">
+/* Comunidad compartida. El mapa, sus datos, rutas y controladores se mantienen intactos. */
+(function () {
+  'use strict';
+  const root = document.getElementById('spotCommunity');
+  if (!root || root.dataset.serverCommunity) return;
+  root.dataset.serverCommunity = 'true';
+  const get = suffix => document.getElementById('gt' + suffix);
+  const form = get('CommunityForm'), nameInput = get('CommunityName'), commentInput = get('CommunityComment');
+  const photoInput = get('CommunityPhoto'), photoName = get('CommunityPhotoName'), status = get('CommunityStatus');
+  const posts = get('CommunityPosts'), count = get('CommunityPostCount'), summary = get('RatingSummary');
+  const stars = [...get('RatingStars').querySelectorAll('button')], submit = form.querySelector('[type="submit"]');
+  const more = get('CommunityMore'), refresh = get('CommunityRefresh'), context = get('CommunityContext');
+  const endpoint = 'https://lqxvuuogxenzsplsruok.supabase.co/functions/v1/tch-grand-tour-community';
+  const apiKey = 'sb_publishable_kBy973taie6QPk0awkdlIQ_21mxkXRS';
+  const photoPrefix = 'https://lqxvuuogxenzsplsruok.supabase.co/storage/v1/object/public/tch-grand-tour-photos/grand-tour/';
+  const words = {
+    es: ['Aún no hay experiencias en este Photo Spot.','Cargando experiencias…','No se han podido cargar. Pulsa Actualizar para reintentar.','💬 PUBLICAR EXPERIENCIA','Publicando…','✅ Tu experiencia se ha publicado para todos.','Selecciona de 1 a 5 estrellas antes de publicar.','Escribe un nombre de hasta 40 caracteres y una experiencia de 3 a 500 caracteres.','Espera 30 segundos entre envíos. Máximo 10 al día.','Elige una foto JPG, PNG o WebP de hasta 12 MB.','Preparando foto…','Ninguna foto seleccionada','Ver más experiencias','Actualizar','Tu nombre o alias, valoración, comentario y foto se mostrarán públicamente. La foto es opcional.','Sin valoraciones todavía','valoración','valoraciones','Viajero/a','No se ha podido publicar. Tu texto y foto se conservan para reintentar.','Foto compartida por','Photo Spot','Foto lista'],
+    en: ['No experiences for this Photo Spot yet.','Loading experiences…','Could not load. Click Refresh to try again.','💬 POST EXPERIENCE','Posting…','✅ Your experience is now public.','Select 1 to 5 stars before posting.','Use a name up to 40 characters and a comment of 3–500 characters.','Wait 30 seconds between posts. Maximum 10 per day.','Choose a JPG, PNG or WebP photo up to 12 MB.','Preparing photo…','No photo selected','More experiences','Refresh','Your name or alias, rating, comment and photo will be public. A photo is optional.','No ratings yet','rating','ratings','Traveller','Could not post. Your text and photo are kept so you can retry.','Photo shared by','Photo Spot','Photo ready'],
+    de: ['Noch keine Erfahrungen zu diesem Photo Spot.','Erfahrungen werden geladen…','Laden fehlgeschlagen. Bitte auf Aktualisieren klicken.','💬 ERFAHRUNG VERÖFFENTLICHEN','Wird veröffentlicht…','✅ Deine Erfahrung ist jetzt öffentlich.','Wähle vor dem Veröffentlichen 1 bis 5 Sterne.','Name: maximal 40 Zeichen. Erfahrung: 3–500 Zeichen.','30 Sekunden zwischen Beiträgen warten. Maximal 10 pro Tag.','JPG-, PNG- oder WebP-Foto bis 12 MB auswählen.','Foto wird vorbereitet…','Kein Foto ausgewählt','Weitere Erfahrungen','Aktualisieren','Name oder Alias, Bewertung, Kommentar und Foto sind öffentlich. Das Foto ist optional.','Noch keine Bewertungen','Bewertung','Bewertungen','Reisende/r','Veröffentlichen fehlgeschlagen. Text und Foto bleiben für einen neuen Versuch erhalten.','Foto geteilt von','Photo Spot','Foto bereit'],
+    fr: ['Aucune expérience pour ce Photo Spot pour le moment.','Chargement des expériences…','Chargement impossible. Cliquez sur Actualiser.','💬 PUBLIER UNE EXPÉRIENCE','Publication…','✅ Votre expérience est maintenant publique.','Choisissez de 1 à 5 étoiles avant de publier.','Nom : 40 caractères maximum. Expérience : 3 à 500 caractères.','Attendez 30 secondes entre les publications. Maximum 10 par jour.','Choisissez une photo JPG, PNG ou WebP de 12 Mo maximum.','Préparation de la photo…','Aucune photo sélectionnée','Plus d’expériences','Actualiser','Votre nom ou pseudonyme, note, commentaire et photo seront publics. La photo est facultative.','Aucune note pour le moment','avis','avis','Voyageur','Publication impossible. Votre texte et votre photo sont conservés pour réessayer.','Photo partagée par','Photo Spot','Photo prête'],
+    it: ['Ancora nessuna esperienza per questo Photo Spot.','Caricamento delle esperienze…','Caricamento non riuscito. Premi Aggiorna.','💬 PUBBLICA ESPERIENZA','Pubblicazione…','✅ La tua esperienza è ora pubblica.','Scegli da 1 a 5 stelle prima di pubblicare.','Nome: massimo 40 caratteri. Esperienza: da 3 a 500 caratteri.','Attendi 30 secondi tra gli invii. Massimo 10 al giorno.','Scegli una foto JPG, PNG o WebP fino a 12 MB.','Preparazione della foto…','Nessuna foto selezionata','Altre esperienze','Aggiorna','Nome o alias, valutazione, commento e foto saranno pubblici. La foto è facoltativa.','Ancora nessuna valutazione','valutazione','valutazioni','Viaggiatore','Pubblicazione non riuscita. Testo e foto sono conservati per riprovare.','Foto condivisa da','Photo Spot','Foto pronta'],
+    pt: ['Ainda não há experiências neste Photo Spot.','A carregar experiências…','Não foi possível carregar. Clique em Atualizar.','💬 PUBLICAR EXPERIÊNCIA','A publicar…','✅ A sua experiência está agora pública.','Selecione de 1 a 5 estrelas antes de publicar.','Nome: até 40 caracteres. Experiência: de 3 a 500 caracteres.','Aguarde 30 segundos entre envios. Máximo de 10 por dia.','Escolha uma foto JPG, PNG ou WebP até 12 MB.','A preparar a foto…','Nenhuma foto selecionada','Mais experiências','Atualizar','O nome ou pseudónimo, avaliação, comentário e foto serão públicos. A foto é opcional.','Ainda sem avaliações','avaliação','avaliações','Viajante','Não foi possível publicar. O texto e a foto foram conservados para tentar novamente.','Foto partilhada por','Photo Spot','Foto pronta'],
+    zh: ['此景点暂无体验分享。','正在加载体验…','加载失败，请点击刷新。','💬 发布体验','正在发布…','✅ 您的体验已公开发布。','发布前请选择 1 至 5 星。','姓名最多 40 字，体验内容为 3 至 500 字。','两次发布间隔 30 秒，每天最多 10 次。','请选择不超过 12 MB 的 JPG、PNG 或 WebP 照片。','正在处理照片…','未选择照片','更多体验','刷新','您的姓名或昵称、评分、评论和照片将公开显示。照片为可选项。','暂无评分','条评分','条评分','旅行者','发布失败，文字和照片已保留，请重试。','照片分享者','景点','照片已就绪']
+  };
+  let language = 'es', current = null;
+  const states = new Map();
+  const t = index => words[language][index];
+  function stateFor(id) {
+    if (!states.has(id)) states.set(id, { id, title: '', name: '', comment: '', rating: 0, photo: '', filename: '', photoTicket: 0, preparing: false, sending: false, loading: false, reload: false, loaded: false, failed: false, items: [], total: 0, average: null, status: null, requestId: '', signature: '' });
+    return states.get(id);
+  }
+  const uuid = () => crypto.randomUUID ? crypto.randomUUID() : '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, c => (Number(c) ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> Number(c) / 4).toString(16));
+  async function request(method, body, state, offset = 0) {
+    const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 30000);
+    try {
+      const response = await fetch(method === 'GET' ? endpoint + '?spot_id=' + state.id + '&offset=' + offset : endpoint, {
+        method, mode: 'cors', credentials: 'omit', cache: 'no-store', signal: controller.signal,
+        headers: { apikey: apiKey, 'Content-Type': 'application/json' },
+        ...(method === 'POST' ? { body: JSON.stringify(body) } : {})
+      });
+      const data = await response.json();
+      if (!response.ok || data.ok !== true) throw Object.assign(Error('request'), { code: data.code || 'unavailable' });
+      return data;
+    } finally { clearTimeout(timer); }
+  }
+  function paint() {
+    if (!current) return;
+    const s = current;
+    stars.forEach((star, index) => {
+      star.classList.toggle('is-selected', index < s.rating);
+      star.setAttribute('aria-checked', String(index + 1 === s.rating));
+      star.tabIndex = index === (s.rating ? s.rating - 1 : 0) ? 0 : -1;
+      star.disabled = s.sending;
+    });
+    context.textContent = t(21) + ' ' + String(s.id).padStart(2, '0') + (s.title ? ' · ' + s.title : '');
+    form.querySelectorAll('input,textarea,button').forEach(node => { node.disabled = s.sending; });
+    submit.disabled = s.sending || s.preparing;
+    submit.textContent = t(s.sending ? 4 : 3);
+    form.setAttribute('aria-busy', String(s.sending));
+    photoName.textContent = s.preparing ? t(10) : s.filename ? t(22) + ' · ' + s.filename : t(11);
+    status.textContent = s.status === null ? '' : t(s.status);
+    status.dataset.tone = [7,8,9,19].includes(s.status) ? 'error' : s.status === 5 ? 'success' : '';
+    summary.textContent = !s.loaded ? t(s.failed ? 2 : 1) : s.total ? '⭐ ' + Number(s.average).toLocaleString(language, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '/5 · ' + s.total + ' ' + t(s.total === 1 ? 16 : 17) : t(15);
+    count.textContent = s.loaded ? String(s.total) : '—';
+    more.textContent = t(12); more.hidden = !s.loaded || s.items.length >= s.total; more.disabled = s.loading;
+    refresh.textContent = t(13); refresh.disabled = s.loading;
+    get('CommunityPrivacy').textContent = t(14);
+  }
+  function renderPosts() {
+    if (!current) return;
+    const s = current; posts.replaceChildren();
+    if (!s.items.length) {
+      const empty = document.createElement('p'); empty.className = 'communityEmpty';
+      empty.textContent = t(s.failed ? 2 : s.loaded ? 0 : 1); posts.appendChild(empty); return;
+    }
+    for (const item of s.items) {
+      const article = document.createElement('article'); article.className = 'communityPost';
+      const top = document.createElement('div'); top.className = 'communityPostTop';
+      const name = document.createElement('strong'); name.className = 'communityPostName'; name.textContent = item.author_name;
+      const rating = document.createElement('span'); rating.className = 'communityPostStars';
+      rating.textContent = '★'.repeat(item.rating) + '☆'.repeat(5 - item.rating); rating.setAttribute('aria-label', item.rating + '/5');
+      top.append(name, rating);
+      const date = document.createElement('time'); date.className = 'communityPostDate'; date.dateTime = item.created_at;
+      date.textContent = new Date(item.created_at).toLocaleDateString(language, { day: 'numeric', month: 'short', year: 'numeric' });
+      const text = document.createElement('p'); text.className = 'communityPostText'; text.textContent = item.comment;
+      article.append(top, date, text);
+      if (typeof item.photo_url === 'string' && item.photo_url.startsWith(photoPrefix) && /^[0-9a-f-]{36}\.jpg$/.test(item.photo_url.slice(photoPrefix.length))) {
+        const opener = document.createElement('button'); opener.type = 'button'; opener.className = 'tch-gt-photo-open';
+        const image = document.createElement('img'); image.className = 'communityPostImage'; image.src = item.photo_url;
+        image.alt = t(20) + ' ' + item.author_name; image.loading = 'lazy'; image.decoding = 'async';
+        opener.appendChild(image);
+        opener.addEventListener('click', () => { if (typeof window.openCommunityImageModal === 'function') window.openCommunityImageModal(image.src, image.alt); });
+        article.appendChild(opener);
+      }
+      posts.appendChild(article);
+    }
+  }
+  async function load(s, reset) {
+    if (s.loading) { if (reset) s.reload = true; return; }
+    s.loading = true; if (s === current) paint();
+    try {
+      const data = await request('GET', null, s, reset ? 0 : s.items.length);
+      if (data.spot_id !== s.id || !Number.isSafeInteger(data.total) || data.total < 0 || !Array.isArray(data.items)
+        || data.items.some(item => !Number.isInteger(item.rating) || item.rating < 1 || item.rating > 5)) throw Error('Invalid response');
+      const combined = reset ? data.items : s.items.concat(data.items);
+      s.items = [...new Map(combined.map(item => [String(item.id), item])).values()];
+      s.total = data.total; s.average = data.average; s.loaded = true; s.failed = false;
+    } catch { s.failed = true; }
+    finally {
+      s.loading = false;
+      if (s === current) { paint(); renderPosts(); }
+      if (s.reload) { s.reload = false; load(s, true); }
+    }
+  }
+  function activate(spot) {
+    const id = Number(spot && spot.id);
+    if (!Number.isInteger(id) || id < 1 || id > 92) return;
+    current = stateFor(id); current.title = String(spot.name || spot.title || '');
+    nameInput.value = current.name; commentInput.value = current.comment; photoInput.value = '';
+    paint(); renderPosts(); load(current, true);
+  }
+  nameInput.addEventListener('input', () => { if (current) current.name = nameInput.value; });
+  commentInput.addEventListener('input', () => { if (current) current.comment = commentInput.value; });
+  function selectRating(value) { if (!current || current.sending) return; current.rating = value; if (current.status === 6) current.status = null; paint(); }
+  stars.forEach((star, index) => {
+    star.setAttribute('role', 'radio');
+    star.addEventListener('click', () => selectRating(index + 1));
+    star.addEventListener('keydown', event => {
+      if (!['ArrowRight','ArrowLeft','ArrowUp','ArrowDown','Home','End'].includes(event.key)) return;
+      event.preventDefault();
+      const target = event.key === 'Home' ? 0 : event.key === 'End' ? 4 : (index + (['ArrowRight','ArrowUp'].includes(event.key) ? 1 : 4)) % 5;
+      selectRating(target + 1); stars[target].focus();
+    });
+  });
+  async function preparePhoto(file) {
+    if (!['image/jpeg','image/png','image/webp'].includes(file.type) || file.size > 12 * 1024 * 1024) throw Error('photo');
+    const url = URL.createObjectURL(file);
+    try {
+      const image = new Image();
+      await new Promise((resolve, reject) => { image.onload = resolve; image.onerror = reject; image.src = url; });
+      if (!image.naturalWidth || !image.naturalHeight || image.naturalWidth * image.naturalHeight > 50000000) throw Error('photo');
+      const scale = Math.min(1, 1400 / Math.max(image.naturalWidth, image.naturalHeight));
+      const canvas = document.createElement('canvas'); canvas.width = Math.max(1, Math.round(image.naturalWidth * scale)); canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
+      const ctx = canvas.getContext('2d'); ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+      let photo = canvas.toDataURL('image/jpeg', 0.82);
+      if (photo.length > 1398100) photo = canvas.toDataURL('image/jpeg', 0.62);
+      canvas.width = 0; canvas.height = 0;
+      if (!photo.startsWith('data:image/jpeg;base64,') || photo.length > 1398100) throw Error('photo');
+      return photo;
+    } finally { URL.revokeObjectURL(url); }
+  }
+  photoInput.addEventListener('change', async () => {
+    if (!current) return;
+    const s = current, file = photoInput.files[0], ticket = ++s.photoTicket;
+    s.photo = ''; s.filename = ''; s.status = null; s.preparing = !!file; paint();
+    if (!file) return;
+    try {
+      const data = await preparePhoto(file); if (ticket !== s.photoTicket) return;
+      s.photo = data; s.filename = file.name;
+    } catch { if (ticket === s.photoTicket) { s.status = 9; if (s === current) photoInput.value = ''; } }
+    finally { if (ticket === s.photoTicket) { s.preparing = false; if (s === current) paint(); } }
+  });
+  form.addEventListener('submit', async event => {
+    event.preventDefault(); const s = current;
+    if (!s || s.sending || s.preparing || !form.reportValidity()) return;
+    s.name = nameInput.value; s.comment = commentInput.value;
+    if (!s.rating) { s.status = 6; paint(); stars[0].focus(); return; }
+    const name = s.name.trim() || t(18), comment = s.comment.trim();
+    if ([...name].length > 40 || [...comment].length < 3 || [...comment].length > 500) { s.status = 7; paint(); return; }
+    const payload = { spot_id: s.id, name, comment, rating: s.rating, photo: s.photo, website: form.elements.namedItem('website').value };
+    const signature = JSON.stringify(payload);
+    if (signature !== s.signature) { s.signature = signature; s.requestId = uuid(); }
+    s.sending = true; s.status = null; paint();
+    try {
+      await request('POST', { ...payload, request_id: s.requestId }, s);
+      s.comment = ''; s.rating = 0; s.photo = ''; s.filename = ''; s.requestId = ''; s.signature = ''; s.status = 5;
+      if (s === current) { commentInput.value = ''; photoInput.value = ''; }
+      await load(s, true);
+    } catch (error) { s.status = error.code === 'rate_limited' ? 8 : error.code === 'validation' ? 7 : error.code === 'photo' || error.code === 'size' ? 9 : 19; }
+    finally { s.sending = false; if (s === current) paint(); }
+  });
+  more.addEventListener('click', () => { if (current) load(current, false); });
+  refresh.addEventListener('click', () => { if (current) load(current, true); });
+  function translate() {
+    const lang = document.documentElement.lang.split('-')[0]; language = words[lang] ? lang : 'es';
+    if (current) { paint(); renderPosts(); }
+  }
+  new MutationObserver(translate).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  // Mantiene la función original completa, incluido su control del vídeo; añade solo la carga de opiniones.
+  const legacyCommunityUpdate = window.updateCommunityForSpot;
+  if (typeof legacyCommunityUpdate === 'function') {
+    window.updateCommunityForSpot = function (spot) {
+      const result = legacyCommunityUpdate.apply(this, arguments);
+      try { activate(spot); } catch { status.textContent = t(2); }
+      return result;
+    };
+  }
+  translate();
+  if (typeof spots !== 'undefined' && typeof currentSpotIndex !== 'undefined') activate(spots[currentSpotIndex]);
+})();
+
+</script>
 </body>
 
 </html>
