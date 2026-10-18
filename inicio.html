@@ -2171,6 +2171,52 @@ footer.site-credits > p.developer-credit {
 @media(max-width:800px){.home-calendar-row{grid-template-columns:minmax(0,1fr);max-width:400px;gap:30px}.home-calendar-row>.heroHernan,.home-calendar-row>.events-entry{grid-column:1}.home-calendar-row>.events-entry{max-width:330px;padding:22px 8px 0}}
 </style>
 <style id="mundial-mobile-frame">@media(max-width:800px){.home-mundial-fit{height:var(--mundial-mobile-height,3100px)}.home-mundial iframe{height:100%}}</style><link rel="stylesheet" href="css/guia-libro.css?v=20261017">
+
+<style id="tch-guide-reviews-style">
+/* Opiniones de la guía: estilos limitados a este recuadro. */
+#tch-guide-reviews{width:100%;max-width:320px;margin:16px auto 0;padding:19px 17px 15px;border:1px solid #647482;border-radius:12px;background:linear-gradient(150deg,#102331f5,#07131df8);box-shadow:0 8px 24px #0005;text-align:left;text-shadow:none;color:#f3f6f8;font:13px/1.5 Arial,Helvetica,sans-serif;position:relative;overflow:hidden}
+#tch-guide-reviews *{box-sizing:border-box}
+#tch-guide-reviews .tch-r-kicker{font-size:9px;font-weight:800;letter-spacing:1.5px;color:#dfbd78}
+#tch-guide-reviews h3{margin:5px 0 7px;font-size:19px;line-height:1.25;color:#fff;letter-spacing:normal;text-transform:none}
+#tch-guide-reviews .tch-r-heading p{margin:0;font-size:12px;color:#bfced8}
+#tch-guide-reviews .tch-r-summary{display:flex;flex-wrap:wrap;align-items:center;gap:5px 10px;margin:14px 0 16px;padding:10px 0;border-top:1px solid #ffffff1f;border-bottom:1px solid #ffffff1f}
+#tch-guide-reviews .tch-r-summary-stars{color:#f3cc76;font-size:20px;letter-spacing:1px;line-height:1}
+#tch-guide-reviews .tch-r-summary-label{font-size:11px;color:#d3dfe6}
+#tch-guide-reviews .tch-r-fieldset{margin:0 0 13px;padding:0;border:0;min-width:0}
+#tch-guide-reviews .tch-r-fieldset legend,#tch-guide-reviews .tch-r-label{display:block;font-size:12px;font-weight:700;color:#ecf3f8;margin:0 0 6px;padding:0}
+#tch-guide-reviews .tch-r-stars{display:flex;gap:2px;direction:ltr;width:max-content;max-width:100%}
+#tch-guide-reviews .tch-r-stars label{position:relative;display:grid;place-items:center;width:44px;height:44px;cursor:pointer;margin:0;border-radius:8px}
+#tch-guide-reviews .tch-r-stars input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;margin:0}
+#tch-guide-reviews .tch-r-stars span{display:block;font:34px/1 Arial,sans-serif;color:#667784;transition:color .12s,transform .12s;pointer-events:none}
+#tch-guide-reviews .tch-r-stars label.is-filled span{color:#ffd274;text-shadow:0 0 12px #f5c45d25}
+#tch-guide-reviews .tch-r-stars label:focus-within{outline:2px solid #ffe0a3;outline-offset:1px}
+#tch-guide-reviews .tch-r-selection{display:block;min-height:16px;font-size:10px;color:#bfced8;margin-top:2px}
+#tch-guide-reviews .tch-r-input{display:block;width:100%;max-width:100%;min-width:0;min-height:42px;padding:10px 11px;border:1px solid #637989;border-radius:7px;background:#06131e;color:#fff;box-shadow:inset 0 1px 4px #0002;font:13px/1.5 Arial,Helvetica,sans-serif;letter-spacing:normal;margin:0 0 12px;outline:none}
+#tch-guide-reviews textarea.tch-r-input{min-height:108px;resize:vertical;margin-bottom:3px}
+#tch-guide-reviews .tch-r-input:focus{border-color:#f2cf87;box-shadow:0 0 0 2px #f2cf8725}
+#tch-guide-reviews .tch-r-length{font-size:10px;color:#bacbd7;text-align:right}
+#tch-guide-reviews .tch-r-privacy{font-size:10px;color:#b7c9d4;line-height:1.5;margin:10px 0 13px}
+#tch-guide-reviews .tch-r-submit,#tch-guide-reviews .tch-r-more{display:block;width:100%;min-height:44px;margin:0;padding:10px 8px;border:1px solid #f2aa81;border-radius:7px;background:linear-gradient(#ce392c,#a1241e);color:#fff;font:700 13px/1.4 Arial,sans-serif;cursor:pointer;letter-spacing:normal;text-transform:none}
+#tch-guide-reviews .tch-r-submit:hover{background:linear-gradient(#df4939,#b82c24)}
+#tch-guide-reviews button:focus-visible{outline:3px solid #ffd274;outline-offset:3px}
+#tch-guide-reviews button:disabled{opacity:.65;cursor:wait}
+#tch-guide-reviews .tch-r-status,#tch-guide-reviews .tch-r-list-status{font-size:11px;line-height:1.5;margin:10px 0 0;color:#c5d6e0}
+#tch-guide-reviews .tch-r-status:empty,#tch-guide-reviews .tch-r-list-status:empty{display:none}
+#tch-guide-reviews .tch-r-status[data-tone="success"]{color:#afe5bf}
+#tch-guide-reviews .tch-r-status[data-tone="error"]{color:#ffd1bd}
+#tch-guide-reviews .tch-r-list-heading{border-top:1px solid #ffffff21;margin-top:19px;padding-top:15px}
+#tch-guide-reviews h4{margin:0;font-size:12px;color:#f3f6f8;letter-spacing:normal;text-transform:none}
+#tch-guide-reviews .tch-r-item{margin:13px 0 0;padding:0 0 13px;border-bottom:1px solid #ffffff17;overflow-wrap:anywhere}
+#tch-guide-reviews .tch-r-item-head{display:flex;justify-content:space-between;align-items:start;gap:8px;font-size:11px}
+#tch-guide-reviews .tch-r-item time{color:#a7bbc9;font-size:10px;flex:none}
+#tch-guide-reviews .tch-r-item-stars{color:#ffd274;font-size:14px;letter-spacing:1px;margin:4px 0}
+#tch-guide-reviews .tch-r-item p{margin:5px 0 0;color:#dbe5ec;font-size:12px;line-height:1.55;white-space:pre-wrap}
+#tch-guide-reviews .tch-r-more{border-color:#506675;background:#122b3b;margin-top:12px;font-size:11px}
+#tch-guide-reviews .tch-r-trap{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+#tch-guide-reviews [hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){#tch-guide-reviews .tch-r-stars span{transition:none}}
+
+</style>
 </head>
 
 
@@ -2333,6 +2379,36 @@ footer.site-credits > p.developer-credit {
     <div class="tch-circuits-footer"><span class="tch-swiss-badge" aria-hidden="true">✚</span><span>TODOS CON HERNÁN</span><svg viewBox="0 0 28 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10 5 3l7 4h5l6-4-1 8c3 8-14 13-16 3C3 15 1 13 2 10"/><path d="M10 12h1m7 0h1m-6 3 2 1 2-1m-8 1-6 1m17-1 5 1"/></svg></div>
   </div>
   <p class="tch-stats-status" role="status">Estadísticas no disponibles</p>
+  <!-- TCH-GUIA-REVIEWS:START -->
+  <section id="tch-guide-reviews" aria-labelledby="tchReviewsTitle" data-no-translate translate="no">
+    <div class="tch-r-heading"><span class="tch-r-kicker" data-review-text="kicker">COMUNIDAD LECTORA</span><h3 id="tchReviewsTitle" data-review-text="title">¿Te ha ayudado la guía?</h3><p data-review-text="intro">Comparte tu experiencia con otros lectores.</p></div>
+    <div class="tch-r-summary"><span class="tch-r-summary-stars" aria-hidden="true">☆☆☆☆☆</span><span class="tch-r-summary-label" data-review-text="loading">Cargando opiniones…</span></div>
+    <form id="tchReviewForm">
+      <fieldset class="tch-r-fieldset"><legend data-review-text="rating">Tu valoración</legend><div class="tch-r-stars">
+        <label><input type="radio" name="rating" value="1" required aria-label="1 de 5 estrellas"><span aria-hidden="true">★</span></label>
+        <label><input type="radio" name="rating" value="2" required aria-label="2 de 5 estrellas"><span aria-hidden="true">★</span></label>
+        <label><input type="radio" name="rating" value="3" required aria-label="3 de 5 estrellas"><span aria-hidden="true">★</span></label>
+        <label><input type="radio" name="rating" value="4" required aria-label="4 de 5 estrellas"><span aria-hidden="true">★</span></label>
+        <label><input type="radio" name="rating" value="5" required aria-label="5 de 5 estrellas"><span aria-hidden="true">★</span></label>
+      </div><span class="tch-r-selection" data-review-text="choose">Selecciona de 1 a 5 estrellas</span></fieldset>
+      <label class="tch-r-label" for="tchReviewName" data-review-text="name">Tu nombre o alias</label>
+      <input class="tch-r-input" id="tchReviewName" name="name" type="text" minlength="2" maxlength="50" required autocomplete="nickname">
+      <label class="tch-r-label" for="tchReviewComment" data-review-text="comment">Tu comentario</label>
+      <textarea class="tch-r-input" id="tchReviewComment" name="comment" rows="4" minlength="10" maxlength="1500" required aria-describedby="tchReviewPrivacy tchReviewLength"></textarea>
+      <div class="tch-r-length" id="tchReviewLength">0 / 1500</div>
+      <div class="tch-r-trap" aria-hidden="true"><label for="tchReviewWebsite">Website</label><input id="tchReviewWebsite" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <p class="tch-r-privacy" id="tchReviewPrivacy" data-review-text="privacy">Tu nombre o alias, comentario y valoración serán públicos. Evita incluir datos personales.</p>
+      <button class="tch-r-submit" type="submit" data-review-text="submit">Publicar opinión</button>
+      <p class="tch-r-status" id="tchReviewStatus" role="status" aria-live="polite"></p>
+    </form>
+    <div class="tch-r-list-heading"><h4 data-review-text="recent">Opiniones de los lectores</h4></div>
+    <p class="tch-r-list-status" role="status" aria-live="polite" data-review-text="loading">Cargando opiniones…</p>
+    <div class="tch-r-list"></div>
+    <button class="tch-r-more" type="button" hidden data-review-text="more">Ver más opiniones</button>
+    <noscript><p>Activa JavaScript para leer y publicar opiniones sobre la guía.</p></noscript>
+  </section>
+  <!-- TCH-GUIA-REVIEWS:END -->
+
 </aside>
 <!-- TCH-GUIA:END -->
 
@@ -3319,6 +3395,132 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now(
 })();
 </script>
 <script id="mundial-mobile-frame-resize">(()=>{const frame=document.querySelector('.home-mundial iframe'),box=frame.parentElement;frame.addEventListener('load',()=>{if(matchMedia('(max-width:800px)').matches){const root=frame.contentDocument?.getElementById('platoModal');if(root)box.style.setProperty('--mundial-mobile-height',Math.ceil(root.getBoundingClientRect().height)+'px')}});addEventListener('message',event=>{if(event.source!==frame.contentWindow||event.data?.type!=='mundial-mobile-height'||!matchMedia('(max-width:800px)').matches)return;const height=event.data.height;if(Number.isFinite(height)&&height>0&&height<20000)box.style.setProperty('--mundial-mobile-height',Math.ceil(height)+'px')})})();</script><script src="js/guia-libro.js?v=20261017"></script>
+
+<script id="tch-guide-reviews-script">
+(function () {
+  'use strict';
+  const root = document.getElementById('tch-guide-reviews');
+  if (!root || root.dataset.initialized === 'true') return;
+  root.dataset.initialized = 'true';
+  const endpoint = 'https://lqxvuuogxenzsplsruok.supabase.co/functions/v1/tch-book-reviews';
+  const apiKey = 'sb_publishable_kBy973taie6QPk0awkdlIQ_21mxkXRS';
+  const texts = {
+    es: { kicker:'COMUNIDAD LECTORA',title:'¿Te ha ayudado la guía?',intro:'Comparte tu experiencia con otros lectores.',rating:'Tu valoración',choose:'Selecciona de 1 a 5 estrellas',stars:'{n} de 5 estrellas',name:'Tu nombre o alias',comment:'Tu comentario',placeholder:'¿Qué te ha resultado más útil? (Mínimo 10 caracteres)',privacy:'Tu nombre o alias, comentario y valoración serán públicos. Evita incluir datos personales.',submit:'Publicar opinión',sending:'Enviando…',success:'¡Gracias! Tu opinión se ha publicado.',recent:'Opiniones de los lectores',loading:'Cargando opiniones…',empty:'Todavía no hay opiniones. ¡Comparte la primera!',none:'Sin valoraciones todavía',summary:'{avg} / 5 · {n} opiniones',more:'Ver más opiniones',retry:'Reintentar',unavailable:'No se han podido cargar las opiniones. Inténtalo de nuevo.',failed:'No hemos podido confirmar el envío. Tu comentario sigue aquí; vuelve a intentarlo.',rate:'Has enviado varias opiniones recientemente. Espera antes de publicar otra.',validation:'Escribe un nombre de 2 a 50 caracteres, un comentario de 10 a 1500 y elige tus estrellas.',conflict:'Este envío ya se ha procesado. Recarga para consultar las opiniones.' },
+    en: { kicker:'READERS’ COMMUNITY',title:'Did the guide help you?',intro:'Share your experience with other readers.',rating:'Your rating',choose:'Select 1 to 5 stars',stars:'{n} out of 5 stars',name:'Your name or nickname',comment:'Your comment',placeholder:'What did you find most useful? (At least 10 characters)',privacy:'Your name or nickname, comment and rating will be public. Avoid sharing personal details.',submit:'Post review',sending:'Sending…',success:'Thank you! Your review has been posted.',recent:'Reader reviews',loading:'Loading reviews…',empty:'No reviews yet. Be the first to share!',none:'No ratings yet',summary:'{avg} / 5 · {n} reviews',more:'More reviews',retry:'Try again',unavailable:'Reviews could not be loaded. Please try again.',failed:'We could not confirm your submission. Your comment is still here; please try again.',rate:'You have posted several reviews recently. Please wait before posting again.',validation:'Enter a name of 2–50 characters, a comment of 10–1500 and select your stars.',conflict:'This submission has already been processed. Reload to see the reviews.' },
+    de: { kicker:'LESEGEMEINSCHAFT',title:'Hat dir der Ratgeber geholfen?',intro:'Teile deine Erfahrung mit anderen Lesern.',rating:'Deine Bewertung',choose:'Wähle 1 bis 5 Sterne',stars:'{n} von 5 Sternen',name:'Dein Name oder Pseudonym',comment:'Dein Kommentar',placeholder:'Was war für dich besonders hilfreich? (Mindestens 10 Zeichen)',privacy:'Name oder Pseudonym, Kommentar und Bewertung werden öffentlich. Vermeide persönliche Angaben.',submit:'Bewertung veröffentlichen',sending:'Wird gesendet…',success:'Danke! Deine Bewertung wurde veröffentlicht.',recent:'Meinungen der Leser',loading:'Bewertungen werden geladen…',empty:'Noch keine Bewertungen. Teile die erste!',none:'Noch keine Bewertungen',summary:'{avg} / 5 · {n} Bewertungen',more:'Weitere Bewertungen',retry:'Erneut versuchen',unavailable:'Bewertungen konnten nicht geladen werden. Versuche es erneut.',failed:'Der Versand konnte nicht bestätigt werden. Dein Kommentar bleibt erhalten; versuche es erneut.',rate:'Du hast kürzlich mehrere Bewertungen gesendet. Bitte warte vor dem nächsten Beitrag.',validation:'Gib einen Namen mit 2–50 Zeichen und einen Kommentar mit 10–1500 Zeichen ein und wähle die Sterne.',conflict:'Dieser Beitrag wurde bereits verarbeitet. Lade die Seite neu.' },
+    fr: { kicker:'COMMUNAUTÉ DE LECTEURS',title:'Le guide vous a-t-il aidé ?',intro:'Partagez votre expérience avec les autres lecteurs.',rating:'Votre note',choose:'Choisissez de 1 à 5 étoiles',stars:'{n} étoiles sur 5',name:'Votre nom ou pseudonyme',comment:'Votre commentaire',placeholder:'Qu’avez-vous trouvé le plus utile ? (10 caractères minimum)',privacy:'Votre nom ou pseudonyme, commentaire et note seront publics. Évitez les informations personnelles.',submit:'Publier mon avis',sending:'Envoi…',success:'Merci ! Votre avis a été publié.',recent:'Avis des lecteurs',loading:'Chargement des avis…',empty:'Aucun avis pour le moment. Soyez le premier !',none:'Aucune note pour le moment',summary:'{avg} / 5 · {n} avis',more:'Voir plus d’avis',retry:'Réessayer',unavailable:'Impossible de charger les avis. Réessayez.',failed:'L’envoi n’a pas pu être confirmé. Votre commentaire est conservé ; réessayez.',rate:'Vous avez envoyé plusieurs avis récemment. Attendez avant de publier à nouveau.',validation:'Saisissez un nom de 2 à 50 caractères, un commentaire de 10 à 1500 et choisissez vos étoiles.',conflict:'Cet envoi a déjà été traité. Rechargez la page.' },
+    it: { kicker:'COMUNITÀ DI LETTORI',title:'La guida ti è stata utile?',intro:'Condividi la tua esperienza con altri lettori.',rating:'La tua valutazione',choose:'Scegli da 1 a 5 stelle',stars:'{n} stelle su 5',name:'Nome o pseudonimo',comment:'Il tuo commento',placeholder:'Che cosa hai trovato più utile? (Almeno 10 caratteri)',privacy:'Nome o pseudonimo, commento e valutazione saranno pubblici. Evita di inserire dati personali.',submit:'Pubblica recensione',sending:'Invio…',success:'Grazie! La tua recensione è stata pubblicata.',recent:'Opinioni dei lettori',loading:'Caricamento delle recensioni…',empty:'Ancora nessuna recensione. Scrivi la prima!',none:'Nessuna valutazione',summary:'{avg} / 5 · {n} recensioni',more:'Altre recensioni',retry:'Riprova',unavailable:'Impossibile caricare le recensioni. Riprova.',failed:'Non è stato possibile confermare l’invio. Il commento è ancora qui; riprova.',rate:'Hai inviato diverse recensioni di recente. Attendi prima di inviarne un’altra.',validation:'Inserisci un nome di 2–50 caratteri, un commento di 10–1500 e scegli le stelle.',conflict:'Questo invio è già stato elaborato. Ricarica la pagina.' },
+    pt: { kicker:'COMUNIDADE DE LEITORES',title:'O guia ajudou-te?',intro:'Partilha a tua experiência com outros leitores.',rating:'A tua avaliação',choose:'Seleciona de 1 a 5 estrelas',stars:'{n} de 5 estrelas',name:'Nome ou pseudónimo',comment:'O teu comentário',placeholder:'O que foi mais útil? (Pelo menos 10 caracteres)',privacy:'O nome ou pseudónimo, comentário e avaliação serão públicos. Evita incluir dados pessoais.',submit:'Publicar opinião',sending:'A enviar…',success:'Obrigado! A tua opinião foi publicada.',recent:'Opiniões dos leitores',loading:'A carregar opiniões…',empty:'Ainda não há opiniões. Partilha a primeira!',none:'Ainda sem avaliações',summary:'{avg} / 5 · {n} opiniões',more:'Ver mais opiniões',retry:'Tentar novamente',unavailable:'Não foi possível carregar as opiniões. Tenta novamente.',failed:'Não foi possível confirmar o envio. O comentário continua aqui; tenta novamente.',rate:'Enviaste várias opiniões recentemente. Aguarda antes de publicar outra.',validation:'Escreve um nome de 2 a 50 caracteres, um comentário de 10 a 1500 e escolhe as estrelas.',conflict:'Este envio já foi processado. Atualiza a página.' },
+    zh: { kicker:'读者社区',title:'这本指南对你有帮助吗？',intro:'与其他读者分享你的体验。',rating:'你的评分',choose:'选择 1 至 5 颗星',stars:'{n} / 5 星',name:'姓名或昵称',comment:'你的评论',placeholder:'哪些内容最有用？（至少 10 个字符）',privacy:'姓名或昵称、评论和评分将公开显示。请勿填写个人敏感信息。',submit:'发布评论',sending:'正在发送…',success:'谢谢！你的评论已发布。',recent:'读者评论',loading:'正在加载评论…',empty:'暂无评论，欢迎分享第一条！',none:'暂无评分',summary:'{avg} / 5 · {n} 条评论',more:'查看更多评论',retry:'重试',unavailable:'无法加载评论，请重试。',failed:'无法确认发送结果。评论内容已保留，请重试。',rate:'你最近发布了多条评论，请稍后再试。',validation:'请输入 2 至 50 个字符的姓名、10 至 1500 个字符的评论，并选择星级。',conflict:'这条评论已经处理，请刷新页面。' }
+  };
+  const form = root.querySelector('form');
+  const nameInput = form.elements.namedItem('name');
+  const commentInput = form.elements.namedItem('comment');
+  const submit = root.querySelector('.tch-r-submit');
+  const status = root.querySelector('.tch-r-status');
+  const listStatus = root.querySelector('.tch-r-list-status');
+  const list = root.querySelector('.tch-r-list');
+  const more = root.querySelector('.tch-r-more');
+  const radios = [...root.querySelectorAll('input[name="rating"]')];
+  let lang = 'es', submitting = false, loading = false, loadFailed = false, refreshQueued = false, retryReset = false;
+  let total = 0, average = null, offset = 0, loaded = false, items = [], statusKey = '', statusTone = '';
+  let pendingSignature = '', pendingId = '';
+  const t = (key, params = {}) => Object.entries(params).reduce((s, [k, v]) => s.replaceAll('{' + k + '}', String(v)), texts[lang][key] || texts.es[key] || '');
+  const score = () => Number(radios.find(r => r.checked)?.value || 0);
+  const uuid = () => crypto.randomUUID ? crypto.randomUUID() : '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, c => (+c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> +c / 4).toString(16));
+  function paintStars(value = score()) {
+    radios.forEach(radio => radio.parentElement.classList.toggle('is-filled', Number(radio.value) <= value));
+    root.querySelector('.tch-r-selection').textContent = score() ? t('stars', { n: score() }) : t('choose');
+  }
+  function showStatus(key, tone = '') { statusKey = key; statusTone = tone; status.textContent = key ? t(key) : ''; status.dataset.tone = tone; }
+  function renderSummary() {
+    root.querySelector('.tch-r-summary-label').textContent = !loaded ? t(loadFailed ? 'unavailable' : 'loading') : total ? t('summary', { avg: new Intl.NumberFormat(lang, { maximumFractionDigits: 1, minimumFractionDigits: 1 }).format(average), n: total }) : t('none');
+    const n = total ? Math.max(0, Math.min(5, Math.round(average))) : 0;
+    root.querySelector('.tch-r-summary-stars').textContent = '★'.repeat(n) + '☆'.repeat(5 - n);
+  }
+  function renderItems() {
+    list.replaceChildren();
+    for (const row of items) {
+      const article = document.createElement('article'); article.className = 'tch-r-item';
+      const header = document.createElement('div'); header.className = 'tch-r-item-head';
+      const author = document.createElement('strong'); author.textContent = row.author_name;
+      const date = document.createElement('time'); date.dateTime = row.created_at;
+      date.textContent = new Intl.DateTimeFormat(lang, { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'Europe/Zurich' }).format(new Date(row.created_at));
+      header.append(author, date);
+      const stars = document.createElement('div'); stars.className = 'tch-r-item-stars'; stars.setAttribute('role', 'img'); stars.setAttribute('aria-label', t('stars', { n: row.rating }));
+      stars.textContent = '★'.repeat(row.rating) + '☆'.repeat(5 - row.rating);
+      const comment = document.createElement('p'); comment.textContent = row.comment;
+      article.append(header, stars, comment); list.append(article);
+    }
+  }
+  function renderLoadState() {
+    listStatus.textContent = loading ? t('loading') : loadFailed ? t('unavailable') : loaded && !items.length ? t('empty') : '';
+    more.hidden = !loadFailed && (!loaded || offset >= total || offset >= 10000);
+    more.disabled = loading; more.textContent = t(loadFailed ? 'retry' : 'more');
+    renderSummary();
+  }
+  function translate() {
+    const current = document.documentElement.lang.split('-')[0]; lang = texts[current] ? current : 'es';
+    root.querySelectorAll('[data-review-text]').forEach(node => node.textContent = t(node.dataset.reviewText));
+    radios.forEach(radio => radio.setAttribute('aria-label', t('stars', { n: radio.value })));
+    commentInput.placeholder = t('placeholder');
+    submit.textContent = t(submitting ? 'sending' : 'submit');
+    showStatus(statusKey, statusTone); paintStars(); renderItems(); renderLoadState();
+  }
+  async function request(method = 'GET', body, pageOffset = 0) {
+    const controller = new AbortController(); const timeout = setTimeout(() => controller.abort(), 12000);
+    try {
+      const response = await fetch(endpoint + (method === 'GET' ? '?offset=' + pageOffset : ''), { method, credentials: 'omit', cache: 'no-store', headers: { apikey: apiKey, ...(body ? { 'Content-Type': 'application/json' } : {}) }, body: body ? JSON.stringify(body) : undefined, signal: controller.signal });
+      const data = await response.json();
+      if (!response.ok || data.ok !== true) throw Object.assign(new Error('Reviews request failed'), { code: data.code });
+      return data;
+    } finally { clearTimeout(timeout); }
+  }
+  async function load(reset = false) {
+    if (loading) { if (reset) refreshQueued = true; return; }
+    loading = true; loadFailed = false; renderLoadState();
+    const pageOffset = reset ? 0 : offset;
+    try {
+      const data = await request('GET', undefined, pageOffset);
+      if (!Number.isSafeInteger(data.total) || data.total < 0 || !Array.isArray(data.items) || (data.total > 0 && (!Number.isFinite(data.average) || data.average < 1 || data.average > 5))) throw new Error('Invalid reviews');
+      if (!data.items.every(row => typeof row.id === 'string' && typeof row.author_name === 'string' && typeof row.comment === 'string' && Number.isInteger(row.rating) && row.rating >= 1 && row.rating <= 5 && Number.isFinite(Date.parse(row.created_at)))) throw new Error('Invalid review');
+      if (reset) items = [];
+      const seen = new Set(items.map(row => row.id));
+      items.push(...data.items.filter(row => !seen.has(row.id)));
+      total = data.total; average = data.average; offset = pageOffset + data.items.length; loaded = true;
+      renderItems();
+    } catch { loadFailed = true; retryReset = reset; }
+    finally { loading = false; renderLoadState(); if (refreshQueued) { refreshQueued = false; load(true); } }
+  }
+  radios.forEach(radio => {
+    radio.addEventListener('change', () => paintStars());
+    radio.parentElement.addEventListener('mouseenter', () => paintStars(Number(radio.value)));
+  });
+  root.querySelector('.tch-r-stars').addEventListener('mouseleave', () => paintStars());
+  commentInput.addEventListener('input', () => { root.querySelector('.tch-r-length').textContent = commentInput.value.length + ' / 1500'; });
+  more.addEventListener('click', () => load(loadFailed ? retryReset : !loaded));
+  form.addEventListener('submit', async event => {
+    event.preventDefault(); if (submitting || !form.reportValidity()) return;
+    const name = nameInput.value.trim(), comment = commentInput.value.trim(), rating = score();
+    if (name.length < 2 || name.length > 50 || comment.length < 10 || comment.length > 1500 || rating < 1 || rating > 5) { showStatus('validation', 'error'); return; }
+    const signature = JSON.stringify({ name, comment, rating });
+    if (signature !== pendingSignature) { pendingSignature = signature; pendingId = uuid(); }
+    submitting = true; submit.disabled = true; submit.textContent = t('sending'); form.setAttribute('aria-busy', 'true'); showStatus('');
+    const controls = [...form.querySelectorAll('input,textarea')]; controls.forEach(node => node.disabled = true);
+    try {
+      await request('POST', { name, comment, rating, request_id: pendingId, website: form.elements.namedItem('website').value });
+      form.reset(); pendingId = ''; pendingSignature = ''; root.querySelector('.tch-r-length').textContent = '0 / 1500'; paintStars(); showStatus('success', 'success');
+      // Refresh only reviews. Neither reading nor posting changes visits/downloads.
+      await load(true);
+    } catch (error) {
+      showStatus(error.code === 'rate_limited' ? 'rate' : error.code === 'validation' ? 'validation' : error.code === 'conflict' ? 'conflict' : 'failed', 'error');
+    } finally { submitting = false; submit.disabled = false; controls.forEach(node => node.disabled = false); submit.textContent = t('submit'); form.removeAttribute('aria-busy'); }
+  });
+  new MutationObserver(translate).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+  translate(); load(true);
+})();
+
+</script>
 </body>
 
 
