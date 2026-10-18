@@ -187,7 +187,8 @@ window.SPOTS = [
     "name": "Puerto de Morges",
     "lat": 46.51,
     "lng": 6.5,
-    "officialUrl": "https://www.myswitzerland.com/es-es/descubrir-suiza/photo-spot-el-puerto-de-morges/"
+    "officialUrl": "https://www.myswitzerland.com/es-es/descubrir-suiza/photo-spot-el-puerto-de-morges/",
+    "youtubeUrl": "https://www.youtube.com/watch?v=njrV5D3TKGc&t=10s"
   },
   {
     "id": 28,
@@ -440,7 +441,8 @@ window.SPOTS = [
     "name": "Friburgo",
     "lat": 46.81,
     "lng": 7.16,
-    "officialUrl": "https://www.myswitzerland.com/es-es/descubrir-suiza/photo-spot-friburgo/"
+    "officialUrl": "https://www.myswitzerland.com/es-es/descubrir-suiza/photo-spot-friburgo/",
+    "youtubeUrl": "https://www.youtube.com/watch?v=q0OGam09-FM"
   },
   {
     "id": 64,
@@ -546,7 +548,8 @@ window.SPOTS = [
     "name": "Spiez",
     "lat": 46.68,
     "lng": 7.69,
-    "officialUrl": "https://www.myswitzerland.com/es-es/descubrir-suiza/photo-spot-spiez/"
+    "officialUrl": "https://www.myswitzerland.com/es-es/descubrir-suiza/photo-spot-spiez/",
+    "youtubeUrl": "https://www.youtube.com/watch?v=c20Q0pBUB5M&t=886s"
   },
   {
     "id": 79,
