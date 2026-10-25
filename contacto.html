@@ -2229,6 +2229,33 @@ body::after {
  #antoni-tech-banner .atb-tech img { width: 29px; height: 29px; }
 }
 </style>
+
+<style id="antoni-tech-mobile-fix">
+/* Mobile: a single column with room for each element. */
+@media (max-width: 640px) {
+ #antoni-tech-banner { min-width: 0; }
+ #antoni-tech-banner .atb-panel { width: 100%; min-width: 0; overflow: hidden; }
+ #antoni-tech-banner .atb-main {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 24px; padding: 32px 20px;
+  min-height: 0; text-align: center;
+ }
+ #antoni-tech-banner .atb-brand { order: 0; width: 100%; min-width: 0; min-height: 70px; display: flex; justify-content: center; align-items: center; }
+ #antoni-tech-banner .atb-logo-window { position: relative; display: block; flex: none; width: 204px; height: 64px; overflow: hidden; }
+ #antoni-tech-banner .atb-logo-window img { position: absolute; max-width: none; width: 221px; height: auto; left: -9px; top: -78.8px; }
+ #antoni-tech-banner .atb-copy { order: 1; width: 100%; min-width: 0; text-align: center; }
+ #antoni-tech-banner .atb-copy h2 { margin: 0 0 12px; font-size: clamp(25px,7vw,32px); line-height: 1.2; white-space: normal; }
+ #antoni-tech-banner .atb-copy p { margin: 0; font-size: 14px; line-height: 1.7; white-space: normal; text-wrap: balance; }
+ #antoni-tech-banner .atb-actions { order: 2; position: static; display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; }
+ #antoni-tech-banner .atb-link { display: inline-flex; justify-content: center; align-items: center; gap: 12px; width: 100%; max-width: 240px; min-height: 48px; padding: 12px 18px; font-size: 15px; }
+ #antoni-tech-banner .atb-domain { font-size: 12px; }
+ #antoni-tech-banner .atb-bottom { min-width: 0; overflow: hidden; }
+ #antoni-tech-banner .atb-marquee { min-width: 0; overflow: hidden; }
+ #antoni-tech-banner .atb-tech { flex-shrink: 0; height: 64px; }
+ #antoni-tech-banner .atb-tech img { flex-shrink: 0; width: 29px; height: 29px; }
+ #antoni-tech-banner .atb-shade { background: linear-gradient(180deg,rgba(2,15,25,.8),rgba(2,15,25,.65)); }
+}
+</style>
 </head>
 
 
