@@ -1,0 +1,31 @@
+/* Estilos limitados al recuadro de Antoni Tech. */
+#antoni-tech-banner { padding: 0 5vw 45px; margin: 0; color: #fff; font-family: Arial,Helvetica,sans-serif; }
+#antoni-tech-banner * { box-sizing: border-box; }
+#antoni-tech-banner .atb-panel { position: relative; isolation: isolate; max-width: 1480px; margin: 0 auto; overflow: hidden; border: 1px solid rgba(177,219,240,.6); border-radius: 15px; background: #06131e; box-shadow: 0 14px 45px #0005,0 0 20px #00baff0d; }
+#antoni-tech-banner .atb-video,#antoni-tech-banner .atb-shade { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; object-fit: cover; object-position: center 53%; pointer-events: none; }
+#antoni-tech-banner .atb-shade { z-index: -1; background: linear-gradient(90deg,rgba(1,13,23,.95),rgba(1,13,23,.75) 40%,rgba(1,13,23,.22) 64%,rgba(1,13,23,.8)); }
+#antoni-tech-banner .atb-main { display: grid; grid-template-columns: 210px minmax(0,1fr) 190px; align-items: center; gap: 30px; min-height: 126px; padding: 23px 36px; }
+#antoni-tech-banner .atb-brand { display: flex; align-items: center; border-right: 1px solid #b6d1e477; min-height: 65px; text-decoration: none; }
+#antoni-tech-banner .atb-logo-window { position: relative; display: block; width: 178px; height: 56px; overflow: hidden; filter: drop-shadow(0 0 7px #00cfff55); }
+#antoni-tech-banner .atb-logo-window img { position: absolute; max-width: none; width: 193px; height: auto; left: -7.85px; top: -68.84px; }
+#antoni-tech-banner .atb-copy h2 { margin: 0 0 10px; color: #fff; font-size: clamp(25px,2.5vw,38px); font-weight: 400; line-height: 1.15; letter-spacing: -.7px; }
+#antoni-tech-banner .atb-copy h2 strong { font-weight: 800; }
+#antoni-tech-banner .atb-copy p { margin: 0; color: #d4e5ef; font-size: 14px; line-height: 1.5; letter-spacing: 1px; }
+#antoni-tech-banner .atb-actions { text-align: center; }
+#antoni-tech-banner .atb-link { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 46px; padding: 12px 20px; border: 1px solid #00d5ff; border-radius: 12px; background: #02131dcc; color: #fff; box-shadow: 0 0 15px #00cfff33,inset 0 0 10px #00cfff0d; text-decoration: none; font-size: 14px; font-weight: 700; transition: background .2s,box-shadow .2s; }
+#antoni-tech-banner .atb-link span { color: #00daff; font-size: 20px; }
+#antoni-tech-banner .atb-link:hover { background: #063143; box-shadow: 0 0 22px #00cfff66; }
+#antoni-tech-banner .atb-domain { display: block; margin-top: 8px; color: #d4e5ef; font-size: 12px; }
+#antoni-tech-banner .atb-bottom { display: flex; align-items: center; border-top: 1px solid #b6d1e444; background: #02101cbb; }
+#antoni-tech-banner .atb-marquee { flex: 1; min-width: 0; overflow: hidden; mask-image: linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent); }
+#antoni-tech-banner .atb-track { display: flex; width: max-content; animation: atb-scroll 125s linear infinite; }
+#antoni-tech-banner .atb-group { display: flex; flex-shrink: 0; align-items: center; gap: 0; margin: 0; padding: 0; list-style: none; }
+#antoni-tech-banner .atb-tech { display: flex; align-items: center; flex-shrink: 0; gap: 10px; padding: 0 27px; height: 58px; color: #e0eaf4; font-size: 13px; white-space: nowrap; }
+#antoni-tech-banner .atb-tech img { width: 29px; height: 29px; object-fit: contain; filter: grayscale(1) brightness(0) invert(.9); }
+#antoni-tech-banner .atb-motion { display: grid; place-items: center; flex: 0 0 34px; width: 34px; height: 34px; margin: 0 12px; padding: 0; border: 1px solid #7ba7bd66; border-radius: 50%; color: #cfe9f5; background: #071f2c; cursor: pointer; font-size: 16px; }
+#antoni-tech-banner a:focus-visible,#antoni-tech-banner button:focus-visible { outline: 2px solid #5ce9ff; outline-offset: 3px; }
+#antoni-tech-banner .atb-panel:hover .atb-track,#antoni-tech-banner .atb-panel:focus-within .atb-track,#antoni-tech-banner.atb-paused .atb-track { animation-play-state: paused; }
+@keyframes atb-scroll { to { transform: translateX(-50%); } }
+@media(max-width:900px) { #antoni-tech-banner .atb-main { grid-template-columns: 170px minmax(0,1fr) 155px; gap: 20px; padding: 22px; } #antoni-tech-banner .atb-logo-window { width: 145px; height: 45px; } #antoni-tech-banner .atb-logo-window img { width: 157px; left: -6.4px; top: -56px; } #antoni-tech-banner .atb-copy p { font-size: 12px; letter-spacing: 0; } }
+@media(max-width:640px) { #antoni-tech-banner { padding: 0 16px 32px; } #antoni-tech-banner .atb-main { grid-template-columns: minmax(0,1fr) 140px; gap: 20px 12px; padding: 22px 18px; } #antoni-tech-banner .atb-brand { min-height: 45px; border: 0; } #antoni-tech-banner .atb-copy { grid-column: 1/-1; grid-row: 2; } #antoni-tech-banner .atb-copy h2 { font-size: 27px; } #antoni-tech-banner .atb-copy p { font-size: 12px; } #antoni-tech-banner .atb-link { padding: 9px; min-height: 42px; font-size: 12px; gap: 7px; } #antoni-tech-banner .atb-domain { font-size: 11px; margin-top: 6px; } #antoni-tech-banner .atb-tech { padding: 0 18px; height: 52px; font-size: 12px; } #antoni-tech-banner .atb-video { object-position: 60% center; } }
+@media(prefers-reduced-motion:reduce) { #antoni-tech-banner .atb-track { animation: none; } #antoni-tech-banner .atb-marquee { overflow-x: auto; mask-image: none; } #antoni-tech-banner .atb-group[aria-hidden] { display: none; } }
