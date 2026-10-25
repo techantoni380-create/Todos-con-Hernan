@@ -2284,6 +2284,19 @@ body::after {
 .antoni-wordmark .antoni-wordmark-blue { color: #00bde8; }
 .antoni-wordmark .antoni-wordmark-pink { color: #ff009c; }
 </style>
+<style id="antoni-slogan-alignment">
+#antoni-tech-banner .atb-brand { align-items: center; }
+#antoni-tech-banner .atb-tagline { width: 100%; max-width: 250px; text-align: center; font-size: 16px; font-weight: 500; line-height: 1.5; letter-spacing: .025em; }
+#antoni-tech-banner .atb-services { gap: 0; }
+#antoni-tech-banner .atb-services > span { display: inline-flex; align-items: center; line-height: 1.8; }
+#antoni-tech-banner .atb-services > span + span::before { content: "-"; display: inline-block; margin: 0 12px; color: #ffffff; font-weight: 700; }
+@media (max-width:640px) {
+ #antoni-tech-banner .atb-tagline { font-size: 15px; }
+ #antoni-tech-banner .atb-services { display: block; text-align: center; text-wrap: balance; }
+ #antoni-tech-banner .atb-services > span { display: inline; white-space: normal; }
+ #antoni-tech-banner .atb-services > span + span::before { margin: 0 7px; }
+}
+</style>
 </head>
 
 
