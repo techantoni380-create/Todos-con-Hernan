@@ -51,42 +51,12 @@ window.COMMUNITY_CONTENT = {
      🎙️ PODCASTS · temporadas completas (playlists)
      =================================================== */
   podcasts: [
-    {
-        "id": "5VbLpfU8LYQ",
-        "title": "El Vecino / Expo Feria Culturas del Mundo🌎",
-        "url": "https://www.youtube.com/watch?v=5VbLpfU8LYQ",
-        "category": "PODCAST"
-    },
-    {
-        "id": "Had-U5Z_zxQ",
-        "title": "ViaExpress - Money Transfer / Expo Feria Culturas del Mundo 🌎",
-        "url": "https://www.youtube.com/watch?v=Had-U5Z_zxQ",
-        "category": "PODCAST"
-    },
-    {
-        "id": "WXP2cLPgXaQ",
-        "title": "Red Rock Cafés ☕️ / Expo Feria Culturas del Mundo 🌎",
-        "url": "https://www.youtube.com/watch?v=WXP2cLPgXaQ",
-        "category": "PODCAST"
-    },
-    {
-        "id": "Ga2BI6a9GrE",
-        "title": "Maryfer Cadeaux et Surprises / Expo Feria Culturas del Mundo 🌎",
-        "url": "https://www.youtube.com/watch?v=Ga2BI6a9GrE",
-        "category": "PODCAST"
-    },
-    {
-        "id": "qAkgsBc1s-s",
-        "title": "La Maison des Lumieres / Expo Feria Culturas del Mundo 🌎",
-        "url": "https://www.youtube.com/watch?v=qAkgsBc1s-s",
-        "category": "PODCAST"
-    },
-    {
-        "id": "f_CT1qfseYM",
-        "title": "¡Aventura épica en el Monte Pilatus, Suiza🇨🇭! 🏔️ | Todos con Hernán",
-        "url": "https://www.youtube.com/watch?v=f_CT1qfseYM",
-        "category": "PODCAST"
-    },
+
+
+
+
+
+
     {
         "id": "Pie8Ba8DxeI",
         "title": "🎙️🇲🇽 ¿Los MEJORES TACOS de Suiza🇨🇭? Pedro nos cuenta su historia 🌮 / Todos con Hernán ",
@@ -285,80 +255,18 @@ window.COMMUNITY_CONTENT = {
         "url": "https://www.youtube.com/watch?v=vJK7TFkngXA",
         "category": "PODCAST"
     },
-    {
-        "id": "CbAsgaAK74A",
-        "title": "Emprendedores en Suiza 🇨🇭 / Yeshua Coiffeur / Todos con Hernán ",
-        "url": "https://www.youtube.com/watch?v=CbAsgaAK74A",
-        "category": "PODCAST"
-    },
-    {
-        "id": "uPGY9-rvxgo",
-        "title": "Emprendedores en Suiza🇨🇭 / Maca-Loca / Todos con Hernán ",
-        "url": "https://www.youtube.com/watch?v=uPGY9-rvxgo",
-        "category": "PODCAST"
-    },
-    {
-        "id": "mxjgoJwyKh4",
-        "title": "Emprendedores en Suiza🇨🇭 / SAVEURS🌶INCAS / Alle mit Hernán",
-        "url": "https://www.youtube.com/watch?v=mxjgoJwyKh4",
-        "category": "PODCAST"
-    },
-    {
-        "id": "QvXKwU5Nuho",
-        "title": "Emprendedores en Suiza🇨🇭 / ESPIFES / Todos con Hernán ",
-        "url": "https://www.youtube.com/watch?v=QvXKwU5Nuho",
-        "category": "PODCAST"
-    },
-    {
-        "id": "AeAS9b8gozc",
-        "title": "Emprendedores en Suiza🇨🇭 / IL 5 Elemento / Alle mit Hernán",
-        "url": "https://www.youtube.com/watch?v=AeAS9b8gozc",
-        "category": "PODCAST"
-    },
-    {
-        "id": "qZZWKwvqOzc",
-        "title": "Emprendedores en Suiza 🇨🇭  / CAPULI / Alle mit Hernán",
-        "url": "https://www.youtube.com/watch?v=qZZWKwvqOzc",
-        "category": "PODCAST"
-    },
-    {
-        "id": "BVqAklxewtg",
-        "title": "Emprendedores en Suiza 🇨🇭  / SANKA / Todos con Hernán ",
-        "url": "https://www.youtube.com/watch?v=BVqAklxewtg",
-        "category": "PODCAST"
-    },
-    {
-        "id": "bmmE1Jon8bc",
-        "title": "Emprendedores en Suiza 🇨🇭 / Mate Suisse 🇨🇭 / Todos con Hernán ",
-        "url": "https://www.youtube.com/watch?v=bmmE1Jon8bc&t=169s",
-        "category": "PODCAST",
-        "start": 169
-    },
-    {
-        "id": "-JDMKP1qWMM",
-        "title": "Emprendedores en Suiza 🇨🇭 / Popalito una tienda de Barrio /Alle mit Hernán",
-        "url": "https://www.youtube.com/watch?v=-JDMKP1qWMM&t=3s",
-        "category": "PODCAST",
-        "start": 3
-    },
-    {
-        "id": "qyPR0rI6vek",
-        "title": "Emprendedores en Suiza 🇨🇭 / Tacos 🌮  La Piratita / Alle mit Hernán",
-        "url": "https://www.youtube.com/watch?v=qyPR0rI6vek",
-        "category": "PODCAST"
-    },
-    {
-        "id": "WKyi8dRer5g",
-        "title": "Happy Birthday🥳 \"El Maíz\" 🌽ya son 40 años en Suiza🇨🇭 / Alle mit Hernán",
-        "url": "https://www.youtube.com/watch?v=WKyi8dRer5g",
-        "category": "PODCAST"
-    },
-    {
-        "id": "gcuxykZGPIQ",
-        "title": "Emprendedores en Suiza 🇨🇭 / El Maíz 🌽 México / Alle mit Hernán",
-        "url": "https://www.youtube.com/watch?v=gcuxykZGPIQ",
-        "category": "PODCAST"
-    },
+
+
+
+
+
+
+
+
+
+
+
+
     {
         "id": "86NjpekG90I",
         "title": "Los sorprendentes secretos del éxito suizo 🇨🇭",
