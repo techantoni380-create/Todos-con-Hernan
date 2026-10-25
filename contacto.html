@@ -2254,6 +2254,36 @@ body::after {
  #antoni-tech-banner .atb-services { gap: 10px 16px; padding: 16px 12px; font-size: 12px; }
 }
 </style>
+<style id="team-unified-typography">
+.team-profile .team-role,
+.team-profile.hernan .team-role,
+.team-profile.yury .team-role,
+.team-profile.yonathan .team-role {
+ color: #ef1820; font-size: 12px; font-weight: 900;
+ line-height: 1.6; letter-spacing: .055em; text-transform: uppercase; text-shadow: none;
+}
+.team-profile .team-content p,
+.team-profile.hernan .team-content p,
+.team-profile.yury .team-content p,
+.team-profile.yonathan .team-content p {
+ color: #40576a; font-size: 15px; font-weight: 400;
+ line-height: 1.75; margin: 18px 0;
+}
+</style>
+<style id="antoni-brand-tagline">
+#antoni-tech-banner .atb-brand { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 18px; border: 0; padding-right: 0; text-decoration: none; }
+#antoni-tech-banner .atb-brand::after { display: none; }
+#antoni-tech-banner .atb-tagline { display: block; color: #eef7fc; font-family: Arial,Helvetica,sans-serif; font-size: 17px; font-weight: 600; line-height: 1.45; letter-spacing: .01em; text-align: left; text-shadow: 0 2px 8px rgba(0,0,0,.65); }
+@media (max-width:640px) {
+ #antoni-tech-banner .atb-brand { align-items: center; gap: 14px; }
+ #antoni-tech-banner .atb-tagline { font-size: 15px; text-align: center; }
+}
+</style>
+<style id="antoni-wordmark-colors">
+.antoni-wordmark { white-space: nowrap; font-weight: 800; }
+.antoni-wordmark .antoni-wordmark-blue { color: #00bde8; }
+.antoni-wordmark .antoni-wordmark-pink { color: #ff009c; }
+</style>
 </head>
 
 
@@ -2342,8 +2372,8 @@ body::after {
                             <h3>Yonathan Alvarado</h3>
                             <div class="team-role">Desarrollo Full Stack · Diseño digital</div>
                             <p>Desarrollador Full Stack, diseñador gráfico y técnico informático. Formo parte del equipo junto a Hernán y Yury, aportando el diseño, el desarrollo y la evolución tecnológica de Todos con Hernán.</p>
-                            <p>Desde <strong>Antoni Tech</strong>, también creo webs, tiendas online y automatizaciones para profesionales y negocios.</p>
-                            <a class="profile-link" href="https://antonitech.es/" target="_blank" rel="noopener noreferrer">Descubre Antoni Tech ↗</a>
+                            <p>Desde <strong><span class="antoni-wordmark"><span class="antoni-wordmark-blue">Antoni</span> <span class="antoni-wordmark-pink">Tech</span></span></strong>, también creo webs, tiendas online y automatizaciones para profesionales y negocios.</p>
+                            <a class="profile-link" href="https://antonitech.es/" target="_blank" rel="noopener noreferrer">Descubre <span class="antoni-wordmark"><span class="antoni-wordmark-blue">Antoni</span> <span class="antoni-wordmark-pink">Tech</span></span> ↗</a>
                         </div>
                     </article>
                 </div>
@@ -2354,7 +2384,7 @@ body::after {
   <video class="atb-video" muted loop playsinline preload="none" poster="assets/antoni-tech/portada.jpg" aria-hidden="true" tabindex="-1"><source src="assets/antoni-tech/portada.mp4" type="video/mp4"></video>
   <div class="atb-shade" aria-hidden="true"></div>
   <div class="atb-main">
-   <a class="atb-brand" href="https://antonitech.es/" target="_blank" rel="noopener noreferrer" aria-label="Antoni Tech (se abre en una pestaña nueva)"><span class="atb-logo-window"><img src="assets/antoni-tech/logo.png" width="1500" height="1548" alt="Antoni Tech" loading="lazy"></span></a>
+   <a class="atb-brand" href="https://antonitech.es/" target="_blank" rel="noopener noreferrer" aria-label="Antoni Tech (se abre en una pestaña nueva)"><span class="atb-logo-window"><img src="assets/antoni-tech/logo.png" width="1500" height="1548" alt="Antoni Tech" loading="lazy"></span><span class="atb-tagline">Diseño y tecnología<br>para tu negocio</span></a>
    
    <div class="atb-actions"><a class="atb-link" href="https://antonitech.es/" target="_blank" rel="noopener noreferrer" aria-label="Visitar mi web: Antoni Tech (se abre en una pestaña nueva)">Visitar mi web <span aria-hidden="true">↗</span></a><span class="atb-domain">antonitech.es</span></div>
   </div>
