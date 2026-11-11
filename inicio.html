@@ -2313,6 +2313,40 @@ body.tch-review-open{overflow:hidden}
 @media(max-width:1100px){#tch-guide-reviews .tch-r-list{grid-auto-columns:calc((100% - 32px)/3)}}
 @media(max-width:800px){#tch-guide-reviews .tch-r-list{grid-auto-columns:calc((100% - 16px)/2)}#tch-guide-reviews .tch-r-overview{gap:12px}#tch-guide-reviews .tch-r-heading{flex-basis:100%}}
 @media(max-width:520px){#tch-guide-reviews{padding:18px 14px;margin-top:24px}#tch-guide-reviews .tch-r-list{grid-auto-columns:88%;gap:12px}#tch-guide-reviews .tch-r-heading h3{font-size:22px}#tch-guide-reviews .tch-r-summary{max-width:none;flex:1;min-width:150px}#tch-guide-reviews .tch-r-write{padding:11px 12px}#tch-guide-reviews .tch-r-form-dialog{padding:20px}}
+
+/* Cristal translúcido y navegación lateral de las opiniones. */
+#tch-guide-reviews{color:#fff;border:1px solid #ffffff57;border-radius:22px;background:#10232ce8;box-shadow:0 20px 55px #00121c38,inset 0 1px 0 #ffffff26}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+ #tch-guide-reviews{background:linear-gradient(125deg,#153440a6,#071a22a8);-webkit-backdrop-filter:blur(20px) saturate(120%);backdrop-filter:blur(20px) saturate(120%)}
+}
+#tch-guide-reviews .tch-r-kicker,#tch-guide-reviews .tch-r-heading p,#tch-guide-reviews .tch-r-summary-label,#tch-guide-reviews h4,#tch-guide-reviews .tch-r-scroll-hint,#tch-guide-reviews .tch-r-item-head,#tch-guide-reviews .tch-r-item time,#tch-guide-reviews .tch-r-item p,#tch-guide-reviews .tch-r-list-status{color:#fff}
+#tch-guide-reviews .tch-r-toolbar{border-top-color:#ffffff30}
+#tch-guide-reviews .tch-r-carousel{position:relative;min-width:0;padding:0 48px;margin:8px -8px 0}
+#tch-guide-reviews .tch-r-list{height:256px;padding:8px 0;scrollbar-width:none;-ms-overflow-style:none}
+#tch-guide-reviews .tch-r-list::-webkit-scrollbar{display:none;width:0;height:0}
+#tch-guide-reviews .tch-r-item{background:linear-gradient(140deg,#ffffff12,#081b252e);border:1px solid #ffffff40;border-radius:16px;box-shadow:inset 0 1px 0 #ffffff16,0 6px 18px #00111a14;transition:border-color .2s,background .2s,transform .2s}
+#tch-guide-reviews .tch-r-item p{font-size:13px;line-height:1.65;text-shadow:0 1px 2px #0004}
+#tch-guide-reviews .tch-r-item time{font-size:11px}
+#tch-guide-reviews .tch-r-arrows{position:absolute;inset:0;pointer-events:none;display:block}
+#tch-guide-reviews .tch-r-arrows button{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:48px;display:grid;place-items:center;padding:0;pointer-events:auto;background:#ffffff12;border:1px solid #ffffff50;border-radius:14px;color:#fff;cursor:pointer;transition:background .2s,border-color .2s,box-shadow .2s}
+#tch-guide-reviews #tchReviewPrevious{left:0}
+#tch-guide-reviews #tchReviewNext{right:0}
+#tch-guide-reviews .tch-r-arrows button:disabled{opacity:.3;cursor:default}
+#tch-guide-reviews .tch-r-more{background:#ffffff12;border:1px solid #ffffff50;border-radius:10px;color:#fff}
+#tch-guide-reviews .tch-r-form-dialog{background:#10232cf7;color:#fff;border-color:#ffffff57}
+#tch-guide-reviews .tch-r-label,#tch-guide-reviews .tch-r-fieldset legend,#tch-guide-reviews .tch-r-selection,#tch-guide-reviews .tch-r-length,#tch-guide-reviews .tch-r-privacy{color:#fff}
+@media(hover:hover){
+ #tch-guide-reviews .tch-r-item:hover{transform:translateY(-2px);border-color:#ffffff80;background:linear-gradient(140deg,#ffffff20,#081b2536)}
+ #tch-guide-reviews .tch-r-arrows button:not(:disabled):hover,#tch-guide-reviews .tch-r-more:hover{background:#ffffff29;border-color:#ffffffa6;box-shadow:0 0 18px #ffffff12}
+}
+@media(max-width:520px){
+ #tch-guide-reviews{border-radius:18px}
+ #tch-guide-reviews .tch-r-carousel{padding:0 32px;margin:8px -6px 0}
+ #tch-guide-reviews .tch-r-arrows button{width:28px;height:42px;border-radius:10px}
+ #tch-guide-reviews .tch-r-arrows svg{width:20px;height:20px}
+ #tch-guide-reviews .tch-r-item{padding:15px}
+}
+@media(prefers-reduced-motion:reduce){#tch-guide-reviews .tch-r-item,#tch-guide-reviews .tch-r-arrows button{transition:none}#tch-guide-reviews .tch-r-item:hover{transform:none}}
 </style>
 
 </head>
@@ -2567,11 +2601,13 @@ body.tch-review-open{overflow:hidden}
   </div>
   <div class="tch-r-toolbar">
     <h4 id="tchReviewsListTitle" data-review-text="recent">Opiniones de los lectores</h4>
-    <div class="tch-r-arrows"><button id="tchReviewPrevious" type="button" aria-label="Opiniones anteriores">←</button><button id="tchReviewNext" type="button" aria-label="Opiniones siguientes">→</button></div>
   </div>
   <p class="tch-r-list-status" role="status" aria-live="polite" data-review-text="loading">Cargando opiniones…</p>
   <p id="tchReviewsScrollHint" class="tch-r-scroll-hint" data-review-text="scrollHint" hidden>Desliza las tarjetas o usa las flechas para leer más opiniones.</p>
+  <div class="tch-r-carousel">
   <div class="tch-r-list" role="region" aria-labelledby="tchReviewsListTitle" aria-describedby="tchReviewsScrollHint" tabindex="0"></div>
+    <div class="tch-r-arrows"><button id="tchReviewPrevious" type="button" aria-label="Opiniones anteriores"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 5l-7 7 7 7"/></svg></button><button id="tchReviewNext" type="button" aria-label="Opiniones siguientes"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5l7 7-7 7"/></svg></button></div>
+  </div>
   <button class="tch-r-more" type="button" hidden data-review-text="more">Ver más opiniones</button>
   <dialog id="tchReviewDialog" class="tch-r-form-dialog" aria-labelledby="tchReviewDialogTitle">
     <header class="tch-r-dialog-header"><h3 id="tchReviewDialogTitle" data-review-text="writeReview">Escribir opinión</h3><button type="button" id="tchReviewClose" aria-label="Cerrar formulario" autofocus>×</button></header>
