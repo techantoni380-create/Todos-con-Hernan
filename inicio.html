@@ -2204,6 +2204,15 @@ footer.site-credits > p.developer-credit {
 #tch-guide-reviews .tch-r-status:empty,#tch-guide-reviews .tch-r-list-status:empty{display:none}
 #tch-guide-reviews .tch-r-status[data-tone="success"]{color:#afe5bf}
 #tch-guide-reviews .tch-r-status[data-tone="error"]{color:#ffd1bd}
+
+/* La lista crece hasta este límite; las nuevas opiniones se leen dentro del recuadro. */
+#tch-guide-reviews .tch-r-list{max-height:360px;max-height:min(360px,60vh);overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#8fa7b7 #102331;padding-right:10px}
+#tch-guide-reviews .tch-r-list:focus-visible{outline:2px solid #ffd274;outline-offset:-2px;border-radius:4px}
+#tch-guide-reviews .tch-r-list::-webkit-scrollbar{width:8px}
+#tch-guide-reviews .tch-r-list::-webkit-scrollbar-track{background:#102331}
+#tch-guide-reviews .tch-r-list::-webkit-scrollbar-thumb{background:#8fa7b7;border:2px solid #102331;border-radius:8px}
+#tch-guide-reviews .tch-r-scroll-hint{font-size:10px;line-height:1.5;color:#bfced8;margin:8px 0 0}
+#tch-guide-reviews .tch-r-item-head strong{min-width:0;overflow-wrap:anywhere}
 #tch-guide-reviews .tch-r-list-heading{border-top:1px solid #ffffff21;margin-top:19px;padding-top:15px}
 #tch-guide-reviews h4{margin:0;font-size:12px;color:#f3f6f8;letter-spacing:normal;text-transform:none}
 #tch-guide-reviews .tch-r-item{margin:13px 0 0;padding:0 0 13px;border-bottom:1px solid #ffffff17;overflow-wrap:anywhere}
@@ -2458,9 +2467,10 @@ footer.site-credits > p.developer-credit {
       <button class="tch-r-submit" type="submit" data-review-text="submit">Publicar opinión</button>
       <p class="tch-r-status" id="tchReviewStatus" role="status" aria-live="polite"></p>
     </form>
-    <div class="tch-r-list-heading"><h4 data-review-text="recent">Opiniones de los lectores</h4></div>
+    <div class="tch-r-list-heading"><h4 id="tchReviewsListTitle" data-review-text="recent">Opiniones de los lectores</h4></div>
     <p class="tch-r-list-status" role="status" aria-live="polite" data-review-text="loading">Cargando opiniones…</p>
-    <div class="tch-r-list"></div>
+    <p id="tchReviewsScrollHint" class="tch-r-scroll-hint" data-review-text="scrollHint" hidden>Desplázate dentro de la lista para leer más opiniones.</p>
+    <div class="tch-r-list" role="region" aria-labelledby="tchReviewsListTitle" aria-describedby="tchReviewsScrollHint" tabindex="0"></div>
     <button class="tch-r-more" type="button" hidden data-review-text="more">Ver más opiniones</button>
     <noscript><p>Activa JavaScript para leer y publicar opiniones sobre la guía.</p></noscript>
   </section>
@@ -3507,6 +3517,16 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now(
     pt: { kicker:'COMUNIDADE DE LEITORES',title:'O guia ajudou-te?',intro:'Partilha a tua experiência com outros leitores.',rating:'A tua avaliação',choose:'Seleciona de 1 a 5 estrelas',stars:'{n} de 5 estrelas',name:'Nome ou pseudónimo',comment:'O teu comentário',placeholder:'O que foi mais útil? (Pelo menos 10 caracteres)',privacy:'O nome ou pseudónimo, comentário e avaliação serão públicos. Evita incluir dados pessoais.',submit:'Publicar opinião',sending:'A enviar…',success:'Obrigado! A tua opinião foi publicada.',recent:'Opiniões dos leitores',loading:'A carregar opiniões…',empty:'Ainda não há opiniões. Partilha a primeira!',none:'Ainda sem avaliações',summary:'{avg} / 5 · {n} opiniões',more:'Ver mais opiniões',retry:'Tentar novamente',unavailable:'Não foi possível carregar as opiniões. Tenta novamente.',failed:'Não foi possível confirmar o envio. O comentário continua aqui; tenta novamente.',rate:'Enviaste várias opiniões recentemente. Aguarda antes de publicar outra.',validation:'Escreve um nome de 2 a 50 caracteres, um comentário de 10 a 1500 e escolhe as estrelas.',conflict:'Este envio já foi processado. Atualiza a página.' },
     zh: { kicker:'读者社区',title:'这本指南对你有帮助吗？',intro:'与其他读者分享你的体验。',rating:'你的评分',choose:'选择 1 至 5 颗星',stars:'{n} / 5 星',name:'姓名或昵称',comment:'你的评论',placeholder:'哪些内容最有用？（至少 10 个字符）',privacy:'姓名或昵称、评论和评分将公开显示。请勿填写个人敏感信息。',submit:'发布评论',sending:'正在发送…',success:'谢谢！你的评论已发布。',recent:'读者评论',loading:'正在加载评论…',empty:'暂无评论，欢迎分享第一条！',none:'暂无评分',summary:'{avg} / 5 · {n} 条评论',more:'查看更多评论',retry:'重试',unavailable:'无法加载评论，请重试。',failed:'无法确认发送结果。评论内容已保留，请重试。',rate:'你最近发布了多条评论，请稍后再试。',validation:'请输入 2 至 50 个字符的姓名、10 至 1500 个字符的评论，并选择星级。',conflict:'这条评论已经处理，请刷新页面。' }
   };
+  const scrollHints = {
+    es: 'Desplázate dentro de la lista para leer más opiniones.',
+    en: 'Scroll within the list to read more reviews.',
+    de: 'Scrolle innerhalb der Liste, um weitere Bewertungen zu lesen.',
+    fr: 'Faites défiler la liste pour lire davantage d’avis.',
+    it: 'Scorri all’interno dell’elenco per leggere altre recensioni.',
+    pt: 'Desloca-te dentro da lista para ler mais opiniões.',
+    zh: '在列表内滚动以阅读更多评论。'
+  };
+  Object.entries(scrollHints).forEach(([language, hint]) => { texts[language].scrollHint = hint; });
   const form = root.querySelector('form');
   const nameInput = form.elements.namedItem('name');
   const commentInput = form.elements.namedItem('comment');
@@ -3532,7 +3552,13 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now(
     const n = total ? Math.max(0, Math.min(5, Math.round(average))) : 0;
     root.querySelector('.tch-r-summary-stars').textContent = '★'.repeat(n) + '☆'.repeat(5 - n);
   }
+  function updateListOverflow() {
+    const overflowing = list.scrollHeight > list.clientHeight + 1;
+    root.querySelector('.tch-r-scroll-hint').hidden = !overflowing;
+    list.tabIndex = overflowing ? 0 : -1;
+  }
   function renderItems() {
+    const previousScroll = list.scrollTop;
     list.replaceChildren();
     for (const row of items) {
       const article = document.createElement('article'); article.className = 'tch-r-item';
@@ -3546,6 +3572,8 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now(
       const comment = document.createElement('p'); comment.textContent = row.comment;
       article.append(header, stars, comment); list.append(article);
     }
+    list.scrollTop = previousScroll;
+    updateListOverflow();
   }
   function renderLoadState() {
     listStatus.textContent = loading ? t('loading') : loadFailed ? t('unavailable') : loaded && !items.length ? t('empty') : '';
@@ -3583,6 +3611,7 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now(
       items.push(...data.items.filter(row => !seen.has(row.id)));
       total = data.total; average = data.average; offset = pageOffset + data.items.length; loaded = true;
       renderItems();
+      if (reset) list.scrollTop = 0;
     } catch { loadFailed = true; retryReset = reset; }
     finally { loading = false; renderLoadState(); if (refreshQueued) { refreshQueued = false; load(true); } }
   }
@@ -3610,6 +3639,7 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now(
       showStatus(error.code === 'rate_limited' ? 'rate' : error.code === 'validation' ? 'validation' : error.code === 'conflict' ? 'conflict' : 'failed', 'error');
     } finally { submitting = false; submit.disabled = false; controls.forEach(node => node.disabled = false); submit.textContent = t('submit'); form.removeAttribute('aria-busy'); }
   });
+  if ('ResizeObserver' in window) new ResizeObserver(updateListOverflow).observe(list);
   new MutationObserver(translate).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
   translate(); load(true);
 })();

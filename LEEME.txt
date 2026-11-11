@@ -1,19 +1,11 @@
-ACTUALIZACIÓN · TRABAJOS EN SUIZA
+COMENTARIOS DE LA PÁGINA DE INICIO
 
-1. Sustituye trabajos-suiza.html en la carpeta principal del proyecto.
-2. Copia la carpeta apps-trabajo del interior de img a la carpeta img de tu proyecto.
-   Se añadirá img/apps-trabajo/ con los ocho logos. Conserva el resto de tus imágenes.
-3. Mantén las carpetas js y css y la imagen img/Suiza3.jpg que ya tiene tu web.
-4. Abre la página y pulsa «Apps de trabajo en Suiza» para revisar las tres regiones.
-5. Publica el HTML y los ocho logos juntos. Si ves la versión antigua, recarga con Ctrl+F5.
+Sustituye inicio.html en la carpeta principal de tu proyecto y publícalo.
+No necesitas cambiar index.html ni añadir imágenes, CSS o JavaScript externos.
+Si aparece la versión antigua, recarga con Ctrl+F5.
 
-CAMBIOS
-- Eliminada la cabecera grande y el texto «Busca tu oportunidad».
-- «Por dónde empezar» pasa al inicio, debajo del menú.
-- Primera tarjeta renombrada y conectada a un panel de aplicaciones por región.
-- Suiza alemana: ocho plataformas, en el orden indicado, con logos, descripción y enlace oficial.
-- Suiza francesa e italiana: preparadas para añadir las próximas listas.
-- Se conservan las tarjetas de empresas y agencias, el fondo y los archivos compartidos del sitio.
-
-Los enlaces abren la web oficial en otra pestaña. Job-Room se identifica como portal web.
-Esta entrega no publica los cambios automáticamente.
+La lista de opiniones tiene una altura máxima de 360 px (menor en pantallas bajas).
+El resto de comentarios se lee desplazándose dentro de ese recuadro.
+«Ver más opiniones» sigue cargando comentarios en la misma lista.
+El formulario y la valoración media mantienen su funcionamiento.
+Los comentarios existentes no se modifican ni se eliminan.
