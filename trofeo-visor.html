@@ -1,3 +1,80 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trofeo · Mundial del Plato Típico 2026</title><script type="module" src="assets/model-viewer.min.js"></script><style>*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:transparent;font-family:system-ui;color:#fff}model-viewer{width:100%;height:100%;--poster-color:transparent;background:transparent}.controls{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:8px}button{border:1px solid #d5b36c80;border-radius:18px;background:#101927df;color:#fff;padding:7px 12px;cursor:pointer;font:12px system-ui}button:focus-visible{outline:2px solid #f4cf70;outline-offset:3px}#status{position:absolute;top:8px;left:0;right:0;text-align:center;font-size:12px;color:#dfbd76}#status[hidden]{display:none}</style></head><body><model-viewer id="cup" src="assets/trofeo-2026.glb" alt="Trofeo dorado del Mundial del Plato Típico en Suiza 2026, con plato y dos figuras" camera-controls auto-rotate rotation-per-second="20deg" auto-rotate-delay="1500" camera-orbit="0deg 85deg 110%" field-of-view="32deg" exposure="0.85" shadow-intensity="0" interaction-prompt="none" touch-action="pan-y"></model-viewer><div id="status" role="status">Cargando trofeo 3D…</div><div class="controls"><button id="pause" type="button" aria-pressed="false">Pausar giro</button><button id="front" type="button">Ver frente</button></div><script>
-const cup=document.getElementById('cup'),pause=document.getElementById('pause'),status=document.getElementById('status');let playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,parentPlaying=true;function sync(){cup.autoRotate=playing&&parentPlaying&&!document.hidden;pause.textContent=playing?'Pausar giro':'Activar giro';pause.setAttribute('aria-pressed',String(!playing))}pause.onclick=()=>{playing=!playing;sync()};document.getElementById('front').onclick=()=>{playing=false;cup.resetTurntableRotation();cup.cameraOrbit='0deg 85deg 110%';sync()};cup.addEventListener('load',()=>{status.hidden=true;sync()});cup.addEventListener('error',()=>{status.textContent='No se pudo cargar el trofeo. Comprueba la carpeta assets.'});document.addEventListener('visibilitychange',sync);window.addEventListener('message',e=>{if(e.source===parent&&e.data?.type==='trofeo-visibility'){parentPlaying=!!e.data.play;sync()}});customElements.whenDefined('model-viewer').then(sync);
-</script></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Trofeo · Mundial del Plato Típico 2026</title>
+  <link rel="preload" as="image" href="assets/trofeo-preview.png">
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;width:100%;height:100%;background:transparent;font-family:system-ui;color:#fff}
+    body{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:4px;padding:4px 0}
+    .stage{position:relative;min-height:0}
+    model-viewer{display:block;width:100%;height:100%;--poster-color:transparent;background:transparent}
+    #preview{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
+    .controls{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:8px;min-height:36px}
+    button{border:1px solid #d5b36c80;border-radius:18px;background:#101927df;color:#fff;padding:7px 12px;min-height:34px;cursor:pointer;font:12px system-ui}
+    button:disabled{opacity:.55;cursor:wait}
+    button:focus-visible{outline:2px solid #f4cf70;outline-offset:2px}
+    #status{position:absolute;bottom:4px;left:5px;right:5px;text-align:center;font-size:11px;line-height:1.4;color:#ffe6a8;background:#071622d9;border-radius:8px;padding:5px;margin:0;pointer-events:none}
+    [hidden]{display:none!important}
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <model-viewer id="cup" src="assets/trofeo-2026.glb?v=20261111" alt="Trofeo dorado del Mundial del Plato Típico en Suiza 2026, con plato y dos figuras" loading="eager" reveal="auto" camera-controls auto-rotate rotation-per-second="20deg" auto-rotate-delay="0" camera-orbit="0deg 85deg 110%" field-of-view="32deg" exposure="0.85" shadow-intensity="0" interaction-prompt="none" touch-action="pan-y"></model-viewer>
+    <img id="preview" src="assets/trofeo-preview.png" alt="Vista previa del trofeo" fetchpriority="high">
+    <p id="status" role="status">Preparando vista 3D…</p>
+  </div>
+  <div class="controls">
+    <button id="pause" type="button" aria-pressed="false" disabled>Pausar giro</button>
+    <button id="front" type="button" disabled>Ver frente</button>
+    <button id="retry" type="button" hidden>Reintentar</button>
+  </div>
+  <script>
+  (() => {
+    const cup=document.getElementById('cup'), pause=document.getElementById('pause'), front=document.getElementById('front');
+    const status=document.getElementById('status'), preview=document.getElementById('preview'), retry=document.getElementById('retry');
+    const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+    let playing=!reduce.matches, parentPlaying=true, ready=false, registered=false;
+    let slowTimer;
+    function sync(){
+      if(registered) cup.autoRotate=ready&&playing&&parentPlaying&&!document.hidden;
+      pause.textContent=playing?'Pausar giro':'Activar giro';
+      pause.setAttribute('aria-pressed',String(!playing));
+    }
+    function fail(message){
+      clearTimeout(slowTimer); ready=false; pause.disabled=front.disabled=true;
+      status.hidden=false; status.textContent=message; retry.hidden=false; preview.hidden=false; sync();
+    }
+    cup.addEventListener('load',()=>{
+      clearTimeout(slowTimer); ready=true; preview.hidden=true; status.hidden=true; retry.hidden=true;
+      pause.disabled=front.disabled=false; sync();
+    });
+    cup.addEventListener('error',()=>fail('No se ha podido abrir el modelo 3D. Pulsa Reintentar.'));
+    cup.addEventListener('progress',event=>{
+      if(ready||!retry.hidden)return;
+      const progress=event.detail?.totalProgress;
+      if(Number.isFinite(progress))status.textContent='Preparando vista 3D… '+Math.round(progress*100)+' %';
+    });
+    pause.addEventListener('click',()=>{playing=!playing;sync()});
+    front.addEventListener('click',()=>{if(!ready)return;playing=false;cup.resetTurntableRotation();cup.cameraOrbit='0deg 85deg 110%';sync()});
+    retry.addEventListener('click',()=>location.reload());
+    document.addEventListener('visibilitychange',sync);
+    reduce.addEventListener('change',()=>{playing=!reduce.matches;sync()});
+    window.addEventListener('message',event=>{
+      if(event.source===parent&&event.data?.type==='trofeo-visibility'){parentPlaying=!!event.data.play;sync()}
+    });
+    preview.addEventListener('error',()=>{preview.hidden=true});
+    slowTimer=setTimeout(()=>{
+      if(!ready){status.textContent='La vista 3D está tardando más de lo habitual. Puedes esperar o reintentar.';retry.hidden=false}
+    },30000);
+    sync();
+    import('./assets/model-viewer.min.js?v=4.1.0').then(()=>{
+      if(!customElements.get('model-viewer'))throw new Error('Viewer not registered');
+      registered=true;sync();
+    }).catch(()=>fail('No se ha podido iniciar el visor 3D. Pulsa Reintentar.'));
+  })();
+  </script>
+</body>
+</html>

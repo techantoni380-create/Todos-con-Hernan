@@ -1,11 +1,43 @@
-COMENTARIOS DE LA PÁGINA DE INICIO
+TODOS CON HERNÁN — TROFEO 3D Y COMENTARIOS
 
-Sustituye inicio.html en la carpeta principal de tu proyecto y publícalo.
-No necesitas cambiar index.html ni añadir imágenes, CSS o JavaScript externos.
-Si aparece la versión antigua, recarga con Ctrl+F5.
+INSTALACIÓN
+1. Descomprime este ZIP.
+2. En tu proyecto Todos-con-Hernan, sustituye los archivos de la raíz:
+   inicio.html
+   proyectos.html
+   trofeo-visor.html
+3. Copia el CONTENIDO de la carpeta assets de este ZIP a la carpeta assets
+   de tu proyecto. Conserva los demás archivos que ya existan allí.
+   Deben quedar estas rutas:
+   assets/model-viewer.min.js
+   assets/model-viewer-LICENSE.txt
+   assets/trofeo-2026.glb
+   assets/trofeo-preview.png
+4. Publica todos esos archivos con el procedimiento habitual de tu web.
+5. Abre inicio.html y proyectos.html y pulsa Ctrl+F5.
+   En Proyectos, abre el Mundial del Plato Típico para comprobar el visor.
 
-La lista de opiniones tiene una altura máxima de 360 px (menor en pantallas bajas).
-El resto de comentarios se lee desplazándose dentro de ese recuadro.
-«Ver más opiniones» sigue cargando comentarios en la misma lista.
-El formulario y la valoración media mantienen su funcionamiento.
-Los comentarios existentes no se modifican ni se eliminan.
+IMPORTANTE
+No añadas sufijos como (1) a los nombres. El visor necesita las rutas exactas.
+Este paquete prepara los cambios; no publica automáticamente la web.
+
+TROFEO
+En la comprobación de la web publicada, el visor JavaScript y el modelo GLB
+respondían con 404 (archivo no encontrado). Ambos se incluyen en assets.
+El modelo original se conserva sin modificaciones y pesa unos 17 MB.
+Se muestra una imagen del mismo trofeo mientras se descarga el modelo.
+El giro comienza cuando termina la carga, salvo que esté activada la
+preferencia del dispositivo para reducir las animaciones.
+Los controles permiten pausar el giro y volver a la vista frontal.
+Si falla la carga, aparece un mensaje y el botón Reintentar.
+
+COMENTARIOS
+Las opiniones ocupan una sección ancha bajo la guía y el calendario.
+Las tarjetas se recorren con flechas o desplazamiento táctil horizontal.
+Ver más opiniones carga otra tanda sin aumentar la altura de la sección.
+Los comentarios largos tienen desplazamiento dentro de su tarjeta.
+Escribir opinión abre el formulario en una ventana; se conservan la
+valoración por estrellas y la conexión existente con las opiniones.
+
+DEPENDENCIA
+model-viewer 4.1.0, distribuido bajo su licencia Apache 2.0, incluida.
