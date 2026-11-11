@@ -618,6 +618,62 @@ footer.site-credits > p {
 
 </style>
 
+
+  <style id="apps-trabajo-styles">
+    .appsEntry {position:relative; background:rgba(4,17,27,.6)}
+    .appsOpen {font:inherit; color:inherit; text-align:left; border:0; background:none; padding:0; cursor:pointer; text-shadow:inherit}
+    .appsOpen::after {content:""; position:absolute; inset:0; border-radius:20px}
+    .appsOpen:focus-visible {outline:none}
+    .appsOpen:focus-visible::after {outline:3px solid #ffd000; outline-offset:4px}
+    .appsEntryLink {margin-top:22px; font-size:14px; font-weight:700; color:#fff}
+    body.apps-open {overflow:hidden}
+    .appsDialog {padding:0; width:min(1000px,calc(100% - 40px)); max-width:none; max-height:90vh; max-height:90dvh; border:1px solid #486071; border-radius:24px; background:#f2f5f7; color:#122634; box-shadow:0 30px 100px #0008; overscroll-behavior:contain}
+    .appsDialog[open] {display:flex; flex-direction:column}
+    .appsDialog::backdrop {background:rgba(2,10,17,.78); backdrop-filter:blur(5px)}
+    .appsDialogTop {flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:20px; background:#071a28; color:#fff; padding:25px 30px}
+    .appsKicker {margin:0 0 8px; color:#c7d5df; font-size:11px; letter-spacing:1.8px; font-weight:700}
+    .appsDialog h2 {margin:0; font-size:clamp(21px,3vw,30px); line-height:1.2}
+    .appsClose {flex-shrink:0; width:44px; height:44px; padding:0; display:grid; place-items:center; border:1px solid #71818d; border-radius:50%; background:transparent; color:#fff; font-size:30px; cursor:pointer}
+    .appsClose:hover {background:#223747}
+    .appsDialogBody {padding:24px 30px 30px; overflow-y:auto; min-height:0; overscroll-behavior:contain}
+    #appsIntro {margin:0 0 20px; font-size:16px; line-height:1.5}
+    .regionTabs {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-bottom:28px}
+    .regionTabs button {border:1px solid #becbd4; border-radius:10px; padding:13px 10px; background:#fff; color:#243d4e; font:700 14px/1.3 Arial,sans-serif; cursor:pointer}
+    .regionTabs button[aria-selected="true"] {background:#173c55; border-color:#173c55; color:white}
+    .appsDialog :focus-visible {outline:3px solid #ef6b23; outline-offset:3px}
+    .regionPanel[hidden] {display:none}
+    .regionHeading {display:flex; align-items:center; justify-content:space-between; gap:12px}
+    .regionHeading h3 {font-size:23px; margin:0}
+    .regionHeading span {font-size:12px; color:#466074; white-space:nowrap}
+    .regionHelp {font-size:14px; line-height:1.6; color:#4a6070; margin:12px 0 22px}
+    .appsGrid {list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
+    .appCard {background:#fff; border:1px solid #d7e0e6; border-radius:16px; padding:22px; display:flex; flex-direction:column; min-width:0}
+    .appCardTop {display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:18px}
+    .appLogo {width:120px; height:80px; display:grid; place-items:center; background:#fff; border-radius:10px; overflow:hidden}
+    .appLogo img {display:block; width:120px; height:80px; max-height:80px; object-fit:contain; filter:none}
+    .appNumber {font-size:12px; font-weight:700; color:#597080; padding:7px 9px; background:#f0f4f7; border-radius:8px}
+    .appKind {font-size:11px; color:#586c7a; font-weight:700; margin:0 0 6px; text-transform:uppercase; letter-spacing:.4px}
+    .appCard h4 {font-size:23px; margin:0 0 10px; color:#102b3e}
+    .appDescription {font-size:14px; line-height:1.6; color:#415766; margin:0 0 22px}
+    .appVisit {display:flex; justify-content:space-between; align-items:center; gap:8px; margin-top:auto; padding-top:15px; border-top:1px solid #e3e9ed; text-decoration:none; color:#b31720; font-size:14px; font-weight:700; min-height:44px}
+    .appVisit:hover {text-decoration:underline}
+    .regionPending {background:#fff; border:1px solid #d7e0e6; border-radius:16px; padding:32px; text-align:center}
+    .regionPending h3 {margin:0 0 12px; font-size:24px}
+    .regionPending p {margin:0 auto; max-width:460px; line-height:1.7; color:#4a6070}
+    @media (max-width:600px) {
+      .section {padding:36px 20px 50px}
+      .sectionTitle {line-height:1.1}
+      .appsDialog {width:calc(100% - 20px); border-radius:18px; max-height:94vh; max-height:94dvh}
+      .appsDialogTop {padding:18px 16px; gap:12px}
+      .appsDialogBody {padding:20px 16px}
+      .appsGrid {grid-template-columns:1fr}
+      .regionTabs {gap:5px}
+      .regionTabs button {font-size:12px; padding:12px 6px}
+      .regionHeading h3 {font-size:21px}
+      .appCard {padding:20px}
+    }
+  </style>
+
 </head>
 
 
@@ -637,42 +693,7 @@ footer.site-credits > p {
          HERO
          =================================================== -->
 
-    <section class="hero">
-
-
-      <div class="heroContent">
-
-
-        <div class="eyebrow" data-i18n="hero.eyebrow">
-          🇨🇭 TRABAJOS EN SUIZA
-        </div>
-
-
-        <h1 data-i18n="hero.title">
-
-          TRABAJAR
-          <br>
-
-          <span>EN SUIZA</span>
-
-        </h1>
-
-
-        <p class="heroText" data-i18n="hero.text">
-
-          <strong>Tu próximo paso profesional puede empezar en Suiza.</strong>
-
-          Información, oportunidades y recursos para
-          quienes quieren trabajar y desarrollar su
-          carrera profesional en Suiza.
-
-        </p>
-
-
-      </div>
-
-
-    </section>
+    
 
 
     <!-- ===================================================
@@ -684,12 +705,12 @@ footer.site-credits > p {
 
       <div class="sectionHeader">
 
-        <div class="sectionLabel">🔎 BUSCA TU OPORTUNIDAD</div>
+        
 
-        <h2 class="sectionTitle">
+        <h1 class="sectionTitle">
           POR DÓNDE
           <span>EMPEZAR</span>
-        </h2>
+        </h1>
 
       </div>
 
@@ -697,17 +718,11 @@ footer.site-credits > p {
       <div class="jobsGrid">
 
 
-        <article class="jobCard">
-
-          <div class="jobCardIcon">💼</div>
-
-          <h3>Portales de empleo suizos</h3>
-
-          <p>
-            Plataformas y recursos para encontrar
-            oportunidades laborales en Suiza.
-          </p>
-
+        <article class="jobCard appsEntry">
+          <div class="jobCardIcon" aria-hidden="true">📱</div>
+          <h3><button type="button" class="appsOpen" id="openApps" aria-haspopup="dialog" aria-controls="appsDialog">Apps de trabajo en Suiza 🇨🇭</button></h3>
+          <p>Encuentra aplicaciones y portales de empleo organizados por región lingüística.</p>
+          <span class="appsEntryLink" aria-hidden="true">Explorar las apps →</span>
         </article>
 
 
@@ -754,6 +769,114 @@ footer.site-credits > p {
 
 
   </main>
+
+  <dialog id="appsDialog" class="appsDialog" aria-labelledby="appsTitle" aria-describedby="appsIntro">
+    <div class="appsDialogTop">
+      <div><p class="appsKicker">TRABAJOS EN SUIZA</p><h2 id="appsTitle">Apps de trabajo en Suiza 🇨🇭</h2></div>
+      <button type="button" id="closeApps" class="appsClose" aria-label="Cerrar aplicaciones" autofocus>×</button>
+    </div>
+    <div class="appsDialogBody">
+      <p id="appsIntro">Elige una región para consultar sus aplicaciones y portales de empleo.</p>
+      <div class="regionTabs" role="tablist" aria-label="Región lingüística">
+        <button type="button" role="tab" id="tab-alemana" aria-selected="true" aria-controls="region-alemana" tabindex="0">Suiza alemana</button>
+        <button type="button" role="tab" id="tab-francesa" aria-selected="false" aria-controls="region-francesa" tabindex="-1">Suiza francesa</button>
+        <button type="button" role="tab" id="tab-italiana" aria-selected="false" aria-controls="region-italiana" tabindex="-1">Suiza italiana</button>
+      </div>
+      <section class="regionPanel" role="tabpanel" id="region-alemana" aria-labelledby="tab-alemana" tabindex="0">
+        <div class="regionHeading"><h3>Suiza alemana</h3><span>8 plataformas</span></div>
+        <p class="regionHelp">Abre la web oficial de cada plataforma para buscar empleo y consultar las opciones de descarga disponibles. Varias también ofrecen oportunidades en otras regiones de Suiza.</p>
+        <ol class="appsGrid"><li class="appCard">
+      <div class="appCardTop"><div class="appLogo"><img src="img/apps-trabajo/jobs-ch.jpg" alt="" width="100" height="80" loading="lazy"></div><span class="appNumber">01</span></div>
+      <p class="appKind">Portal de empleo</p><h4>jobs.ch</h4>
+      <p class="appDescription">Busca ofertas por profesión y localidad, guarda las que te interesan y crea alertas para recibir nuevas oportunidades.</p>
+      <a class="appVisit" href="https://www.jobs.ch/de/" target="_blank" rel="noopener noreferrer" aria-label="Visitar jobs.ch (se abre en otra pestaña)">Visitar jobs.ch <span aria-hidden="true">↗</span></a>
+    </li><li class="appCard">
+      <div class="appCardTop"><div class="appLogo"><img src="img/apps-trabajo/jobscout24.jpg" alt="" width="100" height="80" loading="lazy"></div><span class="appNumber">02</span></div>
+      <p class="appKind">Portal de empleo</p><h4>JobScout24</h4>
+      <p class="appDescription">Consulta ofertas de distintos sectores y regiones de Suiza. Filtra por puesto y ubicación y guarda tus búsquedas.</p>
+      <a class="appVisit" href="https://www.jobscout24.ch/de/" target="_blank" rel="noopener noreferrer" aria-label="Visitar JobScout24 (se abre en otra pestaña)">Visitar JobScout24 <span aria-hidden="true">↗</span></a>
+    </li><li class="appCard">
+      <div class="appCardTop"><div class="appLogo"><img src="img/apps-trabajo/indeed.jpg" alt="" width="100" height="80" loading="lazy"></div><span class="appNumber">03</span></div>
+      <p class="appKind">Buscador de empleo</p><h4>Indeed</h4>
+      <p class="appDescription">Busca ofertas en Suiza por puesto, empresa, ciudad o cantón. Selecciona la ubicación en la que quieres trabajar.</p>
+      <a class="appVisit" href="https://ch.indeed.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitar Indeed (se abre en otra pestaña)">Visitar Indeed <span aria-hidden="true">↗</span></a>
+    </li><li class="appCard">
+      <div class="appCardTop"><div class="appLogo"><img src="img/apps-trabajo/coople.jpg" alt="" width="100" height="80" loading="lazy"></div><span class="appNumber">04</span></div>
+      <p class="appKind">Trabajo flexible</p><h4>Coople</h4>
+      <p class="appDescription">Encuentra trabajos flexibles y temporales. Desde Coople Jobs puedes solicitar puestos, consultar tus turnos y registrar tus horas.</p>
+      <a class="appVisit" href="https://www.coople.com/ch/en/workers/find-work" target="_blank" rel="noopener noreferrer" aria-label="Visitar Coople (se abre en otra pestaña)">Visitar Coople <span aria-hidden="true">↗</span></a>
+    </li><li class="appCard">
+      <div class="appCardTop"><div class="appLogo"><img src="img/apps-trabajo/linkedin.jpg" alt="" width="100" height="80" loading="lazy"></div><span class="appNumber">05</span></div>
+      <p class="appKind">Red profesional y empleo</p><h4>LinkedIn</h4>
+      <p class="appDescription">Consulta ofertas en Suiza, presenta tu experiencia en tu perfil profesional y activa alertas para las búsquedas que te interesen.</p>
+      <a class="appVisit" href="https://www.linkedin.com/jobs/search/?location=Switzerland" target="_blank" rel="noopener noreferrer" aria-label="Visitar LinkedIn (se abre en otra pestaña)">Visitar LinkedIn <span aria-hidden="true">↗</span></a>
+    </li><li class="appCard">
+      <div class="appCardTop"><div class="appLogo"><img src="img/apps-trabajo/licorn.jpg" alt="" width="100" height="80" loading="lazy"></div><span class="appNumber">06</span></div>
+      <p class="appKind">Contacto con reclutadores</p><h4>Licorn</h4>
+      <p class="appDescription">Crea tu perfil e indica tus preferencias laborales para recibir propuestas de reclutadores. Disponible desde el móvil y el ordenador.</p>
+      <a class="appVisit" href="https://licorn.ch/de/" target="_blank" rel="noopener noreferrer" aria-label="Visitar Licorn (se abre en otra pestaña)">Visitar Licorn <span aria-hidden="true">↗</span></a>
+    </li><li class="appCard">
+      <div class="appCardTop"><div class="appLogo"><img src="img/apps-trabajo/adecco.jpg" alt="" width="100" height="80" loading="lazy"></div><span class="appNumber">07</span></div>
+      <p class="appKind">Agencia de empleo</p><h4>Adecco</h4>
+      <p class="appDescription">Consulta oportunidades de empleo temporal y fijo en distintos sectores y contacta con el equipo de Adecco en Suiza.</p>
+      <a class="appVisit" href="https://www.adecco.com/de-ch" target="_blank" rel="noopener noreferrer" aria-label="Visitar Adecco (se abre en otra pestaña)">Visitar Adecco <span aria-hidden="true">↗</span></a>
+    </li><li class="appCard">
+      <div class="appCardTop"><div class="appLogo"><img src="img/apps-trabajo/job-room.jpg" alt="" width="100" height="80" loading="lazy"></div><span class="appNumber">08</span></div>
+      <p class="appKind">Portal web oficial</p><h4>Job-Room</h4>
+      <p class="appDescription">Accede a la plataforma de empleo de arbeit.swiss para buscar ofertas en Suiza. Puedes consultarla desde el navegador.</p>
+      <a class="appVisit" href="https://www.job-room.ch/" target="_blank" rel="noopener noreferrer" aria-label="Visitar Job-Room (se abre en otra pestaña)">Visitar Job-Room <span aria-hidden="true">↗</span></a>
+    </li></ol>
+      </section>
+      <section class="regionPanel" role="tabpanel" id="region-francesa" aria-labelledby="tab-francesa" tabindex="0" hidden>
+        <div class="regionPending"><h3>Suiza francesa</h3><p>Próximamente encontrarás aquí la selección de aplicaciones y portales de empleo para esta región.</p></div>
+      </section>
+      <section class="regionPanel" role="tabpanel" id="region-italiana" aria-labelledby="tab-italiana" tabindex="0" hidden>
+        <div class="regionPending"><h3>Suiza italiana</h3><p>Próximamente encontrarás aquí la selección de aplicaciones y portales de empleo para esta región.</p></div>
+      </section>
+    </div>
+  </dialog>
+  <script>
+  (() => {
+    const dialog = document.getElementById('appsDialog');
+    const opener = document.getElementById('openApps');
+    const tabs = Array.from(dialog.querySelectorAll('[role="tab"]'));
+    function selectRegion(tab) {
+      tabs.forEach(item => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+        document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+      });
+    }
+    opener.addEventListener('click', () => {
+      dialog.showModal();
+      document.body.classList.add('apps-open');
+    });
+    document.getElementById('closeApps').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('close', () => {
+      document.body.classList.remove('apps-open');
+      opener.focus({preventScroll: true});
+    });
+    dialog.addEventListener('click', event => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+    });
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectRegion(tab));
+      tab.addEventListener('keydown', event => {
+        let next;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        if (next === undefined) return;
+        event.preventDefault(); selectRegion(tabs[next]); tabs[next].focus();
+      });
+    });
+  })();
+  </script>
+
 
 
 <!-- =====================================================
