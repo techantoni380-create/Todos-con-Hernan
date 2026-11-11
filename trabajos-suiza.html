@@ -620,6 +620,9 @@ footer.site-credits > p {
 
 
   <style id="apps-trabajo-styles">
+    .swissFlagWord {white-space:nowrap}
+    .swissFlag {display:inline-block; width:.9em; height:.9em; vertical-align:-.04em; margin-left:.15em; flex-shrink:0}
+
     .appsEntry {position:relative; background:rgba(4,17,27,.6)}
     .appsOpen {font:inherit; color:inherit; text-align:left; border:0; background:none; padding:0; cursor:pointer; text-shadow:inherit}
     .appsOpen::after {content:""; position:absolute; inset:0; border-radius:20px}
@@ -627,15 +630,15 @@ footer.site-credits > p {
     .appsOpen:focus-visible::after {outline:3px solid #ffd000; outline-offset:4px}
     .appsEntryLink {margin-top:22px; font-size:14px; font-weight:700; color:#fff}
     body.apps-open {overflow:hidden}
-    .appsDialog {padding:0; width:min(1000px,calc(100% - 40px)); max-width:none; max-height:90vh; max-height:90dvh; border:1px solid #486071; border-radius:24px; background:#f2f5f7; color:#122634; box-shadow:0 30px 100px #0008; overscroll-behavior:contain}
+    .appsDialog {padding:0; width:min(1000px,calc(100% - 40px)); max-width:none; max-height:90vh; max-height:90dvh; border:1px solid #486071; border-radius:24px; background:transparent; color:#122634; box-shadow:0 30px 100px #0008; overscroll-behavior:contain}
     .appsDialog[open] {display:flex; flex-direction:column}
     .appsDialog::backdrop {background:rgba(2,10,17,.78); backdrop-filter:blur(5px)}
-    .appsDialogTop {flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:20px; background:#071a28; color:#fff; padding:25px 30px}
-    .appsKicker {margin:0 0 8px; color:#c7d5df; font-size:11px; letter-spacing:1.8px; font-weight:700}
+    .appsDialogTop {flex-shrink:0; display:flex; align-items:center; justify-content:space-between; gap:20px; background:rgba(169,24,32,.82); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); color:#fff; padding:25px 30px}
+    .appsKicker {margin:0 0 8px; color:#ffe3e3; font-size:11px; letter-spacing:1.8px; font-weight:700}
     .appsDialog h2 {margin:0; font-size:clamp(21px,3vw,30px); line-height:1.2}
-    .appsClose {flex-shrink:0; width:44px; height:44px; padding:0; display:grid; place-items:center; border:1px solid #71818d; border-radius:50%; background:transparent; color:#fff; font-size:30px; cursor:pointer}
-    .appsClose:hover {background:#223747}
-    .appsDialogBody {padding:24px 30px 30px; overflow-y:auto; min-height:0; overscroll-behavior:contain}
+    .appsClose {flex-shrink:0; width:44px; height:44px; padding:0; display:grid; place-items:center; border:1px solid #ffffff80; border-radius:50%; background:transparent; color:#fff; font-size:30px; cursor:pointer}
+    .appsClose:hover {background:rgba(80,5,12,.45)}
+    .appsDialogBody {background:#f2f5f7; padding:24px 30px 30px; overflow-y:auto; min-height:0; overscroll-behavior:contain}
     #appsIntro {margin:0 0 20px; font-size:16px; line-height:1.5}
     .regionTabs {display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-bottom:28px}
     .regionTabs button {border:1px solid #becbd4; border-radius:10px; padding:13px 10px; background:#fff; color:#243d4e; font:700 14px/1.3 Arial,sans-serif; cursor:pointer}
@@ -665,7 +668,7 @@ footer.site-credits > p {
       .sectionTitle {line-height:1.1}
       .appsDialog {width:calc(100% - 20px); border-radius:18px; max-height:94vh; max-height:94dvh}
       .appsDialogTop {padding:18px 16px; gap:12px}
-      .appsDialogBody {padding:20px 16px}
+      .appsDialogBody {background:#f2f5f7; padding:20px 16px}
       .appsGrid {grid-template-columns:1fr}
       .regionTabs {gap:5px}
       .regionTabs button {font-size:12px; padding:12px 6px}
@@ -720,7 +723,7 @@ footer.site-credits > p {
 
         <article class="jobCard appsEntry">
           <div class="jobCardIcon" aria-hidden="true">📱</div>
-          <h3><button type="button" class="appsOpen" id="openApps" aria-haspopup="dialog" aria-controls="appsDialog">Apps de trabajo en Suiza 🇨🇭</button></h3>
+          <h3><button type="button" class="appsOpen" id="openApps" aria-haspopup="dialog" aria-controls="appsDialog">Apps de trabajo en <span class="swissFlagWord">Suiza <svg class="swissFlag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="4" fill="#da291c"/><path d="M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z" fill="#fff"/></svg></span></button></h3>
           <p>Encuentra aplicaciones y portales de empleo organizados por región lingüística.</p>
           <span class="appsEntryLink" aria-hidden="true">Explorar las apps →</span>
         </article>
@@ -772,7 +775,7 @@ footer.site-credits > p {
 
   <dialog id="appsDialog" class="appsDialog" aria-labelledby="appsTitle" aria-describedby="appsIntro">
     <div class="appsDialogTop">
-      <div><p class="appsKicker">TRABAJOS EN SUIZA</p><h2 id="appsTitle">Apps de trabajo en Suiza 🇨🇭</h2></div>
+      <div><p class="appsKicker">TRABAJOS EN SUIZA</p><h2 id="appsTitle">Apps de trabajo en <span class="swissFlagWord">Suiza <svg class="swissFlag" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="4" fill="#da291c"/><path d="M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z" fill="#fff"/></svg></span></h2></div>
       <button type="button" id="closeApps" class="appsClose" aria-label="Cerrar aplicaciones" autofocus>×</button>
     </div>
     <div class="appsDialogBody">
