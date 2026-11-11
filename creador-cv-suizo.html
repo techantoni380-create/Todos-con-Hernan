@@ -959,7 +959,7 @@
     .cv-sheet.classic .cv-classic-master .cv-classic-master-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
     .cv-sheet.classic .cv-classic-master .cv-classic-master-contact-col { display: flex; flex-direction: column; gap: 3.5mm; }
     .cv-sheet.classic .cv-classic-master .cv-classic-master-contact-col > div { display: grid; grid-template-columns: 6mm 1fr; gap: 2mm; font-size: 9.4pt; line-height: 1.25; min-width: 0; }
-    .cv-sheet.classic .cv-classic-master .cv-classic-master-contact-col span { overflow-wrap: anywhere; }
+    .cv-sheet.classic .cv-classic-master .cv-classic-master-contact-col span { overflow-wrap: break-word; }
     .cv-sheet.classic .cv-classic-master .cv-classic-master-contact-col b { font-size: 11pt; text-align: center; }
     .cv-sheet.classic .cv-classic-master .cv-classic-master-body { display: grid; grid-template-columns: 34% 1fr; gap: 10mm; margin-top: 11mm; align-items: start; }
     .cv-sheet.classic .cv-classic-master .cv-classic-master-sidebar,
@@ -995,7 +995,7 @@
     .cv-sheet.classic .cv-page .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
     .cv-sheet.classic .cv-page .contact-col { display: flex; flex-direction: column; gap: 3.5mm; }
     .cv-sheet.classic .cv-page .contact-col > div { display: grid; grid-template-columns: 6mm 1fr; gap: 2mm; font-size: 9.4pt; line-height: 1.25; min-width: 0; }
-    .cv-sheet.classic .cv-page .contact-col span { overflow-wrap: anywhere; }
+    .cv-sheet.classic .cv-page .contact-col span { overflow-wrap: break-word; }
     .cv-sheet.classic .cv-page .contact-col b { font-size: 11pt; text-align: center; }
     .cv-sheet.classic .cv-page .cv-body { display: grid; grid-template-columns: 34% 1fr; gap: 10mm; margin-top: 11mm; align-items: start; }
     .cv-sheet.classic .cv-page .sidebar, .cv-sheet.classic .cv-page .main-column { min-width: 0; }
@@ -1189,11 +1189,11 @@
     .cv-sheet.professional .cv-professional-master-page .cv-section.is-empty { display: none; }
     .cv-sheet.professional .cv-professional-master-page .cv-section h2 { margin: 0 0 5mm; font-size: 13.2pt; line-height: 1.1; font-weight: 700; letter-spacing: .005em; }
     .cv-sheet.professional .cv-professional-master-page .cv-section p, .cv-sheet.professional .cv-professional-master-page .cv-section li, .cv-sheet.professional .cv-professional-master-page .contact-item, .cv-sheet.professional .cv-professional-master-page .company, .cv-sheet.professional .cv-professional-master-page .education, .cv-sheet.professional .cv-professional-master-page .language, .cv-sheet.professional .cv-professional-master-page .level-caption { font-size: 10.6pt; line-height: 1.38; }
-    .cv-sheet.professional .cv-professional-master-page .cv-section p { margin: 0; overflow-wrap: anywhere; }
+    .cv-sheet.professional .cv-professional-master-page .cv-section p { margin: 0; overflow-wrap: break-word; }
     .cv-sheet.professional .cv-professional-master-page .cv-section ul { margin: 0; padding-left: 5mm; }
-    .cv-sheet.professional .cv-professional-master-page .cv-section li { margin: 0 0 3mm; padding-left: .7mm; overflow-wrap: anywhere; }
+    .cv-sheet.professional .cv-professional-master-page .cv-section li { margin: 0 0 3mm; padding-left: .7mm; overflow-wrap: break-word; }
     .cv-sheet.professional .cv-professional-master-page .contact-item { display: grid; grid-template-columns: 7mm minmax(0,1fr); gap: 2mm; margin-bottom: 5mm; align-items: start; }
-    .cv-sheet.professional .cv-professional-master-page .contact-item span:last-child { min-width: 0; overflow-wrap: anywhere; }
+    .cv-sheet.professional .cv-professional-master-page .contact-item span:last-child { min-width: 0; overflow-wrap: break-word; }
     .cv-sheet.professional .cv-professional-master-page .icon { font-size: 13pt; line-height: 1; }
     .cv-sheet.professional .cv-professional-master-page .language { display: flex; justify-content: space-between; gap: 3mm; margin-bottom: 2.5mm; }
     .cv-sheet.professional .cv-professional-master-page .level-code { min-width: 8mm; text-align: right; }
@@ -1206,7 +1206,7 @@
     .cv-sheet.professional .cv-professional-master-page .main-column .cv-section h2 { margin-bottom: 6mm; }
     .cv-sheet.professional .cv-professional-master-page .experience { padding: 0 0 5mm; margin: 0 0 5mm; break-inside: avoid; page-break-inside: avoid; }
     .cv-sheet.professional .cv-professional-master-page .experience h3, .cv-sheet.professional .cv-professional-master-page .education h3 { margin: 0 0 1.5mm; font-size: 12pt; line-height: 1.2; font-weight: 700; }
-    .cv-sheet.professional .cv-professional-master-page .company { margin-bottom: 3.5mm; overflow-wrap: anywhere; }
+    .cv-sheet.professional .cv-professional-master-page .company { margin-bottom: 3.5mm; overflow-wrap: break-word; }
     .cv-sheet.professional .cv-professional-master-page .experience ul { margin-top: 2mm; }
     .cv-sheet.professional .cv-professional-master-page .education { break-inside: avoid; page-break-inside: avoid; }
     .cv-sheet.professional .cv-professional-master-page .main-column .cv-section[data-section="software-main"] { border-top: .25mm solid #aaa; padding-top: 6mm; }
@@ -1620,7 +1620,7 @@
       .cv-sheet.professional .cv-professional-contact-item span,
       .cv-sheet.classic .cv-classic-entry-head h3,
       .cv-sheet.professional .cv-professional-experience h3 {
-        overflow-wrap: anywhere;
+        overflow-wrap: break-word;
         word-break: normal;
       }
 
@@ -1649,6 +1649,116 @@
         height: auto !important;
       }
     }
+
+/* Compact CV layout: same spacing in preview, PDF and print. */
+
+.cv-sheet.classic .cv-page { height:auto; padding:7mm; overflow:visible; }
+.cv-sheet.classic .cv-page .cv-header, .cv-sheet.classic .cv-page .cv-body { grid-template-columns:34% minmax(0,1fr); gap:7mm; }
+.cv-sheet.classic .cv-page .photo-wrap { width:38mm; height:48mm; aspect-ratio:auto; }
+.cv-sheet.classic .cv-page .photo, .cv-sheet.classic .cv-page .photo-placeholder { width:100%; height:100%; object-fit:cover; object-position:center; }
+.cv-sheet.classic .cv-page h1 { margin:0 0 2mm; font-size:24pt; }
+.cv-sheet.classic .cv-page .title { margin:0 0 4mm; font-size:11.5pt; }
+.cv-sheet.classic .cv-page .contact-grid { gap:4mm; }
+.cv-sheet.classic .cv-page .contact-col { gap:2mm; }
+.cv-sheet.classic .cv-page .contact-col > div { grid-template-columns:4mm minmax(0,1fr); gap:1mm; font-size:8.5pt; }
+.cv-sheet.classic .cv-page .contact-col b { font-size:9pt; }
+.cv-sheet.classic .cv-page .contact-col span { overflow-wrap:break-word; }
+.cv-sheet.classic .cv-page .cv-body { margin-top:4mm; }
+.cv-sheet.classic .cv-page .sidebar, .cv-sheet.classic .cv-page .main-column { min-width:0; }
+.cv-sheet.classic .cv-page .cv-section { margin:0 0 4mm; }
+.cv-sheet.classic .cv-page .cv-section h2 { margin:0 0 2mm; padding-bottom:1.2mm; font-size:11pt; break-after:avoid; }
+.cv-sheet.classic .cv-page .cv-section p, .cv-sheet.classic .cv-page .cv-section li, .cv-sheet.classic .cv-page .company, .cv-sheet.classic .cv-page .experience, .cv-sheet.classic .cv-page .education { font-size:10pt; line-height:1.25; overflow-wrap:break-word; }
+.cv-sheet.classic .cv-page .cv-section li { margin-bottom:1mm; }
+.cv-sheet.classic .cv-page .experience { padding:0 0 2.5mm; margin:0 0 2.5mm; }
+.cv-sheet.classic .cv-page .experience:last-child { padding-bottom:0; margin-bottom:0; border-bottom:0; }
+.cv-sheet.classic .cv-page .entry-head { gap:3mm; }
+.cv-sheet.classic .cv-page .entry-head h3, .cv-sheet.classic .cv-page .education h3 { font-size:10.5pt; line-height:1.2; }
+.cv-sheet.classic .cv-page .entry-head span { font-size:9pt; }
+.cv-sheet.classic .cv-page .company { margin:1mm 0 1.5mm; }
+.cv-sheet.classic .cv-page .education + .education { margin-top:2.5mm; }
+
+.cv-sheet.professional .cv-professional-master-page { height:auto; padding:7mm 8mm; overflow:visible; }
+.cv-sheet.professional .cv-professional-master-page .cv-header { min-height:0; }
+.cv-sheet.professional .cv-professional-master-page .photo-column { width:100%; padding-right:0; }
+.cv-sheet.professional .cv-professional-master-page .photo, .cv-sheet.professional .cv-professional-master-page .photo-placeholder { width:36mm; height:40mm; object-fit:cover; object-position:center; }
+.cv-sheet.professional .cv-professional-master-page .name-column { padding-left:5mm; }
+.cv-sheet.professional .cv-professional-master-page .name-column h1 { font-size:24pt; }
+.cv-sheet.professional .cv-professional-master-page .professional-title { font-size:11.5pt; margin-top:2mm; }
+.cv-sheet.professional .cv-professional-master-page .header-rule { margin:3mm 0 4mm; }
+.cv-sheet.professional .cv-professional-master-page .sidebar { padding-right:5mm; min-width:0; }
+.cv-sheet.professional .cv-professional-master-page .main-column { padding-left:5mm; }
+.cv-sheet.professional .cv-professional-master-page .cv-section, .cv-sheet.professional .cv-professional-master-page .main-column .cv-section { margin-bottom:3mm; }
+.cv-sheet.professional .cv-professional-master-page .cv-section h2, .cv-sheet.professional .cv-professional-master-page .main-column .cv-section h2 { font-size:11pt; margin-bottom:2mm; break-after:avoid; }
+.cv-sheet.professional .cv-professional-master-page .cv-section p, .cv-sheet.professional .cv-professional-master-page .cv-section li, .cv-sheet.professional .cv-professional-master-page .contact-item, .cv-sheet.professional .cv-professional-master-page .company, .cv-sheet.professional .cv-professional-master-page .education, .cv-sheet.professional .cv-professional-master-page .language, .cv-sheet.professional .cv-professional-master-page .level-caption { font-size:10pt; line-height:1.25; overflow-wrap:break-word; }
+.cv-sheet.professional .cv-professional-master-page .cv-section li { margin-bottom:1mm; }
+.cv-sheet.professional .cv-professional-master-page .contact-item { grid-template-columns:4mm minmax(0,1fr); gap:1mm; margin-bottom:2mm; font-size:9pt; }
+.cv-sheet.professional .cv-professional-master-page .icon { font-size:10pt; }
+.cv-sheet.professional .cv-professional-master-page .language { margin-bottom:1mm; }
+.cv-sheet.professional .cv-professional-master-page .language-bar { height:1.8mm; }
+.cv-sheet.professional .cv-professional-master-page .level-caption { margin-bottom:2mm; font-size:8.5pt; }
+.cv-sheet.professional .cv-professional-master-page .experience { padding:0; margin:0 0 2.5mm; }
+.cv-sheet.professional .cv-professional-master-page .experience:last-child { padding-bottom:0; margin-bottom:0; }
+.cv-sheet.professional .cv-professional-master-page .experience h3, .cv-sheet.professional .cv-professional-master-page .education h3 { font-size:10.5pt; margin-bottom:1mm; }
+.cv-sheet.professional .cv-professional-master-page .company { margin-bottom:1.5mm; }
+.cv-sheet.professional .cv-professional-master-page .education + .education { margin-top:2.5mm; }
+
+.cv-sheet.classic .classic-preview-document { height:auto; }
+@media print {
+  .cv-back-btn { display:none !important; }
+  .cv-sheet.classic .classic-preview-document,
+  .cv-sheet.professional .professional-preview-document,
+  .cv-sheet.classic .cv-page,
+  .cv-sheet.professional .cv-professional-master-page {
+    height:auto !important; min-height:0 !important;
+  }
+  .cv-sheet.classic .cv-page { padding:7mm !important; }
+  .cv-sheet.professional .cv-professional-master-page { padding:7mm 8mm !important; }
+}
+/* Use the wrapping value supported by both the browser and html2canvas. */
+.cv-sheet .cv-page { overflow-wrap:break-word; }
+
+/* Physical pages: 10 mm top, 12 mm bottom, including a separate footer. */
+.cv-sheet.classic .cv-page.cv-paged-page,
+.cv-sheet.professional .cv-page.cv-paged-page {
+  position:relative; width:210mm !important; min-width:210mm !important;
+  height:297mm !important; min-height:297mm !important; max-height:297mm !important;
+  padding:10mm 8mm 12mm !important; margin:0 !important;
+  flex:none; background:#fff; box-sizing:border-box;
+  box-shadow:0 2px 10px #0002; overflow:visible !important;
+}
+.cv-paged-page > .cv-page-content { height:275mm; }
+.cv-paged-page > .cv-page-number {
+  position:absolute; bottom:4mm; left:8mm; right:8mm;
+  height:4mm; font:8pt/4mm Arial, sans-serif; color:#666; text-align:right;
+}
+.cv-sheet .cv-page-stack {
+  display:flex; flex-direction:column; gap:18px; background:#dce2e8;
+  width:210mm; height:auto !important; min-height:0 !important;
+  transform-origin:top left;
+}
+.cv-sheet.classic, .cv-sheet.professional,
+.cv-sheet .classic-preview-viewport, .cv-sheet .professional-preview-viewport {
+  background:transparent; box-shadow:none; overflow:visible;
+}
+.cv-sheet .cv-paged-page .cv-section { display:flow-root; }
+.cv-sheet .cv-paged-page .cv-section p { white-space:pre-line; }
+.cv-export-single { width:210mm !important; min-height:0 !important; padding:0 !important; margin:0 !important; border:0 !important; }
+.cv-export-single .cv-page { box-shadow:none !important; }
+/* Page numbers are a preview aid, excluded from the finished document. */
+.cv-export-single .cv-page-number { display:none !important; }
+@media print {
+  @page { size:A4 portrait; margin:0; }
+  .cv-page-number { display:none !important; }
+  *, *::before, *::after { animation:none !important; transition:none !important; }
+  .tab.active { transform:none !important; }
+  .cv-paged-page * { break-inside:auto !important; break-before:auto !important; break-after:auto !important; orphans:1; widows:1; }
+  .cv-sheet .cv-page-stack { display:block; transform:none !important; background:transparent; }
+  /* A 0.2 mm print tolerance prevents a rounding-only blank sheet. */
+  .cv-sheet.classic .cv-page.cv-paged-page, .cv-sheet.professional .cv-page.cv-paged-page { height:296.8mm !important; min-height:296.8mm !important; max-height:296.8mm !important; overflow:hidden !important; break-inside:avoid; break-after:page; page-break-after:always; box-shadow:none; }
+  .cv-sheet .cv-page.cv-paged-page:last-child { break-after:auto; page-break-after:auto; }
+  .cv-sheet .classic-preview-viewport, .cv-sheet .professional-preview-viewport { height:auto !important; overflow:visible !important; }
+}
+
   </style>
 </head>
 <body data-no-site-header>
@@ -2278,6 +2388,8 @@
           </div>
         `;
       }
+      applyCvI18n(previewRoot);
+      paginateCvPreview(previewRoot);
       renderReview();
       if (state.template === 'classic') {
         scaleClassicPreview(previewRoot);
@@ -2289,40 +2401,195 @@
       }
     }
 
-    function scaleClassicPreview(container) {
-      const viewport = container.querySelector('.classic-preview-viewport');
-      const documentNode = container.querySelector('.classic-preview-document');
-      if (!viewport || !documentNode) return;
-      viewport.style.removeProperty('--classic-preview-scale');
-      const updateScale = () => {
-        const documentWidth = 210 * 96 / 25.4;
-        const scale = documentWidth ? viewport.clientWidth / documentWidth : 1;
-        viewport.style.setProperty('--classic-preview-scale', String(scale));
-        viewport.style.height = `${documentNode.scrollHeight * scale}px`;
-      };
-      updateScale();
-      if (typeof ResizeObserver !== 'undefined') {
-        const observer = new ResizeObserver(updateScale);
-        observer.observe(viewport);
+    // Build real A4 sheets once. Preview, PDF and print share these exact sheets.
+    function paginateCvPreview(container) {
+      const documentNode = container.querySelector('.classic-preview-document, .professional-preview-document');
+      const source = documentNode.querySelector('.cv-page');
+      const sourceGrid = source.querySelector('.cv-body, .cv-grid');
+      const host = document.createElement('div');
+      host.className = container.className + ' cv-pagination-measure';
+      host.style.cssText = 'position:absolute;left:-10000px;top:0;width:210mm;visibility:hidden;pointer-events:none;';
+      document.body.appendChild(host);
+      const pages = [];
+      function newPage() {
+        const page = source.cloneNode(false);
+        page.removeAttribute('id');
+        page.classList.add('cv-paged-page');
+        const content = document.createElement('div');
+        content.className = 'cv-page-content';
+        page.appendChild(content);
+        if (!pages.length) {
+          for (const child of source.children) {
+            if (child !== sourceGrid) content.appendChild(child.cloneNode(true));
+          }
+        }
+        const grid = sourceGrid.cloneNode(false);
+        if (pages.length) grid.style.marginTop = '0';
+        for (const column of sourceGrid.children) grid.appendChild(column.cloneNode(false));
+        content.appendChild(grid);
+        const footer = document.createElement('div');
+        footer.className = 'cv-page-number';
+        page.appendChild(footer);
+        host.appendChild(page);
+        pages.push({ page, content, grid, footer });
+        return pages[pages.length - 1];
       }
+      const getPage = index => { while (!pages[index]) newPage(); return pages[index]; };
+      const fits = (record, element) => element.getBoundingClientRect().bottom <=
+        record.content.getBoundingClientRect().bottom - 2;
+
+      // A single unusually long paragraph can exceed a whole page. Split at a
+      // word boundary, cloning its markup and keeping every character in order.
+      function textFragment(element, start, end) {
+        const fragment = element.cloneNode(false);
+        const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        let node, offset = 0;
+        while ((node = walker.nextNode())) {
+          nodes.push({ node, start: offset, end: offset + node.length });
+          offset += node.length;
+        }
+        if (!nodes.length) return element.cloneNode(true);
+        function point(at) {
+          const item = nodes.find(item => at <= item.end) || nodes[nodes.length - 1];
+          return [item.node, Math.max(0, Math.min(item.node.length, at - item.start))];
+        }
+        const range = document.createRange();
+        range.setStart(...point(start));
+        range.setEnd(...point(end));
+        fragment.appendChild(range.cloneContents());
+        return fragment;
+      }
+      function splitOversized(element, section, record) {
+        const text = element.textContent;
+        const boundaries = [...text.matchAll(/\s+/g)].map(match => match.index + match[0].length);
+        if (!boundaries.includes(text.length)) boundaries.push(text.length);
+        let low = 0, high = boundaries.length - 1, best = 0;
+        while (low <= high) {
+          const mid = (low + high) >> 1;
+          const trial = textFragment(element, 0, boundaries[mid]);
+          section.appendChild(trial);
+          const ok = fits(record, trial);
+          trial.remove();
+          if (ok) { best = boundaries[mid]; low = mid + 1; } else high = mid - 1;
+        }
+        // Handles uninterrupted strings too (CSS wraps them within the column).
+        if (!best) {
+          low = 1; high = text.length;
+          while (low <= high) {
+            const mid = (low + high) >> 1;
+            const trial = textFragment(element, 0, mid);
+            section.appendChild(trial);
+            const ok = fits(record, trial);
+            trial.remove();
+            if (ok) { best = mid; low = mid + 1; } else high = mid - 1;
+          }
+        }
+        if (!best) throw new Error('No hay espacio para el contenido del CV.');
+        return [textFragment(element, 0, best), best < text.length ? textFragment(element, best, text.length) : null];
+      }
+      // Keep each job, qualification, bullet and language + bar together.
+      function sectionBlocks(section) {
+        const blocks = [];
+        for (const child of section.children) {
+          if (child.tagName === 'H2') continue;
+          if (child.matches('div') && child.querySelector(':scope > article, :scope > ul')) {
+            const wrapper = child.cloneNode(true);
+            for (const inner of wrapper.children) {
+              if (inner.matches('ul,ol')) {
+                for (const li of inner.children) { const list = inner.cloneNode(false); list.appendChild(li.cloneNode(true)); blocks.push(list); }
+              } else blocks.push(inner.cloneNode(true));
+            }
+          } else if (child.matches('ul,ol')) {
+            for (const li of child.children) { const list = child.cloneNode(false); list.appendChild(li.cloneNode(true)); blocks.push(list); }
+          } else if (child.matches('.language')) {
+            const group = document.createElement('div');
+            group.className = 'cv-language-group';
+            group.appendChild(child.cloneNode(true));
+            let next = child.nextElementSibling;
+            while (next && next.matches('.language-bar,.level-caption')) { group.appendChild(next.cloneNode(true)); next = next.nextElementSibling; }
+            blocks.push(group);
+          } else if (!child.matches('.language-bar,.level-caption')) blocks.push(child.cloneNode(true));
+        }
+        return blocks;
+      }
+      try {
+        newPage();
+        [...sourceGrid.children].forEach((sourceColumn, columnIndex) => {
+          let pageIndex = 0;
+          for (const sourceSection of sourceColumn.children) {
+            if (sourceSection.classList.contains('is-empty')) continue;
+            let section = null;
+            const heading = sourceSection.querySelector(':scope > h2');
+            function ensureSection() {
+              const record = getPage(pageIndex);
+              if (!section) {
+                section = sourceSection.cloneNode(false);
+                if (heading) section.appendChild(heading.cloneNode(true));
+                record.grid.children[columnIndex].appendChild(section);
+              }
+              return record;
+            }
+            for (const block of sectionBlocks(sourceSection)) {
+              let pending = block;
+              while (pending) {
+                let record = ensureSection();
+                section.appendChild(pending);
+                if (fits(record, pending)) { pending = null; continue; }
+                pending.remove();
+                const hasContent = section.children.length > (heading ? 1 : 0);
+                const column = record.grid.children[columnIndex];
+                const priorContent = column.children.length > 1 || hasContent;
+                // Move normal entries intact. If an entry exceeds a whole sheet,
+                // use the remaining space instead of leaving the first page empty.
+                if (priorContent || pageIndex === 0) {
+                  const probe = newPage();
+                  const probeSection = sourceSection.cloneNode(false);
+                  if (heading) probeSection.appendChild(heading.cloneNode(true));
+                  const probeBlock = pending.cloneNode(true);
+                  probeSection.appendChild(probeBlock);
+                  probe.grid.children[columnIndex].appendChild(probeSection);
+                  const fitsFreshPage = fits(probe, probeBlock);
+                  probe.page.remove(); pages.pop();
+                  const available = record.content.getBoundingClientRect().bottom -
+                    (section.lastElementChild || section).getBoundingClientRect().bottom;
+                  if (fitsFreshPage || available < 100) {
+                    if (!hasContent) section.remove();
+                    pageIndex++; section = null; continue;
+                  }
+                }
+                const [part, remainder] = splitOversized(pending, section, record);
+                section.appendChild(part);
+                pending = remainder;
+                if (pending) { pageIndex++; section = null; }
+              }
+            }
+          }
+        });
+        documentNode.replaceChildren(...pages.map(record => record.page));
+        documentNode.classList.add('cv-page-stack');
+        pages.forEach((record, index) => { record.footer.textContent = `${index + 1} / ${pages.length}`; });
+      } finally { host.remove(); }
     }
 
-    function scaleProfessionalPreview(container) {
-      const viewport = container.querySelector('.professional-preview-viewport');
-      const documentNode = container.querySelector('.professional-preview-document');
+    const cvPreviewObservers = new WeakMap();
+    function scalePagedPreview(container) {
+      cvPreviewObservers.get(container)?.disconnect();
+      const viewport = container.querySelector('.classic-preview-viewport, .professional-preview-viewport');
+      const documentNode = container.querySelector('.cv-page-stack');
       if (!viewport || !documentNode) return;
       const updateScale = () => {
-        const documentWidth = 210 * 96 / 25.4;
-        const scale = documentWidth ? viewport.clientWidth / documentWidth : 1;
-        viewport.style.setProperty('--professional-preview-scale', String(scale));
-        viewport.style.height = `${documentNode.scrollHeight * scale}px`;
+        const scale = viewport.clientWidth / (210 * 96 / 25.4);
+        documentNode.style.transform = `scale(${scale})`;
+        viewport.style.height = `${documentNode.offsetHeight * scale}px`;
       };
       updateScale();
-      if (typeof ResizeObserver !== 'undefined') {
-        const observer = new ResizeObserver(updateScale);
-        observer.observe(viewport);
-      }
+      const observer = new ResizeObserver(updateScale);
+      observer.observe(viewport);
+      cvPreviewObservers.set(container, observer);
     }
+    function scaleClassicPreview(container) { scalePagedPreview(container); }
+    function scaleProfessionalPreview(container) { scalePagedPreview(container); }
 
     function renderClassicExperience() {
       const items = state.experiences.filter(item => item.role || item.company || item.description);
@@ -2511,89 +2778,81 @@
 
     document.getElementById('downloadPdfBtn').addEventListener('click', async (event) => {
       const button = event.currentTarget;
-      const sourceSheet = reviewRoot.querySelector('.review-sheet');
-      if (!sourceSheet || typeof window.html2pdf !== 'function') {
+      if (typeof window.html2pdf !== 'function') {
         alert('No se pudo generar el PDF. Comprueba tu conexión a Internet y vuelve a intentarlo.');
         return;
       }
-
+      button.disabled = true;
+      const scrollPosition = { left:window.scrollX, top:window.scrollY, behavior:'instant' };
       const stage = document.createElement('div');
       stage.id = 'cvPdfExportStage';
-      stage.style.cssText = 'position:fixed;left:0;top:0;width:210mm;z-index:-1;opacity:0;pointer-events:none;overflow:visible;background:#fff;';
-      const sheet = sourceSheet.cloneNode(true);
-      stage.appendChild(sheet);
+      stage.style.cssText = 'position:absolute;left:0;top:0;width:210mm;z-index:-1;opacity:0;pointer-events:none;';
       document.body.appendChild(stage);
-
-      const elements = [sheet, ...sheet.querySelectorAll('.classic-preview-viewport, .classic-preview-document, .professional-preview-viewport, .professional-preview-document')];
-      const pages = [...sheet.querySelectorAll('.cv-page, .cv-professional-master-page')];
-      const photos = [...sheet.querySelectorAll('.cv-classic-photo, .cv-professional-photo, .photo-wrap img')];
-      const photoFrames = [...sheet.querySelectorAll('.photo-wrap, .cv-classic-photo-wrap')];
-      button.disabled = true;
       try {
-        sheet.style.width = '210mm';
-        sheet.style.maxWidth = 'none';
-        sheet.style.margin = '0';
-        sheet.style.transform = 'none';
-        sheet.style.background = '#fff';
-        sheet.style.boxShadow = 'none';
-        elements.slice(1).forEach(element => {
-          element.style.width = '210mm';
-          element.style.minWidth = '210mm';
-          element.style.height = 'auto';
-          element.style.minHeight = '0';
-          element.style.transform = 'none';
-          element.style.overflow = 'visible';
-        });
-        pages.forEach(page => {
-          page.style.height = 'auto';
-          page.style.minHeight = '0';
-        });
-        photos.forEach(photo => {
-          const isClassicPhoto = !!photo.closest('.photo-wrap');
-          photo.style.width = isClassicPhoto ? '100%' : 'auto';
-          photo.style.height = 'auto';
-          photo.style.maxWidth = isClassicPhoto ? 'none' : '39mm';
-          photo.style.maxHeight = isClassicPhoto ? 'none' : '52mm';
-          photo.style.objectFit = 'contain';
-          photo.style.objectPosition = 'center';
-        });
-        photoFrames.forEach(frame => {
-          frame.style.aspectRatio = 'auto';
-          frame.style.height = 'auto';
-          frame.style.display = 'block';
-          frame.style.overflow = 'visible';
-        });
-
-        const filename = (state.personal.name || 'CV')
-          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-          .replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'CV';
-        await window.html2pdf().set({
-          margin: 0,
-          filename: `${filename}.pdf`,
-          image: { type: 'png' },
-          html2canvas: {
-            scale: 2,
-            useCORS: true,
-            backgroundColor: '#ffffff',
-            scrollY: 0,
-            onclone: clonedDocument => {
-              const clonedStage = clonedDocument.getElementById('cvPdfExportStage');
-              if (clonedStage) {
-                clonedStage.style.opacity = '1';
-                clonedStage.style.zIndex = '1';
+        await document.fonts.ready;
+        renderPreview();
+        window.scrollTo({ left:0, top:0, behavior:'instant' });
+        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        const sourceSheet = reviewRoot.querySelector('.review-sheet');
+        let pdf;
+        for (const sourcePage of sourceSheet.querySelectorAll('.cv-paged-page')) {
+          const sheet = document.createElement('div');
+          sheet.className = `cv-sheet ${state.template} cv-export-single`;
+          const page = sourcePage.cloneNode(true);
+          sheet.appendChild(page);
+          stage.replaceChildren(sheet);
+          await Promise.all([...sheet.querySelectorAll('img')].map(async img => {
+            await img.decode().catch(() => {});
+            if (!img.naturalWidth || !img.naturalHeight) return;
+            // Crop the export copy to its frame; html2canvas ignores object-fit.
+            const width = img.clientWidth, height = img.clientHeight;
+            if (!width || !height || getComputedStyle(img).objectFit !== 'cover') return;
+            const scale = Math.max(width / img.naturalWidth, height / img.naturalHeight);
+            const sw = width / scale, sh = height / scale;
+            const canvas = document.createElement('canvas');
+            canvas.width = Math.round(width * 2); canvas.height = Math.round(height * 2);
+            canvas.getContext('2d').drawImage(img,
+              (img.naturalWidth - sw) / 2, (img.naturalHeight - sh) / 2, sw, sh,
+              0, 0, canvas.width, canvas.height);
+            img.src = canvas.toDataURL('image/png');
+            await img.decode();
+          }));
+          const worker = window.html2pdf().set({
+            margin:0,
+            image:{ type:'png' },
+            html2canvas:{
+              scale:2, useCORS:true, backgroundColor:'#ffffff', scrollY:0, scrollX:0,
+              onclone: async clonedDocument => {
+                const clonedStage = clonedDocument.getElementById('cvPdfExportStage');
+                if (clonedStage) { clonedStage.style.opacity = '1'; clonedStage.style.zIndex = '1'; }
+                await new Promise(resolve => setTimeout(resolve, 50));
+                clonedDocument.querySelectorAll('.cv-paged-page, .cv-paged-page h2')
+                  .forEach(element => element.getBoundingClientRect());
               }
             },
-            ignoreElements: element => element.id === 'cvBackBtn' || element.classList?.contains('cv-back-btn')
-          },
-          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
-          pagebreak: { mode: ['css'] }
-        }).from(sheet).save();
+            jsPDF:{ unit:'mm', format:'a4', orientation:'portrait', compress:true },
+            pagebreak:{ mode:[] }
+          }).from(sheet).toCanvas();
+          const canvas = await worker.get('canvas');
+          if (!pdf) {
+            pdf = await worker.toPdf().get('pdf');
+            // Add each complete sheet explicitly. Never slice a continuous canvas
+            // across page edges, including sub-pixel A4 rounding differences.
+            while (pdf.internal.getNumberOfPages()) pdf.deletePage(1);
+          }
+          pdf.addPage('a4', 'portrait');
+          pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 210, 297);
+        }
+        const filename = (state.personal.name || 'CV').normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'CV';
+        pdf.save(`${filename}.pdf`);
       } catch (error) {
         console.error('Error al generar el PDF:', error);
         alert('No se pudo generar el PDF. Vuelve a intentarlo.');
       } finally {
         stage.remove();
         button.disabled = false;
+        window.scrollTo(scrollPosition);
       }
     });
 
@@ -2951,8 +3210,9 @@
       document.querySelectorAll('[title],[aria-label]').forEach(el => {
         ['title','aria-label'].forEach(attr => {
           const v = el.getAttribute(attr);
-          if (v && !el.dataset['cvI18nSource'+attr]) el.dataset['cvI18nSource'+attr] = v;
-          const source = el.dataset['cvI18nSource'+attr];
+          const sourceKey = 'cvI18nSource' + attr.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+          if (v && !el.dataset[sourceKey]) el.dataset[sourceKey] = v;
+          const source = el.dataset[sourceKey];
           if (source && dict[source]) el.setAttribute(attr, dict[source]);
         });
       });

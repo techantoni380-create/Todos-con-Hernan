@@ -1,11 +1,49 @@
-ACTUALIZACIÓN: pestaña Idiomas
+TODOS CON HERNÁN — CV con paginación real (versión 4)
 
-Copia conservando estas rutas en la carpeta raíz de tu proyecto:
-- index.html
-- inicio.html
-- idiomas.html (archivo nuevo)
-- js/site-header.js
-- img/laura-aprende-aleman.png (imagen de Laura)
-- img/aprender-aleman-fondo.jpg (fondo de la página)
+INSTALACIÓN
+Si ya instalaste la versión 3, la corrección del creador se aplica
+sustituyendo creador-cv-suizo.html. Los CSS incluidos actualizan también
+las plantillas independientes.
 
-La pestaña Idiomas aparece en el menú compartido de las páginas que usan js/site-header.js. La nueva página incluye la imagen de Laura, la imagen de fondo, contenido adicional para recorrer al bajar y el pie de página.
+1. Guarda una copia de los archivos actuales del alojamiento.
+2. Sustituye estos tres archivos, conservando exactamente sus nombres:
+   creador-cv-suizo.html
+   cv-suizo-clasico.css
+   cv-profesional.css
+3. Los dos HTML de las plantillas independientes se incluyen sin cambios;
+   no es necesario sustituirlos. Conserva las carpetas img/ y js/ de la web.
+4. Recarga el creador con Ctrl+F5. Si el alojamiento tiene caché, vacíala.
+5. Vuelve a descargar el CV. Los PDF descargados anteriormente no cambian.
+
+CAMBIOS
+- Corregido el desbordamiento de palabras largas al descargar el PDF: el
+  texto se divide dentro de cada columna, igual que en la vista previa.
+- Hojas A4 separadas en la vista previa, con una franja gris entre hojas.
+- Margen superior de 10 mm e inferior de 12 mm en cada hoja del creador.
+- Numeración visible únicamente en la vista previa mientras se edita o revisa.
+  El PDF descargado, guardado desde la impresión o impreso no incluye números.
+- Saltos de página automáticos al añadir más contenido.
+- Los empleos, formaciones, idiomas y elementos de lista pasan completos
+  a la siguiente hoja cuando no caben en el espacio disponible.
+- Si una sola entrada supera una hoja completa, continúa por palabras,
+  conservando su contenido y aprovechando el espacio de la hoja anterior.
+- Los títulos de sección se repiten cuando la sección continúa en otra hoja.
+- La vista previa, el PDF y la impresión del creador usan las mismas páginas.
+- Se mantienen el espaciado compacto y el tratamiento de fotos anterior.
+- Las plantillas independientes también reciben márgenes de impresión
+  superior e inferior para cada página.
+
+COMPROBACIONES
+Reproducido el fallo con cadenas largas sin espacios. Tras la corrección,
+las descargas de ambos modelos no invaden la columna contigua.
+Probados ambos modelos con una, dos y tres páginas en Chromium, mediante
+la descarga PDF y la impresión A4. Comprobado el último empleo, la ausencia
+de títulos aislados y el respeto del área de contenido.
+Probadas descripciones extensas y listas de 85 competencias: se conserva
+el texto completo y no invade el pie. Vista móvil comprobada a 390 píxeles.
+
+El número de páginas depende del contenido: no se elimina texto ni se
+reduce todo a una hoja. La impresión de las plantillas independientes
+utiliza los saltos del navegador; el creador utiliza sus hojas explícitas.
+
+Este paquete está preparado para subirlo. No publica cambios en la web.
