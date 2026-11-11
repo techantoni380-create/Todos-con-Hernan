@@ -1,49 +1,24 @@
-TODOS CON HERNÁN — CV con paginación real (versión 4)
-
-INSTALACIÓN
-Si ya instalaste la versión 3, la corrección del creador se aplica
-sustituyendo creador-cv-suizo.html. Los CSS incluidos actualizan también
-las plantillas independientes.
-
-1. Guarda una copia de los archivos actuales del alojamiento.
-2. Sustituye estos tres archivos, conservando exactamente sus nombres:
-   creador-cv-suizo.html
-   cv-suizo-clasico.css
-   cv-profesional.css
-3. Los dos HTML de las plantillas independientes se incluyen sin cambios;
-   no es necesario sustituirlos. Conserva las carpetas img/ y js/ de la web.
-4. Recarga el creador con Ctrl+F5. Si el alojamiento tiene caché, vacíala.
-5. Vuelve a descargar el CV. Los PDF descargados anteriormente no cambian.
+TODOS CON HERNÁN — Cabecera de Vivir en Suiza
 
 CAMBIOS
-- Corregido el desbordamiento de palabras largas al descargar el PDF: el
-  texto se divide dentro de cada columna, igual que en la vista previa.
-- Hojas A4 separadas en la vista previa, con una franja gris entre hojas.
-- Margen superior de 10 mm e inferior de 12 mm en cada hoja del creador.
-- Numeración visible únicamente en la vista previa mientras se edita o revisa.
-  El PDF descargado, guardado desde la impresión o impreso no incluye números.
-- Saltos de página automáticos al añadir más contenido.
-- Los empleos, formaciones, idiomas y elementos de lista pasan completos
-  a la siguiente hoja cuando no caben en el espacio disponible.
-- Si una sola entrada supera una hoja completa, continúa por palabras,
-  conservando su contenido y aprovechando el espacio de la hoja anterior.
-- Los títulos de sección se repiten cuando la sección continúa en otra hoja.
-- La vista previa, el PDF y la impresión del creador usan las mismas páginas.
-- Se mantienen el espaciado compacto y el tratamiento de fotos anterior.
-- Las plantillas independientes también reciben márgenes de impresión
-  superior e inferior para cada página.
+- Sustituido el logo de la cabecera por el nuevo logo circular.
+- PNG con transparencia real en el exterior del logo.
+- Eliminados los botones «Empezar la guía» y «Descubrir Suiza».
+- Conservados el fondo, el texto, las categorías y el resto de la página.
 
-COMPROBACIONES
-Reproducido el fallo con cadenas largas sin espacios. Tras la corrección,
-las descargas de ambos modelos no invaden la columna contigua.
-Probados ambos modelos con una, dos y tres páginas en Chromium, mediante
-la descarga PDF y la impresión A4. Comprobado el último empleo, la ausencia
-de títulos aislados y el respeto del área de contenido.
-Probadas descripciones extensas y listas de 85 competencias: se conserva
-el texto completo y no invade el pie. Vista móvil comprobada a 390 píxeles.
+INSTALACIÓN
+1. Guarda una copia del archivo vivir-en-suiza.html actual.
+2. Sustituye vivir-en-suiza.html por el de este paquete.
+3. Sube logo-todos-con-hernan-vivir.png dentro de la carpeta img/ existente.
+   No borres ni sustituyas la carpeta img/ completa: añade únicamente el PNG.
+4. Recarga la página con Ctrl+F5. Vacía la caché del alojamiento si procede.
 
-El número de páginas depende del contenido: no se elimina texto ni se
-reduce todo a una hoja. La impresión de las plantillas independientes
-utiliza los saltos del navegador; el creador utiliza sus hojas explícitas.
+El nuevo archivo de imagen tiene un nombre propio para que el cambio solo
+se aplique a esta cabecera. Conserva LogoOficial.png para el resto de la web.
 
-Este paquete está preparado para subirlo. No publica cambios en la web.
+Se ha comprobado la cabecera a 1440 y 390 píxeles de ancho, con el fondo
+actual de la página. La imagen carga y no hay desbordamiento horizontal.
+Este paquete es una actualización parcial, no una copia de toda la web:
+conserva las demás carpetas, imágenes, estilos y scripts del alojamiento.
+
+Los archivos están preparados; este paquete no publica cambios en la web.
